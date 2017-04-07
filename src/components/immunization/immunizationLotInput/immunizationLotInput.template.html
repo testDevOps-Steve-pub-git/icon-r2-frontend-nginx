@@ -1,0 +1,16 @@
+<div>
+  <label>{{ 'lotInput.LOT_NUMBER' | translate }} <span class="text-muted">{{ 'lotInput.OPTIONAL' | translate }}</span></label>
+
+  <div ng-if="!$ctrl.displayCard">
+    <select class="form-control" id="immunizations-lot-number"
+    ng-disabled="$ctrl.lotArray.length <= 0"
+    ng-options="lot as lot.number for lot in $ctrl.lotArray"
+    ng-model="$ctrl.lotSelection"
+    ng-change="$ctrl.setLot($ctrl.lotSelection)">
+    </select>
+  </div>
+
+  <div uib-alert ng-if="$ctrl.displayCard" class="alert alert-info" close="$ctrl.onFieldClear()">
+      <h4 class="alert-heading">{{$ctrl.lotSelection.number}}</h4>
+  </div>
+</div>

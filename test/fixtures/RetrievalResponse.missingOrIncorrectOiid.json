@@ -1,0 +1,43 @@
+{
+  "resourceType": "Bundle",
+  "id": "3c014c3f-1c47-4d12-9684-d6aa41ad9cf1",
+  "meta": {
+    "lastUpdated": "2017-03-31T16:47:32.474+00:00"
+  },
+  "language": "en",
+  "type": "searchset",
+  "total": 0,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization?patient.identifier=http://ca-on-panorama-immunization-id%7C0000000000"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/OperationOutcome",
+      "resource": {
+        "resourceType": "OperationOutcome",
+        "meta": {
+          "lastUpdated": "2017-03-31T16:47:32.473+00:00"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div>Not found: Resource matching search parameters</div>"
+        },
+        "issue": [
+          {
+            "severity": "information",
+            "code": "not-found",
+            "details": {
+              "text": "Not found: Resource matching search parameters"
+            },
+            "location": [
+              "OIID"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

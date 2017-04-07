@@ -1,0 +1,89 @@
+<!--City-->
+<div class="row">
+  <div class="form-group col-xs-12 col-sm-6">
+    <label for="address-city" class="required" aria-label="{{ 'addressCapture.CITY' | translate }}">
+      {{'addressCapture.CITY' | translate}}<span class="required_field">*</span>
+    </label>
+
+    <input type="text"
+           class="form-control"
+           id="address-city"
+           name="city"
+           ng-required="true"
+           ng-pattern="$ctrl.rgx.CITY"
+           ng-maxlength="50"
+           ng-model="$ctrl.localAddress.city"
+           placeholder="{{ 'addressCapture.CITY_PLACERHOLDER' | translate}}"
+           autocomplete="off"
+           typeahead-loading="loadingLocations2"
+           typeahead-no-results="noResults2"
+           typeahead-on-select="$ctrl.selectCity($item)"
+           uib-typeahead="cities.city for cities in $ctrl.getCity($viewValue) | limitTo:8"/>
+
+    <!--Error Messages for city-->
+    <div class="error-messages" id="address-city-error" ng-messages="$ctrl.form.city.$error" ng-if="$ctrl.form.city.$touched"
+         role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressCapture.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressCapture.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.IS_REQUIRED'
+           aria-label="{{ 'addressCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressCapture.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+</div>
+<!--End City-->
+
+<!--Province-->
+<div class="row">
+  <div class="form-group col-xs-12 col-sm-6">
+    <label for="address-province" class="required" aria-label="{{ 'addressCapture.PROVINCE' | translate }}">{{'addressCapture.PROVINCE' | translate}}<span class="required_field">*</span></label>
+
+    <select class="form-control"
+            id="address-province"
+            name="province"
+            ng-model="$ctrl.localAddress.province"
+            ng-required="true">
+      <option ng-repeat="province in $ctrl.provinces" value="{{province}}">{{province | translate}}</option>
+    </select>
+
+    <!--Error messages for province-->
+    <div class="error-messages" id="address-province-error" ng-messages="$ctrl.form.province.$error" ng-if="$ctrl.form.province.$touched"
+         role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.IS_REQUIRED'
+           aria-label="{{ 'addressCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+</div>
+<!--End Province-->
+
+<!--Postal Code-->
+<div class="row">
+  <div class="form-group col-xs-12 col-sm-6 col-sm-6 col-md-4">
+    <label for="address-postal" class="required"
+           aria-label="{{ 'addressCapture.POSTAL_CODE' | translate }}">{{ 'addressCapture.POSTAL_CODE' | translate }}<span class="required_field">*</span></label>
+
+    <input ng-model="$ctrl.localAddress.postalCode"
+           class="form-control"
+           id="address-postal"
+           name="postalCode"
+           ng-pattern="$ctrl.rgx.POSTAL"
+           ng-required="true"
+           ng-maxlength="8"
+           type="text"/>
+    <!--Error messages for postal code-->
+    <div class="error-messages" id="address-postal-error" ng-messages="$ctrl.form.postalCode.$error"
+         ng-if="$ctrl.form.postalCode.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressCapture.ERRORS.POSTAL_REQ_ERROR'
+           aria-label="{{ 'addressCapture.ERRORS.POSTAL_REQ_ERROR' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.IS_REQUIRED'
+           aria-label="{{ 'addressCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressCapture.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error messages-->
+  </div>
+</div>
+<!--End Postal Code-->

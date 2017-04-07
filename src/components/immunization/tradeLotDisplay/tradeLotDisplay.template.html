@@ -1,0 +1,11 @@
+<div ng-if="$ctrl.immunization.lot.number">
+  <em>
+    {{ ($ctrl.immunization.lot.number)
+          ? 'Lot # ' + $ctrl.immunization.lot.number
+          : '' }}
+
+    {{ ($ctrl.immunization.lot.expiry)
+          ? '(Expiry ' + $ctrl.immunization.lot.expiry + ')'
+          : '' }}
+  </em>
+</div>

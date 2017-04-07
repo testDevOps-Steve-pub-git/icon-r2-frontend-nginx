@@ -1,0 +1,215 @@
+{
+  "resourceType": "Bundle",
+  "id": "9c41481f-94a7-485c-b394-6814f53d9641",
+  "meta": {
+    "lastUpdated": "2017-03-03T14:49:17.775-05:00"
+  },
+  "type": "searchset",
+  "total": 7,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization?patient.identifier=https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id%7CAKGLQB5D3B&_include=Immunization:patient&_include=Immunization:performer&_include:recurse=Practitioner:organization&_revinclude:recurse=ImmunizationRecommendation:patient&_format=application/json+fhir"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/2807023",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "2807023",
+        "status": "completed",
+        "date": "2001-11-14T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "7811000087105",
+              "display": "RV1"
+            }
+          ],
+          "text": "Rotarix"
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/2807033",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "2807033",
+        "status": "completed",
+        "date": "2002-01-14T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "7811000087105",
+              "display": "RV1"
+            }
+          ],
+          "text": "Rotarix"
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/560833",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "560833",
+        "status": "completed",
+        "date": "2002-09-14T00:00:00-04:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "61153008",
+              "display": "MMR"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/1154513",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "1154513",
+        "status": "completed",
+        "date": "2002-12-14T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108729007",
+              "display": "Var"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/3483983",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "3483983",
+        "status": "completed",
+        "date": "2012-09-14T00:00:00-04:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "8771000087109",
+              "display": "HB"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/1732093",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "1732093",
+        "status": "completed",
+        "date": "2013-09-14T00:00:00-04:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "7801000087108",
+              "display": "HPV-4"
+            }
+          ],
+          "text": "Gardasil"
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/1732103",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "1732103",
+        "status": "completed",
+        "date": "2013-11-14T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "7801000087108",
+              "display": "HPV-4"
+            }
+          ],
+          "text": "Gardasil"
+        },
+        "patient": {
+          "reference": "Patient/1000465763"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Patient/1000465763",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1000465763",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-patient-hcn",
+            "value": "2677344182"
+          },
+          {
+            "use": "secondary",
+            "system": "https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id",
+            "value": "AKGLQB5D3B"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Peggy Manning",
+            "family": [
+              "Manning"
+            ],
+            "given": [
+              "Peggy"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2001-09-14"
+      }
+    }
+  ]
+}

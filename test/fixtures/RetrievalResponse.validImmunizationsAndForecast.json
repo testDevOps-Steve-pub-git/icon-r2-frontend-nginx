@@ -1,0 +1,494 @@
+{
+  "resourceType": "Bundle",
+  "id": "bec91f7b-eced-41a0-b914-17f2e65d2bf6",
+  "meta": {
+    "lastUpdated": "2017-03-24T19:01:19.273-04:00"
+  },
+  "type": "searchset",
+  "total": 5,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization?patient.identifier=https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id%7CZPH6BL29BP&_include=Immunization:patient&_include=Immunization:performer&_include:recurse=Practitioner:organization&_revinclude:recurse=ImmunizationRecommendation:patient&_format=application/json+fhir"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/20106723",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "20106723",
+        "status": "completed",
+        "date": "2000-03-14T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "7811000087105",
+              "display": "RV1"
+            }
+          ],
+          "text": "Rotarix"
+        },
+        "patient": {
+          "reference": "Patient/1003315313"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/20106733",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "20106733",
+        "status": "completed",
+        "date": "2000-05-14T00:00:00-04:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "7811000087105",
+              "display": "RV1"
+            }
+          ],
+          "text": "Rotarix"
+        },
+        "patient": {
+          "reference": "Patient/1003315313"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/18010073",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "18010073",
+        "status": "completed",
+        "date": "2001-01-14T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "61153008",
+              "display": "MMR"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/1003315313"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/18603883",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "18603883",
+        "status": "completed",
+        "date": "2001-04-14T00:00:00-04:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108729007",
+              "display": "Var"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/1003315313"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization/181741",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "181741",
+        "status": "completed",
+        "date": "2017-03-08T00:00:00-05:00",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "21721000087105",
+              "display": "Men-C-AC"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/1003315313"
+        },
+        "wasNotGiven": false,
+        "reported": false
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/ImmunizationRecommendation?patient.identifier=ZPH6BL29BP",
+      "resource": {
+        "resourceType": "ImmunizationRecommendation",
+        "id": "ImmunizationRecommendation_OIID_ZPH6BL29BP",
+        "patient": {
+          "reference": "Patient/1003315313"
+        },
+        "recommendation": [
+          {
+            "date": "2017-03-08T14:05:26-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "397428000",
+                  "display": "Diphtheria"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2000-03-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:26-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "398102009",
+                  "display": "Poliomyelitis"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2000-03-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:26-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "76902006",
+                  "display": "Tetanus"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2000-03-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:26-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "27836007",
+                  "display": "Pertussis"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2000-03-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:26-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "14189004",
+                  "display": "Measles"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2004-01-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:26-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "36989005",
+                  "display": "Mumps"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2004-01-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:27-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "38907003",
+                  "display": "Varicella"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2004-01-14T00:00:00-05:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:27-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "23511006",
+                  "display": "Meningococcal disease"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2012-09-01T00:00:00-04:00"
+              }
+            ]
+          },
+          {
+            "date": "2017-03-08T14:05:27-05:00",
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "66071002",
+                  "display": "Hepatitis B"
+                }
+              ]
+            },
+            "forecastStatus": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/immunization-recommendation-status",
+                  "code": "overdue",
+                  "display": "overdue"
+                }
+              ]
+            },
+            "dateCriterion": [
+              {
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/immunization-recommendation-date-criterion",
+                      "code": "DUE",
+                      "display": "DUE"
+                    }
+                  ]
+                },
+                "value": "2012-09-01T00:00:00-04:00"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Patient/1003315313",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1003315313",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-patient-hcn",
+            "value": "5057573114"
+          },
+          {
+            "use": "secondary",
+            "system": "https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id",
+            "value": "ZPH6BL29BP"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Merrill Parker",
+            "family": [
+              "Parker"
+            ],
+            "given": [
+              "Merrill"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2000-01-14"
+      }
+    }
+  ]
+}

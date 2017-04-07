@@ -1,0 +1,4 @@
+domain: stg.iconr2.marc-hi.ca
+inherit: base-manifest.yml
+env:
+  ICON_SERVER: https://icon-server.stg-backend.iconr2.marc-hi.ca

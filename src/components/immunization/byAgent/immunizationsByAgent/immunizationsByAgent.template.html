@@ -1,0 +1,22 @@
+<div ng-repeat="immunizationGroup in $ctrl.immunizationGroups track by $index">
+  <immunization-display-by-agent
+    immunizations="immunizationGroup.immunizations"
+    add="$ctrl.addImmunization(immunization)"
+    edit="$ctrl.addImmunization(oldImmunization, newImmunization)"
+    on-remove="$ctrl.remove(immunization)"
+    open-modal="$ctrl.openModal">
+  </immunization-display-by-agent>
+</div>
+
+<div>
+  <button class="btn btn-link btn-lg center-block" id="immunizations-add"
+  ng-click="$ctrl.openAddImmunization()">
+    <p>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-medkit fa-stack-1x fa-inverse"></i>
+      </span>
+    </p>
+    <div translate='immunizationByAgent.ADD_IMMUNIZATION' translate-compile></div>
+  </button>
+</div>

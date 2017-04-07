@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <!-- TODO: get clear specification for this edit feature... -->
+    <!-- <a class="pull-right">Edit</a> -->
+    <h4 id="immunizations-date-header"><span class="fa fa-calendar"></span> {{ $ctrl.immunizations[0].date }}</h4>
+    <div>
+      <age-display
+        date-of-birth="$ctrl.patient.dateOfBirth"
+        date="$ctrl.immunizations[0].date">
+      </age-display>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item">
+      <div class="pull-right">
+        <button class="btn btn-default text-center" id="immunizations-edit-{{$index}}" ng-click="$ctrl.edit(immunization)" aria-label="{{ 'immunizationDisplayByDate.EDIT_LABEL' | translate }} {{ immunization.agent.name }}">{{ 'immunizationDisplayByDate.EDIT' | translate }}</button>
+        <button class="btn btn-default text-center"  id="immunizations-delete-{{$index}}" ng-click="$ctrl.remove({ immunization: immunization })" aria-label="{{ 'immunizationDisplayByDate.DELETE_LABEL' | translate }} {{ immunization.agent.name}}">{{ 'immunizationDisplayByDate.DELETE' | translate }}</button>
+      </div>
+      <h4>{{immunization.agent.name}}</h4>
+
+      <diseases-display
+        diseases="immunization.agent.diseases">
+      </diseases-display>
+
+      <div ng-if="immunization.isDateApproximate">
+        <em>{{ 'immunizationDisplayByDate.DATE_ESTIMATED' | translate }}</em>
+      </div>
+
+      <trade-lot-display
+        immunization="immunization">
+      </trade-lot-display>
+    </li>
+  </ul>
+
+  <div class="panel-footer icon-panel-footer-btn">
+    <button
+    class="btn btn-primary btn-block btn-lg"
+    ng-click="$ctrl.addImmunization($ctrl.immunizations[0].clone())">
+      <span class="fa fa-plus-circle"></span>
+      {{ 'immunizationDisplayByDate.IMMUNIZATION_FOR_DATE' | translate }}
+    </button>
+  </div>
+</div>

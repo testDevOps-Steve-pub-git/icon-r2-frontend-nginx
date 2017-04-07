@@ -1,0 +1,4 @@
+domain: dev.iconr2.marc-hi.ca
+inherit: base-manifest.yml
+env:
+  ICON_SERVER: https://icon-server.dev-backend.iconr2.marc-hi.ca

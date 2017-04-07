@@ -1,0 +1,14 @@
+<!-- Upload Documents Table -->
+<div class="form-group col-xs-12 col-md-10 col-md-offset-1" ng-if="$ctrl.uploader">
+  <table class="table icon-table-no-border" ng-if="$ctrl.uploader.queue.length > 0">
+      <tr ng-repeat= "item in $ctrl.uploader.queue">
+        <td><span class="{{$ctrl.getFileExtensionGlyphClass(item.file)}} lead"></span> {{item.file.name}}</td>
+        <td ng-if="$ctrl.isEditable"><button type="button" class="btn btn-sm btn-danger" ng-click="item.remove()"><span class="fa fa-remove"></span> <span translate="documentDisplay.REMOVE_FILE"></span></button></td>
+      </tr>
+  </table>
+
+  <span ng-if="$ctrl.uploader.queue.length === 0">
+    <p class="lead text-center"><em>{{ 'documentDisplay.NO_DOCUMENTS_UPLOADED' | translate }}<em></p>
+  </span>
+</div>
+<!-- End Upload Documents Table -->

@@ -1,0 +1,86 @@
+<h3 class="text-center" translate="immunizationInput.ENTER_IMMUNIZATIONS"
+translate-values="{ patient_name : $ctrl.patient.firstName }" translate-compile></h3>
+
+<br aria-hidden="true" />
+<br aria-hidden="true" />
+
+<p class="text-center"
+  ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.DATE"
+  translate='immunizationInput.PRINT_BY_IMMUNIZATIONS' translate-compile>
+</p>
+
+<p class="text-center"
+  ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT"
+  translate='immunizationInput.PRINT_BY_DATE' translate-compile>
+</p>
+
+<div class="row text-center">
+  <div class="col-xs-12">
+      <p class="lead" id="group_by_title">  {{ 'immunizationInput.GROUP_BY' | translate }}</p>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="btn-group" role="group" tabindex="0" aria-labelledby="group_by_title">
+      <button class="btn btn-primary" id="immunizations-group-date"
+              ng-model="$ctrl.immunizationDisplayMode"
+              uib-btn-radio="$ctrl.IMMUNIZATION_DISLAY_MODE.DATE">
+        <span class="fa fa-check"
+        ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.DATE">
+        </span>
+        {{ 'immunizationInput.DATE' | translate }}
+      </button>
+
+      <button class="btn btn-primary" id="immunizations-group-immunizations"
+      ng-model="$ctrl.immunizationDisplayMode"
+      uib-btn-radio="$ctrl.IMMUNIZATION_DISLAY_MODE.AGENT">
+        <span  class="fa fa-check"
+        ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT">
+        </span>
+        {{ 'immunizationInput.IMMUNIZATION' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div ng-if="$ctrl.immunizations.length <= 0" class="col-xs-12">
+  <p class="lead text-center" translate="immunizationInput.ADD_IMMUNIZATION_DATE"
+  translate-values="{ displayMode : $ctrl.immunizationDisplayMode,
+    date : $ctrl.IMMUNIZATION_DISLAY_MODE.DATE,
+    agent : $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT }"
+  translate-compile>
+  </p>
+</div>
+
+<immunizations-by-date
+class="row"
+ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.DATE"
+immunizations="$ctrl.immunizations"
+add="$ctrl.addImmunization(immunization)"
+on-remove="$ctrl.removeImmunization(immunization)"
+open-modal="$ctrl.openImmunizationModal">
+</immunizations-by-date>
+
+<immunizations-by-agent
+class="row"
+ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT"
+immunizations="$ctrl.immunizations"
+add="$ctrl.addImmunization(immunization)"
+on-remove="$ctrl.removeImmunization(immunization)"
+open-modal="$ctrl.openImmunizationModal">
+</immunizations-by-agent>
+
+<hr />
+
+<div class="row">
+  <div class="error-messages" id="no-immunization-error"  ng-if="$ctrl.noImmunizations" role="alert">
+    <div class="alert alert-danger col-xs-12">
+        {{ 'immunizationInput.IMMUNIZATION_ERROR' | translate }}
+    </div>
+  </div>
+</div>
+
+<next-prev-buttons
+on-next="$ctrl.validateImmunizations()">
+</next-prev-buttons>

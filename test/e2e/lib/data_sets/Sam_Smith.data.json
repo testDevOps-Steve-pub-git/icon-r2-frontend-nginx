@@ -1,0 +1,98 @@
+{
+  "myself": {
+    "firstName": "Sam",
+    "middleName": "Joe",
+    "lastName": "Smith",
+    "healthCardNumber": "4689-201-194",
+    "email": "sam.smith@gmail.com",
+    "birthDate": "2011-12-22",
+    "sex": "Male",
+    "phoneNumber": "2262371196",
+    "phoneExt": "",
+    "oiid": "FF32B66VBL",
+    "pin": "123456",
+    "streetType": "Street",
+    "postalCode": "N4K3Y8",
+    "streetNumber": "453",
+    "streetName": "Alpha",
+    "city": "Owen Sound",
+    "province": "Ontario",
+    "unitNumber": "2",
+    "streetDirection": "",
+    "ruralRouteNumber": "",
+    "additionalInfo": "",
+    "station": "",
+    "poBoxNumber": "",
+    "rpo": "",
+    "daytimePhoneNumber": "2262371196",
+    "institutionName": "",
+    "immunizations": {
+      "immunization": "Influenza",
+      "date": "2015-06-12"
+    } 
+  },
+
+  "dependantOne": {
+    "firstName": "Jonathan",
+    "middleName": "Norbert",
+    "lastName": "Smith",
+    "healthCardNumber": "4689-201-194",
+    "birthDate": "2011-12-22",
+    "sex": "Male",
+    "phoneNumber": "2262371196",
+    "phoneExt": "",
+    "oiid": "5WDSB85WC2",
+    "pin": "123456",
+    "streetType": "Street",
+    "postalCode": "N4K3Y8",
+    "streetNumber": "453",
+    "streetName": "Alpha",
+    "city": "Owen Sound",
+    "province": "Ontario",
+    "unitNumber": "2",
+    "ruralRouteNumber": "",
+    "additionalInfo": "",
+    "station": "",
+    "poBoxNumber": "",
+    "rpo": "",
+    "daytimePhoneNumber": "2262371196",   
+    "institutionName": "Keppel-Sarawak Elementary",
+    "immunizations": {
+      "immunization": "Men-C-ACYW-135",
+      "date": "2015-06-12"
+    }
+  },
+
+  "dependantTwo": {
+    "firstName": "Sally",
+    "middleName": "Martha",
+    "lastName": "Smith",
+    "healthCardNumber": "5609-134-506",
+    "birthDate": "2014-02-14",
+    "sex": "Female",
+    "phoneNumber": "2262371196",
+    "phoneExt": "",
+    "oiid": "",
+    "pin": "",
+    "streetType": "Street",
+    "postalCode": "N4K3Y8",
+    "streetNumber": "453",
+    "streetName": "Alpha",
+    "city": "Owen Sound",
+    "province": "Ontario",
+    "unitNumber": "2", 
+    "ruralRouteNumber": "",
+    "additionalInfo": "",
+    "station": "",
+    "poBoxNumber": "",
+    "rpo": "",
+    "daytimePhoneNumber": "2262371196",   
+    "institutionName": "Inglenook Creche",
+    "immunizations": {
+      "immunization": "Influenza",
+      "date": "2015-06-12"
+    }
+  }
+}
+
+

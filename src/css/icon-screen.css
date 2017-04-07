@@ -1,0 +1,502 @@
+/* General utility classes */
+.icon-background-white { background-color: #ffffff !important; }
+.icon-color-white { color: #ffffff !important; }
+.icon-text-large { font-size: 24px !important; }
+.icon-text-larger { font-size: 30px !important; }
+.icon-off-screen{
+    position: absolute;
+    left: 3000px
+}
+/* End general utility classes */
+
+/* documentUploadDisplay */
+.icon-table-no-border>thead>tr>td,
+.icon-table-no-border>tbody>tr>td,
+.icon-table-no-border>tfoot>tr>td { border: none; }
+/* End documentUploadDisplay */
+
+/* immunizationDisplayByDate, immunizationDisplayByAgent */
+.icon-panel-footer-btn {
+  padding: 0;
+  border: 0;
+}
+.icon-panel-footer-btn button {
+  border-radius: 0 0 4px 4px;
+}
+/* End immunizationDisplayByDate, immunizationDisplayByAgent */
+
+/* phuHeader link */
+#icon-phu-header-link {
+  font-size:x-large;
+  text-decoration: none;
+  color: #000000;
+}
+/* end phuHeader link */
+
+#icon-phu-footer {
+  margin-top: 100px !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* phuFooter phone */
+#phu-footer-phone {
+  color: #757575;
+}
+/* ends phuFooter phone */
+
+/* phuFooter link */
+  #phu-footer-link {
+    font-size: large;
+    text-decoration: none;
+    color: #000000;
+  }
+/* end phuFooter link */
+
+/* immunizationTypeahead */
+.icon-group-title {
+    font-size: 17px;
+    background-color: #ededed;
+    color: #757575 !important;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.uib-typeahead-match.active * {
+  color: #ffffff;
+}
+
+.icon-cell-title {
+  font-size: 17px;
+}
+
+.icon-cell-details {
+  font-size: 15px;
+  color: #262626;
+}
+
+.icon-keep-typing {
+  font-weight: bold;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #ededed;
+}
+
+.icon-keep-typing-result{
+  font-weight: bold;
+  padding: 5px;
+  background-color: #5cb85c !important;
+  color: #ffffff;
+}
+
+.icon-cell-common{
+  font-weight: bold;
+  background-color: #5cb85c;
+  color: #ffffff;
+}
+/* End immunizationTypeahead */
+
+/* progressBar
+   TODO: is all this really necessary? */
+.progress-bar { height: 5px; }
+.progress { height: 5px; }
+
+#icon-progress-bar-container {
+  margin: 0;
+  width: 100%;
+  padding: 5px 0 5px 0;
+  background-color: #eeeeee;
+}
+#icon-progress-bar-container.affix {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+}
+#icon-progress-bar-container.affix + #progress-bar-padding-on-affix {
+  display: block;
+  min-height: 86px;
+}
+
+#icon-progress-bar { position: relative; z-index: 10; padding: 0; margin: 0; }
+#icon-progress-bar ul { margin-bottom: 2px; }
+#icon-progress-bar li .btn { width: 42px; height: 42px; margin-top: 7px; border-radius: 50% 50%; border: none; }
+#icon-progress-bar li .btn-default { background-color: #949494; color: #ffffff; }
+#icon-progress-bar li .btn-primary { background-color: #0074d4; }
+#icon-progress-bar li .btn-lg { width: 56px; height: 56px; margin-top: 4px; }
+#icon-progress-bar li .btn-lg span { font-size: 21px; }
+#icon-progress-line { position: absolute; z-index: 1; padding-top: 31px; margin-right: -15px; margin-left: -15px; }
+#icon-progress-line * { webkit-box-shadow: none; box-shadow: none; }
+
+#icon-progress-line .progress { background-color: #949494; }
+#icon-progress-status-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.icon-affix-progress-bar-container {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  #icon-progress-line { width: 100%; }
+}
+@media (min-width: 768px) {
+  #icon-progress-line { width: 750px; }
+}
+@media (min-width: 992px) {
+  #icon-progress-line { width: 970px; }
+}
+@media (min-width: 1200px) {
+  #icon-progress-line { width: 1170px; }
+}
+
+/* This media query overrides navbar-justified stacking for MVP, refactor into global CSS later. */
+/* TODO: refactor this media query, there are redundant CSS overrides to strip out. */
+@media (max-width: 768px) {
+  .navbar-header {
+      float: left;
+  }
+
+  .navbar {
+      border-radius: 4px;
+      min-width: 400px;
+  }
+
+  .nav-tabs-justified > li > a {
+      border-bottom: 1px solid #ddd;
+      border-radius: 4px 4px 0 0;
+  }
+
+  .nav-tabs-justified > .active > a,
+  .nav-tabs-justified > .active > a:hover,
+  .nav-tabs-justified > .active > a:focus {
+      border-bottom-color: #fff;
+  }
+
+  .nav-justified > li {
+      display: table-cell;
+      width: 1%;
+  }
+
+  .nav-justified > li > a {
+      margin-bottom: 0;
+  }
+
+  .nav-tabs.nav-justified > li > a {
+      border-bottom: 1px solid #ddd;
+      border-radius: 4px 4px 0 0;
+  }
+
+  .nav-tabs.nav-justified > .active > a,
+  .nav-tabs.nav-justified > .active > a:hover,
+  .nav-tabs.nav-justified > .active > a:focus {
+      border-bottom-color: #fff;
+  }
+
+  .nav-tabs.nav-justified > li {
+      display: table-cell;
+      width: 1%;
+  }
+
+  .nav-tabs.nav-justified > li > a {
+      margin-bottom: 0;
+  }
+
+  .navbar-right .dropdown-menu {
+      right: 0;
+      left: auto;
+  }
+
+  .navbar-right .dropdown-menu-left {
+      right: auto;
+      left: 0;
+  }
+
+  .container {
+      min-width: 400px;
+  }
+
+  .navbar-collapse {
+      width: auto;
+      border-top: 0;
+      box-shadow: none;
+  }
+
+  .navbar-collapse.collapse {
+      display: block !important;
+      height: auto !important;
+      padding-bottom: 0;
+      overflow: visible !important;
+  }
+
+  .navbar-collapse.in {
+      overflow-y: visible;
+  }
+
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-static-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+      padding-right: 0;
+      padding-left: 0;
+  }
+
+  .container > .navbar-header,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse,
+  .container-fluid > .navbar-collapse {
+      margin-right: 0;
+      margin-left: 0;
+  }
+
+  .navbar-static-top {
+      border-radius: 0;
+  }
+
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+      border-radius: 0;
+  }
+
+  .navbar-toggle {
+      display: none;
+  }
+
+  .navbar-nav {
+      float: left;
+      margin: 0;
+  }
+
+  .navbar-nav > li {
+      float: left;
+  }
+
+  .navbar-nav > li > a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+  }
+
+  .navbar-nav.navbar-right:last-child {
+      margin-right: -15px;
+  }
+
+  .navbar-left {
+      float: left !important;
+  }
+
+  .navbar-right {
+      float: right !important;
+  }
+
+  .navbar-form .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+  }
+
+  .navbar-form .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+  }
+
+  .navbar-form .control-label {
+      margin-bottom: 0;
+      vertical-align: middle;
+  }
+
+  .navbar-form .radio,
+
+  .navbar-form .checkbox {
+      display: inline-block;
+      padding-left: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+  }
+
+  .navbar-form .radio input[type="radio"],
+  .navbar-form .checkbox input[type="checkbox"] {
+      float: none;
+      margin-left: 0;
+  }
+
+  .navbar-form .has-feedback .form-control-feedback {
+      top: 0;
+  }
+
+  .navbar-form {
+      width: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-right: 0;
+      margin-left: 0;
+      border: 0;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+  }
+  .navbar-form.navbar-right:last-child {
+    margin-right: -15px;
+  }
+
+  .navbar-text {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  .navbar-text.navbar-right:last-child {
+    margin-right: 0;
+  }
+}
+/* End progressBar */
+
+
+/* welcomeLogin */
+.icon-btn-link {
+  color: #0074d4 !important;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  /*border is optional*/
+  cursor: pointer;
+}
+/* End welcomeLogin */
+
+
+/* yellowCardDisplay */
+.icon-yc-table-container {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+.icon-yc-table tr:nth-child(even) {
+  background: #fdefc5;
+}
+
+.icon-yc-table tr:nth-child(odd) {
+  background: #fff5d9;
+}
+
+table.icon-yc-table {
+  background: #fff5d9;
+}
+
+table.icon-yc-table > thead {
+  background: #fdefc5;
+}
+
+.icon-yc-table tr td:nth-child(even){
+  background: #fdefc5;
+}
+
+.icon-yc-table tr th:nth-child(even){
+  background: #fdefc5;
+}
+
+th.icon-yc-disease-headers {
+  height: 140px;
+  white-space: nowrap;
+}
+
+th.icon-yc-disease-headers > div {
+  transform: rotate(270deg);
+  width: 20px;
+}
+
+td.icon-yc-more-info-td {
+ min-width: 300px;
+ max-width: 450px;
+}
+/* yellowCardDisplay */
+
+
+
+/* Overrides CSS in UIB library that only allows calendar icon on the opposite side. */
+*[uib-datepicker-popup] {
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+}
+
+/* Ontario immunization schedule table. */
+/* TODO: refactor, should NOT override bootstrap styles globally. */
+  .well {
+    height: auto;
+    overflow: auto;
+    overflow-y: hidden;
+    width: auto;
+    padding: 0px;
+  }
+
+  .rows {
+      width: 200px;
+      /* white-space: nowrap; */
+      margin-bottom: 12px;
+   }
+
+   .cell {
+     padding: 12px;
+     vertical-align:top;
+   }
+
+   .padding{
+     padding-left: 11%;
+     line-height: 22px;
+   }
+
+  .tableCell{
+    vertical-align:top;
+    border-right: solid thin #cccccc ;
+    padding: 9px;
+   }
+
+   .middle {
+     border-right: solid thin #cccccc ;
+     text-align: center;
+   }
+
+   .check {
+     background-color: #BBBBBB;
+   }
+
+   h5 {
+     margin: 0px;
+     padding: 9px;
+   }
+
+   table td:first-child {
+     border-left: none;
+   }
+
+   table td:last-child {
+     border-right: none;
+   }
+
+   tr:nth-child(even) {
+     background: rgba(237, 237, 237, 0.69);
+   }
+
+   tr:nth-child(odd) {
+     background: #e0e0e0;
+   }
+   /* Ontario immunization schedule table. */
+
+   .uib-left:before {
+     content: "\f060" !important;
+     display: inline-block;
+     font: normal normal normal 14px/1 FontAwesome;
+     font-size: inherit;
+     text-rendering: auto;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+
+   .uib-right:before {
+     content: "\f061" !important;
+     display: inline-block;
+     font: normal normal normal 14px/1 FontAwesome;
+     font-size: inherit;
+     text-rendering: auto;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+   /* Date-picker left and right slider arrows. */

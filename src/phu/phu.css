@@ -1,0 +1,41 @@
+/******************************************************************************
+ *                                                                            *
+ *    Toronto custom PHU rules ONLY in this stylesheet.                       *
+ *    ~~~~~~~                                                                 *
+ ******************************************************************************/
+
+#icon-phu-header {
+  background-color: #ffbb33 !important;
+  border-color: #cc9933 !important;
+}
+
+#icon-phu-header * {
+  color: #2b2b2b !important;
+}
+
+#icon-phu-header-brand {
+  border-color: #2b2b2b !important;
+}
+
+@media (min-width: 1px) {
+  /* The logo/brand image should be scaled down by a factor of 2.6 */
+  #icon-phu-header-brand img {
+    width: 40px; /* Width will vary for each PHU. */
+    height: 40px; /* Height should NOT be changed. */
+  }
+}
+
+@media (min-width: 767px) {
+  /* The logo/brand image should be scaled down by a factor of 2.0 */
+  #icon-phu-header-brand img {
+    width: 52px; /* Width will vary for each PHU. */
+    height: 52px; /* Height should NOT be changed. */
+  }
+}
+
+#icon-phu-footer {
+  background-color: #efece3 !important;
+}
+#icon-progress-bar-container {
+  background-color: #efece3 !important;
+}

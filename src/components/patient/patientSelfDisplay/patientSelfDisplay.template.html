@@ -1,0 +1,107 @@
+
+<div class="row">
+  <h4 translate="patientSelfDisplay.PATIENT_TITLE" class="col-xs-6"></h4>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.NAME' | translate }}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.firstName}}</span>
+      <span>{{$ctrl.clientInfo.middleName}}</span>
+      <span>{{$ctrl.clientInfo.lastName}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.SEX' | translate }}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.gender}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{'patientSelfDisplay.BIRTHDATE' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.dateOfBirth | date:'yyyy-MMM-dd'}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.HEALTH_CARD_NUMBER' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.healthCardNumber | hCNFormat}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row " ng-if="$ctrl.clientInfo.oiid != ''">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.OIID' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.oiid | hCNFormat}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row" ng-if="$ctrl.clientInfo.schoolOrDayCare != ''">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.DAYCARE' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.schoolOrDayCare}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.PHONE' | translate }}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.submitterInfo.phone1Number}}</span>
+      <span ng-if="$ctrl.submitterInfo.phone1Ext != ''"> {{ 'patientSelfDisplay.EXTENSION' | translate }} {{$ctrl.submitterInfo.phone1Ext}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row" ng-if="$ctrl.submitterInfo.email != ''">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{ 'patientSelfDisplay.EMAIL' | translate }}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.submitterInfo.email}}</span>
+    </strong>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12">
+    <edit-button
+        button-id="review-edit-patient-button"
+        button-text="{{'patientSelfDisplay.EDIT' | translate}} {{'patientSelfDisplay.PATIENT_TITLE' | translate}}"
+        go-to-route="^.patient">
+    </edit-button>
+  </div>
+</div>

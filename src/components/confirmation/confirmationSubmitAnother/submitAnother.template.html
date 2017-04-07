@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>{{ 'submitAnother.NEXT_STEP' | translate }}</h3>
+    <button class="btn btn-primary" ng-click="$ctrl.openCompletionSubmitterModal('auth')"id="completion-submit-again-auth">{{ 'submitAnother.AUTHENTICATION' | translate }}</button>
+    <button class="btn btn-primary" ng-click="$ctrl.openCompletionSubmitterModal('anon')" id="completion-submit-again-anon">{{ 'submitAnother.IMMUNIZATIONS_ONLY' | translate }}</button>
+    <p class="col-xs-12">{{ 'submitAnother.AUTH_NOT_REQUIRED' | translate }}</p>
+    <hr />
+  </div>
+
+
+
+  <div class="col-xs-12">
+    <button class="btn-link" ng-click="$ctrl.returnHome()" id="completion-home">{{ 'submitAnother.RETURN_HOME' | translate }}</button>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<!-- Phone -->
+<div class="row">
+  <div class="col-xs-12">
+    <label for="submitter-phone">{{ 'submitterContactCapture.PHONE' | translate }}<span class="required_field">*</span></label>
+  </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <div class="input-group">
+      <input ng-model="$ctrl.localSubmitterInfo.phone1Number"
+             id="submitter-phone"
+             ng-required="true"
+             ng-pattern="$ctrl.rgx.PHONE_NUMBER"
+             name="phone1Number"
+             placeholder="{{ 'submitterContactCapture.REQUIRED' | translate}}"
+             ng-minlength="1" ng-maxlength="16"
+             class="form-control"
+             aria-describedby="contactMessage"
+             type="text" title="Phone Number"/>
+
+      <span class='input-group-addon icon-background-white'>{{ 'submitterContactCapture.EXT' | translate }}</span>
+
+      <div class="input-group-field">
+        <input ng-model="$ctrl.localSubmitterInfo.phone1Ext"
+               id="submitter-phone-extension"
+               ng-pattern="$ctrl.rgx.EXT"
+               name="phone1Ext"
+               placeholder="{{ 'submitterContactCapture.OPTIONAL' | translate }}"
+               ng-maxlength="10"
+               class="form-control"
+               aria-label="{{ 'submitterContactCapture.EXTENSION' | translate }}"
+               type="text" title="Phone extension"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Error messages -->
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <div id="submitter-phone-error" ng-messages="$ctrl.form.phone1Number.$error" ng-if="$ctrl.form.phone1Number.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterContactCapture.PHONE_IS_REQUIRED' | translate}}</div>
+      <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.INCORRECT_FORMAT' | translate }}</div>
+    </div>
+
+    <div id="submitter-phone-extension-error" ng-messages="$ctrl.form.phone1Ext.$error" ng-if="$ctrl.form.phone1Ext.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.PHONE_EXT_NUMBERS' | translate }}</div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{ 'submitterContactCapture.TOO_MANY_NUMBERS' | translate }}</div>
+    </div>
+  </div>
+  <!-- End error messages -->
+
+  <div class="col-xs-12">
+    <p id="contactMessage">{{ 'submitterContactCapture.CONTACT_MESSAGE' | translate }}</p>
+  </div>
+</div>
+<!-- End phone -->

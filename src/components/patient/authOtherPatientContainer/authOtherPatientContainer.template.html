@@ -1,0 +1,95 @@
+<div>
+  <patient-auth-display
+      page="submission"
+      client-info="$ctrl.clientInfo">
+  </patient-auth-display>
+  <br aria-hidden=\"true\"/>
+  <div class="row">
+    <div class="col-xs-12">
+      <p translate="authOtherPatientContainer.PATIENT_INFO_MESSAGE"
+    translate-values="{ name_key : '{{$ctrl.multitenancy.NAME_KEY | translate}}',
+                           phone_key : '{{$ctrl.multitenancy.PHONE_KEY | translate}}'}"
+      translate-compile>
+      </p>
+    </div>
+  </div>
+  <hr />
+
+  <h2>{{ 'authOtherPatientContainer.ADDITIONAL_INFORMATION' | translate }}</h2>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>
+        {{ 'authOtherPatientContainer.ENTER_MISSING_INFO' | translate }}
+      </p>
+    </div>
+  </div>
+
+  <!--Health Card Number-->
+  <div class="row">
+    <!--Health Card Number-->
+    <div class="col-xs-12 col-sm-4">
+      <!--Health Card Number-->
+      <label for="patient-hcn" translate='authOtherPatientContainer.HEALTH_CARD_NUMBER' aria-label="{{'authOtherPatientContainer.HEALTH_CARD_NUMBER' | translate}}"></label>
+
+      <div class="mask-display">
+        <input ng-model="$ctrl.localPatient.healthCardNumber"
+               name="healthCardNumber"
+               id="patient-hcn" class="form-control"
+               type="text"
+               icon-hcn-checksum
+               ui-options="$ctrl.hcnOptions"
+               ui-mask="AAAA-AAA-AAA" ui-mask-placeholder ui-mask-placeholder-char="_"
+               autocomplete="off" />
+      </div>
+
+      <!--Error Messages-->
+      <div class="error-messages mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
+        <div ng-message="iconHcn"
+             class="alert alert-danger col-xs-12"
+             translate='authOtherPatientContainer.HCN_FORMAT_ERROR'
+             aria-label="{{'authOtherPatientContainer.HCN_FORMAT_ERROR' | translate}}"></div>
+        <div ng-message="mask"
+             class="alert alert-danger col-xs-12"
+             translate='authOtherPatientContainer.HCN_FORMAT_ERROR'
+             aria-label="{{'authOtherPatientContainer.HCN_FORMAT_ERROR' | translate}}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+  <!--End Health Card Number-->
+
+  <!--Patient School or Daycare-->
+  <div class="row">
+    <div class="col-xs-6">
+      <label for="patient-school" translate='authOtherPatientContainer.DAYCARE' aria-label="{{'authOtherPatientContainer.DAYCARE' | translate}}"></label>
+      <input type="text"
+             id="patient-school"
+             name="schoolOrDaycare"
+             class="form-control"
+             ng-pattern="$ctrl.rgx.SCHOOL_NAME"
+             ng-maxlength="100"
+             ng-model="$ctrl.localPatient.schoolOrDayCare"
+             placeholder="{{'authOtherPatientContainer.DAYCARE_TOOLTIP' | translate}}"
+             typeahead-loading="loadingLocations"
+             typeahead-no-results="noResults"
+             typeahead-on-select="$ctrl.onSchoolOrDaycareSelect($item)"
+             uib-typeahead="schools.name as (schools.name + ', ' + schools.address + ', ' + schools.city ) for schools in $ctrl.getSchoolOrDaycare($viewValue) | limitTo:8"
+             autocomplete="off" />
+
+      <span ng-show="loadingLocations" class="fa fa-refresh" aria-hidden="true"></span>
+      <div ng-show="noResults">
+        {{ 'authOtherPatientContainer.NO_RESULTS_FOUND' | translate}}
+      </div>
+
+      <!--Error Messages-->
+      <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
+        <div class="alert alert-danger" ng-message="pattern" translate='authOtherPatientContainer.ERROR.BAD_FORMAT' aria-label="{{'authOtherPatientContainer.ERROR.CHAR_ERROR' | translate}}"></div>
+        <div class="alert alert-danger" ng-message="maxlength" translate='authOtherPatientContainer.ERROR.EXCEEDS_MAXLENGTH' aria-label="{{'authOtherPatientContainer.ERROR.CHAR_ERROR' | translate}}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+  <!--End School or Daycare-->
+
+  <hr />
+</div>

@@ -1,0 +1,22 @@
+{
+  "resourceType": "OperationOutcome",
+  "meta": {
+    "lastUpdated": "2017-03-31T16:51:54.982+00:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div>Missing required security token: PIN</div>"
+  },
+  "issue": [
+    {
+      "severity": "error",
+      "code": "required",
+      "details": {
+        "text": "Missing required security token: PIN"
+      },
+      "location": [
+        "PIN"
+      ]
+    }
+  ]
+}

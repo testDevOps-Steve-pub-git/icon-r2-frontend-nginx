@@ -1,0 +1,75 @@
+<div class="modal-header">
+  <button ng-click="$ctrl.$close()"
+          aria-label="{{'editImmunization.CLOSE_MODAL' | translate}}"
+          class="btn-link icon-text-large pull-right">
+    <span class="btn-default fa fa-close"/>
+  </button>
+  <h4 class="text-center">
+    <span
+    translate="editImmunization.IMMUNIZATION_MODAL_TITLE"
+    translate-values="{ patient_name : $ctrl.patient.firstName }" translate-compile>
+    </span>
+  </h4>
+</div>
+
+<div class="modal-body">
+  <form
+  name="addImmunizationForm"
+  autocomplete="off">
+    <!-- Date capture -->
+    <div class="form-group">
+
+      <datepicker
+        input-id="immunization-group-date"
+        input-name="immunizationGroupDate"
+        model="$ctrl.immunization.date"
+        form-name="addImmunizationForm"
+        min-date="{{$ctrl.minDate}}"
+        required="true">
+        <label for="immunization-group-date" aria-label="{{ 'editImmunization.DATE_SIMPLE' | translate }}">{{ 'editImmunization.DATE' | translate }}</label>
+      </datepicker>
+    </div>
+
+    <div class="form-group">
+      <!-- Toggle glyph mirrors checkbox input -->
+      <span class="icon-text-large">
+        <span
+        class="fa fa-1x"
+        ng-class="{
+          'fa-toggle-on text-primary':   $ctrl.immunization.isDateApproximate,
+          'fa-toggle-off text-muted': !$ctrl.immunization.isDateApproximate
+        }"
+        ng-click="$ctrl.immunization.isDateApproximate = !$ctrl.immunization.isDateApproximate"
+        aria-hidden="true">
+        </span>
+      </span>
+      <!-- Checkbox input available for screen-readers -->
+      <input class="sr-only" id="is-date-approximate" type="checkbox" ng-model="$ctrl.immunization.isDateApproximate" />
+
+      <label class="text" for="is-date-approximate">{{'editImmunization.DATE_ESTIMATED' | translate}}</label>
+    </div>
+    <!-- End date capture -->
+
+    <!-- Immunization capture -->
+    <div class="form-group">
+      <immunization-typeahead model="$ctrl.immunization"></immunization-typeahead>
+    </div>
+
+    <div class="form-group">
+      <immunization-lot-input
+      immunization="$ctrl.immunization"
+      snomed="$ctrl.immunization.trade.snomed">
+      </immunization-lot-input>
+    </div>
+    <!-- End immunization capture -->
+  </form>
+</div>
+
+<div class="modal-footer center-block">
+  <button class="btn btn-primary"
+  ng-disabled="addImmunizationForm.$invalid ||
+               ($ctrl.immunization.agent.snomed === '' && $ctrl.immunization.trade.snomed === '')"
+  ng-click="$ctrl.save($ctrl.immunization)">
+    {{ 'editImmunization.SAVE' | translate }}
+  </button>
+</div>

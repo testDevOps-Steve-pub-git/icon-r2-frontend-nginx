@@ -1,0 +1,40 @@
+{
+  "resourceType": "Bundle",
+  "id": "7cc2f148-b123-45b5-ba2d-4b19b2804371",
+  "meta": {
+    "lastUpdated": "2017-03-01T16:37:54.457-05:00"
+  },
+  "language": "en",
+  "type": "searchset",
+  "total": 0,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/Immunization?patient.identifier=https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id%7CCBCBCBCBCB&_include=Immunization:patient&_include=Immunization:performer&_include:recurse=Practitioner:organization&_revinclude:recurse=ImmunizationRecommendation:patient&_format=application/json+fhir"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/OperationOutcome",
+      "resource": {
+        "resourceType": "OperationOutcome",
+        "meta": {
+          "lastUpdated": "2017-03-01T16:37:54.456-05:00"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div>Information is blocked by consent directive!</div>"
+        },
+        "issue": [
+          {
+            "severity": "information",
+            "code": "suppressed",
+            "details": {
+              "text": "Information is blocked by consent directive!"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

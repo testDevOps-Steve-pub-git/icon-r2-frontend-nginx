@@ -1,0 +1,85 @@
+<form
+    name="retrieverForm"
+    autocomplete="off">
+  <div class="row">
+
+    <h1>{{ 'login.ENTER_OIID_PIN' | translate }}</h1>
+
+    <div class="col-xs-12">
+      <p translate="login.OIID_MESSAGE"
+      translate-values="{
+        name_key : $ctrl.multitenancy.NAME_KEY,
+        phone_key : $ctrl.multitenancy.PHONE_KEY
+      }" translate-compile>
+
+      </p>
+
+      <p translate="login.PIN_MESSAGE"
+      translate-values="{
+        name_key : $ctrl.multitenancy.NAME_KEY,
+        phone_key : $ctrl.multitenancy.PHONE_KEY
+      }" translate-compile></p>
+    </div>
+
+    <!-- Retriever OIID -->
+    <div class="col-xs-12">
+      <label for="retriever-OIID" aria-label="{{ 'login.YELLOWCARD_RETRIEVAL_LOGIN_OIID' | translate }}">{{'login.YELLOWCARD_RETRIEVAL_LOGIN_OIID' | translate}}<span class="required_field">*</span></label>
+
+      <input ng-required="true"
+             type="text"
+             class="form-control validInput"
+             id="retriever-OIID"
+             name="retrieverOIID"
+             ng-model="$ctrl.oiid"
+             ng-pattern=rgx.OIID
+             ng-maxlength="12"
+             ng-minlength="12"
+             placeholder="{{ 'login.LOGIN_OIID_PLACEHOLDER' | translate }}"
+             icon-oiid-format
+             />
+
+      <!-- OIID ERROR MESSAGE -->
+      <div class="error-messages" ng-messages="retrieverForm.retrieverOIID.$error" ng-if="retrieverForm.retrieverOIID.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="required" translate='login.ERRORS.IS_REQUIRED' aria-label="{{ 'login.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="minlength" translate='login.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'login.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
+      </div>
+      <!-- End OIID ERROR MESSAGE -->
+    </div>
+    <!-- End Retriever OIID -->
+  </div>
+
+
+  <!-- Retriever Pin -->
+  <div class="row">
+    <div class="form-group col-xs-12">
+      <label for="retriever-Pin" class="required" aria-label="{{ 'login.YELLOWCARD_RETRIEVAL_LOGIN_PIN' | translate }}">{{'login.YELLOWCARD_RETRIEVAL_LOGIN_PIN' | translate}}<span class="required_field">*</span></label>
+
+      <input type="password"
+             class="form-control validInput"
+             id="retriever-Pin" name="retrieverPin"
+             ng-model="$ctrl.pin"
+             ng-maxlength="6"
+             ng-minlength="6"
+             placeholder="{{ 'login.LOGIN_PIN_PLACEHOLDER' | translate }}"
+             ng-required="true"
+             ng-pattern=rgx.OIID_PIN
+             icon-pin-format
+             />
+      <!-- PIN ERROR MESSAGE -->
+      <div class="error-messages" ng-messages="retrieverForm.retrieverPin.$error" ng-if="retrieverForm.retrieverPin.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="required" translate='login.ERRORS.IS_REQUIRED' aria-label="{{ 'login.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="minlength" translate='login.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'login.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
+      </div>
+      <!-- End PIN ERROR MESSAGE -->
+    </div>
+    <!-- End Retriever Pin -->
+  </div>
+
+  <!--Login-->
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="col-xs-12 btn btn-primary" ng-disabled="retrieverForm.$invalid" ng-click="$ctrl.submit()">{{ 'login.SUBMIT' | translate }}</button>
+    </div>
+  </div>
+  <!-- End Login-->
+</form>

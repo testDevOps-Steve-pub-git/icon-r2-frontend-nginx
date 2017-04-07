@@ -1,0 +1,13 @@
+applications:
+- path: ../
+  memory: 512M
+  instances: 1
+  name: icon-nginx
+  hosts:
+    - ''
+    - '*'
+  disk_quota: 1024M
+  buildpack: https://github.com/cloudfoundry-community/staticfile-buildpack.git
+  env:
+    FORCE_HTTPS: true
+    TZ: 'America/Toronto'

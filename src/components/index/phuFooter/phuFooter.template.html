@@ -1,0 +1,25 @@
+<footer id="icon-phu-footer" class="navbar navbar-default navbar-bottom">
+  <div class="container">
+    <div class="text-right">
+      <button ng-click="$ctrl.scrollToTop(0)"
+      class="btn-link navbar-link">
+        <span class="fa fa-arrow-up" aria-hidden="true"></span>
+        {{ 'phuFooter.SCROLL_TO_TOP' | translate }}
+      </button>
+    </div>
+
+    <div class="text-center">
+      <a id="phu-footer-link" class="btn btn-link" href="{{$ctrl.multitenancy.WEBSITE_KEY | translate}}">
+        {{$ctrl.multitenancy.NAME_KEY | translate}}
+      </a>
+
+      <p class="muted">
+          <a class="btn btn-link" href="tel:{{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[0] }}">
+            {{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[0] }}</a>
+          <span id="phu-footer-phone">{{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[1] }}</span>
+          <a class="btn btn-link" href="tel:{{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[2] }};ext={{($ctrl.multitenancy.PHONE_KEY | translate).split('Ext. ')[1] }}">
+            {{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[2] }}</a>
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,87 @@
+<label>{{ 'immunizationTypeahead.IMMUNIZATION_LABEL' | translate  }}</label>
+
+<div  ng-if="!$ctrl.displayCard">
+  <input
+  type="text"
+  name="selectedVaccine"
+  class="form-control"
+  id="immunizations-immunization-input"
+  placeholder="{{ 'immunizationTypeahead.IMMUNIZATION_PLACEHOLDER' | translate  }}"
+  ng-model="$ctrl.selectedVaccine"
+  typeahead-on-select="$ctrl.onVaccineSelect($item)"
+  typeahead-no-results="noResults"
+  typeahead-template-url="typeahead-item.html"
+  uib-typeahead="immunization for immunization in $ctrl.getImmunization($viewValue) | limitTo:$ctrl.autoCompleteLimit"
+  tabindex="0"
+  />
+
+  <span ng-show="loadingLocations" class="fa fa-refresh"></span>
+
+  <div ng-show="noResults">
+    <span class="fa fa-remove" id="immunizations-immunization-input-error"></span>
+    {{ 'immunizationTypeahead.NO_RESULTS_FOUND' | translate }}
+  </div>
+</div>
+
+<div uib-alert tabindex="0" aria-labelledby="immunization-description" ng-if="$ctrl.displayCard" class="alert alert-info" close="$ctrl.onFieldClear()">
+    <span id="immunization-description" class="icon-off-screen">{{$ctrl.selectedVaccine.trade.name}}{{$ctrl.selectedVaccine.agent.name}}</span>
+    <!-- Consider an trade only if trade SNOMED is not empty. -->
+    <span ng-if="$ctrl.selectedVaccine.trade.snomed !== ''">
+      <h4 class="alert-heading">{{$ctrl.selectedVaccine.trade.name}}</h4>
+      {{$ctrl.selectedVaccine.agent.name}}
+
+      <span aria-hidden="true" ng-if="$ctrl.selectedVaccine.agent.diseases.length">
+        (<span aria-hidden="true">{{$ctrl.selectedVaccine.agent.diseases[0].name}}</span><span  aria-hidden="true" ng-repeat="d in $ctrl.selectedVaccine.agent.diseases.slice(1)">, {{d.name}}</span>)
+      </span>
+
+    </span>
+
+    <!-- Consider an agent only if trade SNOMED is empty. -->
+    <span ng-if="$ctrl.selectedVaccine.trade.snomed === ''">
+      <h4 class="alert-heading">{{$ctrl.selectedVaccine.agent.name}}</h4>
+
+      <span ng-if="$ctrl.selectedVaccine.agent.diseases.length">
+        (<span>{{$ctrl.selectedVaccine.agent.diseases[0].name}}</span><span ng-repeat="d in $ctrl.selectedVaccine.agent.diseases.slice(1)">, {{d.name}}</span>)
+      </span>
+    </span>
+</div>
+
+<script type="text/ng-template" id="typeahead-item.html">
+  <div  ng-if="match.model.firstCell && match.model.remaining > 0">
+    <div class="icon-keep-typing" ng-if=" match.model.remaining > 10">
+      {{ 'immunizationTypeahead.KEEP_TYPING' | translate }}
+    </div>
+    <div class="icon-keep-typing-result" ng-if="match.model.remaining < 10">
+      {{match.model.remaining}} {{ 'immunizationTypeahead.MORE_OPTIONS' | translate }}
+    </div>
+  </div>
+
+  <div class="icon-group-title" ng-if="match.model.firstInGroup">{{match.model.type}}</div>
+  <a>
+
+    <span ng-if="match.model.type == 'Trades'" class="cell-Title">{{match.model.trade.name}}</span>
+    <span ng-if="match.model.type == 'Agents'" class="cell-Title">{{match.model.agent.shortName}}</span>
+
+    <!-- Ontario -->
+    <div ng-if="match.model.gatingQuestion == 2" class="pull-right">
+      <div ng-if="match.model.prevalenceIndex == 1">
+    <span class="badge icon-cell-common">
+      <span class="fa fa-star"></span> {{'immunizationTypeahead.TYPICAL' | translate}}
+    </span>
+      </div>
+    </div>
+
+    <!-- Canadian -->
+    <div ng-if="match.model.gatingQuestion == 3" class="pull-right">
+      <div ng-if="match.model.prevalenceIndex == 1 || match.model.prevalenceIndex == 4">
+    <span class="badge icon-cell-common">
+      <span class="fa fa-star"></span> {{'immunizationTypeahead.TYPICAL' | translate}}
+    </span>
+      </div>
+    </div>
+
+    <br aria-hidden=\"true\"/>
+    <span ng-if="match.model.type == 'Trades'" class="icon-cell-details">{{match.model.trade.shortName}}</span>
+    <span ng-if="match.model.type == 'Agents'" class="icon-cell-details">{{match.model.agent.name}}</span>
+  </a>
+</script>

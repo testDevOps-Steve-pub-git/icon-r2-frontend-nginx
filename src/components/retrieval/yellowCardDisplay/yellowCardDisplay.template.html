@@ -1,0 +1,56 @@
+<div ng-if="!$ctrl.yellowCardRows.length" class="text-center lead">
+  No immunizations retrieved for {{$ctrl.patient.firstName}} {{$ctrl.patient.lastName}}.
+</div>
+
+<div ng-if="$ctrl.yellowCardRows.length" class="icon-yc-table-container">
+  <table class="table icon-yc-table">
+    <thead>
+      <tr>
+        <th class="icon-yc-date">YMD</th>
+
+        <th class="icon-yc-disease-headers" ng-repeat="disease in $ctrl.yellowCardHeaders">
+          <div>
+            <span>{{disease.name}}</span>
+          </div>
+        </th>
+
+        <th class="icon-yc-more-info"></th>
+      </tr>
+    </thead>
+
+    <tbody ng-repeat="row in $ctrl.yellowCardRows track by $index">
+      <!-- Summary row, contains all the checkmarks for the collection of immunizations. -->
+      <tr>
+        <td>
+          <div>{{row.date}}</div>
+        </td>
+
+        <td ng-repeat="disease in $ctrl.yellowCardHeaders">
+          <span ng-if="(row.diseases.indexOf(disease.snomed) >= 0)" class="fa fa-check"></span>
+        </td>
+
+        <td class="icon-yc-more-info-td" id="icon-more-info-td">
+          <a ng-if="!row.isDetailView" ng-click="row.isDetailView = !row.isDetailView">More Info</a>
+          <div>
+            <div ng-if="row.isDetailView" ng-repeat="imm in row.immunizations">
+              <!-- <pre>{{imm | json}}</pre> -->
+              <div ng-if="imm.trade.name"><strong>{{imm.trade.name}}</strong></div>
+              <div><strong>{{imm.agent.name}}</strong></div>
+              <div ng-if="imm.agent.diseases.length">
+                <span ng-repeat="disease in imm.agent.diseases track by $index">
+                  {{(imm.agent.diseases.length > 1 && $index < imm.agent.diseases.length - 1) ? disease.name+',' : disease.name}}
+                </span>
+              </div>
+              <div ng-if="imm.lot.number">Lot #{{imm.lot.number}}</div>
+              <div ng-if="imm.provider">{{imm.provider}}</div>
+              <div ng-if="imm.isDateApproximate"><em>(Date is estimated)</em></div>
+            </div>
+
+            <a class="pull-right" ng-if="row.isDetailView" ng-click="row.isDetailView = !row.isDetailView">Less Info</a>
+          </div>
+        </td>
+      </tr>
+      <!-- End summary row. -->
+    </tbody>
+  </table>
+</div>

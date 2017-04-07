@@ -1,0 +1,67 @@
+  <!-- Schedule Info -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <hr>
+      <h3>{{'schedule.SCHEDULED_IMMS_TITLE' | translate}}</h3>
+    </div>
+    <div class="col-xs-12 col-sm-12">
+      <div class="well">
+        <!-- Iteration over scheduled items -->
+        <table>
+          <tr>
+            <td ng-repeat="schedule in $ctrl.scheduledImmunizationList" class="middle">
+                <!-- Translate title of this schedule item -->
+                <span ng-if="schedule.labelKey != 'schedule.AT_6_MONTHS_+' && schedule.labelKey != 'schedule.35_Years_+'">
+                  <h5><b>{{schedule.labelKey | translate}}</b></h5>
+                </span>
+
+                <span ng-if="schedule.labelKey == 'schedule.AT_6_MONTHS_+'">
+                  <h5 class="check"><b>{{schedule.labelKey | translate}}</b></h5>
+                </span>
+
+                <span ng-if="schedule.labelKey == 'schedule.35_Years_+'">
+                  <h5 class="check"><b>{{schedule.labelKey | translate}}</b></h5>
+                </span>
+            </td>
+          </tr>
+          <tr>
+            <td ng-repeat="diseases in $ctrl.scheduledImmsDiseaseList track by $index" class="tableCell" tabindex="0">
+              <span style="position: absolute; left: -10000px">{{$ctrl.scheduledImmunizationList[$index].labelKey | translate}}</span>
+
+              <dl ng-repeat="ds in diseases track by $index" class="rows">
+                <dt>
+                  <span ng-if="ds.agentName != 'schedule.EVERY_FALL'">
+                    <span class="fa fa-medkit"></span>
+                    <span translate='{{ds.agentName}}' translate-compile></span>
+                  </span>
+
+                  <span ng-if="ds.agentName == 'schedule.EVERY_FALL'">
+                    <span class="fa fa-asterisk"></span>
+                    <span translate='{{ds.agentName}}' translate-compile></span>
+                  </span>
+                </dt>
+
+                <dd class="padding">
+                  <span translate='{{ds.diseaseList}}' translate-compile></span>
+                </span>
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell" colspan="13" translate="schedule.IMMS_SCHEDULE_MESSAGE" translate-compile></td>
+          </tr>
+        </table>
+      <!-- End iteration over scheduled items -->
+      </div>
+    </div>
+    <div  class="col-xs-12 col-sm-12 col-sm-offset-2">
+      <a href="../../../img/Ontario-Immunization-Schedule-EN.pdf"  target="_blank">
+        <span class="fa fa-print"></span>
+        {{ 'welcomeLandingPage.PRINT_SCHEDULE' | translate }}
+      </a>
+    </div>
+  </div>
+</div>
+<!-- End Schedule Info -->
