@@ -65,7 +65,7 @@
     "start": "npm run build-cleanup && npm run build-prod",
     "test": "npm run test-unit && npm run test-e2e",
     "test-e2e": "protractor test/icon-e2e.protractor.conf.js",
-    "test-unit": "mocha test/unit/**/*.test.js --reporter mocha-bamboo-reporter --reporter-options output=./test/icon-unit-test-report.json",
+    "test-unit": "mocha test/unit/**/*.test.js",
     "test-unit-watch": "mocha test/unit/**/*.test.js --watch",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
