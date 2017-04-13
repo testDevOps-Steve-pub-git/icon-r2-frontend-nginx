@@ -4,7 +4,6 @@
   module.exports = {
     controller: notificationController,
     template: `
-      <!-- Notification modals popped using UIB modal API programatically. -->
       <toaster-container></toaster-container>
     `,
   };
@@ -12,16 +11,16 @@
   notificationController.$inject = [
     '$timeout', '$translate',
     '$uibModal', 'toaster',
-    'Notify',
+    'Notify', 'SessionHandler', 'TokenHandler',
     'ICON_NOTIFICATION', 'ToasterChoiceService'
   ];
   function notificationController (
     $timeout, $translate,
     $uibModal, toaster,
-    Notify,
+    Notify, SessionHandler, TokenHandler,
     ICON_NOTIFICATION, ToasterChoiceService
   ) {
-    // Each notification constant is categorized by the way it is presented to the user.
+    // NOTE: Each notification constant is categorized by the way it is presented to the user.
 
     // Modal - open and close are done programatically, user must wait.
     const pushStaticProgressNotifications = [
@@ -38,22 +37,22 @@
     ];
 
     // Modal - open is programatic, close results from user action.
-    // NOTE: currently only used for session inactivity timeout warning.
-    const pushActionableInfoNotifications = [
+    const pushInactivityTimeoutNotifications = [
       ICON_NOTIFICATION.PUSH_TRANSACTION_TOKEN_TIMEOUT
     ];
-    const popActionableInfoNotifications = [
+    const popInactivityTimeoutNotifications = [
       ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT
+    ];
+
+    // Modal - open is programatic, close results from user action.
+    const sessionExpiredNotifications = [
+      ICON_NOTIFICATION.INFO_SESSION_EXPIRED
     ];
 
     // Toaster - open is programatic, close results from user action.
     const dismissableInfoNotifications = [
       ICON_NOTIFICATION.INFO_PATIENT_DATA_CLEARED,
-      ICON_NOTIFICATION.INFO_SESSION_EXPIRED,
-    ];
 
-    // Toaster - open is programatic, close results from user action.
-    const dismissableErrorNotifications = [
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_BAD_TYPE,
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_TOO_LARGE,
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_DUPLICATE,
@@ -72,6 +71,8 @@
       ICON_NOTIFICATION.WARN_GENERAL_NETWORK_PROBLEM,
     ];
 
+  // Toaster - open is programatic, close results from user action.
+  const dismissableErrorNotifications = [ /* Combined message types for demo. */ ];
 
     // Opens a modal when push event fired, closes it when pop is fired.
     let staticProgressNotificationModal = null;
@@ -92,34 +93,73 @@
     };
 
     // Opens modal on push event, closes when pop event is fired, or takes action.
-    let actionableInfoNotificationModal = null;
-    let openActionableInfoNotification = (notification) => {
-      if (actionableInfoNotificationModal) closeActionableInfoNotification(notification);
-      actionableInfoNotificationModal = $uibModal.open({
-        component: 'actionableInfoNotification',
-        resolve: {
-          titleTextKey: () => `notification.${notification}.TITLE`,
-          bodyTextKey:  () => `notification.${notification}.BODY`,
-        },
-        backdrop: 'static',
-      });
+    let inactivityTimeoutInfoNotificationModal = null;
+    let openInactivityTimeoutInfoNotification = (notification) => {
+      if (
+           !sessionExpiredNotificationModal
+        && !inactivityTimeoutInfoNotificationModal
+      ) {
+        inactivityTimeoutInfoNotificationModal = $uibModal.open({
+          component: 'inactivityTimeoutNotification',
+          backdrop: 'static',
+        });
+      }
     };
-    let closeActionableInfoNotification = (notification) => {
-      if (actionableInfoNotificationModal) actionableInfoNotificationModal.close();
-      actionableInfoNotificationModal = null;
+    let closeInactivityTimeoutInfoNotification = (notification) => {
+      if (inactivityTimeoutInfoNotificationModal) inactivityTimeoutInfoNotificationModal.close();
+      inactivityTimeoutInfoNotificationModal = null;
     };
 
-    // Opens toaster on push event, closes when pop event is fired, or takes action.
-    // NOTE: Toaster "pop" is fired on notification event "push", not "pop", awkward.
-    let dismissableInfoNotification = null;
+    // Opens modal on push event, closes when pop event is fired, or takes action.
+    let sessionExpiredNotificationModal = null;
+    let openSessionExpiredNotification = (notification) => {
+      if (
+           !sessionExpiredNotificationModal
+        && !inactivityTimeoutInfoNotificationModal
+      ) {
+        sessionExpiredNotificationModal = $uibModal.open({
+          component:  'sessionExpiredNotification',
+          resolve: { close: () => closeSessionExpiredNotification },
+          backdrop: 'static',
+        });
+      }
+    };
+    let closeSessionExpiredNotification = (notification) => {
+      TokenHandler.clearTransactionToken()
+      .then(SessionHandler.expireSessionNotification)
+      .then(TokenHandler.getSessionToken)
+      .then(() => {
+        if (sessionExpiredNotificationModal) sessionExpiredNotificationModal.close();
+        sessionExpiredNotificationModal = null;
+      })
+      .catch(() => {
+        Notify.publish(ICON_NOTIFICATION.WARN_GENERAL_NETWORK_PROBLEM);
+      })
+    };
+
+    let dismissableInfoNotificationModal = null;
     let openDismissableInfoNotification = (notification) => {
-      dismissableInfoNotification = toaster.pop({
-        type:           'info',
-        title:          $translate.instant(`notification.${notification}.TITLE`),
-        body:           $translate.instant(`notification.${notification}.BODY`),
-        bodyOutputType: 'trustedHtml',
-        timeout:        2 * 1000,
-      });
+      let isNotificationTypeAlreadyOpen = (
+           dismissableInfoNotificationModal
+        && dismissableInfoNotificationModal.notification === notification
+      );
+
+      if (!isNotificationTypeAlreadyOpen) {
+        dismissableInfoNotificationModal = $uibModal.open({
+          component: 'dismissableInfoNotification',
+          resolve: {
+            titleTextKey: () => `notification.${notification}.TITLE`,
+            bodyTextKey:  () => `notification.${notification}.BODY`,
+            close:        () => closeDismissableInfoNotification,
+          },
+        });
+
+        dismissableInfoNotificationModal.notification = notification;
+      }
+    };
+    let closeDismissableInfoNotification = (notification) => {
+      if (dismissableInfoNotificationModal) dismissableInfoNotificationModal.close();
+      dismissableInfoNotificationModal = null;
     };
 
     // Opens toaster on push event, closes when pop event is fired, or takes action.
@@ -146,12 +186,16 @@
         Notify.subscribe(notification, closeStaticProgressNotification);
       });
 
-      pushActionableInfoNotifications.forEach((notification) => {
-        Notify.subscribe(notification, openActionableInfoNotification);
+      pushInactivityTimeoutNotifications.forEach((notification) => {
+        Notify.subscribe(notification, openInactivityTimeoutInfoNotification);
       });
 
-      popActionableInfoNotifications.forEach((notification) => {
-        Notify.subscribe(notification, closeActionableInfoNotification);
+      popInactivityTimeoutNotifications.forEach((notification) => {
+        Notify.subscribe(notification, closeInactivityTimeoutInfoNotification);
+      });
+
+      sessionExpiredNotifications.forEach((notification) => {
+        Notify.subscribe(notification, openSessionExpiredNotification);
       });
 
       dismissableInfoNotifications.forEach((notification) => {
@@ -174,12 +218,16 @@
         Notify.unsubscribe(notification, closeStaticProgressNotification);
       });
 
-      pushActionableInfoNotifications.forEach((notification) => {
-        Notify.unsubscribe(notification, openActionableInfoNotification);
+      pushInactivityTimeoutNotifications.forEach((notification) => {
+        Notify.unsubscribe(notification, openInactivityTimeoutInfoNotification);
       });
 
-      popActionableInfoNotifications.forEach((notification) => {
-        Notify.unsubscribe(notification, closeActionableInfoNotification);
+      popInactivityTimeoutNotifications.forEach((notification) => {
+        Notify.unsubscribe(notification, closeInactivityTimeoutInfoNotification);
+      });
+
+      sessionExpiredNotifications.forEach((notification) => {
+        Notify.unsubscribe(notification, openSessionExpiredNotification);
       });
 
       dismissableInfoNotifications.forEach((notification) => {

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="pull-left">
+    <button class="icon-btn-link" tabindex="-1" id="{{$ctrl.buttonId}}-button" ng-click="$ctrl.openSubmitterModal($ctrl.path)">
+      <span class="pull-left fa-stack fa-2x">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-{{$ctrl.buttonIcon}} fa-stack-1x fa-inverse"></i>
+      </span>
+    </button>
+  </div>
+  <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-xs-9">
+    <button class="icon-btn-link" id="{{$ctrl.buttonId}}" ng-click="$ctrl.openSubmitterModal($ctrl.path)">
+      <div aria-hidden="true" class="col-xs-12"><h5/></div>
+      <div class="text-left pull-left">{{ $ctrl.buttonText | translate }}</div>
+    </button>
+  </div>
+</div>

@@ -15,8 +15,10 @@ module.exports = {
   controller: authOtherReviewController,
   template: `
    <h1>{{ 'authOtherReview.REVIEW' | translate}}</h1>
+   <h3>{{ 'authOtherReview.REVIEW_INSTRUCTION_HEADER' | translate }}</h3>
+   <p>{{ 'authOtherReview.REVIEW_INSTRUCTION_BODY' | translate }} </p>
     <form id="reviewForm" name="reviewForm" novalidate>
-      <h4>{{ 'authOtherReview.IMMUNIZATIONS' | translate }}</h4>
+      <h4>{{ 'authOtherReview.IMMUNIZATIONS_TITLE' | translate }}</h4>
 
       <div class="row">
         <div class="col-xs-12">
@@ -24,6 +26,7 @@ module.exports = {
             patient="$ctrl.clientInfo"
             immunizations="$ctrl.immunizations">
           </immunization-review-container>
+          <p>{{ 'anonOtherReview.REVIEW_INSTRUCTION_CAVEAT' | translate }} </p>
         </div>
       </div>
 
@@ -31,14 +34,14 @@ module.exports = {
         <div class="col-xs-12">
           <edit-button
             button-id="review-edit-immunizations-button"
-            button-text="{{'authOtherReview.EDIT' | translate}} {{'authOtherReview.IMMUNIZATIONS_TITLE' | translate}}"
+            button-text="{{'authOtherReview.REVIEW_EDIT_IMMS' | translate}}"
             go-to-route="^.immunizations">
           </edit-button>
         </div>
       </div>
       <hr/>
 
-      <h4>{{ 'authOtherReview.DOCUMENT_PLACEHOLDER' | translate }}</h4>
+      <h4>{{ 'authOtherReview.DOCUMENTS_TITLE' | translate }}</h4>
       <div class="row">
         <document-upload-display is-editable="false"></document-upload-display>
       </div>
@@ -46,7 +49,7 @@ module.exports = {
         <div class="col-xs-12">
            <edit-button
             button-id="review-edit-documents-button"
-            button-text="{{'authOtherReview.EDIT' | translate}} {{'authOtherReview.DOCUMENTS_TITLE' | translate}}"
+            button-text="{{'authOtherReview.REVIEW_EDIT_DOX' | translate}}"
             go-to-route="^.documents">
           </edit-button>
         </div>

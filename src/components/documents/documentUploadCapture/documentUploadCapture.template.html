@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>{{'documentCapture.DOCUMENTS_LABEL' | translate}}</h1>
+  <h1 class="col-xs-12">{{'documentCapture.DOCUMENTS_LABEL' | translate}}</h1>
 
   <div class="col-xs-12">
     {{ 'documentCapture.INSTRUCTIONS_0' | translate }}
@@ -8,7 +8,7 @@
 <hr />
 
 <div class="row">
-  <h3>{{ 'documentCapture.SUBHEADER_1' | translate }}</h3>
+  <h3 class="col-xs-12">{{ 'documentCapture.SUBHEADER_1' | translate }}</h3>
   <div class="col-xs-12">
     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-4">
       <span>
@@ -35,29 +35,34 @@
 <hr />
 
 <div class="row">
-  <h3>{{ 'documentCapture.SUBHEADER_2' | translate }}</h3>
-  <p>{{ 'documentCapture.INSTRUCTIONS_2' | translate }}</p>
+  <h3 class="col-xs-12">{{ 'documentCapture.SUBHEADER_2' | translate }}</h3>
+  <p class="col-xs-12">{{ 'documentCapture.INSTRUCTIONS_2' | translate }}</p>
 </div>
 <hr />
 
 <div class="row">
-  <h3>{{ 'documentCapture.SUBHEADER_3' | translate }}</h3>
-  <p translate="documentCapture.UPLOAD_NOTES"></p>
+  <h3 class="col-xs-12">{{ 'documentCapture.SUBHEADER_3' | translate }}</h3>
+  <p class="col-xs-12" translate="documentCapture.UPLOAD_NOTES"></p>
 </div>
 
 <hr />
 
 <div class="row">
   <!-- Upload Documents -->
-  <div class="form-group col-xs-12 col-md-10 col-md-offset-1" ng-if="$ctrl.uploader">
+  <div class="form-group col-xs-12" ng-if="$ctrl.uploader">
 
-    <span class="text-center center-block" role="contentinfo" aria-labelledby="fileUploadDescription">
+    <span role="contentinfo" aria-labelledby="fileUploadDescription">
       <input class="sr-only" id="documents-file-upload-button" tabindex="-1" name="fileUpload" type="file" nv-file-select="" accept="{{$ctrl.acceptFileExtensions}}" uploader="$ctrl.uploader" multiple/>
 
       <label aria-role="button" tabindex="0" ng-enter for="documents-file-upload-button" class="btn btn-primary btn-lg">
         <span class="fa fa-open" aria-hidden="true"></span> <span>{{'documentCapture.UPLOAD_BUTTON' | translate}}</span>
       </label>
     </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-xs-12">
 
     <p id="fileUploadDescription" translate="documentCapture.FILE_TYPES"></p>
 

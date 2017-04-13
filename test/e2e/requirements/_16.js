@@ -16,14 +16,9 @@
         // Selects the "My Self" as the role you will submitting information for       
         wait.waitForElements([global.role.myself, global.role.other])
           .then(() => {
-            if (role === 'Myself'){
-              element(by.css(global.role.myself))
-                .click();
-            }
-            else {
-              element(by.css(global.role.other))
-                .click();
-            }
+            (role === 'Myself')
+              ? element(by.css(global.role.myself)).click()
+              : element(by.css(global.role.other)).click();
           });      
       },
 
@@ -35,7 +30,7 @@
         form.populate([
           form.Field(form.TEXT, submission.submitter.firstName, firstName),
           form.Field(form.TEXT, submission.submitter.lastName, lastName),
-          form.Field(form.TEXT, submission.patient.phoneNumber, phoneNumber)
+          form.Field(form.TEXT, submission.submitter.phoneNumber, phoneNumber)
         ]);
       }
     };

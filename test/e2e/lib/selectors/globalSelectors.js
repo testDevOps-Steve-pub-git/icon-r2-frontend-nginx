@@ -9,8 +9,10 @@
       oiidLinkOne: '#home-oiid-link-one',
       oiidLinkTwo: '#home-oiid-link-two',
       oiidLinkClose: '#home-info-link-close',
-      anon: '#home-anon-button',
-      auth: '#home-auth-button'
+      anonSubmit: '#home-anon-submit',
+      authSubmit: '#home-auth-submit',
+      yellowCard: '#home-view-yellow-card',
+      overDue: '#home-view-overdue',
     },
     role: {
       myself: '#role-myself-button',

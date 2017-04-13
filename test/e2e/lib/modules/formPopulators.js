@@ -75,10 +75,9 @@
           break;
 
         case inputType.TYPEAHEAD:
-          // Input invalid data into the input and check for an error message.
-          checkValidation(field.selector)
+          // Input value into type ahead input.
+          checkValidation(field.selector) 
             .then(() => {
-              // Input value into type ahead input.
               for (var char = 0; char < field.value.length - 1; char++) {
                 browser.sleep(500);
                 element(by.css(field.selector)).sendKeys(field.value.charAt(char));
@@ -137,9 +136,8 @@
         for (var char = 0; char < ERROR_VALUE.length; char++) {
           element(by.css(selector)).sendKeys(ERROR_VALUE.charAt(char));
         }
-        // Click the next button to ensure the input is dirty.
-        element(by.css('#pager-next-button'))
-          .click();
+        // Ensure the input is dirty.
+	browser.actions().sendKeys(protractor.Key.TAB).perform();
         // Ensure an error message is present.
         return browser.wait(() => {
           return element(by.css(selector + '-error')).getText()

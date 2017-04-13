@@ -13,7 +13,7 @@
         * @memberof requirementGroup_12
       */
       _01: () => {
-        wait.waitForElements([global.acceptUsePolicy.termsOfUseLink, global.acceptUsePolicy.continueReading]);
+        wait.waitForElements([global.acceptUsePolicy.termsOfUseLink]);
       },
     
       /**
@@ -23,14 +23,9 @@
       _02: (acceptUsePolicy) => {
         wait.waitForElements([global.acceptUsePolicy.accept, global.acceptUsePolicy.decline])
           .then(() => {
-            if(acceptUsePolicy === 'Accept') {
-              element(by.css(global.acceptUsePolicy.accept))
-                .click();
-            }
-            else {
-              element(by.css(global.acceptUsePolicy.decline))
-                .click();
-            }
+            acceptUsePolicy === 'Accept'
+              ? element(by.css(global.acceptUsePolicy.accept)).click()
+              : element(by.css(global.acceptUsePolicy.decline)).click()
           });
       },
 

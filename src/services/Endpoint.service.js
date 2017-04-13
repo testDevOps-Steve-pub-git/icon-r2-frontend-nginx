@@ -6,7 +6,7 @@
 
   function Endpoint (
     $http, $q, $translate,
-    ImmunizationRecordService, TokenHandler,
+    ImmunizationRecordService, SessionHandler, TokenHandler,
     Agent, Disease, Immunization, Lot, Trade,
     ICON_API
   ) {
@@ -32,6 +32,7 @@
 
       // If there is a getHeaders, then append output to the request before returning.
       if (getHeaders) return getHeaders()
+                            //  .then(SessionHandler.extendTransactionTime)
                              .then(headers => request.headers = headers)
                              .then(() => $http(request))
                              .then(response => response.data);
@@ -48,8 +49,9 @@
       let headers = {};
 
       return TokenHandler
-             .getSessionToken()
+             .refreshSessionToken()
              .then((token) => { headers['session-token'] = token.encoded })
+             .then(SessionHandler.extendTransactionTime)
              .then(() => { return headers });
     }
 
@@ -61,10 +63,11 @@
       let headers = { 'Content-Type': 'application/json' };
 
       return TokenHandler
-             .getSessionToken()
+             .refreshSessionToken()
              .then((token) => { headers['session-token'] = token.encoded })
-             .then(TokenHandler.getTransactionToken)
+             .then(TokenHandler.refreshTransactionToken)
              .then((token) => { headers['submission-token'] = token.encoded })
+             .then(SessionHandler.extendTransactionTime)
              .then(() => { return headers });
     }
 
@@ -137,60 +140,8 @@
                return `${ICON_API.LOOKUP_IMMUNIZATIONS}?filter[immun]=${immQuery || ''}&filter[lang]=${lang}`;
              })(imm)
              .then(data => data.map(imm => imm.json))
-             .then(imms => imms.map(immunizationFromJson))
-             // TODO: remove this logic once DB is returning correctly.
-             .then((allImmunizations) => {
-                let agentImms = allImmunizations.filter(imm => imm.trade.snomed === '');
-                let tradeImms = allImmunizations.filter(imm => imm.trade.snomed !== '');
-                let agentSnomeds = agentImms.map(imm => imm.agent.snomed);
-                let additionalAgentImms = tradeImms
-                                          .filter(imm => agentSnomeds.indexOf(imm.agent.snomed) < 0)
-                                          .map((imm) => {
-                                                          let newImm = imm.clone();
-                                                          newImm.trade = new Trade();
-                                                          return newImm;
-                                                        });
-
-                return {
-                  agents: sortAgentArrayList(agentImms.concat(additionalAgentImms)),
-                  trades: sortTradeArrayList(tradeImms),
-                };
-             });
+             .then(imms => imms.map(immunizationFromJson));
     };
-
-
-    /**
-     * Sorts an array first by Prevalence, and then Alphabetically
-     * @param array: Array to be sorted
-     * @returns {*|Array.<T>} Sorted Array
-     */
-    function sortAgentArrayList(array) {
-      let sortedAgents = array.sort((a, b) => {
-        if (a.agent['prevalenceIndex'] > b.agent['prevalenceIndex']) return 1;
-        if (a.agent['prevalenceIndex'] < b.agent['prevalenceIndex']) return -1;
-        if (a.agent['name'] > b.agent['name']) return 1;
-        if (a.agent['name'] < b.agent['name']) return -1;
-        return 0;
-      });
-      return sortedAgents
-    }
-
-    /**
-     * Sorts an array of trades first by Prevalence, and then Alphabetically
-     * @param array: Array to be sorted
-     * @returns {*|Array.<T>} Sorted Array
-     */
-    function sortTradeArrayList(array) {
-      let sortedTrades = array.sort((a, b) => {
-        if (a.trade['prevalenceIndex'] > b.trade['prevalenceIndex']) return 1;
-        if (a.trade['prevalenceIndex'] < b.trade['prevalenceIndex']) return -1;
-        if (a.trade['name'] > b.trade['name']) return 1;
-        if (a.trade['name'] < b.trade['name']) return -1;
-        return 0;
-      });
-      return sortedTrades
-    }
-
 
     const getAddress = getWithHeaders((postalQuery) => {
       return `${ICON_API.ADDRESS}?filter[postalCode]=${postalQuery || ''}`;
@@ -244,9 +195,10 @@
       };
       let relationshipCode = ImmunizationRecordService.getSubmitter().relationshipToPatient;
       let relationshipToPatient = relationshipCodeDictionary[relationshipCode];
+      let formattedOiid = oiid.toUpperCase();
 
       return xhr('GET')
-                (() => headersWithSessionOiidPin(oiid, pin))
+                (() => headersWithSessionOiidPin(formattedOiid, pin))
                 (/* Omit data */)
                 (() => `${ICON_API.RETRIEVE_IMMUNIZATION_RECORD}?relationshipToClient=${relationshipToPatient}`)
                 (/* Omit query */);
@@ -270,8 +222,9 @@
 
       return headersWithSessionTransactionJson()
              .then(headers => request.headers = headers)
+             .then(SessionHandler.extendTransactionTime)
              .then(() => $http(request))
-             .then(response => response.data);
+             .then(response => response.data)
     };
 
 

@@ -5,6 +5,8 @@
     controller: yellowCardRecommendationsController,
     template: `
       <div class="row col-xs-12 col-sm-8 col-sm-offset-2">
+        <div><h5 /> </div>
+        <p>{{ 'yellowCardRecommendations.YC_CAVEAT' | translate }}</p>
         <hr />
 
         <h2>{{ 'yellowCardRecommendations.HEADING' | translate }}</h2>
@@ -19,7 +21,7 @@
 
         <p>{{ 'yellowCardRecommendations.NOTE' | translate }}</p>
 
-        <p>{{ 'yellowCardRecommendations.FOR_MORE_INFO' | translate }}</p>
+        <p translate="yellowCardRecommendations.FOR_MORE_INFO" translate-compile></p>
       </div>
 
       <div class="row col-xs-12 col-sm-8 col-sm-offset-2">

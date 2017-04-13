@@ -19,6 +19,14 @@
   datepickerController.$inject = ['moment'];
   function datepickerController (moment) {
     this.$onInit = () => {
+
+      this.dateMaskOptions = {
+        maskDefinitions: {
+          'A': /[0-9]/
+        },
+        addDefaultPlaceholder:false
+      };
+
       this.date = moment(this.model, 'YYYY-MM-DD').toDate();
       this.required = !!this.required || false;
 

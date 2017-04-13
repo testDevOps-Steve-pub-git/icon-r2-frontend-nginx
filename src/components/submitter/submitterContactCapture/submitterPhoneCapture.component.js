@@ -20,6 +20,14 @@
     this.$onInit = ()=> {
       /** Regex Librariess */
       this.rgx = ICON_RGX.rgx;
+
+      /** Angular mask options phone */
+      this.phoneOptions = {
+        maskDefinitions: {
+          '9': /[0-9]/
+        },
+        addDefaultPlaceholder:false
+      };
     }
 
   }

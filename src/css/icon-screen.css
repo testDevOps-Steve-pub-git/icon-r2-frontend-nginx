@@ -15,6 +15,72 @@
 .icon-table-no-border>tfoot>tr>td { border: none; }
 /* End documentUploadDisplay */
 
+/* Modal close button */
+.icon-modal-close-button {
+    color: #0074d4;
+    margin-top: -1em;
+    margin-right: -1em;
+    font-size: .8em;
+}
+
+.icon-modal-close-button:hover {
+    color: #0090f3;
+    cursor: pointer;
+}
+
+.icon-modal-close-button:active {
+    color: #004e9b;
+    cursor: pointer;
+}
+/* End Modal Close button */
+
+/* Icon scroll buttons */
+.icon-scroll-button-background {
+    color: #0074d4;
+}
+.icon-scroll-button-background:hover {
+    color: #0090f3;
+}
+.icon-scroll-button-background:active {
+    color: #004e9b;
+}
+
+.icon-scroll-button {
+    color:white;
+    cursor: pointer;
+    margin-top: -250px;
+    padding: 10px;
+    opacity: .25;
+}
+.icon-scroll-button:hover  {
+    opacity:1;
+    z-index: 9999;
+    position: relative;
+}
+.icon-scroll-button:active {
+    opacity:1;
+    z-index: 9999;
+    position: relative;
+}
+#ontario-schedule-container {
+    overflow: hidden;
+}
+/* End Icon scroll buttons*/
+
+/*Bug with android and angular mask, so not using an input with angular mask for phones*/
+.icon-display-mobile {
+    display: none;
+}
+@media(max-width: 485px) {
+    .icon-mask-display {
+        display: none;
+    }
+    .icon-display-mobile {
+        display: inline;
+    }
+}
+/* End angular mask */
+
 /* immunizationDisplayByDate, immunizationDisplayByAgent */
 .icon-panel-footer-btn {
   padding: 0;
@@ -22,6 +88,21 @@
 }
 .icon-panel-footer-btn button {
   border-radius: 0 0 4px 4px;
+}
+
+.icon-display-panel {
+    background-color: #EDEDED;
+}
+
+.icon-display-panel-delete {
+    color: red;
+    border: none;
+    background-color: transparent;
+}
+
+.icon-display-panel-edit {
+    border: none;
+    background-color: transparent;
 }
 /* End immunizationDisplayByDate, immunizationDisplayByAgent */
 
@@ -103,6 +184,7 @@
 
 #icon-progress-bar-container {
   margin: 0;
+  min-width: 400px;
   width: 100%;
   padding: 5px 0 5px 0;
   background-color: #eeeeee;
@@ -349,7 +431,6 @@
 }
 /* End progressBar */
 
-
 /* welcomeLogin */
 .icon-btn-link {
   color: #0074d4 !important;
@@ -360,13 +441,11 @@
   /*border is optional*/
   cursor: pointer;
 }
-/* End welcomeLogin */
-
-
 /* yellowCardDisplay */
 .icon-yc-table-container {
   max-width: 100%;
-  overflow-x: scroll;
+  /*overflow-x: scroll; this had added another scrollbar at the bottom*/
+  white-space: nowrap;
 }
 
 .icon-yc-table tr:nth-child(even) {
@@ -400,16 +479,52 @@ th.icon-yc-disease-headers {
 
 th.icon-yc-disease-headers > div {
   transform: rotate(270deg);
-  width: 20px;
+  width: 25px;
 }
 
 td.icon-yc-more-info-td {
  min-width: 300px;
  max-width: 450px;
 }
+
+.icon-table-styling-imms {
+   display: block;
+    width:100%;
+    overflow: auto;
+}
 /* yellowCardDisplay */
 
+.ycbutton
+{
+text-align: left;
+padding-left: 0px;
+}
 
+/* Gating Questions */
+.icon-gating-collapse .panel{
+    background-color: white;
+}
+.icon-gating-collapse .panel-group .panel-heading+.panel-collapse>.panel-body, .panel-group .panel-heading+.panel-collapse>.list-group {
+    border: 0;
+}
+
+.icon-gating-collapse-link {
+    color: dodgerblue;
+}
+ /* End gating questions */
+
+AUP Container 
+.icon-aup-container {
+    padding: 1em;
+}
+
+
+.icon-padded {
+  padding: 0.5em;
+}
+
+
+/* End AUP Container */
 
 /* Overrides CSS in UIB library that only allows calendar icon on the opposite side. */
 *[uib-datepicker-popup] {
@@ -427,6 +542,9 @@ td.icon-yc-more-info-td {
     padding: 0px;
   }
 
+  .table-styling {
+    display: block;
+  }
   .rows {
       width: 200px;
       /* white-space: nowrap; */

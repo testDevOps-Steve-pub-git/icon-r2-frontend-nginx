@@ -10,9 +10,16 @@
     multiCapabilities: [
       {
          'browserName': 'chrome',
-         'tunnel-identifier': 'ICONTEST-E2E-TESTING',
          'platform': 'Windows 10',
          'screenResolution': '1920x1080',
+         'prerun': {
+           'executable':'https://www.dropbox.com/s/umpvq8qm4rkt9v1/downloadexamplefiles.bat?dl=1',
+           'background': true,
+           'timeout': 300000
+        }
+      },
+      {
+         'browserName': 'chrome',
          'prerun': {
            'executable':'https://www.dropbox.com/s/umpvq8qm4rkt9v1/downloadexamplefiles.bat?dl=1',
            'background': true,
@@ -97,8 +104,8 @@
 //      }
     ],
       maxSessions: 2,
-      baseUrl: 'http://gbhu.iconqa.localhost.saucelabs',
-//      baseUrl: 'http://xxsupportphu1.vcap.me:3001',
+      baseUrl: 'http://gbhu.stg.iconr2.marc-hi.ca',
+//      baseUrl: 'http://gbhu.vcap.me:3001',
       seleniumServerJar: 'selenium-server-standalone-3.0.1.jar',
       seleniumAddress: "http://" + sauceLabsUserName + ":" + sauceLabsAccessKey + "@ondemand.saucelabs.com:80/wd/hub",
       suites: {

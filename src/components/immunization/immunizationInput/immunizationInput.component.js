@@ -3,7 +3,10 @@
 
   module.exports = {
     controller: immunizationInputController,
-    templateUrl: './components/immunization/immunizationInput/immunizationInput.template.html'
+    templateUrl: './components/immunization/immunizationInput/immunizationInput.template.html',
+    bindings: {
+      displayMode : '<'
+    }
   };
 
   immunizationInputController.$inject = ['$state', '$uibModal', 'Immunization', 'ImmunizationRecordService'];
@@ -11,12 +14,8 @@
     this.$onInit = () => {
       this.noImmunizations = false; //Flag to display error message
 
-      this.IMMUNIZATION_DISLAY_MODE = {
-        DATE: 1,
-        AGENT: 2,
-      };
       this.patient = ImmunizationRecordService.getPatient();
-      this.immunizationDisplayMode = this.IMMUNIZATION_DISLAY_MODE.DATE;
+      this.immunizationDisplayMode = this.displayMode;
       this.immunizations = ImmunizationRecordService.getNewImmunizations();
 
       this.addImmunization = (immunization) => {
@@ -68,5 +67,14 @@
           });
       };
     };
+
+
+    /**
+     * Watch for input changes, mainly used for display mode (group by agents or date)
+     * @param change: Change to watch
+     */
+    this.$onChanges= (change)=>{
+      this.immunizationDisplayMode = change.displayMode.currentValue;
+    }
   }
 }());

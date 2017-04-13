@@ -7,11 +7,15 @@
 
     let notificationBus = {};
 
+    let notificationvalues = Object.keys(ICON_NOTIFICATION)
+                             .map(key => ICON_NOTIFICATION[key]);
+
 
 /* Public *********************************************************************/
 
+    /** Publishes a notification to all registered subscribers. */
     function publish (notification) {
-      if (Object.values(ICON_NOTIFICATION).indexOf(notification) < 0) {
+      if (notificationvalues.indexOf(notification) < 0) {
         throw new Error(ICON_ERROR.NOTIFICATION.DOES_NOT_EXIST);
       }
 
@@ -19,8 +23,9 @@
       .forEach((subscriber) => { subscriber(notification); });
     }
 
+    /** Adds a subscriber function to the list of callbacks callod when a notification is published. */
     function subscribe (notification, subscriber) {
-      if (Object.values(ICON_NOTIFICATION).indexOf(notification) < 0) {
+      if (notificationvalues.indexOf(notification) < 0) {
         throw new Error(ICON_ERROR.NOTIFICATION.DOES_NOT_EXIST);
       }
 
@@ -28,8 +33,9 @@
       notificationBus[notification].push(subscriber);
     }
 
+    /** Removes a subscriber function to the list of callbacks callod when a notification is published. */
     function unsubscribe (notification, subscriber) {
-      if (Object.values(ICON_NOTIFICATION).indexOf(notification) < 0) {
+      if (notificationvalues.indexOf(notification) < 0) {
         throw new Error(ICON_ERROR.NOTIFICATION.DOES_NOT_EXIST);
       }
 

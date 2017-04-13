@@ -7,7 +7,7 @@
     <div class="row">
       <!-- First name -->
       <div class="form-group col-xs-12 col-md-6">
-        <label for="submitter-first-name" translate-compile>{{ 'submitterDemographicsCapture.FIRST_NAME' | translate }}<span class="required_field">*</span></label>
+        <label for="submitter-first-name" translate-compile>{{ 'submitterDemographicsCapture.FIRST_NAME' | translate }}</label>
 
         <input ng-model="$ctrl.localSubmitterInfo.firstName"
                ng-required="true"
@@ -21,9 +21,9 @@
 
         <!-- Error messages -->
         <div id="submitter-first-name-error" ng-messages="$ctrl.form.firstName.$error" ng-if="$ctrl.form.firstName.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.IS_REQUIRED' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.BAD_FORMAT' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.EXCEEDS_MAXLENGTH' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
         </div>
         <!-- End error messages -->
       </div>
@@ -33,7 +33,7 @@
     <div class="row">
       <!-- Last name -->
       <div class="form-group col-xs-12 col-md-6">
-        <label for="submitter-last-name" translate-compile>{{ 'submitterDemographicsCapture.LAST_NAME' | translate }}<span class="required_field">*</span></label>
+        <label for="submitter-last-name" translate-compile>{{ 'submitterDemographicsCapture.LAST_NAME' | translate }}</label>
 
         <input ng-model="$ctrl.localSubmitterInfo.lastName"
                ng-required="true"
@@ -47,9 +47,9 @@
 
         <!-- Error messages -->
         <div id="submitter-last-name-error" ng-messages="$ctrl.form.lastName.$error" ng-if="$ctrl.form.lastName.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.IS_REQUIRED' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.BAD_FORMAT' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.EXCEEDS_MAXLENGTH' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
         </div>
         <!-- End error messages -->
       </div>

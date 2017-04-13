@@ -3,7 +3,7 @@
       page="submission"
       client-info="$ctrl.localPatient">
   </patient-auth-display>
-  <br aria-hidden=\"true\"/>
+  <br aria-hidden="true"/>
   <div class="row">
     <div class="col-xs-12">
       <p translate="authSelfPatientContainer.PATIENT_INFO_MESSAGE"
@@ -32,11 +32,13 @@
   <!--Health Card Number-->
   <div class="row">
     <!--Health Card Number-->
-    <div class="col-xs-12 col-sm-4">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6">
       <!--Health Card Number-->
       <label for="patient-hcn" translate='authSelfPatientContainer.HEALTH_CARD_NUMBER' aria-label="{{'authSelfPatientContainer.HEALTH_CARD_NUMBER' | translate}}"></label>
+      {{ 'authSelfPatientContainer.OPTIONAL' | translate }}
 
-      <div class="mask-display">
+      <!--Non Mobile -->
+      <div class="icon-mask-display">
         <input ng-model="$ctrl.localPatient.healthCardNumber"
                name="healthCardNumber"
                id="patient-hcn" class="form-control"
@@ -47,8 +49,31 @@
                autocomplete="off" />
       </div>
 
+      <!-- Mobile -->
+      <div class="icon-display-mobile">
+        <input ng-model="$ctrl.localPatient.healthCardNumber"
+               name="healthCardNumberMobile"
+               id="patient-hcn" class="form-control"
+               type="text"
+               icon-hcn-checksum
+               autocomplete="off" />
+      </div>
+
+      <span>{{ 'authOtherPatientContainer.HEALTH_CARD_NO_VC' | translate }}</span>
+
       <!--Error Messages-->
-      <div class="error-messages mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
+      <div class="error-messages icon-mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
+        <div ng-message="iconHcn"
+             class="alert alert-danger col-xs-12"
+             translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
+             aria-label="{{'authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR' | translate}}"></div>
+        <div ng-message="mask"
+             class="alert alert-danger col-xs-12"
+             translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
+             aria-label="{{'authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR' | translate}}"></div>
+      </div>
+
+      <div class="error-messages icon-display-mobile" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumberMobile.$error" ng-if="$ctrl.form.healthCardNumberMobile.$touched" role="alert">
         <div ng-message="iconHcn"
              class="alert alert-danger col-xs-12"
              translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
@@ -65,8 +90,8 @@
 
   <!--Patient School or Daycare-->
   <div class="row">
-    <div class="col-xs-6">
-      <label for="patient-school" translate='authSelfPatientContainer.DAYCARE' aria-label="{{'authSelfPatientContainer.DAYCARE' | translate}}"></label>
+    <div class="form-group col-xs-12 col-sm-12 col-md-6">
+      <label for="patient-school" translate='authSelfPatientContainer.DAYCARE' aria-label="{{'authSelfPatientContainer.DAYCARE' | translate}}"></label> {{'authSelfPatientContainer.DAYCARE_IF_APPLICABLE' | translate}}
       <input type="text"
              id="patient-school"
              name="schoolOrDaycare"
@@ -74,7 +99,6 @@
              ng-pattern="$ctrl.rgx.SCHOOL_NAME"
              ng-maxlength="100"
              ng-model="$ctrl.localPatient.schoolOrDayCare"
-             placeholder="{{'authSelfPatientContainer.DAYCARE_TOOLTIP' | translate}}"
              typeahead-loading="loadingLocations"
              typeahead-no-results="noResults"
              typeahead-on-select="$ctrl.onSchoolOrDaycareSelect($item)"
@@ -100,5 +124,4 @@
     form="$ctrl.form"
     local-submitter-info="$ctrl.localSubmitter">
   </submitter-email>
-  <hr />
 </div>

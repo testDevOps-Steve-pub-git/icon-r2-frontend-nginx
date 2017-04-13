@@ -16,6 +16,12 @@
   authModalSurveyController.$inject = ['$state'];
   function authModalSurveyController($state) {
 
+    this.close = (modalData) => {
+      this.$close({
+        result: modalData
+      })
+    };
+
     this.ok = (modalData) => {
       this.$close({
         result: modalData

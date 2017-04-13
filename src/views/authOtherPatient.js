@@ -36,7 +36,6 @@ module.exports = {
   template: `
     <h1>{{$ctrl.patientName}}'s Info</h1>
     <form class="form form-container" name="authOtherPatientForm" novalidate autocomplete="off">
-
       <auth-other-patient-container
         form="authOtherPatientForm"
         local-patient="$ctrl.localPatient">

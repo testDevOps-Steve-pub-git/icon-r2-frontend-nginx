@@ -9,6 +9,7 @@
 
   function MiscData () {
     let firstPageLoad = true;       //Page firstload
+    let skipAUP = false;            //If user submits again, they do not have to redo the AUP screen
 
     function setFirstPageLoad(choice){
       firstPageLoad = choice;
@@ -18,9 +19,19 @@
       return firstPageLoad;
     }
 
+    function getSkipAUP() {
+      return skipAUP;
+    }
+
+    function setSkipAUP(aup) {
+      skipAUP = aup;
+    }
+
     return {
       getFirstPageLoad: getFirstPageLoad,
-      setFirstPageLoad: setFirstPageLoad
+      setFirstPageLoad: setFirstPageLoad,
+      getSkipAUP : getSkipAUP,
+      setSkipAUP : setSkipAUP
     };
   }
 

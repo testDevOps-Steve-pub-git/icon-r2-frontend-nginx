@@ -10,9 +10,8 @@
     templateUrl: './components/welcome/welcomeLogin/welcomeLogin.template.html',
   };
 
-  welcomeLoginController.$inject = ['$uibModal', 'ImmunizationRecordService', '$timeout'];
-  function welcomeLoginController ($uibModal, ImmunizationRecordService, $timeout) {
-    let submitterInfo = {};
+  welcomeLoginController.$inject = ['$uibModal'];
+  function welcomeLoginController ($uibModal) {
 
     /**
      * On component initialization
@@ -20,16 +19,8 @@
     this.$onInit = () => {
       /** Function Declarations */
       this.openHelpModal = openHelpModal;
-      this.openSubmitterModal = openSubmitterModal;
       // this.toggleAnimation = toggleAnimation;
-
-      /** Variable Declarations*/
-      this.submitter = {value:'', path: ''};
-      this.userPath = {value:''};
-      submitterInfo = ImmunizationRecordService.getSubmitter();
-      //this.animationsEnabled = true;
     };
-
 
     /**
      *  Opens modal window for information on OIID and PIN
@@ -40,44 +31,9 @@
         template: '<welcome-help-modal $close="$close(result)"></welcome-help-modal>',
         controller: () => {},
         size: 'md',
-      });
-    }
-
-    /**
-     * Opens submitter modal for user to select whom they are submitting for
-     * @param path: auth for user entering OIID and pin, anon for user submitting anonymously
-     */
-    function openSubmitterModal(path) {
-      this.submitter.path = path;
-      $uibModal.open({
-        template: `<welcome-modal modal-data="$ctrl.modalData" $close="$close(result)"></welcome-modal>`,
-        controller: ['modalData', function(modalData) {
-          let ctrl = this;
-          ctrl.modalData = modalData;
-          $timeout(function () {
-            document.getElementById("role-myself-button").focus();
-          }, 100);
-        }],
-        controllerAs: '$ctrl',
-        backdrop  : 'static',
-        resolve: {
-          modalData: this.submitter
-        },
-        size: 'md',
       }).result
-        .then( (submitter) => {
-          this.submitter.value = submitter;
-          submitterInfo.relationshipToPatient = this.submitter.value;
-          //Set submitterInfo model to update relationshipToPatient
-          ImmunizationRecordService.setSubmitter(submitterInfo);
-          $timeout(function(){
-            document.getElementById("welcome-divider").focus();
-          }, 100);
-        }, (reason) => {
-          console.info(`Reason for dismissal is: ${reason}`);
-        });
+        .catch((error)=>{});
     }
-
 
     /**
      * Animation toggle for hiding and displaying modal window

@@ -1,7 +1,7 @@
 <div class="row">
   <!-- Inline the PHU name should show at breakpoints that hide it in the navbar above -->
-  <div class="container row col-xs-12 col-sm-8 col-sm-offset-2 visible-xs">
-    <a id="icon-phu-header-link" class="btn btn-link" href="{{$ctrl.multitenancy.WEBSITE_KEY | translate}}">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 visible-xs">
+    <a id="icon-phu-header-link" href="{{$ctrl.multitenancy.WEBSITE_KEY | translate}}">
       {{$ctrl.multitenancy.NAME_KEY | translate}}
     </a>
   </div>
@@ -12,16 +12,30 @@
 
     <h3>{{ 'welcomeLandingPage.PHU_MESSAGE' |  translate }}</h3>
 
-    <p>
-      <span translate="welcomeLandingPage.INTRO_IMMS_LAW1" aria-label="{{'welcomeLandingPage.INTRO_IMMS_LAW1' | translate}}"></span>
-      <span translate="welcomeLandingPage.INTRO_IMMS_LAW2" aria-label="{{'welcomeLandingPage.INTRO_IMMS_LAW2' | translate}}"></span> <a class="linkStyle" id="home-link-one" href="{{'welcomeLandingPage.INTRO_BULLET_1_URL' | translate}}" target="_blank" ><span translate="welcomeLandingPage.INTRO_BULLET_1"></span></a>
-      <span translate="welcomeLandingPage.INTRO_IMMS_LAW3" aria-label="{{'welcomeLandingPage.INTRO_IMMS_LAW3' | translate}}"></span> <a class="linkStyle" id="home-link-two" href="{{'welcomeLandingPage.INTRO_BULLET_2_URL' | translate}}" target="_blank" ><span translate="welcomeLandingPage.INTRO_BULLET_2"></span></a>
-      <span translate="welcomeLandingPage.INTRO_3" aria-label="{{'welcomeLandingPage.INTRO_3' | translate}}"></span>
-    </p>
+    <h4>{{ 'welcomeLandingPage.INTRO_UL' | translate }}</h4>
+    <ul>
+      <li>{{ 'welcomeLandingPage.INTRO_LI_1' | translate }}</li>
+      <li>{{ 'welcomeLandingPage.INTRO_LI_2' | translate }}</li>
+      <li>
+        {{ 'welcomeLandingPage.INTRO_LI_3' | translate }}
+        <a class="linkStyle" id="home-link-one" href="{{'welcomeLandingPage.INTRO_BULLET_1_URL' | translate}}" target="_blank" ><span translate="welcomeLandingPage.INTRO_BULLET_1"></span></a>
+        {{ 'welcomeLandingPage.INTRO_IMMS_LAW3' | translate }}
+        <a class="linkStyle" id="home-link-two" href="{{'welcomeLandingPage.INTRO_BULLET_2_URL' | translate}}" target="_blank" ><span translate="welcomeLandingPage.INTRO_BULLET_2"></span></a>
+      </li>
+      <li>{{ 'welcomeLandingPage.INTRO_LI_4' | translate}}</li>
+    </ul>
+    <h4>{{ 'welcomeLandingPage.INTRO_3' | translate }}</h4>
+    <ul>
+      <li>{{ 'welcomeLandingPage.INTRO_3_LIST_A' | translate }}</li>
+      <li>{{ 'welcomeLandingPage.INTRO_3_LIST_B' | translate }}</li>
+      <li>{{ 'welcomeLandingPage.INTRO_3_LIST_C' | translate }}</li>
+      <li>{{ 'welcomeLandingPage.INTRO_3_LIST_D' | translate }}</li>
+      <li>{{ 'welcomeLandingPage.INTRO_3_LIST_E' | translate }}</li>
+    </ul>
 
 
-    <p translate="welcomeLandingPage.INTRO_4" aria-label="{{'welcomeLandingPage.INTRO_4' | translate}}"></p>
-    <p translate="welcomeLandingPage.INTRO_ALT" aria-label="{{'welcomeLandingPage.INTRO_ALT' | translate}}"></p>
+    <h4 translate="welcomeLandingPage.INTRO_4" aria-label="{{'welcomeLandingPage.INTRO_4' | translate}}"></h4>
+    <p translate="welcomeLandingPage.INTRO_5" aria-label="{{'welcomeLandingPage.INTRO_5' | translate}}"></p>
     <hr>
   </div>
 </div>

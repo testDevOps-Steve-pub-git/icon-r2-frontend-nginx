@@ -30,14 +30,16 @@
     this.oiidOptions = {
       maskDefinitions: {
         'A': /[2-9b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ]/
-      }
+      },
+      addDefaultPlaceholder:false
     };
 
     /** Angular mask options hcn */
     this.hcnOptions = {
       maskDefinitions: {
         'A': /[0-9]/
-      }
+      },
+      addDefaultPlaceholder:false
     };
 
     /**

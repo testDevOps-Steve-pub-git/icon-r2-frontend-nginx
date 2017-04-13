@@ -28,15 +28,15 @@
       let address = record.getAddress();
 
       const ADDRESS_EXTENSION_URLS = {
-        streetNumber:     'http:\/\/hl7.org\/fhir\/StructureDefinition\/iso21090-ADXP-houseNumber',
-        streetName:       'http:\/\/hl7.org\/fhir\/StructureDefinition\/iso21090-ADXP-streetName',
-        streetType:       'http:\/\/hl7.org\/fhir\/StructureDefinition\/iso21090-ADXP-streetNameType',
-        streetDirection:  'http:\/\/hl7.org\/fhir\/StructureDefinition\/iso21090-ADXP-direction',
-        unitNumber:       'http:\/\/hl7.org\/fhir\/StructureDefinition\/iso21090-ADXP-unitID',
-        postBox:          'http:\/\/hl7.org\/fhir\/StructureDefinition\/iso21090-ADXP-postBox',
-        ruralRoute:       'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-address-rural-route',
-        station:          'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-address-station',
-        retailPostOffice: 'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-address-retail-post-office',
+        streetNumber:     'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber',
+        streetName:       'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName',
+        streetType:       'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType',
+        streetDirection:  'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-direction',
+        unitNumber:       'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID',
+        postBox:          'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox',
+        ruralRoute:       'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-rural-route',
+        station:          'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-station',
+        retailPostOffice: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-retail-post-office',
       };
 
       // Create an object for each FHIR address extension which is non-empty.
@@ -50,18 +50,6 @@
       let patientResource = {
         'resourceType': 'Patient',
         'id': patientId,
-        'identifier': [
-          {
-            'use':    'official',
-            'system': 'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-patient-hcn',
-            'value':  patient.healthCardNumber
-          },
-          {
-            'use':    'secondary',
-            'system': 'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-panorama-immunization-id',
-            'value':  patient.oiid
-          }
-        ],
         'name': [
           {
             'use':    'official',
@@ -80,8 +68,25 @@
         ]
       };
 
+      let patientResourceIdentifier = [];
+      if (patient.healthCardNumber) patientResourceIdentifier.push({
+                                      'use':    'official',
+                                      'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-patient-hcn',
+                                      'value':  patient.healthCardNumber
+                                    });
+
+      if (patient.oiid) patientResourceIdentifier.push({
+                          'use':    'secondary',
+                          'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id',
+                          'value':  patient.oiid
+                        });
+
+      if (patientResourceIdentifier.length) {
+        patientResource.identifier = patientResourceIdentifier;
+      }
+
       let isAddressPopulated = (
-          address.city
+           address.city
         && address.province
         && address.postalCode
         && addressExtension.length
@@ -141,14 +146,14 @@
         'relationship': {
           'coding': [
             {
-              'system': 'http:\/\/hl7.org\/fhir\/v3\/RoleCode',
+              'system': 'http://hl7.org/fhir/v3/RoleCode',
               'code': submitter.relationshipToPatient
             }
           ]
         },
         'name': {
-          'family': [submitter.lastName],
-          'given':  [submitter.firstName]
+          'family': [ submitter.lastName ],
+          'given':  [ submitter.firstName ]
         },
         'telecom': telecom
       };
@@ -168,7 +173,7 @@
         'id': phuId,
         'identifier': [
           {
-            'system': 'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-panorama-phu-id',
+            'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-phu-id',
             'value': multitenancy.PHIX_PHU_CODE
           }
         ],
@@ -190,7 +195,7 @@
         'id': schoolId,
         'identifier': [
           {
-            'system': 'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-panorama-school-id',
+            'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-school-id',
             'value': patient.schoolOrDayCareIdentifier
           }
         ],
@@ -219,18 +224,18 @@
       return (imm, index, immunizations) => {
         return {
           'resourceType': 'Immunization',
-          'id': `Immunization\/${index + 1}`,
+          'id': `Immunization/${index + 1}`,
           'status': 'completed',
           'date': moment(imm.date).format('YYYY-MM-DD'),
           '_date': {
             'extension': [{
-              'url': 'https:\/\/wsgateway.prod.ehealthontario.ca\/API\/FHIR\/Immunizations\/v1\/StructureDefinition\/ca-on-estimated',
+              'url': 'https://wsgateway.prod.ehealthontario.ca/API/FHIR/Immunizations/v1/StructureDefinition/ca-on-estimated',
               'valueBoolean': imm.isDateApproximate
             }]
           },
           'vaccineCode': {
             'coding': [{
-              'system':   'http:\/\/snomed.info\/sct',
+              'system':   'http://snomed.info/sct',
               'code':     imm.agent.snomed,
               'display':  imm.agent.name
             }],
@@ -252,7 +257,7 @@
      */
     function createIdentifier (record) {
       return {
-        'system': 'https:\/\/ehealthontario.ca\/API\/FHIR\/NamingSystem\/ca-on-panorama-imm-submission-id',
+        'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-imm-submission-id',
         'value':  transactionToken.decoded.txId,
       };
     }
@@ -269,19 +274,18 @@
     function convertToFhir (record) {
       if (!record) throw new Error('A valid ImmunizationRecordService is required to convert to FHIR.');
 
-      const PHU_ID =        'Organization\/2';
-      const PATIENT_ID =    'Patient\/1';
-      const SCHOOL_ID =     'Organization\/1';
-      const SUBMITTER_ID =  'RelatedPerson\/1';
+      const PHU_ID =        'Organization/2';
+      const PATIENT_ID =    'Patient/1';
+      const SCHOOL_ID =     'Organization/1';
+      const SUBMITTER_ID =  'RelatedPerson/1';
 
-      return {
+      let communication = {
         'resourceType': 'Communication',
         'meta': { 'lastUpdated': new Date().toISOString() },
         'contained': [
           createPatient(record, PATIENT_ID, SCHOOL_ID),
           createSubmitter(record, PATIENT_ID, SUBMITTER_ID),
-          createPhu(record, PHU_ID),
-          createSchool(record, SCHOOL_ID)
+          createPhu(record, PHU_ID)
         ].concat(
           createImmunizations(record, PATIENT_ID)
         ),
@@ -297,8 +301,18 @@
         'status': 'completed',
         'sent': new Date().toISOString(),
         'received': new Date().toISOString(),
-        'subject': { 'reference': `#${PATIENT_ID}` }
+        'subject': { 'reference': `#${PATIENT_ID}` },
       };
+
+      // Only add the school if the submission has that info populated.
+      let patient = record.getPatient();
+      let isSchoolInfoPopulated = (
+           patient.schoolOrDayCare
+        && patient.schoolOrDayCareIdentifier
+      );
+      if (isSchoolInfoPopulated) communication.contained.push(createSchool(record, SCHOOL_ID));
+
+      return communication;
     }
 
     function convert (record) {

@@ -2,102 +2,16 @@
 'use strict';
   module.exports = TokenHandler;
 
-  function TokenHandler ($http, $q, $interval, jwtHelper, Token, ICON_API, ICON_TOKEN, ICON_EVENT) {
+  function TokenHandler (
+    $http, $q, $interval,
+    jwtHelper,
+    Token,
+    ICON_API, ICON_TOKEN, ICON_EVENT
+  ) {
 /* Private ********************************************************************/
 
     let sessionToken = null;
     let transactionToken = null;
-
-    let sessionExpiration = -1;
-    let transactionExpiration = -1;
-
-    function checkSessionExpiration () {
-      getSessionToken()
-        .then((token) => {
-
-          let currentTimeInSeconds = Math.round(Date.now() / 1000);
-          let tokenExpiryThreshold = (token.decoded.exp
-                                      - ICON_TOKEN.SESSION_EXPIRY_PROMPT_TIME
-                                      - ICON_TOKEN.LATENCY_TIME);
-          let sessionExpiryEvent = new CustomEvent(
-                                          ICON_EVENT.TOKEN_SESSION_EXPIRY,
-                                          {
-                                            bubbles:    true,
-                                            cancelable: true,
-                                            detail: {
-                                              expiry: tokenExpiryThreshold
-                                            }
-                                          }
-                                        );
-
-          let sessionKillEvent = new CustomEvent(
-                                          ICON_EVENT.TOKEN_SESSION_KILL,
-                                          {
-                                            bubbles:    true,
-                                            cancelable: true,
-                                            detail: {
-                                              remainingTime: 0
-                                            }
-                                          }
-                                        );
-
-          if (currentTimeInSeconds >= token.decoded.exp) {
-            window.document.dispatchEvent(sessionKillEvent);
-          }
-          else if (currentTimeInSeconds >= tokenExpiryThreshold) {
-            window.document.dispatchEvent(sessionExpiryEvent);
-          }
-
-          // console.log(`CURRENT TIME:  ${currentTimeInSeconds}`);
-          // console.log(`SESSION EXP:   ${tokenExpiryThreshold}`);
-          // console.log(`SESSION ${(currentTimeInSeconds < tokenExpiryThreshold) ? 'IS' : 'IS NOT'} VALID!`);
-        });
-    }
-
-    function checkTransactionExpiration () {
-      getTransactionToken()
-        .then((token) => {
-          let currentTimeInSeconds = Math.round(Date.now() / 1000);
-          let tokenExpiryThreshold = (token.decoded.exp
-                                      - ICON_TOKEN.TRANSACTION_EXPIRY_PROMPT_TIME
-                                      - ICON_TOKEN.LATENCY_TIME);
-          let transactionExpiryEvent = new CustomEvent(
-                                          ICON_EVENT.TOKEN_TRANSACTION_EXPIRY,
-                                          {
-                                            bubbles:    true,
-                                            cancelable: true,
-                                            detail: {
-                                              expiry: tokenExpiryThreshold
-                                            }
-                                          }
-                                        );
-
-
-          let sessionKillEvent = new CustomEvent(
-                                      ICON_EVENT.TOKEN_SESSION_KILL,
-                                      {
-                                        bubbles:    true,
-                                        cancelable: true,
-                                        detail: {
-                                          remainingTime: 0
-                                        }
-                                      }
-                                    );
-
-          if (currentTimeInSeconds >= token.decoded.exp) {
-            window.document.dispatchEvent(sessionKillEvent);
-          }
-          else if (currentTimeInSeconds >= tokenExpiryThreshold) {
-            window.document.dispatchEvent(transactionExpiryEvent);
-          }
-          // console.log(`CURRENT TIME:    ${currentTimeInSeconds}`);
-          // console.log(`TRANSACTION EXP: ${tokenExpiryThreshold}`);
-          // console.log(`TRANSACTION ${(currentTimeInSeconds < tokenExpiryThreshold) ? 'IS' : 'IS NOT'} VALID!`);
-        });
-    }
-
-    $interval(checkSessionExpiration, ICON_TOKEN.SESSION_EXPIRY_CHECK_INTERVAL);
-    $interval(checkTransactionExpiration, ICON_TOKEN.TRANSACTION_EXPIRY_CHECK_INTERVAL);
 
     /** Sets the session token resulting from an AJAX response.
      * @param {Promise} response - the AJAX response
@@ -117,14 +31,6 @@
       let encoded = response.data.token;
       transactionToken = new Token(encoded, jwtHelper.decodeToken(encoded));
       return $q.when(transactionToken);
-    }
-
-    function emitSessionRefresh () {
-      console.log('SESSION TIMED OUT!');
-    }
-
-    function emitTransactionRefresh () {
-      console.log('TRANSACTION TIMED OUT!');
     }
 
 
@@ -183,7 +89,9 @@
      * @returns {Promise => Token} - the session token
      */
     function refreshTransactionToken () {
-      if (transactionToken === null) return getTransactionToken();
+      if (transactionToken === null) {
+        return getTransactionToken();
+      }
 
       let headers = {};
       return getSessionToken()
@@ -203,8 +111,17 @@
     }
 
     /** Clears the transaction token (use after transaction is complete). */
-    function clearTransactionToken () { transactionToken = null; }
+    function clearTransactionToken () {
+      return $q.when(transactionToken = null);
+    }
 
+    function inspectSessionToken () {
+      return (!sessionToken) ? sessionToken : sessionToken.clone();
+    }
+
+    function inspectTransactionToken () {
+      return (!transactionToken) ? transactionToken : transactionToken.clone();
+    }
 
 /* Interface ******************************************************************/
 
@@ -215,6 +132,9 @@
       getTransactionToken:      getTransactionToken,
       refreshTransactionToken:  refreshTransactionToken,
       clearTransactionToken:    clearTransactionToken,
+
+      inspectSessionToken:      inspectSessionToken,
+      inspectTransactionToken:  inspectTransactionToken,
     };
   }
 

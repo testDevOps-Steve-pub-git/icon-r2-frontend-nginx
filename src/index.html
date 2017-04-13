@@ -2,12 +2,12 @@
 <html lang="en" ng-app="icon" ng-controller="indexController" ng-strict-di class="no-js">
 
 <!-- Immunization Connect ONtario (ICON) -->
-<!-- Version 2.29.1 Beta -->
+<!-- Version 2.30.6 RC1 -->
 
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Immunization Connect Ontario</title>
+  <title>{{'indexController.TITLE' | translate}}</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -34,11 +34,7 @@
     <!--# include file="$nojs.html" -->
   </noscript>
 
-  <div class="container">
-    <div id="icon-skip-to-content" class="col-xs-12 col-sm-8 col-sm-offset-2">
-      <button aria-label="{{ 'phuHeader.SKIP_TO_CONTENT' | translate }}" translate='phuHeader.SKIP_TO_CONTENT' class="btn-link sr-only sr-only-focusable" ng-click="scrollToContent($event)" id="content-skip"></button>
-    </div>
-  </div>
+  <skip-to-content></skip-to-content>
 
   <phu-header></phu-header>
 

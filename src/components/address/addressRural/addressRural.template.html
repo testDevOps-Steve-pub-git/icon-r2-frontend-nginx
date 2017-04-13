@@ -1,7 +1,7 @@
 <!-- Rural Route -->
 <div class="row">
   <div class="form-group col-xs-12 col-sm-4">
-    <label for="address-rural-route">{{ 'addressRural.RURAL_ROUTE' | translate }}<span class="required_field">*</span></label>
+    <label for="address-rural-route">{{ 'addressRural.RURAL_ROUTE' | translate }}</label>
 
     <input
         class="form-control"
@@ -19,8 +19,8 @@
          ng-if="$ctrl.form.ruralRoute.$touched" role="alert">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressRural.ERRORS.BAD_FORMAT'
            aria-label="{{ 'addressRural.ERRORS.BAD_FORMAT' | translate }}"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressRural.ERRORS.IS_REQUIRED'
-           aria-label="{{ 'addressRural.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressRural.ERRORS.RURAL_ROUTE_REQUIRED'
+           aria-label="{{ 'addressRural.ERRORS.RURAL_ROUTE_REQUIRED' | translate }}"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressRural.ERRORS.EXCEEDS_MAXLENGTH'
            aria-label="{{ 'addressRural.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
     </div>
@@ -33,7 +33,7 @@
 <!-- Station Route -->
 <div class="row">
   <div class="form-group col-xs-12 col-sm-4">
-    <label for="address-station">{{ 'addressRural.STATION_ROUTE' | translate }}<span class="required_field">*</span></label>
+    <label for="address-station">{{ 'addressRural.STATION_ROUTE' | translate }}</label>
 
     <input
         class="form-control"
@@ -51,8 +51,8 @@
          ng-if="$ctrl.form.station.$touched" role="alert">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressRural.ERRORS.BAD_FORMAT'
            aria-label="{{ 'addressRural.ERRORS.BAD_FORMAT' | translate }}"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressRural.ERRORS.IS_REQUIRED'
-           aria-label="{{ 'addressRural.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressRural.ERRORS.STATION_ROUTE_REQUIRED'
+           aria-label="{{ 'addressRural.ERRORS.STATION_ROUTE_REQUIRED' | translate }}"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressRural.ERRORS.EXCEEDS_MAXLENGTH'
            aria-label="{{ 'addressRural.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
     </div>
@@ -62,7 +62,7 @@
 </div>
 
 <div class="row">
-  <!-- Station Route -->
+  <!-- Additional Info Route -->
   <div class="form-group col-xs-12 col-sm-6">
     <label for="address-additional-info">{{ 'addressRural.ADDITIONAL_ADDRESS_INFO' | translate }}</label>
 

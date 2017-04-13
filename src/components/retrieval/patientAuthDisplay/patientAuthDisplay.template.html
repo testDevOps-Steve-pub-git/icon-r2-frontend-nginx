@@ -1,10 +1,10 @@
-<div class="container">
   <div class="row">
     <div class="col-xs-12">
       <p>{{ 'patientAuthDisplay.INFORMATION_FROM_REPOSITORY' | translate }}</p>
     </div>
   </div>
 
+<div class="form-group">
   <div class="row">
     <div class="col-xs-12 text-left">
       <div class="small text-uppercase">{{ 'patientAuthDisplay.NAME' | translate }}</div>
@@ -17,19 +17,22 @@
       </strong>
     </div>
   </div>
+</div>
 
-
+ <div class="form-group">
   <div class="row">
     <div class="col-xs-12 text-left">
       <div class="small text-uppercase">{{ 'patientAuthDisplay.SEX' | translate }}</div>
     </div>
     <div class="col-xs-12 text-left">
       <strong>
-        <span>{{$ctrl.patient.gender}}</span>
+        <span class="text-capitalize">{{$ctrl.patient.gender}}</span>
       </strong>
     </div>
   </div>
+  </div>
 
+ <div class="form-group">
   <div class="row">
     <div class="col-xs-12 text-left">
       <div class="small text-uppercase">{{'patientAuthDisplay.BIRTHDATE' | translate}}</div>
@@ -40,7 +43,9 @@
       </strong>
     </div>
   </div>
+</div>
 
+ <div class="form-group">
   <div class="row" ng-if="$ctrl.patient.healthCardNumber != '' && $ctrl.page == 'login'">
     <div class="col-xs-12 text-left">
       <div class="small text-uppercase">{{ 'patientAuthDisplay.HEALTH_CARD_NUMBER' | translate}}</div>
@@ -51,7 +56,9 @@
       </strong>
     </div>
   </div>
+</div>
 
+ <div class="form-group">
   <div class="row " ng-if="$ctrl.patient.oiid != '' && $ctrl.page == 'login'">
     <div class="col-xs-12 text-left">
       <div class="small text-uppercase">{{ 'patientAuthDisplay.OIID' | translate}}</div>
@@ -62,6 +69,7 @@
       </strong>
     </div>
   </div>
+</div>
 
   <hr />
 
@@ -75,4 +83,3 @@
       </strong>
     </div>
   </div> -->
-</div>
