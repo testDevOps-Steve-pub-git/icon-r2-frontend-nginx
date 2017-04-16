@@ -21,15 +21,7 @@
         * @memberof requirementGroup_21 
       */
       _02: () => {
-        browser.wait(() => {
-          return browser.isElementPresent(element(by.css('.col-xs-12 img')));
-        }, wait.TIMEOUT_TIME) 
-          .then(() => {
-            element(by.css('.col-xs-12 img')).getAttribute('src')
-              .then((value) => {
-                expect(value).toContain('/img/ontario-schedule.png');
-              });
-          });
+        wait.waitForElements(['ontario-immunization-schedule'])
       },
     
       /**
@@ -45,16 +37,11 @@
         * @memberof requirementGroup_21 
       */
       _04: (authentication) => {
-        wait.waitForElements([global.home.anon, global.home.auth])
+        wait.waitForElements([global.home.anonSubmit, global.home.authSubmit])
           .then(() => {
-            if (authentication === 'Authenticated') {
-              element(by.css(global.home.auth)) 
-                .click();
-            }
-            else {
-              element(by.css(global.home.anon))    
-                .click();
-            }
+            (authentication === 'Authenticated')
+              ? element(by.css(global.home.authSubmit)).click()
+              : element(by.css(global.home.anonSubmit)).click();
           });
       }
     };

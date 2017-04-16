@@ -12,15 +12,12 @@
         * @desc 6.01 -- The solution SHALL display the immunization record to the user before submission for reviewing purposes before it is submitted. 
         * @memberof requirementGroup_6 
       */
-      _01: () => {
-        //TODO: Ensure immunizations information is present via css 
+      _01: (immunization) => {
         // Validate Immunizations Information
-        element.all(by.css('.col-xs-12 col-xs-8 text-left')).get(3).getText()
+        element(by.css('.list-group-item')).getText()
           .then((value) => {
             expect(value)
-              .toContain('Immunizations');
-            expect(value)
-              .toContain(data.patient.immunizations.vaccine)
+              .toContain(immunization)
           });
       },
 
@@ -53,7 +50,7 @@
         form.populate([
           form.Field(form.CLICK, submission.review.editImmunizations),
         ]);
-        wait.waitForElements([submission.immunizations.groupByImmunizations, submission.immunizations.groupByDates])
+        wait.waitForElements([submission.immunizations.groupByImmunization, submission.immunizations.groupByDate])
           .then(() => {
             // Return to the Review page.
             element(by.css(global.pager.next))     

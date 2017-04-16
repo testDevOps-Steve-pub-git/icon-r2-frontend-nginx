@@ -56,26 +56,24 @@
         no:'#immunizations-second-no-button',
         unsure:'#immunizations-second-unsure-button'
       },
-      date: '#immunizations-date-input',
-      dateEstimated: '#immunizations-approximate-label-',
-      saveDate: '#immunizations-date-save',
-      saveImmunization: '#immunizations-save',
-      saveImmunizationAndAdd: '#immunizations-save-and-add',
-      ageWhenImmunized: '#immunizations-immunization-age',
+      questionThree: {
+        yes:'#immunizations-third-yes-button',
+        no:'#immunizations-third-no-button',
+        unsure:'#immunizations-third-unsure-button'
+      },
+      groupByDate: '#immunizations-group-date',
+      groupByImmunization: '#immunizations-group-immunizations',
       add: '#immunizations-add',
-      tradeName: '#immunizations-trade-brand',
+      date: '#immunizations-date-input',
+      dateEstimated: '#immunizations-date-estimated',
       lotNumber: '#immunizations-lot-number',
-      addImmunizationToDate: '#immunizations-add-immunization-to-date-',
-      addDateToImmunization: '#immunizations-add-date-to-immunization-',
-      dateHeader: '#immunizations-date-header-',
-      dateEdit: '#immunizations-date-edit-',
-      dateTitle: '#immunizations-date-',
-      immunizationEdit: '#immunizations-immunization-edit-',
-      immunizationHeader: '#immunizations-immunization-header-',
-      immunizationTitle: '#immunizations-immunization-',
-      deleteImmunization: '#immunizations-delete',
-      groupByDates: '#immunizations-group-date',
-      groupByImmunizations: '#immunizations-group-immunizations'
+      immunization: '#immunizations-immunization-input',
+      save: '#immunizations-save',
+      dateHeader: '#immunizations-date-header',
+      immunizationsHeader: '#immunizations-immunizations-header',
+      ageWhenImmunized: '#immunizations-immunization-age-',
+      edit: "#immunizations-edit-",
+      delete: "#immunizations-delete-",
     },
 
     /* Documents page specific. */
@@ -98,15 +96,16 @@
       editAddress: '#review-edit-address-button',
       editImmunizations: '#review-edit-immunizations-button',
       editDocuments: '#review-edit-documents-button',
-      editSubmitter: '#review-edit-submitter-button'
+      editSubmitter: '#review-edit-submitter-button',
+      submit: '#review-submit'
     },
 
-    /* Review page specific. */
+   /* Review page specific. */
     completion: {
       surveyLink: '#completion-survey-link',
-      print: '#completion-print-button',
+      print: '#completion-save-pdf-button',
       startAnother: '#completion-start-another-button',
       home: '#completion-home-button'
     }
   };
-}());
+}())

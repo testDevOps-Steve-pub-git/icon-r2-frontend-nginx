@@ -34,7 +34,7 @@
       */
       _03: () => {
         // Open the date picker and click the day button.
-        element(by.css('.icon-date-input-button'))
+        element(by.css('.input-group-btn'))
           .click();
         browser.wait(() => {
           return element.all(by.css('.uib-datepicker-current')).get(0).getText()
@@ -86,7 +86,6 @@
       */
       _06: (phoneNumber, phoneExt) => {
         form.populate([
-          form.Field(form.TEXT, submission.submitter.phoneNumber, phoneNumber),
           form.Field(form.TEXT, submission.submitter.phoneExt, phoneExt)
         ])
       },

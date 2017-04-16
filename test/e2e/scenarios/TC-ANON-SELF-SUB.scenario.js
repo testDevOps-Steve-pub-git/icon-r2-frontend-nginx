@@ -19,31 +19,31 @@
     });
 
     describe('<Home>', () => {
-      it('21.01 -- The solution SHALL provide the user with information on obtaining an Ontario Immunization ID and PIN.', () => {
+      it('21.01 -- The solution SHALL present the functionality and purpose of the web application.', () => {
         requirement._21()._01();
       });
 
-      it('21.02 -- The solution SHALL provide the user with information on Ontario\'s immunization routine schedule.', () => {
+      it('21.02 -- The solution SHALL provide the user with links to information on Immunization of Schools Pupil Act and the Child Care and Early Years Act.', () => { 
         requirement._21()._02();
       });
 
-      it('21.03 -- The solution SHALL provide the user with links to information on Immunization of Schools Pupil Act and the Child Care and Early Years Act.', () => {
+      it('21.03 -- The solution SHALL present the user with the ability to authenticate themselves or submit an immunization record without authentication.', () => {
         requirement._21()._03();
       });
 
-      it('21.04 -- The solution shall present the user with the ability to authenticate themselves or submit an immunization record without authentication.', () => {
+      it('21.04 -- The solution SHALL provide the user with the ability to view immunizations that are overdue or upcoming.', () => {
         requirement._21()._04(authentication);
       });
 
-      it('16.01 -- The solution SHALL present the user with a toggle to identify their role when retrieving or submitting an immunization record. ', () => {
+      it('16.01 -- The solution SHALL require the user to identify their role when retrieving or submitting an immunization record.', () => {
         requirement._16()._01(role);
       });
 
-      it('12.01 -- The solution SHALL provide the user with the acceptable use policy/privacy policy around user data.', () => {
+      it('12.01 -- The solution SHALL present the user with an acceptable use policy.', () => {
         requirement._12()._01();
       });
 
-      it('12.02 -- The solution SHALL provide the user with buttons to Accept or Deny the policy.', () => {
+      it('12.02 -- The solution SHALL provide the user with buttons to Accept or Decline the policy.', () => {
         requirement._12()._02(acceptUsePolicy);
       });
     });
@@ -65,7 +65,7 @@
         requirement._1()._04(dataSet.myself.birthDate);
       });
 
-      it('1.05 -- The solution SHALL provide a radio group for selecting the patient’s gender. The gender SHALL be one of Male, Female or Other. The solution SHALL NOT permit the selection of more than one gender.', () => {
+      it('1.05 -- The solution SHALL provide a radio group for selecting the patient’s sex. The sex SHALL be one of Male, Female or Other. The solution SHALL NOT permit the selection of more than one sex.', () => {
         requirement._1()._05(dataSet.myself.sex);
       });
 
@@ -73,8 +73,9 @@
         requirement._1()._06(dataSet.myself.phoneNumber, dataSet.myself.phoneExt);
       });
 
-      it('1.07 -- The solution SHALL provide a text input area for entry of a valid Ontario Health Card number. The solution SHALL format this number according to the standardized Ontario Health Card Number format.', () => {
-        requirement._1()._07(dataSet.myself.healthCardNumber);
+      it('1.07 -- The solution SHALL provide a text input area for entry of a valid Ontario Health Card number.' +
+         'The solution SHALL format this number according to the standardized Ontario Health Card Number format (for display purposes).', () => {
+        requirement._1()._07(dataSet.dependantTwo.healthCardNumber);
       });
 
       it('1.10 -- The solution SHALL provide a text input area for entry of a valid Ontario Immunization Identification. ' + 
@@ -123,66 +124,67 @@
         requirement._2()._08(dataSet.myself.streetName, dataSet.myself.city, dataSet.myself.province, dataSet.myself.streetType, dataSet.myself.postalCode);
       });
 
-//      it('Will move to the immunizations page.', () => {
-//        // Move to immunizations page.
-//        element(by.css('#pager-next-button'))
-//          .click();
-//      });
+      it('Will move to the immunizations page.', () => {
+        // Move to immunizations page.
+        element(by.css('#pager-next-button'))
+          .click();
+      });
     });
 
     describe('<Immunizations>',  () => {
-//      it('13.01 -- The solution SHALL provide the user with two gating questions prior to entering immunization details.',  () => {
-//        requirement._13()._01();
-//      });
-//
-//      it('13.02 -- The solution SHALL accept answers Yes or No for the first gating question.',  () => {
-//        requirement._13()._02();
-//      });
-//
-//      it('13.03 -- The solution SHALL present the first gating question as an inquiry about a letter recieved from the Public Health Unit. ' + 
-//         'If NO, the second gating question will be prompted (ON flow). If YES, no other gating question will be prompted (Alt flow).',  () => {
-//        requirement._13()._03();
-//      });
-//
-//      it('13.04 -- The solution SHALL present the second gating question as an inquiry as to if all immunizations to be entered were according to the province\'s routine immunization schedule. ' + 
-//         'If YES, then only immunizations from Ontario\'s routine schedule will populate. If NO or UNSURE, all immunizations will populate. ',  () => {
-//        requirement._13()._04();
-//      });
-//
-//      it('13.05 -- The solution SHALL present the second gating question as an inquiry as to if all immunizations to be entered were according to the province\'s routine immunization schedule. ' + 
-//         'If YES, then only immunizations from Ontario\'s routine schedule will populate. If NO or UNSURE, all immunizations will populate. ',  () => {
-//        requirement._13()._05(gatingQuestionOneAwns, gatingQuestionTwoAwns);
-//      });
-//
-//      it('3.02 -- The solution SHALL provide the user with ability to display their immunizations organized by immunization or date.',  () => {
-//        requirement._3()._02();
-//      });
-//
-//      it('3.05 -- The solution SHALL require a date for each immunization, and vice-versa.',  () => {
-//        requirement._3()._05();
-//      });
-//
-//      it('3.06 -- The solution SHALL provide a calendar extension to this text box which allows a user to easily select a previous date over multiple years (i.e. provide a shortcut for year of birth).',  () => {
-//        requirement._3()._06();
-//      });
-//
-//      it('3.03 -- The solution SHALL provide an autocomplete feedback as the user types the immunization name.',  () => {
-//        requirement._3()._03(dataSet.myself.immunizations.immunization);
-//      });
-//
-//      it('3.07 -- The solution SHALL verify that the date selected is a valid date, and SHALL indicate that the date is invalid if validation fails.',  () => {
-//        requirement._3()._07(dataSet.myself.immunizations.date);
-//      });
-//
-//      it('3.01 -- The solution SHALL provide Lot Number and Trade Name/Brand as optional fields to assists searching for an immunization.',  () => {
-//        requirement._3()._01();
-//      });
-//
-//      it('3.08 -- When a user adds a new date and the existing record already has immunization events for that date, ' + 
-//         'the solution SHALL prompt the user indicating that other immunizations for that date are already on the record.',  () => {
-//        requirement._3()._08();
-//      });
-//
+      it('13.01 -- The solution SHALL provide the user with two gating questions prior to entering immunization details.',  () => {
+        requirement._13()._01();
+      });
+
+      it('13.02 -- The solution SHALL accept answers Yes or No for the first gating question.',  () => {
+        requirement._13()._02();
+      });
+
+      it('13.03 -- The solution SHALL present the first gating question as an inquiry about a letter recieved from the Public Health Unit. ' + 
+         'If NO, the second gating question will be prompted (ON flow). If YES, no other gating question will be prompted (Alt flow).',  () => {
+        requirement._13()._03();
+      });
+
+      it('13.04 -- The solution SHALL present the second gating question as an inquiry as to if all immunizations to be entered were according to the province\'s routine immunization schedule. ' + 
+         'If YES, then only immunizations from Ontario\'s routine schedule will populate. If NO or UNSURE, all immunizations will populate. ',  () => {
+        requirement._13()._04();
+      });
+
+      it('13.05 -- The solution SHALL present the second gating question as an inquiry as to if all immunizations to be entered were according to the province\'s routine immunization schedule. ' + 
+         'If YES, then only immunizations from Ontario\'s routine schedule will populate. If NO or UNSURE, all immunizations will populate. ',  () => {
+        requirement._13()._05(gatingQuestionOneAwns, gatingQuestionTwoAwns);
+      });
+
+      it('3.02 -- The solution SHALL provide the user with ability to display their immunizations organized by immunization or date.',  () => {
+        requirement._3()._02();
+      });
+
+      it('3.05 -- The solution SHALL require that immunization entry is composed of a valid date and immunization.',  () => {
+        requirement._3()._05();
+      });
+
+      it('3.06 -- The solution SHALL provide a calendar extension to this text box which allows a user to easily select a previous date over multiple years (i.e. provide a shortcut for year of birth).',  () => {
+        requirement._3()._06();
+      });
+
+      it('3.03 -- The solution SHALL provide an autocomplete feedback as the user types the immunization name.',  () => {
+      e requirement._3()._03(dataSet.myself.immunizations.immunization);
+      });
+
+      it('3.07 -- The solution SHALL verify that the date selected is a valid date, and SHALL indicate that the date is invalid if validation fails. (Event after DOB and before Today)',  () => {
+        requirement._3()._07(dataSet.dependantTwo.immunizations.date);
+      });
+
+      it('3.01 -- The solution SHALL provide the user with the ability to add an immunization record by selecting an existing date,' +
+         'selecting a new date, or selecting an already-selected immunization, or selecting a new immunization.',  () => {
+        requirement._3()._01();
+      });
+
+      it('3.08 -- When a user adds a new date and the existing record already has immunization events for that date, ' + 
+         'the solution SHALL prompt the user indicating that other immunizations for that date are already on the record.',  () => {
+        requirement._3()._08();
+      });
+
       it('Will move to the documents page.', () => {
         // Move to documents page.
         element(by.css('#pager-next-button'))
@@ -215,15 +217,15 @@
     });
 
     describe('<Review>', () => {
-//      it('6.01 -- The solution SHALL display the immunization record to the user before submission for reviewing purposes before it is submitted.',  () => {
-//        requirement._6()._01();
-//      });
+      it('6.01 -- The solution SHALL display to the user a preview of the submission before it is confirmed by the user.',  () => {
+        requirement._6()._01(dataSet.dependantTwo.immunizations.immunization);
+      });
 
       it('7.01 -- The solution SHALL provide a button to submit the form.',  () => {
         requirement._7()._01();
       });
 
-      it('6.02 -- The solution SHALL provide the user with the ability to return to previous pages via links to make corrections to the record.',  () => {
+      it('6.02 -- The solution SHALL provide the user with the ability to navigate to previous pages to make corrections to their submission.',  () => {
         requirement._6()._02();
       });
 

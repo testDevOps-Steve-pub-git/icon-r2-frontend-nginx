@@ -14,11 +14,11 @@
       */
       _01: () => {
         // Wait for "Complete Submission" button to appear on page and ensure that it contains the text "Complete Submission".
-        wait.waitForElements([global.pager.next])
+        wait.waitForElements([submission.review.submit])
           .then(() => {
-            element(by.css(global.pager.next)).getText()
+            element(by.css(submission.review.submit)).getText()
               .then((value) => {
-                expect(value).toContain('Complete Submission');
+                expect(value).toContain('Submit Immunizations');
               });
           });
       },

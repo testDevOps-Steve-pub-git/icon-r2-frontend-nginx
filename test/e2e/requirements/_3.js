@@ -6,6 +6,19 @@
   * @namespace requirementGroup_3
   */
   module.exports = (fileUploader, form, wait, global, retrieval, submission) => { 
+	
+    function immunizationTypeahead(immunization) {
+      wait.waitForElements([submission.immunizations.immunization]) 
+        .then(() => {
+          for (var char = 0; char < immunization.length - 1; char++) {
+            browser.sleep(500);
+            element(by.css(submission.immunizations.immunization)).sendKeys(immunization.charAt(char));
+          }
+          browser.sleep(2000);
+          browser.actions().sendKeys(protractor.Key.ENTER).perform();
+        })
+    }
+
     var _3 = {
     
       /**
@@ -13,37 +26,14 @@
         * @memberof requirementGroup_3 
       */
       _01: () => {
-        // Group immunizations by date.
+        // Group immunizations by dates.
         form.populate([
-          form.Field(form.CLICK, submission.immunizations.groupByDate),
+          form.Field(form.CLICK, submission.immunizations.groupByDate)
         ]);
-        // Add immunization while immunizations are sorted by date with the "Add Another Date" button then delete added date.
+
+        // Group immunizations by immunizations.
         form.populate([
-          form.Field(form.CLICK, submission.immunizations.add),
-          form.Field(form.CLICK, submission.immunizations.date),
-          form.Field(form.CLICK, submission.immunizations.deleteImmunization)
-        ]);
-        // Add immunization to existing date while immunizations are sorted by date with the "Add an Immunization to this Date" button then delete added date.
-        form.populate([
-          form.Field(form.CLICK, submission.immunizations.addImmunizationToDate),
-          form.Field(form.CLICK, submission.immunizations.immunization),
-          form.Field(form.CLICK, submission.immunizations.deleteImmunization)
-        ]);
-        // Group immunizations by immunization.
-        form.populate([
-          form.Field(form.CLICK, submission.immunizations.groupByImmunizations),
-        ]);
-        // Add immunization while immunizations are sorted by immunization with the "Add an Immunization" button then delete added immunization.
-        form.populate([
-          form.Field(form.CLICK, submission.immunizations.add),
-          form.Field(form.CLICK, submission.immunizations.immunization),
-          form.Field(form.CLICK, submission.immunizations.deleteImmunization)
-        ]);
-        // Add immunization to existing immunization while immunizations are sorted by immunization with the "Add a Date for this Immunization" button then delete added date.
-        form.populate([
-          form.Field(form.CLICK, submission.immunizations.addDateToImmunization),
-          form.Field(form.CLICK, submission.immunizations.date),
-          form.Field(form.CLICK, submission.immunizations.deleteImmunization)
+          form.Field(form.CLICK, submission.immunizations.groupByImmunization)
         ]);
       },
     
@@ -54,14 +44,12 @@
       _02: () => {
         // Group immunizations by dates.
         form.populate([
-          form.Field(form.CLICK, submission.immunizations.groupByDate),
+          form.Field(form.CLICK, submission.immunizations.groupByDate)
         ]);
-        wait.waitForElements([submission.immunizations.dateHeader])
         // Group immunizations by immunizations.
         form.populate([
-          form.Field(form.CLICK, submission.immunizations.groupByImmunizations),
+          form.Field(form.CLICK, submission.immunizations.groupByImmunization)
         ]);
-        wait.waitForElements([submission.immunizations.immunizationHeader])
       },
     
       /**
@@ -70,18 +58,9 @@
       */
       _03: (immunization) => {
        // Input "HPV-4" into the immunizations type ahead.
-       element(by.css(submission.immunizations.otherImmunizations.immunization + index))
-          .clear()
-          .then(() => {
-            form.populate([
-              form.Field(form.TYPEAHEAD, submission.immunizations.otherImmunizations.immunization + index, immunization)
-            ]);
-          });
-        form.populate([
-          form.Field(form.CLICK, submission.immunizations.saveImmunization),
-        ]);
-      },
-    
+       immunizationTypeahead(immunization);
+     },
+  
       /**
         * @desc 3.04 -- The solution SHALL provide Lot Number and Trade Name/Brand as optional fields to assists searching for an immunization. 
         * @memberof requirementGroup_3 
@@ -96,6 +75,9 @@
       */
       _05: () => {
         // Check if date input is present on page and input a date into the input.
+        form.populate([
+          form.Field(form.CLICK, submission.immunizations.add)
+        ]);
         wait.waitForElements([submission.immunizations.date])
       },
     
@@ -105,7 +87,7 @@
       */
       _06: () => {
         // Open date picker and wait for "Today" button to appear. 
-        element.all(by.css('.icon-date-input-button')).get(index)
+        element(by.css('.input-group-btn'))
           .click();
         browser.wait(() => {
           return element.all(by.css('.uib-datepicker-current')).get(0).getText()
@@ -126,7 +108,7 @@
           });
         // Clear the date input.
         element(by.css(submission.immunizations.date))
-          .clear(); 
+         .clear(); 
       },
     
       /**
@@ -136,8 +118,8 @@
       _07: (immunizationDate) => {
         // Ensure the date input provides an error by inputing an invalid value then clear that value and input the users immunization date. Save the date added.
         form.populate([
-          form.Field(form.TEXT, submission,immunizations.date, immunizationDate),
-          form.Field(form.CLICK, submission.immunizations.saveImmunization)
+          form.Field(form.TEXT, submission.immunizations.date, immunizationDate),
+          form.Field(form.CLICK, submission.immunizations.save)
         ]);
       },
 
@@ -151,14 +133,15 @@
         for (var i = 0; i < 2; i++) {
           // Wait for "Add Another Date" button to appear on page and click the button.
           form.populate([
+            form.Field(form.CLICK, submission.immunizations.groupByDate),
             form.Field(form.CLICK, submission.immunizations.add),
             form.Field(form.TEXT, submission.immunizations.date, new Date().toISOString().substring(0,10)),
-            form.Field(form.CLICK, submission.immunizations.saveDate),
-            form.Field(form.TEXT, submission.immunizations.immunization, 'HPV-4'),
-            form.Field(form.CLICK, submission.immunizations.saveImmunization),
+          ]);          
+          immunizationTypeahead('HPV-4');
+          form.populate([
+            form.Field(form.CLICK, submission.immunizations.save),
           ]);          
         }
-        //TODO: Expect error indicating that the date being added already exists.
       },
 
       /**
@@ -167,17 +150,18 @@
         * @memberof requirementGroup_3 
       */
       _09: () => {
-        // This set of steps is to be repeated to create an error on the page indicating the same date has been added twice.
+        // This set of steps is to be repeated to create an error on the page indicating the same immunization has been added twice.
         for (var i = 0; i < 2; i++) {
           form.populate([
+            form.Field(form.CLICK, submission.immunizations.groupByImmunization),
             form.Field(form.CLICK, submission.immunizations.add),
-            form.Field(form.TEXT, submission.immunizations.immunization, 'HPV-4'),
-            form.Field(form.CLICK, submission.immunizations.saveImmunization),
+          ]);          
+          immunizationTypeahead('HPV-4');
+          form.populate([
             form.Field(form.TEXT, submission.immunizations.date, new Date().toISOString().substring(0,10)),
-            form.Field(form.CLICK, submission.immunizations.saveDate)
+            form.Field(form.CLICK, submission.immunizations.save),
           ]);          
         }
-        //TODO: Expect error indicating that the date being added already exists.
       },
     };
     return _3; 

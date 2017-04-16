@@ -23,6 +23,7 @@
       _02: (city, province, postalCode) => {
         // Input a value into the "City" and "Province" inputs.
         form.populate([
+          form.Field(form.RADIO, submission.address.addressSkipTypeahead),
           form.Field(form.TEXT, submission.address.city, city),
           form.Field(form.SELECT, submission.address.province, province),
           form.Field(form.TEXT, submission.address.postalCode, postalCode)

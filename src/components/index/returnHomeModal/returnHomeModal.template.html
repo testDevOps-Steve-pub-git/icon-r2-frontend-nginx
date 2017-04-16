@@ -1,0 +1,18 @@
+<div>
+  <!-- Survey-->
+  <div class="modal-header">
+    <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.ok(false)">
+      <i class="fa fa-times-circle fa-2x"></i>
+    </span>
+    <h3 class="modal-title">{{'leave_page.TITLE' | translate}}</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="strong">
+      <p>{{'leave_page.LEAVE_PAGE_CONFIRMATION' | translate}}</p>
+    </div>
+
+      <button class="btn btn-md btn-primary btn-block" ng-click="$ctrl.ok(true)">{{ 'leave_page.YES' | translate }}</button>
+      <button class="btn btn-md btn-primary btn-block" ng-click="$ctrl.ok(false)">{{ 'leave_page.NO' | translate }}</button>
+  </div>
+</div>
