@@ -19,7 +19,6 @@
       let yellowCardSnomeds = Object.keys(DISEASE_YC_ORDER)
                               .filter(d => DISEASE_YC_ORDER[d] < DISEASE_YC_ORDER.DEFAULT);
 
-      this.patient = ImmunizationRecordService.getPatient();
       this.yellowCardRows = GroupsOf.immunization.byDate(retrievedImmunizations)
                             .map(group => {
                               return {

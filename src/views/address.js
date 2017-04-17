@@ -1,14 +1,20 @@
-addressController.$inject = ['Endpoint', 'ImmunizationRecordService']
-function addressController (Endpoint, ImmunizationRecordService) {
+addressController.$inject = ['Endpoint', 'ImmunizationRecordService', '$scope']
+function addressController (Endpoint, ImmunizationRecordService, $scope) {
 
   this.$onInit = () => {
     this.localAddress = ImmunizationRecordService.getAddress();
 
     this.validateForm = ({ form }) => {
-      if (!form.$valid) form.$error.required
-                            .forEach((field) => { field.$setTouched(); });
+
+      if(this.localAddress.postalCode === '') {
+        form.$valid = false;
+      }
+
+      if (!form.$valid && form.$error.required) form.$error.required
+        .forEach((field) => { field.$setTouched(); });
       else ImmunizationRecordService.setAddress(this.localAddress);
       return form.$valid;
+
     };
   };
 }

@@ -16,11 +16,11 @@
 
   // Polyfill for window location origin
   if (!window.location.origin) { window.location.origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : ''); }
-  var BASE_URL = window.location.origin;
+  let BASE_URL = window.location.origin;
 
   // NOTE: New setup -- use when running both front-end, and back-end server locally.
-  //       In browser, use http://gbhu.vcap.me:3001/
-  // BASE_URL = 'http://gbhu.vcap.me:6001';
+  //       In browser, use http://xxsupportphu1.vcap.me:3001/
+  // BASE_URL = 'http://xxsupportphu1.vcap.me:6001';
 
   angular.module('icon', [
     'app',
@@ -51,7 +51,8 @@
     'angulartics',
     // 'ngAnimate', /* This package is causing an intermittent bug. */
     'toaster',
-    'ng.deviceDetector'
+    'ng.deviceDetector',
+    'duScroll'
   ])
 
   .constant('ICON_API', {
@@ -266,6 +267,12 @@
   }])
 
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+
+    /* Suppresses error messages for transitions (See index JS transitions)  */
+    $stateProvider.stateService.defaultErrorHandler((e) => {
+      console.warn(e);
+    });
+
     var Routes = require('./views/routes.js');
     $stateProvider
       .state('welcome', Routes.WELCOME)

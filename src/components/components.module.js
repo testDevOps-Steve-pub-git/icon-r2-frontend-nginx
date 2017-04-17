@@ -17,8 +17,6 @@ angular.module('icon.components', [])
   .component('authSurvey',                  require('./retrieval/authModalSurvey/authModalSurvey.component.js'))
   .component('yellowCardDisplay',           require('./retrieval/yellowCardDisplay/yellowCardDisplay.component.js'))
   .component('yellowCardRecommendations',   require('./retrieval/yellowCardRecommendations/yellowCardRecommendations.component.js'))
-  .component('yellowCardCell',              require('./retrieval/yellowCardDisplay/yellowCardDisplayCell.component.js'))
-  .component('yellowcardMoreInfo',          require('./retrieval/yellowCardDisplay/yellowCardDisplayMoreInfo.component.js'))
 /* End Retrieval components */
 
 /* Address components */
@@ -49,6 +47,7 @@ angular.module('icon.components', [])
 /* Immunization components */
   .component('ageDisplay',                  require('./immunization/ageDisplay/ageDisplay.component.js'))
   .component('diseasesDisplay',             require('./immunization/diseasesDisplay/diseasesDisplay.component.js'))
+  .component('immunizationDisplay',         require('./immunization/immunizationDisplay/immunizationDisplay.component.js'))
   .component('immunizationInput',           require('./immunization/immunizationInput/immunizationInput.component.js'))
   .component('immunizationTypeahead' ,      require('./immunization/immunizationTypeahead/immunizationTypeahead.component.js'))
   .component('tradeLotDisplay',             require('./immunization/tradeLotDisplay/tradeLotDisplay.component.js'))
@@ -82,6 +81,8 @@ angular.module('icon.components', [])
 /* End Confirmation components */
 
 /* Index components */
+  .component('returnHomeModal',             require('./index/returnHomeModal/returnHomeModal.component.js'))
+
 /* Phu Header components */
   .component('languageSelector',            require('./index/phuHeader/languageSelector/languageSelector.component.js'))
   .component('phuHeader',                   require('./index/phuHeader/phuHeader/phuHeader.component.js'))
@@ -102,6 +103,7 @@ angular.module('icon.components', [])
 
   .component('browserSupport',              require('./index/browserSupport/browserSupport.component.js'))
   .component('phuFooter',                   require('./index/phuFooter/phuFooter.component.js'))
+  .component('skipToContent',               require('./index/skipToContent/skipToContent.component.js'))
 /* End Index components */
 
 /* Progress Bar components */
@@ -111,11 +113,13 @@ angular.module('icon.components', [])
 /* Form components */
   .component('datepicker',                  require('./form/datepicker/datepicker.component.js'))
   .component('nextPrevButtons',             require('./form/nextPrevButtons/nextPrevButtons.component.js'))
+  .component('actionButton',                require('./form/actionButton/actionButton.component.js'))
 /* End Form components */
 
 /* Notification components */
-  .component('notification',                require('./notification/notification.component.js'))
-  .component('dismissableInfoNotification', require('./notification/dismissableInfoNotification.component.js'))
-  .component('staticProgressNotification',  require('./notification/staticProgressNotification.component.js'))
-  .component('actionableInfoNotification',  require('./notification/actionableInfoNotification.component.js'))
+  .component('notification',                  require('./notification/notification.component.js'))
+  .component('dismissableInfoNotification',   require('./notification/dismissableInfoNotification.component.js'))
+  .component('inactivityTimeoutNotification', require('./notification/inactivityTimeoutNotification.component.js'))
+  .component('sessionExpiredNotification',    require('./notification/sessionExpiredNotification.component.js'))
+  .component('staticProgressNotification',    require('./notification/staticProgressNotification.component.js'))
 /* End Notification components */

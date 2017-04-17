@@ -1,6 +1,6 @@
 /**
  * Created on 2017-01-23.
- * Component that is displayed when user is using an unsupported browser 
+ * Component that is displayed when user is using an unsupported browser
  */
 (function(){
 'use strict';
@@ -11,12 +11,17 @@
     templateUrl: './components/index/browserSupport/browserSupport.template.html'
   };
 
-  browserSupportController.$inject = ['$translate', 'deviceDetector', 'BrowserChecker'];
-  function browserSupportController ($translate, deviceDetector, BrowserChecker) {
+  browserSupportController.$inject = ['$translate', 'BrowserChecker', 'Multitenancy'];
+  function browserSupportController ($translate, BrowserChecker, Multitenancy) {
 
     this.$onInit = ()=> {
       this.currentBrowser =  BrowserChecker.browser;
       this.supportedBrowsers = BrowserChecker.getSupportedBrowsers();
+
+      /** Multitenancy Init */
+      Multitenancy
+        .getPhuKeys()
+        .then((phuAssets) => { this.multitenancy = phuAssets; });
 
       let browserImages = {
         'Chrome': 'chrome',
@@ -31,20 +36,8 @@
 
       let browserLinks = {};
       Object.keys(this.supportedBrowsers)
-            .map((a) => {
-             $translate('browserSupport.LINKS.' + this.supportedBrowsers[a].toUpperCase())
-              .then((value) => {
-                browserLinks[this.supportedBrowsers[a]] = value;
-              });
-            });
+            .map((a) => browserLinks[this.supportedBrowsers[a]] = 'browserSupport.LINKS.' + this.supportedBrowsers[a].toUpperCase());
 
-      if (deviceDetector.device != 'unknown') {
-        $translate('browserSupport.LINKS.SAFARI_MOBILE')
-         .then((value) => {
-           browserLinks['Safari'] = value;
-         });
-      }
-    
       this.getBrowserImage = (browserName) => {
         return browserImages[browserName];
       };

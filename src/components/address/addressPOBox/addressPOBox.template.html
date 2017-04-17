@@ -2,7 +2,7 @@
   <!-- POBox -->
   <div class="form-group col-xs-12 col-sm-4">
     <label for="address-pobox-number" aria-label="{{ 'addressPOBox.POBOX' | translate }}">
-      {{ 'addressPOBox.POBOX' | translate }}<span class="required_field">*</span>
+      {{ 'addressPOBox.POBOX' | translate }}
     </label>
 
     <input
@@ -21,8 +21,8 @@
          ng-if="$ctrl.form.POBox.$touched" role="alert">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressPOBox.ERRORS.BAD_FORMAT'
            aria-label="{{ 'addressPOBox.ERRORS.BAD_FORMAT' | translate }}"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressPOBox.ERRORS.IS_REQUIRED'
-           aria-label="{{ 'addressPOBox.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressPOBox.ERRORS.POBOX_REQUIRED'
+           aria-label="{{ 'addressPOBox.ERRORS.POBOX_REQUIRED' | translate }}"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressPOBox.ERRORS.EXCEEDS_MAXLENGTH'
            aria-label="{{ 'addressPOBox.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
     </div>

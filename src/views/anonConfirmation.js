@@ -1,7 +1,8 @@
-anonConfirmationController.$inject = ['GatingQuestionService'];
-function anonConfirmationController (GatingQuestionService) {
+anonConfirmationController.$inject = ['GatingQuestionService', 'EditReviewService'];
+function anonConfirmationController (GatingQuestionService, EditReviewService) {
   this.$onInit = ()=> {
     GatingQuestionService.reset();
+    EditReviewService.setFromReviewPage(false);
   }
 }
 

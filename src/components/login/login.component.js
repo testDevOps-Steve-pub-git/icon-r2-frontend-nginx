@@ -50,7 +50,6 @@
         .then(() => { $state.go('^.patient'); })
         .then(() => { Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS); })
         .catch((error) => {
-          console.log(error.message);
           switch(error.message){
             case ICON_ERROR.RETRIEVAL.OUTCOME_BAD_OIID:
               Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_BAD_OIID);

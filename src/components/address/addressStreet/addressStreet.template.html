@@ -21,7 +21,7 @@
 <div ng-if="$ctrl.hasUserInput() || $ctrl.isAddressFormDisplayed">
   <div class="row">
     <div class="form-group col-xs-12 col-sm-3">
-      <label for="address-street-number">{{ 'addressStreet.STREET_NUMBER' | translate }}<span class="required_field">*</span></label>
+      <label for="address-street-number">{{ 'addressStreet.STREET_NUMBER' | translate }}</label>
 
       <input ng-model="$ctrl.localAddress.streetNumber"
              class="form-control"
@@ -37,8 +37,8 @@
            ng-if="$ctrl.form.streetNumber.$touched" role="alert">
         <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
              aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
-        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.IS_REQUIRED'
-             aria-label="{{ 'addressStreet.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.STREET_NUMBER_REQUIRED'
+             aria-label="{{ 'addressStreet.ERRORS.STREET_NUMBER_REQUIRED' | translate }}"></div>
         <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
              aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
       </div>
@@ -79,7 +79,7 @@
   <!--Street Name-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-6">
-      <label for="address-street-name">{{ 'addressStreet.STREET_NAME' | translate }}<span class="required_field">*</span></label>
+      <label for="address-street-name">{{ 'addressStreet.STREET_NAME' | translate }}</label>
 
       <input ng-model="$ctrl.localAddress.streetName"
              class="form-control"
@@ -95,8 +95,8 @@
            ng-if="$ctrl.form.streetName.$touched" role="alert">
         <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
              aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
-        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.IS_REQUIRED'
-             aria-label="{{ 'addressStreet.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.STREET_NAME_REQUIRED'
+             aria-label="{{ 'addressStreet.ERRORS.STREET_NAME_REQUIRED' | translate }}"></div>
         <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
              aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
       </div>

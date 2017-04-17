@@ -4,8 +4,8 @@
 
     <!--Patient First Name-->
     <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <label for="patient-first-name"  aria-label="{{'patientCapture.FIRST_NAME' | translate}}">{{'patientCapture.FIRST_NAME' | translate}}<span class="required_field">*</span></label>
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
+        <label for="patient-first-name"  aria-label="{{'patientCapture.FIRST_NAME' | translate}}">{{'patientCapture.FIRST_NAME' | translate}}</label>
 
         <input ng-model="$ctrl.localPatient.firstName"
                name="patientFirstName"
@@ -18,9 +18,9 @@
 
         <!--Error Messages-->
         <div class="error-messages" id="patient-first-name-error" ng-messages="$ctrl.form.patientFirstName.$error" ng-if="$ctrl.form.patientFirstName.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.IS_REQUIRED' aria-label="{{'patientCapture.IS_REQUIRED' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='patientCapture.BAD_FORMAT' aria-label="{{'patientCapture.BAD_FORMAT' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='patientCapture.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.EXCEEDS_MAXLENGTH' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.FIRST_NAME_REQUIRED' aria-label="{{'patientCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT' aria-label="{{'patientCapture.ERRORS.BAD_FORMAT' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -29,7 +29,7 @@
 
     <!--Patient Middle Name-->
     <div class="row">
-      <div class="form-group col-xs-12 col-md-6">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
         <label for="patient-middle-name" translate='patientCapture.MIDDLE_NAME' aria-label="{{'patientCapture.MIDDLE_NAME' | translate}}"></label>
 
         <input ng-model="$ctrl.localPatient.middleName"
@@ -42,10 +42,10 @@
         <!--Error Messages-->
         <div class="error-messages" id="patient-middle-name-error" ng-messages="$ctrl.form.patientMiddleName.$error" ng-if="$ctrl.form.patientMiddleName.$touched" role="alert">
           <div class="alert alert-danger col-xs-12" ng-message="pattern"
-               translate='patientCapture.BAD_FORMAT' translate-compile></div>
+               translate='patientCapture.ERRORS.BAD_FORMAT' translate-compile></div>
           <div class="alert alert-danger col-xs-12"
-               ng-message="maxlength" translate='patientCapture.EXCEEDS_MAXLENGTH'
-               aria-label="{{'patientCapture.EXCEEDS_MAXLENGTH' | translate}}"></div>
+               ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'
+               aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -54,8 +54,8 @@
 
     <!--Patient Last Name-->
     <div class="row">
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="patient-last-name" class="required" aria-label="{{'patientCapture.LAST_NAME' | translate}}" translate-compile>{{'patientCapture.LAST_NAME' | translate}}<span class="required_field">*</span></label>
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
+        <label for="patient-last-name" class="required" aria-label="{{'patientCapture.LAST_NAME' | translate}}" translate-compile>{{'patientCapture.LAST_NAME' | translate}}</label>
 
         <input ng-model="$ctrl.localPatient.lastName"
                name="patientLastName"
@@ -67,9 +67,9 @@
 
         <!--Error Messages-->
         <div class="error-messages" id="patient-last-name-error" ng-messages="$ctrl.form.patientLastName.$error" ng-if="$ctrl.form.patientLastName.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.IS_REQUIRED' aria-label="{{'patientCapture.IS_REQUIRED' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='patientCapture.BAD_FORMAT' aria-label="{{'patientCapture.BAD_FORMAT' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='patientCapture.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.EXCEEDS_MAXLENGTH' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.LAST_NAME_REQUIRED' aria-label="{{'patientCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT' aria-label="{{'patientCapture.ERRORS.BAD_FORMAT' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -78,7 +78,7 @@
 
     <!-- Date of birth -->
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
         <!-- Datepicker component -->
         <datepicker
         input-id="patient-dob"
@@ -87,7 +87,7 @@
         form-name="$ctrl.form"
         min-date="1900-01-01"
         required="true">
-          <label for="patient-dob">{{'patientCapture.DOB' | translate}}<span class="required_field">*</span></label>
+          <label for="patient-dob">{{'patientCapture.DOB' | translate}}</label>
         </datepicker>
         <!-- End of datepicker component -->
       </div>
@@ -95,12 +95,12 @@
     <!-- End Date of birth -->
 
     <!--Patient Sex-->
-    <div class="row">
+    <div class="form-group row" role="group" tabindex="0" aria-label="{{'patientCapture.SEX' | translate}}">
       <div class="col-xs-12">
-        <label for="patient-gender-options">{{'patientCapture.SEX' | translate}}<span class="required_field">*</span></label>
+        <label for="patient-gender-options">{{'patientCapture.SEX' | translate}}</label>
       </div>
 
-      <div id="patient-gender-options" class="btn-group col-xs-6" role="group" tabindex="0" aria-label="{{'patientCapture.SEX' | translate}}">
+      <div id="patient-gender-options" class="btn-group col-xs-12 col-sm-12 col-md-6">
         <button class="btn btn-info col-xs-4" tabindex="0"
           ng-model="$ctrl.localPatient.gender"
           name="gender"
@@ -133,56 +133,75 @@
 
         <!--Error Messages-->
         <div class="error-messages" id="patient-sex-error" ng-messages="$ctrl.form.gender.$error" ng-if="$ctrl.form.gender.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.SEX_ERROR'></div>
+          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.SEX_ERROR'></div>
         </div>
       </div>
     </div>
     <!--End Patient Sex-->
 
     <!--Submitter phone number info if submitter is self -->
+
     <div ng-if="$ctrl.localSubmitterInfo != null">
       <submitter-phone
         form="$ctrl.form"
         local-submitter-info="$ctrl.localSubmitterInfo">
       </submitter-phone>
     </div>
+
     <!-- End submitter phone number info -->
 
-    <br aria-hidden=\"true\"/>
-    <!--Health Card Image-->
     <div class="row">
-      <div class="col-xs-12 icon-health-card-img hidden-xs">
+      <!--Health Card Image-->
+      <div class="form-group col-xs-12 icon-health-card-img">
         <img id="healthcard_number" src="./img/health-card-graphic.png" alt="{{'patientCapture.HEALTHCARD' | translate}}" />
       </div>
-    </div>
-    <!--End Health Card Image-->
+      <!--End Health Card Image-->
 
-    <!--Health Card Number-->
-    <div class="row">
       <!--Health Card Number-->
-      <div class="col-xs-12 col-sm-4">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
         <!--Health Card Number-->
         <label for="patient-hcn" translate='patientCapture.HEALTH_CARD_NUMBER'></label>
+        {{'patientCapture.OPTIONAL' | translate}}
 
-        <div class="mask-display">
+        <!--Non Mobile -->
+        <div class="icon-mask-display">
           <input ng-model="$ctrl.localPatient.healthCardNumber"
                  name="healthCardNumber"
                  id="patient-hcn" class="form-control"
                  type="text"
                  icon-hcn-checksum
                  ui-options="$ctrl.hcnOptions"
-                 ui-mask="AAAA-AAA-AAA" ui-mask-placeholder ui-mask-placeholder-char="_"
+                 ui-mask="AAAA-AAA-AAA"
+                 autocomplete="off" />
+        </div>
+
+        <!-- Mobile -->
+        <div class="icon-display-mobile">
+          <input ng-model="$ctrl.localPatient.healthCardNumber"
+                 name="healthCardNumberMobile"
+                 id="patient-hcn" class="form-control"
+                 type="text"
+                 icon-hcn-checksum
                  autocomplete="off" />
         </div>
 
         <!--Error Messages-->
-        <div class="error-messages mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
+        <div class="error-messages icon-mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
           <div ng-message="iconHcn"
                class="alert alert-danger col-xs-12"
-               translate='patientCapture.HCN_FORMAT_ERROR'></div>
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
           <div ng-message="mask"
                class="alert alert-danger col-xs-12"
-               translate='patientCapture.HCN_FORMAT_ERROR'></div>
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+        </div>
+
+        <div class="error-messages icon-display-mobile" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumberMobile.$error" ng-if="$ctrl.form.healthCardNumberMobile.$touched" role="alert">
+          <div ng-message="iconHcn"
+               class="alert alert-danger col-xs-12"
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+          <div ng-message="mask"
+               class="alert alert-danger col-xs-12"
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -191,11 +210,11 @@
 
     <!--Patient OIID-->
     <div class="row">
-      <div class="col-xs-4">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
         <label for="patient-oiid" translate='patientCapture.OIID'></label>
-
+        {{'patientCapture.OPTIONAL' | translate}}
         <!-- Regular Screen-->
-        <div class="mask-display">
+        <div class="icon-mask-display">
           <input ng-model="$ctrl.localPatient.oiid"
                  name="OIID"
                  ng-pattern = $ctrl.rgx.OIID
@@ -207,10 +226,26 @@
         </div>
         <!-- End Regular Screen-->
 
+        <!-- Mobile Screen-->
+        <div class="icon-display-mobile">
+          <input ng-model="$ctrl.localPatient.oiid"
+                 name="OIIDMobile"
+                 ng-pattern = $ctrl.rgx.OIID
+                 id="patient-oiid" class="form-control"
+                 type="text"
+                 autocomplete="off" />
+        </div>
+        <!-- End Mobile Screen-->
+
         <!--Error Messages-->
-        <div class="error-messages mask-display" ng-messages="$ctrl.form.OIID.$error" ng-if="$ctrl.form.OIID.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="pattern" translate='patientCapture.OIID_ERROR'></div>
-          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="mask" translate='patientCapture.OIID_ERROR'></div>
+        <div class="error-messages icon-mask-display" ng-messages="$ctrl.form.OIID.$error" ng-if="$ctrl.form.OIID.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="pattern" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="mask" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+        </div>
+
+        <div class="error-messages icon-display-mobile" ng-messages="$ctrl.form.OIIDMobile.$error" ng-if="$ctrl.form.OIIDMobile.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="pattern" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="mask" translate='patientCapture.ERRORS.OIID_ERROR'></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -220,8 +255,9 @@
 
     <!--Patient School or Daycare-->
     <div class="row">
-      <div class="col-xs-6">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
         <label for="patient-school" translate='patientCapture.DAYCARE' aria-label="{{'patientCapture.DAYCARE' | translate}}"></label>
+        {{'patientCapture.DAYCARE_OPTIONAL' | translate}}
         <input type="text"
                id="patient-school"
                name="schoolOrDaycare"
@@ -229,7 +265,6 @@
                ng-pattern="$ctrl.rgx.SCHOOL_NAME"
                ng-maxlength="100"
                ng-model="$ctrl.localPatient.schoolOrDayCare"
-               placeholder="{{'patientCapture.DAYCARE_TOOLTIP' | translate}}"
                typeahead-loading="loadingLocations"
                typeahead-no-results="noResults"
                typeahead-on-select="$ctrl.onSchoolOrDaycareSelect($item)"
@@ -243,8 +278,8 @@
 
         <!--Error Messages-->
         <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
-          <div class="alert alert-danger" ng-message="pattern" translate='patientCapture.BAD_FORMAT'></div>
-          <div class="alert alert-danger" ng-message="maxlength" translate='patientCapture.EXCEEDS_MAXLENGTH'></div>
+          <div class="alert alert-danger" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT'></div>
+          <div class="alert alert-danger" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -254,3 +289,4 @@
 
   </fieldset>
 </div>
+

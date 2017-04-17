@@ -103,8 +103,8 @@
 
     function formatImmunizationDetails (immunization) {
       let immunizationName = isAgentWithoutTrade(immunization)
-                                ? { text: `${immunization.agent.name}`, bold: true }
-                                : { text: `${immunization.trade.name} (${immunization.agent.name})`, bold: true };
+                                ? { text: `${immunization.agent.shortName}`, bold: true }
+                                : { text: `${immunization.trade.shortName} (${immunization.agent.shortName})`, bold: true };
 
       let immunizationDiseases = `\n${immunization.agent.diseases
                                  .map(disease => disease.name)
@@ -145,7 +145,7 @@
     function phuHeader ({text, data}) {
       return {
         table: {
-          widths: [100, '*'],
+          widths: [130, '*'],
           body: [
             [
               {
@@ -158,8 +158,7 @@
                   { text: data.phuName, fontSize: fontSize.H1 },
                   '\n',
                   data.phuPhone
-                ],
-                alignment: 'center'
+                ]
               },
             ],
           ]
@@ -219,7 +218,7 @@
             text: [ text.patientDemographics_ul1_li1_f1, { text: text.patientGender, bold: true } ]
           },
           {
-            text: [ text.patientDemographics_ul1_li2_f1, { text: data.patientDob, bold: true } ]
+            text: [ text.patientDemographics_ul1_li2_f1, { text: `${data.patientDob} (${text.yellowCard_dateFormatText})`, bold: true } ]
           },
           // Optional fields
           (data.patientHcn)
@@ -451,34 +450,49 @@
         text: [
           {
             text: text.yellowCardTitle_p1_s1_f1,
-            fontSize: fontSize.H3
+            fontSize: fontSize.H3,
+            bold: true
           },
           `\n`,
           {
-            text: text.yellowCardTitle_p1_s1_f2,
-            bold: true
+            text: text.yellowCardTitle_p1_s1_f2
           }
         ]
       };
     }
 
-    function yellowCard ({text, data}) {
-      let ycOrder = (disease) => {
-        return DISEASE_YC_ORDER[disease.snomed] || DISEASE_YC_ORDER.DEFAULT;
+    function yellowCardFooter({text, data}) {
+      return {
+        text: text.yellowCardFooter_p1_s1,
       }
+    }
 
-      let ycDiseaseSnomeds = Object.keys(DISEASE_YC_ORDER)
-                             .sort((left, right) => {
-                               return ycOrder(right) - ycOrder(left);
-                             });
+    function orderedDiseaseSnomeds (diseases) {
+      return Object.keys(diseases)
+      .map((key) => { return [key, diseases[key]] }) // get the snomeds and order
+      .sort((a, b) => { return a[1] > b[1] ? 1 : -1 }) // sort on the order
+      .map((item) => { return item[0] }) // return just the ordered snomeds
+    }
+
+    function ycOrder (snomed) {
+      return (DISEASE_YC_ORDER[snomed])
+                ? DISEASE_YC_ORDER[snomed]
+                : DISEASE_YC_ORDER.DEFAULT;
+    }
+
+    function yellowCard ({text, data}) {
+      let ycDiseaseSnomeds = orderedDiseaseSnomeds(DISEASE_YC_ORDER)
 
       let ycRows = data.retrievedImmunizations
                    .map(immunization => {
                      let diseaseSnomeds = immunization.agent.diseases.map(disease => disease.snomed);
+                     let diseaseSnomedOrdinals = diseaseSnomeds.map(ycOrder);
+
                      return [
                        { text: immunization.date, bold: true, alignment: 'center' },
                        ...ycDiseaseSnomeds.map(snomed => {
-                          return (diseaseSnomeds.indexOf(snomed) >= 0)
+                          let ycColumnOrdinal = ycOrder(snomed);
+                          return (diseaseSnomedOrdinals.indexOf(ycColumnOrdinal) >= 0)
                                     ? { image: data.pdfCheckmark, width: 9, height: 12, alignment: 'center' }
                                     : { text: `` }
                        }),
@@ -493,7 +507,7 @@
       let headerRow = [
         { text: text.yellowCard_dateFormatHeader, alignment: 'center' },
         ...ycDiseaseSnomeds.map(snomed => getSnomedImage(snomed)),
-        { text: `` }
+        { text: text.yellowCard_additionalInformation }
       ];
 
       return (data.retrievedImmunizations.length)
@@ -514,7 +528,19 @@
     }
 
     function recommendationsTitle ({text, data}) {
-      return { text: text.recommendationsTitle_p1_s1, fontSize: fontSize.H3 };
+      return {
+        text: text.recommendationsTitle_p1_s1,
+        fontSize: fontSize.H3,
+        bold: true
+      };
+    }
+
+    function recommendationsHeader ({text, data}) {
+      return { text: text.recommendationsHeader_p1_s1 };
+    }
+
+    function recommendationsFooter ({text, data}) {
+      return { text: text.recommendationsFooter_p1_s1 };
     }
 
     function recommendations ({text, data}) {
@@ -586,23 +612,19 @@
           `\n\n`,
 
           patientNameHeading(params),
-          `\n`,
           patientDemographics(params),
 
           `\n\n`,
           yellowCardTitle(params),
-          `\n`,
           yellowCard(params),
+          yellowCardFooter(params),
 
           `\n\n`,
           recommendationsTitle(params),
-          `\n`,
+          recommendationsHeader(params),
           recommendations(params),
-
-          `\n`,
+          recommendationsFooter(params),
         ],
-
-        footer: phuYellowCardFooter(params),
 
         defaultStyle: { font: 'OpenSans', fontSize: 10 },
         styles: {
@@ -766,6 +788,7 @@
 
                yellowCardTitle_p1_s1_f1: $translate('pdf.yellowCardTitle_p1_s1_f1', data),
                yellowCardTitle_p1_s1_f2: $translate('pdf.yellowCardTitle_p1_s1_f2', data),
+               yellowCardFooter_p1_s1: $translate('pdf.yellowCardFooter_p1_s1', data),
 
                printLogoUrl: $translate('pdf.printLogoUrl', data),
 
@@ -775,9 +798,14 @@
                noImmunizations: $translate('pdf.noImmunizations', data),
 
                recommendationsTitle_p1_s1: $translate('pdf.recommendationsTitle_p1_s1', data),
+               recommendationsHeader_p1_s1: $translate('pdf.recommendationsHeader_p1_s1', data),
+               recommendationsFooter_p1_s1: $translate('pdf.recommendationsFooter_p1_s1', data),
+
                noRecommendations: $translate('pdf.noRecommendations', data),
 
                yellowCard_dateFormatHeader: $translate('pdf.yellowCard_dateFormatHeader', data),
+               yellowCard_dateFormatText: $translate('pdf.yellowCard_dateFormatText', data),
+               yellowCard_additionalInformation: $translate('pdf.yellowCard_additionalInformation', data),
                yellowCard_other: $translate('pdf.yellowCard_other', data)
              })
              .then((text) => {

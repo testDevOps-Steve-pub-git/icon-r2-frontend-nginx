@@ -1,6 +1,14 @@
-authController.$inject = ['$window', '$translate'];
-function authController ($window, $translate) {
-  this.$onInit= ()=> {
+authController.$inject = [
+  '$window', '$translate',
+  'SessionHandler', 'TokenHandler'
+];
+function authController (
+  $window, $translate,
+  SessionHandler, TokenHandler
+) {
+  this.$onInit= () => {
+    TokenHandler.refreshTransactionToken()
+    .then(SessionHandler.extendTransactionTime);
 
     /** Tab Close */
     $window.onbeforeunload = function (event) {

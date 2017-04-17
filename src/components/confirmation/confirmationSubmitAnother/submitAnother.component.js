@@ -13,78 +13,61 @@
   submitAnotherController.$inject = [
     '$state',
     '$uibModal',
-    'ImmunizationRecordService', 'Notify', 'ToasterChoiceService', 'TokenHandler',
+    'ImmunizationRecordService', 'Notify', 'TokenHandler', 'MiscData',
     'ICON_NOTIFICATION'
   ];
   function submitAnotherController (
     $state,
     $uibModal,
-    ImmunizationRecordService, Notify, ToasterChoiceService, TokenHandler,
+    ImmunizationRecordService, Notify, TokenHandler, MiscData,
     ICON_NOTIFICATION
   ) {
-    let $ctrl = this;
-    let submitterInfo = {};
+    let submitter = {};
+    let address = {};
+    this.path = '';
     this.$onInit = () => {
-      $ctrl.openCompletionSubmitterModal = openCompletionSubmitterModal;
-      $ctrl.submitter = {value:'ONESELF'};
-      submitterInfo = ImmunizationRecordService.getSubmitter();
-      $ctrl.returnHome = returnHome;
+      submitter = ImmunizationRecordService.getSubmitter();
+      address = ImmunizationRecordService.getAddress();
+
+
+      /* Saves address and submitter info in case of future submissions. Will get cleared on welcome screen*/
+      ImmunizationRecordService.setSubmitter(submitter);
+      ImmunizationRecordService.setAddress(address);
+
+      /* If user decides to submit again, they will skip AUP*/
+      MiscData.setSkipAUP(true);
+
+      /* Func Init */
+      this.returnHome = returnHome;
+      this.openHelpModal = openHelpModal;
     };
 
+    this.$onDestroy = ()=> {
+      ImmunizationRecordService.clear();
+    };
+
+
+    /**
+     *  Opens modal window for information on OIID and PIN
+     */
+    function openHelpModal () {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        template: '<welcome-help-modal $close="$close(result)"></welcome-help-modal>',
+        controller: () => {},
+        size: 'md',
+      }).result
+        .catch((error)=>{});
+    }
 
     /**
      *  Return user home, clears information, lets user know their information has been cleared, clear session
      */
     function returnHome () {
       ImmunizationRecordService.clear();
-      // ToasterChoiceService.setToasterChoice('clear');
       Notify.publish(ICON_NOTIFICATION.INFO_PATIENT_DATA_CLEARED);
       TokenHandler.clearTransactionToken();
       $state.go('welcome');
     }
-
-
-    function openCompletionSubmitterModal (type) {
-      let address = '';
-      if (type == 'auth') {
-        address = ImmunizationRecordService.getAddress();
-      }
-      ImmunizationRecordService.clear();
-      $uibModal.open({
-          animation : true,
-          template : `<welcome-modal modal-data='$ctrl.submitter' $close="$close(result)"></welcome-modal>`,
-          controller: ['modalData', function(modalData) {
-            let ctrl = this;
-            ctrl.modalData = modalData;
-          }],
-          backdrop  : 'static',
-          resolve: {
-            modalData: $ctrl.submitter
-          },
-          size: 'sm',
-        }).result
-          .then((submitter) => {
-            $ctrl.submitter.value = submitter;
-            submitterInfo.relationshipToPatient = $ctrl.submitter.value;
-            //Set submitterInfo model to update relationshipToPatient
-            ImmunizationRecordService.setSubmitter(submitterInfo);
-            if (type == 'auth') {
-              ImmunizationRecordService.setAddress(address);
-            if ($ctrl.submitter.value == 'ONESELF') {
-              $state.go('auth.self.login')
-            } else {
-              $state.go('auth.other.login');
-            }
-          } else {
-            if ($ctrl.submitter.value == 'ONESELF') {
-              $state.go('anon.self.submission.patient')
-            } else {
-              $state.go('anon.other.submission.patient');
-            }
-          }
-          }, function (reason) {
-            console.info(`Reason for dismissal is: ${reason}`);
-          });
-      };
-    }
+  }
 }());

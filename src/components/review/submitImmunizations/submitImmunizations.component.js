@@ -37,7 +37,7 @@ function addressToggleController (
           })
           .then(() => { Notify.publish(ICON_NOTIFICATION.POP_SUBMISSION_PROGRESS); })
           .catch((error) => {
-            console.error(error);
+            Notify.publish(ICON_NOTIFICATION.POP_SUBMISSION_PROGRESS);
             this.isSubmitButtonDisabled = false;
             ToasterChoiceService.setToasterParams(toasterParams);
             ToasterChoiceService.setToasterChoice('error');

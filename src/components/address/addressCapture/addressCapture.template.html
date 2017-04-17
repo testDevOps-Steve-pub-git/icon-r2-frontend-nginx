@@ -2,7 +2,7 @@
 <div class="row">
   <div class="form-group col-xs-12 col-sm-6">
     <label for="address-city" class="required" aria-label="{{ 'addressCapture.CITY' | translate }}">
-      {{'addressCapture.CITY' | translate}}<span class="required_field">*</span>
+      {{'addressCapture.CITY' | translate}}
     </label>
 
     <input type="text"
@@ -13,7 +13,6 @@
            ng-pattern="$ctrl.rgx.CITY"
            ng-maxlength="50"
            ng-model="$ctrl.localAddress.city"
-           placeholder="{{ 'addressCapture.CITY_PLACERHOLDER' | translate}}"
            autocomplete="off"
            typeahead-loading="loadingLocations2"
            typeahead-no-results="noResults2"
@@ -25,8 +24,8 @@
          role="alert">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressCapture.ERRORS.BAD_FORMAT'
            aria-label="{{ 'addressCapture.ERRORS.BAD_FORMAT' | translate }}"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.IS_REQUIRED'
-           aria-label="{{ 'addressCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.CITY_REQUIRED'
+           aria-label="{{ 'addressCapture.ERRORS.CITY_REQUIRED' | translate }}"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressCapture.ERRORS.EXCEEDS_MAXLENGTH'
            aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
     </div>
@@ -38,7 +37,7 @@
 <!--Province-->
 <div class="row">
   <div class="form-group col-xs-12 col-sm-6">
-    <label for="address-province" class="required" aria-label="{{ 'addressCapture.PROVINCE' | translate }}">{{'addressCapture.PROVINCE' | translate}}<span class="required_field">*</span></label>
+    <label for="address-province" class="required" aria-label="{{ 'addressCapture.PROVINCE' | translate }}">{{'addressCapture.PROVINCE' | translate}}</label>
 
     <select class="form-control"
             id="address-province"
@@ -51,8 +50,8 @@
     <!--Error messages for province-->
     <div class="error-messages" id="address-province-error" ng-messages="$ctrl.form.province.$error" ng-if="$ctrl.form.province.$touched"
          role="alert">
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.IS_REQUIRED'
-           aria-label="{{ 'addressCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.PROVINCE_REQUIRED'
+           aria-label="{{ 'addressCapture.ERRORS.PROVINCE_REQUIRED' | translate }}"></div>
     </div>
     <!--End Error Messages-->
   </div>
@@ -63,7 +62,7 @@
 <div class="row">
   <div class="form-group col-xs-12 col-sm-6 col-sm-6 col-md-4">
     <label for="address-postal" class="required"
-           aria-label="{{ 'addressCapture.POSTAL_CODE' | translate }}">{{ 'addressCapture.POSTAL_CODE' | translate }}<span class="required_field">*</span></label>
+           aria-label="{{ 'addressCapture.POSTAL_CODE' | translate }}">{{ 'addressCapture.POSTAL_CODE' | translate }}</label>
 
     <input ng-model="$ctrl.localAddress.postalCode"
            class="form-control"
@@ -78,8 +77,8 @@
          ng-if="$ctrl.form.postalCode.$touched" role="alert">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressCapture.ERRORS.POSTAL_REQ_ERROR'
            aria-label="{{ 'addressCapture.ERRORS.POSTAL_REQ_ERROR' | translate }}"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.IS_REQUIRED'
-           aria-label="{{ 'addressCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.POSTAL_CODE_REQUIRED'
+           aria-label="{{ 'addressCapture.ERRORS.POSTAL_CODE_REQUIRED' | translate }}"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressCapture.ERRORS.EXCEEDS_MAXLENGTH'
            aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
     </div>

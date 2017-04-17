@@ -35,6 +35,7 @@ module.exports = {
           form="anonOtherSubmitterForm">
         </submitter-email>
 
+        <hr \>
         <next-prev-buttons
         on-next="$ctrl.validateForm(anonOtherSubmitterForm)">
         </next-prev-buttons>

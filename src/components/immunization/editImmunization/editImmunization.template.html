@@ -1,9 +1,7 @@
 <div class="modal-header">
-  <button ng-click="$ctrl.$close()"
-          aria-label="{{'editImmunization.CLOSE_MODAL' | translate}}"
-          class="btn-link icon-text-large pull-right">
-    <span class="btn-default fa fa-close"/>
-  </button>
+  <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.$close()">
+      <i class="fa fa-times-circle fa-2x"></i>
+    </span>
   <h4 class="text-center">
     <span
     translate="editImmunization.IMMUNIZATION_MODAL_TITLE"
@@ -20,13 +18,13 @@
     <div class="form-group">
 
       <datepicker
-        input-id="immunization-group-date"
+        input-id="immunizations-date-input"
         input-name="immunizationGroupDate"
         model="$ctrl.immunization.date"
         form-name="addImmunizationForm"
         min-date="{{$ctrl.minDate}}"
-        required="true">
-        <label for="immunization-group-date" aria-label="{{ 'editImmunization.DATE_SIMPLE' | translate }}">{{ 'editImmunization.DATE' | translate }}</label>
+        ng-required="true">
+        <label for="immunizations-date-input" aria-label="{{ 'editImmunization.DATE_LABEL' | translate }}">{{ 'editImmunization.DATE' | translate }}</label>
       </datepicker>
     </div>
 
@@ -53,6 +51,13 @@
     <!-- Immunization capture -->
     <div class="form-group">
       <immunization-typeahead model="$ctrl.immunization"></immunization-typeahead>
+
+      <!--Error Messages-->
+      <div class="error-messages" id="no-immunizations-selected"  ng-if="addImmunizationForm.selectedVaccine.$touched && $ctrl.immunization.agent.snomed === ''" role="alert">
+        <div class="alert alert-danger col-xs-12"
+             aria-label="">{{ 'editImmunization.IMMS_ERROR' | translate}}</div>
+      </div>
+      <!--End Error Messages-->
     </div>
 
     <div class="form-group">
@@ -66,10 +71,10 @@
 </div>
 
 <div class="modal-footer center-block">
-  <button class="btn btn-primary"
-  ng-disabled="addImmunizationForm.$invalid ||
-               ($ctrl.immunization.agent.snomed === '' && $ctrl.immunization.trade.snomed === '')"
-  ng-click="$ctrl.save($ctrl.immunization)">
+  <button class="btn btn-primary" 
+  id="immunizations-save"
+
+  ng-click="$ctrl.save($ctrl.immunization, addImmunizationForm)">
     {{ 'editImmunization.SAVE' | translate }}
   </button>
 </div>

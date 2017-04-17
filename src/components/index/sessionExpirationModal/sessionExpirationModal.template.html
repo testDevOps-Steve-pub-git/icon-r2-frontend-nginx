@@ -1,6 +1,9 @@
 <div>
 
   <div class="modal-header">
+    <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.sessionChoice('end')">
+      <i class="fa fa-times-circle fa-2x"></i>
+    </span>
     <h3>{{ 'sessionExpiry.TITLE' | translate }}</h3>
   </div>
 
@@ -12,8 +15,8 @@
       </div>
       <div class="col-xs-12">
         <button class="btn btn-md btn-primary col-xs-10 col-xs-offset-1" ng-click="$ctrl.sessionChoice('extend')">{{ 'sessionExpiry.EXTEND_BUTTON' | translate }}</button>
-        <br aria-hidden=\"true\"/>
-        <br aria-hidden=\"true\"/>
+        <br aria-hidden="true"/>
+        <br aria-hidden="true"/>
         <button class="btn btn-md btn-danger col-xs-10 col-xs-offset-1" ng-click="$ctrl.sessionChoice('end')">{{ 'sessionExpiry.CANCEL_BUTTON' | translate }}</button>
       </div>
     </div>

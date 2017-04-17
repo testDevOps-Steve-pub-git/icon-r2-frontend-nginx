@@ -1,15 +1,22 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4 id="immunizations-immunizations-header"><span class="fa fa-medkit"></span> {{ $ctrl.immunizations[0].agent.name }}</h4>
+    <h4 id="immunizations-immunizations-header">
+      <span class="fa fa-medkit"></span>
+      <immunization-display
+      immunization="$ctrl.immunizations[0]">
+      </immunization-display>
+    </h4>
 
-    <diseases-display diseases="$ctrl.immunizations[0].agent.diseases"></diseases-display>
+    <diseases-display
+    diseases="$ctrl.immunizations[0].agent.diseases">
+    </diseases-display>
   </div>
 
   <ul class="list-group">
-    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item">
+    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item icon-display-panel">
       <div class="pull-right">
-        <button class="btn btn-default text-center" id="immunizations-edit-{{$index}}" ng-click="$ctrl.edit(immunization)" aria-label="{{ 'immunizationDisplayByAgent.EDIT_LABEL' | translate }} {{ immunization.date }}">{{ 'immunizationDisplayByAgent.EDIT' | translate }}</button>
-        <button class="btn btn-default text-center" id="immunizations-delete-{{$index}}" aria-label="{{ 'immunizationDisplayByAgent.DELETE_LABEL' | translate}} {{ immunization.date }}" ng-click="$ctrl.remove({ immunization: immunization })">{{ 'immunizationDisplayByAgent.DELETE' | translate}}</button>
+        <button class="btn btn-default text-center icon-display-panel-edit" id="immunizations-edit-{{$index}}" ng-click="$ctrl.edit(immunization)" aria-label="{{ 'immunizationDisplayByAgent.EDIT_LABEL' | translate }} {{ immunization.date }}">{{ 'immunizationDisplayByAgent.EDIT' | translate }}</button>
+        <button class="btn btn-default text-center icon-display-panel-delete" id="immunizations-delete-{{$index}}" aria-label="{{ 'immunizationDisplayByAgent.DELETE_LABEL' | translate}} {{ immunization.date }}" ng-click="$ctrl.remove({ immunization: immunization })">{{ 'immunizationDisplayByAgent.DELETE' | translate}}</button>
       </div>
 
       <h4>{{ immunization.date }}</h4>

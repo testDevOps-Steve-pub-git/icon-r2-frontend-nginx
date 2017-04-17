@@ -37,12 +37,12 @@
 }
 /* End foundation PHU styles */
 
-
 /* phuFooter
    TODO: audit these styles, some may be redundant */
 html, body { height: 100%; }
 #main-wrapper { min-height: 100%; }
 /* End phuFooter */
+
 
 /* phuHeader
    TODO: audit these styles, some may be redundant */

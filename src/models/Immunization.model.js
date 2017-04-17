@@ -7,6 +7,11 @@
 
   module.exports = function () { return Immunization; };
 
+  const IMMUNIZATION_TYPE = {
+    GENERIC: `Agent`, // Generic vaccine: has agent, trade data not populated
+    BRANDED: `Trade`, // Branded vaccine: has agent and trade data
+  };
+
   /**
    * @param {string} [date=''] - date immunization was administered
    * @param {boolean} [isDateApproximate=false] - flag for approximate date
@@ -37,6 +42,18 @@
     this.lot = lot || new Lot();
     this.vaccineCode = vaccineCode || '';
 
+    this.getType = () => {
+      return (this.trade.snomed)
+                ? IMMUNIZATION_TYPE.BRANDED
+                : IMMUNIZATION_TYPE.GENERIC;
+    }
+
+    this.getPrevalence = () => {
+      return (!!this.trade.snomed)
+                ? this.trade.prevalenceIndex
+                : this.agent.prevalenceIndex;
+    }
+
     this.clone = clone;
 
     /**
@@ -57,5 +74,7 @@
       );
     }
   }
+
+  Immunization.type = IMMUNIZATION_TYPE;
 
 }());

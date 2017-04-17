@@ -31,7 +31,8 @@
       this.hcnOptions = {
         maskDefinitions: {
           'A': /[0-9]/
-        }
+        },
+        addDefaultPlaceholder:false
       };
 
       /** School/Daycare lookup */

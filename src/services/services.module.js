@@ -3,15 +3,19 @@ angular.module('icon.services', [])
           'Endpoint',
           require('./AnalyticsLogger.service.js')
       ])
+      .service('Is', [
+        'Immunization',
+        require('./Is.service.js')
+      ])
       .service('By', [
-          'DISEASE_YC_ORDER',
+          'Is', 'Immunization', 'DISEASE_YC_ORDER',
           require('./By.service.js')
       ])
       .service('GroupsOf', [require('./GroupsOf.service.js')])
       .service('EditReviewService', [require('./EditReview.service.js')])
       .service('Endpoint', [
           '$http', '$q', '$translate',
-          'ImmunizationRecordService', 'TokenHandler',
+          'ImmunizationRecordService', 'SessionHandler', 'TokenHandler',
           'Agent', 'Disease', 'Immunization', 'Lot', 'Trade',
           'ICON_API',
           require('./Endpoint.service.js')
@@ -41,7 +45,10 @@ angular.module('icon.services', [])
           require('./Multitenancy.service.js')
       ])
       .service('TokenHandler', [
-          '$http', '$q', '$interval', 'jwtHelper', 'Token', 'ICON_API', 'ICON_TOKEN', 'ICON_EVENT',
+          '$http', '$q', '$interval',
+          'jwtHelper',
+          'Token',
+          'ICON_API', 'ICON_TOKEN', 'ICON_EVENT',
           require('./TokenHandler.service.js')
       ])
       .service('ToasterChoiceService', [require('./ToasterChoice.service.js')])
@@ -66,6 +73,12 @@ angular.module('icon.services', [])
           'ICON_NOTIFICATION', 'ICON_ERROR',
           require('./Notify.service.js')
       ])
-    .service('MiscData', [
-      require('./MiscData.service.js')
-    ])
+      .service('MiscData', [
+          require('./MiscData.service.js')
+      ])
+      .service('SessionHandler', [
+          '$interval', '$state',
+          'Notify', 'TokenHandler',
+          'ICON_NOTIFICATION',
+          require('./SessionHandler.service.js')
+      ])

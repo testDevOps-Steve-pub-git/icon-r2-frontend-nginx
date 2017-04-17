@@ -1,11 +1,6 @@
-<div ng-if="$ctrl.immunization.lot.number">
-  <em>
-    {{ ($ctrl.immunization.lot.number)
-          ? 'Lot # ' + $ctrl.immunization.lot.number
-          : '' }}
-
-    {{ ($ctrl.immunization.lot.expiry)
-          ? '(Expiry ' + $ctrl.immunization.lot.expiry + ')'
-          : '' }}
-  </em>
+<div ng-if="!!$ctrl.immunization.lot.number">
+  <strong>
+    <span ng-if="!!$ctrl.immunization.lot.number">{{'tradeLotDisplay.LOT' | translate}} {{$ctrl.immunization.lot.number}}</span>
+  </strong>
+  <span ng-if="!!$ctrl.immunization.lot.expiry">({{'tradeLotDisplay.EXPIRY' | translate}} {{$ctrl.immunization.lot.expiry}})</span>
 </div>

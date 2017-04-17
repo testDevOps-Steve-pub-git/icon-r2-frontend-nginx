@@ -6,8 +6,8 @@
     controller: ontarioImmunizationSchedule
   };
 
-  ontarioImmunizationSchedule.$inject = ['$state'];
-  function ontarioImmunizationSchedule ($state) {
+  ontarioImmunizationSchedule.$inject = [];
+  function ontarioImmunizationSchedule () {
       this.scheduledImmunizationList = [
         ScheduleItem(
           'schedule.AT_2_MONTHS'
@@ -95,7 +95,7 @@
         ],
         [
           DiseaseList('schedule.TD', 'schedule.TD_VALUE'),
-          DiseaseList('schedule.EVERY_FALL')
+          DiseaseList('schedule.EVERY_10_YEARS')
         ],
         [
           DiseaseList('schedule.PNEU-P-23', 'schedule.PNEU-P-23_VALUE'),
@@ -114,6 +114,25 @@
           agentName: agentName,
           diseaseList: angular.copy(diseaseList),
         };
+      }
+
+    /**
+     * For the scroll buttons, to scroll left and right
+     * 219 is the current width of the ontario schedule cells
+     * See https://github.com/oblador/angular-scroll for API
+     */
+      let container = angular.element(document.getElementById('ontario-schedule-container'));
+      let currentPos = 0;
+      this.scrollLeft = ()=> {
+        currentPos = container.scrollLeft();
+        return container.duScrollTo(currentPos - 219, 0, [500])
+        .catch((error)=>{});
+      };
+
+      this.scrollRight = ()=> {
+        currentPos = container.scrollLeft();
+        return container.duScrollTo(currentPos + 219, 0, [500])
+          .catch((error)=>{});
       }
     }
 

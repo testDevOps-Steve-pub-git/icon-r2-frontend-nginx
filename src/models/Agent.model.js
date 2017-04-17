@@ -11,7 +11,7 @@
    * @param {Array<Disease>} [diseases=Array] - array of diseases
    * @param {string} [lotNumber=''] - lot number
    * @param {string} [lotExpiration=''] - expiration date (YYYY-MM-DD)
-   * @param {number} [prevalenceIndex=''] - prevalence index for sorting and conditional display
+   * @param {number} [prevalenceIndex=9] - prevalence index for sorting and conditional display
    * @returns {Agent}
    */
   function Agent (

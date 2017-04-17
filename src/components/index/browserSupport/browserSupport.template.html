@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <h1 translate="browserSupport.UPDATE_BROWSER_INTRO" translate-values="{ name_key : '{{$ctrl.multitenancy.NAME_KEY | translate}}' }" translate-compile></h1>
     <h2 translate="browserSupport.UPDATE_BROWSER" aria-label="{{'browserSupport.UPDATE_BROWSER' | translate}}"></h2>
     <span translate="browserSupport.SITE_REQUIRES" aria-label="{{'browserSupport.SITE_REQUIRES' | translate}}"></span>
     <hr/>
@@ -18,26 +19,26 @@
       </div>
 
       <div ng-if="$ctrl.currentBrowser.isSupported" class="row lead" >
-        <a 
-        translate="browserSupport.UPDATE_LINK" 
-        aria-label="{{'browserSupport.UPDATE_LINK' | translate}}" 
-        ng-href={{$ctrl.getUpdateBrowserLink($ctrl.currentBrowser.browserName)}}>
+        <a
+        translate="browserSupport.UPDATE_LINK"
+        aria-label="{{'browserSupport.UPDATE_LINK' | translate}}"
+        ng-href="{{$ctrl.getUpdateBrowserLink($ctrl.currentBrowser.browserName) | translate }}">
         </a>
       </div>
       <hr />
     </div>
-  
-    <h3 
+
+    <h3
     ng-if="$ctrl.currentBrowser.isSupported"
-    class="text-center" 
-    translate="browserSupport.SUPPORTED_BROWSERS_SUPPORTED" 
+    class="text-center"
+    translate="browserSupport.SUPPORTED_BROWSERS_SUPPORTED"
     aria-label="{{'browserSupport.SUPPORTED_BROWSERS_SUPPORTED' | translate}}">
     </h3>
-  
-    <h3 
+
+    <h3
     ng-if="!$ctrl.currentBrowser.isSupported"
-    class="text-center" 
-    translate="browserSupport.SUPPORTED_BROWSERS_UNSUPPORTED" 
+    class="text-center"
+    translate="browserSupport.SUPPORTED_BROWSERS_UNSUPPORTED"
     aria-label="{{'browserSupport.SUPPORTED_BROWSERS_UNSUPPORTED' | translate}}">
     </h3>
 
@@ -45,11 +46,11 @@
       <ul id="icon-progress-bar" class="nav-justified">
         <li class="text-center text-info" ng-repeat="browser in $ctrl.supportedBrowsers">
           <i class="fa fa-{{$ctrl.getBrowserImage(browser)}} fa-4x" aria-hidden="true"></i>
-          <br aria-hidden=\"true\"/>
+          <br aria-hidden="true"/>
           <h5>
-            <a 
-            aria-label="{{browser}}" 
-            ng-href="{{$ctrl.getUpdateBrowserLink(browser)}}">
+            <a
+            aria-label="{{browser}}"
+            ng-href="{{$ctrl.getUpdateBrowserLink(browser) | translate}}">
               {{browser}}
             </a>
           </h5>

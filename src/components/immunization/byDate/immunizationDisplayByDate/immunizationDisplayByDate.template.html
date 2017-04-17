@@ -12,24 +12,28 @@
   </div>
 
   <ul class="list-group">
-    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item">
+    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item icon-display-panel">
       <div class="pull-right">
-        <button class="btn btn-default text-center" id="immunizations-edit-{{$index}}" ng-click="$ctrl.edit(immunization)" aria-label="{{ 'immunizationDisplayByDate.EDIT_LABEL' | translate }} {{ immunization.agent.name }}">{{ 'immunizationDisplayByDate.EDIT' | translate }}</button>
-        <button class="btn btn-default text-center"  id="immunizations-delete-{{$index}}" ng-click="$ctrl.remove({ immunization: immunization })" aria-label="{{ 'immunizationDisplayByDate.DELETE_LABEL' | translate }} {{ immunization.agent.name}}">{{ 'immunizationDisplayByDate.DELETE' | translate }}</button>
+        <button class="btn btn-default text-center icon-display-panel-edit" id="immunizations-edit-{{$index}}" ng-click="$ctrl.edit(immunization)" aria-label="{{ 'immunizationDisplayByDate.EDIT_LABEL' | translate }} {{ immunization.agent.name }}">{{ 'immunizationDisplayByDate.EDIT' | translate }}</button>
+        <button class="btn btn-default text-center icon-display-panel-delete"  id="immunizations-delete-{{$index}}" ng-click="$ctrl.remove({ immunization: immunization })" aria-label="{{ 'immunizationDisplayByDate.DELETE_LABEL' | translate }} {{ immunization.agent.name}}">{{ 'immunizationDisplayByDate.DELETE' | translate }}</button>
       </div>
-      <h4>{{immunization.agent.name}}</h4>
+
+      <immunization-display
+      class="h4"
+      immunization="immunization">
+      </immunization-display>
 
       <diseases-display
-        diseases="immunization.agent.diseases">
+      diseases="immunization.agent.diseases">
       </diseases-display>
 
-      <div ng-if="immunization.isDateApproximate">
-        <em>{{ 'immunizationDisplayByDate.DATE_ESTIMATED' | translate }}</em>
-      </div>
-
       <trade-lot-display
-        immunization="immunization">
+      immunization="immunization">
       </trade-lot-display>
+
+      <div ng-if="immunization.isDateApproximate">
+        {{ 'immunizationDisplayByDate.DATE_ESTIMATED' | translate }}
+      </div>
     </li>
   </ul>
 

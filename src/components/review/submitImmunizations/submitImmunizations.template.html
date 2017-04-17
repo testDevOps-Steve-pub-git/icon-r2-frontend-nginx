@@ -2,6 +2,7 @@
   <div class="col-xs-12">
     <button
     class="btn btn-primary btn-lg pull-right"
+    id="review-submit"
     ng-disabled="$ctrl.isSubmitButtonDisabled"
     ng-click="$ctrl.submit()">
       <span ng-if="!$ctrl.isSubmitButtonDisabled">{{ 'submitImmunizations.SUBMIT_IMMUNIZATIONS' | translate }}</span>

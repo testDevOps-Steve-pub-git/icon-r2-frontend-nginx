@@ -10,7 +10,8 @@
         template: `<auth-survey $close="$close(result)"></auth-survey>`,
         controller: () => {},
         size: 'sm',
-      });
+      }).result
+        .catch((error)=>{});
     };
   };
 }
@@ -34,15 +35,17 @@ module.exports = {
           <yellow-card-display></yellow-card-display>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <yellow-card-recommendations></yellow-card-recommendations>
-        </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <yellow-card-recommendations></yellow-card-recommendations>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="col-sm-8 col-sm-offset-2">
           <hr />
 
           <h2>{{ 'authPatient.INFORMATION_MISSING' | translate }}</h2>
@@ -50,14 +53,14 @@ module.exports = {
           <button class="btn btn-primary" ui-sref="^.submission.immunizations">{{ 'authPatient.SUBMIT_IMMUNIZATIONS' | translate }}</button>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-          <hr />
-        </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row col-xs-12 col-sm-8 col-sm-offset-2">
+          <h2>{{ 'authPatient.RETURN_HOME_LABEL' | translate }}</h2>
 
-        <div class="col-xs-12 text-center">
-          <button class="btn-link" ng-click="$ctrl.openSurveyModal()">{{ 'authPatient.RETURN_HOME' | translate }}</button>
+          <button class="btn btn-primary" ng-click="$ctrl.openSurveyModal()">{{ 'authPatient.RETURN_HOME' | translate }}</button>
         </div>
       </div>
     </div>

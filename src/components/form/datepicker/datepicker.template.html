@@ -13,8 +13,8 @@
     class="form-control"
     id={{$ctrl.inputId}}
     ui-mask="9999-99-99"
+    ui-options="$ctrl.dateMaskOptions"
     model-view-value="true"
-    placeholder="{{'datepicker.DATE_FORMAT' | translate}}"
     uib-datepicker-popup="yyyy-MM-dd"
     ng-model=$ctrl.date;
     name={{$ctrl.inputName}}
@@ -48,7 +48,7 @@
 
   <!--Error Messages-->
   <div ng-if="$ctrl.inputName != 'dateOfBirth'">
-    <div class="error-messages" id="date-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
+    <div class="error-messages" id="{{$ctrl.inputId}}-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DATE_ERROR'
            aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
