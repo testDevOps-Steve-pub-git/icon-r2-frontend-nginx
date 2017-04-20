@@ -12,6 +12,7 @@
   typeahead-no-results="noResults"
   typeahead-template-url="typeahead-item.html"
   uib-typeahead="immunization for immunization in $ctrl.getImmunization($viewValue)"
+  aria-describedby="immunization-error"
   tabindex="0"
   />
 
@@ -20,6 +21,10 @@
   <div ng-show="noResults">
     <span class="fa fa-remove" id="immunizations-immunization-input-error"></span>
     {{ 'immunizationTypeahead.NO_RESULTS_FOUND' | translate }}
+  </div>
+
+  <div>
+    {{ 'immunizationTypeahead.IMMUNIZATION_PLACEHOLDER' | translate}}
   </div>
 </div>
 <!-- End typeahead input -->
@@ -70,7 +75,7 @@
 
   <a>
     <div ng-if="match.model.type == 'Agent'">
-      <span class="cell-Title">{{match.model.agent.shortName}}</span>
+
 
       <!-- NOTE: a gating code value of 4 indicates international -->
       <span ng-if="match.model.isCommon && match.model.gatingCode !== 4" class="pull-right">
@@ -78,10 +83,12 @@
           <span class="fa fa-star"></span> {{'immunizationTypeahead.TYPICAL' | translate}}
         </span>
       </span>
+
+      <span class="cell-Title">{{match.model.agent.shortName}}</span>
     </div>
 
     <div ng-if="match.model.type == 'Trade'">
-      <span class="cell-Title">{{match.model.trade.name}}</span>
+
 
       <!-- NOTE: a gating code value of 4 indicates international -->
       <span ng-if="match.model.isCommon && match.model.gatingCode !== 4" class="pull-right">
@@ -89,6 +96,8 @@
           <span class="fa fa-star"></span> {{'immunizationTypeahead.TYPICAL' | translate}}
         </span>
       </span>
+
+      <span class="cell-Title">{{match.model.trade.name}}</span>
     </div>
 
     <span ng-if="match.model.type == 'Trade'" class="icon-cell-details">

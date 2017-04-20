@@ -36,7 +36,7 @@
         postBox:          'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox',
         ruralRoute:       'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-rural-route',
         station:          'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-station',
-        retailPostOffice: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-retail-post-office',
+        retailPostOffice: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-retail-postal-office',
       };
 
       // Create an object for each FHIR address extension which is non-empty.

@@ -2,37 +2,64 @@
 'use strict';
 
   module.exports = {
-    bindings: { 
-      $close: '&',
-      modalData: '<',
-    },
+    bindings: { resolve: '=' },
     controller: editImmunizationController,
     templateUrl: './components/immunization/editImmunization/editImmunization.template.html'
   };
 
-  editImmunizationController.$inject = ['Immunization', 'moment', 'ImmunizationRecordService'];
-  function editImmunizationController (Immunization, moment, ImmunizationRecordService) {
+  editImmunizationController.$inject = ['Immunization', 'moment', 'ImmunizationRecordService', 'GatingQuestionService'];
+  function editImmunizationController (Immunization, moment, ImmunizationRecordService, GatingQuestionService) {
     this.$onInit = () => {
-      this.immunization = this.modalData.immunization.clone();
-      this.minDate = ImmunizationRecordService.getPatient().dateOfBirth;
+      this.gatingQuestion = GatingQuestionService.getGatingQuestion();
+      this.immunization = this.resolve.immunization;
+      this.isDuplicateImmunization = this.resolve.onIsDuplicateImmunization(this.immunization);
+      this.patient = ImmunizationRecordService.getPatient();
+      this.minDate = this.patient.dateOfBirth;
+
+      this.close = this.resolve.onClose;
 
       this.save = (immunization, form) => {
-        if (form.$invalid || this.immunization.agent.snomed === '') {
-          if(!!form.immunizationGroupDate)
-            form.immunizationGroupDate.$setTouched("", false);
-          if(!!form.selectedVaccine)
-            form.selectedVaccine.$setTouched("", false);
+        if (form.$invalid || !this.immunization.agent.snomed) {
+          if (!!form.immunizationGroupDate) form.immunizationGroupDate.$setTouched('', false);
+          if (!!form.selectedVaccine) form.selectedVaccine.$setTouched('', false);
         }
-        else{
-          immunization.date = moment(immunization.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
-          Object.assign(this.modalData.immunization, immunization);
-          this.modalData.save(this.immunization);
-          this.$close();
+        else {
+          immunization.date = this.formatDate(immunization.date);
+            Object.assign(this.resolve.immunization, immunization);
+          this.resolve.onSave(this.immunization);
+          this.resolve.onClose();
         }
-
       };
 
-      this.patient = this.modalData.patient;
+      this.formatDate = (date) => { return new moment(date).format('YYYY-MM-DD'); }
+
+      this.afterSelectDate = (date) => {
+        this.immunization.date = this.formatDate(date);
+        this.setIsDuplicateImmunization();
+      };
+
+      this.setIsDuplicateImmunization = () => {
+        this.isDuplicateImmunization = this.resolve.onIsDuplicateImmunization(this.immunization);
+      };
+
+
+      /**
+       *  Scroll buttons up and down on Ont Imms schedule
+       */
+      let container = angular.element(document.getElementById('ontario-vertical-schedule-container'));
+      let currentPos = 0;
+      this.scrollUp = ()=> {
+        currentPos = container.scrollTop();
+        return container.scrollTo(0,currentPos - 220, [500])
+          .catch((error)=>{});
+      };
+
+      this.scrollDown = ()=> {
+        currentPos = container.scrollTop();
+        return container.scrollTo(0,currentPos + 220, [500])
+          .catch((error)=>{});
+      }
+
     };
   }
 }());

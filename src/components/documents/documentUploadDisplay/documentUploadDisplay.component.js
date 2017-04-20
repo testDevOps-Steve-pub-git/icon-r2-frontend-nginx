@@ -6,7 +6,7 @@
 'use strict';
 
   module.exports = {
-    bindings: { isEditable: '<' },
+    bindings: { isEditable: '<', docReview: '@'},
     templateUrl: './components/documents/documentUploadDisplay/documentUploadDisplay.template.html',
     controller: documentUploadDisplayController
   };

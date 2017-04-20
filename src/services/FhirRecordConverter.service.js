@@ -51,17 +51,17 @@
         patient.resource.birthDate,
         ``, /* Patient.schoolOrDayCare */
         ``, /* Patient.schoolOrDayCareIdentifier */
-        (healthCardNumber.length > 0) ? healthCardNumber[0] : ``,
-        (oiid.length > 0) ? oiid[0] : ``,
+        (!!healthCardNumber.length > 0) ? healthCardNumber[0] : ``,
+        (!!oiid.length > 0) ? oiid[0] : ``,
         patient.resource.gender
       );
     };
 
     let createImmunizationUsing = (practitionerDictionary) => (immunization) => {
-                                    let newPractitioner = (immunization.resource.performer)
+                                    let newPractitioner = (!!immunization.resource.performer)
                                                               ? practitionerDictionary[immunization.resource.performer.reference]
                                                               : ``;
-                                    let newLot = (immunization.resource.lotNumber)
+                                    let newLot = (!!immunization.resource.lotNumber)
                                                               ? new Lot(immunization.resource.lotNumber)
                                                               : new Lot();
                                     return new Immunization(
@@ -94,7 +94,7 @@
       let fhir = {
         patient:          data.entry.filter(isResourceType(type.PATIENT))[0],
         immunizations:    data.entry.filter(isResourceType(type.IMMUNIZATION)),
-        recommendations:  (candidateRecommendations.length) ? candidateRecommendations[0].resource.recommendation : [],
+        recommendations:  (!!candidateRecommendations.length) ? candidateRecommendations[0].resource.recommendation : [],
       };
 
       // Pluck snomeds from FHIR into lists of unique values for database lookups.
@@ -107,9 +107,12 @@
       let practitionerDictionary = data.entry
                                    .filter(isResourceType(type.PRACTITIONER))
                                    .reduce((practitioners, p) => {
-                                     let prefixText = `${(p.resource.name.prefix) ? ` ${p.resource.name.prefix.join(` `)}` : ``}`;
-                                     let sufffixText = `${(p.resource.name.suffix) ? ` ${p.resource.name.suffix.join(` `)}` : ``}`;
-                                     let practitionerText = `${prefixText}${p.resource.name.text}${sufffixText}`
+                                     let prefixText =     `${(!!p.resource.name[0].prefix) ? `${p.resource.name[0].prefix.join(` `)} ` : ``}`;
+                                     let givenNameText =  `${(!!p.resource.name[0].given) ? p.resource.name[0].given.join(` `) : ``}`;
+                                     let familyNameText = `${(!!p.resource.name[0].family) ? ` ${p.resource.name[0].family.join(` `)}` : ``}`;
+                                     let sufffixText =    `${(!!p.resource.name[0].suffix) ? ` ${p.resource.name[0].suffix.join(` `)}` : ``}`;
+
+                                     let practitionerText = `${prefixText}${givenNameText}${familyNameText}${sufffixText}`
 
                                      practitioners[`${p.resource.resourceType}/${p.resource.id}`] = practitionerText;
                                      return practitioners;
@@ -183,8 +186,8 @@
       let immunizationDictionary = {};
       let diseaseDictionary = {};
 
-      let immunizationQuery = (immunizationSnomeds.length) ? immunizationSnomeds.join(`,`) : `0`;
-      let diseaseQuery = (diseaseSnomeds.length) ? diseaseSnomeds.join(`,`) : `0`;
+      let immunizationQuery = (!!immunizationSnomeds.length) ? immunizationSnomeds.join(`,`) : `0`;
+      let diseaseQuery = (!!diseaseSnomeds.length) ? diseaseSnomeds.join(`,`) : `0`;
 
       return $q.all({
         immunizations:  Endpoint.batchLookupAgentTrade(immunizationQuery),
@@ -193,7 +196,7 @@
       .then((data) => {
         data.immunizations.forEach((i) => {
           immunizationDictionary[i.agent.snomed] = i;
-          if (i.trade.snomed) immunizationDictionary[i.trade.snomed] = i;
+          if (!!i.trade.snomed) immunizationDictionary[i.trade.snomed] = i;
         });
         data.diseases.forEach((d) => { diseaseDictionary[d.snomed] = d; });
         return data;

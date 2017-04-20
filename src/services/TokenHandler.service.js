@@ -6,7 +6,7 @@
     $http, $q, $interval,
     jwtHelper,
     Token,
-    ICON_API, ICON_TOKEN, ICON_EVENT
+    ICON_API, ICON_EVENT
   ) {
 /* Private ********************************************************************/
 

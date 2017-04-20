@@ -27,11 +27,12 @@
     clear-text="{{'datepicker.CLEAR_BUTTON' | translate}}"
     close-text="{{'datepicker.CLOSE_BUTTON' | translate}}"
     current-text="{{'datepicker.CURRENT_BUTTON' | translate}}"
+    aria-describedby="date-errors DOB-errors"
     />
   </div>
 
   <!--Error Messages date of birth-->
-  <div ng-if="$ctrl.inputName == 'dateOfBirth'">
+  <div ng-if="$ctrl.inputName == 'dateOfBirth'" id="DOB-errors">
     <div class="error-messages" id="patient-dob-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DOB_ERROR'
@@ -47,7 +48,7 @@
   <!--End Error Messages date of birth-->
 
   <!--Error Messages-->
-  <div ng-if="$ctrl.inputName != 'dateOfBirth'">
+  <div ng-if="$ctrl.inputName != 'dateOfBirth'" id="date-errors">
     <div class="error-messages" id="{{$ctrl.inputId}}-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DATE_ERROR'

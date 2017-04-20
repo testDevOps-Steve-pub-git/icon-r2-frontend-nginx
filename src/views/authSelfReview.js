@@ -18,6 +18,7 @@ module.exports = {
     <h3>{{ 'anonOtherReview.REVIEW_INSTRUCTION_HEADER' | translate }}</h3>
     <p>{{ 'anonOtherReview.REVIEW_INSTRUCTION_BODY' | translate }}</p>
     <form id="reviewForm" name="reviewForm" novalidate>
+      <hr />
       <h4>{{ 'authSelfReview.IMMUNIZATIONS_TITLE' | translate }}</h4>
 
       <div class="row">
@@ -43,7 +44,7 @@ module.exports = {
 
       <h4>{{ 'authSelfReview.DOCUMENTS_TITLE' | translate }}</h4>
       <div class="row">
-        <document-upload-display is-editable="false"></document-upload-display>
+        <document-upload-display is-editable="false" doc-review="review"></document-upload-display>
       </div>
       <div class="row">
         <div class="col-xs-12">

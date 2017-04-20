@@ -8,12 +8,16 @@
     <div class="strong">
       <p>{{'survey.SURVEY_PARAGRAPH' | translate}}</p>
     </div>
-      <a class="btn btn-primary"
-       id="completion-survey-link"
-       aria-label="{{'survey.SURVEY_LINK' | translate}}. {{'survey.SURVEY_LINK_DESC' | translate}}"
-       href="{{'survey.SURVEY_LINK_URL' | translate}}"
-       target="_blank">{{'survey.SURVEY_LINK' | translate}}
-     </a>
+
+    <a class="btn btn-primary"
+    id="completion-survey-link"
+    aria-label="{{'survey.SURVEY_LINK' | translate}}. {{'survey.SURVEY_LINK_DESC' | translate}}"
+    href="{{'survey.SURVEY_LINK_URL' | translate}}"
+    target="_blank"
+    analytics-on="click"
+    analytics-event="CHI_SURVEY">
+      {{'survey.SURVEY_LINK' | translate}}
+    </a>
   </div>
   <!-- End Survey -->
 </div>

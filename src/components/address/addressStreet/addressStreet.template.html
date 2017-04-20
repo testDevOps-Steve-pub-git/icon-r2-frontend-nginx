@@ -8,6 +8,7 @@
 
 <!-- Skip Typeahead Checkbox -->
 <div class="row">
+  <br />
   <div ng-if="!$ctrl.hasUserInput() && !$ctrl.isAddressFormDisplayed" class="col-xs-12">
       <input type="checkbox"
              id="address-skip-typeahead"
@@ -53,6 +54,7 @@
       <label for="address-unit-number" aria-label="{{ 'addressStreet.UNIT_NO' | translate }}">
         {{ 'addressStreet.UNIT_NO' | translate }}
       </label>
+       <span>{{'OPTIONAL' | translate}}</span>
 
       <input ng-model="$ctrl.localAddress.unitNumber"
              class="form-control"
@@ -108,7 +110,7 @@
   <!--Street Type-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-4">
-      <label for="address-street-type" data-translate='addressStreet.STREET_TYPE'></label>
+      <label for="address-street-type" data-translate='addressStreet.STREET_TYPE'></label> <span>{{'OPTIONAL' | translate}}</span>
 
       <input
           class="form-control"
@@ -142,7 +144,7 @@
   <!--Street Direction-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-4">
-      <label for="address-street-direction" data-translate='addressStreet.STREET_DIRECTION'></label>
+      <label for="address-street-direction" data-translate='addressStreet.STREET_DIRECTION'></label> <span>{{'OPTIONAL' | translate}}</span>
 
       <input
           class="form-control"

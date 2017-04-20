@@ -61,8 +61,8 @@
         no:'#immunizations-third-no-button',
         unsure:'#immunizations-third-unsure-button'
       },
-      groupByDate: '#immunizations-group-date',
-      groupByImmunization: '#immunizations-group-immunizations',
+      groupByDate: '#immunizations-fourth-groupbydate-button',
+      groupByImmunization: '#immunizations-fourth-groupbyimm-button',
       add: '#immunizations-add',
       date: '#immunizations-date-input',
       dateEstimated: '#immunizations-date-estimated',

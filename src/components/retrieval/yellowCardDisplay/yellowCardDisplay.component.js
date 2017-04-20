@@ -33,7 +33,12 @@
                                                   if (snomeds.indexOf(s) < 0) snomeds.push(s);
                                                   return snomeds;
                                                 }, []),
-                                immunizations:  group,
+                                immunizations:  group
+                                                .map((immunization) => {
+                                                  immunization.diseaseSnomeds = immunization.agent.diseases
+                                                                                .map(disease => disease.snomed);
+                                                  return immunization;
+                                                }),
                               }
                             });
 
@@ -45,7 +50,39 @@
       .batchLookupDiseases(yellowCardSnomeds.join(`,`))
       .then(yellowCardDiseases => yellowCardDiseases.concat(retrievedDiseases))
       .then(diseases => diseases.sort(By.disease.snomed.ycOrderAsc))
-      .then(sortedDiseases => this.yellowCardHeaders = sortedDiseases)
+      .then(sortedDiseases => this.yellowCardHeaders = sortedDiseases);
+
+      this.isImmunizationOther = (immunization) => {
+        return !immunization.agent.diseases
+               .filter(disease => !!DISEASE_YC_ORDER[disease.snomed])
+               .length;
+      }
+
+      this.doesRowContainOther = (row) => {
+        return !!row.diseases
+               .filter(disease => !DISEASE_YC_ORDER[disease])
+               .length;
+      }
+    }
+
+
+    /**
+     * For the scroll buttons, to scroll left and right
+     * 219 is the current width of the yellow card display
+     * See https://github.com/oblador/angular-scroll for API
+     */
+    let container = angular.element(document.getElementById('icon-yc-table-container'));
+    let currentPos = 0;
+    this.scrollLeft = ()=> {
+      currentPos = container.scrollLeft();
+      return container.duScrollTo(currentPos - 200, 0, [500])
+        .catch((error)=>{ });
+    };
+
+    this.scrollRight = ()=> {
+      currentPos = container.scrollLeft();
+      return container.duScrollTo(currentPos + 200, 0, [500])
+        .catch((error)=>{});
     }
   }
 

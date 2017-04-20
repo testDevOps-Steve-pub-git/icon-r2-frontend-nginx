@@ -1,5 +1,4 @@
 <div>
-    <h2>{{ 'patientCapture.PATIENT_INFO' | translate }}</h2>
   <fieldset>
 
     <!--Patient First Name-->
@@ -30,7 +29,7 @@
     <!--Patient Middle Name-->
     <div class="row">
       <div class="form-group col-xs-12 col-sm-12 col-md-6">
-        <label for="patient-middle-name" translate='patientCapture.MIDDLE_NAME' aria-label="{{'patientCapture.MIDDLE_NAME' | translate}}"></label>
+        <label for="patient-middle-name" translate='patientCapture.MIDDLE_NAME' aria-label="{{'patientCapture.MIDDLE_NAME' | translate}}"></label> <span>{{'OPTIONAL' | translate}}</span>
 
         <input ng-model="$ctrl.localPatient.middleName"
                name="patientMiddleName"
@@ -276,6 +275,10 @@
           {{ 'patientCapture.NO_RESULTS_FOUND' | translate }}
         </div>
 
+        <div>
+          {{ 'patientCapture.DAYCARE_TOOLTIP' | translate}}
+        </div>
+
         <!--Error Messages-->
         <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
           <div class="alert alert-danger" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT'></div>
@@ -289,4 +292,3 @@
 
   </fieldset>
 </div>
-

@@ -13,6 +13,7 @@
     DISEASE_YC_ORDER, ICON_NOTIFICATION
   ) {
 /* Private ********************************************************************/
+
     const fontSize = {
       H1:   20,
       H2:   18,
@@ -23,6 +24,7 @@
     };
 
     const bold = (text) => ({ text: text, bold: true });
+
 
     /* Text formatters ********************************************************/
 
@@ -72,7 +74,7 @@
         case Address.type.URBAN:
         default:
           return [
-            `${address.streetNumber}${address.unitNumber ? ` - ${address.unitNumber}` : ``} ${address.streetNumber} ${address.streetType ? ` ${address.streetType}` : ``}${address.streetDirection ? ` ${address.streetDirection}` : ``}`,
+            `${address.streetNumber}${address.unitNumber ? ` - ${address.unitNumber}` : ``} ${address.streetType ? ` ${address.streetType}` : ``}${address.streetDirection ? ` ${address.streetDirection}` : ``}`,
             `${address.city}, ${address.province}`,
             `${address.postalCode}`,
           ].join(`\n`);
@@ -106,9 +108,7 @@
                                 ? { text: `${immunization.agent.shortName}`, bold: true }
                                 : { text: `${immunization.trade.shortName} (${immunization.agent.shortName})`, bold: true };
 
-      let immunizationDiseases = `\n${immunization.agent.diseases
-                                 .map(disease => disease.name)
-                                 .join(`, `)}`;
+      let immunizationDiseases = `\n${immunization.agent.diseases.map(disease => disease.name).join(`, `)}`;
 
       let immunizationDetails = `${
                                   (immunization.lot.number) ? `\n${text.lotNumber} ${immunization.lot.number}` : ``
@@ -167,20 +167,6 @@
       };
     }
 
-    function phuConfirmationFooter ({text, data}) {
-      return [
-        {
-          text: [
-            text.phuConfirmationFooter_p1_s1,
-            `\n`,
-            text.phuConfirmationFooter_p1_s2
-          ],
-          alignment: 'center',
-          fontSize: fontSize.SMALL,
-        }
-      ];
-    }
-
     function phuYellowCardFooter ({text, data}) {
       return [
         {
@@ -212,40 +198,71 @@
     }
 
     function patientDemographics ({text, data}) {
-      return {
+      let demographicsList = {
         ul: [
           {
-            text: [ text.patientDemographics_ul1_li1_f1, { text: text.patientGender, bold: true } ]
+            text: [
+              { text: text.patientDemographics_ul1_li1_f1 },
+              { text: text.patientGender, bold: true }
+            ]
           },
           {
-            text: [ text.patientDemographics_ul1_li2_f1, { text: `${data.patientDob} (${text.yellowCard_dateFormatText})`, bold: true } ]
+            text: [
+              { text: text.patientDemographics_ul1_li2_f1 },
+              { text: data.patientDob, bold: true },
+              { text: ` (${text.yellowCard_dateFormatText})` },
+            ]
           },
-          // Optional fields
-          (data.patientHcn)
-              ? { text: [ text.patientDemographics_ul1_li3_f1, { text: data.patientHcn, bold: true } ] }
-              : { text: `` },
-          (data.patientOiid)
-              ? { text: [ text.patientDemographics_ul1_li4_f1, { text: data.patientOiid, bold: true } ] }
-              : { text: `` },
-          (data.patientSchool)
-              ? { text: [ text.patientDemographics_ul1_li5_f1, { text: data.patientSchool, bold: true } ] }
-              : { text: `` },
-          // Patient address
-          (data.isAddressPopulated)
-              ? {
-                table: {
-                  body: [
-                    [
-                      { text: text.patientDemographics_ul1_li6_f1 },
-                      { text: data.patientAddress, bold: true, alignment: 'center' },
-                    ]
-                  ]
-                },
-                layout: 'noBorders'
-              }
-              : { text: `` }
         ]
       };
+
+      if (data.patientHcn) {
+        demographicsList.ul.push({
+          text: [
+            { text: text.patientDemographics_ul1_li3_f1 },
+            { text: data.patientHcn, bold: true }
+          ]
+        });
+      }
+
+      if (data.patientOiid) {
+        demographicsList.ul.push({
+          text: [
+            { text: text.patientDemographics_ul1_li4_f1 },
+            { text: data.patientOiid, bold: true },
+          ]
+        });
+      }
+
+      if (data.patientSchool) {
+        demographicsList.ul.push({
+          text: [
+            { text: text.patientDemographics_ul1_li5_f1 },
+            { text: data.patientSchool, bold: true },
+          ]
+        });
+      }
+
+      if (data.isPatientSubmitter) {
+        patientContact({ text: text, data: data })
+        .forEach((listItem) => { demographicsList.ul.push(listItem); });
+      }
+
+      if (data.isAddressPopulated) {
+        demographicsList.ul.push({
+          table: {
+            body: [
+              [
+                { text: text.patientDemographics_ul1_li6_f1 },
+                { text: data.patientAddress, bold: true },
+              ]
+            ]
+          },
+          layout: 'noBorders'
+        });
+      }
+
+      return demographicsList;
     }
 
     function contact ({text, data}) {
@@ -259,11 +276,11 @@
       };
 
       if (data.contactExt) {
-        phone.text.push(text.contact_ul1_li1_f3);
+        phone.text.push({ text: text.contact_ul1_li1_f3 });
         phone.text.push({ text: data.contactExt, bold: true});
       }
 
-      contact.push(phone);
+      if (data.contactPhone) contact.push(phone);
 
       if (data.contactEmail) {
         contact.push({
@@ -274,20 +291,18 @@
         });
       }
 
-      return {
-        ul: contact
-      };
+      return contact;
     }
 
     function patientContact ({text, data}) {
       return (data.isPatientSubmitter)
                 ? contact({text: text, data: data})
-                : { text: `` };
+                : [];
     }
 
     function submitterContact ({text, data}) {
       return (!data.isPatientSubmitter)
-                ? contact({text: text, data: data})
+                ? { ul: contact({text: text, data: data}) }
                 : { text: `` };
     }
 
@@ -296,7 +311,8 @@
         text: [
           {
             text: text.immunizationsTitle_p1_s1,
-            fontSize: fontSize.H3
+            fontSize: fontSize.H3,
+            bold: true,
           }
         ]
       };
@@ -309,21 +325,22 @@
             text: [
               {
                 text: (isAgentWithoutTrade(immunization))
-                          ? immunization.agent.name
-                          : immunization.trade.name,
+                          ? `${immunization.agent.shortName}`
+                          : `${immunization.agent.shortName} (${immunization.trade.name})`,
                 fontSize: fontSize.H4,
                 bold: true,
               },
               `\n`,
+              { text: formatDiseases(immunization.agent.diseases) },
               {
-                text: formatDiseases(immunization.agent.diseases)
-              },
-              (immunization.lot.number)
+                text: (immunization.lot.number)
                           ? `\n${text.lotNumber} ${immunization.lot.number}`
-                          : ``,
+                          : ``
+              },
               {
-                text: (immunization.isDateApproximate) ? `\n(${text.dateIsApproximate})` : ``,
-                italics: true,
+                text: (immunization.isDateApproximate)
+                          ? `\n(${text.dateIsApproximate})`
+                          : ``
               },
             ]
           }
@@ -350,7 +367,7 @@
                     fillColor: '#eeeeee',
                   },
                 ]
-              ].concat(immunizationGroup.map(formatImmunization))
+              ].concat(immunizationGroup.map(imm => formatImmunization(imm)))
             },
             dontBreakRows: true
           },
@@ -428,8 +445,7 @@
           text.reportGeneratedTime_p1_s1_f3,
           { text: data.reportGeneratedTime, bold: true },
           text.reportGeneratedTime_p1_s1_f5,
-        ],
-        alignment: 'center'
+        ]
       }
     }
 
@@ -540,7 +556,12 @@
     }
 
     function recommendationsFooter ({text, data}) {
-      return { text: text.recommendationsFooter_p1_s1 };
+      return {
+        text: [
+          { text: text.recommendationsFooter_p1_s1_f1, bold: true },
+          { text: text.recommendationsFooter_p1_s1_f2 }
+        ]
+      };
     }
 
     function recommendations ({text, data}) {
@@ -577,22 +598,21 @@
           patientNameHeading(params),
           `\n`,
           patientDemographics(params),
-          patientContact(params),
           `\n\n`,
 
           immunizationsTitle(params),
+          reportGeneratedTime(params),
           `\n`,
           newImmunizations(params),
           `\n\n`,
 
           submitterNameHeading(params),
+          `\n`,
           submitterContact(params),
           `\n\n`,
 
           thankYou(params),
         ],
-
-        footer: phuConfirmationFooter(params),
 
         defaultStyle: { font: 'OpenSans', fontSize: 10 }
       };
@@ -765,9 +785,6 @@
                contact_ul1_li1_f3:  $translate('pdf.contact_ul1_li1_f3', data),
                contact_ul1_li2_f1: $translate('pdf.contact_ul1_li2_f1', data),
 
-               phuConfirmationFooter_p1_s1: $translate('pdf.phuConfirmationFooter_p1_s1', data),
-               phuConfirmationFooter_p1_s2: $translate('pdf.phuConfirmationFooter_p1_s2', data),
-
                phuYellowCardFooter_p1_s1: $translate('pdf.phuYellowCardFooter_p1_s1', data),
                phuYellowCardFooter_p1_s2: $translate('pdf.phuYellowCardFooter_p1_s2', data),
 
@@ -799,7 +816,8 @@
 
                recommendationsTitle_p1_s1: $translate('pdf.recommendationsTitle_p1_s1', data),
                recommendationsHeader_p1_s1: $translate('pdf.recommendationsHeader_p1_s1', data),
-               recommendationsFooter_p1_s1: $translate('pdf.recommendationsFooter_p1_s1', data),
+               recommendationsFooter_p1_s1_f1: $translate('pdf.recommendationsFooter_p1_s1_f1', data),
+               recommendationsFooter_p1_s1_f2: $translate('pdf.recommendationsFooter_p1_s1_f2', data),
 
                noRecommendations: $translate('pdf.noRecommendations', data),
 

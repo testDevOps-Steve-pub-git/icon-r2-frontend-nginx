@@ -9,7 +9,7 @@
   var gatingQuestionThreeAwns= 'No'
   var dataSet = require('../lib/data_sets/dataSets.js').Sam_Smith;
 
-  describe('TC-AUTH-OTHER-SUB', () => {
+  describe('TC-ANON-OTHER-SUB', () => {
     beforeAll(() => {
       browser.get('');
     });

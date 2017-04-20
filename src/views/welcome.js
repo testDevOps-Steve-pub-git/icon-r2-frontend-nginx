@@ -22,12 +22,15 @@ function welcomeController (ImmunizationRecordService, GatingQuestionService, No
 module.exports = {
   controller: welcomeController,
   template: `
-    <main>
-      <welcome-landing-page></welcome-landing-page>
+    <div class="container">
+      <main>
+        <welcome-landing-page></welcome-landing-page>
+  
+        <welcome-login></welcome-login>
+  
+        <ontario-immunization-schedule></ontario-immunization-schedule>
+      </main>
+    </div>
 
-      <welcome-login></welcome-login>
-
-      <ontario-immunization-schedule></ontario-immunization-schedule>
-    </main>
   `
 };

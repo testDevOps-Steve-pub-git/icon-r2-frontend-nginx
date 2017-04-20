@@ -10,6 +10,7 @@
       inputId: '@',
       inputName: '@',
       required: '@',
+      onAfterSelect: '&',
     },
     templateUrl: './components/form/datepicker/datepicker.template.html',
     controller: datepickerController,
@@ -64,6 +65,8 @@
             this.formName[this.inputName].$setValidity('date', false);
           }
         }
+
+        if (!!this.onAfterSelect) this.onAfterSelect({ date: this.model });
       };
     };
   }

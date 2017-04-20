@@ -1,37 +1,40 @@
-<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+<div class="row">
   <!-- Auth Choice -->
-  <div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <h3>{{ 'welcomeLogin.AUTH_LABEL' | translate }}</h3>
   </div>
 
-  <action-button
-  button-text="welcomeLogin.AUTH_BULLET_1"
-  button-icon="list"
-  button-id="home-view-yellow-card"
-  path="auth">
-  </action-button>
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <action-button
+        button-text="welcomeLogin.AUTH_BULLET_1"
+        button-icon="list"
+        button-id="home-view-yellow-card"
+        path="auth">
+    </action-button>
 
-  <action-button
-  button-text="welcomeLogin.AUTH_BULLET_2"
-  button-icon="calendar"
-  button-id="home-view-overdue"
-  path="auth">
-  </action-button>
+    <action-button
+        button-text="welcomeLogin.AUTH_BULLET_2"
+        button-icon="calendar"
+        button-id="home-view-overdue"
+        path="auth">
+    </action-button>
 
-  <action-button
-  button-text="welcomeLogin.AUTH_BULLET_3"
-  button-icon="medkit"
-  button-id="home-auth-submit"
-  path="auth">
-  </action-button>
+    <action-button
+        button-text="welcomeLogin.AUTH_BULLET_3"
+        button-icon="medkit"
+        button-id="home-auth-submit"
+        path="auth">
+    </action-button>
+  </div>
 
-  <div class="row">
+
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <p translate="welcomeLogin.LEARN_MORE" translate-compile></p>
   </div>
   <!-- End Auth Choice -->
 
   <!-- Anon Choice -->
-  <div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <hr />
     <h3>{{ 'welcomeLogin.ANON_LABEL' | translate }}</h3>
 
@@ -41,12 +44,15 @@
       {{ 'welcomeLogin.ANON_MESSAGE_2' | translate }}</p>
   </div>
 
-  <action-button
-  button-text="welcomeLogin.ANONYMOUS"
-  button-icon="medkit"
-  button-id="home-anon-submit"
-  path="anon">
-  </action-button>
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <action-button
+        button-text="welcomeLogin.ANONYMOUS"
+        button-icon="medkit"
+        button-id="home-anon-submit"
+        path="anon">
+    </action-button>
+  </div>
+
 
   <!-- End Anon Choice -->
 </div>

@@ -9,33 +9,27 @@
     controller: documentUploadCaptureController
   };
 
-  documentUploadCaptureController.$inject = ['$translate', 'FileUploadHandler', 'ICON_FILE_UPLOAD', 'ToasterChoiceService'];
-  function documentUploadCaptureController ($translate, FileUploadHandler, ICON_FILE_UPLOAD, ToasterChoiceService) {
+  documentUploadCaptureController.$inject = ['$translate', 'Notify', 'ICON_NOTIFICATION', 'FileUploadHandler', 'ICON_FILE_UPLOAD', 'ToasterChoiceService'];
+  function documentUploadCaptureController ($translate, Notify, ICON_NOTIFICATION, FileUploadHandler, ICON_FILE_UPLOAD, ToasterChoiceService) {
 
     this.$onInit = () => {
-
-     let toasterParams = {};
-
-     $translate('documentCapture.UPLOADER_ERROR').then((value) => {
-       toasterParams.title = value;
-     })
 
       const errors = { 
         SIZE:        {
                        error: 'enforceMaxFileSize',
-                       message: 'documentCapture.UPLOADER_ERROR_FILE_SIZE'
+                       message: ICON_NOTIFICATION.WARN_DOCUMENT_FILE_TOO_LARGE,
                      },
         TYPE:        { 
                        error: 'enforceFileTypes',
-                       message: 'documentCapture.UPLOADER_ERROR_FILE_TYPE'
+                       message: ICON_NOTIFICATION.WARN_DOCUMENT_FILE_BAD_TYPE,
                      },
         NUMBER:      { 
                        error: 'enforceNumberOfFiles',
-                       message: 'documentCapture.UPLOADER_ERROR_QUEUE_LIMIT'
+                       message: ICON_NOTIFICATION.WARN_DOCUMENT_FILE_QUEUE_LIMIT,
                      },
         DUPLICATE:   { 
                        error: 'enforceNoDuplicateFiles',
-                       message: 'documentCapture.UPLOADER_ERROR_FILE_DUPLICATE'
+                       message: ICON_NOTIFICATION.WARN_DOCUMENT_FILE_DUPLICATE,
                      }
                    }
 
@@ -48,15 +42,9 @@
                                              .filter((a) => errors[a].error === filter.name)
                                              .map((a) => errors[a].message);
  
-                           $translate(error.toString()).then((value) => {
-                             toasterParams.body = value;
-                           })
- 
-                           ToasterChoiceService.setToasterParams(toasterParams);
-                           ToasterChoiceService.setToasterChoice('error');
+                           Notify.publish(error[0]);
                          }
                        });
-
 
      this.acceptFileExtensions = ICON_FILE_UPLOAD.VALID_EXTENSIONS
                                                  .map((extension) => { return `.${extension}`})

@@ -20,7 +20,6 @@
 
   module.exports = {
     templateUrl: './components/immunization/immunizationGating/immunizationGating.template.html',
-    bindings: {},
     controller: immunizationGatingController
   };
 
@@ -39,7 +38,7 @@
       this.unsure = $translate.instant('immunizationGating.UNSURE');
 
       /** If user has already entered new immunizations, display them */
-      if(currentImmunizations.length <= 0) {
+      if (currentImmunizations.length <= 0) {
         this.displayImmunizations = false;
         this.displayGroupByChoice = false;
       }

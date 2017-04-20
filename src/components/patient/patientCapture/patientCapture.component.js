@@ -42,6 +42,7 @@
       addDefaultPlaceholder:false
     };
 
+
     /**
      * The selected school or daycare needs to have the indentifier value stored for FHIR, so on select it stores this value
      * @memberof patientController

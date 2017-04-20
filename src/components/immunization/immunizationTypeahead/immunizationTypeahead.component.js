@@ -10,7 +10,10 @@
 'use strict';
 
   module.exports = {
-    bindings: { model: '=' },
+    bindings: {
+      model: '=',
+      onAfterSelect: '&',
+    },
     controller: ImmunizationTypeaheadController,
     templateUrl: './components/immunization/immunizationTypeahead/immunizationTypeahead.template.html'
   };
@@ -56,6 +59,7 @@
       this.model.trade = selected.trade;
       this.model.lot = selected.lot;
       this.selectedVaccine = this.model;
+      this.onAfterSelect();
     }
 
     /**
@@ -70,6 +74,8 @@
         this.model.lot = new Lot();
         this.cardInfo = {};
         this.selectedVaccine = '';
+
+        this.onAfterSelect();
       }
     }
 
@@ -153,17 +159,14 @@
     let filterImmunizationsByGating = (immunizations) => {
       switch (GatingQuestionService.getGatingQuestion()) {
         case GATING_RESPONSE.ONTARIO:
-          // console.info(`ENDPOINT: ${immunizations.length}, ONTARIO FILTERED: ${immunizations.filter(Is.immunization.ontarioPrevalence).length}, REMAINING:${immunizations.filter(Is.immunization.ontarioPrevalence).length - MAX_IMMUNIZATION_RESULTS}`)
           return immunizations.filter(Is.immunization.ontarioPrevalence);
 
         case GATING_RESPONSE.CANADA:
-          // console.info(`ENDPOINT: ${immunizations.length}, CANADA FILTERED: ${immunizations.filter(Is.immunization.canadaPrevalence).length}, REMAINING:${immunizations.filter(Is.immunization.canadaPrevalence).length - MAX_IMMUNIZATION_RESULTS}`)
           return immunizations.filter(Is.immunization.canadaPrevalence);
 
         case GATING_RESPONSE.INTERNATIONAL:
           // Fall-through to default case.
         default:
-          // console.info(`ENDPOINT: ${immunizations.length}, INTERNATIONAL FILTERED: ${immunizations.filter(Is.immunization.internationalPrevalence).length}, REMAINING:${immunizations.filter(Is.immunization.internationalPrevalence).length - MAX_IMMUNIZATION_RESULTS}`)
           return immunizations.filter(Is.immunization.internationalPrevalence);
       }
     }

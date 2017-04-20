@@ -51,10 +51,11 @@
   <!-- Upload Documents -->
   <div class="form-group col-xs-12" ng-if="$ctrl.uploader">
 
+    <document-upload-display is-editable="true"></document-upload-display>
     <span role="contentinfo" aria-labelledby="fileUploadDescription">
       <input class="sr-only" id="documents-file-upload-button" tabindex="-1" name="fileUpload" type="file" nv-file-select="" accept="{{$ctrl.acceptFileExtensions}}" uploader="$ctrl.uploader" multiple/>
 
-      <label aria-role="button" tabindex="0" ng-enter for="documents-file-upload-button" class="btn btn-primary btn-lg">
+      <label aria-role="button" tabindex="0" ng-enter for="documents-file-upload-button" class="btn btn-primary btn-lg pull-left">
         <span class="fa fa-open" aria-hidden="true"></span> <span>{{'documentCapture.UPLOAD_BUTTON' | translate}}</span>
       </label>
     </span>
@@ -64,7 +65,7 @@
 <div class="row">
   <div class="form-group col-xs-12">
 
-    <p id="fileUploadDescription" translate="documentCapture.FILE_TYPES"></p>
+    <p class="pull-left" id="fileUploadDescription" translate="documentCapture.FILE_TYPES"></p>
 
     <div class="row">
       <span class="col-xs-12 alert alert-danger" ng-if="!!$ctrl.uploaderState.status" role="alert">
@@ -74,5 +75,4 @@
   </div>
   <!-- End Upload Documents -->
 
-  <document-upload-display is-editable="true"></document-display>
 </div>

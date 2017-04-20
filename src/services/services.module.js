@@ -48,7 +48,7 @@ angular.module('icon.services', [])
           '$http', '$q', '$interval',
           'jwtHelper',
           'Token',
-          'ICON_API', 'ICON_TOKEN', 'ICON_EVENT',
+          'ICON_API', 'ICON_EVENT',
           require('./TokenHandler.service.js')
       ])
       .service('ToasterChoiceService', [require('./ToasterChoice.service.js')])

@@ -1,22 +1,16 @@
-<div ng-repeat="immunizationGroup in $ctrl.immunizationGroups track by $index">
-  <immunization-display-by-date
-    immunizations="immunizationGroup.immunizations"
-    add="$ctrl.addImmunization(immunization)"
-    edit="$ctrl.addImmunization(oldImmunization, newImmunization)"
-    on-remove="$ctrl.remove(immunization)"
-    open-modal="$ctrl.openModal">
-  </immunization-display-by-date>
-</div>
+<ng-transclude></ng-transclude>
 
+<!-- Add a date & immunization button. -->
 <div>
   <button class="btn btn-link btn-lg center-block" id="immunizations-add"
-  ng-click="$ctrl.openAddImmunization()">
-  <p>
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
-    </span>
-  </p>
+  ng-click="$ctrl.openNewImmunizationModal()">
+    <p>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+      </span>
+    </p>
     <div translate='immunizationsByDate.ADD_DATE' translate-compile></div>
   </button>
 </div>
+<!-- End add a date & immunization button. -->

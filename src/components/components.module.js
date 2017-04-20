@@ -58,9 +58,11 @@ angular.module('icon.components', [])
   .component('editImmunization',            require('./immunization/editImmunization/editImmunization.component.js'))
 // by Agent
   .component('immunizationsByAgent',        require('./immunization/byAgent/immunizationsByAgent/immunizationsByAgent.component.js'))
+  .component('immunizationsGroupedByAgent',  require('./immunization/byAgent/immunizationsGroupedByAgent/immunizationsGroupedByAgent.component.js'))
   .component('immunizationDisplayByAgent',  require('./immunization/byAgent/immunizationDisplayByAgent/immunizationDisplayByAgent.component.js'))
 // by Date
   .component('immunizationsByDate',         require('./immunization/byDate/immunizationsByDate/immunizationsByDate.component.js'))
+  .component('immunizationsGroupedByDate',  require('./immunization/byDate/immunizationsGroupedByDate/immunizationsGroupedByDate.component.js'))
   .component('immunizationDisplayByDate',   require('./immunization/byDate/immunizationDisplayByDate/immunizationDisplayByDate.component.js'))
 /* End immunization components */
 

@@ -30,6 +30,7 @@ module.exports = {
   controller: anonSelfPatientController,
   template: `
     <div>
+      <h2>{{ 'patientCapture.YOUR_INFO' | translate }}</h2>
       <form class="form form-container" name="anonSelfPatientForm" novalidate autocomplete="off">
         <patient-capture
           local-patient="$ctrl.localPatient"

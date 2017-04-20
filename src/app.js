@@ -146,17 +146,6 @@
     VALID_EXTENSIONS: ['doc', 'docx', 'jpeg', 'jpg', 'pdf', 'png'],
   })
 
-  .constant('ICON_TOKEN', {
-    // Durations in seconds:          SEC   MIN
-    SESSION_EXPIRY_PROMPT_TIME:       (60  * 15), // Prompt 15 minutes before expiration
-    TRANSACTION_EXPIRY_PROMPT_TIME:   (60  * 15), // Prompt 15 minutes before expiration
-    LATENCY_TIME:                     (60  *  1), // Buffer to allow time between user response and actual expiration
-
-    // Intervals in milliseconds:       MILLIS   SEC  MIN
-    SESSION_EXPIRY_CHECK_INTERVAL:      (1000  *  5       ), // Frequency to check for expiration
-    TRANSACTION_EXPIRY_CHECK_INTERVAL:  (1000  *  5       ), // Frequency to check for expiration
-  })
-
   .constant('ICON_EVENT', {
     ANALYTICS_EVENT_TRACK:    '$analyticsEventTrack',
     ANALYTICS_PAGE_TRACK:     '$analyticsPageTrack',
@@ -270,7 +259,7 @@
 
     /* Suppresses error messages for transitions (See index JS transitions)  */
     $stateProvider.stateService.defaultErrorHandler((e) => {
-      console.warn(e);
+      //console.warn(e);
     });
 
     var Routes = require('./views/routes.js');

@@ -31,9 +31,40 @@
       return immunizationsGroupedByDate;
     }
 
+    /**
+     * Groups a flat array of Immunization objects into arrays of Immunization with a common target SNOMED.
+     * @param {Array<Immunization>} immunizations - the array of immuniztions to regroup
+     * @returns {Array<Array<Immunization>>} - immunizations grouped by agent
+     */
+    function groupImmunizationsByAgentTrade (immunizations) {
+      let immunizationsKeyedByAgentTrade = immunizations
+                                     .reduce((immunizations, i) => {
+                                       // Target the trade SNOMED if there is one, otherwise, use generic agent SNOMED.
+                                       let targetSnomed = (!!i.trade.snomed)
+                                                            ? i.trade.snomed
+                                                            : i.agent.snomed;
+                                       if (!immunizations[targetSnomed]) immunizations[targetSnomed] = [];
+                                       // Add the immunization to the array at the key matching it's target SNOMED code.
+                                       immunizations[targetSnomed].push(i.clone());
+
+                                       return immunizations;
+                                      }, {});
+
+      let immunizationsGroupedByAgentTrade = Object.keys(immunizationsKeyedByAgentTrade)
+                                       .reduce((immunizationsByAgentTrade, key) => {
+                                          // Strip the source object into an array holding it's values.
+                                          immunizationsByAgentTrade.push(immunizationsKeyedByAgentTrade[key]);
+
+                                          return immunizationsByAgentTrade;
+                                        }, []);
+
+      return immunizationsGroupedByAgentTrade;
+    }
+
     return {
       immunization: {
-        byDate: groupImmunizationsByDate
+        byDate: groupImmunizationsByDate,
+        byAgentTrade: groupImmunizationsByAgentTrade,
       }
     };
   }

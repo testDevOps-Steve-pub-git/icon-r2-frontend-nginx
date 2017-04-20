@@ -19,7 +19,7 @@
     }
 
     function isImmunizationCanadaPrevalence (immunization) {
-      const CANADA_WHITELIST = [ 1, 2, 3, 4, 5, 6 ];
+      const CANADA_WHITELIST = [ 1, 2, 3, 4, 5, 6, 9 ];
       return CANADA_WHITELIST.indexOf(immunization.getPrevalence()) >= 0;
     }
 

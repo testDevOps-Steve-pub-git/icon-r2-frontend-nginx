@@ -1,47 +1,21 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 id="immunizations-immunizations-header">
-      <span class="fa fa-medkit"></span>
-      <immunization-display
-      immunization="$ctrl.immunizations[0]">
-      </immunization-display>
-    </h4>
-
-    <diseases-display
-    diseases="$ctrl.immunizations[0].agent.diseases">
-    </diseases-display>
+<li class="list-group-item icon-display-panel">
+  <div class="pull-right">
+    <button class="btn btn-default text-center icon-display-panel-edit" id="immunizations-edit-{{$index}}" ng-click="$ctrl.openEditImmunization()" aria-label="{{ 'immunizationDisplayByAgent.EDIT_LABEL' | translate }} {{ $ctrl.immunization.date }}">{{ 'immunizationDisplayByAgent.EDIT' | translate }}</button>
+    <button class="btn btn-default text-center icon-display-panel-delete" id="immunizations-delete-{{$index}}" aria-label="{{ 'immunizationDisplayByAgent.DELETE_LABEL' | translate}} {{ $ctrl.immunization.date }}" ng-click="$ctrl.removeImmunization()">{{ 'immunizationDisplayByAgent.DELETE' | translate}}</button>
   </div>
 
-  <ul class="list-group">
-    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item icon-display-panel">
-      <div class="pull-right">
-        <button class="btn btn-default text-center icon-display-panel-edit" id="immunizations-edit-{{$index}}" ng-click="$ctrl.edit(immunization)" aria-label="{{ 'immunizationDisplayByAgent.EDIT_LABEL' | translate }} {{ immunization.date }}">{{ 'immunizationDisplayByAgent.EDIT' | translate }}</button>
-        <button class="btn btn-default text-center icon-display-panel-delete" id="immunizations-delete-{{$index}}" aria-label="{{ 'immunizationDisplayByAgent.DELETE_LABEL' | translate}} {{ immunization.date }}" ng-click="$ctrl.remove({ immunization: immunization })">{{ 'immunizationDisplayByAgent.DELETE' | translate}}</button>
-      </div>
+  <h4>{{ $ctrl.immunization.date }}</h4>
 
-      <h4>{{ immunization.date }}</h4>
+  <age-display
+    date-of-birth="$ctrl.patient.dateOfBirth"
+    date="$ctrl.immunization.date">
+  </age-display>
 
-      <age-display
-        date-of-birth="$ctrl.patient.dateOfBirth"
-        date="immunization.date">
-      </age-display>
-
-      <div ng-if="immunization.isDateApproximate">
-        <em>{{ 'immunizationDisplayByAgent.DATE_ESTIMATED' | translate }}</em>
-      </div>
-
-      <trade-lot-display
-        immunization="immunization">
-      </trade-lot-display>
-    </li>
-  </ul>
-
-  <div class="panel-footer icon-panel-footer-btn">
-    <button
-    class="btn btn-primary btn-block btn-lg"
-    ng-click="$ctrl.addImmunization($ctrl.immunizations[0].clone())">
-      <span class="fa fa-plus-circle"></span>
-      {{ 'immunizationDisplayByAgent.IMMUNIZATION_DATE' | translate }}
-    </button>
+  <div ng-if="$ctrl.immunization.isDateApproximate">
+    <em>{{ 'immunizationDisplayByAgent.DATE_ESTIMATED' | translate }}</em>
   </div>
-</div>
+
+  <trade-lot-display
+    immunization="$ctrl.immunization">
+  </trade-lot-display>
+</li>
