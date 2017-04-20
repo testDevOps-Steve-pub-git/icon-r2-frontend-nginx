@@ -8,16 +8,31 @@
   exports.config = {
     rootElement: 'body',
     multiCapabilities: [
-      {
-         'browserName': 'chrome',
-         'platform': 'Windows 10',
-         'screenResolution': '1920x1080',
-         'prerun': {
-           'executable':'https://www.dropbox.com/s/umpvq8qm4rkt9v1/downloadexamplefiles.bat?dl=1',
-           'background': true,
-           'timeout': 300000
-        }
-      },
+       {
+  'browserName': 'phantomjs',
+
+  /* 
+   * Can be used to specify the phantomjs binary path.
+   * This can generally be ommitted if you installed phantomjs globally.
+   */
+  'phantomjs.binary.path': require('phantomjs-prebuilt').path,
+
+  /*
+   * Command line args to pass to ghostdriver, phantomjs's browser driver.
+   * See https://github.com/detro/ghostdriver#faq
+   */
+  'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+}
+      // {
+      //    'browserName': 'chrome',
+      //    'platform': 'Windows 10',
+      //    'screenResolution': '1920x1080',
+      //    'prerun': {
+      //      'executable':'https://www.dropbox.com/s/umpvq8qm4rkt9v1/downloadexamplefiles.bat?dl=1',
+      //      'background': true,
+      //      'timeout': 300000
+      //   }
+      // },
       // {
       //    'browserName': 'chrome',
       //    'prerun': {
@@ -106,8 +121,8 @@
       maxSessions: 2,
      // baseUrl: 'http://gbhu.stg.iconr2.marc-hi.ca',
       baseUrl: 'http://localhost:3001',
-     // seleniumServerJar: 'selenium-server-standalone-3.0.1.jar',
-      seleniumAddress: "http://169.46.30.64:4444/wd/hub",
+      seleniumServerJar: 'selenium-server-standalone-3.0.1.jar',
+      //seleniumAddress: "http://169.46.30.64:4444/wd/hub",
       suites: {
         scenarios: [
           './e2e/scenarios/TC-ANON-OTHER-SUB.scenario.js',
