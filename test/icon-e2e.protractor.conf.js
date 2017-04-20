@@ -143,7 +143,7 @@
              browser.platform = caps.get('platform');
              jasmine.getEnv()
                .addReporter(new JSONReporter({
-                 file : 'test/e2e/results/icon-e2e-test-report' + '-' + browser.name + '-' + browser.version + '.json',
+                 file : 'test/icon-e2e-test-report' + '-' + browser.name + '-' + browser.version + '.json',
                  beautify : true,
                  indentationLevel : 4
                }));
