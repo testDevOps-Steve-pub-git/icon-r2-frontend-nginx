@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3 translate='confirmationMessage.COMPLETION_TITLE'
+    aria-label="{{ 'confirmationMessage.COMPLETION_TITLE' | translate }}"></h3>
+    <p translate="confirmationMessage.COMPLETION_MESSAGE"
+    translate-values="{
+      clientName: '{{ $ctrl.clientName}}',
+      phuName: '{{$ctrl.multitenancy.NAME_KEY | translate}}',
+      time_to_process : '{{$ctrl.multitenancy.RESPONSE_TIME_KEY | translate}}'
+    }"
+    translate-compile></p>
+  </div>
+
+  <div class="col-xs-12">
+    <span translate='confirmationMessage.REFERENCE_NUMBER_LABEL'
+    aria-label="{{ 'confirmationMessage.REFERENCE_NUMBER_LABEL' | translate }}"></span>
+    <p class="icon-text-larger">{{ $ctrl.transactionToken }}</p>
+    <p translate='confirmationMessage.REFERENCE_NUMBER_MESSAGE'
+    aria-label="{{ 'confirmationMessage.REFERENCE_NUMBER_MESSAGE' | translate }}"></p>
+  </div>
+
+  <div class="col-xs-12">
+    <!-- <button
+    class="btn btn-primary" id="completion-print-button"
+    translate='confirmationMessage.PRINT'
+    aria-label="{{ 'confirmationMessage.PRINT' | translate}}">
+    </button> -->
+
+    <button
+    class="btn btn-primary" id="completion-save-pdf-button"
+    translate='confirmationMessage.SAVE_PDF'
+    aria-label="{{ 'confirmationMessage.SAVE_PDF' | translate}}"
+    ng-click="$ctrl.openConfirmationPdf()">
+    </button>
+  </div>
+</div>

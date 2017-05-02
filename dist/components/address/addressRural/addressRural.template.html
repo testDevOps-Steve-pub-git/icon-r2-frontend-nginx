@@ -1,0 +1,95 @@
+<!-- Rural Route -->
+<div class="row">
+  <div class="form-group col-xs-12 col-sm-4">
+    <label for="address-rural-route">{{ 'addressRural.RURAL_ROUTE' | translate }}</label>
+
+    <input
+        class="form-control"
+        id="address-rural-route"
+        name="ruralRoute"
+        type="text"
+        ng-required="true"
+        ng-model="$ctrl.localAddress.ruralRoute"
+        ng-pattern="$ctrl.rgx.STREET_NUMBER"
+        ng-maxlength="10"
+    />
+
+    <!--Error Messages-->
+    <div class="error-messages" id="address-rural-route-error" ng-messages="$ctrl.form.ruralRoute.$error"
+         ng-if="$ctrl.form.ruralRoute.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressRural.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressRural.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressRural.ERRORS.RURAL_ROUTE_REQUIRED'
+           aria-label="{{ 'addressRural.ERRORS.RURAL_ROUTE_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressRural.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressRural.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+</div>
+<!--End Rural Route-->
+
+
+<!-- Station Route -->
+<div class="row">
+  <div class="form-group col-xs-12 col-sm-4">
+    <label for="address-station">{{ 'addressRural.STATION_ROUTE' | translate }}</label>
+
+    <input
+        class="form-control"
+        id="address-station"
+        name="station"
+        type="text"
+        ng-required="true"
+        ng-model="$ctrl.localAddress.station"
+        ng-pattern="$ctrl.rgx.STREET_NUMBER"
+        ng-maxlength="30"
+    />
+
+    <!--Error Messages-->
+    <div class="error-messages" id="address-station-error" ng-messages="$ctrl.form.station.$error"
+         ng-if="$ctrl.form.station.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressRural.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressRural.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressRural.ERRORS.STATION_ROUTE_REQUIRED'
+           aria-label="{{ 'addressRural.ERRORS.STATION_ROUTE_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressRural.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressRural.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+  <!--End Station Route-->
+</div>
+
+<div class="row">
+  <!-- Additional Info Route -->
+  <div class="form-group col-xs-12 col-sm-6">
+    <label for="address-additional-info">{{ 'addressRural.ADDITIONAL_ADDRESS_INFO' | translate }}</label> <span>{{'OPTIONAL' | translate}}</span>
+
+    <input
+        class="form-control"
+        id="address-additional-info"
+        name="additionalInfo"
+        type="text"
+        ng-model="$ctrl.localAddress.line2"
+        ng-pattern="$ctrl.rgx.STREET_NUMBER"
+        ng-maxlength="10"
+    />
+
+    <!--Error Messages-->
+    <div class="error-messages" id="address-additional-info-error" ng-messages="$ctrl.form.additionalInfo.$error"
+         ng-if="$ctrl.form.additionalInfo.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressRural.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressRural.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressRural.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressRural.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+</div>
+<!--End Station Route-->
+
+<address-capture
+local-address="$ctrl.localAddress"
+form="$ctrl.form">
+</address-capture>

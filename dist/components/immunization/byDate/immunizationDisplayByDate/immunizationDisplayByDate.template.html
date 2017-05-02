@@ -1,0 +1,23 @@
+<li class="list-group-item icon-display-panel">
+  <div class="pull-right">
+    <button class="btn btn-default text-center icon-display-panel-edit" id="immunizations-edit-{{$index}}" ng-click="$ctrl.openEditImmunization()" aria-label="{{ 'immunizationDisplayByDate.EDIT_LABEL' | translate }} {{ $ctrl.immunization.agent.name }}">{{ 'immunizationDisplayByDate.EDIT' | translate }}</button>
+    <button class="btn btn-default text-center icon-display-panel-delete"  id="immunizations-delete-{{$index}}" ng-click="$ctrl.removeImmunization()" aria-label="{{ 'immunizationDisplayByDate.DELETE_LABEL' | translate }} {{ $ctrl.immunization.agent.name}}">{{ 'immunizationDisplayByDate.DELETE' | translate }}</button>
+  </div>
+
+  <immunization-display
+  class="h4"
+  immunization="$ctrl.immunization">
+  </immunization-display>
+
+  <diseases-display
+  diseases="$ctrl.immunization.agent.diseases">
+  </diseases-display>
+
+  <trade-lot-display
+  immunization="$ctrl.immunization">
+  </trade-lot-display>
+
+  <div ng-if="$ctrl.immunization.isDateApproximate">
+    {{ 'immunizationDisplayByDate.DATE_ESTIMATED' | translate }}
+  </div>
+</li>

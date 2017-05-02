@@ -1,0 +1,83 @@
+<!-- Phone -->
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6">
+
+      <!-- Non-mobile -->
+      <div class="form-group">
+        <div class="row">
+        <div class="col-xs-12">
+          <label for="submitter-phone">{{ 'submitterContactCapture.PHONE' | translate }}<span class="required_field"></span></label>
+        </div>
+
+        <div class="col-xs-7">
+          <input ng-model="$ctrl.localSubmitterInfo.phone1Number"
+                id="submitter-phone"
+                ng-required="true"
+                ng-pattern="$ctrl.rgx.PHONE_NUMBER"
+                name="phone1Number"
+                ng-minlength="1" ng-maxlength="16"
+                ui-options="$ctrl.phoneOptions"
+                ui-mask="(999) 999-9999" ui-mask-placeholder-char="_"
+                class="form-control icon-mask-display"
+                aria-describedby="contactMessage"
+                type="text" title="Phone Number"/>
+
+          <!-- Mobile -->
+          <input ng-model="$ctrl.localSubmitterInfo.phone1Number"
+                id="submitter-phone"
+                ng-required="true"
+                ng-pattern="$ctrl.rgx.PHONE_NUMBER"
+                name="phone1NumberMobile"
+                ng-minlength="1" ng-maxlength="16"
+                class="form-control icon-display-mobile"
+                aria-describedby="contactMessage"
+                type="text" title="Phone Number"/>
+          </div>
+
+      <div class="col-xs-5">
+        <div class="input-group">
+          <span class='input-group-addon icon-background-white'>{{ 'submitterContactCapture.EXT' | translate }}</span>
+          <input ng-model="$ctrl.localSubmitterInfo.phone1Ext"
+                id="submitter-phone-extension"
+                ng-pattern="$ctrl.rgx.EXT"
+                name="phone1Ext"
+                ng-maxlength="10"
+                class="form-control"
+                aria-label="{{ 'submitterContactCapture.EXTENSION' | translate }}"
+                type="text" title="Phone extension"/>
+        </div>
+      </div>
+
+  <!-- Error messages -->
+      <div class="col-xs-12">
+        <div id="submitter-phone-error" class="icon-mask-display" ng-messages="$ctrl.form.phone1Number.$error" ng-if="$ctrl.form.phone1Number.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterContactCapture.ERRORS.PHONE_IS_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate }}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="mask">{{'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate}}</div>
+        </div>
+    
+        <div id="submitter-phone-error" class="icon-display-mobile" ng-messages="$ctrl.form.phone1NumberMobile.$error" ng-if="$ctrl.form.phone1NumberMobile.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterContactCapture.ERRORS.PHONE_IS_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate }}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="mask">{{'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate}}</div>
+        </div>
+    
+        <div id="submitter-phone-extension-error" ng-messages="$ctrl.form.phone1Ext.$error" ng-if="$ctrl.form.phone1Ext.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.ERRORS.PHONE_EXT_NUMBERS' | translate }}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{ 'submitterContactCapture.ERRORS.TOO_MANY_NUMBERS' | translate }}</div>
+        </div>
+      </div>
+  <!-- End error messages -->
+
+      <div class="col-xs-12">
+        <p id="contactMessage">{{ 'submitterContactCapture.CONTACT_MESSAGE' | translate }}</p>
+      </div>
+
+      </div>
+     </div>
+
+     
+
+    </div>
+  </div>
+<!-- End phone -->

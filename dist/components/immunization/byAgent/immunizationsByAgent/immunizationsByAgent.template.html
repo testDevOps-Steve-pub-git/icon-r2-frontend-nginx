@@ -1,0 +1,16 @@
+<ng-transclude></ng-transclude>
+
+<!-- Add an immunization & date button. -->
+<div>
+  <button class="btn btn-link btn-lg center-block" id="immunizations-add"
+  ng-click="$ctrl.openNewImmunizationModal()">
+    <p>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-medkit fa-stack-1x fa-inverse"></i>
+      </span>
+    </p>
+    <div translate='immunizationByAgent.ADD_IMMUNIZATION' translate-compile></div>
+  </button>
+</div>
+<!-- End add an immunization & date button. -->

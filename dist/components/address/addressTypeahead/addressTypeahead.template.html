@@ -1,0 +1,28 @@
+<div class="col-xs-12 col-sm-6">
+    <label for="address-postal-autocomplete" translate='addressTypeahead.POSTAL_CODE'
+    aria-label="{{ 'addressTypeahead.POSTAL_CODE' | translate }}"></label>
+
+    <div ng-form="postalCodeForm">
+        <input type="text"
+        id="address-postal-autocomplete"
+        name="addressPostalAutocomplete"
+        class="form-control"
+        ng-model="$ctrl.addressLookup"
+        autocomplete="off"
+        typeahead-loading="loadingLocations"
+        typeahead-no-results="noResults"
+        typeahead-on-select="$ctrl.onPostalCodeLookUpSelect($item)"
+        uib-typeahead="addresses.postal_code as (addresses.streetName + addresses.streetType + ', ' + addresses.city + ', ' + addresses.postalCode ) for addresses in $ctrl.getAddress($viewValue) | limitTo:8"/>
+    </div>
+
+    <span ng-hide="loadingLocations || noResults"></span>
+    <span ng-show="loadingLocations" class="fa fa-refresh"></span>
+
+    <div ng-show="noResults" translate="addressTypeahead.NO_RESULTS_FOUND"></div>
+
+    <div>
+        {{ 'addressTypeahead.POSTAL_CODE_MESSAGE' | translate }}
+    </div>
+</div>
+
+

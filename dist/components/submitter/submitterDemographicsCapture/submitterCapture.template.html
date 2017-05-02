@@ -1,0 +1,60 @@
+<div>
+  <fieldset>
+
+    <h3 translate='submitterDemographicsCapture.INFO_TITLE' aria-label="{{ 'submitterDemographicsCapture.INFO_TITLE' | translate }}"></h3>
+
+    <!-- Submitter name -->
+    <div class="row">
+      <!-- First name -->
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="submitter-first-name" translate-compile>{{ 'submitterDemographicsCapture.FIRST_NAME' | translate }}</label>
+
+        <input ng-model="$ctrl.localSubmitterInfo.firstName"
+               ng-required="true"
+               ng-pattern="$ctrl.rgx.NAME"
+               ng-minlength="1"
+               ng-maxlength="30"
+               class="form-control"
+               id="submitter-first-name"
+               name="firstName"
+               type="text"/>
+
+        <!-- Error messages -->
+        <div id="submitter-first-name-error" ng-messages="$ctrl.form.firstName.$error" ng-if="$ctrl.form.firstName.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
+        </div>
+        <!-- End error messages -->
+      </div>
+      <!-- End first name -->
+    </div>
+
+    <div class="row">
+      <!-- Last name -->
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="submitter-last-name" translate-compile>{{ 'submitterDemographicsCapture.LAST_NAME' | translate }}</label>
+
+        <input ng-model="$ctrl.localSubmitterInfo.lastName"
+               ng-required="true"
+               ng-pattern="$ctrl.rgx.NAME"
+               ng-minlength="1"
+               ng-maxlength="30"
+               class="form-control"
+               id="submitter-last-name"
+               name="lastName"
+               type="text" />
+
+        <!-- Error messages -->
+        <div id="submitter-last-name-error" ng-messages="$ctrl.form.lastName.$error" ng-if="$ctrl.form.lastName.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
+        </div>
+        <!-- End error messages -->
+      </div>
+      <!-- End last name -->
+    </div>
+    <!-- End submitter name -->
+  </fieldset>
+</div>

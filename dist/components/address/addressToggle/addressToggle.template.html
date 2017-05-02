@@ -1,0 +1,69 @@
+<div id="address-options" class="btn-group" role="group" aria-label="{{ 'addressToggle.ADDRESS_TYPE' | translate }}" tabindex="0">
+  <p><strong>{{ 'addressToggle.ADDRESS_TYPE' | translate }}</strong></p>
+  <button class="btn btn-info" tabindex="0"
+  id="address-type-street"
+  ng-model="$ctrl.localAddress.addressType"
+  name="addressType"
+  uib-btn-radio="'Street'"
+  ng-required="true"
+  ng-change="$ctrl.clear()"
+  aria-label="{{ 'addressToggle.STREET' | translate }}">
+    <span ng-if="$ctrl.localAddress.addressType == 'Street'" class="fa fa-check"></span>
+    {{'addressToggle.STREET' | translate}}
+  </button>
+
+<button class="btn btn-info" tabindex="0"
+  id="address-type-rural"
+  ng-model="$ctrl.localAddress.addressType"
+  name="addressType"
+  uib-btn-radio="'Rural'"
+  ng-required="true"
+  ng-change="$ctrl.clear()"
+  aria-label="{{ 'addressToggle.RURAL' | translate }}">
+    <span ng-if="$ctrl.localAddress.addressType == 'Rural'" class="fa fa-check"></span>
+    {{'addressToggle.RURAL' | translate}}
+  </button>
+
+  <button class="btn btn-info" tabindex="0"
+  id="address-type-pobox"
+  ng-model="$ctrl.localAddress.addressType"
+  name="addressType"
+  uib-btn-radio="'POBox'"
+  ng-required="true"
+  ng-change="$ctrl.clear()"
+  aria-label="{{ 'addressToggle.POBOX' | translate }}">
+    <span ng-if="$ctrl.localAddress.addressType == 'POBox'" class="fa fa-check"></span>
+    {{'addressToggle.POBOX' | translate}}
+  </button>
+</div>
+
+<hr />
+<br aria-hidden="true" />
+
+<!-- Street Address -->
+ <div ng-if="$ctrl.localAddress.addressType == 'Street'">
+    <address-street
+        local-address="$ctrl.localAddress"
+        form="$ctrl.form">
+    </address-street>
+  </div>
+  <!-- End Street Address -->
+
+  <!-- Rural Address -->
+  <div ng-if="$ctrl.localAddress.addressType == 'Rural'">
+    <address-rural
+      form="$ctrl.form"
+      local-address="$ctrl.localAddress">
+    </address-rural>
+  </div>
+  <!-- End Rural Address -->
+
+  <!-- POBox Address -->
+  <div ng-if="$ctrl.localAddress.addressType == 'POBox'">
+    <address-po-box
+        form="$ctrl.form"
+        local-address="$ctrl.localAddress">
+    </address-po-box>
+  </div>
+  <!-- End POBox Address -->
+</div>

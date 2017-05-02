@@ -1,0 +1,112 @@
+<label>{{ 'immunizationTypeahead.IMMUNIZATION_LABEL' | translate  }}</label>
+
+<!-- Typeahead input (shown before an immunization is selected) -->
+<div ng-if="!$ctrl.displayCard">
+  <input
+  type="text"
+  name="selectedVaccine"
+  class="form-control"
+  id="immunizations-immunization-input"
+  ng-model="$ctrl.selectedVaccine"
+  typeahead-on-select="$ctrl.onVaccineSelect($item)"
+  typeahead-no-results="noResults"
+  typeahead-template-url="typeahead-item.html"
+  uib-typeahead="immunization for immunization in $ctrl.getImmunization($viewValue)"
+  aria-describedby="immunization-error"
+  tabindex="0"
+  />
+
+  <span ng-show="loadingLocations" class="fa fa-refresh"></span>
+
+  <div ng-show="noResults">
+    <span class="fa fa-remove" id="immunizations-immunization-input-error"></span>
+    {{ 'immunizationTypeahead.NO_RESULTS_FOUND' | translate }}
+  </div>
+
+  <div>
+    {{ 'immunizationTypeahead.IMMUNIZATION_PLACEHOLDER' | translate}}
+  </div>
+</div>
+<!-- End typeahead input -->
+
+<!-- Alert / card (shown after an immunization has been selected) -->
+<div ng-if="$ctrl.displayCard" uib-alert tabindex="0" aria-labelledby="immunization-description" class="alert alert-info" close="$ctrl.onFieldClear()">
+  <span id="immunization-description" class="icon-off-screen">{{$ctrl.selectedVaccine.trade.name}}{{$ctrl.selectedVaccine.agent.name}}</span>
+  <!-- Consider an trade only if trade SNOMED is not empty. -->
+  <span ng-if="$ctrl.selectedVaccine.trade.snomed !== ''">
+    <div class="alert-heading">
+      <div><strong>{{$ctrl.selectedVaccine.trade.name}}</strong></div>
+      <div><strong>{{$ctrl.selectedVaccine.agent.shortName}}</strong></div>
+    </div>
+
+    <span class="small" aria-hidden="true" ng-if="$ctrl.selectedVaccine.agent.diseases.length">
+      <span>{{$ctrl.selectedVaccine.agent.diseases[0].name}}</span><span ng-repeat="d in $ctrl.selectedVaccine.agent.diseases.slice(1)">, {{d.name}}</span>
+    </span>
+
+  </span>
+
+  <!-- Consider an agent only if trade SNOMED is empty. -->
+  <span ng-if="$ctrl.selectedVaccine.trade.snomed === ''">
+    <div class="alert-heading">
+      <div><strong>{{$ctrl.selectedVaccine.agent.shortName}}</strong></div>
+    </div>
+
+    <span class="small" ng-if="$ctrl.selectedVaccine.agent.diseases.length">
+      <span>{{$ctrl.selectedVaccine.agent.diseases[0].name}}</span><span ng-repeat="d in $ctrl.selectedVaccine.agent.diseases.slice(1)">, {{d.name}}</span>
+    </span>
+  </span>
+</div>
+<!-- End alert / card -->
+
+
+<script type="text/ng-template" id="typeahead-item.html">
+  <!-- <pre>{{ match.model | json }}</pre> -->
+
+  <div ng-if="match.model.remaining && match.model.remaining > 0">
+    <div class="icon-keep-typing-result">
+      {{match.model.remaining}} {{ 'immunizationTypeahead.MORE_OPTIONS' | translate }}
+    </div>
+  </div>
+
+  <div class="icon-group-title" ng-if="match.model.isFirstInGroup">
+    <span ng-if="match.model.type === 'Agent'">{{'immunizationTypeahead.AGENT_RESULT_SUBHEADER' | translate}}</span>
+    <span ng-if="match.model.type === 'Trade'">{{'immunizationTypeahead.TRADE_RESULT_SUBHEADER' | translate}}</span>
+  </div>
+
+  <a>
+    <div ng-if="match.model.type == 'Agent'">
+
+
+      <!-- NOTE: a gating code value of 4 indicates international -->
+      <span ng-if="match.model.isCommon && match.model.gatingCode !== 4" class="pull-right">
+        <span class="badge icon-cell-common">
+          <span class="fa fa-star"></span> {{'immunizationTypeahead.TYPICAL' | translate}}
+        </span>
+      </span>
+
+      <span class="cell-Title">{{match.model.agent.shortName}}</span>
+    </div>
+
+    <div ng-if="match.model.type == 'Trade'">
+
+
+      <!-- NOTE: a gating code value of 4 indicates international -->
+      <span ng-if="match.model.isCommon && match.model.gatingCode !== 4" class="pull-right">
+        <span class="badge icon-cell-common">
+          <span class="fa fa-star"></span> {{'immunizationTypeahead.TYPICAL' | translate}}
+        </span>
+      </span>
+
+      <span class="cell-Title">{{match.model.trade.name}}</span>
+    </div>
+
+    <span ng-if="match.model.type == 'Trade'" class="icon-cell-details">
+      <div>{{match.model.agent.shortName}}</div>
+      <div class="text-muted">{{match.model.diseaseDisplay}}</div>
+    </span>
+
+    <span ng-if="match.model.type == 'Agent'" class="icon-cell-details">
+      <div class="text-muted">{{match.model.diseaseDisplay}}</div>
+    </span>
+  </a>
+</script>

@@ -1,0 +1,95 @@
+<div class="row">
+  <!-- POBox -->
+  <div class="form-group col-xs-12 col-sm-4">
+    <label for="address-pobox-number" aria-label="{{ 'addressPOBox.POBOX' | translate }}">
+      {{ 'addressPOBox.POBOX' | translate }}
+    </label>
+
+    <input
+        class="form-control"
+        id="address-pobox-number"
+        name="POBox"
+        type="text"
+        ng-required="true"
+        ng-model="$ctrl.localAddress.postBox"
+        ng-pattern="$ctrl.rgx.STREET_NUMBER"
+        ng-maxlength="10"
+    />
+
+    <!--Error Messages-->
+    <div class="error-messages" id="address-pobox-number-error" ng-messages="$ctrl.form.POBox.$error"
+         ng-if="$ctrl.form.POBox.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressPOBox.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressPOBox.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressPOBox.ERRORS.POBOX_REQUIRED'
+           aria-label="{{ 'addressPOBox.ERRORS.POBOX_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressPOBox.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressPOBox.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+  <!--End POBox-->
+</div>
+
+<div class="row">
+  <!-- Retail Post Outlet -->
+  <div class="form-group col-xs-12 col-sm-4">
+    <label for="address-retail-post-outlet" translate='addressPOBox.RETAIL_POST_OUTLET'
+    aria-label="{{ 'addressPOBox.RETAIL_POST_OUTLET' | translate }}"></label> <span>{{'OPTIONAL' | translate}}</span>
+
+    <input
+        class="form-control"
+        id="address-retail-post-outlet"
+        name="retailPostOutlet"
+        type="text"
+        ng-model="$ctrl.localAddress.retailPostOffice"
+        ng-pattern="$ctrl.rgx.STREET_NAME"
+        ng-maxlength="100"
+    />
+
+    <!--Error Messages-->
+    <div class="error-messages" id="address-retail-post-outlet-error" ng-messages="$ctrl.form.retailPostOutlet.$error"
+         ng-if="$ctrl.form.retailPostOutlet.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressPOBox.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressPOBox.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressPOBox.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressPOBox.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+  <!--End Retail Post Outlet-->
+</div>
+
+<div class="row">
+  <!-- Station -->
+  <div class="form-group col-xs-12 col-sm-4">
+    <label for="address-station" translate='addressRural.STATION_ROUTE'
+    aria-label="{{ 'addressRural.STATION_ROUTE' | translate }}"></label> <span>{{'OPTIONAL' | translate}}</span>
+
+    <input
+        class="form-control"
+        id="address-station"
+        name="station"
+        type="text"
+        ng-model="$ctrl.localAddress.station"
+        ng-pattern="$ctrl.rgx.STREET_NAME"
+        ng-maxlength="30"
+    />
+
+    <!--Error Messages-->
+    <div class="error-messages" id="address-station-error" ng-messages="$ctrl.form.station.$error"
+         ng-if="$ctrl.form.station.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressPOBox.ERRORS.BAD_FORMAT'
+           aria-label="{{ 'addressPOBox.ERRORS.BAD_FORMAT' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressPOBox.ERRORS.EXCEEDS_MAXLENGTH'
+           aria-label="{{ 'addressPOBox.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+  <!--Station-->
+</div>
+
+<address-capture
+local-address="$ctrl.localAddress"
+form="$ctrl.form">
+</address-capture>

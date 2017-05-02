@@ -1,0 +1,9 @@
+<span ng-if="$ctrl.immunization.getType() === 'Agent'">
+  <span>{{$ctrl.immunization.agent.shortName}}</span>
+</span>
+
+<span ng-if="$ctrl.immunization.getType() === 'Trade'">
+  <span>{{$ctrl.immunization.trade.name}}</span>
+  <br />
+  <span>{{$ctrl.immunization.agent.shortName}}</span>
+</span>

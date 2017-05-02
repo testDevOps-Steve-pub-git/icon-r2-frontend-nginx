@@ -1,0 +1,7 @@
+<div>
+  <span ng-repeat="disease in $ctrl.diseases track by $index">
+    {{ ($index < $ctrl.diseases.length - 1)
+            ? disease.name + ','
+            : disease.name }}
+  </span>
+</div>

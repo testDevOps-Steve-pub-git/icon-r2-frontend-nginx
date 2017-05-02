@@ -1,0 +1,49 @@
+<div class="row">
+  <h4 translate="addressDisplay.ADDRESS_TITLE" class="col-xs-6"></h4>
+</div>
+
+<div class="row">
+
+  <!--  Street -->
+  <div class="col-sm-8">
+    <span>{{$ctrl.addressInfo.unitNumber}}<span ng-if="$ctrl.addressInfo.unitNumber">-</span>{{$ctrl.addressInfo.streetNumber}}</span>
+    <span>{{$ctrl.addressInfo.streetName}} {{$ctrl.addressInfo.streetType}} {{$ctrl.addressInfo.streetDirection}}</span>
+  </div>
+  <!-- End Street -->
+
+  <!-- Rural Route -->
+  <div class="col-sm-8">
+    <span>{{$ctrl.addressInfo.ruralRoute}}</span>
+    <span>{{$ctrl.addressInfo.station}}</span>
+  </div>
+  <div class="col-sm-8">
+    <span>{{$ctrl.addressInfo.line2}}</span>
+  </div>
+  <!-- End Rural Route -->
+
+  <!-- POBox -->
+  <div class="col-sm-8">
+    <span>{{$ctrl.addressInfo.postBox}}</span>
+    <span>{{$ctrl.addressInfo.retailPostOffice}}</span>
+    <span>{{$ctrl.addressInfo.station}}</span>
+  </div>
+
+  <div class="col-sm-8">
+    <span>{{$ctrl.addressInfo.city}}</span>
+    <span>{{$ctrl.addressInfo.province}}</span>
+  </div>
+
+  <div class="col-sm-8">
+    <span>{{$ctrl.addressInfo.postalCode}}</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <edit-button
+        button-id="review-edit-address-button"
+        button-text="{{'addressDisplay.EDIT' | translate}} {{'addressDisplay.ADDRESS_TITLE' | translate}}"
+        go-to-route="^.address">
+    </edit-button>
+  </div>
+</div>

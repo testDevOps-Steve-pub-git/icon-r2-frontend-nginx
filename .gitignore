@@ -1,7 +1,6 @@
 .idea
 node_modules/
 out/
-dist/
 npm-debug.log
 **/app.bundle.js
 **/app.bundle.js.map

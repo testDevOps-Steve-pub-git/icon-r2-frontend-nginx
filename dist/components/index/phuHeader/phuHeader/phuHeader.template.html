@@ -1,0 +1,22 @@
+<nav id="icon-phu-header" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="icon-phu-header-brand" class="pull-left">
+          <img src="./phu/logo-en.png" alt="{{$ctrl.multitenancy.NAME_KEY | translate}}" />
+        </div>
+
+        <div id="icon-phu-header-title" class="pull-left visible-sm visible-md visible-lg">
+          <a id="icon-phu-header-link" class="btn btn-link skip" href="{{$ctrl.multitenancy.WEBSITE_KEY | translate}}">
+            {{$ctrl.multitenancy.NAME_KEY | translate}}
+          </a>
+        </div>
+
+        <div id="icon-translate-button" class="pull-right">
+          <a class="btn-link btn-home skip" ng-if="!$ctrl.isCurrentStateWelcome()" ui-sref="welcome" aria-label="{{'phuHeader.RETURN_HOME' | translate}}">{{'phuHeader.RETURN_HOME' | translate}}</a>
+          <language-selector ng-if="$ctrl.isCurrentStateWelcome()"></language-selector>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

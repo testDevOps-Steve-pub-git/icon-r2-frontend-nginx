@@ -1,0 +1,180 @@
+<!-- Address Typeahead -->
+<div class="row">
+  <address-typeahead
+    local-address="$ctrl.localAddress"
+    postal-code-complete="$ctrl.hasUserInput()"></address-typeahead>
+</div>
+<!--Address Typeahead End-->
+
+<!-- Skip Typeahead Checkbox -->
+<div class="row">
+  <br />
+  <div ng-if="!$ctrl.hasUserInput() && !$ctrl.isAddressFormDisplayed" class="col-xs-12">
+      <input type="checkbox"
+             id="address-skip-typeahead"
+             ng-model="$ctrl.isAddressFormDisplayed" />
+      <label for="address-skip-typeahead">{{ 'addressStreet.ADDRESS_NOT_SEEN' | translate }}</label>
+  </div>
+</div>
+<!-- End Skip Typeahead Checkbox -->
+
+<!--Street Number-->
+<div ng-if="$ctrl.hasUserInput() || $ctrl.isAddressFormDisplayed">
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-3">
+      <label for="address-street-number">{{ 'addressStreet.STREET_NUMBER' | translate }}</label>
+
+      <input ng-model="$ctrl.localAddress.streetNumber"
+             class="form-control"
+             id="address-street-number"
+             name="streetNumber"
+             ng-pattern="$ctrl.rgx.STREET_NUMBER"
+             ng-required="true"
+             ng-maxlength="10"
+             type="text" />
+
+      <!--Error Messages-->
+      <div class="error-messages" id="address-street-number-error" ng-messages="$ctrl.form.streetNumber.$error"
+           ng-if="$ctrl.form.streetNumber.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
+             aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.STREET_NUMBER_REQUIRED'
+             aria-label="{{ 'addressStreet.ERRORS.STREET_NUMBER_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
+             aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+  <!--End Street Number-->
+
+  <!--Unit Number-->
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-3">
+      <label for="address-unit-number" aria-label="{{ 'addressStreet.UNIT_NO' | translate }}">
+        {{ 'addressStreet.UNIT_NO' | translate }}
+      </label>
+       <span>{{'OPTIONAL' | translate}}</span>
+
+      <input ng-model="$ctrl.localAddress.unitNumber"
+             class="form-control"
+             id="address-unit-number"
+             name="unitNumber"
+             ng-maxlength="10"
+             ng-pattern="$ctrl.rgx.STREET_NUMBER"
+             type="text"/>
+
+      <!--Error Messages-->
+      <div class="error-messages" id="address-unit-number-error" ng-messages="$ctrl.form.unitNumber.$error"
+           ng-if="$ctrl.form.unitNumber.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
+             aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
+             aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+  <!--End Unit Number-->
+
+
+  <!--Street Name-->
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-6">
+      <label for="address-street-name">{{ 'addressStreet.STREET_NAME' | translate }}</label>
+
+      <input ng-model="$ctrl.localAddress.streetName"
+             class="form-control"
+             id="address-street-name"
+             name="streetName"
+             ng-pattern="$ctrl.rgx.STREET_NAME"
+             ng-required="true"
+             ng-maxlength="100"
+             type="text"/>
+
+      <!--Error Messages-->
+      <div class="error-messages" id="address-street-name-error" ng-messages="$ctrl.form.streetName.$error"
+           ng-if="$ctrl.form.streetName.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
+             aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.STREET_NAME_REQUIRED'
+             aria-label="{{ 'addressStreet.ERRORS.STREET_NAME_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
+             aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+  <!--End Street Name-->
+
+  <!--Street Type-->
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-4">
+      <label for="address-street-type" data-translate='addressStreet.STREET_TYPE'></label> <span>{{'OPTIONAL' | translate}}</span>
+
+      <input
+          class="form-control"
+          id="address-street-type"
+          name="streetType"
+          type="text"
+          ng-model="$ctrl.localAddress.streetType"
+          ng-pattern="$ctrl.rgx.STREET_TYPE"
+          ng-maxlength="11"
+          uib-typeahead="type for type in $ctrl.streetTypes | filter:$viewValue:startsWith | limitTo:8"
+          typeahead-editable="false"
+          typeahead-select-on-blur="true"
+          typeahead-select-on-exact="true"
+      />
+
+
+      <!--Error Messages-->
+      <div class="error-messages" id="address-street-type-error" ng-messages="$ctrl.form.streetType.$error"
+           ng-if="$ctrl.form.streetType.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
+             aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
+             aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+  <!--End Street Type-->
+
+
+  <!--Street Direction-->
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-4">
+      <label for="address-street-direction" data-translate='addressStreet.STREET_DIRECTION'></label> <span>{{'OPTIONAL' | translate}}</span>
+
+      <input
+          class="form-control"
+          id="address-street-direction"
+          name="streetDirection"
+          type="text"
+          ng-model="$ctrl.localAddress.streetDirection"
+          ng-pattern="$ctrl.rgx.STREET_DIRECTION"
+          ng-maxlength="10"
+          uib-typeahead="direction for direction in $ctrl.streetDirections | filter:$viewValue:startsWith | limitTo:8"
+          typeahead-editable="false"
+          typeahead-select-on-blur="true"
+          typeahead-select-on-exact="true"
+      />
+
+      <!--Error Messages-->
+      <div class="error-messages" id="address-street-direction-error" ng-messages="$ctrl.form.streetDirection.$error"
+           ng-if="$ctrl.form.streetDirection.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
+             aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
+             aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+      </div>
+      <!--End Error Messages-->
+    </div>
+  </div>
+
+  <address-capture
+  local-address="$ctrl.localAddress"
+  form="$ctrl.form">
+  </address-capture>
+</div>
+<!--End Street Direction-->

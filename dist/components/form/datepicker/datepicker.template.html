@@ -1,0 +1,65 @@
+<div>
+  <ng-transclude></ng-transclude>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button aria-hidden="true" tabindex="-1" type="button" class="btn btn-info" ng-click="$ctrl.open()">
+        <span class="fa fa-calendar tooltip-custom" aria-hidden="true"></span>
+      </button>
+    </span>
+
+    <input
+    type="text"
+    class="form-control"
+    id={{$ctrl.inputId}}
+    ui-mask="9999-99-99"
+    ui-options="$ctrl.dateMaskOptions"
+    model-view-value="true"
+    uib-datepicker-popup="yyyy-MM-dd"
+    ng-model=$ctrl.date;
+    name={{$ctrl.inputName}}
+    aria-label="{{ $ctrl.message }}"
+    datepicker-options=$ctrl.datepickerOptions
+    alt-input-formats=$ctrl.datePickerFormat
+    is-open=$ctrl.popup.opened
+    ng-change="$ctrl.checkDateRange()"
+    ng-required={{$ctrl.required}}
+    clear-text="{{'datepicker.CLEAR_BUTTON' | translate}}"
+    close-text="{{'datepicker.CLOSE_BUTTON' | translate}}"
+    current-text="{{'datepicker.CURRENT_BUTTON' | translate}}"
+    aria-describedby="date-errors DOB-errors"
+    />
+  </div>
+
+  <!--Error Messages date of birth-->
+  <div ng-if="$ctrl.inputName == 'dateOfBirth'" id="DOB-errors">
+    <div class="error-messages" id="patient-dob-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
+      <div class="alert alert-danger col-xs-12"
+           ng-message="required" translate='datepicker.DOB_ERROR'
+           aria-label="{{'datepicker.DOB_ERROR' | translate}}"></div>
+      <div class="alert alert-danger col-xs-12"
+           ng-message="date" translate='datepicker.DOB_ERROR'
+           aria-label="{{'datepicker.DOB_ERROR' | translate}}"></div>
+      <div class="alert alert-danger col-xs-12"
+           ng-message="mask" translate='datepicker.DOB_ERROR'
+           aria-label="{{'datepicker.DOB_ERROR' | translate}}"></div>
+    </div>
+  </div>
+  <!--End Error Messages date of birth-->
+
+  <!--Error Messages-->
+  <div ng-if="$ctrl.inputName != 'dateOfBirth'" id="date-errors">
+    <div class="error-messages" id="{{$ctrl.inputId}}-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
+      <div class="alert alert-danger col-xs-12"
+           ng-message="required" translate='datepicker.DATE_ERROR'
+           aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
+      <div class="alert alert-danger col-xs-12"
+           ng-message="date" translate='datepicker.DATE_ERROR'
+           aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
+      <div class="alert alert-danger col-xs-12"
+           ng-message="mask" translate='datepicker.DATE_ERROR'
+           aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
+    </div>
+  </div>
+  <!--End Error Messages-->
+</div>

@@ -1,0 +1,21 @@
+<a
+class="btn-link skip"
+tabindex="0" ng-enter
+lang='{{$ctrl.lang.EN}}'
+ng-if="$ctrl.isCurrentLanguage($ctrl.lang.FR)"
+ng-click="$ctrl.updateLocalization($ctrl.lang.EN)"
+analytics-on="click"
+analytics-event="SET_LANGUAGE_EN">
+  <span class='sr-only'>Set language to:</span> English
+</a>
+
+<a
+class="btn-link skip"
+tabindex="0" ng-enter
+lang="{{$ctrl.lang.FR}}"
+ng-if="$ctrl.isCurrentLanguage($ctrl.lang.EN)"
+ng-click="$ctrl.updateLocalization($ctrl.lang.FR)"
+analytics-on="click"
+analytics-event="SET_LANGUAGE_FR">
+  <span class='sr-only'>Changer pour:</span> fran&ccedil;ais
+</a>

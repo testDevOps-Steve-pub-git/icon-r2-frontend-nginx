@@ -1,0 +1,50 @@
+<div class="row">
+  <h4 translate="submitterDisplay.SUBMITTER_TITLE" class="col-xs-6"></h4>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{'submitterDisplay.NAME' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.submitterInfo.firstName}}</span>
+      <span>{{$ctrl.submitterInfo.lastName}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{'submitterDisplay.PHONE' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.submitterInfo.phone1Number}}</span>
+      <span ng-if="$ctrl.submitterInfo.phone1Ext != ''"> {{ 'submitterDisplay.EXTENSION' | translate }} {{$ctrl.submitterInfo.phone1Ext}}</span>
+    </strong>
+  </div>
+</div>
+
+<div class="row" ng-if="$ctrl.submitterInfo.email != ''">
+  <div class="col-xs-12 text-left">
+    <div class="small text-uppercase">{{'submitterDisplay.EMAIL' | translate}}</div>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.submitterInfo.email}}</span>
+    </strong>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12">
+    <edit-button
+    button-id="review-edit-submitter-button"
+    button-text="{{'submitterDisplay.EDIT' | translate}} {{'submitterDisplay.SUBMITTER_TITLE' | translate}}"
+    go-to-route="^.submitter">
+    </edit-button>
+  </div>
+</div>
