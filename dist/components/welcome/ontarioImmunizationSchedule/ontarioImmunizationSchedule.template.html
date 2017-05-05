@@ -1,0 +1,81 @@
+  <!-- Schedule Info -->
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <hr>
+    <h3 translate="schedule.SCHEDULED_IMMS_TITLE"></h3>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="well" id="ontario-schedule-container" du-scroll-container>
+      <!-- Iteration over scheduled items -->
+      <table class="table-styling">
+        <thead class="table-header-footer">
+          <tr>
+            <th ng-repeat="schedule in $ctrl.scheduledImmunizationList" class="middle">
+                <!-- Translate title of this schedule item -->
+                <span ng-if="schedule.labelKey != 'schedule.AT_6_MONTHS_+' && schedule.labelKey != 'schedule.35_Years_+'" >
+                  <h5><b translate="{{schedule.labelKey}}"></b></h5>
+                </span>
+
+                <span ng-if="schedule.labelKey == 'schedule.AT_6_MONTHS_+'">
+                  <h5 class="check"><b translate="{{schedule.labelKey}}"></b></h5>
+                </span>
+
+                <span ng-if="schedule.labelKey == 'schedule.35_Years_+'">
+                  <h5 class="check"><b translate="{{schedule.labelKey}}"></b></h5>
+                </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td ng-repeat="diseases in $ctrl.scheduledImmsDiseaseList track by $index" class="tableCell" tabindex="0">
+              <span style="position: absolute; left: -10000px">{{$ctrl.scheduledImmunizationList[$index].labelKey | translate}}</span>
+
+              <dl ng-repeat="ds in diseases track by $index" class="rows">
+                <dt>
+                  <span ng-if="ds.agentName != 'schedule.EVERY_FALL' && ds.agentName != 'schedule.EVERY_10_YEARS'">
+                    <span class="fa fa-medkit"></span>
+                    <span translate='{{ds.agentName}}' translate-compile></span>
+                  </span>
+
+                  <span ng-if="ds.agentName == 'schedule.EVERY_FALL' || ds.agentName == 'schedule.EVERY_10_YEARS'">
+                    <span class="fa fa-asterisk"></span>
+                    <span translate='{{ds.agentName}}' translate-compile></span>
+                  </span>
+                </dt>
+
+                <dd class="padding">
+                  <span translate='{{ds.diseaseList}}' translate-compile></span>
+                </dd>
+              </dl>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="table-header-footer">
+          <tr>
+            <td class="cell" colspan="13" tabindex="0" translate="schedule.IMMS_SCHEDULE_MESSAGE" translate-compile></td>
+          </tr>
+        </tfoot>
+      </table>
+    <!-- End iteration over scheduled items -->
+    </div>
+
+    <span class="fa-stack fa-2x icon-scroll-button pull-left" ng-click="$ctrl.scrollLeft()" aria-hidden="true">
+      <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
+      <i class="fa fa-chevron-left fa-stack-1x"></i>
+    </span>
+
+    <span class="fa-stack fa-2x icon-scroll-button pull-right" ng-click="$ctrl.scrollRight()" aria-hidden="true">
+      <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
+      <i class="fa fa-chevron-right fa-stack-1x"></i>
+    </span>
+
+  </div>
+  <div  class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <a href="{{'schedule.PRINTABLE_LINK' | translate}}"  target="_blank"  aria-label="{{ 'welcomeLandingPage.PRINT_SCHEDULE_LABEL' | translate }}">
+      <span class="fa fa-print"></span>
+      {{ 'welcomeLandingPage.PRINT_SCHEDULE' | translate }}
+    </a>
+  </div>
+</div>
+<!-- End Schedule Info -->

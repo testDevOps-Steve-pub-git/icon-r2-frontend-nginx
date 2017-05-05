@@ -1,0 +1,156 @@
+<div ng-if="!$ctrl.yellowCardRows.length"
+class="text-center lead"
+translate="yellowCardDisplay.NO_IMMS"
+translate-compile>
+</div>
+
+<div ng-show="!!$ctrl.yellowCardRows.length" class="icon-yc-table-container"  du-scroll-container>
+  <table class="table icon-yc-table  icon-table-styling-imms" id="icon-yc-table-container">
+    <caption aria-label="{{ 'yellowCardDisplay.TABLE_CAPTION' | translate }}"
+     class="icon-screen-reader-visibility-only">
+    {{ 'yellowCardDisplay.TABLE_CAPTION' | translate }}
+    </caption>
+    <thead>
+      <tr>
+        <th class="icon-yc-date small" scope="col">
+          {{'yellowCardDisplay.YMD' | translate}}
+        </th>
+
+        <th class="icon-yc-disease-headers" ng-repeat="disease in $ctrl.yellowCardHeaders" scope="col">
+          <div>
+            <span>{{disease.name}}</span>
+          </div>
+        </th>
+
+        <th class="icon-yc-disease-headers" scope="col">
+          <div>
+            <span>{{'yellowCardDisplay.OTHER' | translate}}</span>
+          </div>
+        </th>
+
+        <th class="icon-yc-more-info" scope="col">
+          {{'yellowCardDisplay.ADDITIONAL_INFO' | translate}}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody ng-repeat="row in $ctrl.yellowCardRows track by $index">
+      <!-- Summary row, contains all the checkmarks for the collection of immunizations. -->
+      <tr ng-if="!row.isDetailView" tabindex="0">
+        <td>
+          <div>{{row.date}}</div>
+        </td>
+
+        <td ng-repeat="disease in $ctrl.yellowCardHeaders">
+          <span ng-if="row.diseases.indexOf(disease.snomed) >= 0" class="text-primary">
+            <span class="fa fa-check" aria-label="{{ disease.name }}"></span>
+            <span aria-label="yes" class="icon-screen-reader-visibility-only">Yes</span>
+          </span>
+          <span ng-if="row.diseases.indexOf(disease.snomed) < 0" class="text-primary">
+            <span aria-label="No" class="icon-screen-reader-visibility-only"> {{ disease.name }} No </span>
+          </span>
+        </td>
+
+        <td>
+          <span ng-if="$ctrl.doesRowContainOther(row)" class="text-primary">
+            <span class="fa fa-check" aria-label="{{'yellowCardDisplay.OTHER' | translate}}"></span>
+          </span>
+        </td>
+
+        <td class="icon-yc-more-info-td" id="icon-more-info-td">
+          <button
+          class="btn-link ycbutton"
+          tabindex="0"
+          id="yellow-card-more-info"
+          ng-click="row.isDetailView = !row.isDetailView">
+            {{ 'yellowCardDisplay.SHOW_INFO' | translate}}
+          </button>
+        </td>
+      </tr>
+      <!-- End summary row. -->
+
+      <!-- Detail rows, contain checkmarks for a specific immunization. -->
+      <tr class="icon-yellow-card-detail-row" ng-if="row.isDetailView" ng-repeat="imm in row.immunizations track by $index">
+        <td>
+          <div ng-if="$index === 0">{{row.date}}</div>
+        </td>
+
+        <td ng-repeat="disease in $ctrl.yellowCardHeaders">
+          <span ng-if="imm.diseaseSnomeds.indexOf(disease.snomed) >= 0" class="text-primary">
+            <span class="fa fa-check" aria-label="{{ disease.name }}"></span>
+            <span aria-label="yes" class="icon-screen-reader-visibility-only">Yes</span>
+          </span>
+          <span ng-if="imm.diseaseSnomeds.indexOf(disease.snomed) < 0" class="text-primary">
+            <span aria-label="No" class="icon-screen-reader-visibility-only"> {{ disease.name }} No </span>
+          </span>
+        </td>
+
+        <td>
+          <span ng-if="$ctrl.isImmunizationOther(imm)" class="text-primary">
+            <span class="fa fa-check" aria-label="{{'yellowCardDisplay.OTHER' | translate}}"></span>
+          </span>
+        </td>
+
+        <td class="icon-yc-more-info-td" id="icon-more-info-td">
+          <button
+          ng-if="$index === 0"
+          class="btn-link ycbutton"
+          tabindex="0"
+          id="yellow-card-less-info"
+          class="pull-right"
+          ng-click="row.isDetailView = !row.isDetailView">
+            {{ 'yellowCardDisplay.HIDE_INFO' | translate}}
+          </button>
+
+          <div ng-if="row.isDetailView">
+            <!-- Generic/agent title data. -->
+            <div ng-if="imm.getType() === 'Agent'">
+              <strong>{{imm.agent.shortName}}</strong>
+            </div>
+            <!-- End generic/agent title data. -->
+
+            <!-- Branded/trade title data. -->
+            <div ng-if="imm.getType() === 'Trade'">
+              <strong>{{imm.agent.shortName}} ({{imm.trade.name}})</strong>
+            </div>
+            <!-- End branded/trade title data. -->
+
+            <div class="small" ng-if="imm.agent.diseases.length">
+              <span>
+                {{imm.agent.orderedDiseases}}
+              </span>
+            </div>
+
+            <div class="small">
+              <div ng-if="imm.lot.number">
+                <trade-lot-display
+                immunization="imm">
+                </trade-lot-display>
+              </div>
+
+              <div ng-if="imm.provider">{{imm.provider}}</div>
+
+              <div ng-if="imm.isDateApproximate">
+                ({{ 'yellowCardDisplay.DATE_ESTIMATE' | translate}})
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <!-- End detail rows. -->
+    </tbody>
+  </table>
+
+
+  <span class="fa-stack fa-2x icon-scroll-button-yc icon-btn-left" ng-click="$ctrl.scrollLeft()" aria-hidden="true">
+      <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
+      <i class="fa fa-chevron-left fa-stack-1x"></i>
+  </span>
+
+  <span class="fa-stack fa-2x icon-scroll-button-yc icon-btn-right" ng-click="$ctrl.scrollRight()" aria-hidden="true">
+      <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
+      <i class="fa fa-chevron-right fa-stack-1x"></i>
+  </span>
+
+
+</div>
