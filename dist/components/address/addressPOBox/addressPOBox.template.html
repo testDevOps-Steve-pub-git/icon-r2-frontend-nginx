@@ -1,9 +1,8 @@
 <div class="row">
   <!-- POBox -->
   <div class="form-group col-xs-12 col-sm-4">
-    <label for="address-pobox-number" aria-label="{{ 'addressPOBox.POBOX' | translate }}">
-      {{ 'addressPOBox.POBOX' | translate }}
-    </label>
+    <label for="address-pobox-number" translate='addressPOBox.POBOX'
+    aria-label="{{ 'addressPOBox.POBOX' | translate }}"></label>
 
     <input
         class="form-control"
@@ -21,8 +20,8 @@
          ng-if="$ctrl.form.POBox.$touched" role="alert">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressPOBox.ERRORS.BAD_FORMAT'
            aria-label="{{ 'addressPOBox.ERRORS.BAD_FORMAT' | translate }}"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressPOBox.ERRORS.POBOX_REQUIRED'
-           aria-label="{{ 'addressPOBox.ERRORS.POBOX_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressPOBox.ERRORS.IS_REQUIRED'
+           aria-label="{{ 'addressPOBox.ERRORS.IS_REQUIRED' | translate }}"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressPOBox.ERRORS.EXCEEDS_MAXLENGTH'
            aria-label="{{ 'addressPOBox.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
     </div>
@@ -35,7 +34,7 @@
   <!-- Retail Post Outlet -->
   <div class="form-group col-xs-12 col-sm-4">
     <label for="address-retail-post-outlet" translate='addressPOBox.RETAIL_POST_OUTLET'
-    aria-label="{{ 'addressPOBox.RETAIL_POST_OUTLET' | translate }}"></label> <span>{{'OPTIONAL' | translate}}</span>
+    aria-label="{{ 'addressPOBox.RETAIL_POST_OUTLET' | translate }}"></label>
 
     <input
         class="form-control"
@@ -64,7 +63,7 @@
   <!-- Station -->
   <div class="form-group col-xs-12 col-sm-4">
     <label for="address-station" translate='addressRural.STATION_ROUTE'
-    aria-label="{{ 'addressRural.STATION_ROUTE' | translate }}"></label> <span>{{'OPTIONAL' | translate}}</span>
+    aria-label="{{ 'addressRural.STATION_ROUTE' | translate }}"></label>
 
     <input
         class="form-control"

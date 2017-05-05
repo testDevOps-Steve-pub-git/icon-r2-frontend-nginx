@@ -121,7 +121,7 @@
      * @param results: results array
      * @returns {*}: modified array
      */
-    let formatImmunizationsForTypeahead = (results) => {
+    let formatImmunizationsForTypeahead = (results) => { 
       let filteredResults = filterImmunizationsByGating(results);
       let remaining = (filteredResults.length > MAX_IMMUNIZATION_RESULTS)
                           ? (filteredResults.length - MAX_IMMUNIZATION_RESULTS)

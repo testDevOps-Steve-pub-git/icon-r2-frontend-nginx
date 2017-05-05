@@ -9,6 +9,5 @@
     "TOC_LINK_KEY":         "MULTITENANCY.NWHU.PHU_TOC_LINK",
     "ICON_PHU_ACRONYM":     "nwhu",
     "PHIX_PHU_NAME":        "Northwestern Health Unit",
-    "PHIX_PHU_CODE":        "21",
-    "WEBSITE_KEY":          "MULTITENANCY.NWHU.PHU_WEBSITE"
+    "PHIX_PHU_CODE":        "21"
 }

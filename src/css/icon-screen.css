@@ -17,6 +17,7 @@
     position: absolute;
     left: 3000px
 }
+.icon-input-bottom { margin-bottom: 10px}
 /* End general utility classes */
 
 
@@ -145,11 +146,6 @@
 
 
 /* Yellowcard Display buttons page */
-@media(min-width: 1199px) {
-    .icon-scroll-button-yc{
-        display: none;
-    }
-}
 .icon-scroll-button-yc {
     color:white;
     cursor: pointer;
@@ -240,6 +236,10 @@
 }
 
 /* phuFooter phone */
+.icon-phu-footer-phone {
+    padding: 0;
+}
+
 #phu-footer-phone {
   color: #757575;
 }
@@ -250,10 +250,17 @@
     font-size: large;
     text-decoration: none;
     color: #000000;
+    white-space:normal;
   }
 /* end phuFooter link */
 
 /* immunizationTypeahead */
+/*UIB typeahead dropdown*/
+.dropdown-menu {
+    min-width:100%;
+}
+/*End UIB typeahead dropdown*/
+
 .icon-group-title {
     font-size: 17px;
     background-color: #ededed;
@@ -280,6 +287,10 @@
   padding: 5px;
   color: #ffffff;
   background-color: #ededed;
+}
+
+.icon-grou-title-span {
+  color: #757575 !important;
 }
 
 .icon-keep-typing-result{
@@ -318,13 +329,20 @@
   min-height: 86px;
 }
 
+#icon-progress-bar-container .btn-lg, .btn-group-lg>.btn {
+    padding: 14px 16px;
+}
+#icon-progress-bar-container .btn {
+    font-size: 16px;
+}
+
 #icon-progress-bar { position: relative; z-index: 10; padding: 0; margin: 0; }
 #icon-progress-bar ul { margin-bottom: 2px; }
 #icon-progress-bar li .btn { width: 42px; height: 42px; margin-top: 7px; border-radius: 50% 50%; border: none; }
 #icon-progress-bar li .btn-default { background-color: #949494; color: #ffffff; }
 #icon-progress-bar li .btn-primary { background-color: #0074d4; }
 #icon-progress-bar li .btn-lg { width: 56px; height: 56px; margin-top: 4px; }
-#icon-progress-bar li .btn-lg span { font-size: 21px; }
+#icon-progress-bar li .btn-lg span { font-size: 26px; }
 #icon-progress-line { position: absolute; z-index: 1; padding-top: 31px; margin-right: -15px; margin-left: -15px; }
 #icon-progress-line * { webkit-box-shadow: none; box-shadow: none; }
 
@@ -332,6 +350,7 @@
 #icon-progress-status-label {
   font-size: 14px;
   font-weight: bold;
+  padding-top: 5px;
 }
 
 .icon-affix-progress-bar-container {
@@ -340,15 +359,17 @@
 
 @media (max-width: 768px) {
   #icon-progress-line { width: 100%; }
+  #icon-progress-status-label { display:none;}
 }
+
 @media (min-width: 768px) {
-  #icon-progress-line { width: 750px; }
+  #icon-progress-line { width: 735px; }
 }
 @media (min-width: 992px) {
-  #icon-progress-line { width: 970px; }
+  #icon-progress-line { width: 950px; }
 }
 @media (min-width: 1200px) {
-  #icon-progress-line { width: 1170px; }
+  #icon-progress-line { width: 1165px; }
 }
 
 /* This media query overrides navbar-justified stacking for MVP, refactor into global CSS later. */
@@ -623,6 +644,14 @@ td.icon-yc-more-info-td {
   background-color: #fef5dc !important;
   border: none;
 }
+.icon-screen-reader-visibility-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
 /* yellowCardDisplay */
 
 .ycbutton
@@ -642,11 +671,6 @@ padding-left: 0px;
 .icon-gating-collapse-link {
     color: dodgerblue;
 }
- /* End gating questions */
-.icon-aup-container {
-    padding: 1em;
-}
-
 
 .icon-padded {
   padding: 0.5em;
@@ -729,9 +753,9 @@ padding-left: 0px;
    /* Ontario immunization schedule table. */
 
    .uib-left:before {
-     content: "\f060" !important;
+     content: "\f053" !important;
      display: inline-block;
-     font: normal normal normal 14px/1 FontAwesome;
+     font: normal normal normal 14px/1 FontAwesomerrr;
      font-size: inherit;
      text-rendering: auto;
      -webkit-font-smoothing: antialiased;
@@ -739,9 +763,9 @@ padding-left: 0px;
    }
 
    .uib-right:before {
-     content: "\f061" !important;
+     content: "\f054" !important;
      display: inline-block;
-     font: normal normal normal 14px/1 FontAwesome;
+     font: normal normal normal 14px/1 FontAwesomerrr;
      font-size: inherit;
      text-rendering: auto;
      -webkit-font-smoothing: antialiased;

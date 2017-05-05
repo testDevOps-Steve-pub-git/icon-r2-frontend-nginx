@@ -1,38 +1,34 @@
 <div>
-  <ng-transclude></ng-transclude>
+  <div ng-if="$ctrl.inputName == 'dateOfBirth'"><label for="{{$ctrl.inputId}}" class="required" aria-label="{{'datepicker.DOB' | translate}}" translate="datepicker.DOB" translate-compile></label></div>
+  <div ng-if="$ctrl.inputName.split('-')[0] == 'other'"><label for="{{$ctrl.inputId}}" class="required" aria-label="{{'datepicker.DATE' | translate}}" translate="datepicker.DATE" translate-compile></label><span class="icon-required"></span><span class="strong">:</span></div>
 
   <div class="input-group">
-    <span class="input-group-btn">
-      <button aria-hidden="true" tabindex="-1" type="button" class="btn btn-info" ng-click="$ctrl.open()">
-        <span class="fa fa-calendar tooltip-custom" aria-hidden="true"></span>
-      </button>
-    </span>
+    <input type="text"
+           class="form-control"
+           id={{$ctrl.inputId}}
+           ui-mask="9999-99-99"
+           model-view-value="true"
+           placeholder="{{'datepicker.DATE_FORMAT' | translate}}"
+           uib-datepicker-popup="yyyy-MM-dd"
+           ng-model=$ctrl.model
+           name={{$ctrl.inputName}}
+           aria-label="{{'datepicker.DOB_ARIA_LABEL' | translate}}"
+           datepicker-options=$ctrl.datepickerOptions
+           alt-input-formats=$ctrl.datePickerFormat
+           is-open=$ctrl.popup.opened
+           ng-change="$ctrl.checkDateRange()"
+           ng-required={{$ctrl.required}}
+           clear-text="{{'datepicker.CLEAR_BUTTON' | translate}}"
+           close-text="{{'datepicker.CLOSE_BUTTON' | translate}}"
+           current-text="{{'datepicker.CURRENT_BUTTON' | translate}}"/>
 
-    <input
-    type="text"
-    class="form-control"
-    id={{$ctrl.inputId}}
-    ui-mask="9999-99-99"
-    ui-options="$ctrl.dateMaskOptions"
-    model-view-value="true"
-    uib-datepicker-popup="yyyy-MM-dd"
-    ng-model=$ctrl.date;
-    name={{$ctrl.inputName}}
-    aria-label="{{ $ctrl.message }}"
-    datepicker-options=$ctrl.datepickerOptions
-    alt-input-formats=$ctrl.datePickerFormat
-    is-open=$ctrl.popup.opened
-    ng-change="$ctrl.checkDateRange()"
-    ng-required={{$ctrl.required}}
-    clear-text="{{'datepicker.CLEAR_BUTTON' | translate}}"
-    close-text="{{'datepicker.CLOSE_BUTTON' | translate}}"
-    current-text="{{'datepicker.CURRENT_BUTTON' | translate}}"
-    aria-describedby="date-errors DOB-errors"
-    />
+    <span class="input-group-btn">
+      <button aria-hidden="true" tabindex="-1" type="button" class="btn btn-default icon-date-input-button" ng-click="$ctrl.open()"><em class="glyphicon glyphicon-calendar tooltip-custom" aria-hidden="true"></em></button>
+    </span>
   </div>
 
   <!--Error Messages date of birth-->
-  <div ng-if="$ctrl.inputName == 'dateOfBirth'" id="DOB-errors">
+  <div ng-if="$ctrl.inputName == 'dateOfBirth'">
     <div class="error-messages" id="patient-dob-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DOB_ERROR'
@@ -48,8 +44,8 @@
   <!--End Error Messages date of birth-->
 
   <!--Error Messages-->
-  <div ng-if="$ctrl.inputName != 'dateOfBirth'" id="date-errors">
-    <div class="error-messages" id="{{$ctrl.inputId}}-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
+  <div ng-if="$ctrl.inputName != 'dateOfBirth'">
+    <div class="error-messages" id="date-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DATE_ERROR'
            aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>

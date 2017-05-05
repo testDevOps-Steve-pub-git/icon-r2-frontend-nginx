@@ -27,38 +27,36 @@
   function immunizationGatingController(Multitenancy, GatingQuestionService, ImmunizationRecordService, $translate) {
 
     this.$onInit = () => {
+      /** If user has already entered new immunizations, display them */
       let currentImmunizations = ImmunizationRecordService.getNewImmunizations();
+      if (currentImmunizations.length <= 0)
+        this.displayImmunizations = false;
+      else
+        this.displayImmunizations = true;
 
-      this.displayMode = 'date'; //Default value for display mode, for immunizations
-      this.displayModeDate = $translate.instant('immunizationGating.GROUP_BY_DATE');
-      this.displayModeImms = $translate.instant('immunizationGating.GROUP_BY_IMM');
 
+      /* Translated values */
       this.yes = $translate.instant('immunizationGating.YES');
       this.no = $translate.instant('immunizationGating.NO');
       this.unsure = $translate.instant('immunizationGating.UNSURE');
 
-      /** If user has already entered new immunizations, display them */
-      if (currentImmunizations.length <= 0) {
-        this.displayImmunizations = false;
-        this.displayGroupByChoice = false;
-      }
-      else {
-        this.displayImmunizations = true;
-        this.displayGroupByChoice = false;
-      }
 
+
+      /* Gating question choices */
       this.gatingQuestion = GatingQuestionService.getGatingQuestion();
       this.gatingChoices = GatingQuestionService.getGatingChoices();
       this.question1Choice = this.gatingChoices.question1Choice;
       this.question2Choice = this.gatingChoices.question2Choice;
       this.question3Choice = this.gatingChoices.question3Choice;
+      this.question4Choice = this.gatingChoices.question4Choice;
 
       /* Gating collapse variables */
-      this.gating1Collapse = true;
-      this.gating2Collapse = true;
-      this.gating3Collapse = true;
-      this.gating4Collapse = true;
+      (this.question1Choice === '') ? this.gating1Expand =  true : this.gating1Expand =  false;
+      (this.question2Choice === '') ? this.gating2Expand =  true : this.gating2Expand =  false;
+      (this.question3Choice === '') ? this.gating3Expand =  true : this.gating3Expand =  false;
+      (this.question4Choice === '') ? this.gating4Expand =  true : this.gating4Expand =  false;
 
+      /* Set up Multitenancy */
       Multitenancy.getPhuKeys()
         .then((phuAssets) => { this.multitenancy = phuAssets; });
 
@@ -71,21 +69,13 @@
 
 
     /**
-     * Display immunization input for user
+     * Display immunization input for user, set user choice for grouping
      */
-    function displayImmunizationInput(choice) {
+    function displayImmunizationInput() {
       this.displayImmunizations = true;
 
-      /* Setting display mode */
-      if(choice === 0) {
-        this.displayMode = 'date';
-      }
-      else {
-        this.displayMode = 'agent';
-      }
-
       this.gatingChoices.question4Choice = this.question4Choice;
-      this.toggleGatingCollapse(4); //Collapse last gating question
+      this.toggleGatingCollapse(4);
       GatingQuestionService.setGatingChoices(this.gatingChoices);
     }
 
@@ -116,16 +106,16 @@
     function toggleGatingCollapse(gatingQuestion){
       switch(gatingQuestion) {
         case 1:
-          this.gating1Collapse = !this.gating1Collapse;
+          this.gating1Expand = !this.gating1Expand;
           break;
         case 2:
-          this.gating2Collapse = !this.gating2Collapse;
+          this.gating2Expand = !this.gating2Expand;
           break;
         case 3:
-          this.gating3Collapse = !this.gating3Collapse;
-          break
+          this.gating3Expand = !this.gating3Expand;
+          break;
         case 4:
-          this.gating4Collapse = !this.gating4Collapse;
+          this.gating4Expand = !this.gating4Expand;
           break;
         default:
           break;

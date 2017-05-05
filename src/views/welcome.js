@@ -1,5 +1,5 @@
-welcomeController.$inject = ['ImmunizationRecordService', 'GatingQuestionService','Notify', 'ICON_NOTIFICATION', 'TokenHandler', 'MiscData', 'EditReviewService', 'SessionHandler'];
-function welcomeController (ImmunizationRecordService, GatingQuestionService, Notify, ICON_NOTIFICATION, TokenHandler, MiscData, EditReviewService, SessionHandler) {
+welcomeController.$inject = ['ImmunizationRecordService', 'GatingQuestionService','Notify', 'ICON_NOTIFICATION', 'TokenHandler', 'MiscData', 'EditReviewService', 'SessionHandler', 'FileUploadHandler'];
+function welcomeController (ImmunizationRecordService, GatingQuestionService, Notify, ICON_NOTIFICATION, TokenHandler, MiscData, EditReviewService, SessionHandler, FileUploadHandler) {
 
   this.$onInit = () => {
     /* Reset */
@@ -8,6 +8,13 @@ function welcomeController (ImmunizationRecordService, GatingQuestionService, No
     TokenHandler.clearTransactionToken();
     EditReviewService.setFromReviewPage(false);
     MiscData.setSkipAUP(false);
+
+    /* There was a bug where session expiration did not clear the queue after, so manually clear a queue*/
+    FileUploadHandler.getUploader()
+      .then((uploader) => {
+        this.uploader = uploader;
+        this.uploader.clearQueue();
+      });
 
     let firstPageLoad = MiscData.getFirstPageLoad();
     if (!firstPageLoad) {

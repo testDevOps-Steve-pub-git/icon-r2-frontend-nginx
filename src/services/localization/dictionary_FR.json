@@ -4,7 +4,7 @@
   },
   "addressCapture": {
     "CITY": "Ville",
-    "CITY_PLACERHOLDER": "",
+    "CITY_PLACERHOLDER": "xxx redundant",
     "PROVINCE": "Province",
     "POSTAL_CODE": "Postal Code",
     "AB": "Alberta",
@@ -22,11 +22,12 @@
     "YT": "Yukon",
     "ERRORS": {
       "BAD_FORMAT": "Vous avez saisi un caractère non valide. Les caractères spéciaux ne sont pas permis.",
-      "CITY_REQUIRED": "Needs translation",
-      "PROVINCE_REQUIRED": "Needs translation",
-      "POSTAL_CODE_REQUIRED": "Needs translation",
+      "CITY_REQUIRED": "Ville est un champ obligatoire",
+      "PROVINCE_REQUIRED": "Province est un champ obligatoire",
+      "POSTAL_CODE_REQUIRED": "Le code postal doit être dans le format suivant : A1B 2C3",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères.",
-      "POSTAL_REQ_ERROR": "Le code postal doit être dans le format suivant : A1B 2C3"
+      "POSTAL_REQ_ERROR": "Le code postal doit être dans le format suivant : A1B 2C3",
+      "INCOMPLETE": "Vous devez inscrire une adresse valide pour pouvoir continuer."
     }
   },
   "addressDisplay": {
@@ -37,19 +38,19 @@
     "POBOX": "C. P.",
     "RETAIL_POST_OUTLET": "Bureau de poste",
     "ERRORS": {
-      "BAD_FORMAT": "Needs translation",
-      "POBOX_REQUIRED": "Needs translation",
+      "BAD_FORMAT": "Vous avez saisi un caractère non valide. Les caractères spéciaux ne sont pas permis.",
+      "POBOX_REQUIRED": "C. P. est un champ obligatoire",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
     }
   },
   "addressRural": {
     "RURAL_ROUTE": "Route rurale",
     "STATION_ROUTE": "Succursale",
-    "ADDITIONAL_ADDRESS_INFO": "Needs translation",
+    "ADDITIONAL_ADDRESS_INFO": "Autres renseignements relatifs à l’adresse",
     "ERRORS": {
       "BAD_FORMAT": "Vous avez saisi un caractère non valide. Les caractères spéciaux ne sont pas permis.",
-      "RURAL_ROUTE_REQUIRED": "Needs translation",
-      "STATION_ROUTE_REQUIRED": "Needs translation",
+      "RURAL_ROUTE_REQUIRED": "Route rurale est un champ obligatoire.",
+      "STATION_ROUTE_REQUIRED": "Succursale est un champ obligatoire.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
     }
   },
@@ -59,11 +60,11 @@
     "UNIT_NO": "No d'unité",
     "STREET_TYPE": "Type de rue",
     "STREET_DIRECTION": "Orientation de la rue",
-    "ADDRESS_NOT_SEEN": "Needs translation",
+    "ADDRESS_NOT_SEEN": "Vous ne voyez pas votre adresse?",
     "ERRORS": {
-      "BAD_FORMAT": "Needs translation",
-      "STREET_NAME_REQUIRED": "Needs translation",
-      "STREET_NUMBER_REQUIRED": "Needs translation",
+      "BAD_FORMAT": "Vous avez inscrit un caractère invalide.",
+      "STREET_NAME_REQUIRED": "Nom de rue est un champ obligatoire.",
+      "STREET_NUMBER_REQUIRED": "N<sup>o</sup> de rue est un champ obligatoire.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
     }
   },
@@ -119,14 +120,14 @@
     "PATIENT_INFO_MESSAGE": "Les informations ci-dessus sont tirées du Registre d'immunisation provincial. Si vous avez besoin de les modifier, veuillez communiquer avec le <strong>{{name_key}}</strong> au <strong>{{phone_key}}</strong>.",
     "ADDITIONAL_INFORMATION": "Renseignements supplémentaires",
     "ENTER_MISSING_INFO": "Veuillez inscrire toute information manquante ci-dessous. Sachez que les changements n'apparaitront pas avant d'avoir été vérifiés par votre bureau de santé publique local.",
-    "HEALTH_CARD_NUMBER": "No de carte Santé",
+    "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "OPTIONAL": "(facultatif)",
-    "HCN_FORMAT_ERROR": "Vous avez inscrit un no de carte Santé invalide.",
+    "HCN_FORMAT_ERROR": "Vous avez inscrit un n<sup>o</sup> de carte Santé invalide.",
     "DAYCARE": "Nom de l'école ou de la garderie",
     "DAYCARE_TOOLTIP": "Si le patient est inscrit à une école ou à une garderie, veuillez indiquer le nom ici.",
     "DAYCARE_IF_APPLICABLE": "(le cas échéant)",
     "NO_RESULTS_FOUND": "Aucun résultat",
-    "HEALTH_CARD_NO_VC": "Ne pas inscrire les deux lettres du  code de la version.",
+    "HEALTH_CARD_NO_VC": "Ne pas inscrire les deux lettres du code de la version.",
     "ERROR": {
       "BAD_FORMAT": "Vous avez inscrit un caractère invalide.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
@@ -157,7 +158,7 @@
     "PATIENT_INFO_MESSAGE": "Les informations ci-dessus sont tirées du Registre d'immunisation provincial. Si vous avez besoin de les modifier, veuillez communiquer avec le <strong>{{ name_key }}</strong> au <strong>{{ phone_key }}</strong>.",
     "ADDITIONAL_INFORMATION": "Renseignements supplémentaires",
     "ENTER_MISSING_INFO": "Veuillez inscrire toute information manquante ci-dessous. Sachez que les changements n'apparaitront pas avant d'avoir été vérifiés par votre bureau de santé publique local.",
-    "HEALTH_CARD_NUMBER": "No de carte Santé",
+    "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "DAYCARE": "Nom de l'école ou de la garderie",
     "DAYCARE_IF_APPLICABLE": "(le cas échéant)",
     "OPTIONAL": "(facultatif)",
@@ -166,7 +167,7 @@
     "HEALTH_CARD_NO_VC": "Ne pas inscrire les deux lettres du  code de la version.",
     "ERRORS": {
       "BAD_FORMAT": "Vous avez inscrit un caractère invalide.",
-      "HCN_FORMAT_ERROR": "Vous avez inscrit un no de carte Santé invalide.",
+      "HCN_FORMAT_ERROR": "Vous avez inscrit un n<sup>o</sup> de carte Santé invalide.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
     }
   },
@@ -201,7 +202,7 @@
   "confirmationMessage": {
     "COMPLETION_TITLE": "Envoi terminé",
     "COMPLETION_MESSAGE": "Nous avons bien reçu les renseignements concernant <strong>{{ clientName }}</strong>. Un membre du personnel du {{ phuName }} les vérifiera d'ici {{ time_to_process }}. Si nous avons des questions, nous communiquerons avec vous.",
-    "REFERENCE_NUMBER_LABEL": "NO DE RÉFÉRENCE",
+    "REFERENCE_NUMBER_LABEL": "N<sup>O</sup> DE RÉFÉRENCE",
     "REFERENCE_NUMBER_MESSAGE": "Veuillez conserver ce numéro. Vous pouvez aussi imprimer ou sauvegarder une copie PDF des renseignements que vous venez d'envoyer. Si vous avez fourni une adresse de courriel, votre bureau de santé publique local accusera réception de votre envoi, puis vous  informera  que vos renseignements ont été vérifiés.  ",
     "PRINT": "Télécharger un fichier imprimable",
     "SAVE_PDF": "Télécharger un fichier imprimable"
@@ -210,7 +211,7 @@
     "DOB": "Date de naissance (AAAA-MM-JJ)",
     "DATE": "Date (AAAA-MM-JJ)",
     "DATE_FORMAT": "AAAA-MM-JJ",
-    "DOB_ARIA_LABEL": "Needs translation",
+    "DOB_ARIA_LABEL": "Date de naissance. Veuillez utiliser le format AAAA-MM-JJ.",
     "CLEAR_BUTTON": "Effacer",
     "CLOSE_BUTTON": "Fermer",
     "CURRENT_BUTTON": "Aujourd’hui",
@@ -222,7 +223,7 @@
   },
   "documentCapture": {
     "DOCUMENTS_LABEL": "Documents",
-    "INSTRUCTIONS_0": "Si vous joignez des documents, votre bureau de santé publique local pourra vérifier plus facilement les renseignements  que vous avez fournis sur les vaccins. ",
+    "INSTRUCTIONS_0": "Si vous joignez des documents,  votre bureau de santé publique local pourra vérifier plus facilement les renseignements  que vous avez fournis sur les vaccins. Si vous souhaitez inclure d’autres documents à vos renseignements de vaccination, cliquez sur le bouton “Choisir un fichier” ci-dessous pour ajouter jusqu’à deux documents.",
     "SUBHEADER_1": "Documents",
     "YELLOWCARD_PHOTO": "Photo de la carte jaune.",
     "INSTRUCTIONS_1": "Document de votre médecin indiquant uniquement les vaccins, par exemple une photo du document.",
@@ -243,13 +244,13 @@
     "REMOVE_FILE": "Enlever"
   },
   "editImmunization": {
-    "CLOSE_MODAL": "Needs translation",
+    "CLOSE_MODAL": "Fermer",
     "IMMUNIZATION_MODAL_TITLE": "Inscrivez la date et le vaccin {{patient_name}} administré à cette date.",
     "DATE_ESTIMATED": "Date estimée",
     "SAVE": "Sauvegarder",
     "DATE": "Date (AAAA-MM-JJ)",
     "DATE_LABEL": "Date",
-    "IMMS_ERROR": "Needs translation",
+    "IMMS_ERROR": "Vous devez inscrire un vaccin.",
     "DUPLICATE_WARNING": "<strong>{{agentName}}</strong> est déjà au dossier pour <strong>{{date}}</strong>. <br aria-hidden=\"true\"/> les dates suivantes, notamment pour le mm-jj-aaaa."
   },
   "editImmunizationByAgent": {
@@ -266,7 +267,7 @@
     "EDIT": "Modifier",
     "DELETE": "Supprimer",
     "DATE_ESTIMATED": "Date estimée",
-    "IMMUNIZATION_DATE": "needs translation",
+    "IMMUNIZATION_DATE": "xxx redundant",
     "EDIT_LABEL": "Modifier",
     "DELETE_LABEL": "Supprimer"
   },
@@ -274,21 +275,21 @@
     "EDIT": "Modifier",
     "DELETE": "Supprimer",
     "DATE_ESTIMATED": "Date estimée",
-    "IMMUNIZATION_FOR_DATE": "needs translation",
+    "IMMUNIZATION_FOR_DATE": "xxx redundant",
     "EDIT_LABEL": "Modifier",
     "DELETE_LABEL": "Supprimer"
   },
   "immunizationGating": {
-    "QUESTION_1": "1re question",
+    "QUESTION_1": "1<sup>re</sup> question",
     "RECEIVED_LETTER": "Avez-vous reçu une lettre du <strong>{{phuName}}</strong> vous demandant les derniers renseignements sur vos vaccins?",
     "YES": "Oui",
     "NO": "Non",
     "UNSURE": "Pas certain(e)",
-    "QUESTION_2": "2e question",
+    "QUESTION_2": "2<sup>e</sup> question",
     "IMMUNIZATIONS_RECEIVED_ONTARIO": "<strong>Tous</strong> les vaccins que vous allez inscrire ont-ils été administrés en Ontario?",
-    "QUESTION_3": "3e question",
+    "QUESTION_3": "3<sup>e</sup> question",
     "IMMUNIZATIONS_RECEIVED_CANADA": "<strong>Tous</strong> les vaccins que vous allez inscrire ont-ils été administrés au Canada?",
-    "QUESTION_4": "4e question",
+    "QUESTION_4": "4<sup>e</sup> question",
     "IMMUNIZATIONS_GROUPED_BY": "Dans quel format de dossier d’immunisation allez-vous inscrire les vaccins?",
     "GROUP_BY_IMM": "Groupés par vaccin",
     "GROUP_BY_DATE": "Groupés par date/carte jaune",
@@ -298,14 +299,14 @@
     "COLLAPSED_4": "Format?"
   },
   "immunizationInput": {
-    "ENTER_IMMUNIZATIONS": "Needs translation",
-    "PRINT_BY_IMMUNIZATIONS": "needs translation",
-    "PRINT_BY_DATE": "needs translation",
+    "ENTER_IMMUNIZATIONS": "Veuillez inscrire les vaccins de {{patient_name}}",
+    "PRINT_BY_IMMUNIZATIONS": "xxx redundant",
+    "PRINT_BY_DATE": "xxx redundant",
     "GROUP_BY": "Grouper par:",
     "DATE": "Date",
     "IMMUNIZATION": "Vaccin",
     "IMMUNIZATIONS": "Vaccins",
-    "ADD_IMMUNIZATION_DATE": "needs translation",
+    "ADD_IMMUNIZATION_DATE": "xxx redundant",
     "IMMUNIZATION_ERROR": "Vous devez inscrire au moins 1 vaccin avant de pouvoir continuer."
   },
   "immunizationReviewDisplay": {
@@ -326,43 +327,43 @@
   },
   "immunizationsGroupedByAgent": {
     "DELETE_GROUP": "Supprimer le groupe ",
-    "DATE_FOR_IMMUNIZATION": "Needs translation"
+    "DATE_FOR_IMMUNIZATION": "Ajouter une date pour ce vaccin."
   },
   "immunizationsGroupedByDate": {
     "DELETE_GROUP": "Supprimer le groupe ",
-    "IMMUNIZATION_FOR_DATE": "Needs translation"
+    "IMMUNIZATION_FOR_DATE": "Ajouter un vaccin reçu à cette date."
   },
   "indexController": {
-    "TITLE": "Immunization Connect"
+    "TITLE": "Immunisation Connect"
   },
   "leave_page": {
-    "TITLE": "Needs translation",
+    "TITLE": "Voulez-vous continuer?",
     "YES": "Oui",
     "NO": "Non",
-    "LEAVE_PAGE_CONFIRMATION": "Needs translation",
-    "CONFIRMATION_BACK": "Needs translation"
+    "LEAVE_PAGE_CONFIRMATION": "Êtes-vous certain(e) de vouloir quitter? Vous risquez de perdre l’information que vous avez fournie.",
+    "CONFIRMATION_BACK": "Voulez-vous aller à la page d’accueil?"
   },
   "login": {
     "ENTER_OIID_PIN": "Veuillez inscrire votre no d'identification d'immunisation de l'Ontario et votre NIP.",
     "YELLOWCARD_RETRIEVAL_LOGIN_OIID": "Numéro d'identification d'immunisation de l'Ontario",
     "YELLOWCARD_RETRIEVAL_LOGIN_PIN": "NIP",
     "SUBMIT": "Envoyer",
-    "OIID_MESSAGE": "Needs translation",
-    "PIN_MESSAGE": "Needs translation",
-    "LOGIN_OIID_PLACEHOLDER": "",
-    "LOGIN_PIN_PLACEHOLDER": "",
+    "OIID_MESSAGE": "Vous trouverez votre numéro d’identification d'immunisation de l’Ontario sur une lettre envoyée par <strong> {{name_key | translate}}</strong>. Si vous n'en avez pas reçu, veuillez communiquer avec le <strong> {{name_key | translate}} </strong> ou composer le <strong> {{phone_key | translate}} </strong>.",
+    "PIN_MESSAGE": "Communiquez avec le <strong>{{ name_key | translate }}</strong> au <strong>{{ phone_key | translate }}</strong> pour obtenir votre NIP.",
+    "LOGIN_OIID_PLACEHOLDER": "xxx redundant",
+    "LOGIN_PIN_PLACEHOLDER": "xxx redundant",
     "ERRORS": {
       "IS_REQUIRED": "Ce champ est obligatoire.",
       "BELOW_MINLENGTH": "Vous n'avez pas inscrit assez de caractères."
     }
   },
   "lotInput": {
-    "LOT_NUMBER": "No de lot",
+    "LOT_NUMBER": "N<sup>o</sup> de lot",
     "OPTIONAL": "(facultatif)"
   },
   "tradeLotDisplay": {
-    "LOT": "No de lot",
-    "EXPIRY": "Needs translation"
+    "LOT": "N<sup>o</sup> de lot",
+    "EXPIRY": "Expirer"
   },
   "nextPrevButtons": {
     "PREVIOUS": "Retour à",
@@ -372,7 +373,7 @@
   "notification": {
     "$pushProgressSubmission": {
       "TITLE": "Veuillez patienter",
-      "BODY": "Needs translation"
+      "BODY": "Envoi de l’information sur les vaccins en cours"
     },
     "$pushProgressRetrieval": {
       "TITLE": "Veuillez patienter",
@@ -380,11 +381,11 @@
     },
     "$pushProgressYellowCardPdf": {
       "TITLE": "Veuillez patienter",
-      "BODY": "Needs translation"
+      "BODY": "Ouverture du dossier d’immunisation PDF imprimable..."
     },
     "$pushProgressConfirmationPdf": {
       "TITLE": "Veuillez patienter",
-      "BODY": "Needs translation"
+      "BODY": "Ouverture de la confirmation du PDF imprimable..."
     },
     "$pushTransactionTokenTimeout": {
       "TITLE": "La session est sur le point d'expirer",
@@ -392,6 +393,10 @@
       "EXTEND_BUTTON": "Prolonger la session",
       "DECLINE_BUTTON": "Annuler la session",
       "BUTTON_AFTERTHOUGHT": "Si vous annulez, toutes les données seront supprimées."
+    },
+    "$infoOiidHint": {
+      "TITLE": "Où puis-je trouver le n<sup>o</sup> d’identification d’immunisation de l’Ontario?",
+      "BODY": "Vous trouverez le n<sup>o</sup> d’identification d’immunisation de l’Ontario dans la lettre que vous a envoyée le {{phuName}}. Si vous n’avez pas ce code, veuillez contacter le {{phuName}}au {{phuPhone}}."
     },
     "$infoPatientDataCleared": {
       "TITLE": "Renseignements médicaux personnels",
@@ -419,16 +424,16 @@
       "BODY": "Vous avez déjà téléversé le nombre maximum de fichiers."
     },
     "$warnRetrievalConsentBlock": {
-      "TITLE": "Nous ne pouvons pas afficher le dossier d'immunisation. ",
-      "BODY": "Veuillez communiquer avec <strong>{{phuName}}</strong> au <strong>{{phuPhone}}</strong>."
+      "TITLE": "Réponse 176 - Nous ne pouvons pas afficher le dossier d’immunisation.",
+      "BODY": "Désolés, nous ne sommes pas en mesure d’afficher le dossier d’immunisation (Réponse 176). Veuillez communiquer avec <strong>{{phuName}}</strong> au <strong>{{phuPhone}}</strong>."
     },
     "$warnRetrievalBadOiid": {
-      "TITLE": "No d'identification d'immunisation de l'Ontario ou de NIP",
-      "BODY": "Le no d'immunisation ou de NIP que vous avez inscrit est invalide. Veuillez vérifier et inscrire le bon numéro."
+      "TITLE": "N<sup>o</sup> d'identification d'immunisation de l'Ontario ou de NIP invalide",
+      "BODY": "Le n<sup>o</sup> d'immunisation ou de NIP que vous avez inscrit est invalide. Veuillez vérifier et inscrire le bon numéro."
     },
     "$warnRetrievalBadPin": {
-      "TITLE": "No d'identification d'immunisation de l'Ontario ou de NIP",
-      "BODY": "Le no d'immunisation ou de NIP que vous avez inscrit est invalide. Veuillez vérifier et inscrire le bon numéro."
+      "TITLE": "N<sup>o</sup> d'identification d'immunisation de l'Ontario ou de NIP invalide",
+      "BODY": "Le n<sup>o</sup> d'immunisation ou de NIP que vous avez inscrit est invalide. Veuillez vérifier et inscrire le bon numéro."
     },
     "$warnRetrievalNetworkProblem": {
       "TITLE": "Erreur d'extraction ",
@@ -436,7 +441,7 @@
     },
     "$warnRetrievalUnknown": {
       "TITLE": "Erreur",
-      "BODY": "needs translation"
+      "BODY": "La combinaison du no d’identification d’immunisation de l’Ontario et du NIP n’est pas valide."
     },
     "$warnSubmissionInvalidFhir": {
       "TITLE": "Erreur d'envoi",
@@ -460,38 +465,39 @@
     "NAME": "Nom",
     "SEX": "Sexe",
     "BIRTHDATE": "Date de naissance",
-    "HEALTH_CARD_NUMBER": "No de carte santé",
-    "OIID": "No d'identification d'immunisation de l'Ontario",
+    "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
+    "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
     "ISSUE_DATE": "Date de déliverance"
   },
   "patientCapture": {
+    "OIID_HINT_LINK": "Où peut-on le trouver?",
     "DOB": "Date de naissance (AAAA-MM-JJ)",
     "PATIENT_INFO": "Infos du patient",
     "YOUR_INFO": "Vos infos",
     "FIRST_NAME": "Prénom",
     "MIDDLE_NAME": "Deuxième prénom",
     "LAST_NAME": "Nom de famille",
-    "HEALTH_CARD_NUMBER": "No de carte Santé",
+    "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "OPTIONAL": "(facultatif)",
     "SEX": "Sexe",
     "SEX_MALE": "Homme ",
     "SEX_FEMALE": "Femme",
     "SEX_OTHER": "Autre",
     "HEALTHCARD": "Carte Santé de l’Ontario",
-    "OIID": "No d'identification d'immunisation de l'Ontario",
+    "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
     "DAYCARE": "Nom de l'école ou de la garderie",
     "DAYCARE_OPTIONAL": "(le cas échéant)",
     "DAYCARE_TOOLTIP": "Si le patient est inscrit à une école ou à une garderie, veuillez indiquer le nom ici.",
     "NO_RESULTS_FOUND": "Aucun résultat",
-    "ERROR": {
+    "ERRORS": {
       "CHAR_ERROR": "Vous avez inscrit un caractère invalide.",
-      "FIRST_NAME_REQUIRED": "Needs translation",
-      "LAST_NAME_REQUIRED": "Needs translation",
+      "FIRST_NAME_REQUIRED": "Prénom est un champ obligatoire.",
+      "LAST_NAME_REQUIRED": "Nom de famille est un champ obligatoire.",
       "BAD_FORMAT": "Vous avez saisi un caractère non valide. Les caractères spéciaux ne sont pas permis.",
       "SEX_ERROR": "Veuillez sélectionner le sexe biologique du patient.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères.",
-      "OIID_ERROR": "Entrée invalide. Votre no d'identification d'immunisation de l'Ontario doit être composé de 10 caractères avec des chiffres entre 2 et 9, sans voyelles.",
-      "HCN_FORMAT_ERROR": "Vous avez inscrit un no de carte Santé invalide."
+      "OIID_ERROR": "Entrée invalide. Votre n<sup>o</sup> d'identification d'immunisation de l'Ontario doit être composé de 10 caractères avec des chiffres entre 2 et 9, sans voyelles.",
+      "HCN_FORMAT_ERROR": "Vous avez inscrit un n<sup>o</sup> de carte Santé invalide."
     }
   },
   "patientOtherDisplay": {
@@ -500,8 +506,8 @@
     "NAME": "Nom",
     "SEX": "Sexe",
     "BIRTHDATE": "Date de naissance",
-    "HEALTH_CARD_NUMBER": "No de carte santé",
-    "OIID": "No d'identification d'immunisation de l'Ontario",
+    "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
+    "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
     "DAYCARE": "Nom de l'école ou de la garderie"
   },
   "patientSelfDisplay": {
@@ -512,8 +518,8 @@
     "NAME": "Nom",
     "SEX": "Sexe",
     "BIRTHDATE": "Date de naissance",
-    "HEALTH_CARD_NUMBER": "No de carte Santé",
-    "OIID": "No d'identification d'immunisation de l'Ontario",
+    "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
+    "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
     "DAYCARE": "Nom de l'école ou de la garderie",
     "EXTENSION": "Poste",
     "OPTIONAL": "(facultatif)"
@@ -526,49 +532,50 @@
     "receivedSubmission_p1_s1_f3": ".",
     "receivedSubmission_p1_s2": "Un membre du personnel du {{phuName}} les vérifiera d'ici {{phuResponseTime}}.",
     "receivedSubmission_p1_s3": "Si nous avons des questions, nous communiquerons avec vous.",
-    "reportGeneratedTime_p1_s1": "needs translation {{reportGeneratedDate}} needs translation {{reportGeneratedTime}}.",
+    "reportGeneratedTime_p1_s1": "Ce rapport a été généré le {{reportGeneratedDate}}, à {{reportGeneratedTime}}.",
     "patientNameHeading_p1_s1_f1": "Patient:",
-    "patientDemographics_ul1_li1_f1": "Sexe:",
-    "patientDemographics_ul1_li2_f1": "Date de naissance:",
-    "patientDemographics_ul1_li3_f1": "No de carte Santé:",
-    "patientDemographics_ul1_li4_f1": "No d'identification d'immunisation de l'Ontario:",
+    "patientDemographics_ul1_li1_f1": "Sexe: ",
+    "patientDemographics_ul1_li2_f1": "Date de naissance: ",
+    "patientDemographics_ul1_li3_f1": "No de carte Santé: ",
+    "patientDemographics_ul1_li4_f1": "No d'identification d'immunisation de l'Ontario: ",
     "patientDemographics_ul1_li5_f1": "Nom de l'école ou de la garderie:",
     "patientDemographics_ul1_li6_f1": "Adresse postale:",
-    "phuConfirmationFooter_p1_s1": "{{phuName}} ({{phuPhone}}) - No de référence {{submissionId}}",
-    "phuConfirmationFooter_p1_s2": "needs translation {{reportGeneratedDate}} needs translation {{reportGeneratedTime}}",
-    "phuYellowCardFooter_p1_s1": "{{phuName}} ({{phuPhone}})",
-    "phuYellowCardFooter_p1_s2": "needs translation {{reportGeneratedDate}} needs translation {{reportGeneratedTime}}",
-    "submissionReferenceNumber_p1_s1_f1": "needs translation ",
+    "phuConfirmationFooter_p1_s1": "xxx redundant",
+    "phuConfirmationFooter_p1_s2": "xxx redundant",
+    "phuYellowCardFooter_p1_s1": "xxx redundant",
+    "phuYellowCardFooter_p1_s2": "xxx redundant",
+    "submissionReferenceNumber_p1_s1_f1": "Votre no de référence est",
     "submissionReferenceNumber_p1_s1_f3": ".",
     "submissionReferenceNumber_p1_s2": "Veuillez conserver ce numéro.",
-    "reportGeneratedTime_p1_s1_f1": "needs translation ",
-    "reportGeneratedTime_p1_s1_f3": " needs translation ",
+    "reportGeneratedTime_p1_s1_f1": "Ce rapport a été généré le",
+    "reportGeneratedTime_p1_s1_f3": "à",
     "reportGeneratedTime_p1_s1_f5": ".",
-    "thankYou_p1_s1_f1": "needs translation",
-    "thankYou_p1_s1_f2": "needs translation",
-    "submitterNameHeading_p1_s1_f1": "needs translation: ",
-    "contact_ul1_li1_f1": "Téléphone",
+    "thankYou_p1_s1_f1": "Merci d’aider la population ontarienne à rester en bonne santé en empêchant",
+    "thankYou_p1_s1_f2": "la propagation des maladies qui peuvent être évitées grâce à la vaccination!",
+    "submitterNameHeading_p1_s1_f1": "Soumetteur: ",
+    "contact_ul1_li1_f1": "Téléphone:",
     "contact_ul1_li1_f3": "Poste:",
     "contact_ul1_li2_f1": "Courriel:",
-    "immunizationsTitle_p1_s1": "needs translation: ",
+    "immunizationsTitle_p1_s1": "Le dossier d’immunisation a été envoyé:",
     "yellowCardTitle_p1_s1_f1": "Dossier d'immunisation",
-    "yellowCardTitle_p1_s1_f2": "Needs translation {{reportGeneratedDate}} (YYYY-MM-DD) needs translation {{reportGeneratedTime}}",
+    "yellowCardTitle_p1_s1_f2": "Ce rapport a été généré le {{reportGeneratedDate}}, à {{reportGeneratedTime}}.",
     "yellowCardFooter_p1_s1": "Les renseignements du dossier ci-dessus sont extraits du Registre d’immunisation de l’Ontario. Il se peut que les renseignements sur les vaccins envoyés récemment ne figurent pas sur cette carte jaune, car il faut un certain temps pour les vérifier.",
     "printLogoUrl": "./phu/pdf-logo-en.png",
     "lotNumber": "No de lot",
     "dateIsApproximate": "Date estimée",
-    "noImmunizations": "needs translation {{patientName}}.",
+    "noImmunizations": "Aucun vaccin",
     "recommendationsTitle_p1_s1": "Vaccins à recevoir",
     "recommendationsHeader_p1_s1": "Comme recommandé dans le calendrier de vaccination de l’Ontario, vous devez recevoir les vaccins contre les maladies suivantes:",
-    "recommendationsFooter_p1_s1": "Remarque: Si vous envoyez d'autres renseignements sur l'immunisation, les vaccins à administrer peuvent changer.",
-    "noRecommendations": "needs translation {{patientName}} needs translation",
+    "recommendationsFooter_p1_s1_f1": "Remarque: ",
+    "recommendationsFooter_p1_s1_f2": "Si vous envoyez d'autres renseignements sur l'immunisation, les vaccins à administrer peuvent changer.",
+    "noRecommendations": "Les vaccins de {{patientName}} sont à jour.",
     "yellowCard_dateFormatHeader": "\n\n\n\n\nAAAA-MM-JJ",
     "yellowCard_dateFormatText": "AAAA-MM-JJ",
     "yellowCard_additionalInformation": "\n\n\n\n\nRenseignements supplémentaires",
-    "yellowCard_other": "Autre"
+    "yellowCard_other": "autre"
   },
   "phuFooter": {
-    "SCROLL_TO_TOP": "Needs translation"
+    "SCROLL_TO_TOP": "Défiler vers le haut"
   },
   "phuHeader": {
     "RETURN_HOME": "Retour à la page d'accueil",
@@ -594,7 +601,7 @@
     "AT_15_MONTHS": "15 mois",
     "AT_18_MONTHS": "18 mois",
     "AT_4_6_YEARS": "4-6 ans",
-    "AT_GRADE_7": "7e année",
+    "AT_GRADE_7": "7<sup>e</sup> année",
     "AT_14_16_YEARS": "14-16 ans",
     "AT_24_26_YEARS": "24-26 ans ",
     "35_Years_+": "35 ans et plus",
@@ -634,7 +641,8 @@
     "TD": "dT",
     "PNEU-P-23": "Pneu-P-23",
     "SHINGLES": "Zona",
-    "HPV": "VPH"
+    "HPV": "VPH",
+    "PRINTABLE_LINK": "../../../img/Ontario-Immunization-Schedule-FR.pdf"
   },
   "sessionExpiry": {
     "TITLE": "La session est sur le point d'expirer",
@@ -645,15 +653,15 @@
     "CANCEL_BUTTON": "Annuler la session"
   },
   "submitAnother": {
-    "AUTH_LABEL": "Avec un no d'identification d'immunisation de l'Ontario et un NIP, vous en faites plus, plus vite!",
+    "AUTH_LABEL": "Avec un n<sup>o</sup> d'identification d'immunisation de l'Ontario et un NIP, vous en faites plus, plus vite!",
     "AUTHENTICATION": "Entrer un numéro d'identification et un NIP",
-    "ANON_LABEL": "Vous n'avez pas de no d'identification d'immunisation de l'Ontario ni de NIP?",
+    "ANON_LABEL": "Vous n'avez pas de n<sup>o</sup> d'identification d'immunisation de l'Ontario ni de NIP?",
     "ANON_MESSAGE_1": "Si vous n’avez pas de",
-    "OIID_PIN": "no d'identification d'immunisation de l'Ontario",
+    "OIID_PIN": "n<sup>o</sup> d'identification d'immunisation de l'Ontario",
     "ANON_MESSAGE_2": "ni de NIP, vous pouvez quand même envoyer les renseignements sur les vaccins, mais vous devrez fournir des renseignements supplémentaires ainsi que les dates et les noms des vaccins administrés.",
     "NEXT_STEP": "Avez-vous terminé?",
     "IMMUNIZATIONS_ONLY": "Envoyer uniquement les renseignements sur les vaccins",
-    "AUTH_NOT_REQUIRED": "Needs translation",
+    "AUTH_NOT_REQUIRED": "Pas besoin du n<sup>o</sup> d’identification d’immunisation de l’Ontario ni du NIP",
     "RETURN_HOME": "Retour à la page d'accueil",
     "CONTINUE_BELOW": "Si vous n'avez pas terminé, continuez ci-dessous",
     "AUTH_BULLET_1": "Voir une fiche d'immunisation (carte jaune).   ",
@@ -661,11 +669,11 @@
     "AUTH_BULLET_3": "Envoyer les renseignements sur les vaccins.",
     "AUTH_BULLET_4": "Éviter de réinscrire les vaccins et les renseignements personnels déjà au dossier.",
     "ANONYMOUS": "Envoyer uniquement les renseignements sur les vaccins",
-    "LEARN_MORE": "Needs translation"
+    "LEARN_MORE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Renseignements</button> sur ce que sont le no d’immunisation de l’Ontario et le NIP, et où les trouver."
   },
   "submitImmunizations": {
     "SUBMIT_IMMUNIZATIONS": "Envoyer les renseignements sur les vaccins",
-    "SUBMITTING": "Needs translation"
+    "SUBMITTING": "Envoi en cours…"
   },
   "submitterContactCapture": {
     "EMAIL": "Courriel",
@@ -675,17 +683,18 @@
     "OPTIONAL": "(facultatif)",
     "REQUIRED": "Obligatoire",
     "PHONE": "Téléphone",
+    "PHONE_LABEL": "xxx redundant",
     "EXT": "Poste",
     "EXTENSION": "Poste",
     "SUBMISSION_PROCESSED_EMAIL": "Nous recevrez une confirmation par courriel dès que vos renseignements auront été vérifiés. Nous ne transmettrons cette adresse de courriel à personne d'autre.",
     "ERRORS": {
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères.",
       "MUST_BE_EQUAL_TO": "Les adresses de courriel que vous avez fournies ne correspondent pas.",
-      "INCORRECT_FORMAT": "Ce format n'est pas convenable",
-      "PHONE_EXT_NUMBERS": "Un numéro de poste de téléphone ne doit contenir que des chiffres",
-      "TOO_MANY_NUMBERS": "Vous avez inscrit trop de chiffres",
+      "INCORRECT_FORMAT": "Ce format n'est pas convenable.",
+      "PHONE_EXT_NUMBERS": "Un numéro de poste de téléphone ne doit contenir que des chiffres.",
+      "TOO_MANY_NUMBERS": "Vous avez inscrit trop de chiffres.",
       "EMAIL_ERROR": "L'adresse de courriel que vous avez inscrite n'est pas valide.",
-      "PHONE_IS_REQUIRED": "Needs translation"
+      "PHONE_IS_REQUIRED": "Téléphone est un champ obligatoire."
     }
   },
   "submitterDemographicsCapture": {
@@ -693,8 +702,8 @@
     "FIRST_NAME": "Votre prénom",
     "LAST_NAME": "Votre nom de famille",
     "ERRORS": {
-      "FIRST_NAME_REQUIRED": "Needs translation",
-      "LAST_NAME_REQUIRED": "Needs translation",
+      "FIRST_NAME_REQUIRED": "Votre prénom est un champ obligatoire.",
+      "LAST_NAME_REQUIRED": "Votre nom de famille est un champ obligatoire.",
       "BAD_FORMAT": "Vous avez saisi un caractère non valide. Les caractères spéciaux ne sont pas permis.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
     }
@@ -702,7 +711,7 @@
   "submitterDisplay": {
     "PHONE": "Téléphone",
     "EMAIL": "Courriel",
-    "SUBMITTER_TITLE": "needs translation",
+    "SUBMITTER_TITLE": "Soumetteur",
     "EDIT": "Modifier",
     "NAME": "Nom",
     "EXTENSION": "Poste"
@@ -711,23 +720,23 @@
     "SURVEY_TITLE": "Aidez-nous à améliorer ce service au profit de toute la population ontarienne!",
     "SURVEY_PARAGRAPH": "Veuillez prendre un moment pour répondre à ce sondage en décrivant brièvement votre expérience d’aujourd’hui. Nous vous en remercions à l’avance.",
     "SURVEY_LINK": "Répondre au sondage rapide",
-    "SURVEY_LINK_DESC": "",
+    "SURVEY_LINK_DESC": "xxx redundant",
     "SURVEY_LINK_URL": "https://survey.infoway-inforoute.ca/index.php/115271?lang=fr"
   },
   "welcomeAUP": {
     "HEADER": "Politique d'utilisation acceptable ",
     "ACCEPT": "J'accepte",
     "DO_NOT_ACCEPT": "Je n'accepte pas",
-    "ACK_TERMS_READ": "Needs translation"
+    "ACK_TERMS_READ": "Lire les modalités d’utilisation"
   },
   "welcomeAuthSubmitterModal": {
-    "IMMUNIZATION_AUTH_SUBMISSION_LABEL": "Pour qui entrez-vous un no d’identification d'immunisation de l’Ontario et un NIP?",
+    "IMMUNIZATION_AUTH_SUBMISSION_LABEL": "Pour qui entrez-vous un n<sup>o</sup> d'identification d'immunisation de l'Ontario et un NIP?",
     "MYSELF": "Moi-même",
     "DEPENDENT": "Une personne à charge"
   },
   "welcomeHelpModal": {
-    "OIID_PIN_LABEL": "Qu’est-ce que le no d’identification d'immunisation de l’Ontario et le NIP?",
-    "LOGIN_OIID": "Le no d’identification d'immunisation de l’Ontario est un numéro à dix chiffres qui identifie chaque personne inscrite au Registre d'immunisation provincial.",
+    "OIID_PIN_LABEL": "Qu’est-ce que le n<sup>o</sup> d’identification d'immunisation de l’Ontario et le NIP?",
+    "LOGIN_OIID": "Le n<sup>o</sup> d'identification d'immunisation de l'Ontario est un numéro à dix chiffres qui identifie chaque personne inscrite au Registre d'immunisation provincial.",
     "LOGIN_PIN": "Le NIP est un numéro à six chiffres qui protège la confidentialité des renseignements sur les vaccins du patient.",
     "OIID_PIN_MESSAGE": "Où peut-on les trouver?",
     "OIID_TOOLTIP_1": "Vous trouverez votre numéro d’identification d'immunisation de l’Ontario sur une lettre envoyée par le",
@@ -759,24 +768,24 @@
     "INTRO_4": "Comment utiliser ce site? ",
     "INTRO_5": "À chaque fois que vous ou votre enfant recevez un vaccin, inscrivez-le ici pour en garder trace et en informer le bureau de santé publique.",
     "SCHEDULE_LABEL": "Calendrier de vaccination de l'Ontario",
-    "SCHEDULE_RATIONALE": "Pour fréquenter une école, les enfants doivent avoir été vaccinés contre les maladies indiquées en italique, comme l’exige la Loi sur l'immunisation des élèves. REMARQUE** Les enfants nés le 1er janvier 2010 ou après cette date doivent également être vaccinés contre la varicelle.",
+    "SCHEDULE_RATIONALE": "Pour fréquenter une école, les enfants doivent avoir été vaccinés contre les maladies indiquées en italique, comme l'exige la Loi sur l'immunisation des élèves. REMARQUE: Les enfants nés le 1<sup>er</sup> janvier 2010 ou après cette date doivent également être vaccinés contre la varicelle.",
     "PRINT_SCHEDULE_LABEL": "Imprimer le calendrier de l'Ontario.",
     "PRINT_SCHEDULE": "Imprimer le calendrier de l'Ontario."
   },
   "welcomeLogin": {
-    "AUTH_LABEL": "Avec un no d'identification d'immunisation de l'Ontario et un NIP, vous en faites plus, plus vite!",
+    "AUTH_LABEL": "Avec un n<sup>o</sup> d'identification d'immunisation de l'Ontario et un NIP, vous en faites plus, plus vite!",
     "AUTH_BULLET_1": "Voir une fiche d'immunisation (carte jaune).",
     "AUTH_BULLET_2": "Vérifier les vaccins à recevoir maintenant ou prochainement.",
     "AUTH_BULLET_3": "Envoyer les renseignements sur les vaccins.",
     "AUTH_BULLET_4": "Éviter de réinscrire les vaccins et les renseignements personnels déjà au dossier.",
-    "AUTH_MESSAGE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Qu'est-ce que le no d'identification d'immunisation de l'Ontario et le NIP? Où peut-on les trouver?</button>",
+    "AUTH_MESSAGE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Qu'est-ce que le n<sup>o</sup> d'identification d'immunisation de l'Ontario et le NIP? Où peut-on les trouver?</button>",
     "AUTHENTICATION": "Entrer un numéro d'identification et un NIP",
-    "ANON_LABEL": "Vous n'avez pas de no d'identification d'immunisation de l'Ontario ni de NIP?",
+    "ANON_LABEL": "Vous n'avez pas de n<sup>o</sup> d'identification d'immunisation de l'Ontario ni de NIP?",
     "ANON_MESSAGE_1": "Si vous n’avez pas de",
-    "OIID_PIN": "no d'identification d'immunisation de l'Ontario",
+    "OIID_PIN": "n<sup>o</sup> d'identification d'immunisation de l'Ontario",
     "ANON_MESSAGE_2": "ni de NIP, vous pouvez quand même envoyer les renseignements sur les vaccins, mais vous devrez fournir des renseignements supplémentaires ainsi que les dates et les noms des vaccins administrés.",
     "ANONYMOUS": "Envoyer uniquement les renseignements sur les vaccins",
-    "LEARN_MORE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>TRANSLATION NEEDED</button> TRANSLATION NEEDED."
+    "LEARN_MORE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Renseignements</button> sur ce que sont le no d’identification d’immunisation de l’Ontario et le NIP, et où les trouver."
   },
   "welcomeSubmitterModal": {
     "IMMUNIZATION_SUBMISSION_LABEL": "Pour qui envoyez-vous les renseignements sur les vaccins?",
@@ -784,12 +793,14 @@
     "DEPENDENT": "Une personne à charge"
   },
   "yellowCardDisplay": {
-    "SHOW_INFO": "Needs translation",
-    "HIDE_INFO": "Needs translation",
+    "SHOW_INFO": "Montrer l’information",
+    "HIDE_INFO": "Cacher l’information",
     "DATE_ESTIMATE": "Date estimée",
-    "NO_IMMS": "Needs translation <br /> Needs translation",
+    "NO_IMMS": "Aucun vaccin n'a été trouvé pour {{patientName}}.",
     "YMD": "AAAA-MM-JJ",
-    "ADDITIONAL_INFO": "Renseignements supplémentaires"
+    "ADDITIONAL_INFO": "Renseignements supplémentaires",
+    "TABLE_CAPTION": "xxx redundant",
+    "OTHER": "autre"
   },
   "yellowCardRecommendations": {
     "HEADING": "Vaccins à recevoir",
@@ -867,8 +878,8 @@
     },
     "KFLA": {
       "PHU_NAME": "Kingston, Frontenac et Lennox & Addington Santé publique",
-      "PHU_PHONE": "613-549-1232 and 1-800-267-7875",
-      "PHU_EMAIL": "",
+      "PHU_PHONE": "613-549-1232 ou 1-800-267-7875",
+      "PHU_EMAIL": "Needs Contact Infomration.",
       "PHU_CONTACT_PERSON": "Une infirmière de la santé publique de Kingston, Frontenac et Lennox & Addington",
       "PHU_ADDRESS": "<strong>Manager, CQI and Central Resources</strong><br aria-hidden=\"true\" />Kingston, Frontenac and Lennox & Addington Public Health<br aria-hidden=\"true\" />221 Portsmouth Avenue<br aria-hidden=\"true\" />Kingston, ON<br aria-hidden=\"true\" />K7M 1V5",
       "PHU_RESPONSE_TIME": "Dans les 3 jours ouvrables",

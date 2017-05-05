@@ -128,7 +128,7 @@
       LINE2:  /^[a-z0-9 \-#]*$/i,
       CITY: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-]*$/i,
       POSTAL: /^[abceghjklmnprstvxy]\d[abceghjklmnprstvwxyz]( )?\d[abceghjklmnprstvwxyz]\d$/i,
-      SCHOOL_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-]*$/i,
+      SCHOOL_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-#/]*$/i,
       COMMENT: /^[a-zàâçéèêëîïôûùüÿñæœ !'"\-+&$%#@:;«»().,]*$/i,
       OIID: /^[2-9b-df-hj-np-tv-xz]{4}[\- ]?[2-9b-df-hj-np-tv-xz]{3}[\- ]?[2-9b-df-hj-np-tv-xz]{3}[\- ]?$/i,
       OIID_PIN: /^\d*$/i,
@@ -175,6 +175,7 @@
     // Informational and error notifications are user dismissable.
     INFO_PATIENT_DATA_CLEARED:        '$infoPatientDataCleared',
     INFO_SESSION_EXPIRED:             '$infoSessionExpired',
+    INFO_OIID_HINT:                   '$infoOiidHint',
 
     WARN_DOCUMENT_FILE_BAD_TYPE:      '$warnDocumentFileBadType',
     WARN_DOCUMENT_FILE_TOO_LARGE:     '$warnDocumentFileTooLarge',
@@ -311,6 +312,11 @@
             .state('anon.other.submission.confirmation', Routes.ANON_CONFIRMATION);
 
     $urlRouterProvider.otherwise('/welcome');
-  }]);
+  }])
+
+  // NOTE: This runs whenever the application bootstraps on page load.
+  //       By forcing a state transition, the user is prevented from loading the
+  //       application in a mid-completion state.
+    .run(['$state', function ($state) { $state.go('welcome'); }])
 
 }());

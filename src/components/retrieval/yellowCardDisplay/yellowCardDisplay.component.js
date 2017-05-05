@@ -59,7 +59,10 @@
       }
 
       this.doesRowContainOther = (row) => {
-        return !!row.diseases
+        // if there are no diseases, it means we had an agent with
+        // a snomed that wasn't found so treat it as 'other'
+        return row.diseases.length === 0 ||
+               !!row.diseases
                .filter(disease => !DISEASE_YC_ORDER[disease])
                .length;
       }

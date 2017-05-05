@@ -67,7 +67,7 @@ on-open-new-immunization-modal="$ctrl.openNewImmunizationModal()">
 <hr />
 
 <div class="row">
-  <div class="error-messages" id="no-immunization-error"  ng-if="$ctrl.noImmunizations" role="alert">
+  <div class="error-messages" id="no-immunization-error"  ng-if="$ctrl.noImmunizations && $ctrl.immunizations.length < 1" role="alert">
     <div class="alert alert-danger col-xs-12">
         {{ 'immunizationInput.IMMUNIZATION_ERROR' | translate }}
     </div>

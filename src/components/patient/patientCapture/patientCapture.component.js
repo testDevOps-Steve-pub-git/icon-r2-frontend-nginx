@@ -18,10 +18,20 @@
     controller: patientSelfCaptureController,
   };
 
-  patientSelfCaptureController.$inject = ['ICON_RGX', 'Endpoint'];
-  function patientSelfCaptureController (ICON_RGX, Endpoint) {
+  patientSelfCaptureController.$inject = [
+    'Endpoint', 'Notify',
+    'ICON_NOTIFICATION', 'ICON_RGX'
+  ];
+  function patientSelfCaptureController (
+    Endpoint, Notify,
+    ICON_NOTIFICATION, ICON_RGX
+  ) {
     this.getSchoolOrDaycare = Endpoint.getSchoolOrDaycare;
     this.onSchoolOrDaycareSelect = onSchoolOrDaycareSelect;
+
+    this.openOiidHintModal = () => {
+      Notify.publish(ICON_NOTIFICATION.INFO_OIID_HINT);
+    }
 
     /** Regex Librariess */
     this.rgx = ICON_RGX.rgx;
@@ -50,7 +60,7 @@
      */
     function onSchoolOrDaycareSelect (selected) {
       this.localPatient.schoolOrDayCare = selected.name;
-      this.localPatient.schoolOrDayCareIdentifier = selected.identifierValue;
+      this.localPatient.schoolOrDayCareIdentifier = selected.identifier;
     }
   }
 })();

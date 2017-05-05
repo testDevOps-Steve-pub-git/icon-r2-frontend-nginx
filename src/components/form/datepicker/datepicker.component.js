@@ -53,6 +53,12 @@
       this.open = () => { this.popup.opened = true; };
 
       this.checkDateRange = () => {
+
+        /* For clear button*/
+        if(!this.date) {
+          this.datepickerOptions.datepickerMode = 'year';
+        }
+
         if (this.date) {
           this.model = moment(this.date, 'YYYY-MM-DD').toDate();
           this.getMinMaxDates();

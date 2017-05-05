@@ -82,23 +82,24 @@
              .then((diseases) => {
                let lang = $translate.use();
                return diseases
-                      .map(j => j.json)
                       .map(d => { return new Disease(d.longName[lang], `${d.snomed}` ) });
              });
     };
 
     const batchLookupAgentTrade = (snomeds) => {
       return getWithHeaders(() => `${ICON_API.LOOKUP_AGENT_TRADE}?filter[snomed]=${snomeds || ``}`)()
-             // TODO: remove when API response format corrected.
-             .then(data => data.map(j => j.json))
              .then(imms => imms.map(immunizationFromJson));
     };
 
     const lookupLots = (snomed) => {
       return getWithHeaders(lotSnomed => `${ICON_API.LOOKUP_LOTS}?filter[snomed]=${lotSnomed || ``}`)(snomed)
-             // TODO: remove when API response format corrected.
-             .then(res => (res.length && res[0].json.lots) ? res[0].json.lots : [])
-             .then(lots => lots.map(lot => new Lot(lot.lotNumber, lot.expiry)))
+            .then(lots => {
+              if(!!lots[0].lots && lots.length == 1)
+                return lots[0].lots.map(lot => new Lot(lot.lotNumber, lot.expiry))
+              else
+                  return [];
+            })
+            .catch((error)=>{console.warn(error)})
     };
 
     const immunizationFromJson = (json) => {
@@ -112,7 +113,8 @@
                                 : [],
                             '',
                             '',
-                            json.agent.prevalenceIndex
+                            json.agent.prevalenceIndex,
+                            json.agent.orderedDiseases[lang]
                           );
       let newTrade = (json.trade)
                         ? new Trade(
@@ -139,8 +141,11 @@
                let lang = $translate.use().toLowerCase();
                return `${ICON_API.LOOKUP_IMMUNIZATIONS}?filter[immun]=${immQuery || ''}&filter[lang]=${lang}`;
              })(imm)
-             .then(data => data.map(imm => imm.json))
              .then(imms => imms.map(immunizationFromJson));
+    };
+
+    const translatePound = (queryString) => {
+      return queryString.replace('#', '%23')
     };
 
     const getAddress = getWithHeaders((postalQuery) => {
@@ -156,7 +161,7 @@
     });
 
     const getSchoolOrDaycare = getWithHeaders((schoolQuery) => {
-      return `${ICON_API.SCHOOL}?filter[name]=${schoolQuery || '*'}`;
+      return `${ICON_API.SCHOOL}?filter[name]=${translatePound(schoolQuery) || '*'}`;
     });
 
     const getVaccine = getWithHeaders((vaccineQuery) => {
@@ -206,7 +211,7 @@
 
     const postAnalyticsLog = (analyticsData) => {
       return xhr('POST')
-                (headersWithSession)
+                (headersWithSessionTransactionJson)
                 (() => analyticsData)
                 (() => ICON_API.TRACKING)
                 (/* Omit query */);

@@ -10,7 +10,7 @@
     ADDRESS: {
       title:  'progressBar.ADDRESS',
       sref:   '.address',
-      glyph:  'fa fa-envelope-o',
+      glyph:  'fa fa-envelope',
     },
     IMMUNIZATIONS: {
       title:  'progressBar.IMMUNIZATIONS',
@@ -35,7 +35,7 @@
     CONFIRMATION: {
       title:  'progressBar.CONFIRMATION',
       sref:   '.confirmation',
-      glyph:  'fa fa-thumbs-o-up',
+      glyph:  'fa fa-thumbs-up',
     },
   };
 

@@ -2,7 +2,7 @@
 
   <!-- Previous button -->
   <div ng-if="$ctrl.previous && !$ctrl.fromReviewPage" class="col-xs-12 col-sm-6 pull-left">
-    <button class="btn btn-block btn-lg btn-default"
+    <button class="btn btn-lg btn-default pull-left"
             id="page-previous-button"
             ng-click="$ctrl.previousPage()">
       <span translate="nextPrevButtons.PREVIOUS"></span>
@@ -10,10 +10,9 @@
     </button>
   </div>
 
-  <div class="col-xs-12 hidden-xl hidden-lg hidden-md hidden-sm"><h4/></div>
   <!-- Regular next button -->
   <div ng-if="$ctrl.next && !$ctrl.fromReviewPage" class="col-xs-12 col-sm-6 pull-right">
-    <button class="btn btn-block btn-lg btn-primary"
+    <button class="btn btn-lg btn-info pull-right"
             id="pager-next-button"
             ng-click="$ctrl.nextPage()">
       <span translate="nextPrevButtons.PROCEED"></span>
@@ -23,7 +22,7 @@
 
   <!-- Back to review button -->
   <div ng-if="!$ctrl.isReviewPage && $ctrl.fromReviewPage" class="col-xs-12 col-sm-6 pull-right">
-    <button class="btn btn-block btn-lg btn-primary"
+    <button class="btn btn-lg btn-info pull-right"
             id="pager-next-button"
             ng-click="$ctrl.nextPage()">
       <span translate="nextPrevButtons.RETURN_TO_REVIEW"></span>

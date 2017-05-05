@@ -1,68 +1,74 @@
 <h3 class="text-center" translate="immunizationInput.ENTER_IMMUNIZATIONS"
 translate-values="{ patient_name : $ctrl.patient.firstName }" translate-compile></h3>
 
-<!-- Immunization grouping toggle changes which grouping type used in view. -->
-<!-- End immunization grouping toggle. -->
+<br />
+<br />
 
-<!-- Immunizations grouped by date view. -->
+<p class="text-center"
+ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.DATE"
+translate='immunizationInput.PRINT_BY_IMMUNIZATIONS' translate-compile>
+</p>
+
+<p class="text-center"
+ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT"
+translate='immunizationInput.PRINT_BY_DATE' translate-compile>
+</p>
+
+<div class="row text-center">
+  <div class="col-xs-12">
+      <p class="lead">  {{ 'immunizationInput.GROUP_BY' | translate }}</p>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <button class="btn btn-info"
+      ng-model="$ctrl.immunizationDisplayMode"
+      uib-btn-radio="$ctrl.IMMUNIZATION_DISLAY_MODE.DATE">
+        <span class="fa fa-check"
+        ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.DATE">
+        </span>
+          {{ 'immunizationInput.DATE' | translate }}
+      </button>
+
+      <button class="btn btn-info"
+      ng-model="$ctrl.immunizationDisplayMode"
+      uib-btn-radio="$ctrl.IMMUNIZATION_DISLAY_MODE.AGENT">
+        <span  class="fa fa-check"
+        ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT">
+        </span>
+          {{ 'immunizationInput.IMMUNIZATION' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div ng-if="$ctrl.immunizations.length <= 0" class="col-xs-12">
+  <p class="lead text-center" translate="immunizationInput.ADD_IMMUNIZATION_DATE"
+  translate-values="{ displayMode : $ctrl.immunizationDisplayMode,
+    date : $ctrl.IMMUNIZATION_DISLAY_MODE.DATE,
+    agent : $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT }"
+     translate-compile>
+
+  </p>
+</div>
+
 <immunizations-by-date
-ng-if="$ctrl.immunizationDisplayMode === $ctrl.immunizationDisplayType.DATE"
-immunizations="$ctrl.immunizations"
-on-open-new-immunization-modal="$ctrl.openNewImmunizationModal()">
-
-  <!-- Group by date listing (for each group of immunizations with shared date). -->
-  <immunizations-grouped-by-date
-  ng-repeat="immunizationGroup in $ctrl.immunizationsGroupedByDate"
-  immunizations="immunizationGroup"
-  on-open-add-immunization-same-date="$ctrl.openNewImmunizationSameDateModal(immunization)"
-  on-remove-immunization-group="$ctrl.removeImmunizationGroupByDate(immunization)">
-
-    <!-- Individual immunization agent details (shared date details displayed by group parent). -->
-    <immunization-display-by-date
-    ng-repeat="immunization in immunizationGroup"
-    immunization="immunization"
-    on-open-edit-immunization="$ctrl.openEditImmunizationModal(immunization)"
-    on-remove-immunization="$ctrl.removeImmunization(immunization)">
-    </immunization-display-by-date>
-    <!-- End individual immunization details. -->
-
-  </immunizations-grouped-by-date>
-  <!-- End group by date listing -->
-
+  class="row"
+  ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.DATE"
+  immunizations="$ctrl.immunizations"
+  add="$ctrl.addImmunization(immunization)"
+  on-remove="$ctrl.removeImmunization(immunization)">
 </immunizations-by-date>
-<!-- End immunizations grouped by date view. -->
 
-
-
-<!-- Immunizations grouped by date view. -->
 <immunizations-by-agent
-ng-if="$ctrl.immunizationDisplayMode === $ctrl.immunizationDisplayType.AGENT"
-immunizations="$ctrl.immunizations"
-on-open-new-immunization-modal="$ctrl.openNewImmunizationModal()">
-
-  <!-- Group by date listing (for each group of immunizations with shared date). -->
-  <immunizations-grouped-by-agent
-  ng-repeat="immunizationGroup in $ctrl.immunizationsGroupedByAgentTrade"
-  immunizations="immunizationGroup"
-  on-open-add-immunization-same-agent="$ctrl.openNewImmunizationSameAgentModal(immunization)"
-  on-remove-immunization-group="$ctrl.removeImmunizationGroupBySnomed(immunization)">
-
-    <!-- Individual immunization agent details (shared date details displayed by group parent). -->
-    <immunization-display-by-agent
-    ng-repeat="immunization in immunizationGroup"
-    immunization="immunization"
-    on-open-edit-immunization="$ctrl.openEditImmunizationModal(immunization)"
-    on-remove-immunization="$ctrl.removeImmunization(immunization)">
-    </immunization-display-by-agent>
-    <!-- End individual immunization details. -->
-
-  </immunizations-grouped-by-agent>
-  <!-- End group by date listing -->
-
+  class="row"
+  ng-if="$ctrl.immunizationDisplayMode === $ctrl.IMMUNIZATION_DISLAY_MODE.AGENT"
+  immunizations="$ctrl.immunizations"
+  add="$ctrl.addImmunization(immunization)"
+  on-remove="$ctrl.removeImmunization(immunization)">
 </immunizations-by-agent>
-<!-- End immunizations grouped by date view. -->
-
-
 
 <hr />
 
@@ -73,6 +79,7 @@ on-open-new-immunization-modal="$ctrl.openNewImmunizationModal()">
     </div>
   </div>
 </div>
+
 
 <next-prev-buttons
 on-next="$ctrl.validateImmunizations()">

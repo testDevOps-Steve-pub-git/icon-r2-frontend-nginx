@@ -1,58 +1,50 @@
-<div class="row">
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+<hr />
   <!-- Auth Choice -->
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+  <div class="row">
     <h3>{{ 'welcomeLogin.AUTH_LABEL' | translate }}</h3>
+    <ul>
+      <li>{{ 'welcomeLogin.AUTH_BULLET_1' | translate }}</li>
+      <li>{{ 'welcomeLogin.AUTH_BULLET_2' | translate }}</li>
+      <li>{{ 'welcomeLogin.AUTH_BULLET_3' | translate }}</li>
+    </ul>
+
+    <button class="btn-link" id="home-oiid-link-one" ng-click="$ctrl.openHelpModal()">
+      {{ 'welcomeLogin.AUTH_MESSAGE' | translate }}
+    </button>
+
+    <div class="col-xs-12">
+      <a class="btn btn-info" id="home-auth-button" ui-sref="auth">{{ 'welcomeLogin.AUTHENTICATION' | translate }}</a>
+    </div>
   </div>
 
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <action-button
-        button-text="welcomeLogin.AUTH_BULLET_1"
-        button-icon="list"
-        button-id="home-view-yellow-card"
-        path="auth">
-    </action-button>
-
-    <action-button
-        button-text="welcomeLogin.AUTH_BULLET_2"
-        button-icon="calendar"
-        button-id="home-view-overdue"
-        path="auth">
-    </action-button>
-
-    <action-button
-        button-text="welcomeLogin.AUTH_BULLET_3"
-        button-icon="medkit"
-        button-id="home-auth-submit"
-        path="auth">
-    </action-button>
-  </div>
-
-
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <p translate="welcomeLogin.LEARN_MORE" translate-compile></p>
-  </div>
   <!-- End Auth Choice -->
 
   <!-- Anon Choice -->
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+  <div class="row">
     <hr />
     <h3>{{ 'welcomeLogin.ANON_LABEL' | translate }}</h3>
 
     <p>{{ 'welcomeLogin.ANON_MESSAGE_1' | translate }}
-      <span class="icon-btn-link" id="home-oiid-link-two" ng-click=$ctrl.openHelpModal()>
+      <span id="home-oiid-link-two" ng-click=$ctrl.openHelpModal()>
       {{ 'welcomeLogin.OIID_PIN' | translate }}</span>
       {{ 'welcomeLogin.ANON_MESSAGE_2' | translate }}</p>
+
+    <div class="col-xs-12">
+      <a class="btn btn-info" id="home-anon-button" ui-sref="anon">{{ 'welcomeLogin.ANONYMOUS' | translate }}</a>
+    </div>
   </div>
-
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <action-button
-        button-text="welcomeLogin.ANONYMOUS"
-        button-icon="medkit"
-        button-id="home-anon-submit"
-        path="anon">
-    </action-button>
-  </div>
-
-
   <!-- End Anon Choice -->
 </div>
+
+<style>
+  .btn-link {
+       color: #428bca !important;
+       background: none !important;
+       border: none;
+       padding: 0 !important;
+       font: inherit;
+       /*border is optional*/
+       cursor: pointer;
+  }
+<style>

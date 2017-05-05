@@ -205,8 +205,16 @@
         let populateAgentTrade = (immunization) => {
                                     let populatedImmunization = immunizationDictionary[immunization.vaccineCode];
                                     let newImmunization = immunization.clone();
-                                    newImmunization.agent = populatedImmunization.agent;
-                                    newImmunization.trade = populatedImmunization.trade;
+                                    if(populatedImmunization) {
+                                      newImmunization.agent = populatedImmunization.agent;
+                                      newImmunization.trade = populatedImmunization.trade;
+                                    } else {
+                                      // this immunzation was not found in our Dictionary so
+                                      // display the agent as 'Other' to the user
+                                      // .trade can remain empty
+                                      newImmunization.agent.shortName = 'Other/autre - Contact your Public Health Unit / Communiquez avec votre bureau de santé publique local';
+                                      newImmunization.agent.name = 'Other/autre';
+                                    }
                                     return newImmunization;
                                   };
         let populateDisease = (recommendation) => {
@@ -217,7 +225,7 @@
 
         return {
           patient:                record.patient,
-          retrievedImmunizations: record.retrievedImmunizations.map(populateAgentTrade),
+          retrievedImmunizations: record.retrievedImmunizations.map(populateAgentTrade).filter(v => v), // drop undefined values
           recommendations:        record.recommendations.map(populateDisease),
         };
       });

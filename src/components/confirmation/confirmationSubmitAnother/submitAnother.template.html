@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <h3>{{ 'submitAnother.NEXT_STEP' | translate }}</h3>
+    <h3 translate="submitAnother.NEXT_STEP"></h3>
   </div>
 </div>
 
@@ -18,7 +18,7 @@
     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-xs-9">
       <button class="icon-btn-link" id="{{$ctrl.buttonId}}" ng-click="$ctrl.returnHome()">
         <div aria-hidden="true" class="col-xs-12"><h5/></div>
-        <div class="text-left pull-left">{{ 'submitAnother.RETURN_HOME' | translate }}</div>
+        <div class="text-left pull-left" translate="submitAnother.RETURN_HOME"></div>
       </button>
     </div>
   </div>
@@ -26,7 +26,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <h4 >{{ 'submitAnother.CONTINUE_BELOW' | translate}}</h4>
+    <h4 translate="submitAnother.CONTINUE_BELOW"></h4>
   </div>
 </div>
 
@@ -35,7 +35,7 @@
 <!-- Auth Choice -->
 <div class="row">
   <div class="col-xs-12">
-    <h3>{{ 'submitAnother.AUTH_LABEL' | translate }}</h3>
+    <h3 translate="submitAnother.AUTH_LABEL"></h3>
   </div>
 </div>
 
@@ -43,7 +43,7 @@
 <div class="col-xs-12">
   <action-button
       button-text="submitAnother.AUTH_BULLET_1"
-      button-icon="list"
+      button-icon="yellow-card"
       button-id="home-view-yellow-card"
       path="auth">
   </action-button>
@@ -61,7 +61,7 @@
 <div class="col-xs-12">
   <action-button
       button-text="submitAnother.AUTH_BULLET_3"
-      button-icon="medkit"
+      button-icon="imm-vial"
       button-id="home-auth-submit"
       path="auth">
   </action-button>
@@ -81,22 +81,23 @@
 
 <!-- Anon Choice -->
 <div class="col-xs-12">
-  <h3>{{ 'submitAnother.ANON_LABEL' | translate }}</h3>
+  <h3 translate="submitAnother.ANON_LABEL"></h3>
 </div>
 
 
 <div class="col-xs-12">
-  <p>{{ 'submitAnother.ANON_MESSAGE_1' | translate }}
-    <span class="icon-btn-link" id="home-oiid-link-two" ng-click=$ctrl.openHelpModal()>
-  {{ 'submitAnother.OIID_PIN' | translate }}</span>
-    {{ 'submitAnother.ANON_MESSAGE_2' | translate }}</p>
+  <p>
+    <span translate="submitAnother.ANON_MESSAGE_1"></span>
+    <span class="icon-btn-link" id="home-oiid-link-two" ng-click=$ctrl.openHelpModal() translate="submitAnother.OIID_PIN"></span>
+    <span translate="submitAnother.ANON_MESSAGE_2"></span>
+  </p>
 </div>
 
 
 <div class="col-xs-12">
   <action-button
       button-text="submitAnother.ANONYMOUS"
-      button-icon="medkit"
+      button-icon="imm-vial"
       button-id="home-anon-submit"
       path="anon">
   </action-button>

@@ -2,23 +2,27 @@
  * Created on 2017-02-27.
  * Service to keep track of gating question selection
  * Gating choices are to keep the user button choices for the gating questions intact
- * Gating questions:
+ * Gating question values:
  * 1- Selected YES to Have you received a letter from your PHU?-International typeahead
  * 2- Selected YES to All the Immunizations being in Ontario - Ontario typeahead
  * 3- Selected YES to All the immunizations being in Canada - Canada typeahead
  * 4- Selected NO to All Immunizatons being in Canada - International typeahead
+ *
+ * Questions 1-3 are yes/no/unsure, question 4 is for the displayMode (date, or agent)
  */
 (function () {
   'use strict';
   module.exports = GatingQuestionService;
 
   function GatingQuestionService () {
+
     let gatingQuestion = 1;
 
     let gatingChoices = {
       question1Choice: '',
       question2Choice: '',
-      question3Choice: ''
+      question3Choice: '',
+      question4Choice: ''
     };
 
 
@@ -27,9 +31,11 @@
       gatingChoices = {
         question1Choice: '',
         question2Choice: '',
-        question3Choice: ''
+        question3Choice: '',
+        question4Choice: ''
       };
     }
+
 
     function getGatingQuestion () {
       return gatingQuestion;

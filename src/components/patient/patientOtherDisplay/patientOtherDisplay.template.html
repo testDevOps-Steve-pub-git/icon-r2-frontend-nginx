@@ -3,7 +3,7 @@
   <h4 translate="patientOtherDisplay.PATIENT_TITLE" class="col-xs-6"></h4>
 </div>
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
     <div class="small text-uppercase">{{ 'patientOtherDisplay.NAME' | translate }}</div>
   </div>
@@ -17,7 +17,7 @@
 </div>
 
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
     <div class="small text-uppercase">{{ 'patientOtherDisplay.SEX' | translate }}</div>
   </div>
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
     <div class="small text-uppercase">{{'patientOtherDisplay.BIRTHDATE' | translate}}</div>
   </div>
@@ -39,9 +39,9 @@
   </div>
 </div>
 
-<div class="row" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
+<div class="row icon-input-bottom" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.HEALTH_CARD_NUMBER' | translate}}</div>
+    <div class="small text-uppercase" translate="patientOtherDisplay.HEALTH_CARD_NUMBER"></div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -50,9 +50,9 @@
   </div>
 </div>
 
-<div class="row " ng-if="$ctrl.clientInfo.oiid != ''">
+<div class="row icon-input-bottom" ng-if="$ctrl.clientInfo.oiid != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.OIID' | translate}}</div>
+    <div class="small text-uppercase" translate="patientOtherDisplay.OIID"></div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>

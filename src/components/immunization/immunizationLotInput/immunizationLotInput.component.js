@@ -77,7 +77,20 @@
           .then( function(results) {
             $ctrl.lotArray = results;
             return results;
-          });
+          })
+          .then( function(results) {
+            /* This is just for displaying the lot numbers. Any that begin with N-, remove N- and display number.   * */
+            results.forEach((lot)=> {
+              let nrCheck = lot.number.substring(0,2);
+              if(nrCheck === 'N-')
+                lot.lotDisplayNumber = lot.number.slice(2,lot.number.length);
+              else
+                lot.lotDisplayNumber = lot.number;
+            });
+            $ctrl.lotArray = results;
+            return results;
+          })
+          .catch( (error)=> {console.warn(error)})
       }
     }
   };

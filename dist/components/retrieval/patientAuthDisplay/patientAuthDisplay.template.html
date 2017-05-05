@@ -1,85 +1,77 @@
-  <div class="row">
-    <div class="col-xs-12">
-      <p>{{ 'patientAuthDisplay.INFORMATION_FROM_REPOSITORY' | translate }}</p>
-    </div>
-  </div>
 
-<div class="form-group">
-  <div class="row">
-    <div class="col-xs-12 text-left">
-      <div class="small text-uppercase">{{ 'patientAuthDisplay.NAME' | translate }}</div>
-    </div>
-    <div class="col-xs-12 text-left">
-      <strong>
-        <span>{{$ctrl.patient.firstName}}</span>
-        <span>{{$ctrl.patient.middleName}}</span>
-        <span>{{$ctrl.patient.lastName}}</span>
-      </strong>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>{{ 'patientAuthDisplay.INFORMATION_FROM_REPOSITORY' | translate }}</p>
   </div>
 </div>
 
- <div class="form-group">
-  <div class="row">
-    <div class="col-xs-12 text-left">
-      <div class="small text-uppercase">{{ 'patientAuthDisplay.SEX' | translate }}</div>
-    </div>
-    <div class="col-xs-12 text-left">
-      <strong>
-        <span class="text-capitalize">{{$ctrl.patient.gender}}</span>
-      </strong>
-    </div>
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <small>{{ 'patientAuthDisplay.NAME' | translate }}</small>
   </div>
-  </div>
-
- <div class="form-group">
-  <div class="row">
-    <div class="col-xs-12 text-left">
-      <div class="small text-uppercase">{{'patientAuthDisplay.BIRTHDATE' | translate}}</div>
-    </div>
-    <div class="col-xs-12 text-left">
-      <strong>
-        <span>{{$ctrl.patient.dateOfBirth | date:'yyyy-MMM-dd'}}</span>
-      </strong>
-    </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.firstName}}</span>
+      <span>{{$ctrl.clientInfo.middleName}}</span>
+      <span>{{$ctrl.clientInfo.lastName}}</span>
+    </strong>
   </div>
 </div>
 
- <div class="form-group">
-  <div class="row" ng-if="$ctrl.patient.healthCardNumber != '' && $ctrl.page == 'login'">
-    <div class="col-xs-12 text-left">
-      <div class="small text-uppercase">{{ 'patientAuthDisplay.HEALTH_CARD_NUMBER' | translate}}</div>
-    </div>
-    <div class="col-xs-12 text-left">
-      <strong>
-        <span>{{$ctrl.patient.healthCardNumber | hCNFormat}}</span>
-      </strong>
-    </div>
+
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <small>{{ 'patientAuthDisplay.SEX' | translate }}</small>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.gender}}</span>
+    </strong>
   </div>
 </div>
 
- <div class="form-group">
-  <div class="row " ng-if="$ctrl.patient.oiid != '' && $ctrl.page == 'login'">
-    <div class="col-xs-12 text-left">
-      <div class="small text-uppercase">{{ 'patientAuthDisplay.OIID' | translate}}</div>
-    </div>
-    <div class="col-xs-12 text-left">
-      <strong>
-        <span>{{$ctrl.patient.oiid | hCNFormat}}</span>
-      </strong>
-    </div>
+<div class="row">
+  <div class="col-xs-12 text-left">
+    <small>{{'patientAuthDisplay.BIRTHDATE' | translate}}</small>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.dateOfBirth | date:'yyyy-MMM-dd'}}</span>
+    </strong>
   </div>
 </div>
 
-  <hr />
+<div class="row" ng-if="$ctrl.clientInfo.healthCardNumber != '' && $ctrl.page == 'login'">
+  <div class="col-xs-12 text-left">
+    <small>{{ 'patientAuthDisplay.HEALTH_CARD_NUMBER' | translate}}</small>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.healthCardNumber | hCNFormat}}</span>
+    </strong>
+  </div>
+</div>
 
-  <!-- <div class="row" ng-if="$ctrl.patient.oiidIssueDate != '' && $ctrl.page == 'login'">
-    <div class="col-xs-12 text-left">
-      <div class="small text-uppercase">{{ 'patientAuthDisplay.ISSUE_DATE' | translate }}</div>
-    </div>
-    <div class="col-xs-12 text-left">
-      <strong>
-        <span>{{$ctrl.patient.oiidIssueDate}}</span>
-      </strong>
-    </div>
-  </div> -->
+<div class="row " ng-if="$ctrl.clientInfo.oiid != '' && $ctrl.page == 'login'">
+  <div class="col-xs-12 text-left">
+    <small>{{ 'patientAuthDisplay.OIID' | translate}}</small>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.oiid | hCNFormat}}</span>
+    </strong>
+  </div>
+</div>
+
+<hr />
+
+<!-- <div class="row" ng-if="$ctrl.clientInfo.oiidIssueDate != '' && $ctrl.page == 'login'">
+  <div class="col-xs-12 text-left">
+    <small>{{ 'patientAuthDisplay.ISSUE_DATE' | translate }}</small>
+  </div>
+  <div class="col-xs-12 text-left">
+    <strong>
+      <span>{{$ctrl.clientInfo.oiidIssueDate}}</span>
+    </strong>
+  </div>
+</div> -->

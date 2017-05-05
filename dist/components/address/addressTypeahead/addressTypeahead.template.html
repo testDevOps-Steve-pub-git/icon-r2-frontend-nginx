@@ -4,25 +4,34 @@
 
     <div ng-form="postalCodeForm">
         <input type="text"
+        focus="true"
         id="address-postal-autocomplete"
         name="addressPostalAutocomplete"
         class="form-control"
+        ng-pattern="$ctrl.rgx.POSTAL"
         ng-model="$ctrl.addressLookup"
+        placeholder="{{ 'addressTypeahead.QUICKSEARCH_HINT' | translate }}"
         autocomplete="off"
         typeahead-loading="loadingLocations"
         typeahead-no-results="noResults"
         typeahead-on-select="$ctrl.onPostalCodeLookUpSelect($item)"
-        uib-typeahead="addresses.postal_code as (addresses.streetName + addresses.streetType + ', ' + addresses.city + ', ' + addresses.postalCode ) for addresses in $ctrl.getAddress($viewValue) | limitTo:8"/>
+        uib-typeahead="addresses.postal_code as (addresses.streetName + ' ' + addresses.streetType + ', ' + addresses.city + ', ' + addresses.postalCode ) for addresses in $ctrl.getAddress($viewValue) | limitTo:8"/>
     </div>
 
-    <span ng-hide="loadingLocations || noResults"></span>
-    <span ng-show="loadingLocations" class="fa fa-refresh"></span>
+    <span ng-hide="loadingLocations || noResults">&nbsp;</span>
+    <span ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></span>
 
     <div ng-show="noResults" translate="addressTypeahead.NO_RESULTS_FOUND"></div>
 
-    <div>
-        {{ 'addressTypeahead.POSTAL_CODE_MESSAGE' | translate }}
+
+    <!--Error messages for postal code-->
+    <div class="error-messages sr-only" ng-messages="postalCodeForm.addressPostalAutocomplete.$error"
+         ng-if="postalCodeForm.addressPostalAutocomplete.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressTypeahead.POSTAL_CODE_ERROR'></div>
     </div>
+    <!--End Error messages-->
 </div>
 
-
+<div class="col-xs-12">
+    {{ 'addressTypeahead.POSTAL_CODE_MESSAGE' | translate }}
+</div>

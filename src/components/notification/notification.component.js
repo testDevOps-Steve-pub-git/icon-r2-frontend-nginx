@@ -52,6 +52,7 @@
     // Toaster - open is programatic, close results from user action.
     const dismissableInfoNotifications = [
       ICON_NOTIFICATION.INFO_PATIENT_DATA_CLEARED,
+      ICON_NOTIFICATION.INFO_OIID_HINT,
 
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_BAD_TYPE,
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_TOO_LARGE,

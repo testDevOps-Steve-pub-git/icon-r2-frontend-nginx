@@ -1,18 +1,19 @@
 <div class="row">
 
   <!-- Previous button -->
-  <div ng-if="$ctrl.previous && !$ctrl.fromReviewPage" class="col-xs-12 col-sm-6 pull-left">
+  <div ng-if="$ctrl.previous && !$ctrl.fromReviewPage" class="col-xs-12 col-md-6 pull-left">
     <button class="btn btn-block btn-lg btn-default"
             id="page-previous-button"
             ng-click="$ctrl.previousPage()">
       <span translate="nextPrevButtons.PREVIOUS"></span>
       <span translate="{{$ctrl.previous.title}}"></span>
     </button>
+    <br />
   </div>
 
   <div class="col-xs-12 hidden-xl hidden-lg hidden-md hidden-sm"><h4/></div>
   <!-- Regular next button -->
-  <div ng-if="$ctrl.next && !$ctrl.fromReviewPage" class="col-xs-12 col-sm-6 pull-right">
+  <div ng-if="$ctrl.next && !$ctrl.fromReviewPage" class="col-xs-12 col-md-6 pull-right">
     <button class="btn btn-block btn-lg btn-primary"
             id="pager-next-button"
             ng-click="$ctrl.nextPage()">
@@ -22,7 +23,7 @@
   </div>
 
   <!-- Back to review button -->
-  <div ng-if="!$ctrl.isReviewPage && $ctrl.fromReviewPage" class="col-xs-12 col-sm-6 pull-right">
+  <div ng-if="!$ctrl.isReviewPage && $ctrl.fromReviewPage" class="col-xs-12 col-md-6 pull-right">
     <button class="btn btn-block btn-lg btn-primary"
             id="pager-next-button"
             ng-click="$ctrl.nextPage()">

@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.NAME' | translate }}</div>
+    <small>{{ 'patientOtherDisplay.NAME' | translate }}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -19,18 +19,18 @@
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.SEX' | translate }}</div>
+    <small>{{ 'patientOtherDisplay.SEX' | translate }}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
-      <span class="text-capitalize">{{$ctrl.clientInfo.gender}}</span>
+      <span>{{$ctrl.clientInfo.gender}}</span>
     </strong>
   </div>
 </div>
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{'patientOtherDisplay.BIRTHDATE' | translate}}</div>
+    <small>{{'patientOtherDisplay.BIRTHDATE' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -41,7 +41,7 @@
 
 <div class="row" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.HEALTH_CARD_NUMBER' | translate}}</div>
+    <small>{{ 'patientOtherDisplay.HEALTH_CARD_NUMBER' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -52,7 +52,7 @@
 
 <div class="row " ng-if="$ctrl.clientInfo.oiid != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.OIID' | translate}}</div>
+    <small>{{ 'patientOtherDisplay.OIID' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -63,7 +63,7 @@
 
 <div class="row" ng-if="$ctrl.clientInfo.schoolOrDayCare != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientOtherDisplay.DAYCARE' | translate}}</div>
+    <small>{{ 'patientOtherDisplay.DAYCARE' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -77,7 +77,7 @@
 <div class="row">
   <div class="col-xs-12">
     <edit-button
-        button-id="review-edit-patient-button"
+        button-id="review-edit-patient-button" 
         button-text="{{'patientOtherDisplay.EDIT' | translate}} {{'patientOtherDisplay.PATIENT_TITLE' | translate}}"
         go-to-route="^.patient">
     </edit-button>

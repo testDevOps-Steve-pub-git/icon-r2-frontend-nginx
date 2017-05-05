@@ -1,18 +1,21 @@
 <!-- Upload Documents Table -->
-<div class="form-group col-xs-12" ng-if="$ctrl.uploader">
-  <table class="icon-document-table icon-table-no-border" ng-if="$ctrl.uploader.queue.length > 0">
-      <tr class="icon-document-tr-background" ng-repeat= "item in $ctrl.uploader.queue">
-        <td><span class="{{$ctrl.getFileExtensionGlyphClass(item.file)}} icon-document-glyphicon-size"></span>
-          <span class="icon-document-display-alignment"> {{item.file.name}} </span>
-          <button type="button" class="btn btn-link icon-document-remove" ng-click="item.remove()">
-            <span class="text-danger" translate="documentDisplay.REMOVE_FILE"></span>
-          </button>
-        </td>
+<div class="form-group col-xs-12 col-md-10 col-md-offset-1" ng-if="$ctrl.uploader">
+  <table class="table" ng-if="$ctrl.uploader.queue.length > 0">
+      <tr ng-repeat= "item in $ctrl.uploader.queue">
+        <td><span class="{{$ctrl.getFileExtensionGlyphClass(item.file)}} lead"></span> {{item.file.name}}</td>
+        <td ng-if="$ctrl.isEditable"><button type="button" class="btn btn-sm btn-danger" ng-click="item.remove()"><span class="glyphicon glyphicon-remove" aria-label="{{ 'documentDisplay.DELETE' | translate}}"></span> <span translate="documentDisplay.REMOVE_FILE"></span></button></td>
       </tr>
   </table>
 
-  <span ng-if="$ctrl.uploader.queue.length === 0 && $ctrl.docReview == 'review'">
+  <span ng-if="$ctrl.uploader.queue.length === 0">
     <p class="lead text-center"><em>{{ 'documentDisplay.NO_DOCUMENTS_UPLOADED' | translate }}<em></p>
   </span>
 </div>
 <!-- End Upload Documents Table -->
+
+<style>
+  .table>thead>tr>td,
+  .table>tbody>tr>td,
+  .table>tfoot>tr>td
+  { border: none; }
+</style>

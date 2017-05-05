@@ -3,6 +3,7 @@
 
   // const PromiseFileReader = require('promise-file-reader');
   const BlobUtil = require('blob-util');
+  const FileSaver = require('file-saver')
   module.exports = PdfMaker;
 
   function PdfMaker (
@@ -106,9 +107,9 @@
     function formatImmunizationDetails (immunization) {
       let immunizationName = isAgentWithoutTrade(immunization)
                                 ? { text: `${immunization.agent.shortName}`, bold: true }
-                                : { text: `${immunization.trade.shortName} (${immunization.agent.shortName})`, bold: true };
+                                : { text: `${immunization.trade.name} (${immunization.agent.shortName})`, bold: true };
 
-      let immunizationDiseases = `\n${immunization.agent.diseases.map(disease => disease.name).join(`, `)}`;
+      let immunizationDiseases = `\n${immunization.agent.orderedDiseases}`;
 
       let immunizationDetails = `${
                                   (immunization.lot.number) ? `\n${text.lotNumber} ${immunization.lot.number}` : ``
@@ -331,7 +332,7 @@
                 bold: true,
               },
               `\n`,
-              { text: formatDiseases(immunization.agent.diseases) },
+              { text: immunization.agent.orderedDiseases },
               {
                 text: (immunization.lot.number)
                           ? `\n${text.lotNumber} ${immunization.lot.number}`
@@ -501,7 +502,12 @@
 
       let ycRows = data.retrievedImmunizations
                    .map(immunization => {
-                     let diseaseSnomeds = immunization.agent.diseases.map(disease => disease.snomed);
+                     // if agent has no diseases it's snomed was not found
+                     // in our database so treat it as 'other'
+                     let diseases = immunization.agent.diseases.length === 0 ?
+                      [{name: 'Other/autre - Contact your Public Health Unit/Communiquez avec votre bureau de santé publique local', snomed: '999'}] : immunization.agent.diseases
+
+                     let diseaseSnomeds = diseases.map(disease => disease.snomed);
                      let diseaseSnomedOrdinals = diseaseSnomeds.map(ycOrder);
 
                      return [
@@ -662,19 +668,12 @@
 
     /* Pipeline functions *****************************************************/
 
-    function openPdfInNewWindow (pdfData) {
-      let pdfReader = new FileReader();
-      pdfReader.onload = (pdfResult) => {
-        window.open(pdfResult.target.result, `${Date.now()}`);
-      };
-
+    function downloadPdf (pdfData, filename) {
       let pdfBlob = new Blob(
-                          [pdfData],
-                          {type: 'application/pdf'}
-                        );
-
-      let pdfResult = pdfReader.readAsDataURL(pdfBlob);
-
+                    [pdfData],
+                    {type: 'application/pdf'}
+                  );
+      FileSaver.saveAs(pdfBlob, `${filename}_${moment().format('YYYY-MM-DD')}.pdf`)
       return;
     }
 
@@ -768,9 +767,7 @@
                receivedSubmission_p1_s2:        $translate('pdf.receivedSubmission_p1_s2', data),
                receivedSubmission_p1_s3:        $translate('pdf.receivedSubmission_p1_s3', data),
 
-               reportGeneratedTime_p1_s1_f1:  $translate('pdf.reportGeneratedTime_p1_s1_f1', data),
-               reportGeneratedTime_p1_s1_f3:  $translate('pdf.reportGeneratedTime_p1_s1_f3', data),
-               reportGeneratedTime_p1_s1_f5:  $translate('pdf.reportGeneratedTime_p1_s1_f5', data),
+               reportGeneratedTime_p1_s1:  $translate('pdf.reportGeneratedTime_p1_s1', data),
 
                patientNameHeading_p1_s1_f1:   $translate('pdf.patientNameHeading_p1_s1_f1', data),
 
@@ -863,7 +860,7 @@
              .then(appendImageFilesAsBase64)
              .then(createConfirmationPdfLayout)
              .then(Endpoint.generatePdf)
-             .then(openPdfInNewWindow)
+             .then((pdf) => { downloadPdf(pdf, 'ICON_Confirmation') })
              .then(() => {
                Notify.publish(ICON_NOTIFICATION.POP_CONFIRMATION_PDF_PROGRESS);
              })
@@ -883,7 +880,7 @@
              .then(appendImageFilesAsBase64)
              .then(createYellowCardPdfLayout)
              .then(Endpoint.generatePdf)
-             .then(openPdfInNewWindow)
+             .then((pdf) => { downloadPdf(pdf, 'ICON_YellowCard') })
              .then(() => {
                Notify.publish(ICON_NOTIFICATION.POP_YELLOW_CARD_PDF_PROGRESS);
              })

@@ -1,104 +1,15 @@
 <div class="row">
   <div class="col-xs-12">
     <h3>{{ 'submitAnother.NEXT_STEP' | translate }}</h3>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="pull-left">
-      <button class="icon-btn-link" tabindex="-1" id="completion-home" ng-click="$ctrl.returnHome()">
-        <span class="pull-left fa-stack fa-2x">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-home fa-stack-1x fa-inverse"></i>
-        </span>
-      </button>
-    </div>
-
-    <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-xs-9">
-      <button class="icon-btn-link" id="{{$ctrl.buttonId}}" ng-click="$ctrl.returnHome()">
-        <div aria-hidden="true" class="col-xs-12"><h5/></div>
-        <div class="text-left pull-left">{{ 'submitAnother.RETURN_HOME' | translate }}</div>
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <h4 >{{ 'submitAnother.CONTINUE_BELOW' | translate}}</h4>
-  </div>
-</div>
-
-<hr />
-
-<!-- Auth Choice -->
-<div class="row">
-  <div class="col-xs-12">
-    <h3>{{ 'submitAnother.AUTH_LABEL' | translate }}</h3>
-  </div>
-</div>
-
-
-<div class="col-xs-12">
-  <action-button
-      button-text="submitAnother.AUTH_BULLET_1"
-      button-icon="list"
-      button-id="home-view-yellow-card"
-      path="auth">
-  </action-button>
-</div>
-
-<div class="col-xs-12">
-  <action-button
-      button-text="submitAnother.AUTH_BULLET_2"
-      button-icon="calendar"
-      button-id="home-view-overdue"
-      path="auth">
-  </action-button>
-</div>
-
-<div class="col-xs-12">
-  <action-button
-      button-text="submitAnother.AUTH_BULLET_3"
-      button-icon="medkit"
-      button-id="home-auth-submit"
-      path="auth">
-  </action-button>
-</div>
-
-<div class="col-xs-12">
-  <p translate="submitAnother.LEARN_MORE" translate-compile></p>
-</div>
-<!-- End Auth Choice -->
-
-<div class="row">
-  <div class="col-xs-12">
+    <button class="btn btn-info" ng-click="$ctrl.openCompletionSubmitterModal('auth')"id="completion-submit-again-auth">{{ 'submitAnother.AUTHENTICATION' | translate }}</button>
+    <button class="btn btn-info" ng-click="$ctrl.openCompletionSubmitterModal('anon')" id="completion-submit-again-anon">{{ 'submitAnother.IMMUNIZATIONS_ONLY' | translate }}</button>
+    <p class="col-xs-12">{{ 'submitAnother.AUTH_NOT_REQUIRED' | translate }}</p>
     <hr />
   </div>
+
+
+
+  <div class="col-xs-12">
+    <button class="btn-link" ng-click="$ctrl.returnHome()" id="completion-home">{{ 'submitAnother.RETURN_HOME' | translate }}</button>
+  </div>
 </div>
-
-
-<!-- Anon Choice -->
-<div class="col-xs-12">
-  <h3>{{ 'submitAnother.ANON_LABEL' | translate }}</h3>
-</div>
-
-
-<div class="col-xs-12">
-  <p>{{ 'submitAnother.ANON_MESSAGE_1' | translate }}
-    <span class="icon-btn-link" id="home-oiid-link-two" ng-click=$ctrl.openHelpModal()>
-  {{ 'submitAnother.OIID_PIN' | translate }}</span>
-    {{ 'submitAnother.ANON_MESSAGE_2' | translate }}</p>
-</div>
-
-
-<div class="col-xs-12">
-  <action-button
-      button-text="submitAnother.ANONYMOUS"
-      button-icon="medkit"
-      button-id="home-anon-submit"
-      path="anon">
-  </action-button>
-</div>
-<!-- End Anon Choice -->

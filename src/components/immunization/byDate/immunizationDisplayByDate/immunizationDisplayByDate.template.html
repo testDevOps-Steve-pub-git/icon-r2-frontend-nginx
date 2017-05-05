@@ -9,9 +9,9 @@
   immunization="$ctrl.immunization">
   </immunization-display>
 
-  <diseases-display
-  diseases="$ctrl.immunization.agent.diseases">
-  </diseases-display>
+  <div>
+    {{$ctrl.immunization.agent.orderedDiseases}}
+  </div>
 
   <trade-lot-display
   immunization="$ctrl.immunization">

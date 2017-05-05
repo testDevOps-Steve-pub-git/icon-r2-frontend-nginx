@@ -12,6 +12,7 @@
    * @param {string} [lotNumber=''] - lot number
    * @param {string} [lotExpiration=''] - expiration date (YYYY-MM-DD)
    * @param {number} [prevalenceIndex=9] - prevalence index for sorting and conditional display
+   * @param {string} [orderedDiseases=''] - For displaying diseases associated with agent in order determined by MOH
    * @returns {Agent}
    */
   function Agent (
@@ -21,7 +22,8 @@
     diseases,
     lotNumber,
     lotExpiration,
-    prevalenceIndex
+    prevalenceIndex,
+    orderedDiseases
   ) {
     this.snomed = snomed || '',
     this.name = name || '',
@@ -29,7 +31,8 @@
     this.diseases = diseases || [];
     this.lotNumber = lotNumber || '',
     this.lotExpiration = lotExpiration || '',
-    this.prevalenceIndex = prevalenceIndex || 9;
+    this.prevalenceIndex = prevalenceIndex || 9,
+    this.orderedDiseases = orderedDiseases || '';
 
     this.clone = clone;
 
@@ -46,7 +49,8 @@
         this.diseases.map(disease => disease.clone()),
         this.lotNumber,
         this.lotExpiration,
-        this.prevalenceIndex
+        this.prevalenceIndex,
+        this.orderedDiseases
       );
     }
   }

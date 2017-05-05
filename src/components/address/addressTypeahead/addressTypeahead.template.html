@@ -12,6 +12,7 @@
         typeahead-loading="loadingLocations"
         typeahead-no-results="noResults"
         typeahead-on-select="$ctrl.onPostalCodeLookUpSelect($item)"
+        aria-describedby="postal-code-message"
         uib-typeahead="addresses.postal_code as (addresses.streetName + addresses.streetType + ', ' + addresses.city + ', ' + addresses.postalCode ) for addresses in $ctrl.getAddress($viewValue) | limitTo:8"/>
     </div>
 
@@ -20,9 +21,7 @@
 
     <div ng-show="noResults" translate="addressTypeahead.NO_RESULTS_FOUND"></div>
 
-    <div>
+    <div id="postal-code-message">
         {{ 'addressTypeahead.POSTAL_CODE_MESSAGE' | translate }}
     </div>
 </div>
-
-

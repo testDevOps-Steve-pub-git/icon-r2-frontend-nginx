@@ -1,4 +1,4 @@
-<footer id="icon-phu-footer" class="navbar navbar-default navbar-bottom">
+<footer class="navbar navbar-default navbar-bottom">
   <div class="container">
     <div class="text-right">
       <button ng-click="$ctrl.scrollToTop(0)"
@@ -9,17 +9,15 @@
     </div>
 
     <div class="text-center">
-      <a id="phu-footer-link" class="btn btn-link" href="{{$ctrl.multitenancy.WEBSITE_KEY | translate}}">
-        {{$ctrl.multitenancy.NAME_KEY | translate}}
-      </a>
-
-      <p class="muted">
-          <a class="btn btn-link" href="tel:{{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[0] }}">
-            {{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[0] }}</a>
-          <span id="phu-footer-phone">{{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[1] }}</span>
-          <a class="btn btn-link" href="tel:{{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[2] }};ext={{($ctrl.multitenancy.PHONE_KEY | translate).split('Ext. ')[1] }}">
-            {{ ($ctrl.multitenancy.PHONE_KEY | translate).split(' ')[2] }}</a>
-      </p>
+      <p class="muted"><strong>
+        {{ $ctrl.multitenancy.NAME_KEY | translate }}
+      </strong></p>
+      <p class="muted">547-123-4567 or 905-765-4321</p>
     </div>
   </div>
 </footer>
+
+<style>
+  html, body { height: 100%; }
+  #main-wrapper { min-height: 100%; margin-top: 15px; margin-bottom: 15px; }
+</style>

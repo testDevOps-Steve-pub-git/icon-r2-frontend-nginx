@@ -8,12 +8,12 @@
 
 addressToggleController.$inject = [
   '$q', '$state',
-  'ImmunizationRecordService', 'ImmunizationRecordConverter', 'FileUploadHandler', 'Endpoint', 'ToasterChoiceService', 'Notify',
+  'ImmunizationRecordService', 'ImmunizationRecordConverter', 'FileUploadHandler', 'Endpoint', 'Notify',
   'ICON_NOTIFICATION'
 ];
 function addressToggleController (
   $q, $state,
-  ImmunizationRecordService, ImmunizationRecordConverter, FileUploadHandler, Endpoint, ToasterChoiceService, Notify,
+  ImmunizationRecordService, ImmunizationRecordConverter, FileUploadHandler, Endpoint, Notify,
   ICON_NOTIFICATION
 ) {
 
@@ -31,16 +31,16 @@ function addressToggleController (
       ImmunizationRecordConverter
           .convert(ImmunizationRecordService)
           .then(Endpoint.submitImmunizationRecord)
+          .then(() => { Notify.publish(ICON_NOTIFICATION.POP_SUBMISSION_PROGRESS); })
           .then((response) => {
             this.isSubmitButtonDisabled = false;
             $state.go('^.confirmation');
           })
-          .then(() => { Notify.publish(ICON_NOTIFICATION.POP_SUBMISSION_PROGRESS); })
           .catch((error) => {
+            console.warn(error);
             Notify.publish(ICON_NOTIFICATION.POP_SUBMISSION_PROGRESS);
+            Notify.publish(ICON_NOTIFICATION.WARN_SUBMISSION_UNKNOWN);
             this.isSubmitButtonDisabled = false;
-            ToasterChoiceService.setToasterParams(toasterParams);
-            ToasterChoiceService.setToasterChoice('error');
           });
     };
 
@@ -61,7 +61,6 @@ function addressToggleController (
           })
           .catch((error) => {
             console.error(error);
-            ToasterChoiceService.setToasterChoice('error');
             this.isSubmitButtonDisabled = false;
           });
     };

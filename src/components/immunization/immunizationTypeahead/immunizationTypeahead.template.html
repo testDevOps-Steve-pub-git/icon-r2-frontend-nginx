@@ -39,8 +39,8 @@
       <div><strong>{{$ctrl.selectedVaccine.agent.shortName}}</strong></div>
     </div>
 
-    <span class="small" aria-hidden="true" ng-if="$ctrl.selectedVaccine.agent.diseases.length">
-      <span>{{$ctrl.selectedVaccine.agent.diseases[0].name}}</span><span ng-repeat="d in $ctrl.selectedVaccine.agent.diseases.slice(1)">, {{d.name}}</span>
+    <span class="small" aria-hidden="true" ng-if="$ctrl.selectedVaccine.agent.orderedDiseases">
+      {{$ctrl.selectedVaccine.agent.orderedDiseases}}
     </span>
 
   </span>
@@ -51,17 +51,16 @@
       <div><strong>{{$ctrl.selectedVaccine.agent.shortName}}</strong></div>
     </div>
 
-    <span class="small" ng-if="$ctrl.selectedVaccine.agent.diseases.length">
-      <span>{{$ctrl.selectedVaccine.agent.diseases[0].name}}</span><span ng-repeat="d in $ctrl.selectedVaccine.agent.diseases.slice(1)">, {{d.name}}</span>
+    <span class="small" aria-hidden="true" ng-if="$ctrl.selectedVaccine.agent.orderedDiseases">
+      {{$ctrl.selectedVaccine.agent.orderedDiseases}}
     </span>
+
   </span>
 </div>
 <!-- End alert / card -->
 
 
 <script type="text/ng-template" id="typeahead-item.html">
-  <!-- <pre>{{ match.model | json }}</pre> -->
-
   <div ng-if="match.model.remaining && match.model.remaining > 0">
     <div class="icon-keep-typing-result">
       {{match.model.remaining}} {{ 'immunizationTypeahead.MORE_OPTIONS' | translate }}
@@ -69,8 +68,8 @@
   </div>
 
   <div class="icon-group-title" ng-if="match.model.isFirstInGroup">
-    <span ng-if="match.model.type === 'Agent'">{{'immunizationTypeahead.AGENT_RESULT_SUBHEADER' | translate}}</span>
-    <span ng-if="match.model.type === 'Trade'">{{'immunizationTypeahead.TRADE_RESULT_SUBHEADER' | translate}}</span>
+    <span class="icon-grou-title-span" ng-if="match.model.type === 'Agent'">{{'immunizationTypeahead.AGENT_RESULT_SUBHEADER' | translate}}</span>
+    <span class="icon-grou-title-span" ng-if="match.model.type === 'Trade'">{{'immunizationTypeahead.TRADE_RESULT_SUBHEADER' | translate}}</span>
   </div>
 
   <a>
@@ -100,13 +99,9 @@
       <span class="cell-Title">{{match.model.trade.name}}</span>
     </div>
 
-    <span ng-if="match.model.type == 'Trade'" class="icon-cell-details">
-      <div>{{match.model.agent.shortName}}</div>
-      <div class="text-muted">{{match.model.diseaseDisplay}}</div>
-    </span>
-
-    <span ng-if="match.model.type == 'Agent'" class="icon-cell-details">
-      <div class="text-muted">{{match.model.diseaseDisplay}}</div>
+    <span class="icon-cell-details">
+      <div ng-if="match.model.type == 'Trade'">{{match.model.agent.shortName}}</div>
+      <div class="text-muted">{{match.model.agent.orderedDiseases}}</div>
     </span>
   </a>
 </script>

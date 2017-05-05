@@ -23,11 +23,7 @@ module.exports = {
   template: `
     <main>
       <ui-view>
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <welcome-aup route="anon"></welcome-aup>
-          </div>
-        </div>
+        <welcome-aup route="anon"></welcome-aup>
       </ui-view>
     </main>
   `

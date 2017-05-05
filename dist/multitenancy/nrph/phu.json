@@ -9,6 +9,5 @@
     "TOC_LINK_KEY":         "MULTITENANCY.NRPH.PHU_TOC_LINK",
     "ICON_PHU_ACRONYM":     "nrph",
     "PHIX_PHU_NAME":        "Niagara Region Public Health Department",
-    "PHIX_PHU_CODE":        "41",
-    "WEBSITE_KEY":          "MULTITENANCY.NRPH.PHU_WEBSITE"
+    "PHIX_PHU_CODE":        "41"
 }

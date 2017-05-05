@@ -1,13 +1,13 @@
 <div class="row">
   <!-- Auth Choice -->
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <h3>{{ 'welcomeLogin.AUTH_LABEL' | translate }}</h3>
+    <h3 translate="welcomeLogin.AUTH_LABEL"></h3>
   </div>
 
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <action-button
         button-text="welcomeLogin.AUTH_BULLET_1"
-        button-icon="list"
+        button-icon="yellow-card"
         button-id="home-view-yellow-card"
         path="auth">
     </action-button>
@@ -21,7 +21,7 @@
 
     <action-button
         button-text="welcomeLogin.AUTH_BULLET_3"
-        button-icon="medkit"
+        button-icon="imm-vial"
         button-id="home-auth-submit"
         path="auth">
     </action-button>
@@ -36,18 +36,19 @@
   <!-- Anon Choice -->
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <hr />
-    <h3>{{ 'welcomeLogin.ANON_LABEL' | translate }}</h3>
+    <h3 translate="welcomeLogin.ANON_LABEL"></h3>
 
-    <p>{{ 'welcomeLogin.ANON_MESSAGE_1' | translate }}
-      <span class="icon-btn-link" id="home-oiid-link-two" ng-click=$ctrl.openHelpModal()>
-      {{ 'welcomeLogin.OIID_PIN' | translate }}</span>
-      {{ 'welcomeLogin.ANON_MESSAGE_2' | translate }}</p>
+    <p>
+      <span translate="welcomeLogin.ANON_MESSAGE_1"></span>
+      <span class="icon-btn-link" id="home-oiid-link-two" ng-click=$ctrl.openHelpModal()  translate="welcomeLogin.OIID_PIN"></span>
+      <span translate="welcomeLogin.ANON_MESSAGE_2"></span>
+    </p>
   </div>
 
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <action-button
         button-text="welcomeLogin.ANONYMOUS"
-        button-icon="medkit"
+        button-icon="imm-vial"
         button-id="home-anon-submit"
         path="anon">
     </action-button>

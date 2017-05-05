@@ -1,12 +1,12 @@
 {
-  "address": {
-    "ADDRESS_TITLE": "Your Address"
+  "address" : {
+    "ADDRESS_TITLE" : "Your Address"
   },
-  "addressCapture": {
-    "CITY": "City",
-    "CITY_PLACERHOLDER": "Start typing your city",
-    "PROVINCE": "Province",
-    "POSTAL_CODE": "Postal Code",
+  "addressCapture" : {
+    "CITY" : "City",
+    "CITY_PLACERHOLDER" : "Start typing your city",
+    "PROVINCE" : "Province",
+    "POSTAL_CODE" : "Postal Code",
     "AB": "Alberta",
     "BC": "British Columbia",
     "MB": "Manitoba",
@@ -20,169 +20,142 @@
     "QC": "Quebec",
     "SK": "Saskatchewan",
     "YT": "Yukon",
-    "ERRORS": {
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "CITY_REQUIRED": "City is a required field.",
-      "PROVINCE_REQUIRED": "Province is a required field.",
-      "POSTAL_CODE_REQUIRED": "Postal Code is a required field.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters.",
-      "POSTAL_REQ_ERROR": "A postal code is required with the following format: A1B 2C3"
+    "ERRORS" : {
+      "BAD_FORMAT" : "You have entered an invalid character.",
+      "IS_REQUIRED" : "This is a required field.",
+      "EXCEEDS_MAXLENGTH" : "You have entered too many characters.",
+      "POSTAL_REQ_ERROR" : "A postal code is required with the following format: A1B 2C3"
     }
   },
-  "addressDisplay": {
-    "ADDRESS_TITLE": "Mailing Address",
-    "EDIT": "Edit"
+  "addressDisplay" : {
+      "ADDRESS_TITLE" : "Mailing Address",
+      "EDIT" : "Edit"
   },
-  "addressPOBox": {
-    "POBOX": "P.O. Box",
+  "addressPOBox" : {
+    "POBOX" : "POBox",
     "RETAIL_POST_OUTLET": "Retail Post Outlet",
-    "ERRORS": {
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "POBOX_REQUIRED": "P.O. Box is a required field.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters."
+    "ERRORS" : {
+      "BAD_FORMAT" : "You have entered an invalid character.",
+      "IS_REQUIRED" : "This is a required field.",
+      "EXCEEDS_MAXLENGTH" : "You have entered too many characters."
     }
   },
-  "addressRural": {
-    "RURAL_ROUTE": "Rural Route",
-    "STATION_ROUTE": "Station",
-    "ADDITIONAL_ADDRESS_INFO": "Additional Address Info",
-    "ERRORS": {
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "RURAL_ROUTE_REQUIRED": "Rural Route is a required field.",
-      "STATION_ROUTE_REQUIRED": "Station is a required field.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters."
+  "addressRural" : {
+    "RURAL_ROUTE" : "Rural Route",
+    "STATION_ROUTE" : "Station",
+    "ADDITIONAL_ADDRESS_INFO" : "Additional Address Info",
+    "ERRORS" : {
+      "BAD_FORMAT" : "You have entered an invalid character.",
+      "IS_REQUIRED" : "This is a required field.",
+      "EXCEEDS_MAXLENGTH" : "You have entered too many characters."
     }
   },
-  "addressStreet": {
-    "STREET_NAME": "Street Name",
-    "STREET_NUMBER": "Street #",
-    "UNIT_NO": "Unit #",
-    "STREET_TYPE": "Street Type",
-    "STREET_DIRECTION": "Street Direction",
-    "ADDRESS_NOT_SEEN": "Don't see your address?",
-    "ERRORS": {
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "STREET_NAME_REQUIRED": "Street Name is a required field.",
-      "STREET_NUMBER_REQUIRED": "Street Number is a required field.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters."
+  "addressStreet" : {
+    "STREET_NAME" : "Street Name",
+    "STREET_NUMBER" : "Street Number",
+    "UNIT_NO" : "Unit",
+    "STREET_TYPE" : "Street Type",
+    "STREET_DIRECTION" : "Street Direction",
+    "ADDRESS_NOT_SEEN" : "Don't see your address?",
+    "ERRORS" : {
+      "BAD_FORMAT" : "You have entered an invalid character.",
+      "IS_REQUIRED" : "This is a required field.",
+      "EXCEEDS_MAXLENGTH" : "You have entered too many characters."
     }
   },
-  "addressToggle": {
-    "ADDRESS_TYPE": "Type of address",
-    "STREET": "Street",
-    "RURAL": "Rural",
-    "POBOX": "P.O. Box"
+  "addressToggle" : {
+    "ADDRESS_TYPE" : "Type of address",
+    "STREET" : "Street",
+    "RURAL" : "Rural",
+    "POBOX" : "POBox"
   },
   "addressTypeahead": {
-    "POSTAL_CODE_MESSAGE": "\n  Start\n  typing the postal code to help fill in the address which will appear\n  below. ",
+    "POSTAL_CODE_MESSAGE" : "Start typing the postal code to help fill in the address which will appear below ",
     "QUICKSEARCH_HINT": "Start typing your postal code",
     "POSTAL_CODE": "Postal Code",
     "POSTAL_CODE_ERROR": "The postal code needs the following format: A1B 2C3",
-    "NO_RESULTS_FOUND": "No Results Found"
+    "FORMAT_ERROR" : "A character that you entered is not allowed",
+    "NO_RESULTS_FOUND" : "No Results Found"
   },
-  "ageDisplay": {
-    "AGE": "Age",
-    "YEAR": "year",
-    "MONTH": "month",
-    "DAY": "day"
+  "ageDisplay" : {
+    "AGE" : "Age:"
   },
-  "anonOtherReview": {
+  "anonSelfReview" : {
+    "DOCUMENT_PLACEHOLDER" : "Document PlaceHolder",
+    "IMMUNIZATIONS" : "Immunizations",
+    "EDIT": "Edit",
     "DOCUMENTS_TITLE": "Documents",
-    "IMMUNIZATIONS_TITLE": "Immunizations",
-    "REVIEW": "Review",
-    "REVIEW_INSTRUCTION_HEADER": "Please review and confirm.",
-    "REVIEW_INSTRUCTION_BODY": "If information needs to be corrected, press the corresponding ‘Edit’ button to update. When you are done, press the ‘Complete Submission’ button at the bottom of this page.",
-    "REVIEW_INSTRUCTION_CAVEAT": "This only reflects immunizations you have reported today and is not an official record.",
-    "REVIEW_NO_DOX": "No supporting documents were provided.",
-    "REVIEW_EDIT_IMMS": "Edit Immunizations",
-    "REVIEW_EDIT_DOX": "Edit Documents"
+    "IMMUNIZATIONS_TITLE": "Immunizations"
   },
-  "anonSelfReview": {
+  "anonOtherReview" : {
+    "DOCUMENT_PLACEHOLDER" : "Document PlaceHolder",
+    "IMMUNIZATIONS" : "Immunizations",
+    "EDIT": "Edit",
     "DOCUMENTS_TITLE": "Documents",
-    "IMMUNIZATIONS_TITLE": "Immunizations",
-    "REVIEW": "Review",
-    "REVIEW_INSTRUCTION_HEADER": "Please review and confirm.",
-    "REVIEW_INSTRUCTION_BODY": "If information needs to be corrected, press the corresponding ‘Edit’ button to update. When you are done, press the ‘Complete Submission’ button at the bottom of this page.",
-    "REVIEW_INSTRUCTION_CAVEAT": "This only reflects immunizations you have reported today and is not an official record.",
-    "REVIEW_NO_DOX": "No supporting documents were provided.",
-    "REVIEW_EDIT_IMMS": "Edit Immunizations",
-    "REVIEW_EDIT_DOX": "Edit Documents"
+    "IMMUNIZATIONS_TITLE": "Immunizations"
   },
-  "authModalSurvey": {
+  "authModalSurvey" : {
+    "CONTINUE_TO_HOME" : "Continue to Home",
     "SURVEY_TITLE": "Help us improve this service for all Ontarians!",
     "SURVEY_PARAGRAPH": "Please take a moment to complete a brief survey to describe your experience today. We would appreciate your feedback.",
     "SURVEY_LINK": "Take a Quick Survey",
-    "CONTINUE_TO_HOME": "Continue to Home",
     "SURVEY_LINK_URL": "https://survey.infoway-inforoute.ca/index.php/115271?lang=en"
   },
-  "authOtherPatientContainer": {
-    "PATIENT_INFO_MESSAGE": "The information above was pulled from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{name_key}}</strong> at <strong>{{phone_key}}</strong>.",
-    "ADDITIONAL_INFORMATION": "Additional Information",
-    "ENTER_MISSING_INFO": "Please enter any missing information below. Please note that changes will not appear until reviewed by your local Public Health Unit.",
-    "HEALTH_CARD_NUMBER": "Health Card Number",
-    "OPTIONAL": "(optional)",
-    "HCN_FORMAT_ERROR": "You have entered an invalid health card number.",
-    "DAYCARE": "Name of School / Daycare",
-    "DAYCARE_IF_APPLICABLE": "(if applicable)",
-    "DAYCARE_TOOLTIP": "If the patient is enrolled in a school or daycare, please provide the name here.",
-    "NO_RESULTS_FOUND": "No Results Found",
-    "HEALTH_CARD_NO_VC" : "Do not include the two letter version code.",
-    "ERROR": {
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters."
-    }
-  },
   "authOtherReview": {
+    "IMMUNIZATIONS" : "Immunizations",
+    "DOCUMENT_PLACEHOLDER" : "Document PlaceHolder",
+    "EDIT": "Edit",
     "IMMUNIZATIONS_TITLE": "Immunizations",
     "DOCUMENTS_TITLE": "Documents",
-    "REVIEW": "Review",
-    "REVIEW_INSTRUCTION_HEADER": "Please review and confirm.",
-    "REVIEW_INSTRUCTION_BODY": "If information needs to be corrected, press the corresponding ‘Edit’ button to update. When you are done, press the ‘Complete Submission’ button at the bottom of this page.",
-    "REVIEW_INSTRUCTION_CAVEAT": "This only reflects immunizations you have reported today and is not an official record.",
-    "REVIEW_NO_DOX": "No supporting documents were provided.",
-    "REVIEW_EDIT_IMMS": "Edit Immunizations",
-    "REVIEW_EDIT_DOX": "Edit Documents"
+    "REVIEW": "Review"
   },
-  "authPatient": {
-    "IMMUNIZATION_RECORD": "Your Immunization Record",
-    "INFORMATION_MISSING": "Missing information from the record above?",
-    "SUBMIT_IMMUNIZATIONS": "Submit Immunizations",
-    "RETURN_HOME": "I'm Done, Return Home",
-    "RETURN_HOME_LABEL" : "Are you done?"
-  },
-  "authSelfPatient": {
-    "INFO_TITLE": "Your Info"
-  },
-  "authSelfPatientContainer": {
-    "PATIENT_INFO_MESSAGE": "The information above was pulled from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{ name_key }}</strong> at <strong>{{ phone_key }}</strong>.",
-    "ADDITIONAL_INFORMATION": "Additional Information",
-    "ENTER_MISSING_INFO": "Please enter any missing information below. Please note that changes will not appear until reviewed by your local public health unit.",
-    "HEALTH_CARD_NUMBER": "Health Card Number",
-    "DAYCARE": "Name of School / Daycare",
-    "DAYCARE_IF_APPLICABLE": "(if applicable)",
-    "OPTIONAL": "(optional)",
-    "DAYCARE_TOOLTIP": "If the patient is enrolled in a school or daycare, please provide the name here.",
-    "NO_RESULTS_FOUND": "No Results Found",
-    "HEALTH_CARD_NO_VC" : "Do not include the two letter version code.",
-    "ERRORS": {
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "HCN_FORMAT_ERROR": "You have entered an invalid health card number.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters."
+  "authOtherPatientContainer" : {
+    "PATIENT_INFO_MESSAGE" : "The information above was pulled from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{name_key}}</strong> at <strong>{{phone_key}}</strong>.",
+    "ADDITIONAL_INFORMATION" : "Additional Information",
+    "ENTER_MISSING_INFO" : "Please enter any missing information below. Please not that changes will not appear until reviewed by your local public health unit.",
+    "HEALTH_CARD_NUMBER" : "Health Card Number",
+    "HCN_FORMAT_ERROR" : "You have entered an invalid health card number.",
+    "DAYCARE" : "Name of School or Daycare (if applicable):",
+    "DAYCARE_TOOLTIP" : "If the patient is enrolled in a school or daycare, please provide the name here.",
+    "NO_RESULTS_FOUND" : "No Results Found",
+    "ERROR" :{
+      "BAD_FORMAT" : "You have entered an invalid character.",
+      "EXCEEDS_MAXLENGTH" : "You have entered too many characters."
     }
   },
-  "authSelfReview": {
-    "IMMUNIZATIONS_TITLE": "Immunizations",
-    "DOCUMENTS_TITLE": "Documents",
-    "REVIEW": "Review",
-    "REVIEW_INSTRUCTION_HEADER": "Please review and confirm.",
-    "REVIEW_INSTRUCTION_BODY": "If information needs to be corrected, press the corresponding ‘Edit’ button to update. When you are done, press the ‘Complete Submission’ button at the bottom of this page.",
-    "REVIEW_INSTRUCTION_CAVEAT": "This only reflects immunizations you have reported today and is not an official record.",
-    "REVIEW_NO_DOX": "No supporting documents were provided.",
-    "REVIEW_EDIT_IMMS": "Edit Immunizations",
-    "REVIEW_EDIT_DOX": "Edit Documents"
+  "authPatient" : {
+    "IMMUNIZATION_RECORD" : "Your Immunization Record",
+    "YELLOWCARD_PREVIEW" : "YELLOW CARD PREVIEW",
+    "IMMUNIZATION_FORECASTER" : "IMMUNIZATION FORECASTER",
+    "INFORMATION_MISSING" : "Missing information from the above record?",
+    "SUBMIT_IMMUNIZATIONS" : "Submit Immunizations",
+    "RETURN_HOME" : "I'm done, Return home"
   },
-  "browserSupport": {
-    "UPDATE_BROWSER_INTRO": "You have reached the <strong>{{ name_key }}</strong> immunization site.",
+  "authSelfPatientContainer" : {
+    "PATIENT_INFO_MESSAGE" : "The information above was pulled from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{ name_key }}</strong> at <strong>{{ phone_key }}</strong>.",
+    "ADDITIONAL_INFORMATION" : "Additional Information",
+    "ENTER_MISSING_INFO" : "Please enter any missing information below. Please note that changes will not appear until reviewed by your local public health unit.",
+    "HEALTH_CARD_NUMBER" : "Health Card Number",
+    "DAYCARE" : "Name of School or Daycare (if applicable):",
+    "DAYCARE_TOOLTIP" : "If the patient is enrolled in a school or daycare, please provide the name here.",
+    "NO_RESULTS_FOUND" : "No Results Found",
+    "ERRORS" : {
+      "BAD_FORMAT" : "You have entered an invalid character.",
+      "HCN_FORMAT_ERROR" : "You have entered an invalid health card number.",
+      "EXCEEDS_MAXLENGTH" : "You have entered too many characters."
+    }
+  },
+  "authSelfPatient" : {
+    "INFO_TITLE" : "Your Info"
+  },
+  "authSelfReview" : {
+    "IMMUNIZATIONS" : "Immunizations",
+    "EDIT": "Edit",
+    "IMMUNIZATIONS_TITLE": "Immunizations",
+    "DOCUMENT_PLACEHOLDER" : "Document PlaceHolder",
+    "DOCUMENTS_TITLE": "Documents"
+  },
+  "browserSupport" : {
     "UPDATE_BROWSER": "You need to update your web browser.",
     "SITE_REQUIRES": "This site requires a newer web browser to work properly.",
     "YOUR_BROWSER": "Your Current Browser",
@@ -190,386 +163,232 @@
     "SUPPORTED_BROWSERS_SUPPORTED": "You can also download the latest version of the following browsers.",
     "SUPPORTED_BROWSERS_UNSUPPORTED": "You can download the latest version of the following browsers.",
     "VERSION": "version",
-    "LINKS": {
-      "CHROME": "http://www.google.com/search?q=update+google+chrome",
-      "FIREFOX": "http://www.google.com/search?q=update+mozilla+firefox",
-      "EXPLORER": "https://www.google.ca/search?q=update+internet+explorer",
-      "EDGE": "https://www.google.ca/search?q=update+microsoft+edge",
-      "SAFARI": "http://www.google.com/search?q=update+apple+safari"
-    }
+    "LINK":"http://outdatedbrowser.com/en"
   },
-  "confirmationMessage": {
-    "COMPLETION_TITLE": "Submission Complete",
-    "COMPLETION_MESSAGE": "We have received your submission for <strong>{{ clientName }}</strong> and a staff member from {{ phuName }} will review this submission {{ time_to_process }}. We will be in touch if there are any questions.",
-    "REFERENCE_NUMBER_LABEL": "REFERENCE NUMBER",
-    "REFERENCE_NUMBER_MESSAGE": "Please keep this number for your records. You can also print or save a PDF copy of the information you have just submitted. If you have provided an email address, you will be notified once your submission has been received by your Public Health Unit and once your submission has been reviewed.",
-    "PRINT": "Print",
-    "SAVE_PDF": "Download Printable File"
+  "confirmationMessage" : {
+    "COMPLETION_TITLE" : "Submission Complete",
+    "COMPLETION_MESSAGE" : "We have received your submission for <strong>{{ clientName }}</strong> and a staff member from {{ phuName }} will review this submission within 1 week. We will be in touch if there are any questions.",
+    "REFERENCE_NUMBER_LABEL" : "Reference Number",
+    "REFERENCE_NUMBER_MESSAGE" : "Please keep this number for your records. You can also print or save a PDF copy of the information you have just submitted.",
+    "PRINT" : "Print",
+    "SAVE_PDF" : "Save PDF"
   },
-  "datepicker": {
-    "DOB": "Date of Birth (YYYY-MM-DD)",
-    "DATE": "Date (YYYY-MM-DD)",
-    "DATE_FORMAT": "YYYY-MM-DD",
-    "DOB_ARIA_LABEL": "Date of Birth - please enter in the format YYYY-MM-DD",
-    "CLEAR_BUTTON": "Clear",
-    "CLOSE_BUTTON": "Close",
-    "CURRENT_BUTTON": "Today",
-    "DOB_ERROR": "A valid date of birth is required.",
-    "DATE_ERROR": "You have entered an invalid date. Please use the format YYYY-MM-DD."
+  "datepicker" : {
+    "DOB" : "Birthdate (YYYY-MM-DD)",
+    "DATE" : "Date (YYYY-MM-DD)",
+    "DATE_FORMAT" : "YYYY-MM-DD",
+    "DOB_ARIA_LABEL" : "Birthdate - please enter your birthday in the format YYYY-MM-DD",
+    "CLEAR_BUTTON" : "Clear",
+    "CLOSE_BUTTON" : "Close",
+    "CURRENT_BUTTON" : "Today",
+    "DOB_ERROR" : "A valid date of birth is required.",
+    "DATE_ERROR" : "You have entered an invalid date. Please use the format YYYY-MM-DD."
   },
-  "dismissableInfoNotification": {
-    "CLOSE_BUTTON": "Close"
-  },
-  "documentCapture": {
-    "DOCUMENTS_LABEL": "Documents (optional)",
+  "documentCapture" : {
+    "DOCUMENTS_LABEL" : "Documents",
     "INSTRUCTIONS_0": "Including documents helps your local Public Health Unit confirm the immunization records you have provided.",
-    "SUBHEADER_1": "Documents Include",
-    "YELLOWCARD_PHOTO": "A photo of a Yellow Card",
     "INSTRUCTIONS_1": "A document from your doctor displaying immunizations only. This can be a photo of the document.",
-    "SUBHEADER_2": "Do Not Include",
     "INSTRUCTIONS_2": "Any document that does not relate to immunization information.",
-    "SUBHEADER_3": "For Confirmation Only",
-    "UPLOAD_NOTES": "These documents will only be used by your local Public Health Unit to confirm the immunization records you have provided. These files will not be added to the Provincial Immunization Resposity. ",
-    "FILE_TYPES": "Files must each be less than 5MB in size, and of the following file types: doc, docx, jpeg, jpg, pdf, png.",
-    "UPLOAD_BUTTON": "Choose File",
-    "UPLOADER_ERROR": "There was and error uploading the document.",
-    "UPLOADER_ERROR_QUEUE_LIMIT": "You have exceeded the upload limit of 2 files. Please remove some files and retry.",
-    "UPLOADER_ERROR_FILE_TYPE": "You have selected an invalid file type.",
-    "UPLOADER_ERROR_FILE_SIZE": "You have attempted to upload a file that is too big. Maximum file size is 5MB",
-    "UPLOADER_ERROR_FILE_DUPLICATE": "You can't add the same file twice."
+    "SUBHEADER_1" : "Documents Include",
+    "SUBHEADER_2" : "Do Not Include",
+    "SUBHEADER_3" : "For Confirmation Only",
+    "YELLOWCARD_PHOTO" : "A photo of a Yellow Card",
+    "UPLOAD_NOTES" : "These documents will only be used by your local Public Health Unit to confirm the immunization records you have provided. These files will not be added to the Provincial Immunization Repository.",
+    "FILE_TYPES" : "The uploaded files must each be less than 5MB in size, and of the following file types: .doc, .docx, .jpeg, .jpg, .pdf, .png",
+    "UPLOAD_BUTTON" : "Choose File",
+    "TABLE_NAME" : "Name",
+    "TABLE_ACTION" : "Action"
   },
-  "documentDisplay": {
-    "NO_DOCUMENTS_UPLOADED": "No supporting documents were provided.",
-    "REMOVE_FILE": "Remove"
+  "documentDisplay" : {
+    "NO_DOCUMENTS_UPLOADED": "No Documents Uploaded",
+    "DELETE" : "Remove",
+    "REMOVE_FILE" : "Remove"
   },
-  "editImmunization": {
-    "CLOSE_MODAL": "Close Modal",
-    "IMMUNIZATION_MODAL_TITLE": "Enter a date and the immunization {{patient_name}} received on that date.",
-    "DATE_ESTIMATED": "Date is estimated",
-    "SAVE": "Save",
-    "DATE": "Date (YYYY-MM-DD)",
-    "DATE_LABEL" : "Date",
-    "IMMS_ERROR": "You must enter an immunization.",
-    "DUPLICATE_WARNING": "<strong>{{agentName}}</strong> is already on file for <strong>{{date}}</strong>. <br aria-hidden=\"true\"/> You can cancel this entry, or add a different date or immunization."
+  "editImmunizationAgent" : {
+    "IMMUNIZATION_RECIEVED" : "Which immunization did {{ patient_name }} receive?",
+    "IMMUNIZATION_RECIEVED_DATE" : "Which immunization did {{patient_name}} receive on {{immunization_date}}?",
+    "IMMUNIZATION" : "Immunization",
+    "TRADE_NAME" : "Trade Name/Brand",
+    "LOT_NUMBER" : "Lot#",
+    "OPTIONAL" : "(optional)",
+    "SAVE" : "Save"
   },
-  "editImmunizationByAgent": {
-    "IMMUNIZATION": "Immunization"
+  "editImmunizationDate" : {
+    "IMMUNIZATION_RECIEVED" : "When was {{patient_name}} immunized?",
+    "IMMUNIZATION_RECIEVED_AGENT" : "When was {{patient_name}} immunized against <strong>{{agent}}</strong>?",
+    "DATE_ESTIMATED" : "Date is estimated",
+    "SAVE" : "Save"
   },
-  "immunizationByAgent": {
-    "ADD_IMMUNIZATION" : "Add a Date &amp; Immunization"
+  "immunizationByAgent" : {
+    "ADD_IMMUNIZATION" : "Add an <br /> Immunization"
   },
-  "immunizationDateCapture": {
-    "DATE_ESTIMATED": "Date is estimated",
-    "DATE": "Date (YYYY-MM-DD)"
+  "immunizationsByDate" : {
+    "ADD_DATE" : "Add a Date"
   },
-  "immunizationDisplayByAgent": {
-    "EDIT": "Edit",
-    "DELETE": "Delete",
-    "DATE_ESTIMATED": "(Date is estimated)",
-    "EDIT_LABEL": "Edit date",
-    "DELETE_LABEL": "Delete date"
+  "immunizationDisplayByAgent" : {
+    "EDIT" : "Edit",
+    "DELETE" : "Delete",
+    "DATE_ESTIMATED" : "(Date is estimated)",
+    "IMMUNIZATION_DATE" : "Add a Date for this Immunization"
   },
-  "immunizationDisplayByDate": {
-    "EDIT": "Edit",
-    "DELETE": "Delete",
-    "DATE_ESTIMATED": "(Date is estimated)",
-    "EDIT_LABEL": "Edit",
-    "DELETE_LABEL": "Delete"
+  "immunizationDisplayByDate" : {
+    "EDIT" : "Edit",
+    "DELETE" : "Delete",
+    "DATE_ESTIMATED" : "(Date is estimated)",
+    "IMMUNIZATION_FOR_DATE" : "Add an Immunization for this Date"
   },
-  "immunizationGating": {
-    "QUESTION_1": "Question 1",
-    "RECEIVED_LETTER": "Have you received a letter from <strong>{{phuName}}</strong> asking for updated immunization information?",
-    "YES": "Yes",
-    "NO": "No",
-    "UNSURE": "Unsure",
-    "QUESTION_2": "Question 2",
-    "IMMUNIZATIONS_RECEIVED_ONTARIO": "Were <strong>ALL</strong> the immunizations that you are entering received in <strong>Ontario</strong>?",
-    "QUESTION_3": "Question 3",
-    "IMMUNIZATIONS_RECEIVED_CANADA": "Were <strong>ALL</strong> the immunizations that you are entering received in <strong>Canada</strong>?",
-    "QUESTION_4": "Question 4",
-    "IMMUNIZATIONS_GROUPED_BY": "What format is the immunization record you are are entering?",
-    "GROUP_BY_IMM": "Grouped by Immunization",
-    "GROUP_BY_DATE": "Grouped by Date / Yellow Card",
-    "COLLAPSED_1": "Received a letter?",
-    "COLLAPSED_2": "Ontario?",
-    "COLLAPSED_3": "Canada?",
-    "COLLAPSED_4": "Format?"
+  "immunizationGating" : {
+    "QUESTION_1" : "Question 1",
+    "YES" : "Yes",
+    "NO" : "No",
+    "RECEIVED_LETTER" : "Have you received a letter from <strong>{{phuName}}</strong> asking for updated immunization information?",
+    "UNSURE" : "Unsure",
+    "QUESTION_2" : "Question 2",
+    "QUESTION_3" : "Question 3",
+    "IMMUNIZATIONS_RECEIVED_ONTARIO" : "Were <strong>ALL</strong> the immunizations that you are entering received in <strong>Ontario</strong>?",
+    "IMMUNIZATIONS_RECEIVED_CANADA" : "Were <strong>ALL</strong> the immunizations that you are entering received in <strong>Canada</strong>?"
   },
-  "immunizationInput": {
-    "ENTER_IMMUNIZATIONS": "Please Enter {{ patient_name }}'s Immunizations",
-    "PRINT_BY_IMMUNIZATIONS": "If you have a print out showing multiple dates for each immunization, you can switch to <strong>&ldquo;Group by Immunization&rdquo;</strong> below.",
-    "PRINT_BY_DATE": "If you have a print out showing multiple immunizations for each date, you can switch to <strong>&ldquo;Group by Date&rdquo;</strong> below.",
-    "GROUP_BY": "Group by:",
-    "DATE": "Date",
-    "IMMUNIZATION": "Immunization",
+  "immunizationInput" : {
+    "ENTER_IMMUNIZATIONS" : "Please Enter {{ patient_name }}'s Immunizations",
+    "PRINT_BY_IMMUNIZATIONS" : "If you have a print out showing multiple dates for each immunization, you can switch to <strong>&ldquo;Group by Immunization&rdquo;</strong> below.",
+    "PRINT_BY_DATE" : "If you have a print out showing multiple immunizations for each date, you can switch to <strong>&ldquo;Group by Date&rdquo;</strong> below.",
+    "GROUP_BY" : "Group by:",
+    "DATE" : "Date",
+    "IMMUNIZATION" : "Immunization",
     "IMMUNIZATIONS": "Immunizations",
-    "ADD_IMMUNIZATION_DATE": "Please Add <span ng-if='{{ displayMode }} === {{ date }}'>  a Date</span> <span ng-if='{{ displayMode }} === {{ agent }}'> an Immunization</span> to Begin.",
-    "IMMUNIZATION_ERROR": "You must enter at least 1 immunization before you can proceed."
+    "ADD_IMMUNIZATION_DATE" : "Please Add <span ng-if='{{ displayMode }} === {{ date }}'>  a Date</span> <span ng-if='{{ displayMode }} === {{ agent }}'> an Immunization</span> to Begin.",
+    "IMMUNIZATION_ERROR" : "You must enter at least 1 immunization before you can proceed."
   },
-  "immunizationReviewDisplay": {
-    "DATE_ESTIMATED": "(Date is estimated)"
+  "immunizationReviewDisplay" : {
+    "DATE_ESTIMATED" : "(Date is estimated)"
   },
-  "immunizationTypeahead": {
-    "IMMUNIZATION_LABEL": "Immunization / Brand Name",
-    "NO_RESULTS_FOUND": "No Results Found",
-    "KEEP_TYPING": "Keep Typing for better results",
-    "MORE_OPTIONS": " more results. Keep typing.",
-    "TYPICAL": "Common",
-    "IMMUNIZATION_PLACEHOLDER": "Start typing the immunization above and then select the one that matches.",
-    "AGENT_RESULT_SUBHEADER": "Agents (Immunizations)",
-    "TRADE_RESULT_SUBHEADER": "Brand Names"
+  "immunizationTypeahead" : {
+    "NO_RESULTS_FOUND" : "No Results Found",
+    "MORE_OPTIONS" : " more options. Keep typing.",
+    "TYPICAL": "TYPICAL"
   },
-  "immunizationsByDate": {
-    "ADD_DATE" : "Add a Date &amp; Immunization"
-  },
-  "immunizationsGroupedByAgent": {
-    "DELETE_GROUP": "Delete Group",
-    "DATE_FOR_IMMUNIZATION": "Add a Date for this Immunization"
-  },
-  "immunizationsGroupedByDate": {
-    "DELETE_GROUP": "Delete Group",
-    "IMMUNIZATION_FOR_DATE": "Add an Immunization to this Date"
-  },
-  "indexController": {
-    "TITLE": "Immunization Connect"
-  },
-  "leave_page": {
-    "TITLE": "Do you wish to continue?",
-    "YES": "Yes",
-    "NO": "No",
-    "LEAVE_PAGE_CONFIRMATION": "Are you sure you wish to leave? You may lose any entered information.",
-    "CONFIRMATION_BACK": "Do you want to go to the home page?"
-  },
-  "login": {
-    "ENTER_OIID_PIN": "Please enter your Ontario Immunization ID and PIN",
+  "login" : {
+    "ENTER_OIID_PIN" : "Please enter your Ontario Immunization ID and PIN",
+    "OIID_MESSAGE" : "Your Ontario Immunization ID may be found on a letter sent to you from <strong>{{ name_key | translate }}</strong>. If you do not have this code please contact <strong>{{ name_key | translate }}</strong> at <strong>{{ phone_key | translate }} </strong>.",
+    "PIN_MESSAGE" : "The PIN can be retrieved by contacting <strong>{{ name_key | translate }}</strong> at <strong>{{ phone_key | translate }}</strong>.",
+    "SUBMIT" : "Submit",
     "YELLOWCARD_RETRIEVAL_LOGIN_OIID": "Ontario Immunization ID",
     "YELLOWCARD_RETRIEVAL_LOGIN_PIN": "PIN",
-    "SUBMIT": "Submit",
-    "OIID_MESSAGE": "Your Ontario Immunization ID may be found on a letter sent to you from <strong>{{ name_key | translate }}</strong>. If you do not have this code please contact <strong>{{ name_key | translate }}</strong> at <strong>{{ phone_key | translate }}</strong>.",
-    "PIN_MESSAGE": "The PIN can be retrieved by contacting <strong>{{ name_key | translate }}</strong> at <strong>{{ phone_key | translate }}</strong>.",
-    "LOGIN_OIID_PLACEHOLDER": "Format: 0000-000-000",
-    "LOGIN_PIN_PLACEHOLDER": "000000",
-    "ERRORS": {
+    "ERRORS" : {
       "IS_REQUIRED": "This is a required field.",
       "BELOW_MINLENGTH": "You have not entered enough characters."
     }
   },
-  "lotInput": {
-    "LOT_NUMBER": "Lot Number",
-    "OPTIONAL": "(optional)"
-  },
-  "tradeLotDisplay": {
-    "LOT": "Lot #",
-    "EXPIRY": "Expiry"
-  },
-  "nextPrevButtons": {
+  "nextPrevButtons" : {
     "PREVIOUS": "Back to ",
     "PROCEED": "Save and Proceed to",
     "RETURN_TO_REVIEW": "Save and return to review"
   },
-  "notification": {
-    "$pushProgressSubmission": {
-      "TITLE": "Please wait.",
-      "BODY": "Submitting immunizations..."
-    },
-    "$pushProgressRetrieval": {
-      "TITLE": "Please wait.",
-      "BODY": "Your information is being retrieved. "
-    },
-    "$pushProgressYellowCardPdf": {
-      "TITLE": "Please wait.",
-      "BODY": "Opening printable PDF immunization record..."
-    },
-    "$pushProgressConfirmationPdf": {
-      "TITLE": "Please wait.",
-      "BODY": "Opening printable PDF confirmation..."
-    },
-    "$pushTransactionTokenTimeout": {
-      "TITLE": "Session About to Expire",
-      "BODY": "<p>Your current session will expire shortly and any data you have entered will be discarded.</p><p>You can extend your session if you need more time.</p>",
-      "EXTEND_BUTTON": "Extend Session",
-      "DECLINE_BUTTON": "Cancel Session",
-      "BUTTON_AFTERTHOUGHT": "Cancelling will discard all your data."
-    },
-    "$infoPatientDataCleared": {
-      "TITLE": "Personal Health Information ",
-      "BODY": "Your personal health information has been cleared from this browser. You can now close your browser. "
-    },
-    "$infoSessionExpired": {
-      "TITLE": "Session Expired",
-      "BODY": "Your session has expired and the data you entered has been discarded. ",
-      "CLOSE_BUTTON": "Close"
-    },
-    "$warnDocumentFileBadType": {
-      "TITLE": "Invalid File Type",
-      "BODY": "The file you have attached is not of an acceptable file type. Acceptable file types include: doc, docx, jpeg, jpg, pdf, png. "
-    },
-    "$warnDocumentFileTooLarge": {
-      "TITLE": "File Size Too Large",
-      "BODY": "The file you have attached is over the 5MB size limit."
-    },
-    "$warnDocumentFileDuplicate": {
-      "TITLE": "Duplicate File",
-      "BODY": "You have already uploaded a file with this name."
-    },
-    "$warnDocumentFileQueueLimit": {
-      "TITLE": "Too Many Files",
-      "BODY": "You have already uploaded the maximum number of files."
-    },
-    "$warnRetrievalConsentBlock": {
-      "TITLE": "Response 200 - Unable to display immunization record.",
-      "BODY": "Sorry, we are unable to display the immunization record (Response 200). Please contact <strong>{{phuName}}</strong> at <strong>{{phuPhone}}</strong>."
-    },
-    "$warnRetrievalBadOiid": {
-      "TITLE": "Invalid Ontario Immunization ID or PIN",
-      "BODY": "You have entered an invalid immunization ID or PIN. Please check they are entered correctly. "
-    },
-    "$warnRetrievalBadPin": {
-      "TITLE": "Invalid Ontario Immunization ID or PIN",
-      "BODY": "You have entered an invalid immunization ID or PIN. Please check they are entered correctly. "
-    },
-    "$warnRetrievalNetworkProblem": {
-      "TITLE": "Retrieval Error",
-      "BODY": "We are unable to retrieve your record at this time. "
-    },
-    "$warnRetrievalUnknown": {
-      "TITLE": "Error.",
-      "BODY": "Attempted OIID and PIN combination not valid."
-    },
-    "$warnSubmissionInvalidFhir": {
-      "TITLE": "Submission Error",
-      "BODY": "We have encountered and error and cannot submit information at this time."
-    },
-    "$warnSubmissionNetworkProblem": {
-      "TITLE": "Submission Error",
-      "BODY": "We have encountered and error and cannot submit information at this time."
-    },
-    "$warnSubmissionUnkown": {
-      "TITLE": "Submission Error",
-      "BODY": "We have encountered and error and cannot submit information at this time."
-    },
-    "$warnGeneralNetworkProblem": {
-      "TITLE": "Lost Internet Connection",
-      "BODY": "There seems to be a problem with your internet connection. Please check your connectivity."
-    }
+  "pager" : {
+    "PAGE": "Page",
+    "PREVIOUS": "Back to ",
+    "PROCEED": "Save and Proceed to",
+    "RETURN_TO_REVIEW": "Save and return to review",
+    "SUBMIT_FORM": "Complete Submission"
   },
-  "patientAuthDisplay": {
-    "INFORMATION_FROM_REPOSITORY": "The following information was pulled from the Ontario Immunization Repository",
-    "NAME": "Name",
-    "SEX": "Sex",
-    "BIRTHDATE": "Date of Birth",
-    "HEALTH_CARD_NUMBER": "Health Card Number",
-    "OIID": "Ontario Immunization ID",
-    "ISSUE_DATE": "Issue Date"
+  "patientAuthDisplay" : {
+    "INFORMATION_FROM_REPOSITORY" : "The following information was pulled from the Ontario Immunization Repository",
+    "NAME" : "Name",
+    "SEX" : "Sex",
+    "BIRTHDATE" : "Birthdate",
+    "HEALTH_CARD_NUMBER" : "Health Card Number",
+    "OIID" : "Ontario Immunization ID",
+    "ISSUE_DATE" : "Issue Date"
   },
-  "patientCapture": {
-    "DOB": "Date of Birth (YYYY-MM-DD)",
-    "PATIENT_INFO": "Patient Info",
-    "YOUR_INFO": "Your Info",
-    "FIRST_NAME": "First Name",
-    "MIDDLE_NAME": "Middle Name",
-    "LAST_NAME": "Last Name",
-    "HEALTH_CARD_NUMBER": "Health Card Number",
-    "OPTIONAL": "(optional)",
-    "SEX": "Sex",
-    "SEX_MALE": "Male",
-    "SEX_FEMALE": "Female",
-    "SEX_OTHER": "Other",
-    "HEALTHCARD": "Ontario Health Card",
-    "OIID": "Ontario Immunization ID",
-    "DAYCARE": "Name of School / Daycare",
-    "DAYCARE_OPTIONAL": "(if applicable)",
-    "DAYCARE_TOOLTIP": "If the patient is enrolled in a school or daycare, please provide the name here.",
-    "NO_RESULTS_FOUND": "No Results Found",
-    "ERRORS" : {
-      "CHAR_ERROR": "You have entered an invalid character.",
-      "FIRST_NAME_REQUIRED": "First Name is a required field.",
-      "LAST_NAME_REQUIRED": "Last Name is a required field.",
-      "BAD_FORMAT": "You have entered an invalid character.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters.",
-      "SEX_ERROR": "Please select the patient's biological sex.",
-      "OIID_ERROR": "Invalid input. Your Ontario Immunization ID should be 10 characters with numbers between 2-9 and no vowels.",
-      "HCN_FORMAT_ERROR": "You have entered an invalid health card number."
-    }
+  "patientOtherDisplay" : {
+    "PATIENT_TITLE" : "Patient",
+    "EDIT" : "Edit",
+    "NAME" : "Name",
+    "SEX" : "Sex",
+    "BIRTHDATE" : "Birthdate",
+    "HEALTH_CARD_NUMBER" : "Health Card Number",
+    "OIID" : "Ontario Immunization ID",
+    "DAYCARE" : "Name of School or Daycare"
   },
-  "patientOtherDisplay": {
-    "PATIENT_TITLE": "Patient",
-    "EDIT": "Edit",
-    "NAME": "Name",
-    "SEX": "Sex",
-    "BIRTHDATE": "Date of Birth",
-    "HEALTH_CARD_NUMBER": "Health Card Number",
-    "OIID": "Ontario Immunization ID",
-    "DAYCARE": "Name of School / Daycare"
+  "patientCapture" : {
+    "PATIENT_INFO" : "Patient Info",
+    "FIRST_NAME" : "First Name",
+    "MIDDLE_NAME" : "Middle Name",
+    "LAST_NAME" : "Last Name",
+    "HEALTH_CARD_NUMBER" : "Health Card Number",
+    "HCN_FORMAT_ERROR" : "You have entered an invalid health card number.",
+    "SEX" : "Sex",
+    "SEX_MALE" : "Male",
+    "SEX_FEMALE" : "Female",
+    "SEX_OTHER" : "Other",
+    "SEX_ERROR" : "Please select a gender.",
+    "HEALTHCARD" : "Ontario healthcard",
+    "OIID" : "Ontario Immunization ID",
+    "OIID_ERROR" : "Invalid input. Your Ontario Immunization ID should be 10 characters with numbers between 2-9 and no vowels.",
+    "DAYCARE" : "Name of School or Daycare (if applicable):",
+    "DAYCARE_TOOLTIP" : "If the patient is enrolled in a school or daycare, please provide the name here.",
+    "CHAR_ERROR" : "You have entered an invalid character",
+    "IS_REQUIRED" : "This is a required field.",
+    "BAD_FORMAT" : "You have entered an invalid character.",
+    "EXCEEDS_MAXLENGTH" : "You have entered too many characters.",
+    "NO_RESULTS_FOUND" : "No Results Found."
   },
-  "patientSelfDisplay": {
-    "PHONE": "Phone",
-    "EMAIL": "Email",
-    "PATIENT_TITLE": "Patient",
-    "EDIT": "Edit",
-    "NAME": "Name",
-    "SEX": "Sex",
-    "BIRTHDATE": "Date of Birth",
-    "HEALTH_CARD_NUMBER": "Health Card Number",
-    "OIID": "Ontario Immunization ID",
-    "DAYCARE": "Name of School / Daycare:",
-    "EXTENSION": "Ext:",
-    "OPTIONAL": "(optional)"
+  "patientSelfDisplay" : {
+    "PHONE" : "Phone",
+    "EMAIL" : "Email",
+    "PATIENT_TITLE" :"Patient",
+    "EDIT" :"Edit",
+    "NAME" :"Name",
+    "SEX" :"Sex",
+    "BIRTHDATE" :"Birthdate",
+    "HEALTH_CARD_NUMBER" :"Health Card Number",
+    "OIID" :"Ontario Immunization ID",
+    "DAYCARE" :"Name of School or Daycare:"
   },
-  "pdf": {
-    "genderType_male": "Male",
-    "genderType_female": "Female",
-    "genderType_other": "Other",
-    "receivedSubmission_p1_s1_f1": "We have received your submission for ",
-    "receivedSubmission_p1_s1_f3": ".",
-    "receivedSubmission_p1_s2": "A staff member from {{phuName}} will review this submission within {{phuResponseTime}}.",
-    "receivedSubmission_p1_s3": "We will be in touch if there are any questions regarding your immunizations.",
-    "reportGeneratedTime_p1_s1": "This report was generated on {{reportGeneratedDate}} at {{reportGeneratedTime}}.",
-    "patientNameHeading_p1_s1_f1": "Patient: ",
-    "patientDemographics_ul1_li1_f1": "Sex: ",
-    "patientDemographics_ul1_li2_f1": "Date of Birth: ",
-    "patientDemographics_ul1_li3_f1": "Health Card Number: ",
-    "patientDemographics_ul1_li4_f1": "Ontario Immunization ID: ",
-    "patientDemographics_ul1_li5_f1": "School / Daycare: ",
-    "patientDemographics_ul1_li6_f1": "Mailing Address: ",
-    "phuYellowCardFooter_p1_s1": "{{phuName}} ({{phuPhone}})",
-    "phuYellowCardFooter_p1_s2": "Report generated on {{reportGeneratedDate}} at {{reportGeneratedTime}}",
-    "submissionReferenceNumber_p1_s1_f1": "Your reference number is ",
-    "submissionReferenceNumber_p1_s1_f3": ".",
-    "submissionReferenceNumber_p1_s2": "Please keep this number for your records.",
-    "reportGeneratedTime_p1_s1_f1": "This report was generated on ",
-    "reportGeneratedTime_p1_s1_f3": " at ",
-    "reportGeneratedTime_p1_s1_f5": ".",
-    "thankYou_p1_s1_f1": "Thank you for helping Ontarians stay healthy by preventing",
-    "thankYou_p1_s1_f2": "the spread of diseases that can be prevented by immunizations!",
-    "submitterNameHeading_p1_s1_f1": "Submitter: ",
-    "contact_ul1_li1_f1": "Phone: ",
-    "contact_ul1_li1_f3": " Ext: ",
-    "contact_ul1_li2_f1": "Email: ",
-    "immunizationsTitle_p1_s1": "Immunization Record Submitted: ",
-    "yellowCardTitle_p1_s1_f1": "Immunization Record",
-    "yellowCardTitle_p1_s1_f2": "Retrieved on {{reportGeneratedDate}} at {{reportGeneratedTime}}\n\n",
-    "yellowCardFooter_p1_s1": "\nThe information in the record above was pulled from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card.\n",
-    "printLogoUrl": "./phu/pdf-logo-en.png",
-    "lotNumber": "Lot #",
-    "dateIsApproximate": "date is approximate",
-    "noImmunizations": "No immunizations found for {{patientName}}.",
-    "recommendationsTitle_p1_s1": "Immunizations Needed",
-    "recommendationsHeader_p1_s1": "As recommended by the Ontario Immunization Schedule you need immunizations to be protected against the following diseases:",
-    "recommendationsFooter_p1_s1_f1": "Note: ",
-    "recommendationsFooter_p1_s1_f2": "Immunizations needed may change if additional immunization information is submitted.",
-    "noRecommendations": "No recommendations, {{patientName}}'s immunizations are up to date.",
-    "yellowCard_dateFormatHeader": "\n\n\n\n\nYYYY-MM-DD",
-    "yellowCard_dateFormatText": "YYYY-MM-DD",
-    "yellowCard_additionalInformation": "\n\n\n\n\nAdditional Info",
-    "yellowCard_other": "Other"
-  },
-  "phuFooter": {
-    "SCROLL_TO_TOP": "Scroll to Top"
+  "phuFooter" : {
+    "SCROLL_TO_TOP" : "Scroll to Top"
   },
   "phuHeader": {
-    "RETURN_HOME": "Return Home",
-    "SKIP_TO_CONTENT": "Skip to main content"
+    "RETURN_HOME": "Return Home"
+  },
+  "printOfficialYellowCard" : {
+    "PATIENT_TITLE": "Patient",
+    "YELLOWCARD_RETRIEVAL_RECORD_PATIENT_HCN": "Ontario Health Card Number:",
+    "YELLOWCARD_RETRIEVAL_RECORD_PATIENT_OIID": "Ontario Immunization ID:",
+    "YELLOWCARD_RETRIEVAL_RECORD_PATIENT_DOB": "Birthdate:",
+    "YELLOWCARD_RETRIEVAL_RECORD_PATIENT_RETRIEVED": "Issued Date:",
+    "YELLOWCARD_RETRIEVAL_RECORD_NOTE": "Note:",
+    "YELLOWCARD_RETRIEVAL_EMPTY_RECORDS": "No immunization information currently available. Please submit immunizations or contact your Public Health Unit.",
+    "YELLOWCARD_RETRIEVAL_FORECAST_TITLE": "Immunizations Needed",
+    "YELLOWCARD_RETRIEVAL_FORECAST_DUE2": "{{fullName}} will need to be immunized against:",
+    "YELLOWCARD_RETRIEVAL_FORECAST_OVERDUE1": "As recommended by the Ontario Immunization Schedule {{fullName}} needs immunizations to be protected against the following diseases:",
+    "YELLOWCARD_RETRIEVAL_FORECAST_NOTE": "For more information please visit: ",
+    "Date": "Date",
+    "Vaccine": "Immunizations",
+    "OtherDiseases": "Other Diseases",
+    "LotNumber": "Lot Number",
+    "Provider": "Health Care Provider"
+  },
+  "printUnofficialYellowCard" : {
+    "SUBMISSION_ID" : "Your reference number is {{submissionId}}. Please keep this number for your records.",
+    "INFO_SUBMITTED": "Information Submitted",
+    "THANK_YOU_MESSAGE": "Thank you for helping to keep Ontarians healthy by preventing the spread of diseases that can be prevented by immunizations.",
+    "HEALTH_CARD_NUMBER": "Health Card Number",
+    "SEX": "Sex",
+    "OIID": "Ontario Immunization ID",
+    "DAYCARE": "Name of School or Daycare (if applicable):",
+    "ADDRESS_TITLE": "Mailing Address",
+    "PATIENT_TITLE": "Patient",
+    "SUBMITTER_TITLE": "Submitter",
+    "WATERMARK": "Not an Official Yellow Card",
+    "YELLOWCARD_RETRIEVAL_RECORD_PATIENT_DOB": "Birthdate:",
+    "YELLOWCARD_RETRIEVAL_RECORD_PATIENT_RETRIEVED": "Issued Date:",
+    "EMAIL": "Email",
+    "PHONE1_NUMBER": "Daytime Phone",
+    "PHONE2_NUMBER": "Other Phone",
+    "DATE": "Date",
+    "VACCINE": "Vaccine",
+    "COMMENTS": "Lot Number"
   },
   "progressBar": {
     "PATIENT": "Patient",
@@ -580,230 +399,146 @@
     "REVIEW": "Review",
     "CONFIRMATION": "Confirmation"
   },
-  "OPTIONAL": "(optional)",
-  "schedule": {
-    "SCHEDULED_IMMS_TITLE": "Ontario's Immunization Schedule",
-    "AT_2_MONTHS": "2 Months",
-    "AT_4_MONTHS": "4 Months",
-    "AT_6_MONTHS": "6 Months",
-    "AT_6_MONTHS_+": "6 Months+",
-    "AT_12_MONTHS": "12 Months",
-    "AT_15_MONTHS": "15 Months",
-    "AT_18_MONTHS": "18 Months",
-    "AT_4_6_YEARS": "4-6 Years",
-    "AT_GRADE_7": " Grade 7",
-    "AT_14_16_YEARS": "14-16 Years",
-    "AT_24_26_YEARS": "24-26 Years",
-    "35_Years_+": "35 Years+",
-    "65_Years_+": "65 Years+",
-    "DTAP-IPV-HIB_VALUE": "<em>Diphtheria, Tetanus, Pertussis, Polio</em>, Hib",
-    "PNEU-C_VALUE": "Pneumococcal conjugate",
-    "ROTA-1_VALUE": "Rotavirus monovalent",
-    "MMR_VALUE": "<em>Measles, Mumps, Rubella</em>",
-    "MEN-C-C_VALUE": "<em>Meningococcal conjugate C</em>",
-    "TDAP-IPV_VALUE": "<em>Tetanus, Diphtheria, Pertussis, Polio</em>",
-    "VAR_VALUE": "<em>Varicella<em>",
-    "MMRV_VALUE": "<em>Measles, Mumps, Rubella, Varicella</em>",
-    "HB_VALUE": "Hepatitis B",
-    "HPV_VALUE": "Human Papillomavirus",
-    "INF_VALUE": "Influenza",
-    "MEN-C-ACYW-135_VALUE": "<em>Meningococcal conjugate ACYW135</em>",
-    "TDAP_VALUE": "Tetanus, Diphtheria, Pertussis",
-    "TDAP_VALUE_ITALICS": "<em>Tetanus, Diphtheria, Pertussis</em>",
-    "TD_VALUE": "Diphtheria, Tetanus",
-    "EVERY_FALL": "Every Fall",
-    "EVERY_10_YEARS" : "Every 10 Years",
-    "PNEU-P-23_VALUE": "Pneumococcal polysaccharide 23 <br aria-hidden=\"true\"> <strong>(65 years+)</strong>",
-    "SHINGLES_VALUE": "Zoster <br aria-hidden=\"true\"> <strong>(65-70 years)</strong>",
-    "IMMS_SCHEDULE_MESSAGE": "Protection against the diseases in <i>italics</i> is required for school attendance under the immunization of School Pupils Act. Children born on or after January 1, 2010 also need to be immunized against Varicella.",
-    "DTAP-IPV-HIB": "DTaP-IPV-Hib",
-    "PNEU-C": "Pneu-C",
-    "ROTA-1": "Rota-1",
-    "INF": "Inf",
-    "MMR": "MMR",
-    "MEN-C-C": "Men-C-C",
-    "VAR": "Var",
-    "TDAP-IPV": "Tdap-IPV",
-    "MMRV": "MMRV",
-    "MEN-C-ACYW-135": "Men-C-ACYW-135",
-    "HB": "HB",
-    "TDAP": "Tdap",
-    "TD": "Td",
-    "PNEU-P-23": "Pneu-P-23",
-    "SHINGLES": "Shingles",
-    "HPV": "HPV"
+  "relationshipToClient" : {
+    "RELATION_TITLE": "The immunization record that I am getting today is for",
+    "SCREEN_TITLE": "The immunization record that I am submitting today is for",
+    "RELATIONSHIP_SELF": "Myself",
+    "RELATIONSHIP_PARENT": "My Child"
+  },
+  "requiredDescription" : {
+    "REQUIRED_1": "Fields marked with an asterisk",
+    "REQUIRED_2": "are required fields and must be completed."
   },
   "sessionExpiry": {
-    "TITLE": "Session About to Expire",
-    "PARA1": "Your current session will expire shortly and any data you have entered will be discarded.",
-    "PARA2": "You can extend your session if you need more time. ",
+    "TITLE": "Session Time Out",
+    "PARA1": "It has been 75 minutes since you began your session. <strong>Your session will expire in 15 minutes.</strong> If you need more time you can extend the session.",
+    "PARA2": "Your current session will automatically be cancelled and any data you've entered will be discarded if you choose to cancel your session, or if your session expires.",
     "NOTE": "Cancelling will discard all your data.",
     "EXTEND_BUTTON": "Extend Session",
-    "CANCEL_BUTTON": "Cancel Session"
+    "CANCEL_BUTTON" :"Cancel Session"
   },
-  "submitAnother": {
-    "AUTH_LABEL": "An Ontario Immunization ID and PIN let you do more, faster!",
-    "AUTHENTICATION": "Enter an ID and PIN",
-    "ANON_LABEL": "Don't have an Ontario Immunization ID and PIN?",
-    "ANON_MESSAGE_1": "You can submit immunizations without an",
-    "OIID_PIN": "Ontario Immunization ID and PIN",
-    "ANON_MESSAGE_2": "but you will be required to enter additional information along with the dates and names of vaccines given.",
-    "NEXT_STEP": "Are you done?",
-    "IMMUNIZATIONS_ONLY": "Submit Immunizations Only",
-    "AUTH_NOT_REQUIRED": "No Ontario Immunization ID and PIN required",
-    "RETURN_HOME": "Return Home",
-    "CONTINUE_BELOW": "If not, continue below",
-    "AUTH_BULLET_1": "View an immunization record (Yellow Card).",
-    "AUTH_BULLET_2": "Check for needed and upcoming immunizations.",
-    "AUTH_BULLET_3": "Submit immunizations.",
-    "AUTH_BULLET_4": "Avoid re-entering immunizations and personal information already on file.",
-    "ANONYMOUS": "Submit immunizations only",
-    "LEARN_MORE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Learn more</button> about what the Ontario Immunization ID and PIN are and where they can be found."
+  "submitAnother" : {
+      "AUTHENTICATION" : "Enter an ID and PIN",
+      "NEXT_STEP" : "What would you like to do next?",
+      "IMMUNIZATIONS_ONLY": "Submit Immunizations Only",
+      "AUTH_NOT_REQUIRED" : "No Ontario Immunization ID and PIN required",
+      "RETURN_HOME" : "I'm Done, Return Home"
   },
-  "submitImmunizations": {
-    "SUBMIT_IMMUNIZATIONS": "Submit Immunizations",
-    "SUBMITTING": "Submitting..."
+  "submitterContactCapture" : {
+  	"IS_REQUIRED" :  "This is a required field.",
+  	"EMAIL" : "Email",
+  	"EMAIL_ERROR" : "The email you have entered is not valid.",
+  	"EXCEEDS_MAXLENGTH" : "You have entered too many characters.",
+  	"CONFIRM_EMAIL" : "Confirm Email",
+  	"MUST_BE_EQUAL_TO" : "The email addresses you provided do not match.",
+  	"EMAIL_ERROR" : "The email you have entered is not valid.",
+  	"EXCEEDS_MAXLENGTH" : "You have entered too many characters.",
+    "INCORRECT_FORMAT" : "This is an incorrect format ",
+    "CONTACT_MESSAGE" : "This will be used to contact you if there are any questions about submissions ",
+    "CONFIRMATION_EMAIL" : "We can send you a confirmation email",
+    "TOO_MANY_NUMBERS" : "You have entered too many numbers",
+    "PHONE_EXT_NUMBERS" : "A phone extension must only numbers",
+    "OPTIONAL" : "Optional",
+    "REQUIRED" : "Required",
+    "PHONE" : "Phone",
+    "EXT" : "Ext",
+    "SUBMISSION_PROCESSED_EMAIL" : "We will email you a confirmation when your submission has been processed. We will not share this email with anyone else."
   },
-  "submitterContactCapture": {
-    "EMAIL": "Email",
-    "CONFIRM_EMAIL": "Confirm Email",
-    "CONTACT_MESSAGE": "This will be used to contact you if there are any questions about your submission.",
-    "CONFIRMATION_EMAIL": "We can send you an email confirmation",
-    "OPTIONAL": "(optional)",
-    "REQUIRED": "Required",
-    "PHONE": "Phone",
-    "EXT": "Ext",
-    "EXTENSION": "Extension",
-    "SUBMISSION_PROCESSED_EMAIL": "We will email you a confirmation when your submission has been processed. We will not share this email address with anyone else.",
-    "ERRORS" : {
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters.",
-      "MUST_BE_EQUAL_TO": "The email addresses you provided do not match.",
-      "INCORRECT_FORMAT": "This is an incorrect format ",
-      "PHONE_EXT_NUMBERS": "A phone extension must contain only numbers",
-      "TOO_MANY_NUMBERS": "You have entered too many numbers",
-      "EMAIL_ERROR": "The email address you have entered is not valid.",
-      "PHONE_IS_REQUIRED": "Phone is a required field."
-    }
+  "submitterDemographicsCapture" : {
+    "INFO_TITLE" : "Your Info",
+    "FIRST_NAME" : "Your First Name",
+    "IS_REQUIRED" : "This is a required field.",
+    "BAD_FORMAT" : "You have entered an invalid character.",
+    "EXCEEDS_MAXLENGTH" : "You have entered too many characters.",
+    "LAST_NAME" : "Your Last Name"
   },
-  "submitterDemographicsCapture": {
-    "INFO_TITLE": "Your Info",
-    "FIRST_NAME": "Your First Name",
-    "LAST_NAME": "Your Last Name",
-    "ERRORS" : {
-      "FIRST_NAME_REQUIRED": "Your First Name is a required field.",
-      "LAST_NAME_REQUIRED": "Your Last Name is a required field.",
-      "EXCEEDS_MAXLENGTH": "You have entered too many characters.",
-      "BAD_FORMAT": "You have entered an invalid character."
-    }
+  "submitterDisplay" : {
+    "PHONE" : "Phone",
+    "EMAIL" : "Email",
+    "SUBMITTER_TITLE" : "Submitter",
+    "EDIT" : "Edit",
+    "NAME" : "Name"
   },
-  "submitterDisplay": {
-    "PHONE": "Phone",
-    "EMAIL": "Email",
-    "SUBMITTER_TITLE": "Submitter",
-    "EDIT": "Edit",
-    "NAME": "Name",
-    "EXTENSION": "Ext:"
+  "submitImmunizations" : {
+    "SUBMIT_IMMUNIZATIONS" : "Submit Immunizations",
+    "SUBMITTING" : "Submitting..."
   },
-  "survey": {
+  "survey" : {
     "SURVEY_TITLE": "Help us improve this service for all Ontarians!",
     "SURVEY_PARAGRAPH": "Please take a moment to complete a brief survey to describe your experience today. We would appreciate your feedback.",
     "SURVEY_LINK": "Take a Quick Survey",
-    "SURVEY_LINK_DESC": "Link opens in a new tab",
     "SURVEY_LINK_URL": "https://survey.infoway-inforoute.ca/index.php/115271?lang=en"
   },
-  "welcomeAUP": {
-    "HEADER": "Acceptable Use Policy",
+  "welcomeAUP" : {
     "ACCEPT": "I Accept",
     "DO_NOT_ACCEPT": "I Do Not Accept",
-    "ACK_TERMS_READ": "Read Terms of Use"
+    "HEADER": "Acceptable Use Policy",
+    "ACK_TERMS_READ": "Read Terms of Use here"
   },
-  "welcomeAuthSubmitterModal": {
-    "IMMUNIZATION_AUTH_SUBMISSION_LABEL": "Who are you entering an Ontario Immunization ID and PIN for?",
-    "MYSELF": "Myself",
-    "DEPENDENT": "A Dependent"
+  "welcomeLogin" : {
+    "AUTH_LABEL" : "An Ontario Immunization ID and PIN let you do more, faster!",
+    "AUTH_BULLET_1" : "View an immunization record (Yellow Card).",
+    "AUTH_BULLET_2" : "Check for needed upcoming immunizations.",
+    "AUTH_BULLET_3" : "Avoid re-entering immunizations and personal already on file.",
+    "AUTH_MESSAGE" : "What are the Ontario Immunization ID and PIN and where can I find them?",
+    "AUTHENTICATION" : "Enter an ID and PIN",
+    "ANON_LABEL" : "Don't have an Ontario Immunization ID and PIN?",
+    "ANON_MESSAGE_1" : "You can submit immunizations without an",
+    "OIID_PIN" : "Ontario Immunization ID and PIN",
+    "ANON_MESSAGE_2" : "but you will be required to enter additional information. You will also require the dates and names of vaccines given.",
+    "ANONYMOUS" : "Submit Immunizations Only"
   },
-  "welcomeHelpModal": {
-    "OIID_PIN_LABEL": "What are the Ontario Immunization ID and PIN? ",
-    "LOGIN_OIID": "An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization repository.",
-    "LOGIN_PIN": "A patient's PIN is a six digit number that protects the confidentiality of immunization information.",
-    "OIID_PIN_MESSAGE": "Where can I find them?",
-    "OIID_TOOLTIP_1": "Your Ontario Immunization ID may be found on a letter sent from ",
-    "OIID_TOOLTIP_2": ". If you do not have this code from your Health Unit, please contact ",
-    "OIID_TOOLTIP_3": " at ",
-    "PIN_TOOLTIP_1": "The PIN can be retrieved by contacting",
-    "PIN_TOOLTIP_2": "at",
-    "CLOSE": "Close"
+  "welcomeHelpModal" : {
+    "OIID_PIN_LABEL" : "What are the Ontario Immunization ID and PIN? ",
+    "LOGIN_OIID" :"An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization registry.",
+    "LOGIN_PIN" : "A patient's PIN is a six digit number that protects the confidentiality of immunization information.",
+    "OIID_PIN_MESSAGE" : "Where can I find them?",
+    "OIID_TOOLTIP_1" : "A patient's Ontario Immunization ID may be found on a letter sent from ",
+    "OIID_TOOLTIP_2" : ". If you do not have this code please contact ",
+    "OIID_TOOLTIP_3" : " at ",
+    "PIN_TOOLTIP_1" : "The PIN can be retrieved by contacting",
+    "PIN_TOOLTIP_2" : "at",
+    "CLOSE" : "Close"
   },
-  "welcomeLandingPage": {
-    "INTRO_2": "Immunizations Keep Ontarians Healthy!",
-    "PHU_MESSAGE": "Use this site to view and update your immunization record. ",
-    "INTRO_UL": "Why should I use this site?",
-    "INTRO_LI_1": "It’s an online alternative to paper immunization records.",
-    "INTRO_LI_2": "It allows Ontarians to securely keep track of their families’ immunization records.",
-    "INTRO_LI_3": "It allows families to report their child’s immunization records to their local public health unit, as required by the",
-    "INTRO_BULLET_1": "Immunization of Schools Pupil Act, 1990 (ISPA)",
+  "welcomeLandingPage" : {
+    "PHU_MESSAGE" : "Keep your public health unit informed and up to date.",
+    "SCHEDULE_LABEL" : "Ontario's Immunization Schedule",
+    "INTRO_2": "Immunizations keep Ontarians healthy!",
+    "INTRO_UL": "You can use this online tool to:",
+    "INTRO_LI_1" : "Look up a personal immunization record (sometimes called a Yellow Card).",
+    "INTRO_LI_2" : "Submit immunization records to your local Public Health Unit. (the information you submit through this website will be reviewed by your local Public Health Unit.)",
+    "INTRO_IMMS_LAW1" : "If your child is under 18 and attends a daycare or school in Ontario, you should inform your local Public Health Unit every time your child gets a vaccine. ",
+    "INTRO_IMMS_LAW2" : "The immunization records you submit through this tool will be reviewed to assess requirements for attending school as outlined in ",
     "INTRO_BULLET_1_URL": "https://www.ontario.ca/laws/statute/90i01",
-    "INTRO_IMMS_LAW3": " and the ",
-    "INTRO_BULLET_2": "Child Care and Early Years Act, 2014 (CCEYA).",
+    "INTRO_BULLET_1": "Immunization of Schools Pupil Act, 1990 (ISPA)",
+    "INTRO_IMMS_LAW3" : " or daycare ",
     "INTRO_BULLET_2_URL": "https://www.ontario.ca/laws/statute/14c11",
-    "INTRO_LI_4": "Public health units review immunization records to ensure schoolchildren are up to date with their immunizations. This helps to protect children and adolescents from serious diseases that can easily be spread in schools and throughout our communities. ",
-    "INTRO_3": "You may also need your immunization record for:",
-    "INTRO_3_LIST_A": "Medical treatment",
-    "INTRO_3_LIST_B": "Children's programs",
-    "INTRO_3_LIST_C": "Post-secondary programs",
-    "INTRO_3_LIST_D": "Volunteer or employment opportunities ",
-    "INTRO_3_LIST_E": "Travel to some countries",
-    "INTRO_4": "How do I use this site? ",
-    "INTRO_5": "Every time you or your child gets a vaccine, record it here to keep track of your records and to report the vaccines to your local public health unit.",
-    "SCHEDULE_LABEL": "Ontario's Immunization Schedule",
-    "SCHEDULE_RATIONALE": "Protection against the diseases in italics is required for school attendance under the Immunization School Pupils Act. NOTE**Children born on or after January 1, 2010 also need to be immunized against Varicella.",
-    "PRINT_SCHEDULE_LABEL": "Download Printable Ontario Immunization Schedule ",
-    "PRINT_SCHEDULE" : "Download Printable Schedule"
+    "INTRO_BULLET_2": "Child Care and Early Years Act, 2014 (CCEYA).",
+    "INTRO_3": "In addition to registering your child for school or daycare, you might also need to access this information when your child needs emergency treatment or when you register your child for summer camp or other children’s programs.",
+    "INTRO_4": "Adults can also use this tool to keep track of personal immunization records and to make sure your immunizations are up to date.",
+    "INTRO_ALT": "You may also submit immunization information and request your immunization record by contacting your Public Health Unit or your Health Care Provider directly.",
+    "PRINT_SCHEDULE" : "Print the Ontario Schedule "
   },
-  "welcomeLogin": {
-    "AUTH_LABEL": "An Ontario Immunization ID and PIN let you do more, faster!",
-    "AUTH_BULLET_1": "View an immunization record (Yellow Card)",
-    "AUTH_BULLET_2": "Check for needed and upcoming immunizations",
-    "AUTH_BULLET_3": "Submit immunizations",
-    "AUTH_BULLET_4": "Avoid re-entering immunizations and personal information already on file.",
-    "AUTH_MESSAGE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>What are the Ontario Immunization ID and PIN and where can I find them?</button>",
-    "AUTHENTICATION": "Enter an ID and PIN",
-    "ANON_LABEL": "Don't have an Ontario Immunization ID and PIN?",
-    "ANON_MESSAGE_1": "You can submit immunizations without an",
-    "OIID_PIN": "Ontario Immunization ID and PIN",
-    "ANON_MESSAGE_2": "but you will be required to enter additional information along with the dates and names of vaccines given.",
-    "ANONYMOUS": "Submit immunizations and additional information",
-    "LEARN_MORE": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Learn more</button> about what the Ontario Immunization ID and PIN are and where they can be found."
-  },
-  "welcomeSubmitterModal": {
-    "IMMUNIZATION_SUBMISSION_LABEL": "Who are you submitting immunizations for?",
-    "MYSELF": "Myself",
-    "DEPENDENT": "A Dependent"
-  },
-  "yellowCardDisplay": {
-    "SHOW_INFO": "Show Info",
-    "HIDE_INFO": "Hide Info",
-    "DATE_ESTIMATE": "Date is estimated",
-    "NO_IMMS": "No immunization records found in the Provincial Repository. <br /> Once immunization has been submitted and reviewed by your Public Health Unit they will appear here as a yellow card.",
-    "YMD": "YYYY-MM-DD",
-    "ADDITIONAL_INFO": "Additional Info",
-    "OTHER": "Other"
+  "welcomeSubmitterModal" : {
+      "IMMUNIZATION_SUBMISSION_LABEL" : "Who are you submitting immunizations for?",
+      "MYSELF" : "Myself",
+      "DEPENDENT" : "A Dependent"
   },
   "yellowCardRecommendations": {
     "HEADING": "Immunizations Needed",
-    "INTRO": "As recommended by the <a id='yellow-card-ontario-recommended' href='../../../img/Ontario-Immunization-Schedule-EN.pdf' target='_blank'>Ontario Immunization Schedule</a> you need immunizations to be protected against the following diseases:",
+    "INTRO": "As recommended by the Ontario Immunization Schedule you need immunizations to be protected against the following diseases",
     "NOTE": "Note: Immunizations needed may change if additional immunization information is submitted.",
-    "FOR_MORE_INFO": "For more information please visit <a href='https://www.ontario.ca/page/vaccines' target='_blank'>Ontario’s Ministry of Health and Long-Term Care Immunization page</a>.",
-    "PRINT_BUTTON": "Printable PDF Version of Immunization Record",
-    "YC_CAVEAT": "The information in the record above was pulled from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card. "
+    "FOR_MORE_INFO": "For more information please visit Ontario’s Health Immunization page.",
+    "PRINT_BUTTON": "Printable PDF Version of Immunization Record"
   },
+
   "MULTITENANCY": {
     "DEFAULT": {
       "PHU_NAME": "Blank PHU Name",
       "PHU_PHONE": "123-456-7890",
       "PHU_EMAIL": "email@phu.ca",
       "PHU_CONTACT_PERSON": "a Blank PHU nurse",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Blank PHU Name<br aria-hidden=\"true\" />123 Broadway Street E<br aria-hidden=\"true\" />Nowheresville, Ontario<br aria-hidden=\"true\" />L8L 8L8",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br />Blank PHU Name<br />123 Broadway Street E<br />Nowheresville, Ontario<br />L8L 8L8",
       "PHU_RESPONSE_TIME": "within 1-2 weeks",
       "PHU_PRIVACY_LINK": "#",
       "PHU_TOC_LINK": "#"
@@ -813,66 +548,50 @@
       "PHU_PHONE": "519-376-9420 or 1-800-263-3456",
       "PHU_EMAIL": "immunization@publichealthgreybruce.on.ca",
       "PHU_CONTACT_PERSON": "a Grey Bruce Public Health Unit nurse",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Grey Bruce Health Unit<br aria-hidden=\"true\" />101 17th Street East<br aria-hidden=\"true\" />Owen Sound, Ontario<br aria-hidden=\"true\" />N4K 0A5",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br />Grey Bruce Health Unit<br />101 17th Street East<br />Owen Sound, Ontario<br />N4K 0A5",
       "PHU_RESPONSE_TIME": "within 1 week",
       "PHU_PRIVACY_LINK": "https://www.publichealthgreybruce.on.ca",
-      "PHU_TOC_LINK": "https://www.publichealthgreybruce.on.ca/Terms-of-use",
-      "PHU_WEBSITE": "https://www.publichealthgreybruce.on.ca/"
+      "PHU_TOC_LINK": "https://www.publichealthgreybruce.on.ca/Terms-of-use"
     },
     "TPH": {
       "PHU_NAME": "Toronto Public Health",
       "PHU_PHONE": "416-392-1250",
       "PHU_EMAIL": "immunization@toronto.ca",
       "PHU_CONTACT_PERSON": "a Toronto Public Health nurse",
-      "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br aria-hidden=\"true\" />Toronto Public Health<br aria-hidden=\"true\" />277 Victoria Street, 4th Floor<br aria-hidden=\"true\" />Toronto, Ontario<br aria-hidden=\"true\" />M5B 1W2",
+      "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br />Toronto Public Health<br />277 Victoria Street, 4th Floor<br />Toronto, Ontario<br />M5B 1W2",
       "PHU_RESPONSE_TIME": "within 3-5 business days",
       "PHU_PRIVACY_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607",
-      "PHU_TOC_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607",
-      "PHU_WEBSITE": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD"
+      "PHU_TOC_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607"
     },
     "NWHU": {
       "PHU_NAME": "Northwestern Health Unit",
       "PHU_PHONE": "1-807-468-3147 or 1-800-830-5978",
       "PHU_EMAIL": "talkpublichealth@nwhu.on.ca",
       "PHU_CONTACT_PERSON": "a Vaccine Preventable Disease Public Health Nurse",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Northwestern Health Unit<br aria-hidden=\"true\" />210 First Street North<br aria-hidden=\"true\" />Kenora, Ontario<br aria-hidden=\"true\" />P9N 2K4",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br />Northwestern Health Unit<br />210 First Street North<br />Kenora, Ontario<br />P9N 2K4",
       "PHU_RESPONSE_TIME": "within 5 business days",
       "PHU_PRIVACY_LINK": "https://www.nwhu.on.ca/Pages/PrivacyStatement.aspx",
-      "PHU_TOC_LINK": "https://www.nwhu.on.ca/Pages/TermsandConditionsofUse.aspx",
-      "PHU_WEBSITE": "https://www.nwhu.on.ca/Pages/home.aspx"
+      "PHU_TOC_LINK": "https://www.nwhu.on.ca/Pages/TermsandConditionsofUse.aspx"
     },
     "HPH": {
       "PHU_NAME": "Hamilton Public Health Services",
       "PHU_PHONE": "905-540-5250",
       "PHU_EMAIL": "publichealth@hamilton.ca",
       "PHU_CONTACT_PERSON": "a Hamilton Public Health nurse",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Hamilton Public Health Services<br aria-hidden=\"true\" />110 King St. West, 2nd Floor<br aria-hidden=\"true\" />Hamilton, Ontario<br aria-hidden=\"true\" />L8P 4S6",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br />Hamilton Public Health Services<br />110 King St. West, 2nd Floor<br />Hamilton, Ontario<br />L8P 4S6",
       "PHU_RESPONSE_TIME": "within 5-7 business days",
       "PHU_PRIVACY_LINK": "https://www.hamilton.ca/government-information/site-policies/terms-use",
-      "PHU_TOC_LINK": "https://www.hamilton.ca/government-information/site-policies/terms-use",
-      "PHU_WEBSITE": "https://www.hamilton.ca/public-health"
+      "PHU_TOC_LINK": "https://www.hamilton.ca/government-information/site-policies/terms-use"
     },
     "NRPH": {
       "PHU_NAME": "Niagara Region Public Health Department",
       "PHU_PHONE": "905-688-3762 or 1-800-263-7248 Ext. 7324",
       "PHU_EMAIL": "PH_Administration@niagararegion.ca",
       "PHU_CONTACT_PERSON": "a Niagara Region Public Health Department nurse",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Niagara Region Public Health Department<br aria-hidden=\"true\" />",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br />Niagara Region Public Health Department<br />",
       "PHU_RESPONSE_TIME": "within 3 business days",
       "PHU_PRIVACY_LINK": "http://www.regional.niagara.on.ca/more/disclaimer/default.aspx?footer=1#Privacy",
-      "PHU_TOC_LINK": "http://www.regional.niagara.on.ca/more/disclaimer/default.aspx?footer=1#Privacy",
-      "PHU_WEBSITE": "http://www.niagararegion.ca/health/default.aspx"
-    },
-    "KFLA": {
-      "PHU_NAME": "Kingston, Frontenac and Lennox & Addington Public Health",
-      "PHU_PHONE": "613-549-1232 and 1-800-267-7875",
-      "PHU_EMAIL": "",
-      "PHU_CONTACT_PERSON": "a Kingston, Frontenac and Lennox & Addington Public Health nurse",
-      "PHU_ADDRESS": "<strong>Manager, CQI and Central Resources</strong><br aria-hidden=\"true\" />Kingston, Frontenac and Lennox & Addington Public Health<br aria-hidden=\"true\" />221 Portsmouth Avenue<br aria-hidden=\"true\" />Kingston, ON< aria-hidden=\"true\" />K7M 1V5",
-      "PHU_RESPONSE_TIME": "within 3 business days",
-      "PHU_PRIVACY_LINK": "https://www.kflaph.ca/en/index.aspx",
-      "PHU_TOC_LINK": "https://www.kflaph.ca/en/about-us/Disclaimer.aspx",
-      "PHU_WEBSITE" : "https://www.kflaph.ca/en/index.aspx"
+      "PHU_TOC_LINK": "http://www.regional.niagara.on.ca/more/disclaimer/default.aspx?footer=1#Privacy"
     }
   }
 }

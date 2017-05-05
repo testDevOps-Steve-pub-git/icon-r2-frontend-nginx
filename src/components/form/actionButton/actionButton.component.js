@@ -12,8 +12,8 @@
     controller: actionButtonController,
   };
 
-  actionButtonController.$inject = ['$uibModal', 'ImmunizationRecordService', '$timeout'];
-  function actionButtonController ($uibModal, ImmunizationRecordService, $timeout)  {
+  actionButtonController.$inject = ['$uibModal', 'ImmunizationRecordService', '$timeout', 'TokenHandler'];
+  function actionButtonController ($uibModal, ImmunizationRecordService, $timeout, TokenHandler)  {
     let submitterInfo = {};
 
     this.$onInit = () => {
@@ -30,6 +30,7 @@
      * @param path: auth for user entering OIID and pin, anon for user submitting anonymously
      */
     function openSubmitterModal(path) {
+      TokenHandler.clearTransactionToken();
       this.submitter.path = path;
       $uibModal.open({
         template: `<welcome-modal modal-data="$ctrl.modalData" $close="$close(result)"></welcome-modal>`,

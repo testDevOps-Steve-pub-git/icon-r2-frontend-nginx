@@ -52,7 +52,6 @@ angular.module('icon.components', [])
   .component('immunizationTypeahead' ,      require('./immunization/immunizationTypeahead/immunizationTypeahead.component.js'))
   .component('tradeLotDisplay',             require('./immunization/tradeLotDisplay/tradeLotDisplay.component.js'))
   .component('immunizationGating',          require('./immunization/immunizationGating/immunizationGating.component.js'))
-  .component('immunizationReviewDisplay',   require('./immunization/immunizationReviewDisplay/immunizationReviewDisplay.component.js'))
   .component('immunizationReviewContainer', require('./immunization/immunizationReviewDisplay/immunizationReviewContainer.component.js'))
   .component('immunizationLotInput',        require('./immunization/immunizationLotInput/immunizationLotInput.component.js'))
   .component('editImmunization',            require('./immunization/editImmunization/editImmunization.component.js'))
@@ -60,10 +59,12 @@ angular.module('icon.components', [])
   .component('immunizationsByAgent',        require('./immunization/byAgent/immunizationsByAgent/immunizationsByAgent.component.js'))
   .component('immunizationsGroupedByAgent',  require('./immunization/byAgent/immunizationsGroupedByAgent/immunizationsGroupedByAgent.component.js'))
   .component('immunizationDisplayByAgent',  require('./immunization/byAgent/immunizationDisplayByAgent/immunizationDisplayByAgent.component.js'))
+  .component('immunizationReviewDisplayAgent', require('./immunization/immunizationReviewDisplay/immunizationReviewDisplayAgent/immunizationReviewDisplayAgent.component.js'))
 // by Date
   .component('immunizationsByDate',         require('./immunization/byDate/immunizationsByDate/immunizationsByDate.component.js'))
   .component('immunizationsGroupedByDate',  require('./immunization/byDate/immunizationsGroupedByDate/immunizationsGroupedByDate.component.js'))
   .component('immunizationDisplayByDate',   require('./immunization/byDate/immunizationDisplayByDate/immunizationDisplayByDate.component.js'))
+  .component('immunizationReviewDisplayDate', require('./immunization/immunizationReviewDisplay/immunizationReviewDisplayDate/immunizationReviewDisplayDate.component.js'))
 /* End immunization components */
 
 /* Document components */

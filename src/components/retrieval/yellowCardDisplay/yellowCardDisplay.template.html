@@ -6,25 +6,29 @@ translate-compile>
 
 <div ng-show="!!$ctrl.yellowCardRows.length" class="icon-yc-table-container"  du-scroll-container>
   <table class="table icon-yc-table  icon-table-styling-imms" id="icon-yc-table-container">
+    <caption aria-label="{{ 'yellowCardDisplay.TABLE_CAPTION' | translate }}"
+     class="icon-screen-reader-visibility-only">
+    {{ 'yellowCardDisplay.TABLE_CAPTION' | translate }}
+    </caption>
     <thead>
       <tr>
-        <th class="icon-yc-date small">
+        <th class="icon-yc-date small" scope="col">
           {{'yellowCardDisplay.YMD' | translate}}
         </th>
 
-        <th class="icon-yc-disease-headers" ng-repeat="disease in $ctrl.yellowCardHeaders">
+        <th class="icon-yc-disease-headers" ng-repeat="disease in $ctrl.yellowCardHeaders" scope="col">
           <div>
             <span>{{disease.name}}</span>
           </div>
         </th>
 
-        <th class="icon-yc-disease-headers">
+        <th class="icon-yc-disease-headers" scope="col">
           <div>
             <span>{{'yellowCardDisplay.OTHER' | translate}}</span>
           </div>
         </th>
 
-        <th class="icon-yc-more-info">
+        <th class="icon-yc-more-info" scope="col">
           {{'yellowCardDisplay.ADDITIONAL_INFO' | translate}}
         </th>
       </tr>
@@ -40,6 +44,10 @@ translate-compile>
         <td ng-repeat="disease in $ctrl.yellowCardHeaders">
           <span ng-if="row.diseases.indexOf(disease.snomed) >= 0" class="text-primary">
             <span class="fa fa-check" aria-label="{{ disease.name }}"></span>
+            <span aria-label="yes" class="icon-screen-reader-visibility-only">Yes</span>
+          </span>
+          <span ng-if="row.diseases.indexOf(disease.snomed) < 0" class="text-primary">
+            <span aria-label="No" class="icon-screen-reader-visibility-only"> {{ disease.name }} No </span>
           </span>
         </td>
 
@@ -70,6 +78,10 @@ translate-compile>
         <td ng-repeat="disease in $ctrl.yellowCardHeaders">
           <span ng-if="imm.diseaseSnomeds.indexOf(disease.snomed) >= 0" class="text-primary">
             <span class="fa fa-check" aria-label="{{ disease.name }}"></span>
+            <span aria-label="yes" class="icon-screen-reader-visibility-only">Yes</span>
+          </span>
+          <span ng-if="imm.diseaseSnomeds.indexOf(disease.snomed) < 0" class="text-primary">
+            <span aria-label="No" class="icon-screen-reader-visibility-only"> {{ disease.name }} No </span>
           </span>
         </td>
 
@@ -104,9 +116,9 @@ translate-compile>
             <!-- End branded/trade title data. -->
 
             <div class="small" ng-if="imm.agent.diseases.length">
-              <diseases-display
-              diseases="imm.agent.diseases">
-              </diseases-display>
+              <span>
+                {{imm.agent.orderedDiseases}}
+              </span>
             </div>
 
             <div class="small">
@@ -132,12 +144,12 @@ translate-compile>
 
   <span class="fa-stack fa-2x icon-scroll-button-yc icon-btn-left" ng-click="$ctrl.scrollLeft()" aria-hidden="true">
       <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
-      <i class="fa fa-arrow-left fa-stack-1x"></i>
+      <i class="fa fa-chevron-left fa-stack-1x"></i>
   </span>
 
   <span class="fa-stack fa-2x icon-scroll-button-yc icon-btn-right" ng-click="$ctrl.scrollRight()" aria-hidden="true">
       <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
-      <i class="fa fa-arrow-right fa-stack-1x"></i>
+      <i class="fa fa-chevron-right fa-stack-1x"></i>
   </span>
 
 

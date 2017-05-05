@@ -11,10 +11,12 @@
    */
   function Lot (
     number,
-    expiry
+    expiry,
+    lotDisplayNumber
   ) {
     this.number = number || '';
     this.expiry = expiry || '';
+    this.lotDisplayNumber = lotDisplayNumber || '';
 
     this.clone = clone;
 
@@ -26,7 +28,8 @@
     function clone () {
       return new Lot(
         this.number,
-        this.expiry
+        this.expiry,
+        this.lotDisplayNumber
       );
     }
   }

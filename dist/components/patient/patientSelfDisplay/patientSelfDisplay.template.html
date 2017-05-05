@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.NAME' | translate }}</div>
+    <small>{{ 'patientSelfDisplay.NAME' | translate }}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -19,18 +19,18 @@
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.SEX' | translate }}</div>
+    <small>{{ 'patientSelfDisplay.SEX' | translate }}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
-      <span class="text-capitalize">{{$ctrl.clientInfo.gender}}</span>
+      <span>{{$ctrl.clientInfo.gender}}</span>
     </strong>
   </div>
 </div>
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{'patientSelfDisplay.BIRTHDATE' | translate}}</div>
+    <small>{{'patientSelfDisplay.BIRTHDATE' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -41,7 +41,7 @@
 
 <div class="row" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.HEALTH_CARD_NUMBER' | translate}}</div>
+    <small>{{ 'patientSelfDisplay.HEALTH_CARD_NUMBER' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -52,7 +52,7 @@
 
 <div class="row " ng-if="$ctrl.clientInfo.oiid != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.OIID' | translate}}</div>
+    <small>{{ 'patientSelfDisplay.OIID' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -63,7 +63,7 @@
 
 <div class="row" ng-if="$ctrl.clientInfo.schoolOrDayCare != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.DAYCARE' | translate}}</div>
+    <small>{{ 'patientSelfDisplay.DAYCARE' | translate}}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -74,19 +74,19 @@
 
 <div class="row">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.PHONE' | translate }}</div>
+    <small>{{ 'patientSelfDisplay.PHONE' | translate }}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
       <span>{{$ctrl.submitterInfo.phone1Number}}</span>
-      <span ng-if="$ctrl.submitterInfo.phone1Ext != ''"> {{ 'patientSelfDisplay.EXTENSION' | translate }} {{$ctrl.submitterInfo.phone1Ext}}</span>
+      <span ng-if="$ctrl.submitterInfo.phone1Ext != ''">Ext: {{$ctrl.submitterInfo.phone1Ext}}</span>
     </strong>
   </div>
 </div>
 
 <div class="row" ng-if="$ctrl.submitterInfo.email != ''">
   <div class="col-xs-12 text-left">
-    <div class="small text-uppercase">{{ 'patientSelfDisplay.EMAIL' | translate }}</div>
+    <small>{{ 'patientSelfDisplay.EMAIL' | translate }}</small>
   </div>
   <div class="col-xs-12 text-left">
     <strong>

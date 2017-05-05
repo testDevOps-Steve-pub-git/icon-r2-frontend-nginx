@@ -3,9 +3,9 @@
     autocomplete="off">
   <div class="row">
 
-    <div class="col-xs-12"><h1>{{ 'login.ENTER_OIID_PIN' | translate }}</h1></div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"><h1>{{ 'login.ENTER_OIID_PIN' | translate }}</h1></div>
 
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <p translate="login.OIID_MESSAGE"
       translate-values="{
         name_key : $ctrl.multitenancy.NAME_KEY,
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Retriever OIID -->
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <label for="retriever-OIID" aria-label="{{ 'login.YELLOWCARD_RETRIEVAL_LOGIN_OIID' | translate }}">{{'login.YELLOWCARD_RETRIEVAL_LOGIN_OIID' | translate}}</label>
 
       <input ng-required="true"
@@ -39,8 +39,8 @@
 
       <!-- OIID ERROR MESSAGE -->
       <div class="error-messages" ng-messages="retrieverForm.retrieverOIID.$error" ng-if="retrieverForm.retrieverOIID.$touched" role="alert">
-        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="required" translate='login.ERRORS.IS_REQUIRED' aria-label="{{ 'login.ERRORS.IS_REQUIRED' | translate }}"></div>
-        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="minlength" translate='login.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'login.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='login.ERRORS.IS_REQUIRED' aria-label="{{ 'login.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='login.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'login.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
       </div>
       <!-- End OIID ERROR MESSAGE -->
     </div>
@@ -50,7 +50,7 @@
 
   <!-- Retriever Pin -->
   <div class="row">
-    <div class="form-group col-xs-12">
+    <div class="form-group col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <label for="retriever-Pin" class="required" aria-label="{{ 'login.YELLOWCARD_RETRIEVAL_LOGIN_PIN' | translate }}">{{'login.YELLOWCARD_RETRIEVAL_LOGIN_PIN' | translate}}</label>
 
       <input type="password"
@@ -65,8 +65,8 @@
              />
       <!-- PIN ERROR MESSAGE -->
       <div class="error-messages" ng-messages="retrieverForm.retrieverPin.$error" ng-if="retrieverForm.retrieverPin.$touched" role="alert">
-        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="required" translate='login.ERRORS.IS_REQUIRED' aria-label="{{ 'login.ERRORS.IS_REQUIRED' | translate }}"></div>
-        <div class="alert alert-danger col-xs-12 col-sm-6" ng-message="minlength" translate='login.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'login.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='login.ERRORS.IS_REQUIRED' aria-label="{{ 'login.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='login.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'login.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
       </div>
       <!-- End PIN ERROR MESSAGE -->
     </div>
@@ -75,7 +75,7 @@
 
   <!--Login-->
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <button class="col-xs-12 btn btn-primary" ng-disabled="retrieverForm.$invalid" ng-click="$ctrl.submit()">{{ 'login.SUBMIT' | translate }}</button>
     </div>
   </div>

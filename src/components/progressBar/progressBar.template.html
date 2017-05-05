@@ -14,29 +14,29 @@
             ng-class="{
               'btn-primary': ($ctrl.currentIndex() >= $ctrl.progressStates.indexOf(state)),
               'btn-lg': $ctrl.isSrefActive(state.sref)
-            }"  aria-label="{{state.title | translate}}">
+            }" >
               <!-- If active state, show the special glyph, and apply bigger circle styles. -->
-              <span ng-if="$ctrl.isSrefActive(state.sref)" ng-class="state.glyph"></span>
+              <span ng-if="$ctrl.isSrefActive(state.sref)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
               <!-- If NOT active state... -->
               <span ng-if="!$ctrl.isSrefActive(state.sref)">
                 <!-- If it is listed as visited, then show a checkmark glyph. -->
-                <span ng-if="$ctrl.isVisitedState(state)" class="fa fa-check"></span>
+                <span ng-if="$ctrl.isVisitedState(state)" class="fa fa-check" aria-label="{{state.title | translate}}"></span>
                 <!-- If NOT listed as visited, then show the step number instead. -->
-                <span ng-if="!$ctrl.isVisitedState(state)">{{$ctrl.progressStates.indexOf(state) + 1}}</span>
+                <span ng-if="!$ctrl.isVisitedState(state)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
               </span>
             </span>
+            <br />
+            <div ng-if="$ctrl.isSrefActive(state.sref)" id="icon-progress-status-label" class="text-center text-primary">
+              <span>{{state.title | translate}}</span>
+            </div>
+
+            <div ng-if="!$ctrl.isSrefActive(state.sref)" id="icon-progress-status-label" class="text-center">
+              <span>{{state.title | translate}}</span>
+            </div>
+
           </li>
         </ul>
-
-        <div id="icon-progress-status-label" class="text-center text-primary"
-          ng-style="{
-            'padding-left': ((100 / $ctrl.progressStates.length) * $ctrl.progressStates.indexOf($ctrl.currentState()))+'%',
-            'padding-right': ((100 / $ctrl.progressStates.length) * ($ctrl.progressStates.length - $ctrl.progressStates.indexOf($ctrl.currentState()) - 1))+'%'
-          }" aria-hidden="true">
-          {{ $ctrl.currentState().title | translate}}
-        </div>
       </div>
-
     </div>
   </div>
 </div>

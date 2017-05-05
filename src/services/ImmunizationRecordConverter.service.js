@@ -58,15 +58,18 @@
           }
         ],
         'gender':     patient.gender.toLowerCase(),
-        'birthDate':  moment(patient.dateOfBirth).format('YYYY-MM-DD'),
-        'contact': [
+        'birthDate':  moment(patient.dateOfBirth).format('YYYY-MM-DD')
+      };
+
+      if(schoolId){
+        patientResource.contact = [
           {
             'organization': {
               'reference': `#${schoolId}`
             }
           }
         ]
-      };
+      }
 
       let patientResourceIdentifier = [];
       if (patient.healthCardNumber) patientResourceIdentifier.push({
@@ -244,7 +247,7 @@
           'patient': { 'reference': `#${patientId}` },
           'wasNotGiven': false,
           'reported': true,
-          'lotNumber': imm.agent.lotNumber,
+          'lotNumber': imm.lot.number,
           'note': [{ 'text': imm.provider }]
         }
       };
@@ -274,9 +277,15 @@
     function convertToFhir (record) {
       if (!record) throw new Error('A valid ImmunizationRecordService is required to convert to FHIR.');
 
+      let patient = record.getPatient();
+      let isSchoolInfoPopulated = (
+           !!patient.schoolOrDayCare
+        && !!patient.schoolOrDayCareIdentifier
+      );
+
       const PHU_ID =        'Organization/2';
       const PATIENT_ID =    'Patient/1';
-      const SCHOOL_ID =     'Organization/1';
+      const SCHOOL_ID =     isSchoolInfoPopulated ? 'Organization/1' : null;
       const SUBMITTER_ID =  'RelatedPerson/1';
 
       let communication = {
@@ -305,11 +314,6 @@
       };
 
       // Only add the school if the submission has that info populated.
-      let patient = record.getPatient();
-      let isSchoolInfoPopulated = (
-           patient.schoolOrDayCare
-        && patient.schoolOrDayCareIdentifier
-      );
       if (isSchoolInfoPopulated) communication.contained.push(createSchool(record, SCHOOL_ID));
 
       return communication;

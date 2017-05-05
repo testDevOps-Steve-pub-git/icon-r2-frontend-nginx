@@ -95,6 +95,11 @@
         updateImmunizationGroups();
       };
 
+
+      /**
+       * Validate that the user has entered at least one immunization, set immunizations to model
+       * @returns {boolean}: Returns true if user has entered at least one immunization
+       */
       this.validateImmunizations = () => {
         if (this.immunizations.length > 0) {
           ImmunizationRecordService.setNewImmunizations(this.immunizations);

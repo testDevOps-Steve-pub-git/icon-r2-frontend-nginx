@@ -7,60 +7,39 @@
 'use strict';
 
   module.exports = {
-    template: `
-      <div ng-repeat="immunizationGroup in $ctrl.immunizationGroups track by $index">
-        <immunization-review-display
-          immunizations="immunizationGroup.immunizations"
+    template: `      
+      <div ng-if="$ctrl.groupByDisplay === 'date'" ng-repeat="immunizations in $ctrl.immunizationsGroupedByDate track by $index">
+        <immunization-review-display-date
+          immunizations="immunizations"
           patient="$ctrl.patient">
-        </immunization-review-display>
+        </immunization-review-display-date>
+      </div>
+      
+      <div ng-if="$ctrl.groupByDisplay === 'agent'" ng-repeat="immunizations in $ctrl.immunizationsGroupedByAgent track by $index">
+        <immunization-review-display-agent
+          immunizations="immunizations"
+          patient="$ctrl.patient">
+        </immunization-review-display-agent>
       </div>
     `,
     bindings: {
       immunizations: '<',
-      patient: '<'
+      patient: '<',
     },
     controller: immunizationReviewDisplayController
   };
  
-  immunizationReviewDisplayController.$inject = ['ImmunizationGroup'];
-  function immunizationReviewDisplayController(ImmunizationGroup) {
+  immunizationReviewDisplayController.$inject = ['ImmunizationGroup', 'GatingQuestionService', 'GroupsOf'];
+  function immunizationReviewDisplayController(ImmunizationGroup, GatingQuestionService, GroupsOf) {
 
     this.$onInit = ()=> {
-      this.immunizationGroups = generateGroupedImmunizations(this.immunizations);
+      /* Grouping choice */
+      let gatingQuestions = GatingQuestionService.getGatingChoices();
+      this.groupByDisplay = gatingQuestions.question4Choice;
+
+      this.immunizationsGroupedByAgent = GroupsOf.immunization.byAgentTrade(this.immunizations);
+      this.immunizationsGroupedByDate = GroupsOf.immunization.byDate(this.immunizations);
     };
-
-    function generateGroupedImmunizations (immunizations) {
-      // Creates empty unique ImmunizationGroups by plucking unique dates.
-      let toUniqueGroups = (accum, current, index, collection) => {
-        let groupExists = (0 <= accum.findIndex(
-          (immGroup) => immGroup.title === current.date
-        ));
-        if (!groupExists) accum.push(new ImmunizationGroup(current.date));
-        return accum;
-      };
-
-      // Populates Immunizations to the ImmunizationGroup with a matching date (as title).
-      let ungrouped = immunizations;
-      let toGroupedImmunizations = (emptyGroup) => {
-        let clonedGroup = emptyGroup.clone();
-        clonedGroup.immunizations = ungrouped
-          .filter((imm) => imm.date === emptyGroup.title);
-        return clonedGroup;
-      };
-
-      let orderByDateAsc = (a, b) => {
-        if (a.title > b.title) return 1;
-        else if (b.title > a.title) return -1;
-        return 0;
-      };
-
-      let orderByDateDesc = (a, b) => -orderByDateAsc(a, b);
-
-      return immunizations
-        .reduce(toUniqueGroups, [])
-        .map(toGroupedImmunizations)
-        .sort(orderByDateAsc);
-    }
   }
 
 })();
