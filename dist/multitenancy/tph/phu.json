@@ -9,5 +9,6 @@
     "TOC_LINK_KEY":         "MULTITENANCY.TPH.PHU_TOC_LINK",
     "ICON_PHU_ACRONYM":     "tph",
     "PHIX_PHU_NAME":        "Toronto Public Health",
-    "PHIX_PHU_CODE":        "55"
+    "PHIX_PHU_CODE":        "55",
+    "WEBSITE_KEY":          "MULTITENANCY.TPH.PHU_WEBSITE"
 }

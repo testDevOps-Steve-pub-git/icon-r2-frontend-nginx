@@ -13,23 +13,19 @@
 
   <!-- Rural Route -->
   <div class="col-sm-8">
-    <span>{{$ctrl.addressInfo.ruralRoute}}</span>
-    <span>{{$ctrl.addressInfo.station}}</span>
+    <span ng-if="$ctrl.addressInfo.postBox!== ''">{{'addressPOBox.POBOX' | translate}} {{$ctrl.addressInfo.postBox}} </span>
+    <span ng-if="$ctrl.addressInfo.retailPostOffice!== ''">{{$ctrl.addressInfo.retailPostOffice}}</span>
+    <span ng-if="$ctrl.addressInfo.ruralRoute!== ''">{{'addressRural.RURAL_ROUTE' | translate}} {{$ctrl.addressInfo.ruralRoute}}</span>
+    <span ng-if="$ctrl.addressInfo.station!== ''">{{'addressRural.STATION_ROUTE' | translate}} {{$ctrl.addressInfo.station}}</span>
   </div>
   <div class="col-sm-8">
     <span>{{$ctrl.addressInfo.line2}}</span>
   </div>
   <!-- End Rural Route -->
 
-  <!-- POBox -->
-  <div class="col-sm-8">
-    <span>{{$ctrl.addressInfo.postBox}}</span>
-    <span>{{$ctrl.addressInfo.retailPostOffice}}</span>
-    <span>{{$ctrl.addressInfo.station}}</span>
-  </div>
 
   <div class="col-sm-8">
-    <span>{{$ctrl.addressInfo.city}}</span>
+    <span>{{$ctrl.addressInfo.city}}, </span>
     <span>{{$ctrl.addressInfo.province}}</span>
   </div>
 

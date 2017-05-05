@@ -9,5 +9,6 @@
     "TOC_LINK_KEY":         "MULTITENANCY.HPH.PHU_TOC_LINK",
     "ICON_PHU_ACRONYM":     "hph",
     "PHIX_PHU_NAME":        "Hamilton Public Health & Social Services",
-    "PHIX_PHU_CODE":        "20"
+    "PHIX_PHU_CODE":        "20",
+    "WEBSITE_KEY":          "MULTITENANCY.HPH.PHU_WEBSITE"
 }

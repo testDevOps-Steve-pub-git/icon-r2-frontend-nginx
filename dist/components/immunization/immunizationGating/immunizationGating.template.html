@@ -1,131 +1,229 @@
 <!-- Gating question 1 -->
-<div class="row" ng-show="$ctrl.gatingQuestion >= 1">
-  <div class="col-xs-12">
-    <h4>{{ 'immunizationGating.QUESTION_1' | translate }}</h4>
-    <p translate="immunizationGating.RECEIVED_LETTER"
-  translate-values="{ phuName : '{{$ctrl.multitenancy.NAME_KEY | translate}}' }"
-    translate-compile>
-    </p>
-  </div>
-  <div id="question-1-options" class="btn-group col-xs-12">
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question1Choice"
-            name="question1Choice"
-            uib-btn-radio="'Yes'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(1, true)"
-            id="question-1-yes">
-      {{ 'immunizationGating.YES' | translate }}
-    </button>
+<!-- Collapsed -->
+<uib-accordion close-others="false" ng-show="$ctrl.gatingQuestion >= 1" class="icon-gating-collapse">
+  <div uib-accordion-group  is-open="$ctrl.gating1Expand">
+    <uib-accordion-heading>
+      <h4 ng-if="!$ctrl.gating1Expand" ng-click="!$ctrl.gating1Collapse">
+        <span translate="immunizationGating.COLLAPSED_1"></span>
+        <span class="icon-gating-collapse-link">
+          <span ng-if="$ctrl.question1Choice !== ''">({{$ctrl.question1Choice}})</span>
+          <span class="fa fa-chevron-down pull-right" aria-hidden="true"></span>
+        </span>
+      </h4>
 
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question1Choice"
-            name="question1Choice"
-            uib-btn-radio="'No'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(2, false)"
-            id="question-1-no">
-      {{ 'immunizationGating.NO' | translate }}
-    </button>
+      <div ng-if="$ctrl.gating1Expand" >
+        <span class="icon-gating-collapse fa fa-chevron-up pull-right" aria-hidden="true"></span>
+        <span id="received_letter" translate="immunizationGating.RECEIVED_LETTER"
+           translate-values="{ phuName : '{{$ctrl.multitenancy.NAME_KEY | translate}}' }"
+           translate-compile>
+        </span>
+      </div>
+    </uib-accordion-heading>
+
+    <div id="question-1-options" class="col-xs-12" role="group" tabindex="0" aria-labelledby="received_letter" aria-describedby="received_letter">
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question1Choice"
+               value="{{$ctrl.yes}}"
+               ng-model="$ctrl.question1Choice"
+               ng-change="$ctrl.gatingQuestionChange(1, false, 1)"
+               id="immunizations-first-yes-button"/>
+        <label for="immunizations-first-yes-button">{{ 'immunizationGating.YES' | translate }}</label>
+      </div>
+
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question1Choice"
+               value="{{$ctrl.no}}"
+               ng-model="$ctrl.question1Choice"
+               ng-change="$ctrl.gatingQuestionChange(2, false, 1)"
+               id="immunizations-first-no-button"/>
+        <label for="immunizations-first-no-button">{{ 'immunizationGating.NO' | translate }}</label>
+      </div>
+    </div>
   </div>
-</div>
-<hr ng-show="$ctrl.gatingQuestion >= 1" />
+</uib-accordion>
 <!-- End Gating question 1 -->
 
 
 <!-- Gating question 2 -->
-<div class="row" ng-show="$ctrl.gatingQuestion >= 2">
-  <div class="col-xs-12">
-    <h4>{{ 'immunizationGating.QUESTION_2' | translate }}</h4>
-    <p translate="immunizationGating.IMMUNIZATIONS_RECEIVED_ONTARIO" translate-compile>
-    </p>
-  </div>
-  <div id="question-2-options" class="btn-group col-xs-12">
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question2Choice"
-            name="question2Choice"
-            uib-btn-radio="'Yes'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(2, true)"
-            id="question-2-yes">
-      {{ 'immunizationGating.YES' | translate }}
-    </button>
+<uib-accordion ng-show="$ctrl.gatingQuestion >= 1 && $ctrl.question1Choice !== ''" class="icon-gating-collapse">
+  <div uib-accordion-group  is-open="$ctrl.gating2Expand">
+    <uib-accordion-heading>
+      <h4 ng-if="!$ctrl.gating2Expand" ng-click="!$ctrl.gating2Expand">
+        {{'immunizationGating.COLLAPSED_2' | translate}}
+        <span class="icon-gating-collapse-link">
+          <span ng-if="$ctrl.question2Choice !== ''">({{$ctrl.question2Choice}})</span>
+          <span class="fa fa-chevron-down pull-right" aria-hidden="true"></span>
+        </span>
+      </h4>
 
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question2Choice"
-            name="question2Choice"
-            uib-btn-radio="'No'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(3, false)"
-            id="question-2-no">
-      {{ 'immunizationGating.NO' | translate }}
-    </button>
+      <div ng-if="$ctrl.gating2Expand" >
+        <span class="icon-gating-collapse fa fa-chevron-up pull-right" aria-hidden="true"></span>
+        <span id="received_letter"  translate="immunizationGating.IMMUNIZATIONS_RECEIVED_ONTARIO" translate-compile>
+        </span>
+      </div>
+    </uib-accordion-heading>
 
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question2Choice"
-            name="question2Choice"
-            uib-btn-radio="'Unsure'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(3, false)"
-            id="question-2-unsure">
-      {{ 'immunizationGating.UNSURE' | translate }}
-    </button>
+    <div id="question-2-options" class="col-xs-12" role="group" tabindex="0" aria-labelledby="ontario_immu_received" aria-describedby="ontario_immu_received">
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question2Choice"
+               value="{{$ctrl.yes}}"
+               ng-model="$ctrl.question2Choice"
+               ng-change="$ctrl.gatingQuestionChange(2, true, 2)"
+               id="immunizations-second-yes-button"/>
+        <label for="immunizations-second-yes-button">{{ 'immunizationGating.YES' | translate }}</label>
+      </div>
+
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question2Choice"
+               value="{{$ctrl.no}}"
+               ng-change="$ctrl.gatingQuestionChange(3, false, 2)"
+               ng-model="$ctrl.question2Choice"
+               id="immunizations-second-no-button"/>
+        <label for="immunizations-second-no-button">{{ 'immunizationGating.NO' | translate }}</label>
+      </div>
+
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question2Choice"
+               value="{{$ctrl.unsure}}"
+               ng-change="$ctrl.gatingQuestionChange(3, false, 2)"
+               ng-model="$ctrl.question2Choice"
+               id="immunizations-second-unsure-button"/>
+        <label for="immunizations-second-unsure-button">{{ 'immunizationGating.UNSURE' | translate }}</label>
+      </div>
+    </div>
   </div>
-</div>
-<hr ng-show="$ctrl.gatingQuestion >= 2" />
+</uib-accordion>
 <!-- End Gating question 2 -->
 
-
 <!-- Gating question 3 -->
-<div class="row" ng-show="$ctrl.gatingQuestion >= 3">
-  <div class="col-xs-12">
-    <h4>{{ 'immunizationGating.QUESTION_3' | translate }}</h4>
-    <p translate="immunizationGating.IMMUNIZATIONS_RECEIVED_CANADA" translate-compile>
-    </p>
+<uib-accordion ng-show="$ctrl.gatingQuestion >= 1 && $ctrl.question2Choice !== '' && $ctrl.question2Choice !== '{{$ctrl.yes}}'" class="icon-gating-collapse">
+  <div uib-accordion-group  is-open="$ctrl.gating3Expand">
+    <uib-accordion-heading>
+      <h4 ng-if="!$ctrl.gating3Expand" ng-click="!$ctrl.gating3Expand">
+        {{'immunizationGating.COLLAPSED_3' | translate}}
+        <span class="icon-gating-collapse-link">
+          <span ng-if="$ctrl.question3Choice !== ''">({{$ctrl.question3Choice}})</span>
+          <span class="fa fa-chevron-down pull-right" aria-hidden="true"></span>
+        </span>
+      </h4>
+
+      <div ng-if="$ctrl.gating3Expand" >
+        <span class="icon-gating-collapse fa fa-chevron-up pull-right" aria-hidden="true"></span>
+        <span id="received_letter"  translate="immunizationGating.IMMUNIZATIONS_RECEIVED_CANADA" translate-compile>
+        </span>
+      </div>
+    </uib-accordion-heading>
+
+    <div id="question-3-options" class="col-xs-12" role="group" tabindex="0" aria-labelledby="canada_immu_received" aria-describedby="canada_immu_received">
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question3Choice"
+               value="{{$ctrl.yes}}"
+               ng-model="$ctrl.question3Choice"
+               ng-change="$ctrl.gatingQuestionChange(3, true, 3)"
+               id="immunizations-third-yes-button" />
+        <label for="immunizations-third-yes-button">{{ 'immunizationGating.YES' | translate }}</label>
+
+      </div>
+
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question3Choice"
+               value="{{$ctrl.no}}"
+               ng-change="$ctrl.gatingQuestionChange(4, true, 3)"
+               ng-model="$ctrl.question3Choice"
+               id="immunizations-third-no-button"/>
+        <label for="immunizations-third-no-button">{{ 'immunizationGating.NO' | translate }}</label>
+      </div>
+
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question3Choice"
+               value="{{$ctrl.unsure}}"
+               ng-change="$ctrl.gatingQuestionChange(4, true, 3)"
+               ng-model="$ctrl.question3Choice"
+               id="immunizations-third-unsure-button"/>
+        <label for="immunizations-third-unsure-button">{{ 'immunizationGating.UNSURE' | translate }}</label>
+      </div>
+    </div>
   </div>
-  <div id="question-3-options" class="btn-group col-xs-12">
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question3Choice"
-            name="question3Choice"
-            uib-btn-radio="'Yes'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(3, true)"
-            id="question-3-yes">
-      {{ 'immunizationGating.YES' | translate }}
-    </button>
+</uib-accordion>
+<!-- End Gating question 3 -->
 
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question3Choice"
-            name="question3Choice"
-            uib-btn-radio="'No'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(4, true)"
-            id="question-3-no">
-      {{ 'immunizationGating.NO' | translate }}
-    </button>
+<!-- Gating question 4 -->
+<uib-accordion ng-show="$ctrl.gatingQuestion >= 2 && $ctrl.question3Choice !== '' || $ctrl.question2Choice === '{{$ctrl.yes}}'" class="icon-gating-collapse">
+  <div uib-accordion-group  is-open="$ctrl.gating4Expand">
+    <uib-accordion-heading>
+      <h4 ng-if="!$ctrl.gating4Expand" ng-click="!$ctrl.gating4Expand">
+        {{'immunizationGating.COLLAPSED_4' | translate}}
+        <span class="icon-gating-collapse-link">
+          <span ng-if="$ctrl.question4Choice == 'date'">({{'immunizationGating.GROUP_BY_DATE' | translate}})</span>
+          <span ng-if="$ctrl.question4Choice == 'agent'">({{'immunizationGating.GROUP_BY_IMM' | translate}})</span>
+          <span class="fa fa-chevron-down pull-right" aria-hidden="true"></span>
+        </span>
+      </h4>
 
-    <button class="btn btn-info col-xs-2 gating-button"
-            ng-model="$ctrl.question3Choice"
-            name="question3Choice"
-            uib-btn-radio="'Unsure'"
-            ng-required="true"
-            ng-change="$ctrl.gatingQuestionChange(4, true)"
-            id="question-3-unsure">
-      {{ 'immunizationGating.UNSURE' | translate }}
-    </button>
+      <div ng-if="$ctrl.gating4Expand" >
+        <span class="fa fa-chevron-up pull-right" aria-hidden="true"></span>
+        <span id="received_letter"  translate="immunizationGating.IMMUNIZATIONS_GROUPED_BY" translate-compile></span>
+      </div>
+    </uib-accordion-heading>
+
+
+    <div id="question-4-options" class="col-xs-12" role="group" tabindex="0" aria-labelledby="immu_grouped_by" aria-describedby="immu_grouped_by">
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question4Choice"
+               value="date"
+               ng-model="$ctrl.question4Choice"
+               ng-change="$ctrl.displayImmunizationInput()"
+               id="immunizations-fourth-groupbydate-button"/>
+        <label for="immunizations-fourth-groupbydate-button">{{ 'immunizationGating.GROUP_BY_DATE' | translate }}</label>
+
+        <div uib-alert tabindex="0" aria-labelledby="example-group-by-date" class="alert alert-info">
+          <h4 class="alert-heading">2012-03-26</h4>
+          <span translate="schedule.DTAP-IPV-HIB"></span><br aria-hidden="true"/>
+          <span translate="schedule.PNEU-C"></span><br aria-hidden="true"/>
+          <span translate="schedule.ROTA-1"></span>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <input type="radio"
+               class="col-xs-1"
+               name="question4Choice"
+               value="agent"
+               ng-model="$ctrl.question4Choice"
+               ng-change="$ctrl.displayImmunizationInput()"
+               id="immunizations-fourth-groupbyimm-button"/>
+        <label for="immunizations-fourth-groupbyimm-button">{{ 'immunizationGating.GROUP_BY_IMM' | translate }}</label>
+
+        <div uib-alert tabindex="0" aria-labelledby="example-group-by-immunization" class="alert alert-info">
+          <h4 class="alert-heading" translate="schedule.DTAP-IPV-HIB"></h4>
+          <span>2012-03-26</span><br aria-hidden="true"/>
+          <span>2012-05-21</span><br aria-hidden="true"/>
+          <span>2012-07-17</span>
+        </div>
+      </div>
+    </div>
   </div>
+</uib-accordion>
+<!-- End Gating question 4 -->
+
+<div ng-if="$ctrl.displayImmunizations ">
+  <immunization-input display-mode="$ctrl.question4Choice"></immunization-input>
 </div>
-<hr ng-show="$ctrl.gatingQuestion >= 3" />
-  <!-- End Gating question 3 -->
-
-
-
-<div ng-if="$ctrl.displayImmunizations">
-  <immunization-input></immunization-input>
-</div>
-
-<style>
-  .gating-button {
-    margin-right: 1em;
-  }
-</style>

@@ -1,54 +1,22 @@
-<nav id="icon-phu-header" class="navbar navbar-default navbar-fixed-top">
+<nav id="icon-phu-header" class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="row">
-      <div class="col-xs-3 col-sm-3">
-        <img src="./phu/logo_en.gif" alt="{{$ctrl.multitenancy.NAME_KEY | translate}}" />
-      </div>
+      <div class="col-xs-12">
+        <div id="icon-phu-header-brand" class="pull-left">
+          <img src="./phu/logo-en.png" alt="{{$ctrl.multitenancy.NAME_KEY | translate}}" />
+        </div>
 
-      <div id="icon-phu-header-title" class="col-xs-6 col-sm-6 text-center">
-        {{$ctrl.multitenancy.NAME_KEY | translate}}
-      </div>
+        <div id="icon-phu-header-title" class="pull-left visible-sm visible-md visible-lg">
+          <a id="icon-phu-header-link" class="btn btn-link skip" href="{{$ctrl.multitenancy.WEBSITE_KEY | translate}}">
+            {{$ctrl.multitenancy.NAME_KEY | translate}}
+          </a>
+        </div>
 
-      <div class="col-xs-3 col-sm-3 text-right">
-        <button class="btn-link btn-home"ng-if="!$ctrl.isCurrentStateWelcome()" ng-click="$ctrl.returnHome()">{{'phuHeader.RETURN_HOME' | translate}}</button>
-        <language-selector ng-if="$ctrl.isCurrentStateWelcome()"></language-selector>
+        <div id="icon-translate-button" class="pull-right">
+          <a class="btn-link btn-home skip" ng-if="!$ctrl.isCurrentStateWelcome()" ui-sref="welcome" aria-label="{{'phuHeader.RETURN_HOME' | translate}}">{{'phuHeader.RETURN_HOME' | translate}}</a>
+          <language-selector ng-if="$ctrl.isCurrentStateWelcome()"></language-selector>
+        </div>
       </div>
     </div>
   </div>
 </nav>
-
-<style>
-  #icon-phu-header { background-color: #e0e1e5; border: none; border-radius: none; border-bottom: 7px solid #f5f5f5; margin: 0; padding: 0; }
-  .btn-home{
-   color: #428bca !important;
-  }
-
-  @media (min-width: 1px) {
-    body { margin-top: 60px; }
-    #icon-phu-header div { height: 40px; }
-    #icon-phu-header div img { width: 40px; height: 40px; }
-    #icon-phu-header-title { padding-top: 0px; font-size: 14px; }
-    #icon-phu-header div.text-right { padding-top: 15px; }
-  }
-  @media (min-width: 767px) {
-    body { margin-top: 80px; }
-    #icon-phu-header div img { width: 40px; height: 40px; }
-    #icon-phu-header-title { padding-top: 0px; font-size: 21px; }
-    #icon-phu-header div.text-right { padding-top: 15px; }
-  }
-  @media (min-width: 992px) {
-    body { margin-top: 100px; }
-    #icon-phu-header div { height: 80px; }
-    #icon-phu-header div img { width: 80px; height: 80px; }
-    #icon-phu-header-title {  padding-top: 15px; font-size: 25px; }
-    #icon-phu-header div.text-right { padding-top: 45px; }
-  }
-  @media (min-width: 1200px) {
-    body { margin-top: 100px; }
-    #icon-phu-header div { height: 80px; }
-    #icon-phu-header div img { width: 80px; height: 80px; }
-    #icon-phu-header-title {  padding-top: 15px; font-size: 28px; }
-    #icon-phu-header div.text-right { padding-top: 45px; }
-  }
-
-</style>

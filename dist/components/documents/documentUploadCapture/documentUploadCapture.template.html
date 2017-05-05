@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>{{'documentCapture.DOCUMENTS_LABEL' | translate}}</h1>
+  <h1 class="col-xs-12">{{'documentCapture.DOCUMENTS_LABEL' | translate}}</h1>
 
   <div class="col-xs-12">
     {{ 'documentCapture.INSTRUCTIONS_0' | translate }}
@@ -8,49 +8,64 @@
 <hr />
 
 <div class="row">
-  <h3>{{ 'documentCapture.SUBHEADER_1' | translate }}</h3>
+  <h3 class="col-xs-12">{{ 'documentCapture.SUBHEADER_1' | translate }}</h3>
   <div class="col-xs-12">
-    <span>
-      <img src="./img/doc-yellow-card.png" alt="Yellow_Card" />
-    </span>
-    <span>{{ 'documentCapture.YELLOWCARD_PHOTO' | translate}}</span>
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-4">
+      <span>
+        <img src="./img/doc-yellow-card.png" alt="Yellow_Card" />
+      </span>
+    </div>
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-8 col-xs-8">
+      <span>{{ 'documentCapture.YELLOWCARD_PHOTO' | translate}}</span>
+    </div>
   </div>
+  <div class="col-xs-12"><h4/></div>
   <div class="col-xs-12">
-    <span>
-      <img src="./img/doc-doc.png" alt="Document_Image"/>
-    </span>
-    <span> {{ 'documentCapture.INSTRUCTIONS_1' | translate }}</span>
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-4">
+      <span>
+        <img src="./img/doc-doc.png" alt="Document_Image"/>
+      </span>
+    </div>
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-8 col-xs-8">
+      <span> {{ 'documentCapture.INSTRUCTIONS_1' | translate }}</span>
+    </div>
   </div>
 </div>
 
 <hr />
 
 <div class="row">
-  <h3>{{ 'documentCapture.SUBHEADER_2' | translate }}</h3>
-  <p>{{ 'documentCapture.INSTRUCTIONS_2' | translate }}</p>
+  <h3 class="col-xs-12">{{ 'documentCapture.SUBHEADER_2' | translate }}</h3>
+  <p class="col-xs-12">{{ 'documentCapture.INSTRUCTIONS_2' | translate }}</p>
 </div>
 <hr />
 
 <div class="row">
-  <h3>{{ 'documentCapture.SUBHEADER_3' | translate }}</h3>
-  <p translate="documentCapture.UPLOAD_NOTES"></p>
+  <h3 class="col-xs-12">{{ 'documentCapture.SUBHEADER_3' | translate }}</h3>
+  <p class="col-xs-12" translate="documentCapture.UPLOAD_NOTES"></p>
 </div>
 
 <hr />
 
 <div class="row">
   <!-- Upload Documents -->
-  <div class="form-group col-xs-12 col-md-10 col-md-offset-1" ng-if="$ctrl.uploader">
+  <div class="form-group col-xs-12" ng-if="$ctrl.uploader">
 
-    <span class="text-center center-block" >
+    <document-upload-display is-editable="true"></document-upload-display>
+    <span role="contentinfo" aria-labelledby="fileUploadDescription">
       <input class="sr-only" id="documents-file-upload-button" tabindex="-1" name="fileUpload" type="file" nv-file-select="" accept="{{$ctrl.acceptFileExtensions}}" uploader="$ctrl.uploader" multiple/>
 
-      <label aria-role="button" tabindex="0" ng-enter for="documents-file-upload-button" class="btn btn-info btn-lg">
-        <span class="glyphicon glyphicon-open" aria-hidden="true"></span> <span>{{'documentCapture.UPLOAD_BUTTON' | translate}}</span>
+      <label aria-role="button" tabindex="0" ng-enter for="documents-file-upload-button" class="btn btn-primary btn-lg pull-left">
+        <span class="fa fa-open" aria-hidden="true"></span> <span>{{'documentCapture.UPLOAD_BUTTON' | translate}}</span>
       </label>
     </span>
+  </div>
+</div>
 
-    <p translate="documentCapture.FILE_TYPES"></p>
+<div class="row">
+  <div class="form-group col-xs-12">
+
+    <p class="pull-left" id="fileUploadDescription" translate="documentCapture.FILE_TYPES"></p>
 
     <div class="row">
       <span class="col-xs-12 alert alert-danger" ng-if="!!$ctrl.uploaderState.status" role="alert">
@@ -60,5 +75,4 @@
   </div>
   <!-- End Upload Documents -->
 
-  <document-upload-display is-editable="true"></document-display>
 </div>

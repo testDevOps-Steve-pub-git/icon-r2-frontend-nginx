@@ -3,9 +3,9 @@
 </div>
 
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
-    <small>{{'submitterDisplay.NAME' | translate}}</small>
+    <div class="small text-uppercase">{{'submitterDisplay.NAME' | translate}}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -15,21 +15,21 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
-    <small>{{'submitterDisplay.PHONE' | translate}}</small>
+    <div class="small text-uppercase">{{'submitterDisplay.PHONE' | translate}}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
       <span>{{$ctrl.submitterInfo.phone1Number}}</span>
-      <span ng-if="$ctrl.submitterInfo.phone1Ext != ''">Ext: {{$ctrl.submitterInfo.phone1Ext}}</span>
+      <span ng-if="$ctrl.submitterInfo.phone1Ext != ''"> {{ 'submitterDisplay.EXTENSION' | translate }} {{$ctrl.submitterInfo.phone1Ext}}</span>
     </strong>
   </div>
 </div>
 
-<div class="row" ng-if="$ctrl.submitterInfo.email != ''">
+<div class="row icon-input-bottom" ng-if="$ctrl.submitterInfo.email != ''">
   <div class="col-xs-12 text-left">
-    <small>{{'submitterDisplay.EMAIL' | translate}}</small>
+    <div class="small text-uppercase">{{'submitterDisplay.EMAIL' | translate}}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>

@@ -1,11 +1,41 @@
 /******************************************************************************
  *                                                                            *
- *    Custom PHU rules ONLY in this stylesheet.                               *
- *                                                                            *
+ *    Grey Bruce custom PHU rules ONLY in this stylesheet.                    *
+ *    ~~~~~~~~~~                                                              *
  ******************************************************************************/
 
-/* The background colour of the PHU banner. */
-#phu-header { background-color: #438a64; }
+#icon-phu-header {
+  background-color: #4b4532 !important;
+  border-color: #967d39 !important;
+}
 
-/* The color of the PHU underline. */
-#phu-header-underline { background-color: #b1790b; }
+#icon-phu-header * {
+  color: #ffffff !important;
+}
+
+#icon-phu-header-brand {
+  border-color: #ffffff !important;
+}
+
+@media (min-width: 1px) {
+  /* The logo/brand image should be scaled down by a factor of 2.6 */
+  #icon-phu-header-brand img {
+    width: 40px; /* Width will vary for each PHU. */
+    height: 40px; /* Height should NOT be changed. */
+  }
+}
+
+@media (min-width: 767px) {
+  /* The logo/brand image should be scaled down by a factor of 2.0 */
+  #icon-phu-header-brand img {
+    width: 52px; /* Width will vary for each PHU. */
+    height: 52px; /* Height should NOT be changed. */
+  }
+}
+
+#icon-phu-footer {
+  background-color: #ebeae6 !important;
+}
+#icon-progress-bar-container {
+  background-color: #ebeae6 !important;
+}

@@ -7,19 +7,20 @@
       </div>
 
       <!-- Email address -->
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="submitter-email">{{'submitterContactCapture.EMAIL' | translate}}</label>
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
+        <label for="submitter-email">{{'submitterContactCapture.EMAIL' | translate}}</label> {{'submitterContactCapture.OPTIONAL' | translate}}
         <input ng-model="$ctrl.localSubmitterInfo.email"
-               aria-describedby="email-explanation"
                ng-pattern="$ctrl.rgx.EMAIL_ADDRESS"
                ng-minlength="7" ng-maxlength="100"
-               class="form-control" id="submitter-email"
+               class="form-control"
+               id="submitter-email"
+               aria-describedby="emailMessage"
                type="text" name="email"/>
 
         <!-- Error messages -->
         <div id="submitter-email-error" ng-messages="$ctrl.form.email.$error" ng-if="$ctrl.form.email.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterContactCapture.EMAIL_ERROR' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterContactCapture.EXCEEDS_MAXLENGTH' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterContactCapture.ERRORS.EMAIL_ERROR' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterContactCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
         </div>
         <!-- End error messages -->
       </div>
@@ -28,8 +29,8 @@
 
     <div class="row">
       <!-- Email address confirmation -->
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="submitter-email-confirm">{{'submitterContactCapture.CONFIRM_EMAIL' | translate}}</label>
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
+        <label for="submitter-email-confirm">{{'submitterContactCapture.CONFIRM_EMAIL' | translate}}</label> <span ng-show="$ctrl.localSubmitterInfo.email === ''">{{'submitterContactCapture.OPTIONAL' | translate}}</span>
 
         <input ng-model="$ctrl.localSubmitterInfo.emailConfirm"
                ng-pattern="$ctrl.rgx.EMAIL_ADDRESS"
@@ -43,20 +44,21 @@
 
         <!-- Error messages -->
         <div id="submitter-email-confirm-error" ng-messages="$ctrl.form.emailConfirm.$error" ng-if="$ctrl.form.emailConfirm.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="compareTo">{{'submitterContactCapture.MUST_BE_EQUAL_TO' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterContactCapture.EMAIL_ERROR' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterContactCapture.EXCEEDS_MAXLENGTH' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="compareTo">{{'submitterContactCapture.ERRORS.MUST_BE_EQUAL_TO' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterContactCapture.ERRORS.EMAIL_ERROR' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterContactCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
         </div>
         <!-- End error messages -->
+        <div>
+          <p id="emailMessage">
+            {{ 'submitterContactCapture.SUBMISSION_PROCESSED_EMAIL' | translate }}
+          </p>
+        </div>
       </div>
       <!-- End email address confirmation -->
     </div>
 
-    <div class="col-xs-12 col-md-6">
-      <small>
-        {{ 'submitterContactCapture.SUBMISSION_PROCESSED_EMAIL' | translate }}
-      </small>
-    </div>
+
     <!-- End email address & confirmation -->
   </fieldset>
 </div>

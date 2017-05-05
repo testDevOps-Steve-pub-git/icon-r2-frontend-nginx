@@ -3,9 +3,9 @@
   <h4 translate="patientOtherDisplay.PATIENT_TITLE" class="col-xs-6"></h4>
 </div>
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
-    <small>{{ 'patientOtherDisplay.NAME' | translate }}</small>
+    <div class="small text-uppercase">{{ 'patientOtherDisplay.NAME' | translate }}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -17,20 +17,20 @@
 </div>
 
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
-    <small>{{ 'patientOtherDisplay.SEX' | translate }}</small>
+    <div class="small text-uppercase">{{ 'patientOtherDisplay.SEX' | translate }}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
-      <span>{{$ctrl.clientInfo.gender}}</span>
+      <span class="text-capitalize">{{$ctrl.clientInfo.gender}}</span>
     </strong>
   </div>
 </div>
 
-<div class="row">
+<div class="row icon-input-bottom">
   <div class="col-xs-12 text-left">
-    <small>{{'patientOtherDisplay.BIRTHDATE' | translate}}</small>
+    <div class="small text-uppercase">{{'patientOtherDisplay.BIRTHDATE' | translate}}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -39,9 +39,9 @@
   </div>
 </div>
 
-<div class="row" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
+<div class="row icon-input-bottom" ng-if="$ctrl.clientInfo.healthCardNumber != ''">
   <div class="col-xs-12 text-left">
-    <small>{{ 'patientOtherDisplay.HEALTH_CARD_NUMBER' | translate}}</small>
+    <div class="small text-uppercase" translate="patientOtherDisplay.HEALTH_CARD_NUMBER"></div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -50,9 +50,9 @@
   </div>
 </div>
 
-<div class="row " ng-if="$ctrl.clientInfo.oiid != ''">
+<div class="row icon-input-bottom" ng-if="$ctrl.clientInfo.oiid != ''">
   <div class="col-xs-12 text-left">
-    <small>{{ 'patientOtherDisplay.OIID' | translate}}</small>
+    <div class="small text-uppercase" translate="patientOtherDisplay.OIID"></div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -63,7 +63,7 @@
 
 <div class="row" ng-if="$ctrl.clientInfo.schoolOrDayCare != ''">
   <div class="col-xs-12 text-left">
-    <small>{{ 'patientOtherDisplay.DAYCARE' | translate}}</small>
+    <div class="small text-uppercase">{{ 'patientOtherDisplay.DAYCARE' | translate}}</div>
   </div>
   <div class="col-xs-12 text-left">
     <strong>
@@ -77,7 +77,7 @@
 <div class="row">
   <div class="col-xs-12">
     <edit-button
-        button-id="review-edit-patient-button" 
+        button-id="review-edit-patient-button"
         button-text="{{'patientOtherDisplay.EDIT' | translate}} {{'patientOtherDisplay.PATIENT_TITLE' | translate}}"
         go-to-route="^.patient">
     </edit-button>

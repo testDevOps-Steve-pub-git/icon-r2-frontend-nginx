@@ -8,6 +8,7 @@
 
 <!-- Skip Typeahead Checkbox -->
 <div class="row">
+  <br />
   <div ng-if="!$ctrl.hasUserInput() && !$ctrl.isAddressFormDisplayed" class="col-xs-12">
       <input type="checkbox"
              id="address-skip-typeahead"
@@ -21,7 +22,7 @@
 <div ng-if="$ctrl.hasUserInput() || $ctrl.isAddressFormDisplayed">
   <div class="row">
     <div class="form-group col-xs-12 col-sm-3">
-      <label for="address-street-number" translate='addressStreet.STREET_NUMBER'></label>
+      <label for="address-street-number" translate="addressStreet.STREET_NUMBER" translate-compile></label>
 
       <input ng-model="$ctrl.localAddress.streetNumber"
              class="form-control"
@@ -36,9 +37,9 @@
       <div class="error-messages" id="address-street-number-error" ng-messages="$ctrl.form.streetNumber.$error"
            ng-if="$ctrl.form.streetNumber.$touched" role="alert">
         <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
-             aria-label="{{ 'addressSubComponents.addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
-        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.IS_REQUIRED'
-             aria-label="{{ 'addressSubComponents.addressStreet.ERRORS.IS_REQUIRED' | translate }}"></div>
+             aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.STREET_NUMBER_REQUIRED'
+             aria-label="{{ 'addressStreet.ERRORS.STREET_NUMBER_REQUIRED' | translate }}"></div>
         <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
              aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
       </div>
@@ -50,8 +51,10 @@
   <!--Unit Number-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-3">
-      <label for="address-unit-number" translate='addressStreet.UNIT_NO'
-             aria-label="{{ 'addressStreet.UNIT_NO' | translate }}"></label>
+      <label for="address-unit-number" aria-label="{{ 'addressStreet.UNIT_NO' | translate }}">
+        {{ 'addressStreet.UNIT_NO' | translate }}
+      </label>
+       <span>{{'OPTIONAL' | translate}}</span>
 
       <input ng-model="$ctrl.localAddress.unitNumber"
              class="form-control"
@@ -78,7 +81,7 @@
   <!--Street Name-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-6">
-      <label for="address-street-name">{{ 'addressStreet.STREET_NAME' | translate }}</label>
+      <label for="address-street-name" translate="addressStreet.STREET_NAME">{{ 'addressStreet.STREET_NAME' | translate }}</label>
 
       <input ng-model="$ctrl.localAddress.streetName"
              class="form-control"
@@ -94,8 +97,8 @@
            ng-if="$ctrl.form.streetName.$touched" role="alert">
         <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressStreet.ERRORS.BAD_FORMAT'
              aria-label="{{ 'addressStreet.ERRORS.BAD_FORMAT' | translate }}"></div>
-        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.IS_REQUIRED'
-             aria-label="{{ 'addressStreet.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressStreet.ERRORS.STREET_NAME_REQUIRED'
+             aria-label="{{ 'addressStreet.ERRORS.STREET_NAME_REQUIRED' | translate }}"></div>
         <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressStreet.ERRORS.EXCEEDS_MAXLENGTH'
              aria-label="{{ 'addressStreet.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
       </div>
@@ -107,7 +110,7 @@
   <!--Street Type-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-4">
-      <label for="address-street-type" data-translate='addressStreet.STREET_TYPE'></label>
+      <label for="address-street-type" data-translate='addressStreet.STREET_TYPE'></label> <span>{{'OPTIONAL' | translate}}</span>
 
       <input
           class="form-control"
@@ -141,7 +144,7 @@
   <!--Street Direction-->
   <div class="row">
     <div class="form-group col-xs-12 col-sm-4">
-      <label for="address-street-direction" data-translate='addressStreet.STREET_DIRECTION'></label>
+      <label for="address-street-direction" data-translate='addressStreet.STREET_DIRECTION'></label> <span>{{'OPTIONAL' | translate}}</span>
 
       <input
           class="form-control"

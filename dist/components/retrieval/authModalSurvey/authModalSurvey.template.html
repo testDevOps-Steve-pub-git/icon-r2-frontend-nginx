@@ -1,23 +1,25 @@
 <div>
   <!-- Survey-->
   <div class="modal-header">
-    <h3 class="modal-title">{{'authModalSurvey.SURVEY_TITLE' | translate}}</h3>
+    <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.ok()">
+      <i class="fa fa-times-circle fa-2x"></i>
+    </span>
+    <h3 class="modal-title" translate="authModalSurvey.SURVEY_TITLE"></h3>
   </div>
 
   <div class="modal-body">
     <div class="strong">
-      <p>{{'authModalSurvey.SURVEY_PARAGRAPH' | translate}}</p>
+      <p translate="authModalSurvey.SURVEY_PARAGRAPH"></p>
     </div>
 
     <div class="text-center">
-      <a class="btn btn-primary"
+      <a class="btn btn-primary btn-block"
          id="authModalSurvey-survey-link"
          href="{{'authModalSurvey.SURVEY_LINK_URL' | translate}}"
          target="_blank">{{'authModalSurvey.SURVEY_LINK' | translate}}</a>
 
-      <br />
-      <br />
-      <button class="btn btn-md btn-info" ng-click="$ctrl.ok()">{{ 'authModalSurvey.CONTINUE_TO_HOME' | translate }}</button>
+      <br aria-hidden="true"/>
+      <button class="btn btn-md btn-primary btn-block" ng-click="$ctrl.ok()">{{ 'authModalSurvey.CONTINUE_TO_HOME' | translate }}</button>
     </div>
   </div>
 </div>

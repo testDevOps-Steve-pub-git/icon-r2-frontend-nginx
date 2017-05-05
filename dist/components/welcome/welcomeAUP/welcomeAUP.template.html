@@ -1,48 +1,53 @@
 <!-- Legal -->
-<div>
-  <div id="welcome-divider" class="row">
-    <h1>{{'welcomeAUP.HEADER' | translate}}</h1>
+<div class="container">
+  <div tabindex="2" id="welcome-divider" class="row">
+    <div class="col-xs-12">
+      <h1 translate="welcomeAUP.HEADER"></h1>
+    </div>
   </div>
 
   <div class="row">
-    <form>
-      <fieldset 
-      class="legal-fieldset"  
-      ng-if="$ctrl.language === 'en'" 
-      ng-include="'./phu/aupEN.template.html'">
-      </fieldset>
+    <div class="col-xs-12">
+      <form>
+        <fieldset
+            class="legal-fieldset"
+            ng-if="$ctrl.language === 'en'"
+            ng-include="'./phu/aupEN.template.html'">
+        </fieldset>
 
-      <fieldset 
-      class="legal-fieldset"  
-      ng-if="$ctrl.language === 'fr'" 
-      ng-include="'./phu/aupFR.template.html'">
-      </fieldset>
-    </form>
+        <fieldset
+            class="legal-fieldset"
+            ng-if="$ctrl.language === 'fr'"
+            ng-include="'./phu/aupFR.template.html'">
+        </fieldset>
+      </form>
 
-    <a class="col-xs-12 text-center"
-       id="welcome-terms-of-use-link"
-       ng-href="{{multitenancy.TOC_LINK_KEY | translate }}"
-       target="_blank">
-         {{ 'welcomeAUP.ACK_TERMS_READ' | translate}}
-    </a>
+      <a class="col-xs-12 text-center"
+         id="aup-terms-of-use-link"
+         ng-href="{{multitenancy.TOC_LINK_KEY | translate }}"
+         target="_blank">
+        {{ 'welcomeAUP.ACK_TERMS_READ' | translate}}
+      </a>
+    </div>
   </div>
 
   <div class="row">
     <hr />
-
-    <div class="col-xs-12 col-sm-6 text-center icon-xs-stacked-bottom-margin">
-      <button class="btn btn-xl btn-danger"
-              id="aup-decline-button"
-              ng-click="$ctrl.doNotAccept()">
-                {{ 'welcomeAUP.DO_NOT_ACCEPT' | translate }}
-      </button>
-    </div>
-
     <div class="col-xs-12 col-sm-6 text-center">
-      <button class="btn btn-xl btn-success"
+      <button class="btn btn-block btn-xl btn-primary"
               id="aup-accept-button"
               ng-click="$ctrl.acceptLegalAgreement()">
                 {{ 'welcomeAUP.ACCEPT' | translate }}
+      </button>
+    </div>
+    
+    <div class="col-xs-12 hidden-xl hidden-lg hidden-md hidden-sm"><h4/></div>
+
+    <div class="col-xs-12 col-sm-6 text-center icon-xs-stacked-bottom-margin">
+      <button class="btn btn-block btn-xl btn-danger"
+              id="aup-decline-button"
+              ng-click="$ctrl.doNotAccept()">
+                {{ 'welcomeAUP.DO_NOT_ACCEPT' | translate }}
       </button>
     </div>
   </div>
