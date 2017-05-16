@@ -64,9 +64,14 @@
                                     let newLot = (!!immunization.resource.lotNumber)
                                                               ? new Lot(immunization.resource.lotNumber)
                                                               : new Lot();
+
+                                    let dateIsEstimated = (!!immunization.resource._date
+                                                              ? immunization.resource._date.extension[0].valueBoolean
+                                                              : false);
+
                                     return new Immunization(
                                       immunization.resource.date.substring(0, 10),
-                                      false,
+                                      dateIsEstimated,
                                       null,
                                       null,
                                       newPractitioner,

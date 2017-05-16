@@ -14,8 +14,8 @@
     controller: addressTypeaheadController,
   };
 
-  addressTypeaheadController.$inject = ['ICON_RGX', 'Endpoint'];
-  function addressTypeaheadController (ICON_RGX, Endpoint) {
+  addressTypeaheadController.$inject = ['$translate', 'Endpoint', 'ICON_RGX'];
+  function addressTypeaheadController ($translate, Endpoint, ICON_RGX) {
 
     this.$onInit = () => {
       this.addressLookup = '';
@@ -33,17 +33,16 @@
      * @returns {Promise} promise with queried data
      */
     function getAddress (value) {
-      value = stripWhitespace(value);
       // Remove null Street Type values from typeahead drop down
-      return Endpoint.getAddress(value)
+      return Endpoint.getAddress(stripWhitespace(value))
                      .then((addressArray) => {
                        Object.keys(addressArray)
                              .map((a) => {
-                               addressArray[a].streetType == null 
-                                 ? addressArray[a].streetType = '' 
+                               addressArray[a].streetType == null
+                                 ? addressArray[a].streetType = ''
                                  : addressArray[a].streetType = ' ' + addressArray[a].streetType;
                              });
-                       return addressArray
+                       return addressArray;
                      });
     }
 
@@ -54,8 +53,11 @@
      * @param {Object} selected: selected option for typeahead
      */
     function onPostalCodeLookUpSelect (selectedAddress) {
+      let provinceCode = selectedAddress.provinceAbbr.toUpperCase();
+      let translatedProvince = $translate.instant(`addressCapture.${provinceCode}`);
+
       this.localAddress.city = selectedAddress.city || '';
-      this.localAddress.province = selectedAddress.province || '';
+      this.localAddress.province =  translatedProvince || '';
       this.localAddress.postalCode = selectedAddress.postalCode || '';
       this.localAddress.streetNumber = selectedAddress.streetNumber || '';
       this.localAddress.streetName = selectedAddress.streetName || '';

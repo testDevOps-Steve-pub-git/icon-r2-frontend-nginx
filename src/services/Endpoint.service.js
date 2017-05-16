@@ -144,10 +144,6 @@
              .then(imms => imms.map(immunizationFromJson));
     };
 
-    const translatePound = (queryString) => {
-      return queryString.replace('#', '%23')
-    };
-
     const getAddress = getWithHeaders((postalQuery) => {
       return `${ICON_API.ADDRESS}?filter[postalCode]=${postalQuery || ''}`;
     })
@@ -161,7 +157,7 @@
     });
 
     const getSchoolOrDaycare = getWithHeaders((schoolQuery) => {
-      return `${ICON_API.SCHOOL}?filter[name]=${translatePound(schoolQuery) || '*'}`;
+      return `${ICON_API.SCHOOL}?filter[name]=${encodeURIComponent(schoolQuery) || '*'}`;
     });
 
     const getVaccine = getWithHeaders((vaccineQuery) => {

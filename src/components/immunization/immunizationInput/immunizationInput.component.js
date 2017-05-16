@@ -5,7 +5,8 @@
     controller: immunizationInputController,
     templateUrl: './components/immunization/immunizationInput/immunizationInput.template.html',
     bindings: {
-      displayMode : '<'
+      displayMode: '<',
+      displayImmunizationInput: '<',
     },
   };
 

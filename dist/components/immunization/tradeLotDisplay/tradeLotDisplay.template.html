@@ -1,6 +1,6 @@
 <div ng-if="!!$ctrl.immunization.lot.number">
   <strong>
-    <span ng-if="!!$ctrl.immunization.lot.number" translate="tradeLotDisplay.LOT"></span> <span>{{$ctrl.immunization.lot.lotDisplayNumber}}</span>
+    <span ng-if="!!$ctrl.immunization.lot.number" translate="tradeLotDisplay.LOT"></span> <span>{{$ctrl.immunization.lot.number}}</span>
   </strong>
   <span ng-if="!!$ctrl.immunization.lot.expiry">({{'tradeLotDisplay.EXPIRY' | translate}} {{$ctrl.immunization.lot.expiry}})</span>
 </div>

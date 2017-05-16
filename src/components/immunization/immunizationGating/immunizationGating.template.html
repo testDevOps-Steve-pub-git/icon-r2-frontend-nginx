@@ -224,6 +224,7 @@
 </uib-accordion>
 <!-- End Gating question 4 -->
 
-<div ng-if="$ctrl.displayImmunizations ">
-  <immunization-input display-mode="$ctrl.question4Choice"></immunization-input>
-</div>
+<immunization-input
+display-mode="$ctrl.question4Choice"
+display-immunization-input="$ctrl.displayImmunizations">
+</immunization-input>

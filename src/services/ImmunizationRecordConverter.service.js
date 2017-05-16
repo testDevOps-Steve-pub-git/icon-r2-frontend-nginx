@@ -6,8 +6,8 @@
   module.exports = ImmunizationRecordConverter;
 
   function ImmunizationRecordConverter (
-    Multitenancy, TokenHandler, ImmunizationRecordService,
-    moment,
+    Multitenancy, TokenHandler, ImmunizationRecordService, GatingQuestionService,
+    $translate, moment,
     Patient, Immunization, Agent, Trade, Disease
   ) {
 /* Private ********************************************************************/
@@ -15,6 +15,9 @@
     let sessionToken = null;
     let transactionToken = null;
     let multitenancy = null;
+    /* Gating questions */
+    let didReceivePHULetter = null;
+    let allImmunizationsFromOntario = null;
 
     /**
      * Creates a patient FHIR object.
@@ -225,7 +228,7 @@
      */
     function patientImmunizationToFhir (patientId) {
       return (imm, index, immunizations) => {
-        return {
+        let immunization = {
           'resourceType': 'Immunization',
           'id': `Immunization/${index + 1}`,
           'status': 'completed',
@@ -242,14 +245,19 @@
               'code':     imm.agent.snomed,
               'display':  imm.agent.name
             }],
-            'text':   imm.agent.name
+            'text': imm.trade.name
           },
           'patient': { 'reference': `#${patientId}` },
           'wasNotGiven': false,
           'reported': true,
           'lotNumber': imm.lot.number,
+          'expirationDate' : imm.lot.expiry,
           'note': [{ 'text': imm.provider }]
-        }
+        };
+
+        if(allImmunizationsFromOntario === $translate.instant('immunizationGating.YES')) immunization.location ={ display: 'Canada, Ontario'};
+
+        return immunization;
       };
     }
 
@@ -288,6 +296,14 @@
       const SCHOOL_ID =     isSchoolInfoPopulated ? 'Organization/1' : null;
       const SUBMITTER_ID =  'RelatedPerson/1';
 
+      const IMMS = record.getNewImmunizations();
+      let numberOfImmunizations =[];
+      for(let i = 1; i <= IMMS.length; i++){
+        numberOfImmunizations.push({ 'contentReference':
+          {'reference':  `#Immunization/${i}`}
+        });
+      }
+
       let communication = {
         'resourceType': 'Communication',
         'meta': { 'lastUpdated': new Date().toISOString() },
@@ -302,19 +318,19 @@
         'sender': { 'reference': `#${SUBMITTER_ID}` },
         'recipient': [{ 'reference': `#${PHU_ID}` }],
         /* NOTE: Payload dummied, real data to be added by server before relaying on to PHIX/DHIR. */
-        'payload': [
-            // { 'contentString': 'Fake payload to pass validation.' },
-            { 'contentReference': { 'reference': '#Immunization/1' } }
-        ],
+        'payload': numberOfImmunizations,
         /* End Payload */
         'status': 'completed',
         'sent': new Date().toISOString(),
         'received': new Date().toISOString(),
         'subject': { 'reference': `#${PATIENT_ID}` },
+        'reason':[{'text':''}]
       };
 
       // Only add the school if the submission has that info populated.
       if (isSchoolInfoPopulated) communication.contained.push(createSchool(record, SCHOOL_ID));
+      // If user received a letter from a PHU, populate that info
+      if(didReceivePHULetter === $translate.instant('immunizationGating.YES')) communication.reason = [{text : 'Letter From PHU'}];
 
       return communication;
     }
@@ -327,6 +343,11 @@
              .then(token => { transactionToken = token; })
              .then(Multitenancy.getPhuKeys)
              .then(phuKeys => { multitenancy = phuKeys; })
+             .then( ()=> {
+               let gatingQuestions = GatingQuestionService.getGatingChoices();
+               didReceivePHULetter = gatingQuestions.question1Choice;
+               allImmunizationsFromOntario = gatingQuestions.question2Choice;
+             })
              .then(() => { return convertToFhir(record); });
     }
 

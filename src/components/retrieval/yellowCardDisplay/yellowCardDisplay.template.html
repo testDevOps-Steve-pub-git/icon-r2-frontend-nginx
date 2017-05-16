@@ -1,7 +1,8 @@
 <div ng-if="!$ctrl.yellowCardRows.length"
 class="text-center lead"
 translate="yellowCardDisplay.NO_IMMS"
-translate-compile>
+translate-values="{ patientName: $ctrl.patientName }">
+translate-compile
 </div>
 
 <div ng-show="!!$ctrl.yellowCardRows.length" class="icon-yc-table-container"  du-scroll-container>

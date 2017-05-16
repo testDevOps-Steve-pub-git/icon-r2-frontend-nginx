@@ -59,25 +59,25 @@
       switch (address.addressType) {
         case Address.type.RURAL:
           return [
-            `RR ${address.ruralRoute}${(address.station) ? `, STN ${address.station}` : ``}${(address.line2) ? `\n${address.line2}` : ``}`
+            `RR ${address.ruralRoute}${(!!address.station) ? `, STN ${address.station}` : ``}${(!!address.line2) ? `\n${address.line2}` : ``}`,
             `${address.city}, ${address.province}`,
-            `${address.postalCode}`,
+            `${address.postalCode.toUpperCase()}`,
           ].join(`\n`);
 
         case Address.type.POBOX:
           return [
-            `BOX ${address.postBox}${(address.station) ? `, STN ${address.station}` : ``}`,
-            `RPO ${address.retailPostOffice}`
+            `BOX ${address.postBox}${(!!address.station) ? `, STN ${address.station}` : ``}`,
+            `RPO ${address.retailPostOffice}`,
             `${address.city}, ${address.province}`,
-            `${address.postalCode}`,
+            `${address.postalCode.toUpperCase()}`,
           ].join(`\n`);
 
         case Address.type.URBAN:
         default:
           return [
-            `${address.streetNumber}${address.unitNumber ? ` - ${address.unitNumber}` : ``} ${address.streetType ? ` ${address.streetType}` : ``}${address.streetDirection ? ` ${address.streetDirection}` : ``}`,
+            `${(!!address.unitNumber) ? `${address.unitNumber} - ` : ``}${address.streetNumber} ${(!!address.streetType) ? ` ${address.streetType}` : ``}${(!!address.streetDirection) ? ` ${address.streetDirection}` : ``}`,
             `${address.city}, ${address.province}`,
-            `${address.postalCode}`,
+            `${address.postalCode.toUpperCase()}`,
           ].join(`\n`);
       }
     }
@@ -104,7 +104,7 @@
                 : ``;
     }
 
-    function formatImmunizationDetails (immunization) {
+    function formatImmunizationDetails (immunization, text) {
       let immunizationName = isAgentWithoutTrade(immunization)
                                 ? { text: `${immunization.agent.shortName}`, bold: true }
                                 : { text: `${immunization.trade.name} (${immunization.agent.shortName})`, bold: true };
@@ -518,7 +518,7 @@
                                     ? { image: data.pdfCheckmark, width: 9, height: 12, alignment: 'center' }
                                     : { text: `` }
                        }),
-                       formatImmunizationDetails(immunization)
+                       formatImmunizationDetails(immunization, text)
                      ]
                    })
 
@@ -688,7 +688,7 @@
       return {
         patientName:    patientName,
         patientGender:  patient.gender,
-        patientDob:     patient.dateOfBirth,
+        patientDob:     new moment(patient.dateOfBirth).format('YYYY-MM-DD'),
         patientHcn:     patient.healthCardNumber,
         patientOiid:    patient.oiid,
         patientSchool:  patient.schoolOrDaycare,
@@ -758,13 +758,17 @@
              });
     }
 
+    function replaceSpecialCharacters(str) {
+      return str.replace('&amp;', '&')
+    }
+
     function localizePdfTextUsingData (data) {
       return $q.all({
                patientGender:                   $translate(formatGender(data.patientGender)),
 
                receivedSubmission_p1_s1_f1:     $translate('pdf.receivedSubmission_p1_s1_f1', data),
                receivedSubmission_p1_s1_f3:     $translate('pdf.receivedSubmission_p1_s1_f3', data),
-               receivedSubmission_p1_s2:        $translate('pdf.receivedSubmission_p1_s2', data),
+               receivedSubmission_p1_s2:        replaceSpecialCharacters($translate.instant('pdf.receivedSubmission_p1_s2', data)),
                receivedSubmission_p1_s3:        $translate('pdf.receivedSubmission_p1_s3', data),
 
                reportGeneratedTime_p1_s1:  $translate('pdf.reportGeneratedTime_p1_s1', data),
@@ -782,7 +786,7 @@
                contact_ul1_li1_f3:  $translate('pdf.contact_ul1_li1_f3', data),
                contact_ul1_li2_f1: $translate('pdf.contact_ul1_li2_f1', data),
 
-               phuYellowCardFooter_p1_s1: $translate('pdf.phuYellowCardFooter_p1_s1', data),
+               phuYellowCardFooter_p1_s1: replaceSpecialCharacters($translate.instant('pdf.phuYellowCardFooter_p1_s1', data)),
                phuYellowCardFooter_p1_s2: $translate('pdf.phuYellowCardFooter_p1_s2', data),
 
                submissionReferenceNumber_p1_s1_f1:  $translate('pdf.submissionReferenceNumber_p1_s1_f1', data),

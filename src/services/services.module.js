@@ -29,7 +29,7 @@ angular.module('icon.services', [])
           require('./ImmunizationRecord.service.js')
       ])
       .service('ImmunizationRecordConverter', [
-          'Multitenancy', 'TokenHandler', 'ImmunizationRecordService', 'moment',
+          'Multitenancy', 'TokenHandler', 'ImmunizationRecordService', 'GatingQuestionService', '$translate', 'moment',
           'Patient', 'Immunization', 'Agent', 'Trade', 'Disease',
           require('./ImmunizationRecordConverter.service.js')
       ])

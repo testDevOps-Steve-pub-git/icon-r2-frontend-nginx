@@ -1,6 +1,6 @@
 {
   "address": {
-    "ADDRESS_TITLE": "Votre adresse"
+    "ADDRESS_TITLE": "Adresse du patient"
   },
   "addressCapture": {
     "CITY": "Ville",
@@ -82,10 +82,12 @@
     "NO_RESULTS_FOUND": "Aucun résultat"
   },
   "ageDisplay": {
-    "AGE": "Age",
+    "AGE": "Âge",
     "YEAR": "an",
     "MONTH": "moi",
-    "DAY": "jour"
+    "DAY": "jour",
+    "LESS_THAN_ONE_DAY": "Moins de 1",
+    "APPROX": "environ"
   },
   "anonOtherReview": {
     "DOCUMENTS_TITLE": "Documents",
@@ -337,10 +339,10 @@
     "TITLE": "Immunisation Connect"
   },
   "leave_page": {
-    "TITLE": "Voulez-vous continuer?",
-    "YES": "Oui",
-    "NO": "Non",
-    "LEAVE_PAGE_CONFIRMATION": "Êtes-vous certain(e) de vouloir quitter? Vous risquez de perdre l’information que vous avez fournie.",
+    "TITLE": "Toutes les données inscrites seront perdues.",
+    "YES": "Passer à la page d'accueil",
+    "NO": "Rester sur la page courante",
+    "LEAVE_PAGE_CONFIRMATION": "Lorsque vous revenez à la page d'accueil, vous ne perdez pas les données que vous avez inscrites.",
     "CONFIRMATION_BACK": "Voulez-vous aller à la page d’accueil?"
   },
   "login": {
@@ -528,12 +530,12 @@
     "genderType_male": "Homme",
     "genderType_female": "Femme",
     "genderType_other": "Autre",
-    "receivedSubmission_p1_s1_f1": "Nous avons bien reçu les renseignements concernant",
+    "receivedSubmission_p1_s1_f1": "Nous avons bien reçu les renseignements concernant ",
     "receivedSubmission_p1_s1_f3": ".",
     "receivedSubmission_p1_s2": "Un membre du personnel du {{phuName}} les vérifiera d'ici {{phuResponseTime}}.",
     "receivedSubmission_p1_s3": "Si nous avons des questions, nous communiquerons avec vous.",
     "reportGeneratedTime_p1_s1": "Ce rapport a été généré le {{reportGeneratedDate}}, à {{reportGeneratedTime}}.",
-    "patientNameHeading_p1_s1_f1": "Patient:",
+    "patientNameHeading_p1_s1_f1": "Patient:  ",
     "patientDemographics_ul1_li1_f1": "Sexe: ",
     "patientDemographics_ul1_li2_f1": "Date de naissance: ",
     "patientDemographics_ul1_li3_f1": "No de carte Santé: ",
@@ -544,17 +546,17 @@
     "phuConfirmationFooter_p1_s2": "xxx redundant",
     "phuYellowCardFooter_p1_s1": "xxx redundant",
     "phuYellowCardFooter_p1_s2": "xxx redundant",
-    "submissionReferenceNumber_p1_s1_f1": "Votre no de référence est",
+    "submissionReferenceNumber_p1_s1_f1": "Votre no de référence est ",
     "submissionReferenceNumber_p1_s1_f3": ".",
     "submissionReferenceNumber_p1_s2": "Veuillez conserver ce numéro.",
-    "reportGeneratedTime_p1_s1_f1": "Ce rapport a été généré le",
-    "reportGeneratedTime_p1_s1_f3": "à",
+    "reportGeneratedTime_p1_s1_f1": "Ce rapport a été généré le ",
+    "reportGeneratedTime_p1_s1_f3": " à ",
     "reportGeneratedTime_p1_s1_f5": ".",
     "thankYou_p1_s1_f1": "Merci d’aider la population ontarienne à rester en bonne santé en empêchant",
     "thankYou_p1_s1_f2": "la propagation des maladies qui peuvent être évitées grâce à la vaccination!",
     "submitterNameHeading_p1_s1_f1": "Soumetteur: ",
-    "contact_ul1_li1_f1": "Téléphone:",
-    "contact_ul1_li1_f3": "Poste:",
+    "contact_ul1_li1_f1": "Téléphone: ",
+    "contact_ul1_li1_f3": "Poste: ",
     "contact_ul1_li2_f1": "Courriel:",
     "immunizationsTitle_p1_s1": "Le dossier d’immunisation a été envoyé:",
     "yellowCardTitle_p1_s1_f1": "Dossier d'immunisation",

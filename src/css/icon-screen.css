@@ -256,9 +256,7 @@
 
 /* immunizationTypeahead */
 /*UIB typeahead dropdown*/
-.dropdown-menu {
-    min-width:100%;
-}
+.dropdown-menu { min-width: inherit; }
 /*End UIB typeahead dropdown*/
 
 .icon-group-title {

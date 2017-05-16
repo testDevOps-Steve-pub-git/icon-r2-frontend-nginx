@@ -1,6 +1,6 @@
 {
   "address": {
-    "ADDRESS_TITLE": "Your Address"
+    "ADDRESS_TITLE": "Patient Address"
   },
   "addressCapture": {
     "CITY": "City",
@@ -85,7 +85,9 @@
     "AGE": "Age",
     "YEAR": "year",
     "MONTH": "month",
-    "DAY": "day"
+    "DAY": "day",
+    "LESS_THAN_ONE_DAY": "Less than 1",
+    "APPROX": "approx"
   },
   "anonOtherReview": {
     "DOCUMENTS_TITLE": "Documents",
@@ -335,10 +337,10 @@
     "TITLE": "Immunization Connect"
   },
   "leave_page": {
-    "TITLE": "Do you wish to continue?",
-    "YES": "Yes",
-    "NO": "No",
-    "LEAVE_PAGE_CONFIRMATION": "Are you sure you wish to leave? You may lose any entered information.",
+    "TITLE": "Any entered data will be discarded.",
+    "YES": "Continue to Home Page",
+    "NO": "Stay On Current Page",
+    "LEAVE_PAGE_CONFIRMATION": "When you return home any data you have entered will be discarded.",
     "CONFIRMATION_BACK": "Do you want to go to the home page?"
   },
   "login": {
@@ -559,7 +561,7 @@
     "printLogoUrl": "./phu/pdf-logo-en.png",
     "lotNumber": "Lot #",
     "dateIsApproximate": "date is approximate",
-    "noImmunizations": "No Imunizations",
+    "noImmunizations": "No Immunizations",
     "recommendationsTitle_p1_s1": "Immunizations Needed",
     "recommendationsHeader_p1_s1": "As recommended by the Ontario Immunization Schedule you need immunizations to be protected against the following diseases:",
     "recommendationsFooter_p1_s1_f1": "Note: ",

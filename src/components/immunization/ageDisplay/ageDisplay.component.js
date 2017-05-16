@@ -21,7 +21,7 @@
       this.age = {
         years:  Math.floor(difference.asYears()) || 0,
         months: Math.floor(difference.asMonths() % 12) || 0,
-        // days:   difference._data.days || 0,
+        days:   difference._data.days || 0
       };
       if(difference._data.days > 15) {
         if(this.age.months === 12)

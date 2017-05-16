@@ -2,5 +2,7 @@
 node_modules/
 out/
 npm-debug.log
+**/app.bundle.js
+**/app.bundle.js.map
 icon-unit-test-report.json
 npm-debug.log

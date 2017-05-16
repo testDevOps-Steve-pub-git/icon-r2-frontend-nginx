@@ -6,12 +6,12 @@
         .controller('indexController', indexController);
 
     indexController.$inject=[
-      '$scope', '$timeout', '$transitions', '$window',
+      '$scope', '$timeout', '$transitions', '$state' ,'$window',
       '$translate', '$uibModal',
       'BrowserChecker', 'SessionHandler', 'ToasterChoiceService'
     ];
     function indexController(
-      $scope, $timeout, $transitions, $window,
+      $scope, $timeout, $transitions, $state, $window,
       $translate, $uibModal,
       BrowserChecker, SessionHandler, ToasterChoiceService
     ) {
@@ -76,6 +76,22 @@
                               }
                           });
 
+
+      /* From the welcome page to the confirmation page */
+      $transitions.onBefore({
+        from: 'welcome',
+          to : [
+            'anon.self.submission.**',
+            'anon.other.submission.**',
+            'auth.self.submission.**',
+            'auth.other.submission.**'
+          ]
+        },
+        (transition) => {
+          $state.go($state.$current, null, { reload: true });
+        });
+
+
       /* Anon submissions, display warning */
       $transitions.onBefore({
                               from : [
@@ -119,7 +135,7 @@
                               ]
                             },
                             (transition) => {
-                              return transition.router.stateService.target('welcome');
+                              $state.transitionTo('welcome');
                             });
 
 

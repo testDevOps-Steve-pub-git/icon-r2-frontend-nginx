@@ -1,9 +1,10 @@
-# ICON View Components
+ICON View Components
+====================
 
+How views and routes are used in the ICON front-end UI:
+-------------------------------------------------------
 
-### How views and routes are used in the ICON front-end UI:
-
-- all views are attached to the ```icon.views``` Angular module in ```views/views.js```; this module is an injected dependency of the top-level ```icon``` application module in ```app.js```
+- all views are attached to the ```icon.views``` Angular module in ```views/views.module.js```; this module is an injected dependency of the top-level ```icon``` application module in ```app.js```
 - view names are ```camelCased```, with a file name that matches the view name (*example:* `camelCased.js`)
 - views are associated with routes in the relevant ```.config(...)``` block of ```app.js```
 - routes are referred to by named constants in ```views/routes.js```

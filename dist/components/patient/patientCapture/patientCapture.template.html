@@ -85,6 +85,7 @@
         model="$ctrl.localPatient.dateOfBirth"
         form-name="$ctrl.form"
         min-date="1900-01-01"
+        on-after-select="$ctrl.calculateIfPatientIsOver18(date)"
         required="true">
           <label for="patient-dob">{{'patientCapture.DOB' | translate}}</label>
         </datepicker>
@@ -261,7 +262,7 @@
 
 
     <!--Patient School or Daycare-->
-    <div class="row">
+    <div class="row" ng-if="$ctrl.ageInYears < 18">
       <div class="form-group col-xs-12 col-sm-12 col-md-6">
         <label for="patient-school" translate='patientCapture.DAYCARE' aria-label="{{'patientCapture.DAYCARE' | translate}}"></label>
         {{'patientCapture.DAYCARE_OPTIONAL' | translate}}

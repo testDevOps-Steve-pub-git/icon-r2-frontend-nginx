@@ -1,5 +1,5 @@
 <div ng-if="$ctrl.lotArray.length">
-  <label translate="lotInput.LOT_NUMBER"></label>
+  <label>{{'lotInput.LOT_NUMBER' | translate}}</label> <span>{{'lotInput.OPTIONAL' | translate}}</span>
 
   <div ng-if="!$ctrl.displayCard">
     <select class="form-control" id="immunizations-lot-number"

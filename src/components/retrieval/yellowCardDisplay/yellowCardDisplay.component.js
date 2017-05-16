@@ -9,6 +9,9 @@
   yellowCardDisplayController.$inject = ['$q', '$translate', 'Endpoint', 'ImmunizationGroup', 'DISEASE_YC_ORDER', 'By', 'GroupsOf', 'ImmunizationRecordService'];
   function yellowCardDisplayController ($q, $translate, Endpoint, ImmunizationGroup, DISEASE_YC_ORDER, By, GroupsOf, ImmunizationRecordService) {
     this.$onInit = () => {
+      let { firstName, lastName } = ImmunizationRecordService.getPatient();
+      this.patientName = `${firstName} ${lastName}`;
+
       let retrievedImmunizations = ImmunizationRecordService.getRetrievedImmunizations();
       let retrievedDiseases = retrievedImmunizations
                               .reduce((diseases, d) => {
@@ -41,6 +44,7 @@
                                                 }),
                               }
                             });
+
 
       // Populated asynchronously using DB lookups.
       // TODO: Hard code this data as a constant to avoid latency from uneccesary

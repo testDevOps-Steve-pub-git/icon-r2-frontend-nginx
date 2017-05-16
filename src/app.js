@@ -128,7 +128,7 @@
       LINE2:  /^[a-z0-9 \-#]*$/i,
       CITY: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-]*$/i,
       POSTAL: /^[abceghjklmnprstvxy]\d[abceghjklmnprstvwxyz]( )?\d[abceghjklmnprstvwxyz]\d$/i,
-      SCHOOL_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-#/]*$/i,
+      SCHOOL_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-#/\?]*$/i,
       COMMENT: /^[a-zàâçéèêëîïôûùüÿñæœ !'"\-+&$%#@:;«»().,]*$/i,
       OIID: /^[2-9b-df-hj-np-tv-xz]{4}[\- ]?[2-9b-df-hj-np-tv-xz]{3}[\- ]?[2-9b-df-hj-np-tv-xz]{3}[\- ]?$/i,
       OIID_PIN: /^\d*$/i,
@@ -317,6 +317,7 @@
   // NOTE: This runs whenever the application bootstraps on page load.
   //       By forcing a state transition, the user is prevented from loading the
   //       application in a mid-completion state.
-    .run(['$state', function ($state) { $state.go('welcome'); }])
+  .run(['$state', function ($state) { $state.go('welcome'); }])
+  // Comment the above line ^^^ if you want to be able to hot-reload on any screen for development.
 
 }());
