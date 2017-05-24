@@ -31,7 +31,7 @@ module.exports = {
       </address-toggle>
       
       <!--Error messages for province-->
-      <div class="error-messages" id="address-form-error" ng-if="!addressCaptureForm.$valid && !$ctrl.localAddress.postalCode"
+      <div class="error-messages" id="address-form-error" ng-if="!addressCaptureForm.$valid && !$ctrl.localAddress.postalCode && $ctrl.localAddress.addressType === 'Street'"
            role="alert">
         <div class="alert alert-danger col-xs-12"  translate='addressCapture.ERRORS.INCOMPLETE'
              aria-label="addressCapture.ERRORS.INCOMPLETE"></div>

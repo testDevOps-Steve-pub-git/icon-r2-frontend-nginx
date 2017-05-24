@@ -14,10 +14,11 @@
      controller: authOtherPatientContainerController,
    };
 
-  authOtherPatientContainerController.$inject = ['ImmunizationRecordService', 'Multitenancy', 'ICON_RGX', 'Endpoint'];
-  function authOtherPatientContainerController(ImmunizationRecordService, Multitenancy, ICON_RGX, Endpoint) {
+  authOtherPatientContainerController.$inject = ['Multitenancy', 'ICON_RGX'];
+  function authOtherPatientContainerController(Multitenancy, ICON_RGX) {
 
     this.$onInit = ()=> {
+
       /** Multitenancy Init */
       Multitenancy
         .getPhuKeys()
@@ -33,9 +34,6 @@
         },
         addDefaultPlaceholder:false
       };
-
-      /** School/Daycare lookup */
-      this.getSchoolOrDaycare = Endpoint.getSchoolOrDaycare;
     };
 
   }

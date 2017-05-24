@@ -29,8 +29,11 @@
     this.$onInit = () => {
       /** If user has already entered new immunizations, display them */
       let currentImmunizations = ImmunizationRecordService.getNewImmunizations();
-      if (currentImmunizations.length <= 0)
+      if (currentImmunizations.length <= 0) {
         this.displayImmunizations = false;
+        GatingQuestionService.reset();
+      }
+
       else
         this.displayImmunizations = true;
 

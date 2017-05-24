@@ -464,6 +464,9 @@
     "INFORMATION_FROM_REPOSITORY": "The following information was pulled from the Ontario Immunization Repository",
     "NAME": "Name",
     "SEX": "Sex",
+    "SEX_MALE": "Male",
+    "SEX_FEMALE": "Female",
+    "SEX_OTHER": "Other",
     "BIRTHDATE": "Date of Birth",
     "HEALTH_CARD_NUMBER": "Health Card Number",
     "OIID": "Ontario Immunization ID",
@@ -505,6 +508,9 @@
     "EDIT": "Edit",
     "NAME": "Name",
     "SEX": "Sex",
+    "SEX_MALE": "Male",
+    "SEX_FEMALE": "Female",
+    "SEX_OTHER": "Other",
     "BIRTHDATE": "Date of Birth",
     "HEALTH_CARD_NUMBER": "Health Card Number",
     "OIID": "Ontario Immunization ID",
@@ -517,6 +523,9 @@
     "EDIT": "Edit",
     "NAME": "Name",
     "SEX": "Sex",
+    "SEX_MALE": "Male",
+    "SEX_FEMALE": "Female",
+    "SEX_OTHER": "Other",
     "BIRTHDATE": "Date of Birth",
     "HEALTH_CARD_NUMBER": "Health Card Number",
     "OIID": "Ontario Immunization ID",
@@ -570,7 +579,9 @@
     "yellowCard_dateFormatHeader": "\n\n\n\n\nYYYY-MM-DD",
     "yellowCard_dateFormatText": "YYYY-MM-DD",
     "yellowCard_additionalInformation": "\n\n\n\n\nAdditional Info",
-    "yellowCard_other": "Other"
+    "yellowCard_other": "Other",
+    "confirmation_title": "ICON_Confirmation",
+    "yellowCard_title": "ICON_YellowCard"
   },
   "phuFooter": {
     "SCROLL_TO_TOP": "Scroll to Top"

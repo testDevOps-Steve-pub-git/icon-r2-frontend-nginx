@@ -280,6 +280,14 @@
                autocomplete="off" />
 
         <span ng-show="loadingLocations" class="fa fa-refresh" aria-hidden="true"></span>
+
+        <!--Error Messages-->
+        <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
+          <div class="alert alert-danger" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT'></div>
+          <div class="alert alert-danger" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'></div>
+        </div>
+        <!--End Error Messages-->
+
         <div ng-show="noResults">
           {{ 'patientCapture.NO_RESULTS_FOUND' | translate }}
         </div>
@@ -288,12 +296,6 @@
           {{ 'patientCapture.DAYCARE_TOOLTIP' | translate}}
         </div>
 
-        <!--Error Messages-->
-        <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
-          <div class="alert alert-danger" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT'></div>
-          <div class="alert alert-danger" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'></div>
-        </div>
-        <!--End Error Messages-->
       </div>
     </div>
     <!--End School or Daycare-->

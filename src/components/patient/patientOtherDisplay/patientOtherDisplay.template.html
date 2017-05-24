@@ -23,7 +23,9 @@
   </div>
   <div class="col-xs-12 text-left">
     <strong>
-      <span class="text-capitalize">{{$ctrl.clientInfo.gender}}</span>
+      <span ng-if="($ctrl.clientInfo.gender | lowercase) == 'female'" class="text-capitalize">{{ 'patientOtherDisplay.SEX_FEMALE' | translate }}</span>
+      <span ng-if="($ctrl.clientInfo.gender | lowercase) == 'male'" class="text-capitalize">{{ 'patientOtherDisplay.SEX_MALE' | translate }}</span>
+      <span ng-if="($ctrl.clientInfo.gender | lowercase) == 'other'" class="text-capitalize">{{ 'patientOtherDisplay.SEX_OTHER' | translate }}</span>
     </strong>
   </div>
 </div>

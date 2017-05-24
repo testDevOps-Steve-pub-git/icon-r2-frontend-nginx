@@ -35,6 +35,7 @@ angular.module('icon.components', [])
   .component('patientCapture',              require('./patient/patientCapture/patientCapture.component.js'))
   .component('patientOtherDisplay',         require('./patient/patientOtherDisplay/patientOtherDisplay.component.js'))
   .component('patientSelfDisplay',          require('./patient/patientSelfDisplay/patientSelfDisplay.component.js'))
+  .component('authSchoolDaycare',           require('./patient/authSchoolDaycareCapture/authSchoolDaycareCapture.component.js'))
 /* End Patient components */
 
 /* Submitter components */

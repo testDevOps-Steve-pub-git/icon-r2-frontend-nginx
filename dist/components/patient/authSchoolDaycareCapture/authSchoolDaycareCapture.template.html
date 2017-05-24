@@ -1,0 +1,31 @@
+<!--Patient School or Daycare-->
+<div class="row" ng-if="$ctrl.ageInYears < 18">
+  <div class="form-group col-xs-12 col-sm-12 col-md-6">
+    <label for="patient-school" translate='authSelfPatientContainer.DAYCARE' aria-label="{{'authSelfPatientContainer.DAYCARE' | translate}}"></label> {{'authSelfPatientContainer.DAYCARE_IF_APPLICABLE' | translate}}
+    <input type="text"
+           id="patient-school"
+           name="schoolOrDaycare"
+           class="form-control"
+           ng-pattern="$ctrl.rgx.SCHOOL_NAME"
+           ng-maxlength="100"
+           ng-model="$ctrl.localPatient.schoolOrDayCare"
+           typeahead-loading="loadingLocations"
+           typeahead-no-results="noResults"
+           typeahead-on-select="$ctrl.onSchoolOrDaycareSelect($item)"
+           uib-typeahead="schools.name as (schools.name + ', ' + schools.address + ', ' + schools.city ) for schools in $ctrl.getSchoolOrDaycare($viewValue) | limitTo:8"
+           autocomplete="off" />
+
+    <span ng-show="loadingLocations" class="fa fa-refresh" aria-hidden="true"></span>
+    <div ng-show="noResults">
+      {{ 'authSelfPatientContainer.NO_RESULTS_FOUND' | translate }}
+    </div>
+
+    <!--Error Messages-->
+    <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
+      <div class="alert alert-danger" ng-message="pattern" translate='authSelfPatientContainer.ERRORS.BAD_FORMAT' aria-label='authSelfPatientContainer.ERRORS.BAD_FORMAT'></div>
+      <div class="alert alert-danger" ng-message="maxlength" translate='authSelfPatientContainer.ERRORS.EXCEEDS_MAXLENGTH' aria-label='authSelfPatientContainer.ERRORS.EXCEEDS_MAXLENGTH'></div>
+    </div>
+    <!--End Error Messages-->
+  </div>
+</div>
+<!--End School or Daycare-->

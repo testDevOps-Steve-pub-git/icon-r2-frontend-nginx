@@ -864,7 +864,7 @@
              .then(appendImageFilesAsBase64)
              .then(createConfirmationPdfLayout)
              .then(Endpoint.generatePdf)
-             .then((pdf) => { downloadPdf(pdf, 'ICON_Confirmation') })
+             .then((pdf) => { downloadPdf(pdf, $translate.instant('pdf.confirmation_title')) })
              .then(() => {
                Notify.publish(ICON_NOTIFICATION.POP_CONFIRMATION_PDF_PROGRESS);
              })
@@ -884,7 +884,7 @@
              .then(appendImageFilesAsBase64)
              .then(createYellowCardPdfLayout)
              .then(Endpoint.generatePdf)
-             .then((pdf) => { downloadPdf(pdf, 'ICON_YellowCard') })
+             .then((pdf) => { downloadPdf(pdf, $translate.instant('pdf.yellowCard_title')) })
              .then(() => {
                Notify.publish(ICON_NOTIFICATION.POP_YELLOW_CARD_PDF_PROGRESS);
              })

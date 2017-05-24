@@ -323,14 +323,16 @@
         'status': 'completed',
         'sent': new Date().toISOString(),
         'received': new Date().toISOString(),
-        'subject': { 'reference': `#${PATIENT_ID}` },
-        'reason':[{'text':''}]
+        'subject': { 'reference': `#${PATIENT_ID}` }
       };
 
       // Only add the school if the submission has that info populated.
       if (isSchoolInfoPopulated) communication.contained.push(createSchool(record, SCHOOL_ID));
+
       // If user received a letter from a PHU, populate that info
-      if(didReceivePHULetter === $translate.instant('immunizationGating.YES')) communication.reason = [{text : 'Letter From PHU'}];
+      if(didReceivePHULetter === $translate.instant('immunizationGating.YES')) {
+        communication.reason = [{text : 'Letter From PHU'}];
+      }
 
       return communication;
     }

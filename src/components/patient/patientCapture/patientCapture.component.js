@@ -30,7 +30,7 @@
 
     this.$onInit = ()=> {
       this.getSchoolOrDaycare = Endpoint.getSchoolOrDaycare;
-      this.ageInYears = 100;
+      this.ageInYears = 0;
 
       /** Regex Librariess */
       this.rgx = ICON_RGX.rgx;

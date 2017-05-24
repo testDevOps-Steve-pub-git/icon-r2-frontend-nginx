@@ -466,6 +466,9 @@
     "INFORMATION_FROM_REPOSITORY": "Les renseignements suivants sont extraits du Registre d'immunisation de l'Ontario. ",
     "NAME": "Nom",
     "SEX": "Sexe",
+    "SEX_MALE": "Homme ",
+    "SEX_FEMALE": "Femme",
+    "SEX_OTHER": "Autre",
     "BIRTHDATE": "Date de naissance",
     "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
@@ -507,6 +510,9 @@
     "EDIT": "Modifier",
     "NAME": "Nom",
     "SEX": "Sexe",
+    "SEX_MALE": "Homme ",
+    "SEX_FEMALE": "Femme",
+    "SEX_OTHER": "Autre",
     "BIRTHDATE": "Date de naissance",
     "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
@@ -519,6 +525,9 @@
     "EDIT": "Modifier",
     "NAME": "Nom",
     "SEX": "Sexe",
+    "SEX_MALE": "Homme ",
+    "SEX_FEMALE": "Femme",
+    "SEX_OTHER": "Autre",
     "BIRTHDATE": "Date de naissance",
     "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "OIID": "N<sup>o</sup> d'identification d'immunisation de l'Ontario",
@@ -574,7 +583,9 @@
     "yellowCard_dateFormatHeader": "\n\n\n\n\nAAAA-MM-JJ",
     "yellowCard_dateFormatText": "AAAA-MM-JJ",
     "yellowCard_additionalInformation": "\n\n\n\n\nRenseignements supplémentaires",
-    "yellowCard_other": "autre"
+    "yellowCard_other": "autre",
+    "confirmation_title": "ICON_Confirmation",
+    "yellowCard_title": "ICON_CarteJaune"
   },
   "phuFooter": {
     "SCROLL_TO_TOP": "Défiler vers le haut"

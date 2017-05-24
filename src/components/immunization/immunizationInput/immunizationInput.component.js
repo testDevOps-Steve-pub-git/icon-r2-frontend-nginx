@@ -28,6 +28,13 @@
       AGENT:  'agent',
     };
 
+    let immunizationInputModal = null;
+
+    this.$onDestroy = () => {
+      if (!!immunizationInputModal) immunizationInputModal.close();
+      immunizationInputModal = null;
+    }
+
     this.$onInit = () => {
       this.noImmunizations = false; //Flag to display error message
 
@@ -113,7 +120,7 @@
         return (this.immunizations.length > 0);
       };
 
-      let immunizationInputModal = null;
+
       this.openEditImmunizationModal = (immunization) => {
         let candidateImmunization = (!!immunization)
               ? immunization.clone()
