@@ -75,7 +75,7 @@
         case Address.type.URBAN:
         default:
           return [
-            `${(!!address.unitNumber) ? `${address.unitNumber} - ` : ``}${address.streetNumber} ${(!!address.streetType) ? ` ${address.streetType}` : ``}${(!!address.streetDirection) ? ` ${address.streetDirection}` : ``}`,
+            `${(!!address.unitNumber) ? `${address.unitNumber} - ` : ``}${address.streetNumber} ${address.streetName}${(!!address.streetType) ? ` ${address.streetType}` : ``}${(!!address.streetDirection) ? ` ${address.streetDirection}` : ``}`,
             `${address.city}, ${address.province}`,
             `${address.postalCode.toUpperCase()}`,
           ].join(`\n`);
@@ -113,8 +113,6 @@
 
       let immunizationDetails = `${
                                   (immunization.lot.number) ? `\n${text.lotNumber} ${immunization.lot.number}` : ``
-                                }${
-                                  (immunization.isDateApproximate) ? `(${text.isDateApproximate})` : ``
                                 }${
                                   (immunization.provider) ? `\n${immunization.provider}` : ``
                                 }`;
@@ -811,7 +809,6 @@
                printLogoUrl: $translate('pdf.printLogoUrl', data),
 
                lotNumber: $translate('pdf.lotNumber', data),
-               dateIsApproximate: $translate('pdf.dateIsApproximate', data),
 
                noImmunizations: $translate('pdf.noImmunizations', data),
 

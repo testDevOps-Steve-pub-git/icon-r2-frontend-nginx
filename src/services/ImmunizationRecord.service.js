@@ -3,10 +3,11 @@
 */
 (function () {
 'use strict';
-  let ImmunizationRecordSubmission = require('../models/ImmunizationRecordSubmission.model.js')();
   module.exports = ImmunizationRecordService;
 
-  function ImmunizationRecordService () {
+  var ImmunizationRecordSubmission = require('../models/ImmunizationRecordSubmission.model.js')();
+
+  function ImmunizationRecordService (moment) {
 
 /* Private members ************************************************************/
 
@@ -129,6 +130,24 @@
         immunizationRecordSubmission = new ImmunizationRecordSubmission();
       }
 
+    /**
+     * Function to check the user date of birth against the immunization dates. This is used to make sure that when
+     * the user edits their DOB they do not change the DOB to a date after an immunization date
+     * @param patientDateOfBirth: Patient date of birth
+     * @param immunizations: Array of patient's immunizations
+     * @returns {boolean}: True if there is an invalid date, false if no invalid date (Invalid date being a DOB later than an Imms date)
+     */
+      function checkDOBAgainstImmunizationDate(patientDOB, immunizations) {
+        let invalidDate = false;
+        let patientDateOfBirth =  moment(patientDOB);
+        immunizations.forEach( (immunization)=> {
+          if(moment(immunization.date).isBefore(patientDateOfBirth))
+            invalidDate = true;
+        });
+
+        return invalidDate;
+      }
+
 /* Public interface to this service *******************************************/
 
       return {
@@ -153,7 +172,8 @@
           getRecommendations: getRecommendations,
           setRecommendations: setRecommendations,
 
-          clear: clear
+          clear: clear,
+          checkDOBAgainstImmunizationDate: checkDOBAgainstImmunizationDate
       };
   }
 

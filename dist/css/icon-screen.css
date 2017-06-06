@@ -770,3 +770,23 @@ padding-left: 0px;
      -moz-osx-font-smoothing: grayscale;
    }
    /* Date-picker left and right slider arrows. */
+
+
+/* Error for imms display tables if DOB is later than entered dates */
+.icon-imms-display-table-error .panel .panel-heading{
+    background-color: #FADFE2;
+}
+
+.icon-imms-display-table-error .panel > ul.list-group > li{
+    background-color: #FFF2F4;
+}
+
+.icon-imms-display-table-error-age {
+    color: #9B1F2B;
+    font-weight: bold;
+}
+
+.icon-imms-display-error-message {
+    margin-bottom: 1em;
+}
+/* End imms display table error */

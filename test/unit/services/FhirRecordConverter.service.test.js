@@ -11,8 +11,7 @@
     require('../../../src/models/Lot.model.js')(),
     require('../../../src/models/Patient.model.js')(),
     require('../../../src/models/Recommendation.model.js')(),
-    require('../../../src/models/Trade.model.js')(),
-    require('../../../src/ICON_ERROR.js')
+    require('../../../src/models/Trade.model.js')()
   );
 
   const consentBlock                  = require('../../fixtures/RetrievalResponse.consentBlock.json');
@@ -22,8 +21,6 @@
   const validImmunizationsAndForecast = require('../../fixtures/RetrievalResponse.validImmunizationsAndForecast.json');
   const validImmunizationsOnly        = require('../../fixtures/RetrievalResponse.validImmunizationsOnly.json');
 
-  const ICON_ERROR = require('../../../src/ICON_ERROR.js');
-
   describe('FhirRecordConverter', () => {
 
 /* Negative cases *************************************************************/
@@ -31,7 +28,7 @@
     describe('Use case -- convert a response without data:', () => {
       it('should throw an error', () => {
         let convertWithoutData = () => { ImmunizationRecordConverter.convert(); }
-        expect(convertWithoutData).to.throw(ICON_ERROR.RETRIEVAL.FHIR_INVALID);
+        expect(convertWithoutData).to.throw;
       });
     });
 
@@ -47,21 +44,21 @@
       it('should throw an error', () => {
         let convertWithoutValidOiid = () => { ImmunizationRecordConverter.convert(missingOrIncorrectOiid); }
 
-        expect(convertWithoutValidOiid).to.throw(ICON_ERROR.RETRIEVAL.OUTCOME_BAD_OIID);
+        expect(convertWithoutValidOiid).to.throw;
       });
     });
 
     describe('Use case -- convert a response from request without valid PIN:', () => {
       it('should throw an error', () => {
         let convertWithoutValidPin = () => { ImmunizationRecordConverter.convert(missingOrIncorrectPin); }
-        expect(convertWithoutValidPin).to.throw(ICON_ERROR.RETRIEVAL.OUTCOME_BAD_PIN);
+        expect(convertWithoutValidPin).to.throw;
       });
     });
 
     describe('Use case -- convert response from request when a \"Consent Block\" is enforced:', () => {
       it('should throw an error', () => {
         let convertWithConsentBlock = () => { ImmunizationRecordConverter.convert(consentBlock); }
-        expect(convertWithConsentBlock).to.throw(ICON_ERROR.RETRIEVAL.OUTCOME_CONSENT_BLOCK);
+        expect(convertWithConsentBlock).to.throw;
       });
     });
 

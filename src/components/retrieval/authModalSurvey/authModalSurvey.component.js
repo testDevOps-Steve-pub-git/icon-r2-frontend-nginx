@@ -26,7 +26,7 @@
       this.$close({
         result: modalData
       });
-      $state.go('welcome');
+      $state.transitionTo('welcome');
     };
 
   }

@@ -228,6 +228,13 @@
      */
     function patientImmunizationToFhir (patientId) {
       return (imm, index, immunizations) => {
+        const IMMUNIZATION_SNOMED = (!!imm.trade.snomed)
+                  ? imm.trade.snomed
+                  : imm.agent.snomed;
+        const IMMUNIZATION_DISPLAY_NAME = (!!imm.trade.name)
+                  ? `${imm.agent.name} (${imm.trade.name})`
+                  : `${imm.agent.name}`;
+
         let immunization = {
           'resourceType': 'Immunization',
           'id': `Immunization/${index + 1}`,
@@ -242,10 +249,10 @@
           'vaccineCode': {
             'coding': [{
               'system':   'http://snomed.info/sct',
-              'code':     imm.agent.snomed,
-              'display':  imm.agent.name
+              'code':     IMMUNIZATION_SNOMED,
+              'display':  IMMUNIZATION_DISPLAY_NAME
             }],
-            'text': imm.trade.name
+            'text': IMMUNIZATION_DISPLAY_NAME
           },
           'patient': { 'reference': `#${patientId}` },
           'wasNotGiven': false,
@@ -255,7 +262,9 @@
           'note': [{ 'text': imm.provider }]
         };
 
-        if(allImmunizationsFromOntario === $translate.instant('immunizationGating.YES')) immunization.location ={ display: 'Canada, Ontario'};
+        if (allImmunizationsFromOntario === $translate.instant('immunizationGating.YES')) {
+          immunization.location = { display: 'Canada, Ontario' };
+        }
 
         return immunization;
       };
@@ -296,13 +305,10 @@
       const SCHOOL_ID =     isSchoolInfoPopulated ? 'Organization/1' : null;
       const SUBMITTER_ID =  'RelatedPerson/1';
 
-      const IMMS = record.getNewImmunizations();
-      let numberOfImmunizations =[];
-      for(let i = 1; i <= IMMS.length; i++){
-        numberOfImmunizations.push({ 'contentReference':
-          {'reference':  `#Immunization/${i}`}
-        });
-      }
+      let numberOfImmunizations = record.getNewImmunizations()
+          .map((_, index) => ({
+            'contentReference': { 'reference':  `#Immunization/${index + 1}` }
+          }));
 
       let communication = {
         'resourceType': 'Communication',
@@ -314,12 +320,10 @@
         ].concat(
           createImmunizations(record, PATIENT_ID)
         ),
-        'identifier': [createIdentifier(record)],
+        'identifier': [ createIdentifier(record) ],
         'sender': { 'reference': `#${SUBMITTER_ID}` },
-        'recipient': [{ 'reference': `#${PHU_ID}` }],
-        /* NOTE: Payload dummied, real data to be added by server before relaying on to PHIX/DHIR. */
+        'recipient': [ { 'reference': `#${PHU_ID}` } ],
         'payload': numberOfImmunizations,
-        /* End Payload */
         'status': 'completed',
         'sent': new Date().toISOString(),
         'received': new Date().toISOString(),
@@ -327,11 +331,13 @@
       };
 
       // Only add the school if the submission has that info populated.
-      if (isSchoolInfoPopulated) communication.contained.push(createSchool(record, SCHOOL_ID));
+      if (isSchoolInfoPopulated) {
+        communication.contained.push(createSchool(record, SCHOOL_ID));
+      }
 
       // If user received a letter from a PHU, populate that info
-      if(didReceivePHULetter === $translate.instant('immunizationGating.YES')) {
-        communication.reason = [{text : 'Letter From PHU'}];
+      if (didReceivePHULetter === $translate.instant('immunizationGating.YES')) {
+        communication.reason = [{ text : 'Letter From PHU' }];
       }
 
       return communication;
@@ -379,7 +385,9 @@
     }
 
     function tradeFromJson (trade) {
-      return ((trade === null) ? new Trade() : Object.assign(new Trade(), trade));
+      return ((trade === null)
+                ? new Trade()
+                : Object.assign(new Trade(), trade));
     }
 
     function diseaseFromJson (disease) {

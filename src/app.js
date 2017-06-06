@@ -4,7 +4,6 @@
   require('angular');
   require('./dependencies.module.js');
 
-  require('./index.js');
   require('./index.controller.js');
 
   require('./components/components.module.js');
@@ -31,11 +30,6 @@
     'icon.models',
     'icon.services',
     'icon.views',
-
-    /* Service Factories */
-    'icon.Retrieval',
-    'icon.acceptLegalAgreementService',
-    'icon.yellowCardFormatterService',
 
     /* External libraries */
     'mgcrea.bootstrap.affix',
@@ -86,7 +80,7 @@
     SUBMIT_IMMUNIZATIONS: `${BASE_URL}/api/ImmunizationSubmissions`,
 
     // Retrieval APIs
-    RETRIEVE_IMMUNIZATION_RECORD: `${BASE_URL}/api/yellowCard`,
+    RETRIEVE_IMMUNIZATION_RECORD: `${BASE_URL}/api/immunizationRetrieval`,
 
     // Analytics / tracking API
     TRACKING: `${BASE_URL}/api/tracking`,
@@ -116,7 +110,7 @@
 
   .constant('ICON_RGX', {
     rgx: {
-      NAME: /^[a-zàâçéèêëîïôûùüÿñæœ !.'\-]*$/i,
+      NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ !.'\-]*$/i,
       EMAIL_ADDRESS: /^(?!.*\.{2})([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+([\.][a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*)@((([\-]?[a-zA-Z0-9]){2,}[\.])*(([a-zA-Z0-9][\-]?))+).(([\.]([a-zA-Z0-9][\-]?){2,}([a-zA-Z0-9])*)+)$/,
       PHONE_NUMBER: /^(\(?\+?[0-9]{1,3}\)?)?[. \-]?\(?[2-9]{1}[0-9]{2}\)?[. \-]?\d{3}[. \-]?\d{4}$/i,
       PHONE_EXTENSION: /^\d*$/i,
@@ -128,7 +122,7 @@
       LINE2:  /^[a-z0-9 \-#]*$/i,
       CITY: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-]*$/i,
       POSTAL: /^[abceghjklmnprstvxy]\d[abceghjklmnprstvwxyz]( )?\d[abceghjklmnprstvwxyz]\d$/i,
-      SCHOOL_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'.,\-#/\?]*$/i,
+      SCHOOL_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ ()@&!'’.,\-#/\?]*$/i,
       COMMENT: /^[a-zàâçéèêëîïôûùüÿñæœ !'"\-+&$%#@:;«»().,]*$/i,
       OIID: /^[2-9b-df-hj-np-tv-xz]{4}[\- ]?[2-9b-df-hj-np-tv-xz]{3}[\- ]?[2-9b-df-hj-np-tv-xz]{3}[\- ]?$/i,
       OIID_PIN: /^\d*$/i,
@@ -154,48 +148,8 @@
     TOKEN_TRANSACTION_EXPIRY: '$tokenTransactionExpiry',
   })
 
-  .constant('ICON_NOTIFICATION', {
-    // NOTE: Progress modals are NOT dismissable, therefore push (opening),
-    //       and pop (closing) must be done programatically.
-    PUSH_SUBMISSION_PROGRESS:         '$pushProgressSubmission',
-    PUSH_RETRIEVAL_PROGRESS:          '$pushProgressRetrieval',
-    PUSH_YELLOW_CARD_PDF_PROGRESS:    '$pushProgressYellowCardPdf',
-    PUSH_CONFIRMATION_PDF_PROGRESS:   '$pushProgressConfirmationPdf',
-
-    POP_SUBMISSION_PROGRESS:          '$popProgressSubmission',
-    POP_RETRIEVAL_PROGRESS:           '$popProgressRetrieval',
-    POP_YELLOW_CARD_PDF_PROGRESS:     '$popProgressYellowCardPdf',
-    POP_CONFIRMATION_PDF_PROGRESS:    '$popProgressConfirmationPdf',
-
-    // NOTE: Modals are dismissable by the user taking an action,
-    //       or programatically.
-    PUSH_TRANSACTION_TOKEN_TIMEOUT:   '$pushTransactionTokenTimeout',
-    POP_TRANSACTION_TOKEN_TIMEOUT:    '$popTransactionTokenTimeout',
-
-    // Informational and error notifications are user dismissable.
-    INFO_PATIENT_DATA_CLEARED:        '$infoPatientDataCleared',
-    INFO_SESSION_EXPIRED:             '$infoSessionExpired',
-    INFO_OIID_HINT:                   '$infoOiidHint',
-
-    WARN_DOCUMENT_FILE_BAD_TYPE:      '$warnDocumentFileBadType',
-    WARN_DOCUMENT_FILE_TOO_LARGE:     '$warnDocumentFileTooLarge',
-    WARN_DOCUMENT_FILE_DUPLICATE:     '$warnDocumentFileDuplicate',
-    WARN_DOCUMENT_FILE_QUEUE_LIMIT:   '$warnDocumentFileQueueLimit',
-
-    WARN_RETRIEVAL_CONSENT_BLOCK:     '$warnRetrievalConsentBlock',
-    WARN_RETRIEVAL_BAD_OIID:          '$warnRetrievalBadOiid',
-    WARN_RETRIEVAL_BAD_PIN:           '$warnRetrievalBadPin',
-    WARN_RETRIEVAL_NETWORK_PROBLEM:   '$warnRetrievalNetworkProblem',
-    WARN_RETRIEVAL_UNKNOWN:           '$warnRetrievalUnknown',
-
-    WARN_SUBMISSION_INVALID_FHIR:     '$warnSubmissionInvalidFhir',
-    WARN_SUBMISSION_NETWORK_PROBLEM:  '$warnSubmissionNetworkProblem',
-    WARN_SUBMISSION_UNKNOWN:          '$warnSubmissionUnkown',
-
-    WARN_GENERAL_NETWORK_PROBLEM:     '$warnGeneralNetworkProblem',
-  })
-
-  .constant('ICON_ERROR', require('./ICON_ERROR.js'))
+  .constant('DHIR_ERROR',         require('./DHIR_ERROR.js'))
+  .constant('ICON_NOTIFICATION',  require('./ICON_NOTIFICATION.js'))
 
   .run(['$rootScope', '$state', 'uiMaskConfig', function ($rootScope, $state, uiMaskConfig) {
     //Globally set UIMask to clear
@@ -206,6 +160,18 @@
        window.document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
   }])
+
+  /**
+  Intercepts $http calls to reject false positive responses from DHIR.
+  NOTE: Causes DHIR responses with an operation outcome to be thrown to the
+        caller's $q.catch() block instead of $q.then() when an operation
+        outcome is found with a 200 HTTP code.
+  */
+  .config(['$httpProvider', ($httpProvider) => {
+    $httpProvider.interceptors
+      .push(['$q', require('./interceptors/rejectDhirFalsePositive.interceptor.js')]);
+  }])
+/* End interceptor */
 
 /* Localization configuration *************************************************/
   .config(['$translateProvider', function ($translateProvider) {

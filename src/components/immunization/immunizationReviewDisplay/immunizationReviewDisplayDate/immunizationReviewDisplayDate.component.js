@@ -16,7 +16,13 @@
   };
 
 
-  immunizationReviewDisplayDateController.$inject = [];
-  function immunizationReviewDisplayDateController() {}
+  immunizationReviewDisplayDateController.$inject = ['ImmunizationRecordService'];
+  function immunizationReviewDisplayDateController(ImmunizationRecordService) {
+
+    this.$onInit = ()=> {
+      /* If the user edits the DOB to be later than an Imms date, display an error */
+      this.invalidDate = ImmunizationRecordService.checkDOBAgainstImmunizationDate(this.patient.dateOfBirth, this.immunizations)
+    }
+  }
 
 })();

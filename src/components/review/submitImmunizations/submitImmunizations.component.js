@@ -20,11 +20,10 @@ function addressToggleController (
   this.$onInit = () => {
     this.isSubmitButtonDisabled = false;
 
-    //Set messages for toaster
-    let toasterParams = {
-      title: 'It appears there was an error',
-      body: 'Check your internet connectivity and try again!'
-    };
+    /* If the user edits the DOB to be later than an Imms date, display an error */
+    let patientInfo = ImmunizationRecordService.getPatient();
+    let immunizations = ImmunizationRecordService.getNewImmunizations();
+    this.invalidDate = ImmunizationRecordService.checkDOBAgainstImmunizationDate(patientInfo.dateOfBirth, immunizations);
 
     let submitImmunizations = () => {
 
@@ -45,10 +44,13 @@ function addressToggleController (
     };
 
     this.submit = () => {
-      this.isSubmitButtonDisabled = true;
-
-      Notify.publish(ICON_NOTIFICATION.PUSH_SUBMISSION_PROGRESS);
-      FileUploadHandler
+      if(this.invalidDate) {
+        Notify.publish(ICON_NOTIFICATION.INVALID_DATE_ERROR);
+      }
+      else {
+        this.isSubmitButtonDisabled = true;
+        Notify.publish(ICON_NOTIFICATION.PUSH_SUBMISSION_PROGRESS);
+        FileUploadHandler
           .getUploader()
           .then((uploader) => {
             if (uploader.queue.length > 0) {
@@ -63,6 +65,7 @@ function addressToggleController (
             console.error(error);
             this.isSubmitButtonDisabled = false;
           });
+      }
     };
   };
   }

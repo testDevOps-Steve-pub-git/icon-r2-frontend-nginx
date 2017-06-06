@@ -3,16 +3,14 @@
  */
 (function () {
 'use strict';
-  const ICON_ERROR = require('../ICON_ERROR.js');
   module.exports = FhirRecordConverter;
 
   function FhirRecordConverter (
     $q,
     Endpoint,
-    Agent, Disease, Immunization, Lot, Patient, Recommendation, Trade,
-    ICON_ERROR
+    Agent, Disease, Immunization, Lot, Patient, Recommendation, Trade
   ) {
-/* Private constants **********************************************************/
+/* Private ********************************************************************/
 
     const type = {
       PATIENT:        `Patient`,
@@ -25,9 +23,6 @@
       HCN:  `https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-patient-hcn`,
       OIID: `https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id`,
     };
-
-
-/* Private utility functions **************************************************/
 
     let isResourceType = (desiredType) => (entry) => {
       return (entry.resource
@@ -58,28 +53,28 @@
     };
 
     let createImmunizationUsing = (practitionerDictionary) => (immunization) => {
-                                    let newPractitioner = (!!immunization.resource.performer)
-                                                              ? practitionerDictionary[immunization.resource.performer.reference]
-                                                              : ``;
-                                    let newLot = (!!immunization.resource.lotNumber)
-                                                              ? new Lot(immunization.resource.lotNumber)
-                                                              : new Lot();
+      let newPractitioner = (!!immunization.resource.performer)
+                                ? practitionerDictionary[immunization.resource.performer.reference]
+                                : ``;
+      let newLot = (!!immunization.resource.lotNumber)
+                                ? new Lot(immunization.resource.lotNumber)
+                                : new Lot();
 
-                                    let dateIsEstimated = (!!immunization.resource._date
-                                                              ? immunization.resource._date.extension[0].valueBoolean
-                                                              : false);
+      let dateIsEstimated = (!!immunization.resource._date
+                                ? immunization.resource._date.extension[0].valueBoolean
+                                : false);
 
-                                    return new Immunization(
-                                      immunization.resource.date.substring(0, 10),
-                                      dateIsEstimated,
-                                      null,
-                                      null,
-                                      newPractitioner,
-                                      ``,
-                                      newLot,
-                                      immunization.resource.vaccineCode.coding[0].code
-                                    );
-                                  };
+      return new Immunization(
+        immunization.resource.date.substring(0, 10),
+        dateIsEstimated,
+        null,
+        null,
+        newPractitioner,
+        ``,
+        newLot,
+        immunization.resource.vaccineCode.coding[0].code
+      );
+    };
 
     let createRecommendation = (recommendation) => {
       return new Recommendation(
@@ -89,10 +84,6 @@
         recommendation.vaccineCode.coding[0].code
       );
     };
-
-
-
-/* Private logic functions ****************************************************/
 
     function fhirParse (data) {
       let candidateRecommendations = data.entry.filter(isResourceType(type.RECOMMENDATION));
@@ -134,54 +125,31 @@
 /* Public *********************************************************************/
 
     function convert (data) {
-      const outcome = {
-        POSITIVE: `Bundle`,
-        NEGATIVE: `OperationOutcome`
-      };
+      const POSITIVE_RESOURCE_TYPE = `Bundle`;
+      const NEGATIVE_OPERATION_OUTCOME = `OperationOutcome`;
 
-      if (!data || !data.resourceType) throw new Error(ICON_ERROR.RETRIEVAL.FHIR_INVALID);
+      const hasData = !!data;
+      const hasResourceType = (
+           !!data
+        && !!data.resourceType
+      );
+      const hasEntryResourceType = (
+           !!data
+        && !!data.entry
+        && !!data.entry.length
+        && !!data.entry[0].resource
+        && !!data.entry[0].resource.resourceType
+      );
+      const isPositiveFhirResponse = (
+           hasData
+        && hasResourceType
+        && hasEntryResourceType
+        && data.resourceType === POSITIVE_RESOURCE_TYPE
+        && data.entry[0].resource.resourceType !== NEGATIVE_OPERATION_OUTCOME
+      );
 
-      // The content of the FHIR message is a "Bundle" _WITHOUT_ an "OperationOutcome".
-      if (
-          data.resourceType === outcome.POSITIVE
-       && data.entry[0].resource.resourceType !== outcome.NEGATIVE
-      ) {
-        // Positive case, FHIR will be converted.
-        return fhirParse(data);
-      }
-      // The content of the FHIR message is a "Bundle" _WITH_ an "OperationOutcome".
-      else if (
-           data.resourceType === outcome.POSITIVE
-        && data.entry[0].resource.resourceType === outcome.NEGATIVE
-      ) {
-        switch (data.entry[0].resource.issue[0].code) {
-          case `suppressed`:
-            throw new Error(ICON_ERROR.RETRIEVAL.OUTCOME_CONSENT_BLOCK);
-            break;
-
-          case `not-found`:
-            throw new Error(ICON_ERROR.RETRIEVAL.OUTCOME_BAD_OIID);
-            break;
-
-          default:
-            throw new Error(ICON_ERROR.RETRIEVAL.OUTCOME_OTHER);
-            break;
-        }
-      }
-      // The content of the FHIR message is an "OperationOutcome" only, _WITHOUT_ "Entries".
-      else if (data.resourceType === outcome.NEGATIVE) {
-        if (
-             data.issue[0].code === `required`
-          && data.issue[0].location[0] == `PIN`
-        ) {
-          // NOTE: Best effort to detect this error with DHIR Simulator response data.
-          // TODO: Confirm/refactor if necessary when actual DHIR endpoint is up and running.
-          throw new Error(ICON_ERROR.RETRIEVAL.OUTCOME_BAD_PIN);
-        }
-      }
-      else {
-        throw new Error(ICON_ERROR.RETRIEVAL.OUTCOME_UNKOWN);
-      }
+      if (isPositiveFhirResponse) return fhirParse(data);
+      else throw new Error(`FHIR Invalid, cannot parse retrieval`);
     }
 
     function populateConvertedData (record) {
@@ -235,6 +203,7 @@
         };
       });
     }
+
 
 /* Interface ******************************************************************/
 

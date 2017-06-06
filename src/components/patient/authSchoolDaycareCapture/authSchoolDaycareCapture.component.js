@@ -21,18 +21,30 @@
       /* Getting birth date for calculating whether use will see school/daycare inut*/
       let patientInfo = ImmunizationRecordService.getPatient();
       this.ageInYears = calculateIfPatientIsOver18(patientInfo.dateOfBirth);
-
-
-      /** School/Daycare lookup */
-      this.getSchoolOrDaycare = Endpoint.getSchoolOrDaycare;
-
+      
       /** Regex Librariess */
       this.rgx = ICON_RGX.rgx;
 
       /*Function Dec*/
       this.onSchoolOrDaycareSelect = onSchoolOrDaycareSelect;
       this.calculateIfPatientIsOver18 = calculateIfPatientIsOver18;
+      this.getSchoolOrDaycare = getSchoolOrDaycare;
     };
+
+
+    /**
+     * For school or daycare query. If user enters invalid character do not do query
+     * @param schoolQuery: Query user types
+     * Returns schools
+     */
+    function getSchoolOrDaycare(schoolQuery) {
+      if (this.form.schoolOrDaycare.$valid) {
+        return Endpoint.getSchoolOrDaycare(schoolQuery)
+          .then((res) => {
+            return res;
+          });
+      }
+    }
 
     /**
      * Calculates if the patient is over 18 years of age, to use to display the school or daycare field (If under 18)

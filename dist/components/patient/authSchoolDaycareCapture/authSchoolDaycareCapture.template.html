@@ -12,7 +12,7 @@
            typeahead-loading="loadingLocations"
            typeahead-no-results="noResults"
            typeahead-on-select="$ctrl.onSchoolOrDaycareSelect($item)"
-           uib-typeahead="schools.name as (schools.name + ', ' + schools.address + ', ' + schools.city ) for schools in $ctrl.getSchoolOrDaycare($viewValue) | limitTo:8"
+           uib-typeahead="schools.queryString for schools in $ctrl.getSchoolOrDaycare($viewValue) | limitTo:8"
            autocomplete="off" />
 
     <span ng-show="loadingLocations" class="fa fa-refresh" aria-hidden="true"></span>

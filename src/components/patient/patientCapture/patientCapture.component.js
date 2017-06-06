@@ -20,17 +20,17 @@
 
   patientSelfCaptureController.$inject = [
     'Endpoint', 'Notify',
-    'ICON_NOTIFICATION', 'ICON_RGX', 'moment'
+    'ICON_NOTIFICATION', 'ICON_RGX', 'moment',
+    'ImmunizationRecordService'
   ];
   function patientSelfCaptureController (
     Endpoint, Notify,
-    ICON_NOTIFICATION, ICON_RGX, moment
+    ICON_NOTIFICATION, ICON_RGX, moment,
+    ImmunizationRecordService
   )
   {
 
     this.$onInit = ()=> {
-      this.getSchoolOrDaycare = Endpoint.getSchoolOrDaycare;
-      this.ageInYears = 0;
 
       /** Regex Librariess */
       this.rgx = ICON_RGX.rgx;
@@ -55,8 +55,31 @@
       this.onSchoolOrDaycareSelect = onSchoolOrDaycareSelect;
       this.openOiidHintModal = openOiidHintModal;
       this.calculateIfPatientIsOver18 = calculateIfPatientIsOver18;
+      this.calculateIfPatientIsOver18(this.localPatient.dateOfBirth);
+      this.getSchoolOrDaycare = getSchoolOrDaycare;
     };
 
+    this.$onDestroy = ()=> {
+      if (this.ageInYears >= 18 ) {
+        this.localPatient.schoolOrDayCare = "";
+        ImmunizationRecordService.setPatient(this.localPatient);
+      }
+    };
+
+
+    /**
+     * For school or daycare query. If user enters invalid character do not do query
+     * @param schoolQuery: Query user types
+     * Returns schools
+     */
+    function getSchoolOrDaycare(schoolQuery) {
+      if (this.form.schoolOrDaycare.$valid) {
+        return Endpoint.getSchoolOrDaycare(schoolQuery)
+          .then((res) => {
+            return res;
+          });
+      }
+    }
 
     /**
      * Open hint for OIID

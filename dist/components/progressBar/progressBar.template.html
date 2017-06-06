@@ -3,7 +3,11 @@
     <div class="row">
 
       <div class="col-xs-12">
-        <div id="icon-progress-line" style="padding-left: {{ ((((100 / $ctrl.progressStates.length) / 2) - 1) + 1) }}%; padding-right: {{ ((((100 / $ctrl.progressStates.length) / 2) - 1) + 1) }}%;">
+
+        <div id="icon-progress-line" ng-style="{
+          'padding-left': $ctrl.progressBarPaddingLeft+'%',
+          'padding-right': $ctrl.progressBarPaddingRight+'%'
+        }">
           <uib-progressbar value="(($ctrl.currentIndex()) / ($ctrl.progressStates.length-1) ) * 100"
           type="primary"></uib-progressbar>
         </div>

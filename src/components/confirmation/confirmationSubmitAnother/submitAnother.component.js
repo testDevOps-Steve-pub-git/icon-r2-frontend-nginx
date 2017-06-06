@@ -26,14 +26,6 @@
     let address = {};
     this.path = '';
     this.$onInit = () => {
-      submitter = ImmunizationRecordService.getSubmitter();
-      address = ImmunizationRecordService.getAddress();
-
-
-      /* Saves address and submitter info in case of future submissions. Will get cleared on welcome screen*/
-      ImmunizationRecordService.setSubmitter(submitter);
-      ImmunizationRecordService.setAddress(address);
-
       /* If user decides to submit again, they will skip AUP*/
       MiscData.setSkipAUP(true);
 
@@ -43,7 +35,13 @@
     };
 
     this.$onDestroy = ()=> {
+      submitter = ImmunizationRecordService.getSubmitter();
+      address = ImmunizationRecordService.getAddress();
+
       ImmunizationRecordService.clear();
+
+      ImmunizationRecordService.setSubmitter(submitter);
+      ImmunizationRecordService.setAddress(address);
     };
 
 

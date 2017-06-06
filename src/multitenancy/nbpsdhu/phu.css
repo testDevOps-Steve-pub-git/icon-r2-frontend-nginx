@@ -1,0 +1,41 @@
+/******************************************************************************
+ *                                                                            *
+ *    North Bay Parry Sound custom PHU rules ONLY in this stylesheet.         *
+ *    ~~~~~~~~~~~~~~~~~~~~~                                                   *
+ ******************************************************************************/
+
+#icon-phu-header {
+  background-color: #353535 !important;
+  border-color: #57B0D6 !important;
+}
+
+#icon-phu-header * {
+    color: #ffffff !important;
+}
+
+#icon-phu-header-brand {
+  border-color: #ffffff !important;
+}
+
+@media (min-width: 1px) {
+  /* Scale the logo/brand image down by a factor of 2.6 */
+  #icon-phu-header-brand img {
+    width: 83px; /* Width will vary for each PHU. */
+    height: 40px; /* Height should NOT be changed. */
+  }
+}
+
+@media (min-width: 767px) {
+  /* Scale the logo/brand image down by a factor of 2.0 */
+  #icon-phu-header-brand img {
+    width: 107px; /* Width will vary for each PHU. */
+    height: 52px; /* Height should NOT be changed. */
+  }
+}
+
+#icon-phu-footer {
+  background-color: #A1D2E6 !important;
+}
+#icon-progress-bar-container {
+  background-color: #A1D2E6 !important;
+}

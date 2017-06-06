@@ -2,21 +2,25 @@
 'use strict';
   module.exports = Notify;
 
-  function Notify (ICON_NOTIFICATION, ICON_ERROR) {
+  function Notify (ICON_NOTIFICATION) {
 /* Private ********************************************************************/
 
     let notificationBus = {};
 
-    let notificationvalues = Object.keys(ICON_NOTIFICATION)
+    const NOTIFICATION_VALUES = Object.keys(ICON_NOTIFICATION)
                              .map(key => ICON_NOTIFICATION[key]);
+
+    function doesNotificationExist (notification) {
+      return NOTIFICATION_VALUES.indexOf(notification) >= 0;
+    }
 
 
 /* Public *********************************************************************/
 
     /** Publishes a notification to all registered subscribers. */
     function publish (notification) {
-      if (notificationvalues.indexOf(notification) < 0) {
-        throw new Error(ICON_ERROR.NOTIFICATION.DOES_NOT_EXIST);
+      if (!doesNotificationExist (notification)) {
+        throw new Error(`Notification \"ICON_NOTIFICATION.${notification}\" does not exist!`);
       }
 
       notificationBus[notification]
@@ -25,8 +29,8 @@
 
     /** Adds a subscriber function to the list of callbacks callod when a notification is published. */
     function subscribe (notification, subscriber) {
-      if (notificationvalues.indexOf(notification) < 0) {
-        throw new Error(ICON_ERROR.NOTIFICATION.DOES_NOT_EXIST);
+      if (!doesNotificationExist (notification)) {
+        throw new Error(`Notification \"ICON_NOTIFICATION.${notification}\" does not exist!`);
       }
 
       if (!notificationBus[notification]) notificationBus[notification] = [];
@@ -35,8 +39,8 @@
 
     /** Removes a subscriber function to the list of callbacks callod when a notification is published. */
     function unsubscribe (notification, subscriber) {
-      if (notificationvalues.indexOf(notification) < 0) {
-        throw new Error(ICON_ERROR.NOTIFICATION.DOES_NOT_EXIST);
+      if (!doesNotificationExist (notification)) {
+        throw new Error(`Notification \"ICON_NOTIFICATION.${notification}\" does not exist!`);
       }
 
       if (notificationBus[notification]) {

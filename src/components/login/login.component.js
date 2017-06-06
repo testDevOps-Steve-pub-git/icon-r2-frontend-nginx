@@ -12,13 +12,13 @@
 
   loginController.$inject = [
     '$state',
-    'Endpoint', 'ImmunizationRecordService', 'FhirRecordConverter', 'Multitenancy', 'Notify', 'ToasterChoiceService',
-    'ICON_RGX', 'ICON_NOTIFICATION', 'ICON_ERROR'
+    'DhirErrorHandler', 'Endpoint', 'ImmunizationRecordService', 'FhirRecordConverter', 'Multitenancy', 'Notify',
+    'ICON_RGX', 'ICON_NOTIFICATION'
   ];
   function loginController(
     $state,
-    Endpoint, ImmunizationRecordService, FhirRecordConverter, Multitenancy, Notify, ToasterChoiceService,
-    ICON_RGX, ICON_NOTIFICATION, ICON_ERROR
+    DhirErrorHandler, Endpoint, ImmunizationRecordService, FhirRecordConverter, Multitenancy, Notify,
+    ICON_RGX, ICON_NOTIFICATION
   ) {
     this.$onInit = () => {
       this.oiid = '';
@@ -37,37 +37,17 @@
 
       this.submit = () => {
         Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS)
-        Endpoint
-        .retrieveImmunizationRecord(this.oiid, this.pin)
+        Endpoint.retrieveImmunizationRecord(this.oiid, this.pin)
         .then(FhirRecordConverter.convert)
         .then(FhirRecordConverter.populateConvertedData)
         .then((retrievedRecord) => {
           ImmunizationRecordService.setPatient(retrievedRecord.patient);
           ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations);
           ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations);
-          return retrievedRecord;
         })
-        .then(() => { $state.go('^.patient'); })
-        .then(() => { Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS); })
-        .catch((error) => {
-          switch(error.message){
-            case ICON_ERROR.RETRIEVAL.OUTCOME_BAD_OIID:
-              Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_BAD_OIID);
-              break;
-            case ICON_ERROR.RETRIEVAL.OUTCOME_BAD_PIN:
-              Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_BAD_PIN);
-              break;
-            case ICON_ERROR.RETRIEVAL.OUTCOME_CONSENT_BLOCK:
-              Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_CONSENT_BLOCK);
-              break;
-            default:
-              Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_UNKNOWN);
-              break;
-          }
-
-          Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS);
-          console.warn(error);
-        });
+        .then(() => $state.go('^.patient'))
+        .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
+        .catch(DhirErrorHandler.notifyRetrievalError);
       }
     }
   }

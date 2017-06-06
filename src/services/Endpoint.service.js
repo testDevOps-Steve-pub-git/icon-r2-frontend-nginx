@@ -156,9 +156,23 @@
       return `${ICON_API.DISEASE}?filter[iconDisplay]=${diseaseQuery || ''}`;
     });
 
-    const getSchoolOrDaycare = getWithHeaders((schoolQuery) => {
-      return `${ICON_API.SCHOOL}?filter[name]=${encodeURIComponent(schoolQuery) || '*'}`;
-    });
+    const getSchoolOrDaycare = (schools)=> {
+      return getWithHeaders((schoolQuery) => {
+        return `${ICON_API.SCHOOL}?filter[name]=${encodeURIComponent(schoolQuery) || '*'}`
+      })(schools)
+        .then((res) => {
+          return res.map((school) => {
+            let schoolDisplay = {
+              identifier: school.identifier,
+              name: school.name,
+              city: school.city,
+              address: school.address
+            };
+            schoolDisplay.queryString = `${!!school.name ? school.name + ', ' : ''} ${!!school.address ? school.address + ', ' : ''} ${!!school.city ? school.city : ''}`;
+            return schoolDisplay;
+          });
+      });
+    };
 
     const getVaccine = getWithHeaders((vaccineQuery) => {
       return `${ICON_API.VACCINE}?filter[iconDisplay]=${vaccineQuery || ''}`;

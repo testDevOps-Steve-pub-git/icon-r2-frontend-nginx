@@ -17,7 +17,7 @@
      * Handles user click event tracking by sending POST to analytics endpoint.
      * @param {CustomEvent} - the analytics event dispatched by $analytics module
      */
-    function handleEventTrack ({detail}) {
+    function handleEventTrack ({ detail }) {
       if (eventAction[detail]) Endpoint.postAnalyticsLog(eventAction[detail]);
       else console.error(`Event Action "${detail}" is not a valid option for logging!`);
     }
@@ -26,7 +26,7 @@
      * Handles page/route transition event tracking by realying for POST to analytics endpoint.
      * @param {CustomEvent} - the analytics event dispatched by $analytics module
      */
-    function handlePageTrack ({detail}) {
+    function handlePageTrack ({ detail }) {
       Endpoint.postAnalyticsLog({ transitionPage: detail });
     }
 

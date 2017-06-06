@@ -1,42 +1,55 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><span class="fa fa-medkit"></span>
-      <span ng-if="$ctrl.immunizations[0].getType() === 'Agent'">
-        <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
-      </span>
+<div class="alert alert-danger icon-imms-display-error-message"
+     ng-if="$ctrl.invalidDate"
+     role="alert"
+     id="invalid-imms-date-error"
+     translate='immunizationReviewDisplay.DATE_ERROR_MESSAGE'>
+</div>
 
-      <span ng-if="$ctrl.immunizations[0].getType() === 'Trade'">
-        <span>{{$ctrl.immunizations[0].trade.name}}</span>
-        <br />
-        <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
-      </span>
-    </h4>
-    <div>{{ $ctrl.immunizations[0].agent.orderedDiseases }}</div>
+<div ng-class="{'icon-imms-display-table-error': $ctrl.invalidDate}">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><span class="fa fa-medkit"></span>
+        <span ng-if="$ctrl.immunizations[0].getType() === 'Agent'">
+          <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
+        </span>
+
+        <span ng-if="$ctrl.immunizations[0].getType() === 'Trade'">
+          <span>{{$ctrl.immunizations[0].trade.name}}</span>
+          <br />
+          <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
+        </span>
+      </h4>
+      <div>{{ $ctrl.immunizations[0].agent.orderedDiseases }}</div>
+    </div>
+
+    <ul class="list-group">
+      <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item">
+
+        <h4>{{ immunization.date }}</h4>
+
+        <!-- Patient age and imms date-->
+        <age-display ng-if="!$ctrl.invalidDate"
+            date-of-birth="$ctrl.patient.dateOfBirth"
+            date="immunization.date">
+        </age-display>
+
+        <div ng-if="$ctrl.invalidDate" class="icon-imms-display-table-error-age">
+          {{ 'immunizationReviewDisplay.INVALID_DATE' | translate }}
+        </div>
+
+        <!-- approximate date -->
+        <div ng-if="immunization.isDateApproximate">
+          <em>{{'immunizationReviewDisplay.DATE_ESTIMATED' | translate }}</em>
+        </div>
+
+        <!-- Lot -->
+        <div ng-if="!!immunization.lot.number">
+          <strong>
+            <span ng-if="!!immunization.lot.number" translate="tradeLotDisplay.LOT"></span> <span>{{immunization.lot.lotDisplayNumber}}</span>
+          </strong>
+          <span ng-if="!!immunization.lot.expiry">({{'tradeLotDisplay.EXPIRY' | translate}} {{immunization.lot.expiry}})</span>
+        </div>
+      </li>
+    </ul>
   </div>
-
-  <ul class="list-group">
-    <li ng-repeat="immunization in $ctrl.immunizations track by $index" class="list-group-item">
-
-      <h4>{{ immunization.date }}</h4>
-
-      <!-- Patient age and imms date-->
-      <age-display
-          date-of-birth="$ctrl.patient.dateOfBirth"
-          date="immunization.date">
-      </age-display>
-
-      <!-- approximate date -->
-      <div ng-if="immunization.isDateApproximate">
-        <em>{{'immunizationReviewDisplay.DATE_ESTIMATED' | translate }}</em>
-      </div>
-
-      <!-- Lot -->
-      <div ng-if="!!immunization.lot.number">
-        <strong>
-          <span ng-if="!!immunization.lot.number" translate="tradeLotDisplay.LOT"></span> <span>{{immunization.lot.lotDisplayNumber}}</span>
-        </strong>
-        <span ng-if="!!immunization.lot.expiry">({{'tradeLotDisplay.EXPIRY' | translate}} {{immunization.lot.expiry}})</span>
-      </div>
-    </li>
-  </ul>
 </div>

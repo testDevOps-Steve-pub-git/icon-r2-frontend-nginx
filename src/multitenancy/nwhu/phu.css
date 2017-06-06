@@ -5,8 +5,8 @@
  ******************************************************************************/
 
 #icon-phu-header {
-  background-color: #006d98 !important;
-  border-color: #2bafb1 !important;
+  background-color: #0078C9 !important;
+  border-color: #0098AA !important;
 }
 
 #icon-phu-header * {
@@ -20,7 +20,7 @@
 @media (min-width: 1px) {
   /* The logo/brand image should be scaled down by a factor of 2.6 */
   #icon-phu-header-brand img {
-    width: 50px; /* Width will vary for each PHU. */
+    width: 43px; /* Width will vary for each PHU. */
     height: 40px; /* Height should NOT be changed. */
   }
 }
@@ -28,14 +28,14 @@
 @media (min-width: 767px) {
   /* The logo/brand image should be scaled down by a factor of 2.0 */
   #icon-phu-header-brand img {
-    width: 65px; /* Width will vary for each PHU. */
+    width: 56px; /* Width will vary for each PHU. */
     height: 52px; /* Height should NOT be changed. */
   }
 }
 
 #icon-phu-footer {
-  background-color: #eeeeee !important;
+  background-color: #EEEEEE !important;
 }
 #icon-progress-bar-container {
-  background-color: #eeeeee !important;
+  background-color: #EEEEEE !important;
 }
