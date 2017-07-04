@@ -19,14 +19,23 @@ const ICON_NOTIFICATION = {
 
   // NOTE: Informational and error notifications are user dismissable.
   INVALID_DATE_ERROR:               '$invalidDateError',
+  INFO_PIN_SET_SUCCESS:             '$infoPinSetSuccess',
   INFO_PATIENT_DATA_CLEARED:        '$infoPatientDataCleared',
   INFO_SESSION_EXPIRED:             '$infoSessionExpired',
   INFO_OIID_HINT:                   '$infoOiidHint',
+  INFO_LEARN_MORE_ABOUT_OIID:       '$infoLearnMoreAboutOiid',
+  INFO_OIID_PIN_OUTDATED:           '$infoOiidPinOutdated',
+  INFO_CALL_PHU_GENERIC:            '$infoCallPhuGeneric',
+  INFO_OIID_RESOURCE_NOT_FOUND:     '$infoOiidResourceNotFound',
 
   WARN_DOCUMENT_FILE_BAD_TYPE:      '$warnDocumentFileBadType',
   WARN_DOCUMENT_FILE_TOO_LARGE:     '$warnDocumentFileTooLarge',
   WARN_DOCUMENT_FILE_DUPLICATE:     '$warnDocumentFileDuplicate',
   WARN_DOCUMENT_FILE_QUEUE_LIMIT:   '$warnDocumentFileQueueLimit',
+
+  INFO_MISMATCH:                     '$warnHCNOIIDMismatch',
+  EMAIL_NOT_ON_FILE:                 '$warnEmailNotOnFile',
+  NO_EMAIL_ON_FILE:                  '$warnNoEmailOnFile',
 
   WARN_RETRIEVAL_CONSENT_BLOCK:     '$warnRetrievalConsentBlock',
   WARN_RETRIEVAL_BAD_OIID:          '$warnRetrievalBadOiid',
@@ -40,7 +49,11 @@ const ICON_NOTIFICATION = {
   WARN_SUBMISSION_NETWORK_PROBLEM:  '$warnSubmissionNetworkProblem',
   WARN_SUBMISSION_UNKNOWN:          '$warnSubmissionUnkown',
 
+  WARN_STATUS_SECURITY_LOCK_OUT:    '$warnStatusSecurityLockOut',
+  WARN_STATUS_TOO_MANY_FAILED_ATTEMPTS: '$warnStatusTooManyFailedAttempts',
+
   WARN_GENERAL_NETWORK_PROBLEM:     '$warnGeneralNetworkProblem',
+  WARN_GENERAL_SERVER_ERROR:        '$warnGeneralServerError',
 };
 
 module.exports = ICON_NOTIFICATION;

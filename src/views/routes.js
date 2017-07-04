@@ -1,38 +1,46 @@
-var WELCOME = {
+const WELCOME = {
   url:         '/welcome',
   component:   'welcome'
 };
 
-var AUTH = {
+const AUP = {
+  url: '/aup?action',
+  component: 'aup',
+  params :{
+    action: null
+  }
+};
+
+const AUTH = {
   url:        '/auth',
   component:  'auth'
 };
 
-var ANON = {
+const ANON = {
   url:        '/anon',
   component:  'anon'
 };
 
-var SELF = {
+const SELF = {
   url:        '/self',
   abstract:   true,
   component:  'self'
 };
 
-var LOGIN = {
-  url:        '/login',
-  component:  'authLogin'
-};
-
-var OTHER = {
+const OTHER = {
   url:        '/other',
   abstract:   true,
   component:  'other'
 };
 
+const SUBMISSION = {
+  url:        '/submission?action',
+  component:  'submission'
+};
+
 const progress = require('./progressStates.js');
 
-var ANON_SELF_SUBMISSION = {
+const ANON_SELF_SUBMISSION = {
   url:        '/submission',
   component:  'anonSelfSubmission',
   data: {
@@ -49,7 +57,7 @@ var ANON_SELF_SUBMISSION = {
   }
 };
 
-var ANON_OTHER_SUBMISSION = {
+const ANON_OTHER_SUBMISSION = {
   url:        '/submission',
   component:  'anonOtherSubmission',
   data: {
@@ -67,7 +75,7 @@ var ANON_OTHER_SUBMISSION = {
   }
 };
 
-var AUTH_SELF_SUBMISSION = {
+const AUTH_SELF_SUBMISSION = {
   url:        '/submission',
   component:  'authSelfSubmission',
   data: {
@@ -83,7 +91,7 @@ var AUTH_SELF_SUBMISSION = {
   }
 };
 
-var AUTH_OTHER_SUBMISSION = {
+const AUTH_OTHER_SUBMISSION = {
   url:        '/submission',
   component:  'authOtherSubmission',
   data: {
@@ -100,92 +108,146 @@ var AUTH_OTHER_SUBMISSION = {
   }
 };
 
-var AUTH_PATIENT = {
+const AUTH_PATIENT = {
     url:        '/patient',
     component:  'authPatient'
 };
 
-var AUTH_SELF_PATIENT = {
+const AUTH_SELF_PATIENT = {
   url:        '/patient',
   component:  'authSelfPatient'
 };
 
-var AUTH_OTHER_PATIENT = {
+const AUTH_OTHER_PATIENT = {
   url:        '/patient',
   component:  'authOtherPatient'
 };
 
-var ANON_SELF_PATIENT = {
+const ANON_SELF_PATIENT = {
     url:        '/patient',
     component:  'anonSelfPatient'
 };
 
-var ANON_OTHER_PATIENT = {
+const ANON_OTHER_PATIENT = {
     url:        '/patient',
     component:  'anonOtherPatient'
 };
 
-var ADDRESS = {
+const ADDRESS = {
     url:        '/address',
-    component:  'address'
+    component:  'patientAddress'
 };
 
-var ANON_IMMUNIZATIONS = {
+const ANON_IMMUNIZATIONS = {
     url:        '/immunizations',
     component:  'anonImmunizations'
 };
 
-var AUTH_IMMUNIZATIONS = {
+const AUTH_IMMUNIZATIONS = {
     url:        '/immunizations',
     component:  'authImmunizations'
 };
 
-var DOCUMENTS = {
+const DOCUMENTS = {
     url:        '/documents',
     component:  'documents'
 };
 
-var SUBMITTER = {
+const SUBMITTER = {
     url:        '/submitter',
     component:  'submitter'
 };
 
-var ANON_SELF_REVIEW = {
+const ANON_SELF_REVIEW = {
     url:        '/review',
     component:  'anonSelfReview'
 };
 
-var ANON_OTHER_REVIEW = {
+const ANON_OTHER_REVIEW = {
     url:        '/review',
     component:  'anonOtherReview'
 };
 
-var AUTH_SELF_REVIEW = {
+const AUTH_SELF_REVIEW = {
     url:        '/review',
     component:  'authSelfReview'
 };
 
-var AUTH_OTHER_REVIEW = {
+const AUTH_OTHER_REVIEW = {
     url:        '/review',
     component:  'authOtherReview'
 };
 
-var ANON_CONFIRMATION = {
+const ANON_CONFIRMATION = {
   url:        '/confirmation',
   component:  'anonConfirmation'
 };
 
-var AUTH_CONFIRMATION = {
+const AUTH_CONFIRMATION = {
     url:        '/confirmation',
     component:  'authConfirmation'
 };
 
+const VERIFICATION = {
+  url:        '/verification?action&relationship&lang',
+  component:  'verification'
+};
+
+const NEW_PIN = {
+  url:        '/new-pin',
+  component:  'newPin'
+};
+
+const SET_PIN = {
+  url:        '/set-pin',
+  component:  'setPin'
+};
+
+const SET_PIN_CONFIRMATION = {
+  url:        '/set-pin-confirmation',
+  component:  'setPinConfirmation'
+};
+
+const ENTER_PIN = {
+  url:        '/enter-pin',
+  component:  'enterPin'
+};
+
+const FORGOT_PIN = {
+  url:        '/forgot-pin',
+  component:  'forgotPin'
+};
+
+const EMAIL_CONFIRMATION = {
+  url:        '/email-confirmation',
+  component:  'emailConfirmation'
+};
+
+const RESET_PIN = {
+  url:        '/reset-pin/{token:[%0-9a-zA-Z]{1,}}',
+  component:  'resetPin'
+};
+
+const SEND_ANOTHER_EMAIL = {
+  url:        '/send-another-email',
+  component:  'sendAnotherEmail'
+};
+
+const RESET_PIN_CONFIRMATION = {
+  url:        '/reset-pin-confirmation',
+  component:  'resetPinConfirmation'
+};
+
+const DISPATCH_AFTER_VERIFICATION = {
+  url:        '/dispatch-after-verification',
+  component:  'dispatchAfterVerification'
+};
 
 module.exports = {
   WELCOME:                WELCOME,
+  AUP:                    AUP,
   AUTH:                   AUTH,
   ANON:                   ANON,
-  LOGIN:                  LOGIN,
   SELF:                   SELF,
   OTHER:                  OTHER,
 
@@ -212,8 +274,21 @@ module.exports = {
   AUTH_CONFIRMATION:      AUTH_CONFIRMATION,
   ANON_CONFIRMATION:      ANON_CONFIRMATION,
 
+  SUBMISSION:             SUBMISSION,
   ANON_OTHER_SUBMISSION:  ANON_OTHER_SUBMISSION,
   ANON_SELF_SUBMISSION:   ANON_SELF_SUBMISSION,
   AUTH_OTHER_SUBMISSION:  AUTH_OTHER_SUBMISSION,
-  AUTH_SELF_SUBMISSION:   AUTH_SELF_SUBMISSION
+  AUTH_SELF_SUBMISSION:   AUTH_SELF_SUBMISSION,
+
+  VERIFICATION:                 VERIFICATION,           // First input, user enters (OIID)
+  NEW_PIN:                      NEW_PIN,                  // One-time pin set, user enters (HCN)
+  SET_PIN:                      SET_PIN,                  // Set one-time pin, user enters (email, PIN)
+  SET_PIN_CONFIRMATION:         SET_PIN_CONFIRMATION,     // Confirmation PIN was set, call to action
+  ENTER_PIN:                    ENTER_PIN,              // PIN is already set, user enters (PIN)
+  FORGOT_PIN:                   FORGOT_PIN,               // Reset forgotten PIN, user enters (email)
+  EMAIL_CONFIRMATION:           EMAIL_CONFIRMATION,       // Confirmation e-mail was triggered
+  RESET_PIN:                    RESET_PIN,                  // Destination from e-mail link, user enters (OIID, role, PIN)
+  RESET_PIN_CONFIRMATION:       RESET_PIN_CONFIRMATION,     // Confirmation PIN was successfully reset, call to action
+  SEND_ANOTHER_EMAIL:           SEND_ANOTHER_EMAIL,
+  DISPATCH_AFTER_VERIFICATION:  DISPATCH_AFTER_VERIFICATION,
 };

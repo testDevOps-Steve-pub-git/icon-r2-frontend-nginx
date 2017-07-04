@@ -1,43 +1,40 @@
-(function () {
-'use strict';
+import Disease from './Disease.model'
 
-  module.exports = function () { return Recommendation; };
-  const Disease = require('./Disease.model.js');
+/**
+ * @param {String} [date=''] - encoded JWT token
+ * @param {String} [status=''] - object resulting from decoding JWT token
+ * @param {Disease} [disease=''] - object resulting from decoding JWT token
+ * @param {String} [vaccineCode=''] - object resulting from decoding JWT token
+ * @constructor
+ * @returns {Recommendation}
+ */
+function Recommendation (
+  date,
+  status,
+  disease,
+  vaccineCode
+) {
+  this.date = date || ''
+  this.status = status || ''
+  this.disease = disease || new Disease.model()
+  this.vaccineCode = vaccineCode || ''
 
   /**
-   * @param {String} [date=''] - encoded JWT token
-   * @param {String} [status=''] - object resulting from decoding JWT token
-   * @param {Disease} [disease=''] - object resulting from decoding JWT token
-   * @param {String} [vaccineCode=''] - object resulting from decoding JWT token
-   * @constructor
+   * Creates a deep clone of this object.
+   * @memberof Recommendation
    * @returns {Recommendation}
    */
-  function Recommendation (
-    date,
-    status,
-    disease,
-    vaccineCode
-  ) {
-    this.date = date || '';
-    this.status = status || '';
-    this.disease = disease || new Disease();
-    this.vaccineCode = vaccineCode || '';
-
-    this.clone = clone;
-
-    /**
-     * Creates a deep clone of this object.
-     * @memberof Recommendation
-     * @returns {Recommendation}
-     */
-    function clone () {
-      return new Recommendation(
-        this.date,
-        this.status,
-        this.disease.clone(),
-        this.vaccineCode
-      );
-    }
+  this.clone = function clone () {
+    return new Recommendation(
+      this.date,
+      this.status,
+      this.disease.clone(),
+      this.vaccineCode
+    )
   }
+}
 
-}());
+export default {
+  name: 'Recommendation',
+  model: Recommendation
+}

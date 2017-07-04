@@ -1,42 +1,28 @@
 <!-- Phone -->
 <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-6">
+  <div class="col-xs-12 col-md-6">
 
-      <!-- Non-mobile -->
-      <div class="form-group">
-        <div class="row">
-        <div class="col-xs-12">
-          <label for="submitter-phone">{{ 'submitterContactCapture.PHONE' | translate }}<span class="required_field"></span></label>
-        </div>
+    <div class="form-group icon-remove-margin-bottom">
+      <div class="row">
+      <div class="col-xs-12">
+        <label for="submitter-phone">{{ 'submitterContactCapture.PHONE' | translate }}<span class="required_field"></span></label>
+      </div>
 
-        <div class="col-xs-7">
-          <input ng-model="$ctrl.localSubmitterInfo.phone1Number"
-                id="submitter-phone"
-                ng-required="true"
-                ng-pattern="$ctrl.rgx.PHONE_NUMBER"
-                name="phone1Number"
-                ng-minlength="1" ng-maxlength="16"
-                ui-options="$ctrl.phoneOptions"
-                ui-mask="(999) 999-9999" ui-mask-placeholder-char="_"
-                class="form-control icon-mask-display"
-                aria-describedby="contactMessage"
-                type="text" title="Phone Number"
-                aria-label="{{ 'submitterContactCapture.PHONE_LABEL' | translate }}"
-                />
-
-          <!-- Mobile -->
-          <input ng-model="$ctrl.localSubmitterInfo.phone1Number"
-                id="submitter-phone"
-                ng-required="true"
-                ng-pattern="$ctrl.rgx.PHONE_NUMBER"
-                name="phone1NumberMobile"
-                ng-minlength="1" ng-maxlength="16"
-                class="form-control icon-display-mobile"
-                aria-describedby="contactMessage"
-                type="text" title="Phone Number"
-                aria-label="{{ 'submitterContactCapture.PHONE_LABEL' | translate }}"
-                />
-          </div>
+    <div class="col-xs-7">
+      <input ng-model="$ctrl.localSubmitterInfo.phone1Number"
+            id="submitter-phone"
+            ng-required="true"
+            ng-pattern="$ctrl.rgx.PHONE_NUMBER"
+            name="phone1Number"
+            ng-minlength="1" ng-maxlength="16"
+            ui-options="$ctrl.phoneOptions"
+            ui-mask="(999) 999-9999" ui-mask-placeholder-char="_"
+            class="form-control"
+            aria-describedby="contactMessage"
+            type="text" title="Phone Number"
+            aria-label="{{ 'submitterContactCapture.PHONE_LABEL' | translate }}"
+            />
+      </div>
 
       <div class="col-xs-5">
         <div class="input-group">
@@ -45,6 +31,7 @@
                 id="submitter-phone-extension"
                 ng-pattern="$ctrl.rgx.EXT"
                 name="phone1Ext"
+                maxlength="5"
                 ng-maxlength="5"
                 class="form-control"
                 aria-label="{{ 'submitterContactCapture.EXTENSION' | translate }}"
@@ -54,15 +41,8 @@
 
   <!-- Error messages -->
       <div class="col-xs-12">
-        <div id="submitter-phone-error" class="icon-mask-display" ng-messages="$ctrl.form.phone1Number.$error" ng-if="$ctrl.form.phone1Number.$touched" role="alert">
+        <div id="submitter-phone-error" ng-messages="$ctrl.form.phone1Number.$error" ng-if="$ctrl.form.phone1Number.$touched" role="alert">
           <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterContactCapture.ERRORS.PHONE_IS_REQUIRED' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate }}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="mask">{{'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate}}</div>
-        </div>
-
-        <div id="submitter-phone-error" class="icon-display-mobile" ng-messages="$ctrl.form.phone1NumberMobile.$error" ng-if="$ctrl.form.phone1NumberMobile.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterContactCapture.ERRORS.PHONE_IS_REQUIRED' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{ 'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate }}</div>
           <div class="alert alert-danger col-xs-12" ng-message="mask">{{'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate}}</div>
         </div>
 
@@ -74,7 +54,7 @@
   <!-- End error messages -->
 
       <div class="col-xs-12">
-        <p id="contactMessage">{{ 'submitterContactCapture.CONTACT_MESSAGE' | translate }}</p>
+        <p id="contactMessage" class="icon-remove-margin-bottom">{{ 'submitterContactCapture.CONTACT_MESSAGE' | translate }}</p>
       </div>
 
       </div>

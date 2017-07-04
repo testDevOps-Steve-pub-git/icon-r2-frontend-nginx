@@ -1,22 +1,20 @@
+import Patient      from '../../../src/models/Patient.model'
+import Submitter    from '../../../src/models/Submitter.model'
+import SessionData  from '../../../src/models/SessionData.model'
+import ImmunizationRecordSubmission from '../../../src/models/ImmunizationRecordSubmission.model'
+
+import {expect} from 'chai'
+
 (function () {
 'use strict';
-
-    var expect = require('chai').expect;
-
     var ImmunizationRecordService = require('../../../src/services/ImmunizationRecord.service.js');
-
-    var Patient =            require('../../../src/models/Patient.model.js')();
-    var Submitter =         require('../../../src/models/Submitter.model.js')();
-    var Address =           require('../../../src/models/Address.model.js')();
-    var SessionData =       require('../../../src/models/SessionData.model.js')();
-    var ImmunizationGroup = require('../../../src/models/ImmunizationGroup.model.js')();
 
     var dummyData = require('../../fixtures/ImmunizationRecordService.SamSmith.data.js');
 
     describe('ImmunizationRecordService', function () {
         var immunizationRecordService = null;
         beforeEach(function(){
-            immunizationRecordService = ImmunizationRecordService();
+            immunizationRecordService = ImmunizationRecordService(null, ImmunizationRecordSubmission.model);
         });
 
         var submitterFields = [

@@ -1,16 +1,22 @@
-angular.module('icon.components', [])
-/* Welcome components */
-  .component('welcomeLandingPage',          require('./welcome/welcomeLandingPage/welcomeLandingPage.component.js'))
-  .component('ontarioImmunizationSchedule', require('./welcome/ontarioImmunizationSchedule/ontarioImmunizationSchedule.component.js'))
-  .component('welcomeLogin',                require('./welcome/welcomeLogin/welcomeLogin.component.js'))
-  .component('welcomeModal',                require('./welcome/welcomeSubmitterModal/welcomeSubmitterModal.component.js'))
-  .component('welcomeHelpModal',            require('./welcome/welcomeHelpModal/welcomeHelpModal.component.js'))
-  .component('welcomeAup',                  require('./welcome/welcomeAUP/welcomeAUP.component.js'))
-/* End Welcome components */
+const MODULE = angular.module('icon.components', [])
 
-/* Login components */
-  .component('login',                       require('./login/login.component.js'))
-/* End Login components */
+/* Welcome import */
+import WelcomeImports from './welcome/welcome.components.module'
+WelcomeImports(MODULE);
+/* End Welcome import */
+
+/* Form imports */
+import emailCapture       from './form/emailCapture/emailCapture.component.js';
+import hcnCapture         from './form/hcnCapture/hcnCapture.component.js'
+import oiidCapture        from './form/oiidCapture/oiidCapture.component.js'
+import oiidDisplay        from './form/oiidDisplay/oiidDisplay.component.js'
+import pinCapture         from './form/pinCapture/pinCapture.component.js'
+import roleCapture        from './form/roleCapture/roleCapture.component.js'
+import noHealthCardModal  from './form/noHealthCardModal/noHealthCardModal.component.js'
+/* End Form imports */
+
+import oiidStatus from './oiidStatus/oiidStatus.component'
+MODULE.component(oiidStatus.name, oiidStatus.component)
 
 /* Retrieval components */
   .component('patientAuthDisplay',          require('./retrieval/patientAuthDisplay/patientAuthDisplay.component.js'))
@@ -92,14 +98,6 @@ angular.module('icon.components', [])
   .component('phuHeader',                   require('./index/phuHeader/phuHeader/phuHeader.component.js'))
 /* End Phu Header components */
 
-/* Toast components */
-  .component('toastContainer',              require('./index/toastComponents/toastContainer/toastContainer.component.js'))
-  .component('clearInfoToast',              require('./index/toastComponents/clearInfoToast/clearInfoToast.component.js'))
-  .component('errorToast',                  require('./index/toastComponents/errorToast/errorToast.component.js'))
-  .component('extendSessionToast',          require('./index/toastComponents/extendSessionToast/extendSessionToast.component.js'))
-  .component('loadingToast',                require('./index/toastComponents/loadingToast/loadingToast.component.js'))
-/* End Toast components */
-
 /* Session Expiration components */
   .component('sessionExpirationModal',      require('./index/sessionExpirationModal/sessionExpirationModal.component.js'))
   .component('sessionContinaer',            require('./index/sessionExpirationModal/sessionExpirationContainer.component.js'))
@@ -118,6 +116,13 @@ angular.module('icon.components', [])
   .component('datepicker',                  require('./form/datepicker/datepicker.component.js'))
   .component('nextPrevButtons',             require('./form/nextPrevButtons/nextPrevButtons.component.js'))
   .component('actionButton',                require('./form/actionButton/actionButton.component.js'))
+  .component(emailCapture.name, emailCapture.component)
+  .component(hcnCapture.name, hcnCapture.component)
+  .component(oiidCapture.name, oiidCapture.component)
+  .component(oiidDisplay.name, oiidDisplay.component)
+  .component(pinCapture.name, pinCapture.component)
+  .component(roleCapture.name, roleCapture.component)
+  .component(noHealthCardModal.name, noHealthCardModal.component)
 /* End Form components */
 
 /* Notification components */

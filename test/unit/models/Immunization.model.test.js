@@ -1,39 +1,41 @@
+import Agent        from '../../../src/models/Agent.model'
+import Disease      from '../../../src/models/Disease.model'
+import Immunization from '../../../src/models/Immunization.model'
+import Lot          from '../../../src/models/Lot.model'
+import Trade        from '../../../src/models/Trade.model'
+
+import {expect}     from 'chai'
+import TypeCheck    from '../lib/TypeCheck'
+
 (function () {
 'use strict';
 
-  var expect    = require('chai').expect;
-  var TypeCheck = require('../lib/TypeCheck.js');
 
   describe('Immunization', function () {
-    var Agent         = require('../../../src/models/Agent.model.js')();
-    var Disease       = require('../../../src/models/Disease.model.js')();
-    var Immunization  = require('../../../src/models/Immunization.model.js')();
-    var Lot           = require('../../../src/models/Lot.model.js')();
-    var Trade         = require('../../../src/models/Trade.model.js')();
 
     var model = null;
     var dummyData = null;
     beforeEach(function () {
-      model = new Immunization();
-      dummyData = new Immunization(
+      model = new Immunization.model();
+      dummyData = new Immunization.model(
         '2001-01-01',
         false,
-        new Agent(
+        new Agent.model(
           '3526007',
           'Rab',
           'Imovax \/ RabAvert',
           '3526007',
           'Rabies (Rab)',
           [
-            new Disease('Rabies', '123123')
+            new Disease.model('Rabies', '123123')
           ],
           'LOT-NUM-ABC-123-45',
           '2001-12-12'
         ),
-        new Trade(),
+        new Trade.model(),
         'Dr. Who',
         'In a Tardis',
-        new Lot()
+        new Lot.model()
       );
     });
 
@@ -49,7 +51,7 @@
       'lot',
     ];
 
-    describe('new Immunization()', function () {
+    describe('new Immunization.model()', function () {
       it('should construct an empty model without undefined values', function () {
         TypeCheck.areAllString(model, immunizationTextFields, '');
         TypeCheck.areAllBoolean(model, immunizationBooleanFields);

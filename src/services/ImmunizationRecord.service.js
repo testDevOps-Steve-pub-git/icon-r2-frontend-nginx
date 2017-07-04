@@ -5,9 +5,7 @@
 'use strict';
   module.exports = ImmunizationRecordService;
 
-  var ImmunizationRecordSubmission = require('../models/ImmunizationRecordSubmission.model.js')();
-
-  function ImmunizationRecordService (moment) {
+  function ImmunizationRecordService (moment, ImmunizationRecordSubmission) {
 
 /* Private members ************************************************************/
 

@@ -3,22 +3,15 @@
 
   module.exports = {
     controller: notificationController,
-    template: `
-      <toaster-container></toaster-container>
-    `,
+    template: ``,
   };
 
-  notificationController.$inject = [
-    '$timeout', '$translate',
-    '$uibModal', 'toaster',
-    'Notify', 'SessionHandler', 'TokenHandler',
-    'ICON_NOTIFICATION', 'ToasterChoiceService'
-  ];
+  /* @ngInject */
   function notificationController (
     $timeout, $translate,
-    $uibModal, toaster,
+    $uibModal,
     Notify, SessionHandler, TokenHandler,
-    ICON_NOTIFICATION, ToasterChoiceService
+    ICON_NOTIFICATION
   ) {
     // NOTE: Each notification constant is categorized by the way it is presented to the user.
 
@@ -52,13 +45,22 @@
     // Modal - open is programatic, close results from user action.
     const dismissableInfoNotifications = [
       ICON_NOTIFICATION.INVALID_DATE_ERROR,
+      ICON_NOTIFICATION.INFO_PIN_SET_SUCCESS,
       ICON_NOTIFICATION.INFO_PATIENT_DATA_CLEARED,
       ICON_NOTIFICATION.INFO_OIID_HINT,
+      ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID,
+      ICON_NOTIFICATION.INFO_OIID_PIN_OUTDATED,
+      ICON_NOTIFICATION.INFO_CALL_PHU_GENERIC,
+      ICON_NOTIFICATION.INFO_OIID_RESOURCE_NOT_FOUND,
 
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_BAD_TYPE,
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_TOO_LARGE,
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_DUPLICATE,
       ICON_NOTIFICATION.WARN_DOCUMENT_FILE_QUEUE_LIMIT,
+
+      ICON_NOTIFICATION.INFO_MISMATCH,
+      ICON_NOTIFICATION.EMAIL_NOT_ON_FILE,
+      ICON_NOTIFICATION.NO_EMAIL_ON_FILE,
 
       ICON_NOTIFICATION.WARN_RETRIEVAL_CONSENT_BLOCK,
       ICON_NOTIFICATION.WARN_RETRIEVAL_BAD_OIID,
@@ -72,11 +74,13 @@
       ICON_NOTIFICATION.WARN_SUBMISSION_NETWORK_PROBLEM,
       ICON_NOTIFICATION.WARN_SUBMISSION_UNKNOWN,
 
-      ICON_NOTIFICATION.WARN_GENERAL_NETWORK_PROBLEM,
-    ];
+      ICON_NOTIFICATION.WARN_STATUS_SECURITY_LOCK_OUT,
+      ICON_NOTIFICATION.WARN_STATUS_TOO_MANY_FAILED_ATTEMPTS,
 
-  // Toaster - open is programatic, close results from user action.
-  const dismissableErrorNotifications = [ /* Combined message types for demo. */ ];
+      ICON_NOTIFICATION.WARN_GENERAL_NETWORK_PROBLEM,
+      ICON_NOTIFICATION.WARN_GENERAL_SERVER_ERROR,
+      ICON_NOTIFICATION.WARN_GENERAL_SERVER_ERROR,
+    ];
 
     // Opens a modal when push event fired, closes it when pop is fired.
     let staticProgressNotificationModal = null;
@@ -142,6 +146,7 @@
     };
 
     let dismissableInfoNotificationModal = null;
+    let dismissableInfoNotificationModalPromise = null;
     let openDismissableInfoNotification = (notification) => {
       let isNotificationTypeAlreadyOpen = (
            dismissableInfoNotificationModal
@@ -160,23 +165,12 @@
 
         dismissableInfoNotificationModal.notification = notification;
       }
+      dismissableInfoNotificationModalPromise = dismissableInfoNotificationModal.result.then(() => {}, closeDismissableInfoNotification)
     };
-    let closeDismissableInfoNotification = (notification) => {
-      if (dismissableInfoNotificationModal) dismissableInfoNotificationModal.close();
-      dismissableInfoNotificationModal = null;
-    };
-
-    // Opens toaster on push event, closes when pop event is fired, or takes action.
-    // NOTE: Toaster "pop" is fired on notification event "push", not "pop", awkward.
-    let dismissableErrorNotification = null;
-    let openDismissableErrorNotification = (notification) => {
-      dismissableErrorNotification = toaster.pop({
-        type:           'error',
-        title:          $translate.instant(`notification.${notification}.TITLE`),
-        body:           $translate.instant(`notification.${notification}.BODY`),
-        bodyOutputType: 'trustedHtml',
-        timeout:        2 * 1000,
-      });
+    let closeDismissableInfoNotification = () => {
+      if (!!dismissableInfoNotificationModal) dismissableInfoNotificationModal.close()
+      dismissableInfoNotificationModal = null
+      dismissableInfoNotificationModalPromise = null
     };
 
     this.$onInit = () => {
@@ -205,10 +199,6 @@
       dismissableInfoNotifications.forEach((notification) => {
         Notify.subscribe(notification, openDismissableInfoNotification);
       });
-
-      dismissableErrorNotifications.forEach((notification) => {
-        Notify.subscribe(notification, openDismissableErrorNotification);
-      });
     };
 
     this.$onDestroy = () => {
@@ -236,10 +226,6 @@
 
       dismissableInfoNotifications.forEach((notification) => {
         Notify.unsubscribe(notification, openDismissableInfoNotification);
-      });
-
-      dismissableErrorNotifications.forEach((notification) => {
-        Notify.unsubscribe(notification, openDismissableErrorNotification);
       });
     };
   }

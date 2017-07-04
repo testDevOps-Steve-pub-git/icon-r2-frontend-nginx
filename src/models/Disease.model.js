@@ -1,34 +1,30 @@
-(function () {
-'use strict';
+/**
+ * @param {string} [name=''] - disease name
+ * @param {string} [snomed=''] - disease snomed code
+ * @constructor
+ * @returns {Disease}
+ */
+function Disease (
+  name,
+  snomed
+) {
+  this.name = name || ''
+  this.snomed = snomed || ''
 
-    module.exports = function () { return Disease; };
+  /**
+   * Creates a deep clone of this object.
+   * @memberof Disease
+   * @returns {Disease}
+   */
+  this.clone = function clone () {
+    return new Disease(
+      this.name,
+      this.snomed
+    )
+  }
+}
 
-    /**
-     * @param {string} [name=''] - disease name
-     * @param {string} [snomed=''] - disease snomed code
-     * @constructor
-     * @returns {Disease}
-     */
-    function Disease (
-        name,
-        snomed
-    ) {
-        this.name = name || '';
-        this.snomed = snomed || '';
-
-        this.clone = clone;
-
-        /**
-         * Creates a deep clone of this object.
-         * @memberof Disease
-         * @returns {Disease}
-         */
-        function clone () {
-            return new Disease(
-                this.name,
-                this.snomed
-            );
-        }
-    }
-
-}());
+export default {
+  name: 'Disease',
+  model: Disease
+}

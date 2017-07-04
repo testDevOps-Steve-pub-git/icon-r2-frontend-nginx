@@ -25,5 +25,6 @@
       /** Regex Librariess */
       this.rgx = ICON_RGX.rgx;
     };
+
   }
 })();

@@ -2,42 +2,55 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xs-12">
+      <div class="col-xs-12 progress-bar-container">
 
         <div id="icon-progress-line" ng-style="{
-          'padding-left': $ctrl.progressBarPaddingLeft+'%',
-          'padding-right': $ctrl.progressBarPaddingRight+'%'
+          'padding-left': $ctrl.progressBarPadding+'%',
+          'padding-right': $ctrl.progressBarPadding+'%'
         }">
           <uib-progressbar value="(($ctrl.currentIndex()) / ($ctrl.progressStates.length-1) ) * 100"
           type="primary"></uib-progressbar>
         </div>
 
-        <ul id="icon-progress-bar" class="nav-justified">
-          <li ng-repeat="state in $ctrl.progressStates" class="text-center">
-            <span class="btn btn-default skip"
-            ng-class="{
-              'btn-primary': ($ctrl.currentIndex() >= $ctrl.progressStates.indexOf(state)),
-              'btn-lg': $ctrl.isSrefActive(state.sref)
-            }" >
-              <!-- If active state, show the special glyph, and apply bigger circle styles. -->
-              <span ng-if="$ctrl.isSrefActive(state.sref)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
-              <!-- If NOT active state... -->
-              <span ng-if="!$ctrl.isSrefActive(state.sref)">
-                <!-- If it is listed as visited, then show a checkmark glyph. -->
-                <span ng-if="$ctrl.isVisitedState(state)" class="fa fa-check" aria-label="{{state.title | translate}}"></span>
-                <!-- If NOT listed as visited, then show the step number instead. -->
-                <span ng-if="!$ctrl.isVisitedState(state)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
+        <ul id="icon-progress-bar"
+            class="nav-justified"
+            ng-style="{
+              'padding-left': $ctrl.progressBarPadding+'%',
+              'padding-right': $ctrl.progressBarPadding+'%'
+            }"
+        >
+          <li ng-repeat="state in $ctrl.progressStates"
+              class="text-center"
+              ng-style="{'margin-left': ($ctrl.btnSpacing * $index) + '%'}">
+            <div class="progress-bar-offset">
+              <span class="btn btn-default skip"
+                    ng-class="{
+                      'btn-primary': ($ctrl.currentIndex() >= $ctrl.progressStates.indexOf(state)),
+                      'btn-lg': $ctrl.isSrefActive(state.sref)
+                    }">
+                <!-- If active state, show the special glyph, and apply bigger circle styles. -->
+                <span ng-if="$ctrl.isSrefActive(state.sref)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
+                <!-- If NOT active state... -->
+                <span ng-if="!$ctrl.isSrefActive(state.sref)">
+                  <!-- If it is listed as visited, then show a checkmark glyph. -->
+                  <span ng-if="$ctrl.isVisitedState(state)" class="fa fa-check" aria-label="{{state.title | translate}}"></span>
+                  <!-- If NOT listed as visited, then show the step number instead. -->
+                  <span ng-if="!$ctrl.isVisitedState(state)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
+                </span>
               </span>
-            </span>
-            <br />
-            <div ng-if="$ctrl.isSrefActive(state.sref)" id="icon-progress-status-label" class="text-center text-primary">
-              <span>{{state.title | translate}}</span>
-            </div>
+              <br />
+              <div ng-if="$ctrl.isSrefActive(state.sref)"
+                   id="icon-progress-status-label"
+                   class="text-center text-primary label-active">
+                <span>{{state.title | translate}}</span>
+              </div>
 
-            <div ng-if="!$ctrl.isSrefActive(state.sref)" id="icon-progress-status-label" class="text-center">
-              <span>{{state.title | translate}}</span>
+              <div ng-if="!$ctrl.isSrefActive(state.sref)"
+                   id="icon-progress-status-label"
+                   class="text-center">
+                <span>{{state.title | translate}}</span>
+              </div>
             </div>
-
           </li>
         </ul>
       </div>
