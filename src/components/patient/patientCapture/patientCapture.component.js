@@ -18,18 +18,30 @@
     controller: patientSelfCaptureController,
   };
 
-  /* @ngInject */
+  patientSelfCaptureController.$inject = [
+    'Endpoint', 'Notify',
+    'ICON_NOTIFICATION', 'ICON_RGX', 'moment',
+    'ImmunizationRecordService'
+  ];
   function patientSelfCaptureController (
     Endpoint, Notify,
     ICON_NOTIFICATION, ICON_RGX, moment,
-    ImmunizationRecordService,
-    Patient
+    ImmunizationRecordService
   )
   {
 
     this.$onInit = ()=> {
+
+      /** Regex Librariess */
       this.rgx = ICON_RGX.rgx;
-      this.genders = Patient.genders
+
+      /** Angular mask options oiid */
+      this.oiidOptions = {
+        maskDefinitions: {
+          'A': /[2-9b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ]/
+        },
+        addDefaultPlaceholder:false
+      };
 
       /** Angular mask options hcn */
       this.hcnOptions = {
@@ -41,6 +53,7 @@
 
       /* Function Declaration */
       this.onSchoolOrDaycareSelect = onSchoolOrDaycareSelect;
+      this.openOiidHintModal = openOiidHintModal;
       this.calculateIfPatientIsOver18 = calculateIfPatientIsOver18;
       this.calculateIfPatientIsOver18(this.localPatient.dateOfBirth);
       this.getSchoolOrDaycare = getSchoolOrDaycare;
@@ -60,10 +73,19 @@
      * Returns schools
      */
     function getSchoolOrDaycare(schoolQuery) {
-      return Endpoint.getSchoolOrDaycare(schoolQuery)
-        .then((res) => {
-          return res;
-        })
+      if (this.form.schoolOrDaycare.$valid) {
+        return Endpoint.getSchoolOrDaycare(schoolQuery)
+          .then((res) => {
+            return res;
+          });
+      }
+    }
+
+    /**
+     * Open hint for OIID
+     */
+    function openOiidHintModal() {
+      Notify.publish(ICON_NOTIFICATION.INFO_OIID_HINT);
     }
 
 

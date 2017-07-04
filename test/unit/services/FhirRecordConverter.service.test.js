@@ -1,11 +1,3 @@
-import Agent          from '../../../src/models/Agent.model'
-import Disease        from '../../../src/models/Disease.model'
-import Immunization   from '../../../src/models/Immunization.model'
-import Lot            from '../../../src/models/Lot.model'
-import Patient        from '../../../src/models/Patient.model'
-import Recommendation from '../../../src/models/Recommendation.model'
-import Trade          from '../../../src/models/Trade.model'
-
 (function () {
 'use strict';
 
@@ -13,13 +5,13 @@ import Trade          from '../../../src/models/Trade.model'
   const ImmunizationRecordConverter = require('../../../src/services/FhirRecordConverter.service.js')(
     null, /* $q */
     null, /* Endpoint */
-    Agent.model,
-    Disease.model,
-    Immunization.model,
-    Lot.model,
-    Patient.model,
-    Recommendation.model,
-    Trade.model
+    require('../../../src/models/Agent.model.js')(),
+    require('../../../src/models/Disease.model.js')(),
+    require('../../../src/models/Immunization.model.js')(),
+    require('../../../src/models/Lot.model.js')(),
+    require('../../../src/models/Patient.model.js')(),
+    require('../../../src/models/Recommendation.model.js')(),
+    require('../../../src/models/Trade.model.js')()
   );
 
   const consentBlock                  = require('../../fixtures/RetrievalResponse.consentBlock.json');

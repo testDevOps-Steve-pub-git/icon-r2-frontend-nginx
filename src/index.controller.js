@@ -2,27 +2,35 @@
 'use strict';
 
     angular
-      .module('app', [])
-      .controller('indexController', indexController);
+        .module('app', [])
+        .controller('indexController', indexController);
 
     indexController.$inject=[
       '$scope', '$timeout', '$transitions', '$state' ,'$window',
       '$translate', '$uibModal',
-      'BrowserChecker', 'SessionHandler'
+      'BrowserChecker', 'SessionHandler', 'ToasterChoiceService'
     ];
     function indexController(
       $scope, $timeout, $transitions, $state, $window,
       $translate, $uibModal,
-      BrowserChecker, SessionHandler
+      BrowserChecker, SessionHandler, ToasterChoiceService
     ) {
 
+      //Variable to keep track of what toaster should be displayed
+      $scope.toasterChoice = ToasterChoiceService.getToasterChoice();
       $scope.isBrowserSupported = BrowserChecker.isBrowserSupported();
+
+      //For observer callback to watch toasterChoice
+      let updateToasterChoice = () => {
+        $scope.toasterChoice = ToasterChoiceService.getToasterChoice();
+      };
+      ToasterChoiceService.registerObserverCallback(updateToasterChoice);
 
       $transitions.onSuccess({}, () => {
         // Scroll to the top of the page on page load.
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         // Ensure the "Skip To Content" buttun is the first element to be tabbed to on the page.
-        let prefocus = document.getElementById('prefocus')
+        let prefocus = document.getElementById('prefocus') 
         if(prefocus) {
           prefocus.focus();
         }
@@ -91,6 +99,21 @@
                                 'anon.other.submission.patient',
                               ],
                               to: 'anon'
+                            },
+                            (transition) => {
+                              return transition.router.stateService.target('welcome');
+                            });
+
+      /* Auth Login, user presses back to go to login screen again */
+      $transitions.onBefore({
+                              from: [
+                                'auth.self.patient',
+                                'auth.other.patient'
+                              ],
+                              to: [
+                                'auth.self.login',
+                                'auth.other.login'
+                              ]
                             },
                             (transition) => {
                               return transition.router.stateService.target('welcome');

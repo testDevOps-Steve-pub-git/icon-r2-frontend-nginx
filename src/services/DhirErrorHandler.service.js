@@ -1,9 +1,9 @@
-/* @ngInject */
-function DhirErrorHandler (
-  Notify,
-  DHIR_ERROR,
-  ICON_NOTIFICATION
-) {
+/**
+ * Interprets DHIR errors, and dispatches UI notifications to inform user.
+ */
+'use strict';
+
+function DhirErrorHandler (Notify, DHIR_ERROR, ICON_NOTIFICATION) {
 
 /* Private ********************************************************************/
 
@@ -30,7 +30,7 @@ function DhirErrorHandler (
     const isStatusAvailable     = (!!response && !!response.status);
     const isIssueCodeAvailable  = (hasIssue || hasEntryResourceIssue);
 
-    const NO_MATCH_FOUND_FLAG = 'NO_MATCHING_DHIR_ERROR_FOUND';
+    const NO_MATCH_FOUND_FLAG = ``;
 
     if (!isStatusAvailable || !isIssueCodeAvailable) return NO_MATCH_FOUND_FLAG;
 
@@ -61,38 +61,34 @@ function DhirErrorHandler (
 
 /* Public *********************************************************************/
 
+  const matchRetrievalErrorNotification = matchResponseProfile(DHIR_ERROR.RETRIEVAL);
+
+  const matchSubmissionErrorNotification = matchResponseProfile(DHIR_ERROR.SUBMISSION);
 
   function notifyRetrievalError (response) {
-    const NOTIFICATION = matchRetrievalErrorNotification(response)
+    const NOTIFICATION = matchRetrievalErrorNotification(response);
 
-    Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
-    if (!!NOTIFICATION) Notify.publish(NOTIFICATION)
-    else Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_NETWORK_PROBLEM)
+    Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS);
+    if (!!NOTIFICATION) Notify.publish(NOTIFICATION);
+    else Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_NETWORK_PROBLEM);
   }
 
   function notifySubmissionError (response) {
-    const NOTIFICATION = matchSubmissionErrorNotification(response)
+    const NOTIFICATION = matchSubmissionErrorNotification(response);
 
-    Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
-    if (!!NOTIFICATION) Notify.publish(NOTIFICATION)
-    else Notify.publish(ICON_NOTIFICATION.WARN_SUBMISSION_NETWORK_PROBLEM)
+    Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS);
+    if (!!NOTIFICATION) Notify.publish(NOTIFICATION);
+    else Notify.publish(ICON_NOTIFICATION.WARN_SUBMISSION_NETWORK_PROBLEM);
   }
-
-  const matchRetrievalErrorNotification   = matchResponseProfile(DHIR_ERROR.RETRIEVAL)
-  const matchSubmissionErrorNotification  = matchResponseProfile(DHIR_ERROR.SUBMISSION)
 
 /* Interface ******************************************************************/
 
   return {
     matchRetrievalErrorNotification:  matchRetrievalErrorNotification,
-    notifyRetrievalError:             notifyRetrievalError,
-
     matchSubmissionErrorNotification: matchSubmissionErrorNotification,
+    notifyRetrievalError:             notifyRetrievalError,
     notifySubmissionError:            notifySubmissionError,
-  }
+  };
 }
 
-export default {
-  name:    'DhirErrorHandler',
-  service:  DhirErrorHandler,
-}
+module.exports = DhirErrorHandler;

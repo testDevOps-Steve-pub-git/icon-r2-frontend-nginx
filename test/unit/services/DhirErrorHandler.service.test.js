@@ -1,69 +1,74 @@
-import DhirErrorHandler from '../../../src/services/DhirErrorHandler.service'
-import {expect} from 'chai'
+(function () {
+'use strict';
 
-const DHIR_ERROR        = require('../../../src/DHIR_ERROR.js')
-const ICON_NOTIFICATION = require('../../../src/ICON_NOTIFICATION.js')
-const Notify            = require('../../../src/services/Notify.service.js')(ICON_NOTIFICATION)
+  const expect = require('chai').expect;
 
-describe('DhirErrorHandler', () => {
-  let dhirErrorHandler = null
+  const DhirErrorHandler  = require('../../../src/services/DhirErrorHandler.service.js');
+  const DHIR_ERROR        = require('../../../src/DHIR_ERROR.js');
+  const ICON_NOTIFICATION = require('../../../src/ICON_NOTIFICATION.js');
+  const Notify            = require('../../../src/services/Notify.service.js')(ICON_NOTIFICATION);
 
-  beforeEach(() => {
-    dhirErrorHandler = DhirErrorHandler.service(Notify, DHIR_ERROR, ICON_NOTIFICATION)
-  })
+  describe('DhirErrorHandler', () => {
+    let dhirErrorHandler = null;
 
-  describe('.matchRetrievalErrorNotification(...)', () => {
-    it('should return an empty string flag when an INVALID reponse is provided', () => {
-      const resultWithoutResponse = dhirErrorHandler
-            .matchRetrievalErrorNotification()
+    beforeEach(() => {
+      dhirErrorHandler = DhirErrorHandler(Notify, DHIR_ERROR, ICON_NOTIFICATION);
+    });
 
-      expect(resultWithoutResponse).to.equal(`NO_MATCHING_DHIR_ERROR_FOUND`)
-    })
+    describe('.matchRetrievalErrorNotification(...)', () => {
+      it('should return an empty string flag when an INVALID reponse is provided', () => {
+        const resultWithoutResponse = dhirErrorHandler
+              .matchRetrievalErrorNotification();
 
-    it('should return an empty string flag when an INVALID reponse is provided', () => {
-      const invalidDhirMockResponse = 'rubbish'
-      const resultWithoutPossibleMatch = dhirErrorHandler
-            .matchRetrievalErrorNotification(invalidDhirMockResponse)
+        expect(resultWithoutResponse).to.equal(``);
+      });
 
-      expect(resultWithoutPossibleMatch).to.equal(`NO_MATCHING_DHIR_ERROR_FOUND`)
-    })
+      it('should return an empty string flag when an INVALID reponse is provided', () => {
+        const invalidDhirMockResponse = 'rubbish';
+        const resultWithoutPossibleMatch = dhirErrorHandler
+              .matchRetrievalErrorNotification(invalidDhirMockResponse);
 
-    it('should return an empty string flag when an UNRECOGNIZED reponse is provided', () => {
-      const unmatchableDhirMockResponse = { status: 999, data: { total: 'rubbish'} }
-      const resultWithoutPossibleMatch = dhirErrorHandler
-            .matchRetrievalErrorNotification(unmatchableDhirMockResponse)
+        expect(resultWithoutPossibleMatch).to.equal(``);
+      });
 
-      expect(resultWithoutPossibleMatch).to.equal(`NO_MATCHING_DHIR_ERROR_FOUND`)
-    })
+      it('should return an empty string flag when an UNRECOGNIZED reponse is provided', () => {
+        const unmatchableDhirMockResponse = { status: 999, data: { total: 'rubbish'} };
+        const resultWithoutPossibleMatch = dhirErrorHandler
+              .matchRetrievalErrorNotification(unmatchableDhirMockResponse);
 
-    it('should return the matching notification for a KNOWN response issue and code', () => {
-      const consentBlockDhirMockResponse = {
-              status: 200,
-              data: { entry: [ { resource: { issue: [ { code: `suppressed` } ] } } ] }
-            }
+        expect(resultWithoutPossibleMatch).to.equal(``);
+      });
 
-      const resultWithConsentBlockMatch = dhirErrorHandler
-            .matchRetrievalErrorNotification(consentBlockDhirMockResponse)
+      it('should return the matching notification for a KNOWN response issue and code', () => {
+        const consentBlockDhirMockResponse = {
+                status: 200,
+                data: { entry: [ { resource: { issue: [ { code: `suppressed` } ] } } ] }
+              };
 
-      expect(resultWithConsentBlockMatch)
-            .to.equal(DHIR_ERROR.RETRIEVAL.CONSENT_BLOCK_SEARCH.notification)
-    })
+        const resultWithConsentBlockMatch = dhirErrorHandler
+              .matchRetrievalErrorNotification(consentBlockDhirMockResponse);
 
-    it('should return the matching notification for a KNOWN response issue and WILDCARD code', () => {
-      const consentBlockDhirMockResponse = {
-              status: 429,
-              data: { entry: [ { resource: { issue: [ { code: `wildard-should-match-everything` } ] } } ] }
-            }
+        expect(resultWithConsentBlockMatch)
+              .to.equal(DHIR_ERROR.RETRIEVAL.CONSENT_BLOCK_SEARCH.notification);
+      });
 
-      const resultWithConsentBlockMatch = dhirErrorHandler
-            .matchRetrievalErrorNotification(consentBlockDhirMockResponse)
+      it('should return the matching notification for a KNOWN response issue and WILDCARD code', () => {
+        const consentBlockDhirMockResponse = {
+                status: 429,
+                data: { entry: [ { resource: { issue: [ { code: `wildard-should-match-everything` } ] } } ] }
+              };
 
-      expect(resultWithConsentBlockMatch)
-            .to.equal(DHIR_ERROR.RETRIEVAL.RATE_LIMIT.notification)
-    })
-  })
+        const resultWithConsentBlockMatch = dhirErrorHandler
+              .matchRetrievalErrorNotification(consentBlockDhirMockResponse);
 
-  describe('.matchSubmissionErrorNotification(...)', () => {
-    it('is uses the same underlying function as .matchRetrievalErrorNotification(...)', () => {})
-  })
-})
+        expect(resultWithConsentBlockMatch)
+              .to.equal(DHIR_ERROR.RETRIEVAL.RATE_LIMIT.notification);
+      });
+    });
+
+    describe('.matchSubmissionErrorNotification(...)', () => {
+      it('is uses the same underlying function as .matchRetrievalErrorNotification(...)', () => {});
+    });
+  });
+
+}());

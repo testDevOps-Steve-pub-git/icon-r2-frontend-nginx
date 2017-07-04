@@ -1,4 +1,5 @@
 require('angular');
+require('angularjs-toaster');
 require('angulartics');
 require('angular-animate');
 require('angular-bootstrap-affix');
@@ -21,4 +22,3 @@ require('moment');
 require('ng-device-detector');
 require('object-assign-polyfill');
 require('angular-scroll');
-require('angular-css');

@@ -38,10 +38,12 @@
      * Returns schools
      */
     function getSchoolOrDaycare(schoolQuery) {
-      return Endpoint.getSchoolOrDaycare(schoolQuery)
-        .then((res) => {
-          return res;
-        });
+      if (this.form.schoolOrDaycare.$valid) {
+        return Endpoint.getSchoolOrDaycare(schoolQuery)
+          .then((res) => {
+            return res;
+          });
+      }
     }
 
     /**

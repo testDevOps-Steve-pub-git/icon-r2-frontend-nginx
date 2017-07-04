@@ -1,18 +1,24 @@
-/* @ngInject */
-function welcomeLandingPage$ctrl (Multitenancy) {
-  let $ctrl = this;
+/**
+ * Created on 2017-01-31.
+ * Component for welcome screen where a user decides whether to authenticate or submit anonymously
+ */
+(function() {
+'use strict';
 
-  Multitenancy.getPhuKeys()
-  .then((phuKeys) => {
-    $ctrl.multitenancy = phuKeys;
-  })
-}
-
-export default {
-  name:       'welcomeLandingPage',
-  component:  {
+  module.exports = {
     templateUrl: './components/welcome/welcomeLandingPage/welcomeLandingPage.template.html',
     bindings: {},
-    controller: welcomeLandingPage$ctrl
-  },
-}
+    controller: welcomeLandingPageController
+  };
+
+  welcomeLandingPageController.$inject = ['Multitenancy'];
+  function welcomeLandingPageController (Multitenancy) {
+    let $ctrl = this;
+
+    Multitenancy.getPhuKeys()
+    .then((phuKeys) => {
+      $ctrl.multitenancy = phuKeys;
+    })
+  }
+
+})();

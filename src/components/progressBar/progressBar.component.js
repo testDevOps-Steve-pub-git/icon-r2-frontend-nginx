@@ -16,9 +16,8 @@
       let visitedStates = {};
 
       this.numberOfStates = this.progressStates.length;
-      this.progressBarPadding = 100/this.numberOfStates/2;
-
-      this.btnSpacing = (100-(this.progressBarPadding*2))/(this.numberOfStates-1);
+      this.progressBarPaddingRight = Math.ceil(100/this.numberOfStates/2);
+      this.progressBarPaddingLeft = this.progressBarPaddingRight+2; //Add 2% to progress bar padding
 
       this.isSrefActive = (sref) => $state.includes(this.baseState + sref);
       this.isVisitedState = (state) => !!visitedStates[state.sref];

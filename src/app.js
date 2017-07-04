@@ -43,17 +43,14 @@
     'angularMoment',
     'angular-jwt',
     'angulartics',
-    'ngAnimate', /* This package is causing an intermittent bug. */
+    // 'ngAnimate', /* This package is causing an intermittent bug. */
+    'toaster',
     'ng.deviceDetector',
-    'duScroll',
-    'angularCSS'
+    'duScroll'
   ])
 
   .constant('ICON_API', {
     BASE_URL: BASE_URL,
-
-    /* PIN APIs for 2.1 */
-    PIN_URL: `${BASE_URL}/api/access`,
 
     // Token APIs
     GET_SESSION_TOKEN:          `${BASE_URL}/api/token/session`,
@@ -115,6 +112,7 @@
     rgx: {
       NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ !.'\-]*$/i,
       EMAIL_ADDRESS: /^(?!.*\.{2})([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+([\.][a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*)@((([\-]?[a-zA-Z0-9]){2,}[\.])*(([a-zA-Z0-9][\-]?))+).(([\.]([a-zA-Z0-9][\-]?){2,}([a-zA-Z0-9])*)+)$/,
+      PHONE_NUMBER: /^(\(?\+?[0-9]{1,3}\)?)?[. \-]?\(?[2-9]{1}[0-9]{2}\)?[. \-]?\d{3}[. \-]?\d{4}$/i,
       PHONE_EXTENSION: /^\d*$/i,
       STREET_NAME: /^[0-9a-zàâçéèêëîïôûùüÿñæœ &'.#,\-]*$/i,
       STREET_NUMBER: /^[a-z0-9 \-#]*$/i,
@@ -163,7 +161,8 @@
     });
   }])
 
-  /** Intercepts $http calls to reject false positive responses from DHIR.
+  /**
+  Intercepts $http calls to reject false positive responses from DHIR.
   NOTE: Causes DHIR responses with an operation outcome to be thrown to the
         caller's $q.catch() block instead of $q.then() when an operation
         outcome is found with a 200 HTTP code.
@@ -225,34 +224,19 @@
 
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-    /* Suppresses error messages for transitions (See index JS transitions) */
-    $stateProvider.stateService.defaultErrorHandler(() => {});
+    /* Suppresses error messages for transitions (See index JS transitions)  */
+    $stateProvider.stateService.defaultErrorHandler((e) => {
+      //console.warn(e);
+    });
 
-    const Routes = require('./views/routes.js');
+    var Routes = require('./views/routes.js');
     $stateProvider
       .state('welcome', Routes.WELCOME)
 
-      .state('aup', Routes.AUP)
-
-      .state('verification', Routes.VERIFICATION)
-        .state('verification.enter-pin',  Routes.ENTER_PIN)
-
-        .state('verification.new-pin',              Routes.NEW_PIN)
-        .state('verification.set-pin',              Routes.SET_PIN)
-        .state('verification.set-pin-confirmation', Routes.SET_PIN_CONFIRMATION)
-
-        .state('verification.forgot-pin',                   Routes.FORGOT_PIN)
-        .state('verification.email-confirmation',           Routes.EMAIL_CONFIRMATION)
-        .state('verification.reset-pin',                    Routes.RESET_PIN)
-        .state('verification.reset-pin-confirmation',       Routes.RESET_PIN_CONFIRMATION)
-        .state('verification.send-another-email',           Routes.SEND_ANOTHER_EMAIL)
-        .state('verification.dispatch-after-verification',  Routes.DISPATCH_AFTER_VERIFICATION)
-
-      .state('submission',  Routes.SUBMISSION)
-
-      .state('auth',        Routes.AUTH)
+      .state('auth', Routes.AUTH)
 
         .state('auth.self',   Routes.SELF)
+        .state('auth.self.login', Routes.LOGIN)
         .state('auth.self.patient',       Routes.AUTH_PATIENT)
         .state('auth.self.submission',    Routes.AUTH_SELF_SUBMISSION)
           .state('auth.self.submission.immunizations',  Routes.AUTH_IMMUNIZATIONS)
@@ -262,6 +246,7 @@
           .state('auth.self.submission.confirmation',   Routes.AUTH_CONFIRMATION)
 
         .state('auth.other',  Routes.OTHER)
+        .state('auth.other.login', Routes.LOGIN)
         .state('auth.other.patient',      Routes.AUTH_PATIENT)
         .state('auth.other.submission',   Routes.AUTH_OTHER_SUBMISSION)
           .state('auth.other.submission.immunizations', Routes.AUTH_IMMUNIZATIONS)
@@ -271,7 +256,7 @@
           .state('auth.other.submission.review',        Routes.AUTH_OTHER_REVIEW)
           .state('auth.other.submission.confirmation',  Routes.AUTH_CONFIRMATION)
 
-        .state('anon', Routes.ANON)
+      .state('anon', Routes.ANON)
 
         .state('anon.self', Routes.SELF)
           .state('anon.self.submission',  Routes.ANON_SELF_SUBMISSION)
@@ -298,7 +283,7 @@
   // NOTE: This runs whenever the application bootstraps on page load.
   //       By forcing a state transition, the user is prevented from loading the
   //       application in a mid-completion state.
-  // .run(['$state', function ($state) { $state.go('welcome'); }])
+  .run(['$state', function ($state) { $state.go('welcome'); }])
   // Comment the above line ^^^ if you want to be able to hot-reload on any screen for development.
 
 }());

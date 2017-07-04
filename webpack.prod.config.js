@@ -1,39 +1,30 @@
-const path    = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/app.js',
-
     output: {
-        path:     path.resolve(__dirname, 'dist'),
+        path: './dist/',
         filename: 'app.bundle.js'
     },
-
     module: {
       loaders: [
         {
           test: /\.js$/,
           exclude: /(node_modules)/,
-          use: [
-            {
-              loader: 'babel-loader',
-              query: {
-                presets: [ 'es2015' ],
-                plugins: [ 'transform-object-rest-spread' ],
-              }
-            }
-          ],
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015']
+          }
         }
       ]
     },
-
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
-            compress:   true,
-            mangle:     true,
-            comments:   false,
-            sourceMap:  false,
+            compress: true,
+            mangle: true,
+            comments: false,
+            sourceMap: true
         }),
         new webpack.optimize.DedupePlugin(),
         new CopyWebpackPlugin([
@@ -47,10 +38,9 @@ module.exports = {
             { from: './src/phu',            to: '../dist/phu' },
 
             { context: './src/',    from: '**/*.template.html',     to: '../dist/' },
-            { context: './src/',    from: '**/*.css',               to: '../dist/' },
             { context: './src/',    from: '**/*.json',              to: '../dist/' },
 
             { from: './nginx.conf',  to: '../dist/nginx.conf' }
         ])
-    ],
+    ]
 };

@@ -31,12 +31,59 @@
 
   <!--Health Card Number-->
   <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <hcn-capture health-card-number="$ctrl.localPatient.healthCardNumber"
-                   form="$ctrl.form"
-                   is-optional="true">
-        <hint>{{ 'authOtherPatientContainer.HEALTH_CARD_NO_VC' | translate }}</hint>
-      </hcn-capture>
+    <!--Health Card Number-->
+    <div class="form-group col-xs-12 col-sm-12 col-md-6">
+      <!--Health Card Number-->
+      <label for="patient-hcn" translate='authSelfPatientContainer.HEALTH_CARD_NUMBER' aria-label="{{'authSelfPatientContainer.HEALTH_CARD_NUMBER' | translate}}"></label>
+      {{ 'authSelfPatientContainer.OPTIONAL' | translate }}
+
+      <!--Non Mobile -->
+      <div class="icon-mask-display">
+        <input ng-model="$ctrl.localPatient.healthCardNumber"
+               name="healthCardNumber"
+               id="patient-hcn" class="form-control"
+               type="text"
+               icon-hcn-checksum
+               ui-options="$ctrl.hcnOptions"
+               ui-mask="AAAA-AAA-AAA" ui-mask-placeholder ui-mask-placeholder-char="_"
+               autocomplete="off" />
+      </div>
+
+      <!-- Mobile -->
+      <div class="icon-display-mobile">
+        <input ng-model="$ctrl.localPatient.healthCardNumber"
+               name="healthCardNumberMobile"
+               id="patient-hcn" class="form-control"
+               type="text"
+               icon-hcn-checksum
+               autocomplete="off" />
+      </div>
+
+      <span>{{ 'authOtherPatientContainer.HEALTH_CARD_NO_VC' | translate }}</span>
+
+      <!--Error Messages-->
+      <div class="error-messages icon-mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
+        <div ng-message="iconHcn"
+             class="alert alert-danger col-xs-12"
+             translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
+             aria-label="{{'authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR' | translate}}"></div>
+        <div ng-message="mask"
+             class="alert alert-danger col-xs-12"
+             translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
+             aria-label="{{'authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR' | translate}}"></div>
+      </div>
+
+      <div class="error-messages icon-display-mobile" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumberMobile.$error" ng-if="$ctrl.form.healthCardNumberMobile.$touched" role="alert">
+        <div ng-message="iconHcn"
+             class="alert alert-danger col-xs-12"
+             translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
+             aria-label="{{'authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR' | translate}}"></div>
+        <div ng-message="mask"
+             class="alert alert-danger col-xs-12"
+             translate='authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR'
+             aria-label="{{'authSelfPatientContainer.ERRORS.HCN_FORMAT_ERROR' | translate}}"></div>
+      </div>
+      <!--End Error Messages-->
     </div>
   </div>
   <!--End Health Card Number-->
@@ -48,12 +95,8 @@
   </auth-school-daycare>
   <!--End School or Daycare-->
 
-  <div class='row'>
-    <div class='col-xs-12 col-md-6'>
-      <submitter-email
-        form="$ctrl.form"
-        local-submitter-info="$ctrl.localSubmitter">
-      </submitter-email>
-    </div>
-  </div>
+  <submitter-email
+    form="$ctrl.form"
+    local-submitter-info="$ctrl.localSubmitter">
+  </submitter-email>
 </div>

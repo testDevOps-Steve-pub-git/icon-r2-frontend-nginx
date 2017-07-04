@@ -9,7 +9,7 @@
         <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.close()">
           <i class="fa fa-times-circle fa-2x"></i>
         </span>
-        <h4 translate="{{$ctrl.titleTextKey}}" translate-values="{{$ctrl.multitenancy}}" translate-compile></h4>
+        <h4 translate="{{$ctrl.titleTextKey}}" translate-compile></h4>
       </div>
 
       <div class="modal-body">

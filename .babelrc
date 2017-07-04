@@ -1,7 +1,3 @@
 {
-  "presets": ["es2015"],
-  "plugins": [
-    "transform-object-rest-spread",
-    ["angularjs-annotate", { "explicitOnly" : true}]
-  ]
+  "presets": ["es2015"]
 }

@@ -2,7 +2,7 @@
 <html lang="en" ng-app="icon" ng-controller="indexController" ng-strict-di class="no-js">
 
 <!-- Immunization Connect ONtario (ICON) -->
-<!-- Version 2.36.3 SNAPSHOT (Thursday, 2017-06-29) -->
+<!-- Version 2.34.1 RC3 (final) -->
 
 <head>
   <meta charset="utf-8" />
@@ -21,6 +21,7 @@
   <!-- Local libraries of CSS & glyphs. -->
   <link rel="stylesheet" href="./lib/kit-font-awesomerrr/css/external-min.css" />
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./lib/toaster/toaster.min.css" />
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/icon-screen.css" />
@@ -43,6 +44,8 @@
     </div>
 
     <div ng-if="isBrowserSupported">
+      <toast-container selected-toast="{{toasterChoice}}"></toast-container>
+
       <main ui-view=""></main>
     </div>
   </div>

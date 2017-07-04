@@ -100,45 +100,39 @@
         <label for="patient-gender-options">{{'patientCapture.SEX' | translate}}</label>
       </div>
 
-      <div class="col-xs-12 col-md-6">
-        <div id="patient-gender-options" class="btn-group col-xs-12 icon-remove-padding">
-          <button class="btn btn-info col-xs-4" tabindex="0"
-            ng-model="$ctrl.localPatient.gender"
-            name="gender"
-            uib-btn-radio= '$ctrl.genders.MALE'
-            ng-required="true"
-            id="patient-sex-male">
-            <span ng-if="$ctrl.localPatient.gender == $ctrl.genders.MALE" class="fa fa-check"></span>
-            {{'patientCapture.SEX_MALE' | translate}}
-          </button>
+      <div id="patient-gender-options" class="btn-group col-xs-12 col-sm-12 col-md-6">
+        <button class="btn btn-info col-xs-4" tabindex="0"
+          ng-model="$ctrl.localPatient.gender"
+          name="gender"
+          uib-btn-radio="'Male'"
+          ng-required="true"
+          id="patient-sex-male">
+          <span ng-if="$ctrl.localPatient.gender == 'Male'" class="fa fa-check"></span>
+          {{'patientCapture.SEX_MALE' | translate}}
+        </button>
 
-          <button class="btn btn-info col-xs-4" tabindex="0"
-            ng-model="$ctrl.localPatient.gender"
-            name="gender"
-            uib-btn-radio= '$ctrl.genders.FEMALE'
-            ng-required="true"
-            id="patient-sex-female">
-            <span ng-if="$ctrl.localPatient.gender == $ctrl.genders.FEMALE" class="fa fa-check"></span>
-            {{'patientCapture.SEX_FEMALE' | translate}}
-          </button>
+        <button class="btn btn-info col-xs-4" tabindex="0"
+          ng-model="$ctrl.localPatient.gender"
+          name="gender"
+          uib-btn-radio="'Female'"
+          ng-required="true"
+          id="patient-sex-female">
+          <span ng-if="$ctrl.localPatient.gender == 'Female'" class="fa fa-check"></span>
+          {{'patientCapture.SEX_FEMALE' | translate}}
+        </button>
 
-          <button class="btn btn-info col-xs-4" tabindex="0"
-            ng-model="$ctrl.localPatient.gender"
-            name="gender"
-            uib-btn-radio='$ctrl.genders.OTHER'
-            ng-required="true"
-            id="patient-sex-other">
-            <span ng-if="$ctrl.localPatient.gender == $ctrl.genders.OTHER" class="fa fa-check"></span>
-            {{'patientCapture.SEX_OTHER' | translate}}
-          </button>
-        </div>
+        <button class="btn btn-info col-xs-4" tabindex="0"
+          ng-model="$ctrl.localPatient.gender"
+          name="gender"
+          uib-btn-radio="'Other'"
+          ng-required="true"
+          id="patient-sex-other">
+          <span ng-if="$ctrl.localPatient.gender == 'Other'" class="fa fa-check"></span>
+          {{'patientCapture.SEX_OTHER' | translate}}
+        </button>
 
         <!--Error Messages-->
-        <div class="error-messages"
-             id="patient-sex-error"
-             ng-messages="$ctrl.form.gender.$error"
-             ng-if="$ctrl.form.gender.$touched"
-             role="alert">
+        <div class="error-messages" id="patient-sex-error" ng-messages="$ctrl.form.gender.$error" ng-if="$ctrl.form.gender.$touched" role="alert">
           <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.SEX_ERROR'></div>
         </div>
       </div>
@@ -156,28 +150,115 @@
 
     <!-- End submitter phone number info -->
 
-    <!--Health Card Number-->
     <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <hcn-capture health-card-number="$ctrl.localPatient.healthCardNumber"
-                     form="$ctrl.form"
-                     is-optional="true"
-                     display-image="true">
-        </hcn-capture>
+      <!--Health Card Image-->
+      <div class="form-group col-xs-12 icon-health-card-img">
+        <img id="healthcard_number" src="./img/health-card-graphic.png" alt="{{'patientCapture.HEALTHCARD' | translate}}" />
+      </div>
+      <!--End Health Card Image-->
+
+      <!--Health Card Number-->
+      <div class="form-group col-xs-12 col-sm-12 col-md-6">
+        <!--Health Card Number-->
+        <label for="patient-hcn" translate='patientCapture.HEALTH_CARD_NUMBER'></label>
+        {{'patientCapture.OPTIONAL' | translate}}
+
+        <!--Non Mobile -->
+        <div class="icon-mask-display">
+          <input ng-model="$ctrl.localPatient.healthCardNumber"
+                 name="healthCardNumber"
+                 id="patient-hcn" class="form-control"
+                 type="text"
+                 icon-hcn-checksum
+                 ui-options="$ctrl.hcnOptions"
+                 ui-mask="AAAA-AAA-AAA"
+                 autocomplete="off" />
+        </div>
+
+        <!-- Mobile -->
+        <div class="icon-display-mobile">
+          <input ng-model="$ctrl.localPatient.healthCardNumber"
+                 name="healthCardNumberMobile"
+                 id="patient-hcn" class="form-control"
+                 type="text"
+                 icon-hcn-checksum
+                 autocomplete="off" />
+        </div>
+
+        <!--Error Messages-->
+        <div class="error-messages icon-mask-display" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumber.$error" ng-if="$ctrl.form.healthCardNumber.$touched" role="alert">
+          <div ng-message="iconHcn"
+               class="alert alert-danger col-xs-12"
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+          <div ng-message="mask"
+               class="alert alert-danger col-xs-12"
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+        </div>
+
+        <div class="error-messages icon-display-mobile" id="patient-hcn-error" ng-messages="$ctrl.form.healthCardNumberMobile.$error" ng-if="$ctrl.form.healthCardNumberMobile.$touched" role="alert">
+          <div ng-message="iconHcn"
+               class="alert alert-danger col-xs-12"
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+          <div ng-message="mask"
+               class="alert alert-danger col-xs-12"
+               translate='patientCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+        </div>
+        <!--End Error Messages-->
       </div>
     </div>
     <!--End Health Card Number-->
 
     <!--Patient OIID-->
-    <div class='row'>
-      <div class="col-xs-12 col-md-6">
-        <oiid-capture oiid="$ctrl.localPatient.oiid"
-                      form="$ctrl.form"
-                      is-optional="true">
-        </oiid-capture>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <label for="patient-oiid" translate='patientCapture.OIID'></label>
+        {{'patientCapture.OPTIONAL' | translate}}
+        <!-- Regular Screen-->
+        <div class="icon-mask-display">
+          <input ng-model="$ctrl.localPatient.oiid"
+                 name="OIID"
+                 ng-pattern = $ctrl.rgx.OIID
+                 id="patient-oiid" class="form-control"
+                 type="text"
+                 ui-options="$ctrl.oiidOptions"
+                 ui-mask="AAAA-AAA-AAA" ui-mask-placeholder ui-mask-placeholder-char="_"
+                 autocomplete="off" />
+        </div>
+        <!-- End Regular Screen-->
+
+        <!-- Mobile Screen-->
+        <div class="icon-display-mobile">
+          <input ng-model="$ctrl.localPatient.oiid"
+                 name="OIIDMobile"
+                 ng-pattern = $ctrl.rgx.OIID
+                 id="patient-oiid" class="form-control"
+                 type="text"
+                 autocomplete="off" />
+        </div>
+        <!-- End Mobile Screen-->
+
+        <!--Error Messages-->
+        <div class="error-messages icon-mask-display" ng-messages="$ctrl.form.OIID.$error" ng-if="$ctrl.form.OIID.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="pattern" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="mask" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+        </div>
+
+        <div class="error-messages icon-display-mobile" ng-messages="$ctrl.form.OIIDMobile.$error" ng-if="$ctrl.form.OIIDMobile.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="pattern" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+          <div class="alert alert-danger col-xs-12" id="patient-oiid-error" ng-message="mask" translate='patientCapture.ERRORS.OIID_ERROR'></div>
+        </div>
+        <!--End Error Messages-->
+
+        <!-- OIID hint modal -->
+        <div>
+          <p>
+            <a href="" ng-click="$ctrl.openOiidHintModal()">{{'patientCapture.OIID_HINT_LINK' | translate}}</a>
+          </p>
+        </div>
+        <!-- End OIID hint modal -->
       </div>
     </div>
-    <!--End Patient OIID-->
+      <!--End Patient OIID-->
 
 
     <!--Patient School or Daycare-->
@@ -192,7 +273,6 @@
                ng-pattern="$ctrl.rgx.SCHOOL_NAME"
                ng-maxlength="100"
                ng-model="$ctrl.localPatient.schoolOrDayCare"
-               typeahead-editable="false"
                typeahead-loading="loadingLocations"
                typeahead-no-results="noResults"
                typeahead-on-select="$ctrl.onSchoolOrDaycareSelect($item)"

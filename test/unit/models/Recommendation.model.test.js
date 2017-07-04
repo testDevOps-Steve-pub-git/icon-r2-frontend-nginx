@@ -1,26 +1,22 @@
-import Disease        from '../../../src/models/Disease.model'
-import Recommendation from '../../../src/models/Recommendation.model'
-
-import {expect}   from 'chai'
-import TypeCheck  from '../lib/TypeCheck'
-
 (function () {
 'use strict';
 
+  var expect = require('chai').expect;
+  var TypeCheck = require('../lib/TypeCheck.js');
+
   describe('Recommendation', function () {
+    var Recommendation  = require('../../../src/models/Recommendation.model.js')();
+    var Disease         = require('../../../src/models/Disease.model.js')();
 
-    var dummyData = null
-    var dummyDisease = null
-    var model = null
-
+    var dummyData = null;
+    var model = null;
     beforeEach(() => {
-      model = new Recommendation.model();
+      model = new Recommendation();
 
-      dummyDisease = new Disease.model('Rabies', '123123')
-      dummyData = new Recommendation.model(
+      dummyData = new Recommendation(
         '1999-12-31',
         'OVERDUE',
-        dummyDisease,
+        new Disease('Rabies', '123123'),
         '456456456'
       );
     });
@@ -32,7 +28,7 @@ import TypeCheck  from '../lib/TypeCheck'
     ];
     var recommendationObjectFields = [ 'disease' ];
 
-    describe('new Recommendation.model()', function () {
+    describe('new Recommendation()', function () {
       it('should construct an empty model without undefined values', function () {
         TypeCheck.areAllString(model, recommendationTextFields, '');
       });
