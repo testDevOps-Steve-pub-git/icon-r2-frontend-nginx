@@ -1,0 +1,45 @@
+<!--Patient Role-->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <div class="form-group row icon-remove-margin-bottom" role="group" tabindex="0" aria-label="{{'roleCapture.ROLE' | translate}}">
+      <div class="col-xs-12">
+        <label for="role-options"
+               ng-transclude='label'>
+          {{'roleCapture.ROLE' | translate}}
+        </label>
+      </div>
+
+      <div id="role-options" class="btn-group col-xs-12">
+        <button class="btn btn-info col-xs-6" tabindex="0"
+          ng-model="$ctrl.role"
+          name="role"
+          uib-btn-radio="'ONESELF'"
+          ng-required="true"
+          id="role-oneself">
+          <span ng-if="$ctrl.role == 'ONESELF'" class="fa fa-check"></span>
+          {{'roleCapture.ROLE_ONESELF' | translate}}
+        </button>
+
+        <button class="btn btn-info col-xs-6" tabindex="0"
+          ng-model="$ctrl.role"
+          name="role"
+          uib-btn-radio="'GUARD'"
+          ng-required="true"
+          id="role-guard">
+          <span ng-if="$ctrl.role == 'GUARD'" class="fa fa-check"></span>
+          {{'roleCapture.ROLE_GUARD' | translate}}
+        </button>
+      </div>
+
+      <!--Error Messages-->
+      <div class="error-messages col-xs-12"
+           id="role-error"
+           ng-messages="$ctrl.form.role.$error"
+           ng-if="$ctrl.form.role.$touched"
+           role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='roleCapture.ERRORS.ROLE_ERROR'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Patient Role-->

@@ -6,8 +6,8 @@
   function Localization ($q, $timeout, $rootScope, tmhDynamicLocale) {
 
 /* Private ********************************************************************/
-    const EN = require('json!./dictionary_EN.json');
-    const FR = require('json!./dictionary_FR.json');
+    const EN = require('json-loader!./dictionary_EN.json');
+    const FR = require('json-loader!./dictionary_FR.json');
 
     $rootScope.$on('$translateChangeSuccess', function (event, data) {
       // Set the language attribute on the root html element.

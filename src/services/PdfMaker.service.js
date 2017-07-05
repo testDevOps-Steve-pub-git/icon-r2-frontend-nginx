@@ -719,7 +719,6 @@
                return $q.all({
                         phuContactPerson: $translate(phuKeys.CONTACT_PERSON_KEY),
                         phuResponseTime:  $translate(phuKeys.RESPONSE_TIME_KEY),
-                        phuEmail:         $translate(phuKeys.EMAIL_KEY),
                         phuName:          $translate(phuKeys.NAME_KEY),
                         phuPhone:         $translate(phuKeys.PHONE_KEY),
                       });
@@ -763,6 +762,7 @@
     function localizePdfTextUsingData (data) {
       return $q.all({
                patientGender:                   $translate(formatGender(data.patientGender)),
+              dateIsApproximate:                $translate('pdf.dateIsApproximate', data),
 
                receivedSubmission_p1_s1_f1:     $translate('pdf.receivedSubmission_p1_s1_f1', data),
                receivedSubmission_p1_s1_f3:     $translate('pdf.receivedSubmission_p1_s1_f3', data),

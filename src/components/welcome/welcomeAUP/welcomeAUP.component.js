@@ -1,83 +1,74 @@
-/**
- * Component for AUP (Acceptable use policy)
- */
-(function() {
-'use strict';
+/* @ngInject */
+function welcomeAUPController$ctrl (
+  $scope,
+  $state,
+  $stateParams,
+  ImmunizationRecordService,
+  Multitenancy,
+  $translate
+) {
 
-  module.exports = {
-    bindings: {
-      route: '@',
-    },
-    templateUrl: './components/welcome/welcomeAUP/welcomeAUP.template.html',
-    controller: welcomeAUPController,
-  };
+  /**
+   * On component initialization
+   */
+  this.$onInit = () => {
 
-  welcomeAUPController.$inject = [
-    '$scope',
-    '$state',
-    'ImmunizationRecordService',
-    'Multitenancy',
-    '$translate',
-    '$timeout'
-  ];
-  function welcomeAUPController (
-    $scope,
-    $state,
-    ImmunizationRecordService,
-    Multitenancy,
-    $translate,
-    $timeout
-  ) {
+    Multitenancy.getPhuKeys()
+      .then((phuAssets) => {
+        $scope.multitenancy = phuAssets;
+      });
 
-    /**
-    * On component initialization
-    */
-    this.$onInit = () => {
-      Multitenancy.getPhuKeys()
-        .then((phuAssets) => {
-          $scope.multitenancy = phuAssets;
-        });
+    this.acceptLegalAgreement = acceptLegalAgreement;
+    this.doNotAccept = doNotAccept;
+    this.scrollToTop = scrollToTop;
+    this.language = $translate.use().toLowerCase();
 
-      this.acceptLegalAgreement = acceptLegalAgreement;
-      this.doNotAccept = doNotAccept;
-      this.scrollToTop = scrollToTop;
-      this.language = $translate.use().toLowerCase();
-
-      // Scroll to top of page
-      this.scrollToTop();
-    }
+    // Scroll to top of page
+    this.scrollToTop();
+  }
 
 
-    /** Action if user does not accept legal agreement. */
-    function doNotAccept () {
-      $state.go('welcome');
-    }
+  /** Action if user does not accept legal agreement. */
+  function doNotAccept () {
+    $state.go('welcome');
+  }
 
-    /** Scrolls to top of page, on page load. */
-    function scrollToTop () {
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-    }
+  /** Scrolls to top of page, on page load. */
+  function scrollToTop () {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
 
 
-    /**
-    * If user accepts legal agreement, route to either other or self route, depending on what submitter was selected
-    * Also routes user on the auth, or anon route depending on their previous button click
-    */
-    function acceptLegalAgreement () {
-      this.submitter = ImmunizationRecordService.getSubmitter();
+  /**
+   * Routes to either verification if user is viewing immunizations, or submission for auth/anon submissions
+   */
+  function acceptLegalAgreement () {
+    switch ($stateParams.action) {
+      case 'SUBMISSION':
+        $state.go('submission', {action: $stateParams.action}) // No action required here, submission specific route chosen.
+        break
 
-      if (this.submitter.relationshipToPatient === 'GUARD') {
-        if (this.route === 'auth') $state.go('auth.other.login');
-        else $state.go('anon.other.submission.patient');
-      }
-      else if (this.submitter.relationshipToPatient === 'ONESELF') {
-        if (this.route === 'auth') $state.go('auth.self.login');
-        else $state.go('anon.self.submission.patient');
-      }
-      else {
-        // If user has not selected who they are submitting for, go back to welcome page
-        $state.go('welcome');
-      }
+      case 'RETRIEVAL':
+        $state.go('verification', {action: $stateParams.action})
+        break
+
+      default:
+        console.error(`
+          Action parameter "${$stateParams.action}" is not permitted!
+          Re-routing to "welcome"...
+        `)
+        $state.go('welcome')
+        break
     }
   }
-})();
+}
+
+
+export default {
+
+  name: 'welcomeAup',
+  component: {
+    templateUrl: './components/welcome/welcomeAUP/welcomeAUP.template.html',
+    controller: welcomeAUPController$ctrl,
+  }
+}

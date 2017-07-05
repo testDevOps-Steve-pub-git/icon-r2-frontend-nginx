@@ -1,7 +1,12 @@
 /** Contains the profiles of DHIR error responses. */
-const ICON_NOTIFICATION = require('./ICON_NOTIFICATION.js');
+const ICON_NOTIFICATION = require('./ICON_NOTIFICATION.js')
 
-const ResponseProfile = (status, issue, notification) => ({ status, issue, notification });
+/* Private ********************************************************************/
+
+const ResponseProfile = (status, issue, notification) => ({ status, issue, notification })
+
+
+/* Interface ******************************************************************/
 
 const DHIR_ERROR = {
   RETRIEVAL: {
@@ -24,7 +29,7 @@ const DHIR_ERROR = {
     INVALID_VALUE:              ResponseProfile(422,   `value`,      ICON_NOTIFICATION.WARN_SUBMISSION_NETWORK_PROBLEM),
     RATE_LIMIT:                 ResponseProfile(429,   `*`,          ICON_NOTIFICATION.WARN_SUBMISSION_NETWORK_PROBLEM),
     SERVER_INTERNAL_ERROR:      ResponseProfile(500,   `*`,          ICON_NOTIFICATION.WARN_SUBMISSION_UNKNOWN),
-  },
-};
+  }
+}
 
-module.exports = DHIR_ERROR;
+module.exports = DHIR_ERROR

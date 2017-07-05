@@ -1,0 +1,24 @@
+<div>
+  <div class="modal-header">
+    <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.ok()">
+      <i class="fa fa-times-circle fa-2x"></i>
+    </span>
+    <h3 class="modal-title" translate="noHealthCardModal.TITLE"></h3>
+  </div>
+  <div class="modal-body">
+    <p>{{'noHealthCardModal.PARA_1.1' | translate}} {{  $ctrl.multitenancy.NAME_KEY | translate }} {{'noHealthCardModal.PARA_1.2' | translate}} {{ $ctrl.multitenancy.PHONE_KEY | translate }}.</p>
+    <p translate="noHealthCardModal.PARA_2"></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-block"
+            id="home-info-return-home"
+            type="button"
+            translate="noHealthCardModal.RETURN_HOME"
+            ng-click="$ctrl.returnHome()"></button>
+    <button class="btn btn-default btn-block"
+            id="home-info-link-close"
+            type="button"
+            translate="noHealthCardModal.CLOSE"
+            ng-click="$ctrl.ok()"></button>
+  </div>
+</div>

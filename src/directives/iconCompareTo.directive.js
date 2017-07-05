@@ -13,7 +13,8 @@
         return {
             require: 'ngModel',
             scope: {
-                validEmail: '='
+                validEmail: '=?',
+                validPin: '=?'
             },
             link: linkIsCompareTo
             // Restrict to be used as element (A)ttribute "icon-hcn-checksum" only
@@ -32,9 +33,24 @@
         function linkIsCompareTo(scope, element, attributes, ctrl) {
             ctrl.$validators.compareTo = function (viewValue)
             {
-                return viewValue === scope.validEmail;
+                switch(viewValue)
+                {
+                  case scope.validEmail:
+                      return viewValue === scope.validEmail;
+                    break;
+                  case scope.validPin:
+                      return viewValue === scope.validPin;
+                    break;
+                  default:
+                      return false;
+                    break;
+                }
+
             };
             scope.$watch("validEmail",function(){
+                ctrl.$validate();
+            });
+            scope.$watch("validPin",function(){
                 ctrl.$validate();
             });
         }

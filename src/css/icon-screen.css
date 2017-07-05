@@ -17,6 +17,15 @@
     position: absolute;
     left: 3000px
 }
+.icon-remove-padding {
+  padding: 0;
+}
+.icon-remove-margin-bottom {
+  margin-bottom: 0;
+}
+.icon-upper-case {
+  text-transform: uppercase;
+}
 .icon-input-bottom { margin-bottom: 10px}
 /* End general utility classes */
 
@@ -182,20 +191,6 @@
 }
 /*** End Icon scroll buttons***/
 
-/*Bug with android and angular mask, so not using an input with angular mask for phones*/
-.icon-display-mobile {
-    display: none;
-}
-@media(max-width: 485px) {
-    .icon-mask-display {
-        display: none;
-    }
-    .icon-display-mobile {
-        display: inline;
-    }
-}
-/* End angular mask */
-
 /* immunizationDisplayByDate, immunizationDisplayByAgent */
 .icon-panel-footer-btn {
   padding: 0;
@@ -333,22 +328,71 @@
 #icon-progress-bar-container .btn {
     font-size: 16px;
 }
+#icon-progress-bar-container .progress-bar-container {
+  padding: 0;
+  margin-bottom: 80px;
+}
 
-#icon-progress-bar { position: relative; z-index: 10; padding: 0; margin: 0; }
-#icon-progress-bar ul { margin-bottom: 2px; }
-#icon-progress-bar li .btn { width: 42px; height: 42px; margin-top: 7px; border-radius: 50% 50%; border: none; }
-#icon-progress-bar li .btn-default { background-color: #949494; color: #ffffff; }
-#icon-progress-bar li .btn-primary { background-color: #0074d4; }
-#icon-progress-bar li .btn-lg { width: 56px; height: 56px; margin-top: 4px; }
-#icon-progress-bar li .btn-lg span { font-size: 26px; }
-#icon-progress-line { position: absolute; z-index: 1; padding-top: 31px; margin-right: -15px; margin-left: -15px; }
-#icon-progress-line * { webkit-box-shadow: none; box-shadow: none; }
+#icon-progress-bar {
+  position: relative;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+}
+#icon-progress-bar ul {
+  margin-bottom: 2px;
+}
+#icon-progress-bar li {
+  position: absolute;
+}
+#icon-progress-bar li .progress-bar-offset {
+  margin-left: -21px; /* Half the width of the small buttons */
+}
+#icon-progress-bar li .btn {
+  width: 42px;
+  height: 42px;
+  margin-top: 11px; /* 4px margin from large button plus half the difference between the height of the large and small buttons (56-42)/2 = 7 */
+  border-radius: 50% 50%;
+  border: none;
+}
+#icon-progress-bar li .btn-default {
+  background-color: #949494;
+  color: #ffffff;
+}
+#icon-progress-bar li .btn-primary {
+  background-color: #0074d4;
+}
+#icon-progress-bar li .btn-lg {
+  width: 56px;
+  height: 56px;
+  margin-top: 4px;
+  margin-left: -7px; /* Buttons are already shifted left by half the width of the small button (see .progress-bar-offset). Additional shift equal to half the difference in width between the large and small buttons (56-42)/2 = 7 */
+}
+#icon-progress-bar li .btn-lg span {
+  font-size: 26px;
+}
+#icon-progress-line {
+  position: absolute;
+  z-index: 1;
+  padding-top: 31px;
+  width: 100%;
+}
+#icon-progress-line * {
+  webkit-box-shadow: none;
+  box-shadow: none;
+}
 
 #icon-progress-line .progress { background-color: #949494; }
 #icon-progress-status-label {
   font-size: 14px;
   font-weight: bold;
   padding-top: 5px;
+  width: 1000px; /* Arbitrary large value so that any concievable label text will fit entirely inside */
+  margin-left: -479px; /* Half the width of the label minus half the width of the small button */
+}
+
+#icon-progress-status-label .label-active {
+  margin-left: -472px; /* Half the width of the label minus half the width of the large button */
 }
 
 .icon-affix-progress-bar-container {
@@ -356,18 +400,7 @@
 }
 
 @media (max-width: 768px) {
-  #icon-progress-line { width: 100%; }
   #icon-progress-status-label { display:none;}
-}
-
-@media (min-width: 768px) {
-  #icon-progress-line { width: 735px; }
-}
-@media (min-width: 992px) {
-  #icon-progress-line { width: 950px; }
-}
-@media (min-width: 1200px) {
-  #icon-progress-line { width: 1165px; }
 }
 
 /* This media query overrides navbar-justified stacking for MVP, refactor into global CSS later. */

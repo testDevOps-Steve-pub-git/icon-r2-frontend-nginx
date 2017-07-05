@@ -6,8 +6,8 @@
     templateUrl: './components/retrieval/yellowCardDisplay/yellowCardDisplay.template.html',
   };
 
-  yellowCardDisplayController.$inject = ['$q', '$translate', 'Endpoint', 'ImmunizationGroup', 'DISEASE_YC_ORDER', 'By', 'GroupsOf', 'ImmunizationRecordService'];
-  function yellowCardDisplayController ($q, $translate, Endpoint, ImmunizationGroup, DISEASE_YC_ORDER, By, GroupsOf, ImmunizationRecordService) {
+  yellowCardDisplayController.$inject = ['$q', '$translate', 'Endpoint', 'DISEASE_YC_ORDER', 'By', 'GroupsOf', 'ImmunizationRecordService'];
+  function yellowCardDisplayController ($q, $translate, Endpoint, DISEASE_YC_ORDER, By, GroupsOf, ImmunizationRecordService) {
     this.$onInit = () => {
       let { firstName, lastName } = ImmunizationRecordService.getPatient();
       this.patientName = `${firstName} ${lastName}`;

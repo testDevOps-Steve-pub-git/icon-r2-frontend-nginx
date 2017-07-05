@@ -7,14 +7,14 @@
 'use strict';
 
   module.exports = {
-    template: `      
+    template: `
       <div ng-if="$ctrl.groupByDisplay === 'date'" ng-repeat="immunizations in $ctrl.immunizationsGroupedByDate track by $index">
         <immunization-review-display-date
           immunizations="immunizations"
           patient="$ctrl.patient">
         </immunization-review-display-date>
       </div>
-      
+
       <div ng-if="$ctrl.groupByDisplay === 'agent'" ng-repeat="immunizations in $ctrl.immunizationsGroupedByAgent track by $index">
         <immunization-review-display-agent
           immunizations="immunizations"
@@ -28,9 +28,9 @@
     },
     controller: immunizationReviewDisplayController
   };
- 
-  immunizationReviewDisplayController.$inject = ['ImmunizationGroup', 'GatingQuestionService', 'GroupsOf'];
-  function immunizationReviewDisplayController(ImmunizationGroup, GatingQuestionService, GroupsOf) {
+
+  immunizationReviewDisplayController.$inject = ['GatingQuestionService', 'GroupsOf'];
+  function immunizationReviewDisplayController(GatingQuestionService, GroupsOf) {
 
     this.$onInit = ()=> {
       /* Grouping choice */

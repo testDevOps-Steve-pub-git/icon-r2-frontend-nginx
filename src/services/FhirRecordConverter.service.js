@@ -39,6 +39,16 @@
                               .filter(identifier => identifier.system === identifierSystem.OIID)
                               .map(identifier => identifier.value);
 
+      /* NOTE: ICON considers gender other, if not male or female. */
+      const isBinaryGender = (
+           !!patient.resource
+        && !!patient.resource.gender
+        && (patient.resource.gender === Patient.genders.MALE || patient.resource.gender === Patient.genders.FEMALE)
+      )
+      const gender = (isBinaryGender)
+              ? patient.resource.gender
+              : Patient.genders.OTHER
+
       return new Patient(
         patient.resource.name[0].given[0] || ``,
         patient.resource.name[0].given.slice(1).join(` `) || ``,
@@ -48,7 +58,7 @@
         ``, /* Patient.schoolOrDayCareIdentifier */
         (!!healthCardNumber.length > 0) ? healthCardNumber[0] : ``,
         (!!oiid.length > 0) ? oiid[0] : ``,
-        patient.resource.gender
+        gender
       );
     };
 

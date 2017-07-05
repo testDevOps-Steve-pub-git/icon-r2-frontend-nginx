@@ -76,8 +76,8 @@ To add a new PHU folder to the multitenancy sub-directory:
     ```
 
 7. Edit information in the ```phu.json``` file
-    1. Change the values of the ```NAME_KEY```, ```PHONE_KEY```, ```EMAIL_KEY```, ```CONTACT_PERSON_KEY```
-      , ```ADDRESS_KEY```, ```RESPONSE_TIME_KEY```, ```PRIVACY_LINK_KEY```, ```TOC_LINK_KEY```,
+    1. Change the values of the ```NAME_KEY```, ```PHONE_KEY```, ```CONTACT_PERSON_KEY```
+      , ```ADDRESS_KEY```, ```RESPONSE_TIME_KEY```, ```TOC_LINK_KEY```,
       and ```WEBSITE_KEY``` attributes by removing the old PHU acronym and replacing it with
       the new one (in all uppercase letters):
         * e.g., from ```MULTITENANCY.HPH.PHU_NAME``` to ```MULTITENANCY.KFLA.PHU_NAME```
@@ -111,11 +111,9 @@ To add a new PHU folder to the multitenancy sub-directory:
       "GBHU": {
         "PHU_NAME": "Grey Bruce Health Unit",
         "PHU_PHONE": "519-376-9420 or 1-800-263-3456",
-        "PHU_EMAIL": "immunization@publichealthgreybruce.on.ca",
         "PHU_CONTACT_PERSON": "a Grey Bruce Public Health Unit nurse",
         "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Grey Bruce Health Unit<br aria-hidden=\"true\" />101 17th Street East<br aria-hidden=\"true\" />Owen Sound,  Ontario<br aria-hidden=\"true\" />N4K 0A5",
         "PHU_RESPONSE_TIME": "1 week",
-        "PHU_PRIVACY_LINK": "https://www.publichealthgreybruce.on.ca",
         "PHU_TOC_LINK": "https://www.publichealthgreybruce.on.ca/Terms-of-use",
         "PHU_WEBSITE": "https://www.publichealthgreybruce.on.ca/"
       },

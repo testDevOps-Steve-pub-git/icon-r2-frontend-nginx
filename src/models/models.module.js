@@ -1,36 +1,26 @@
-/**
- * @name icon.models
- * @module icon.models
- * @namespace icon.models
- */
-(function () {
-'use strict';
+import Address from './Address.model'
+import Agent from './Agent.model'
+import Disease from './Disease.model'
+import Immunization from './Immunization.model'
+import Lot from './Lot.model'
+import ImmunizationRecordSubmission from './ImmunizationRecordSubmission.model'
+import Patient from './Patient.model'
+import Recommendation from './Recommendation.model'
+import SessionData from './SessionData.model'
+import Submitter from './Submitter.model'
+import Token from './Token.model'
+import Trade from './Trade.model'
 
-  angular.module('icon.models', [])
-    .service('Address', [require('./Address.model.js')])
-    .service('SessionData', [
-        'Token',
-        require('./SessionData.model.js')
-    ])
-    .service('Agent', [require('./Agent.model.js')])
-    .service('Disease', [require('./Disease.model.js')])
-    .service('Immunization', [
-        'Agent', 'Trade',
-        require('./Immunization.model.js')
-    ])
-    .service('ImmunizationGroup', [require('./ImmunizationGroup.model.js')])
-    .service('ImmunizationRecordSubmission', [
-        'Address', 'Patient', 'SessionData', 'Submitter',
-        require('./ImmunizationRecordSubmission.model.js')
-    ])
-    .service('Lot', [require('./Lot.model.js')])
-    .service('Patient', [require('./Patient.model.js')])
-    .service('Recommendation', [
-      'Disease',
-      require('./Recommendation.model.js')
-    ])
-    .service('Submitter', [require('./Submitter.model.js')])
-    .service('Token', [require('./Token.model.js')])
-    .service('Trade', [require('./Trade.model.js')])
-
-}());
+angular.module('icon.models', [])
+  .service(Address.name, [() => Address.model])
+  .service(Agent.name, [() => Agent.model])
+  .service(Disease.name, [() => Disease.model])
+  .service(Immunization.name, [() => Immunization.model])
+  .service(Lot.name, [() => Lot.model])
+  .service(ImmunizationRecordSubmission.name, [() => ImmunizationRecordSubmission.model])
+  .service(Patient.name, [() => Patient.model])
+  .service(Recommendation.name, [() => Recommendation.model])
+  .service(SessionData.name, [() => SessionData.model])
+  .service(Submitter.name, [() => Submitter.model])
+  .service(Token.name, [() => Token.model])
+  .service(Trade.name, [() => Trade.model])
