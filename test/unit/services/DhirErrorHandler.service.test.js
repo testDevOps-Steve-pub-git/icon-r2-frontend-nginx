@@ -1,9 +1,12 @@
-import DhirErrorHandler from '../../../src/services/DhirErrorHandler.service'
-import {expect} from 'chai'
+import DhirErrorHandler  from '../../../src/services/DhirErrorHandler.service'
+import {expect}          from 'chai'
+import DHIR_ERROR        from '../../../src/DHIR_ERROR.js'
+import ICON_NOTIFICATION from '../../../src/ICON_NOTIFICATION.js'
+/* NOTE: Manual dependency injection for a testable service.
+         "$" prefix is to indicate a pre-injection state. */
+import $Notify           from '../../../src/services/Notify.service.js'
 
-const DHIR_ERROR        = require('../../../src/DHIR_ERROR.js')
-const ICON_NOTIFICATION = require('../../../src/ICON_NOTIFICATION.js')
-const Notify            = require('../../../src/services/Notify.service.js')(ICON_NOTIFICATION)
+const Notify = $Notify.service(ICON_NOTIFICATION)
 
 describe('DhirErrorHandler', () => {
   let dhirErrorHandler = null

@@ -1,12 +1,4 @@
 <div class="row">
-  <!--Health Card Image-->
-  <div class="form-group col-xs-12 icon-health-card-img"
-       ng-if="$ctrl.displayImage">
-    <img id="healthcard_number"
-         src="./img/health-card-graphic.png"
-         alt="{{'hcnCapture.HEALTHCARD' | translate}}" />
-  </div>
-  <!--End Health Card Image-->
 
   <!--Health Card Number-->
   <div class="form-group col-xs-12">
@@ -33,22 +25,30 @@
     <div class="error-messages"
          id="patient-hcn-error"
          ng-messages="$ctrl.form.healthCardNumber.$error"
-         ng-if="$ctrl.form.healthCardNumber.$touched"
-         role="alert">
+         ng-if="$ctrl.form.healthCardNumber.$touched">
       <div ng-message="iconHcn"
            class="alert alert-danger col-xs-12"
-           translate='hcnCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+           translate='hcnCapture.ERRORS.HCN_FORMAT_ERROR'
+           role="alert"></div>
       <div ng-message="mask"
            class="alert alert-danger col-xs-12"
-           translate='hcnCapture.ERRORS.HCN_FORMAT_ERROR'></div>
+           translate='hcnCapture.ERRORS.HCN_FORMAT_ERROR'
+           role="alert"></div>
       <div ng-if="!$ctrl.isOptional"
-           class="alert alert-danger col-xs-12" id="patient-oiid-error"
-           ng-message="required" translate='hcnCapture.ERRORS.HCN_REQUIRED'>
+           class="alert alert-danger col-xs-12"
+           id="patient-oiid-error"
+           ng-message="required"
+           translate='hcnCapture.ERRORS.HCN_REQUIRED'
+           role="alert">
       </div>
     </div>
     <!--End Error Messages-->
 
-    <span ng-transclude="hint"></span>
+    <div class="">
+      <p id="contactMessage" class="icon-remove-margin-bottom">{{ 'hcnCapture.HINT' | translate }} <span ng-transclude="hint"></span></p>
+    </div>
+
+
   </div>
 </div>
 <!-- End Health Card Number -->

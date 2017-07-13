@@ -1,23 +1,21 @@
-(function () {
-'use strict';
+/* @ngInject */
+function phuHeader$ctrl ($state, Multitenancy) {
+  this.$onInit = () => {
+    Multitenancy.getPhuKeys()
+    .then((phuAssets) => { this.multitenancy = phuAssets })
 
-  module.exports = {
+    this.isCurrentStateWelcome = () => { return $state.includes('welcome') }
+  }
+};
+
+export default {
+  name: 'phuHeader',
+  component: {
     bindings: {
       baseState: '@',
-      progressStates: '<',
+      progressStates: '<'
     },
     templateUrl: './components/index/phuHeader/phuHeader/phuHeader.template.html',
-    controller: phuHeaderController,
-  };
-
-  phuHeaderController.$inject = ['$state', 'Multitenancy'];
-  function phuHeaderController ($state, Multitenancy) {
-    this.$onInit = () => {
-      Multitenancy.getPhuKeys()
-      .then((phuAssets) => { this.multitenancy = phuAssets; });
-
-      this.isCurrentStateWelcome = () => { return $state.includes('welcome'); }
-    };
-  };
-
-}());
+    controller: phuHeader$ctrl
+  }
+}

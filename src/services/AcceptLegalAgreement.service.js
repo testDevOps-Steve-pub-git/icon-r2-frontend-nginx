@@ -2,17 +2,16 @@
  * Created on 2016-09-06.
  * Service for user accepting legal agreement
  */
-(function() {
-  'use strict'
+/* @ngInject */
+function AcceptLegalAgreement () {
+  var acceptedLegal = false
 
-  module.exports = AcceptLegalAgreement;
-
-  function AcceptLegalAgreement () {
-    var acceptedLegal = false;
-
-    return {
-      acceptedLegal: acceptedLegal
-    };
+  return {
+    acceptedLegal: acceptedLegal
   }
+}
 
-})();
+export default {
+  name: 'AcceptLegalAgreement',
+  service: AcceptLegalAgreement
+}

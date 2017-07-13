@@ -5,6 +5,7 @@ function sendAnotherEmail$ctrl (
   Endpoint,
   $state,
   Notify,
+  Utility,
   ICON_NOTIFICATION,
   DHIR
 ) {
@@ -69,14 +70,8 @@ function sendAnotherEmail$ctrl (
 
 
   function validateFormAndSubmit(form) {
-    if(form.$valid) {
-      this.forgotEmail();
-    }
-    else {
-      form.OIID.$setTouched();
-      form.email.$setTouched();
-    }
-
+    if(form.$valid) this.forgotEmail()
+    else Utility.focusFirstInvalidField(form)
   }
 }
 
@@ -92,15 +87,15 @@ export default {
           <hr />
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-xs-12">
           <h1 translate="pinEmailExpired.SEND_ANOTHER_TITLE"></h1>
           <p translate="pinEmailExpired.SEND_ANOTHER_PARA"></p>
         </div>
       </div>
-      
-      <form class="form form-container" name="sendEmailAgainForm" id="sendEmailAgainForm" autocomplete="off">
+
+      <form class="form form-container" name="sendEmailAgainForm" id="sendEmailAgainForm" autocomplete="off" novalidate>
 
         <oiid-capture
           form="sendEmailAgainForm"
@@ -112,42 +107,20 @@ export default {
             </errors>
         </oiid-capture>
 
-        
+
         <email-capture
           email="$ctrl.submitterInfo.email"
           form="sendEmailAgainForm"
           is-optional="false">
         </email-capture>
-        
+
         <button class="btn btn-primary"
           id="sendAnotherEmailButton"
-          type="button"
+          type="submit"
           translate="pinForgot.BUTTON"
           ng-click="$ctrl.validateFormAndSubmit(sendEmailAgainForm)">
         </button>
       </form>
-      
-      
-      <!-- TODO: remove testing values after QA -->
-    <button class="btn btn-xs btn-info" ng-click="$ctrl.showQaValues = !$ctrl.showQaValues">QA Values</button>
-    <pre ng-if="$ctrl.showQaValues">
-OIID          Expected Response
----------------------------------
-GM29BJXKBV    Successful request
-8WMWH3L6BH    First Time Login (Set PIN with HCN)
-ZPH6BL29BP    First time Login (Set PIN with HCN) also works on simulator for retrieval
-GQNHDGMVBJ    Invalid resource
-2RD35C2G24    Token is invalid
-J2GKTFSSX2    Token has expired
-N4J323QRN2    Resource is not
-              associated to token
-TG6LLNCDBG    Authorization is required
-              for the interaction that
-              was attempted
-CRTX6N3BMS    Too many requests
-X4T2W97MMM    Internal error
-    </pre>
-<!-- End TODO -->
     `
   },
 }

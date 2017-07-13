@@ -3,10 +3,22 @@
  * Component to hold all individual immunizations
  * Automatically sorted by date
  */
-(function() {
-'use strict';
 
-  module.exports = {
+/* @ngInject */
+function immunizationReviewDisplay$ctrl (GatingQuestionService, GroupsOf) {
+  this.$onInit = () => {
+    /* Grouping choice */
+    let gatingQuestions = GatingQuestionService.getGatingChoices()
+    this.groupByDisplay = gatingQuestions.question4Choice
+
+    this.immunizationsGroupedByAgent = GroupsOf.immunization.byAgentTrade(this.immunizations)
+    this.immunizationsGroupedByDate = GroupsOf.immunization.byDate(this.immunizations)
+  }
+}
+
+export default {
+  name: 'immunizationReviewContainer',
+  component: {
     template: `
       <div ng-if="$ctrl.groupByDisplay === 'date'" ng-repeat="immunizations in $ctrl.immunizationsGroupedByDate track by $index">
         <immunization-review-display-date
@@ -14,7 +26,7 @@
           patient="$ctrl.patient">
         </immunization-review-display-date>
       </div>
-
+    
       <div ng-if="$ctrl.groupByDisplay === 'agent'" ng-repeat="immunizations in $ctrl.immunizationsGroupedByAgent track by $index">
         <immunization-review-display-agent
           immunizations="immunizations"
@@ -24,22 +36,9 @@
     `,
     bindings: {
       immunizations: '<',
-      patient: '<',
+      patient: '<'
     },
-    controller: immunizationReviewDisplayController
-  };
-
-  immunizationReviewDisplayController.$inject = ['GatingQuestionService', 'GroupsOf'];
-  function immunizationReviewDisplayController(GatingQuestionService, GroupsOf) {
-
-    this.$onInit = ()=> {
-      /* Grouping choice */
-      let gatingQuestions = GatingQuestionService.getGatingChoices();
-      this.groupByDisplay = gatingQuestions.question4Choice;
-
-      this.immunizationsGroupedByAgent = GroupsOf.immunization.byAgentTrade(this.immunizations);
-      this.immunizationsGroupedByDate = GroupsOf.immunization.byDate(this.immunizations);
-    };
+    controller: immunizationReviewDisplay$ctrl
   }
 
-})();
+}

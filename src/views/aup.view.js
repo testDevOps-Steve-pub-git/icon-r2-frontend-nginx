@@ -1,9 +1,12 @@
 /* @ngInject */
-function AUPController($state) {}
+function aup$ctrl($state) {}
 
-module.exports = {
-  controller: AUPController,
-  template: `
-     <welcome-aup></welcome-aup>
-  `
+export default {
+  name: 'aup',
+  view: {
+    controller: aup$ctrl,
+    template: `
+       <welcome-aup></welcome-aup>
+    `
+  }
 };

@@ -1,8 +1,16 @@
-(function () {
-'use strict';
+/* @ngInject */
+function sessionExpiredNotification$ctrl (
+  $interval, $state,
+  GatingQuestionService, ImmunizationRecordService, Notify, SessionHandler, TokenHandler,
+  ICON_NOTIFICATION
+) {
+  this.$onInit = () => { this.close = this.resolve.close }
+}
 
-  module.exports = {
-    controller: sessionExpiredNotificationController,
+export default {
+  name: 'sessionExpiredNotification',
+  component: {
+    controller: sessionExpiredNotification$ctrl,
     bindings: { resolve: '=' },
     template: `
       <div class="modal-header text-info">
@@ -17,19 +25,5 @@
         </div>
       </div>
     `
-  };
-
-  sessionExpiredNotificationController.$inject = [
-    '$interval', '$state',
-    'GatingQuestionService', 'ImmunizationRecordService', 'Notify', 'SessionHandler', 'TokenHandler',
-    'ICON_NOTIFICATION'
-  ];
-  function sessionExpiredNotificationController (
-    $interval, $state,
-    GatingQuestionService, ImmunizationRecordService, Notify, SessionHandler, TokenHandler,
-    ICON_NOTIFICATION
-  ) {
-    this.$onInit = () => { this.close = this.resolve.close; };
   }
-
-}());
+}

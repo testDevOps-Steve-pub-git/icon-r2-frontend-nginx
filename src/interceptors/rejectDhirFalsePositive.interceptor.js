@@ -7,29 +7,29 @@ NOTE: Causes DHIR responses with an operation outcome to be thrown to the
 const detectDhirFalsePositive = ($q) => ({
   response: (response) => {
     const hasPositiveStatus = (
-         !!response.status
-      && response.status === 200
-    );
+         !!response.status &&
+      response.status === 200
+    )
 
-    const NEGATIVE_RESOURCE_TYPE = `OperationOutcome`;
+    const NEGATIVE_RESOURCE_TYPE = `OperationOutcome`
     const hasNegativeOperationOutcome = (
-         !!response.data
-      && !!response.data.entry
-      && !!response.data.entry.length
-      && !!response.data.entry[0].resource
-      && !!response.data.entry[0].resource.resourceType
-      && response.data.entry[0].resource.resourceType === NEGATIVE_RESOURCE_TYPE
-    );
+         !!response.data &&
+      !!response.data.entry &&
+      !!response.data.entry.length &&
+      !!response.data.entry[0].resource &&
+      !!response.data.entry[0].resource.resourceType &&
+      response.data.entry[0].resource.resourceType === NEGATIVE_RESOURCE_TYPE
+    )
 
     const isFalsePositiveResponse = (
-         hasPositiveStatus
-      && hasNegativeOperationOutcome
-    );
+         hasPositiveStatus &&
+      hasNegativeOperationOutcome
+    )
 
     return (isFalsePositiveResponse)
               ? $q.reject(response)
-              : $q.resolve(response);
+              : $q.resolve(response)
   }
-});
+})
 
-module.exports = detectDhirFalsePositive;
+export default detectDhirFalsePositive

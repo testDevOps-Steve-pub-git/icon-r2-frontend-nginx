@@ -5,26 +5,23 @@
  *    LocalSubmiterInfo: local submitter object to store information until next page
  *    form: parent form passed in for validation purposes
  */
-(function(){
-'use strict';
+/* @ngInject */
+function submitterContactCapture$ctrl (ICON_RGX) {
+  /** on component initializiation */
+  this.$onInit = () => {
+    /** Regex Librariess */
+    this.rgx = ICON_RGX.rgx
+  }
+}
 
-  module.exports = {
+export default {
+  name: 'submitterEmail',
+  component: {
     templateUrl: './components/submitter/submitterContactCapture/submitterContactEmail.template.html',
     bindings: {
       localSubmitterInfo: '=',
       form: '='
     },
-    controller: submitterContactCaptureController
-  };
-
-  submitterContactCaptureController.$inject = ['ICON_RGX'];
-  function submitterContactCaptureController (ICON_RGX) {
-
-    /** on component initializiation */
-    this.$onInit = () => {
-      /** Regex Librariess */
-      this.rgx = ICON_RGX.rgx;
-    };
-
+    controller: submitterContactCapture$ctrl
   }
-})();
+}

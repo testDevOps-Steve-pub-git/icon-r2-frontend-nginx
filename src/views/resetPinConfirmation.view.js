@@ -1,13 +1,16 @@
-resetPinConfirmationController.$inject = [];
-function resetPinConfirmationController () {}
+/* @ngInject */
+function resetPinConfirmation$ctrl () {}
 
-module.exports = {
-  controller: resetPinConfirmationController,
-  template: `<pre>
+export default {
+  name: 'resetPinConfirmation',
+  view: {
+    controller: resetPinConfirmation$ctrl,
+    template: `<pre>
 
-    RESET PIN CONFIRMATION
-    (ICON notifies User PIN was reset successfully)
+      RESET PIN CONFIRMATION
+      (ICON notifies User PIN was reset successfully)
 
-  </pre>
-  `
-};
+    </pre>
+    `
+  }
+}

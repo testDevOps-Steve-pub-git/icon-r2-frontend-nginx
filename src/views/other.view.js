@@ -1,10 +1,13 @@
-otherController.$inject = [];
-function otherController () {}
+/* @ngInject */
+function other$ctrl () {}
 
-module.exports = {
-  bindings: { data: '@' },
-  controller: otherController,
-  template: `
-    <main ui-view></main>
-  `
-};
+export default {
+  name: 'other',
+  view: {
+    bindings: { data: '@' },
+    controller: other$ctrl,
+    template: `
+      <main ui-view></main>
+    `
+  }
+}

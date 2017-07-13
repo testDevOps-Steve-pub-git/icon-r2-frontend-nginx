@@ -1,5 +1,5 @@
 /* @ngInject */
-function patientAddress$ctrl (Endpoint, ImmunizationRecordService, $scope) {
+function patientAddress$ctrl (Endpoint, ImmunizationRecordService, $scope, Utility) {
 
   this.$onInit = () => {
     this.localAddress = ImmunizationRecordService.getAddress();
@@ -10,13 +10,10 @@ function patientAddress$ctrl (Endpoint, ImmunizationRecordService, $scope) {
         form.$valid = false;
       }
 
-      if (!form.$valid && form.$error.required) {
-        form.$error.required.forEach((field) => { field.$setTouched(); });
-      } else {
-        ImmunizationRecordService.setAddress(this.localAddress);
-      }
-      return form.$valid;
+      if (!form.$valid) Utility.focusFirstInvalidField(form)
+      else ImmunizationRecordService.setAddress(this.localAddress)
 
+      return form.$valid;
     };
   };
 }
@@ -35,10 +32,9 @@ export default {
         </address-toggle>
 
         <!--Error messages for province-->
-        <div class="error-messages" id="address-form-error" ng-if="!addressCaptureForm.$valid && !$ctrl.localAddress.postalCode && $ctrl.localAddress.addressType === 'Street'"
-             role="alert">
+        <div class="error-messages" id="address-form-error" ng-if="!addressCaptureForm.$valid && !$ctrl.localAddress.postalCode && $ctrl.localAddress.addressType === 'Street'">
           <div class="alert alert-danger col-xs-12"  translate='addressCapture.ERRORS.INCOMPLETE'
-               aria-label="addressCapture.ERRORS.INCOMPLETE"></div>
+               aria-label="addressCapture.ERRORS.INCOMPLETE" role="alert"></div>
         </div>
         <!--End Error Messages-->
 

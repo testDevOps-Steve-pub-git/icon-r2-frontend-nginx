@@ -1,10 +1,11 @@
 /* @ngInject */
-function newPinController (
+function newPin$ctrl (
   ImmunizationRecordService,
   $uibModal,
   $state,
   Endpoint,
   Notify,
+  Utility,
   ICON_NOTIFICATION,
   DHIR) {
 
@@ -61,13 +62,8 @@ function newPinController (
 
 
   function validateForm(form) {
-    if(form.$valid) {
-      this.goToSetPin();
-    }
-    else {
-      form.healthCardNumber.$setTouched();
-      form.role.$setTouched();
-    }
+    if(form.$valid) this.goToSetPin()
+    else Utility.focusFirstInvalidField(form)
   }
 
 
@@ -98,55 +94,59 @@ function newPinController (
   }
 }
 
-module.exports = {
-  controller: newPinController,
-  template: `
-    <div class="row">
-      <div class="col-xs-12">
-        <h1 translate="newPin.TITLE"></h1>
+export default {
+  name: 'newPin',
+  view: {
+    controller: newPin$ctrl,
+    template: `
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 translate="newPin.TITLE"></h1>
+        </div>
       </div>
-    </div>
 
-    <form class="form form-container" id="newPinForm" name="newPinForm" autocomplete="off">
-      <oiid-display
-        oiid="$ctrl.patientInfo.oiid">
-      </oiid-display>
-      <br />
+      <form class="form form-container" id="newPinForm" name="newPinForm" autocomplete="off" novalidate>
+        <oiid-display
+          oiid="$ctrl.patientInfo.oiid">
+        </oiid-display>
+        <br />
 
-      <role-capture
-        role="$ctrl.submitterInfo.relationshipToPatient"
-        form="newPinForm">
-      </role-capture>
+        <role-capture
+          role="$ctrl.submitterInfo.relationshipToPatient"
+          form="newPinForm">
+        </role-capture>
 
-      <hcn-capture
-        health-card-number="$ctrl.patientInfo.healthCardNumber"
-        form="newPinForm"
-        display-image="false"
-        is-optional="false">
+        <hcn-capture
+          health-card-number="$ctrl.patientInfo.healthCardNumber"
+          form="newPinForm"
+          display-image="false"
+          is-optional="false">
 
-        <hint>
-          <span translate="newPin.HC_HINT_PARA"></span>
-          <p>
-          <button translate="newPin.HC_HINT_LINK"
-            class="icon-btn-link text-left"
-            ng-click='$ctrl.openHCNHelpModal()'
-            id="noHealthCardNumberButton">
+          <hint>
+            <span translate="newPin.HC_HINT_PARA"></span>
+            <p>
+            <button translate="newPin.HC_HINT_LINK"
+              type="button"
+              class="icon-btn-link text-left"
+              ng-click='$ctrl.openHCNHelpModal()'
+              id="noHealthCardNumberButton">
+            </button>
+            </p>
+          </hint>
+
+        </hcn-capture>
+
+         <button class="btn btn-primary"
+              id="newPinButton"
+              type="submit"
+              translate="newPin.VERIFY_BUTTON"
+              ng-click="$ctrl.validateForm(newPinForm)">
           </button>
-          </p>
-        </hint>
 
-      </hcn-capture>
+      </form>
 
-       <button class="btn btn-primary"
-            id="newPinButton"
-            type="button"
-            translate="newPin.VERIFY_BUTTON"
-            ng-click="$ctrl.validateForm(newPinForm)">
-        </button>
-
-    </form>
-
-    <br />
-    <p translate="newPin.HINT" translate-compile></p>
-  `
-};
+      <br />
+      <p translate="newPin.HINT" translate-compile></p>
+    `
+  }
+}

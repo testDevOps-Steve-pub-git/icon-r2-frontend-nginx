@@ -32,4 +32,4 @@ const DHIR_ERROR = {
   }
 }
 
-module.exports = DHIR_ERROR
+export default DHIR_ERROR

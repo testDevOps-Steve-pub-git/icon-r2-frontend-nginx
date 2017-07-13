@@ -1,12 +1,11 @@
-import {expect} from 'chai'
-import $Immunization from '../../../src/models/Immunization.model'
-const $Is = require('../../../src/services/Is.service.js')
-import $DHIR from '../../../src/services/DHIR.service'
+import {expect}                            from 'chai'
+import $Immunization                       from '../../../src/models/Immunization.model'
+import $Is                                 from '../../../src/services/Is.service.js'
+import $DHIR                               from '../../../src/services/DHIR.service'
 
 /* NOTE: Manual dependency injection for a testable service.
          "$" prefix is to indicate a pre-injection state. */
-const DHIR = $DHIR.service($Is($Immunization.model))
-console.info(DHIR)
+const DHIR = $DHIR.service($Is.service($Immunization.model))
 
 /* Universal DHIR responses */
 import LOCKED_OUT                           from '../../fixtures/DHIR/LOCKED_OUT.response'

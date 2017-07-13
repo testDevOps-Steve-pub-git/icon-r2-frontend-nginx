@@ -1,13 +1,11 @@
-(function(){
-'use strict';
+/* @ngInject */
+function diseasesDisplay$ctrl () {}
 
-  module.exports = {
+export default {
+  name: 'diseasesDisplay',
+  component: {
     bindings: { diseases: '=' },
-    controller: diseasesDisplayController,
+    controller: diseasesDisplay$ctrl,
     templateUrl: './components/immunization/diseasesDisplay/diseasesDisplay.template.html'
-  };
-
-  diseasesDisplayController.$inject = [];
-  function diseasesDisplayController () {}
-
-}());
+  }
+}

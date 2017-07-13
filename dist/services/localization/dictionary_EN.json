@@ -119,7 +119,7 @@
     "SURVEY_LINK_URL": "https://survey.infoway-inforoute.ca/index.php/115271?lang=en"
   },
   "authOtherPatientContainer": {
-    "PATIENT_INFO_MESSAGE": "The information above was pulled from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{name_key}}</strong> at <strong>{{phone_key}}</strong>.",
+    "PATIENT_INFO_MESSAGE": "The information above comes from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{name_key}}</strong> at <strong>{{phone_key}}</strong>.",
     "ADDITIONAL_INFORMATION": "Additional Information",
     "ENTER_MISSING_INFO": "Please enter any missing information below. Please note that changes will not appear until reviewed by your local Public Health Unit.",
     "HEALTH_CARD_NUMBER": "Health Card Number",
@@ -157,7 +157,7 @@
     "INFO_TITLE": "Your Info"
   },
   "authSelfPatientContainer": {
-    "PATIENT_INFO_MESSAGE": "The information above was pulled from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{ name_key }}</strong> at <strong>{{ phone_key }}</strong>.",
+    "PATIENT_INFO_MESSAGE": "The information above comes from the Ontario Immunization Repository. If you require any changes to this information please contact <strong>{{ name_key }}</strong> at <strong>{{ phone_key }}</strong>.",
     "ADDITIONAL_INFORMATION": "Additional Information",
     "ENTER_MISSING_INFO": "Please enter any missing information below. Please note that changes will not appear until reviewed by your local public health unit.",
     "HEALTH_CARD_NUMBER": "Health Card Number",
@@ -262,7 +262,7 @@
     "EMAIL": "Email",
     "CONFIRM_EMAIL": "Confirm Email",
     "OPTIONAL": "(optional)",
-    "EMAIL_HINT": "This email will be used to validate you, if you need to reset your PIN and for communication purposes. We will not share this email address with anyone.",
+    "EMAIL_HINT": "This email will be used to validate you if you need to reset your PIN and for communication purposes. We will not share this Email address with anyone.",
     "ERRORS": {
       "IS_REQUIRED": "You must enter an email address.",
       "EXCEEDS_MAXLENGTH": "You have entered too many characters.",
@@ -277,7 +277,7 @@
   },
   "enterPin": {
     "TITLE": "Verify PIN to View Immunizations",
-    "FORGOT_PIN": "Reset the PIN",
+    "FORGOT_PIN": "Forgot PIN",
     "VERIFY_BUTTON": "Verify Patient",
     "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>Learn more</button> about what the Ontario Immunization ID and PIN are and where they can be found."
   },
@@ -285,6 +285,7 @@
     "HEALTHCARD": "Ontario Health Card",
     "HEALTH_CARD_NUMBER": "Health Card Number",
     "OPTIONAL": "(optional)",
+    "HINT": "Do not include the two letter version code.",
     "ERRORS": {
       "HCN_FORMAT_ERROR": "You have entered an invalid health card number.",
       "HCN_REQUIRED": "This is a required field",
@@ -395,7 +396,7 @@
   "newPin": {
     "TITLE": "Verify Patient to View Immunizations",
     "VERIFY_BUTTON": "Verify Patient",
-    "HC_HINT_PARA": "This Health Card Number will only be used once to confirm who the Ontario Immunization ID that you just entered belongs to. On the next screen you will be asked to set a PIN.",
+    "HC_HINT_PARA": "This health card number will only be used once to confirm the Ontario Immunization ID.",
     "HC_HINT_LINK": "Don't have a Health Card Number?",
     "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>Learn more</button> about what the Ontario Immunization ID and PIN are and where they can be found."
   },
@@ -437,13 +438,13 @@
       "CLOSE_BUTTON": "Close"
     },
     "$infoPinSetSuccess": {
-      "TITLE": "PIN set successfully.",
-      "BODY": "The PIN is now set. You can close this to proceed.",
-      "CLOSE_BUTTON": "Close"
+      "TITLE": "PIN Set Successfully",
+      "BODY": "The PIN is now set.",
+      "CLOSE_BUTTON": "OK"
     },
     "$infoOiidHint": {
       "TITLE": "Where can I find the Ontario Immunization ID?",
-      "BODY": "A patient’s Ontario Immunization ID may be found on a letter sent from {{phuName}}. If you do not have this code please contact {{phuName}} at {{phuPhone}}."
+      "BODY": "A patient's Ontario Immunization ID may be found on a letter sent from {{phuName}}. If you do not have this code please contact {{phuName}} at {{phuPhone}}."
     },
     "$infoLearnMoreAboutOiid": {
       "TITLE": "What are the Ontario Immunization ID and PIN?",
@@ -451,7 +452,7 @@
     },
     "$infoOiidPinOutdated": {
       "TITLE": "System Updated - Additional Info Required",
-      "BODY": "<section><p>We are improving this site and have updated our authentication system. Because of this we require that you verify the patient, update the PIN and provide an email address.</p></section>"
+      "BODY": "<section><p>We are improving the site and have updated our authentication system.  You are required to verify the patient, update the PIN and provide an email address.</p></section>"
     },
     "$infoCallPhuGeneric": {
       "TITLE": "Please Contact {{phuName}}",
@@ -570,7 +571,7 @@
   },
   "OPTIONAL": "(optional)",
   "patientAuthDisplay": {
-    "INFORMATION_FROM_REPOSITORY": "The following information was pulled from the Ontario Immunization Repository",
+    "INFORMATION_FROM_REPOSITORY": "The following information comes from the Ontario Immunization Repository",
     "NAME": "Name",
     "SEX": "Sex",
     "SEX_MALE": "Male",
@@ -671,7 +672,7 @@
     "immunizationsTitle_p1_s1": "Immunization Record Submitted: ",
     "yellowCardTitle_p1_s1_f1": "Immunization Record",
     "yellowCardTitle_p1_s1_f2": "Retrieved on {{reportGeneratedDate}} at {{reportGeneratedTime}}\n\n",
-    "yellowCardFooter_p1_s1": "\nThe information in the record above was pulled from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card.\n",
+    "yellowCardFooter_p1_s1": "\nThe information in the record above comes from from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card.\n",
     "printLogoUrl": "./phu/pdf-logo-en.png",
     "lotNumber": "Lot #",
     "noImmunizations": "No Immunizations",
@@ -717,7 +718,7 @@
     }
   },
   "pinForgot": {
-    "TITLE": "How to Reset the PIN",
+    "TITLE": "Reset the PIN",
     "PARA_1": "Enter your email address below and we will send you instructions to reset the PIN.",
     "BUTTON": "Send Email to Reset PIN",
     "ERRORS": {
@@ -780,7 +781,7 @@
     "EVERY_10_YEARS": "Every 10 Years",
     "PNEU-P-23_VALUE": "Pneumococcal polysaccharide 23 <br aria-hidden=\"true\"> <strong>(65 years+)</strong>",
     "SHINGLES_VALUE": "Zoster <br aria-hidden=\"true\"> <strong>(65-70 years)</strong>",
-    "IMMS_SCHEDULE_MESSAGE": "Protection against the diseases in <i>italics</i> is required for school attendance under the immunization of School Pupils Act. Children born on or after January 1, 2010 also need to be immunized against Varicella.",
+    "IMMS_SCHEDULE_MESSAGE": "Protection against the diseases in <em>italics</em> is required for school attendance under the immunization of School Pupils Act. Children born on or after January 1, 2010 also need to be immunized against Varicella.",
     "DTAP-IPV-HIB": "DTaP-IPV-Hib",
     "PNEU-C": "Pneu-C",
     "ROTA-1": "Rota-1",
@@ -809,7 +810,7 @@
   },
   "setPin": {
     "TITLE": "Set a PIN",
-    "BODY": "Once you have a set a PIN below you can use it along with the Ontario Immunization ID for future visits to this site.",
+    "BODY": "Once you have set a PIN below you can use it along with the Ontario Immunization ID for future visits to this site.",
     "SET_PIN": "Set PIN"
   },
   "submitAnother": {
@@ -907,15 +908,16 @@
     "INTRO_2": "Immunizations Keep Ontarians Healthy!",
     "PHU_MESSAGE": "Use this site to view and update your immunization record. ",
     "INTRO_UL": "Why should I use this site?",
-    "INTRO_LI_1": "It’s an online alternative to paper immunization records.",
-    "INTRO_LI_2": "It allows Ontarians to securely keep track of their families’ immunization records.",
-    "INTRO_LI_3": "It allows families to report their child’s immunization records to their local public health unit, as required by the",
+    "INTRO_LI_1": "It's an online alternative to paper immunization records.",
+    "INTRO_LI_2": "It allows Ontarians to securely keep track of their families' immunization records.",
+    "INTRO_LI_3": "It allows families to report their child's immunization records to their local public health unit, as required by the",
     "INTRO_BULLET_1": "Immunization of Schools Pupil Act, 1990 (ISPA)",
     "INTRO_BULLET_1_URL": "https://www.ontario.ca/laws/statute/90i01",
     "INTRO_IMMS_LAW3": " and the ",
     "INTRO_BULLET_2": "Child Care and Early Years Act, 2014 (CCEYA).",
     "INTRO_BULLET_2_URL": "https://www.ontario.ca/laws/statute/14c11",
-    "INTRO_LI_4": "Public health units review immunization records to ensure schoolchildren are up to date with their immunizations. This helps to protect children and adolescents from serious diseases that can easily be spread in schools and throughout our communities. ",
+    "INTRO_LI_4": "Public health units review immunization records to ensure school children are up to date with their immunizations.",
+    "INTRO_LI_5": "Reporting immunizations helps to keep everyone protected from serious diseases that can be easily spread in schools and throughout our communities.",
     "INTRO_3": "You may also need your immunization record for:",
     "INTRO_3_LIST_A": "Medical treatment",
     "INTRO_3_LIST_B": "Children's programs",
@@ -923,24 +925,24 @@
     "INTRO_3_LIST_D": "Volunteer or employment opportunities ",
     "INTRO_3_LIST_E": "Travel to some countries",
     "INTRO_4": "How do I use this site? ",
-    "INTRO_5": "Every time you or your child gets a vaccine, record it here to keep track of your records and to report the vaccines to your local public health unit.",
+    "INTRO_5": "Every time you or your child gets a vaccine, report it here so that you have a complete record of  your immunizations and they are submitted to your local Public Health unit.",
     "SCHEDULE_LABEL": "Ontario's Immunization Schedule",
     "SCHEDULE_RATIONALE": "Protection against the diseases in italics is required for school attendance under the Immunization School Pupils Act. NOTE**Children born on or after January 1, 2010 also need to be immunized against Varicella.",
     "PRINT_SCHEDULE_LABEL": "Download Printable Ontario Immunization Schedule ",
     "PRINT_SCHEDULE": "Download Printable Schedule"
   },
   "welcomeSubmitContainer": {
-    "TITLE": "2 Options to Submit Immunizations",
+    "TITLE": "Two Options to Submit Immunizations",
     "OR": "OR"
   },
   "welcomeAuthActions": {
     "AUTH_ACTION_TITLE": "Verify Patient's ID to View Immunizations",
-    "AUTH_ACTION_PARA": "Avoid re-entering immunizations and personal information already on file.",
+    "AUTH_ACTION_PARA": "",
     "AUTH_ACTION_VERIFY_BUTTON": "Verify ID",
     "AUTH_ACTION_OIID_HINT": "<button class='icon-btn-link' id='home-oiid-link-two' ng-click='$ctrl.openHelpModal()'>Learn more</button> about what the Ontario Immunization ID and PIN are and where they can be found."
   },
   "welcomeAnonActions": {
-    "ANON_ACTION_TITLE": "Don’t have an Ontario Immunization ID and PIN?",
+    "ANON_ACTION_TITLE": "Don't have an Ontario Immunization ID and PIN?",
     "ANON_ACTION_PARA": "You can submit immunizations without an Ontario Immunization ID and PIN but you will be required to enter additional information along with the dates and names of vaccines given.",
     "ANON_SELF_ACTION_BUTTON": "Submit for Myself",
     "ANON_OTHER_ACTION_BUTTON": "Submit for a Dependent",
@@ -948,7 +950,7 @@
   },
   "welcomeLogin": {
     "VIEW_BUTTON_TITLE": "View Immunizations",
-    "VIEW_BUTTON_PARA": "Like a Immunization Record e.g. Yellow Card, only better! You can view current, overdue and upcoming immunizations.",
+    "VIEW_BUTTON_PARA": "You can view current, overdue and upcoming Immunizations. It's like your Yellow Card, only better.",
     "SUBMIT_BUTTON_TITLE": "Submit Immunizations",
     "SUBMIT_BUTTON_PARA": "Keep track of immunizations by reporting them to your Public Health Unit.",
     "AUTHENTICATION": "Enter an ID and PIN",
@@ -973,9 +975,9 @@
     "HEADING": "Immunizations Needed",
     "INTRO": "As recommended by the <a id='yellow-card-ontario-recommended' href='../../../img/Ontario-Immunization-Schedule-EN.pdf' target='_blank'>Ontario Immunization Schedule</a> you need immunizations to be protected against the following diseases:",
     "NOTE": "Note: Immunizations needed may change if additional immunization information is submitted.",
-    "FOR_MORE_INFO": "For more information please visit <a href='https://www.ontario.ca/page/vaccines' target='_blank'>Ontario’s Ministry of Health and Long-Term Care Immunization page</a>.",
+    "FOR_MORE_INFO": "For more information please visit <a href='https://www.ontario.ca/page/vaccines' target='_blank'>Ontario's Ministry of Health and Long-Term Care Immunization page</a>.",
     "PRINT_BUTTON": "Printable PDF Version of Immunization Record",
-    "YC_CAVEAT": "The information in the record above was pulled from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card. "
+    "YC_CAVEAT": "The information in the record above comes from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card. "
   },
   "MULTITENANCY": {
     "DEFAULT": {
@@ -1079,10 +1081,10 @@
     },
     "HPECHU": {
       "PHU_NAME": "Hastings and Prince Edward Counties Health Unit",
-      "PHU_PHONE": "613-966-5500 or 1-800-267-2803 ext. 313",
+      "PHU_PHONE": "613-966-5500 or 1-800-267-2803",
       "PHU_CONTACT_PERSON": "a Hastings Prince Edward Public Health nurse",
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Hastings Prince Edward Public Health<br aria-hidden=\"true\" />179 North Park Street<br aria-hidden=\"true\" />Belleville, Ontario<br aria-hidden=\"true\" />K8P 4P1",
-      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_RESPONSE_TIME": "3 business days",
       "PHU_TOC_LINK": "http://www.hpepublichealth.ca/terms-use",
       "PHU_WEBSITE": "http://www.hpepublichealth.ca"
     },
@@ -1113,6 +1115,15 @@
       "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
     },
+    "MLHU": {
+      "PHU_NAME": "Middlesex-London Health Unit",
+      "PHU_PHONE": "519-663-5317",
+      "PHU_CONTACT_PERSON": "a Middlesex-London Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Middlesex-London Health Unit<br aria-hidden=\"true\" />50 King St, <br aria-hidden=\"true\" />London, ON<br aria-hidden=\"true\" />N6A 5L7",
+      "PHU_RESPONSE_TIME": "3-5 Business Days",
+      "PHU_TOC_LINK": "https://www.healthunit.com/terms-and-conditions",
+      "PHU_WEBSITE": "https://www.healthunit.com/immunization-records"
+    },
     "NBPSDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1141,13 +1152,13 @@
       "PHU_WEBSITE": "https://www.nwhu.on.ca/Pages/home.aspx"
     },
     "OCPH": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_NAME": "Oxford County Public Health",
+      "PHU_PHONE": "519-539-9800 or 1-800-755-0394",
+      "PHU_CONTACT_PERSON": "a Oxford County Public Health nurse",
+      "PHU_ADDRESS": "<strong>Coordinator of Legislative Services</strong><br aria-hidden=\"true\" />Oxford County Public Health<br aria-hidden=\"true\" />P.O. Box 1614, 21 Reeve Street<br aria-hidden=\"true\" />Woodstock, Ontario<br aria-hidden=\"true\" />N4S 7Y3",
+      "PHU_RESPONSE_TIME": "5 business days",
+      "PHU_TOC_LINK": "http://www.oxfordcounty.ca/General/Privacy-Terms-of-Use/Privacy/PHIPA/Public-Health",
+      "PHU_WEBSITE": "http://www.oxfordcounty.ca/health"
     },
     "PDHU": {
       "PHU_NAME": "Perth District Health Unit",
@@ -1165,16 +1176,25 @@
       "PHU_ADDRESS": "<strong>Medical Officer of Health</strong><br aria-hidden=\"true\" />Peel Public Health<br aria-hidden=\"true\" />P.O. Box 667 RPO Streetsville<br aria-hidden=\"true\" />Mississauga, Ontario<br aria-hidden=\"true\" />L5M 2C2",
       "PHU_RESPONSE_TIME": "5 Business Days",
       "PHU_TOC_LINK": "http://www.peelregion.ca/privacy/index.htm",
-      "PHU_WEBSITE": "https://www.peelregion.ca/health/"
+      "PHU_WEBSITE": "https://www.peelregion.ca/immunize"
     },
     "PO": {
       "PHU_NAME": "Porcupine Health Unit",
       "PHU_PHONE": "705-267-1181 or 1-800-461-1818",
       "PHU_CONTACT_PERSON": "a Porcupine Health Unit nurse",
-      "PHU_ADDRESS": "<strong>__PLACEHOLDER__PLEASE__REPLACE__ME__</strong><br aria-hidden=\"true\" />Porcupine Health Unit<br aria-hidden=\"true\" />169 Pine Street South, PO Bag 2012<br aria-hidden=\"true\" />Timmins, Ontario<br aria-hidden=\"true\" />P4N 8B7",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Porcupine Health Unit<br aria-hidden=\"true\" />169 Pine Street South, PO Bag 2012<br aria-hidden=\"true\" />Timmins, Ontario<br aria-hidden=\"true\" />P4N 8B7",
       "PHU_RESPONSE_TIME": "5 business days",
       "PHU_TOC_LINK": "http://www.porcupinehu.on.ca/en/admin/disclaimer/",
       "PHU_WEBSITE": "http://www.porcupinehu.on.ca/en/your-health/yellow-cards/"
+    },
+    "ROWPH": {
+      "PHU_NAME": "Region of Waterloo Public Health and Emergency Services",
+      "PHU_PHONE": "519-575-4400",
+      "PHU_CONTACT_PERSON": "a Region of Waterloo Public Health and Emergency Services nurse ",
+      "PHU_ADDRESS": "<strong>ROWPHE Privacy Office</strong><br aria-hidden=\"true\" />Region of Waterloo Public Health and Emergency Service<br aria-hidden=\"true\" />99 Regina Street South<br aria-hidden=\"true\" />Waterloo, ON<br aria-hidden=\"true\" />N2J 4V3",
+      "PHU_RESPONSE_TIME": "5 business days",
+      "PHU_TOC_LINK": "http://www.regionofwaterloo.ca/en/privacy.asp",
+      "PHU_WEBSITE": "http://www.regionofwaterloo.ca/en/servicesForYou/Immunization.asp"
     },
     "SDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1220,6 +1240,15 @@
       "PHU_RESPONSE_TIME": "3-5 business days",
       "PHU_TOC_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607",
       "PHU_WEBSITE": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD"
+    },
+    "WDGPH": {
+      "PHU_NAME": "Wellington-Dufferin-Guelph Public Health",
+      "PHU_PHONE": "1-800-265-7293",
+      "PHU_CONTACT_PERSON": "a Wellington-Dufferin-Guelph Public Health nurse",
+      "PHU_ADDRESS": "<strong>Chief Privacy Officer</strong><br aria-hidden=\"true\" />Wellington-Dufferin-Guelph Public Health<br aria-hidden=\"true\" /160 Chancellors Way<br aria-hidden=\"true\" />Guelph, ON<br aria-hidden=\"true\" />N1G 0E1",
+      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_TOC_LINK": "https://www.wdgpublichealth.ca/about/terms-use",
+      "PHU_WEBSITE": "https://www.wdgpublichealth.ca/healthcare-providers/vaccines-immunization"
     },
     "WECHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",

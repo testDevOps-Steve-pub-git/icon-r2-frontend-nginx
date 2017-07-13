@@ -20,14 +20,13 @@
            uib-typeahead="cities.city for cities in $ctrl.getCity($viewValue) | limitTo:8"/>
 
     <!--Error Messages for city-->
-    <div class="error-messages" id="address-city-error" ng-messages="$ctrl.form.city.$error" ng-if="$ctrl.form.city.$touched"
-         role="alert">
+    <div class="error-messages" id="address-city-error" ng-messages="$ctrl.form.city.$error" ng-if="$ctrl.form.city.$touched">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressCapture.ERRORS.BAD_FORMAT'
-           aria-label="{{ 'addressCapture.ERRORS.BAD_FORMAT' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.BAD_FORMAT' | translate }}" role="alert"></div>
       <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.CITY_REQUIRED'
-           aria-label="{{ 'addressCapture.ERRORS.CITY_REQUIRED' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.CITY_REQUIRED' | translate }}" role="alert"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressCapture.ERRORS.EXCEEDS_MAXLENGTH'
-           aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}" role="alert"></div>
     </div>
     <!--End Error Messages-->
   </div>
@@ -48,10 +47,9 @@
     </select>
 
     <!--Error messages for province-->
-    <div class="error-messages" id="address-province-error" ng-messages="$ctrl.form.province.$error" ng-if="$ctrl.form.province.$touched"
-         role="alert">
+    <div class="error-messages" id="address-province-error" ng-messages="$ctrl.form.province.$error" ng-if="$ctrl.form.province.$touched">
       <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.PROVINCE_REQUIRED'
-           aria-label="{{ 'addressCapture.ERRORS.PROVINCE_REQUIRED' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.PROVINCE_REQUIRED' | translate }}" role="alert"></div>
     </div>
     <!--End Error Messages-->
   </div>
@@ -74,13 +72,13 @@
            type="text"/>
     <!--Error messages for postal code-->
     <div class="error-messages" id="address-postal-error" ng-messages="$ctrl.form.postalCode.$error"
-         ng-if="$ctrl.form.postalCode.$touched" role="alert">
+         ng-if="$ctrl.form.postalCode.$touched">
       <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='addressCapture.ERRORS.POSTAL_REQ_ERROR'
-           aria-label="{{ 'addressCapture.ERRORS.POSTAL_REQ_ERROR' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.POSTAL_REQ_ERROR' | translate }}" role="alert"></div>
       <div class="alert alert-danger col-xs-12" ng-message="required" translate='addressCapture.ERRORS.POSTAL_CODE_REQUIRED'
-           aria-label="{{ 'addressCapture.ERRORS.POSTAL_CODE_REQUIRED' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.POSTAL_CODE_REQUIRED' | translate }}" role="alert"></div>
       <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='addressCapture.ERRORS.EXCEEDS_MAXLENGTH'
-           aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}"></div>
+           aria-label="{{ 'addressCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate }}" role="alert"></div>
     </div>
     <!--End Error messages-->
   </div>

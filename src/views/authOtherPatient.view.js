@@ -1,5 +1,5 @@
-authOtherPatientController.$inject = ['ImmunizationRecordService', 'Multitenancy'];
-function authOtherPatientController (ImmunizationRecordService, Multitenancy) {
+/* @ngInject */
+function authOtherPatient$ctrl (ImmunizationRecordService, Multitenancy, $document, Utility) {
 
   this.$onInit = ()=> {
     this.localPatient = ImmunizationRecordService.getPatient();
@@ -10,8 +10,8 @@ function authOtherPatientController (ImmunizationRecordService, Multitenancy) {
 
     /** Validation for next Prev buttons */
     this.validateForm = (form) => {
-      if (!form.$valid && form.$error.required) {
-        form.$error.required.forEach((field) => { field.$setTouched(); });
+      if (!form.$valid) {
+        Utility.focusFirstInvalidField(form)
       } else {
         ImmunizationRecordService.setPatient(this.localPatient);
 
@@ -20,25 +20,26 @@ function authOtherPatientController (ImmunizationRecordService, Multitenancy) {
       }
       return form.$valid;
     }
-  };
-
-
+  }
 }
 
-module.exports = {
-  bindings: { data: '<' },
-  controller: authOtherPatientController,
-  template: `
-    <h1>{{$ctrl.patientName}}'s Info</h1>
-    <form class="form form-container" name="authOtherPatientForm" novalidate autocomplete="off">
-      <auth-other-patient-container
-        form="authOtherPatientForm"
-        local-patient="$ctrl.localPatient">
-      </auth-other-patient-container>
+export default {
+  name: 'authOtherPatient',
+  view: {
+    bindings: { data: '<' },
+    controller: authOtherPatient$ctrl,
+    template: `
+      <h1>{{$ctrl.patientName}}'s Info</h1>
+      <form class="form form-container" name="authOtherPatientForm" novalidate autocomplete="off">
+        <auth-other-patient-container
+          form="authOtherPatientForm"
+          local-patient="$ctrl.localPatient">
+        </auth-other-patient-container>
 
-      <next-prev-buttons
-        on-next="$ctrl.validateForm(authOtherPatientForm)">
-      </next-prev-buttons>
-    </form>
-  `
-};
+        <next-prev-buttons
+          on-next="$ctrl.validateForm(authOtherPatientForm)">
+        </next-prev-buttons>
+      </form>
+    `
+  }
+}

@@ -1,13 +1,12 @@
 /* @ngInject */
 function emailCaptureController (ICON_RGX) {
-
   /** on component initializiation */
   this.$onInit = () => {
     /** Regex Librariess */
-    this.rgx = ICON_RGX.rgx;
+    this.rgx = ICON_RGX.rgx
 
-    this.showConfirm = (this.emailConfirm === undefined) ? false : true
-  };
+    this.showConfirm = this.emailConfirm !== undefined
+  }
 }
 
 export default {
@@ -18,7 +17,7 @@ export default {
       email: '=',
       emailConfirm: '=?',
       form: '=',
-      isOptional: '<',
+      isOptional: '<'
     },
     transclude: {
       'label': '?label',

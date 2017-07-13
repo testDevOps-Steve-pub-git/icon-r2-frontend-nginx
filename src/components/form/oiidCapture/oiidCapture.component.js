@@ -5,7 +5,7 @@ function oiidCapture$ctrl (
   ICON_RGX
 ) {
   this.$onInit = () => {
-    this.rgx = ICON_RGX.rgx;
+    this.rgx = ICON_RGX.rgx
     this.oiidOptions = {
       maskDefinitions: {
         'A': /[2-9b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ]/
@@ -24,13 +24,13 @@ export default {
       oiid: '=',
       form: '=',
       onOiidChange: '&?',
-      isOptional: '<',
+      isOptional: '<'
     },
     templateUrl: './components/form/oiidCapture/oiidCapture.template.html',
     controller: oiidCapture$ctrl,
     transclude: {
       'label': '?label',
       'errors': '?errors'
-    },
+    }
   }
 }

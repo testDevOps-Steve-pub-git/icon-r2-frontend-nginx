@@ -6,6 +6,7 @@ function resetPin$ctrl (
   Endpoint,
   ImmunizationRecordService,
   Notify,
+  Utility,
   ICON_NOTIFICATION,
   DHIR
 ) {
@@ -40,17 +41,16 @@ function resetPin$ctrl (
     this.validateForm = validateForm
   }
 
-  function resetPin() {
+  function resetPin () {
     Endpoint.ResetPIN(this.token, this.patientInfo.oiid, this.submitterInfo.relationshipToPatient, this.pin)
       .then(() => {
         ImmunizationRecordService.setPatient(this.patientInfo)
         ImmunizationRecordService.setSubmitter(this.submitterInfo)
+        Notify.publish(ICON_NOTIFICATION.INFO_PIN_SET_SUCCESS)
         $state.go('welcome')
       })
-      .then(() => Notify.publish(ICON_NOTIFICATION.INFO_PIN_SET_SUCCESS))
-      .catch( (errorId)=> {
-        switch(errorId) {
-
+      .catch((errorId) => {
+        switch (errorId) {
           case DHIR.error.ResetAccess.LOCKED_OUT :
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_SECURITY_LOCK_OUT)
             break
@@ -61,10 +61,12 @@ function resetPin$ctrl (
 
           /* Currently no different error messages on mockups for these */
           case DHIR.error.ResetAccess.OIID_AND_TOKEN_DONT_MATCH:
-          case DHIR.error.ResetAccess.TOKEN_INVALID_FOR_PIN:
-          case DHIR.error.ResetAccess.TOKEN_EXPIRED_FOR_PIN:
           case DHIR.error.ResetAccess.INVALID_RESOURCE:
+            Notify.publish(ICON_NOTIFICATION.WARN_GENERAL_SERVER_ERROR)
+            break
 
+          case DHIR.error.ResetAccess.TOKEN_EXPIRED_FOR_PIN:
+          case DHIR.error.ResetAccess.TOKEN_INVALID_FOR_PIN:
           case DHIR.error.ResetAccess.RESOURCE_NOT_FOUND :
           case DHIR.error.ResetAccess.MALFORMED_REQUEST :
           case DHIR.error.ResetAccess.SERVER_INTERNAL_ERROR :
@@ -78,16 +80,9 @@ function resetPin$ctrl (
   }
 
 
-  function validateForm(form) {
-    if(form.$valid) {
-      this.resetPin();
-    }
-    else {
-      form.OIID.$setTouched()
-      form.role.$setTouched()
-      form.retrieverPin.$setTouched()
-      form.pinConfirm.$setTouched()
-    }
+  function validateForm (form) {
+    if (form.$valid) this.resetPin()
+    else Utility.focusFirstInvalidField(form)
   }
 }
 
@@ -102,14 +97,13 @@ export default {
             <h1 translate="pinReset.TITLE"></h1>
           </div>
 
-          <form class="form form-container" name="resetPinForm" id="resetPinForm">
+          <form class="col-xs-12 form form-container" name="resetPinForm" id="resetPinForm" novalidate>
 
             <oiid-capture
               oiid="$ctrl.patientInfo.oiid"
               form="resetPinForm"
               is-optional="false">
             </oiid-capture>
-            <br />
 
             <role-capture
               role="$ctrl.submitterInfo.relationshipToPatient"
@@ -138,32 +132,6 @@ export default {
       <div class="alert alert-danger" ng-if="!$ctrl.isTokenValid">
         Token not valid
       </div>
-
-      <!-- TODO: remove testing values after QA -->
-      <br />
-    <button class="btn btn-xs btn-info" ng-click="$ctrl.showQaValues = !$ctrl.showQaValues">QA Values</button>
-    <pre ng-if="$ctrl.showQaValues">
-OIID Responses:
-GM29BJXKBV - Successful request
-GQNHDGMVBJ - Invalid resource
-2RD35C2G24 - Token is invalid
-J2GKTFSSX2 - Token has expired
-N4J323QRN2 - Resource is not associated to token
-TG6LLNCDBG - Authorization is required for the interaction that was attempted
-CRTX6N3BMS - Too many requests
-X4T2W97MMM - Internal error
-Missing   - omit required fields
-Invalid   - submitting a value that does not match the format
-Not found - submit a valid OIID not listed above
-
-TOKENS:
-kSHZ1mMSvEJfiO7AltmlD9BXyRk20OjL5drouDCD9gwN - Successful request
-DdWPl9F4Vuoq6y3Udc3zHvcOnKbKIXkhG5QSNbKH0Hw7 - Token has expired
-NwDapOKwNU1hNRnSmVMoq3ZlNRZeNsb4dstSNsanZtgZ - Authorization is required for the interaction that was attempted
-lhalN9HrT8eTwYc53ZKnhld9KYOPof6yIFFUsZ6pxmhP - Too many requests
-gb7G3XvyTTo087ldACGkkjOpL9yMuhwXPAX3btTbv3ut - Internal error
-    </pre>
-<!-- End TODO -->
   </div>
 </div>
     `

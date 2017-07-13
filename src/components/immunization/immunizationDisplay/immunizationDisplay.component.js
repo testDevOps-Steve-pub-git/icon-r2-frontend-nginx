@@ -1,15 +1,13 @@
-(function () {
-'use strict';
+/* @ngInject */
+function immunizationDisplay$ctrl () {
+  this.$onInit = () => {}
+}
 
-  module.exports = {
+export default {
+  name: 'immunizationDisplay',
+  component: {
     bindings: { immunization: '=' },
-    controller: immunizationDisplayController,
+    controller: immunizationDisplay$ctrl,
     templateUrl: './components/immunization/immunizationDisplay/immunizationDisplay.template.html'
-  };
-
-  immunizationDisplayController.$inject = [];
-  function immunizationDisplayController () {
-    this.$onInit = () => {}
   }
-
-}());
+}

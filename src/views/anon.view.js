@@ -1,8 +1,5 @@
-anonController.$inject = [
-  '$window', '$translate',
-  'SessionHandler', 'TokenHandler'
-];
-function anonController (
+/* @ngInject */
+function anon$ctrl (
   $window, $translate,
   SessionHandler, TokenHandler
 ) {
@@ -18,13 +15,16 @@ function anonController (
   };
 }
 
-module.exports = {
-  controller: anonController,
-  template: `
-    <main>
-      <ui-view>
-        <welcome-aup route="anon"></welcome-aup>
-      </ui-view>
-    </main>
-  `
-};
+export default {
+  name: "anon",
+  view : {
+    controller: anon$ctrl,
+    template: `
+      <main>
+        <ui-view>
+          <welcome-aup route="anon"></welcome-aup>
+        </ui-view>
+      </main>
+    `
+  }
+}

@@ -54,9 +54,9 @@ function Patient (
 
 /* NOTE: These values match FHIR spec for submssions to DHIR. */
 Patient.genders = {
-  MALE:   'male',
+  MALE: 'male',
   FEMALE: 'female',
-  OTHER:  'other',
+  OTHER: 'other'
 }
 
 export default {

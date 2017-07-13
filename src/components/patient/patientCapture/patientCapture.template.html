@@ -103,6 +103,7 @@
       <div class="col-xs-12 col-md-6">
         <div id="patient-gender-options" class="btn-group col-xs-12 icon-remove-padding">
           <button class="btn btn-info col-xs-4" tabindex="0"
+            type="button"
             ng-model="$ctrl.localPatient.gender"
             name="gender"
             uib-btn-radio= '$ctrl.genders.MALE'
@@ -113,6 +114,7 @@
           </button>
 
           <button class="btn btn-info col-xs-4" tabindex="0"
+            type="button"
             ng-model="$ctrl.localPatient.gender"
             name="gender"
             uib-btn-radio= '$ctrl.genders.FEMALE'
@@ -123,6 +125,7 @@
           </button>
 
           <button class="btn btn-info col-xs-4" tabindex="0"
+            type="button"
             ng-model="$ctrl.localPatient.gender"
             name="gender"
             uib-btn-radio='$ctrl.genders.OTHER'
@@ -147,11 +150,13 @@
 
     <!--Submitter phone number info if submitter is self -->
 
-    <div ng-if="$ctrl.localSubmitterInfo != null">
-      <submitter-phone
-        form="$ctrl.form"
-        local-submitter-info="$ctrl.localSubmitterInfo">
-      </submitter-phone>
+    <div ng-if="$ctrl.localSubmitterInfo != null"  class="row">
+      <div class="col-xs-12 col-md-6">
+        <submitter-phone
+          form="$ctrl.form"
+          local-submitter-info="$ctrl.localSubmitterInfo">
+        </submitter-phone>
+      </div>
     </div>
 
     <!-- End submitter phone number info -->

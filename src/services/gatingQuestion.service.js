@@ -15,56 +15,53 @@
  *
  * Questions 1-3 are yes/no/unsure, question 4 is for the displayMode (date, or agent)
  */
-(function () {
-  'use strict';
-  module.exports = GatingQuestionService;
+/* @ngInject */
+function GatingQuestionService () {
+  let gatingQuestion = 1
 
-  function GatingQuestionService () {
+  let gatingChoices = {
+    question1Choice: '',
+    question2Choice: '',
+    question3Choice: '',
+    question4Choice: ''
+  }
 
-    let gatingQuestion = 1;
-
-    let gatingChoices = {
+  function reset () {
+    gatingQuestion = 1
+    gatingChoices = {
       question1Choice: '',
       question2Choice: '',
       question3Choice: '',
       question4Choice: ''
-    };
-
-
-    function reset() {
-      gatingQuestion = 1;
-      gatingChoices = {
-        question1Choice: '',
-        question2Choice: '',
-        question3Choice: '',
-        question4Choice: ''
-      };
     }
-
-
-    function getGatingQuestion () {
-      return gatingQuestion;
-    }
-
-    function setGatingQuestion (value) {
-      gatingQuestion = value;
-    }
-
-    function setGatingChoices(value) {
-      gatingChoices = value;
-    }
-
-    function getGatingChoices() {
-      return gatingChoices;
-    }
-
-    return {
-      reset: reset,
-      getGatingQuestion: getGatingQuestion,
-      setGatingQuestion: setGatingQuestion,
-      getGatingChoices: getGatingChoices,
-      setGatingChoices: setGatingChoices
-    };
   }
 
-}());
+  function getGatingQuestion () {
+    return gatingQuestion
+  }
+
+  function setGatingQuestion (value) {
+    gatingQuestion = value
+  }
+
+  function setGatingChoices (value) {
+    gatingChoices = value
+  }
+
+  function getGatingChoices () {
+    return gatingChoices
+  }
+
+  return {
+    reset: reset,
+    getGatingQuestion: getGatingQuestion,
+    setGatingQuestion: setGatingQuestion,
+    getGatingChoices: getGatingChoices,
+    setGatingChoices: setGatingChoices
+  }
+}
+
+export default {
+  name: 'GatingQuestionService',
+  service: GatingQuestionService
+}

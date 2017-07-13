@@ -2,49 +2,47 @@
  * Created on 2017-01-23.
  * Component that is displayed when user is using an unsupported browser
  */
-(function(){
-'use strict';
+/* @ngInject */
+function browserSupport$ctrl ($translate, BrowserChecker, Multitenancy) {
+  this.$onInit = () => {
+    this.currentBrowser = BrowserChecker.browser
+    this.supportedBrowsers = BrowserChecker.getSupportedBrowsers()
 
-  module.exports = {
-    bindings: {},
-    controller: browserSupportController,
-    templateUrl: './components/index/browserSupport/browserSupport.template.html'
-  };
+    /** Multitenancy Init */
+    Multitenancy
+      .getPhuKeys()
+      .then((phuAssets) => { this.multitenancy = phuAssets })
 
-  browserSupportController.$inject = ['$translate', 'BrowserChecker', 'Multitenancy'];
-  function browserSupportController ($translate, BrowserChecker, Multitenancy) {
+    let browserImages = {
+      'Chrome': 'chrome',
+      'Firefox': 'firefox',
+      'Explorer': 'internet-explorer',
+      'Opera': 'opera',
+      'Safari': 'safari',
+      'Edge': 'edge',
+      'Facebook Messanger': 'facebook-official',
+      'Unknown': 'question-circle'
+    }
 
-    this.$onInit = ()=> {
-      this.currentBrowser =  BrowserChecker.browser;
-      this.supportedBrowsers = BrowserChecker.getSupportedBrowsers();
+    let browserLinks = {}
+    Object.keys(this.supportedBrowsers)
+          .map((a) => { browserLinks[this.supportedBrowsers[a]] = 'browserSupport.LINKS.' + this.supportedBrowsers[a].toUpperCase() })
 
-      /** Multitenancy Init */
-      Multitenancy
-        .getPhuKeys()
-        .then((phuAssets) => { this.multitenancy = phuAssets; });
+    this.getBrowserImage = (browserName) => {
+      return browserImages[browserName]
+    }
 
-      let browserImages = {
-        'Chrome': 'chrome',
-        'Firefox': 'firefox',
-        'Explorer': 'internet-explorer',
-        'Opera': 'opera',
-        'Safari': 'safari',
-        'Edge': 'edge',
-        'Facebook Messanger': 'facebook-official',
-        'Unknown': 'question-circle',
-      };
-
-      let browserLinks = {};
-      Object.keys(this.supportedBrowsers)
-            .map((a) => browserLinks[this.supportedBrowsers[a]] = 'browserSupport.LINKS.' + this.supportedBrowsers[a].toUpperCase());
-
-      this.getBrowserImage = (browserName) => {
-        return browserImages[browserName];
-      };
-
-      this.getUpdateBrowserLink = (browserName) => {
-        return browserLinks[browserName];
-      };
-    };
+    this.getUpdateBrowserLink = (browserName) => {
+      return browserLinks[browserName]
+    }
   }
-})();
+}
+
+export default {
+  name: 'browserSupport',
+  component: {
+    bindings: {},
+    controller: browserSupport$ctrl,
+    templateUrl: './components/index/browserSupport/browserSupport.template.html'
+  }
+}

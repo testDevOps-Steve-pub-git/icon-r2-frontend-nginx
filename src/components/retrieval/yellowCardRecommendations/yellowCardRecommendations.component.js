@@ -1,10 +1,17 @@
-(function () {
-'use strict';
+/* @ngInject */
+function yellowCardRecommendations$ctrl (ImmunizationRecordService, PdfMaker) {
+  this.$onInit = () => {
+    this.recommendations = ImmunizationRecordService.getRecommendations()
+    this.openYellowCardPdf = PdfMaker.openYellowCardPdf
+  }
+}
 
-  module.exports = {
-    controller: yellowCardRecommendationsController,
+export default {
+  name: 'yellowCardRecommendations',
+  component: {
+    controller: yellowCardRecommendations$ctrl,
     template: `
-      <div class="row col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <div><h5 /> </div>
         <p>{{ 'yellowCardRecommendations.YC_CAVEAT' | translate }}</p>
         <hr />
@@ -24,18 +31,9 @@
         <p translate="yellowCardRecommendations.FOR_MORE_INFO" translate-compile></p>
       </div>
 
-      <div class="row col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <button ng-click="$ctrl.openYellowCardPdf()" class="btn btn-primary">{{ 'yellowCardRecommendations.PRINT_BUTTON' | translate }}</button>
       </div>
-    `,
-  };
-
-  yellowCardRecommendationsController.$inject = ['ImmunizationRecordService', 'PdfMaker'];
-  function yellowCardRecommendationsController (ImmunizationRecordService, PdfMaker) {
-    this.$onInit = () => {
-      this.recommendations = ImmunizationRecordService.getRecommendations();
-      this.openYellowCardPdf = PdfMaker.openYellowCardPdf;
-    };
+    `
   }
-
-}());
+}

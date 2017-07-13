@@ -1,6 +1,5 @@
 /* @ngInject */
-function oiidDisplayController ()
-{
+function oiidDisplayController () {
   this.$onInit = () => {
     this.oiidOptions = {
       maskDefinitions: {
@@ -15,9 +14,9 @@ export default {
   name: 'oiidDisplay',
   component: {
     bindings: {
-      oiid: '<',
+      oiid: '<'
     },
     templateUrl: './components/form/oiidDisplay/oiidDisplay.template.html',
-    controller: oiidDisplayController,
+    controller: oiidDisplayController
   }
-};
+}

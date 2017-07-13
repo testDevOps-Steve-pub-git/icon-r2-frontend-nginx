@@ -1,16 +1,19 @@
-documentsController.$inject = [];
-function documentsController () {}
+/* @ngInject */
+function documents$ctrl () {}
 
-module.exports = {
-  bindings: { data: '<' },
-  controller: documentsController,
-    template: `
-      <form class="form form-container icon-bg-white" name="documentForm" novalidate autocomplete="off">
-        <document-upload-capture></document-upload-capture>
-      </form>
+export default {
+  name: 'documents',
+  view: {
+    bindings: { data: '<' },
+    controller: documents$ctrl,
+      template: `
+        <form class="form form-container icon-bg-white" name="documentForm" novalidate autocomplete="off">
+          <document-upload-capture></document-upload-capture>
+        </form>
 
-      <hr />
+        <hr />
 
-      <next-prev-buttons></next-prev-buttons>
-  `
-};
+        <next-prev-buttons></next-prev-buttons>
+    `
+  }
+}

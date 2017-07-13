@@ -1,22 +1,19 @@
 /* @ngInject */
 function hcnCaptureController (
   ICON_RGX
-)
-{
-
-  this.$onInit = ()=> {
-
+) {
+  this.$onInit = () => {
     /** Regex Librariess */
-    this.rgx = ICON_RGX.rgx;
+    this.rgx = ICON_RGX.rgx
 
     /** Angular mask options hcn */
     this.hcnOptions = {
       maskDefinitions: {
         'A': /[0-9]/
       },
-      addDefaultPlaceholder:false
-    };
-  };
+      addDefaultPlaceholder: false
+    }
+  }
 }
 
 export default {
@@ -26,13 +23,13 @@ export default {
       healthCardNumber: '=',
       form: '=',
       displayImage: '<',
-      isOptional: '<',
+      isOptional: '<'
     },
     transclude: {
       'label': '?label',
       'hint': '?hint'
     },
     templateUrl: './components/form/hcnCapture/hcnCapture.template.html',
-    controller: hcnCaptureController,
+    controller: hcnCaptureController
   }
 }

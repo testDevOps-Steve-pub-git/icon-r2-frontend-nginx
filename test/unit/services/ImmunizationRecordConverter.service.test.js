@@ -1,14 +1,12 @@
-(function () {
-'use strict';
+  import {expect}   from 'chai'
+  import ImmunizationRecordConverter from '../../../src/services/ImmunizationRecordConverter.service.js'
+  import dummyData from '../../fixtures/MultitenancyService.SamSmith.data.json'
 
-  var expect = require('chai').expect;
-
-  var ImmunizationRecordConverter = require('../../../src/services/ImmunizationRecordConverter.service.js');
-  var Mock_MultitenancyService = { getPhuKeys: url => { return require('../../fixtures/MultitenancyService.SamSmith.data.json') } };
+  let Mock_MultitenancyService = { getPhuKeys: url => { return  dummyData} }
 
   // describe('ImmunizationRecordConverter', () => {
   //
-  //   var submission = require('../../fixtures/ImmunizationRecordService.SamSmith.data.js');
+  //   import submission from '../../fixtures/ImmunizationRecordService.SamSmith.data.js'
   //
   //   describe('.convertToFhir(...)', () => {
   //     var converter = null;
@@ -59,5 +57,3 @@
   //
   //   });
   // });
-
-}());

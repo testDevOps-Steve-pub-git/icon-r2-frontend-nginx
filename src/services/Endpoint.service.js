@@ -1,4 +1,4 @@
-const Crypto = require('crypto-js');
+import Crypto from 'crypto-js'
 
 /* @ngInject */
 function Endpoint (
@@ -21,21 +21,25 @@ function Endpoint (
   const xhr = (method) => (getHeaders) => (getData) => (getUrl) => (query) => {
     let request = {
       method: method,
-      url:    getUrl(query),
-    };
+      url: getUrl(query)
+    }
 
     // If there is a getData, then append output to the request.
-    if (getData) request.data = getData();
+    if (getData) request.data = getData()
 
     // If there is a getHeaders, then append output to the request before returning.
-    if (getHeaders) return getHeaders()
+    if (getHeaders) {
+      return getHeaders()
                           //  .then(SessionHandler.extendTransactionTime)
                            .then(headers => request.headers = headers)
                            .then(() => $http(request))
-                           .then(response => response.data);
+                           .then(response => response.data)
+    }
     // Otherwise return without headers (example: PostgREST lookups).
-    else return $http(request)
-                .then(response => response.data);
+    else {
+      return $http(request)
+                .then(response => response.data)
+    }
   }
 
   /**
@@ -43,13 +47,13 @@ function Endpoint (
    * @returns {Promise} - resolves to the assembled header object
    */
   const headersWithSession = () => {
-    let headers = {};
+    let headers = {}
 
     return TokenHandler
            .refreshSessionToken()
            .then((token) => { headers['session-token'] = token.encoded })
            .then(SessionHandler.extendTransactionTime)
-           .then(() => { return headers });
+           .then(() => { return headers })
   }
 
   /**
@@ -57,7 +61,7 @@ function Endpoint (
    * @returns {Promise} - resolves to the assembled header object
    */
   const headersWithSessionTransactionJson = () => {
-    let headers = { 'Content-Type': 'application/json' };
+    let headers = { 'Content-Type': 'application/json' }
 
     return TokenHandler
            .refreshSessionToken()
@@ -65,42 +69,39 @@ function Endpoint (
            .then(TokenHandler.refreshTransactionToken)
            .then((token) => { headers['submission-token'] = token.encoded })
            .then(SessionHandler.extendTransactionTime)
-           .then(() => { return headers });
+           .then(() => { return headers })
   }
 
   const getWithHeaders = xhr('GET')
                             (headersWithSessionTransactionJson)
-                            (/* Omit data */);
+                            (/* Omit data */)
 
 /* Public *********************************************************************/
 
   const batchLookupDiseases = (snomeds) => {
     return getWithHeaders(() => `${ICON_API.LOOKUP_DISEASES}?filter[snomed]=${snomeds || ``}`)()
            .then((diseases) => {
-             let lang = $translate.use();
+             let lang = $translate.use()
              return diseases
-                    .map(d => { return new Disease(d.longName[lang], `${d.snomed}` ) });
-           });
-  };
+                    .map(d => { return new Disease(d.longName[lang], `${d.snomed}`) })
+           })
+  }
 
   const batchLookupAgentTrade = (snomeds) => {
     return getWithHeaders(() => `${ICON_API.LOOKUP_AGENT_TRADE}?filter[snomed]=${snomeds || ``}`)()
-           .then(imms => imms.map(immunizationFromJson));
-  };
+           .then(imms => imms.map(immunizationFromJson))
+  }
 
   const lookupLots = (snomed) => {
     return getWithHeaders(lotSnomed => `${ICON_API.LOOKUP_LOTS}?filter[snomed]=${lotSnomed || ``}`)(snomed)
           .then(lots => {
-            if(!!lots[0].lots && lots.length == 1)
-              return lots[0].lots.map(lot => new Lot(lot.lotNumber, lot.expiry))
-            else
-                return [];
+            if (!!lots[0].lots && lots.length == 1) { return lots[0].lots.map(lot => new Lot(lot.lotNumber, lot.expiry)) } else { return [] }
           })
-          .catch((error)=>{console.warn(error)})
-  };
+          .catch((error) => { console.warn(error) })
+  }
 
   const immunizationFromJson = (json) => {
-    let lang = $translate.use();
+    let lang = $translate.use()
     let newAgent = new Agent(
                           `${json.agent.snomed}`,
                           json.agent.longName[lang],
@@ -112,7 +113,7 @@ function Endpoint (
                           '',
                           json.agent.prevalenceIndex,
                           json.agent.orderedDiseases[lang]
-                        );
+                        )
     let newTrade = (json.trade)
                       ? new Trade(
                               `${json.trade.snomed}`, // snomed,
@@ -121,7 +122,7 @@ function Endpoint (
                               '', // shortName,
                               json.trade.prevalenceIndex // prevalenceIndex
                             )
-                      : new Trade();
+                      : new Trade()
 
     return new Immunization(
                   '',
@@ -130,30 +131,30 @@ function Endpoint (
                   newTrade,
                   '',
                   ''
-                );
+                )
   }
 
   const lookupImmunizations = (imm) => {
     return getWithHeaders((immQuery) => {
-             let lang = $translate.use().toLowerCase();
-             return `${ICON_API.LOOKUP_IMMUNIZATIONS}?filter[immun]=${immQuery || ''}&filter[lang]=${lang}`;
-           })(imm)
-           .then(imms => imms.map(immunizationFromJson));
-  };
+      let lang = $translate.use().toLowerCase()
+      return `${ICON_API.LOOKUP_IMMUNIZATIONS}?filter[immun]=${immQuery || ''}&filter[lang]=${lang}`
+    })(imm)
+           .then(imms => imms.map(immunizationFromJson))
+  }
 
   const getAddress = getWithHeaders((postalQuery) => {
-    return `${ICON_API.ADDRESS}?filter[postalCode]=${postalQuery || ''}`;
+    return `${ICON_API.ADDRESS}?filter[postalCode]=${postalQuery || ''}`
   })
 
   const getCity = getWithHeaders((cityQuery) => {
-    return `${ICON_API.CITY}?filter[city]=${cityQuery || '*'}`;
-  });
+    return `${ICON_API.CITY}?filter[city]=${cityQuery || '*'}`
+  })
 
   const getDisease = getWithHeaders((diseaseQuery) => {
-    return `${ICON_API.DISEASE}?filter[iconDisplay]=${diseaseQuery || ''}`;
-  });
+    return `${ICON_API.DISEASE}?filter[iconDisplay]=${diseaseQuery || ''}`
+  })
 
-  const getSchoolOrDaycare = (schools)=> {
+  const getSchoolOrDaycare = (schools) => {
     return getWithHeaders((schoolQuery) => {
       return `${ICON_API.SCHOOL}?filter[name]=${encodeURIComponent(schoolQuery) || '*'}`
     })(schools)
@@ -164,55 +165,49 @@ function Endpoint (
             name: school.name,
             city: school.city,
             address: school.address
-          };
-          schoolDisplay.queryString = `${!!school.name ? school.name + ', ' : ''} ${!!school.address ? school.address + ', ' : ''} ${!!school.city ? school.city : ''}`;
-          return schoolDisplay;
-        });
-    });
-  };
+          }
+          schoolDisplay.queryString = `${school.name ? school.name + ', ' : ''} ${school.address ? school.address + ', ' : ''} ${school.city ? school.city : ''}`
+          return schoolDisplay
+        })
+      })
+  }
 
   const getVaccine = getWithHeaders((vaccineQuery) => {
-    return `${ICON_API.VACCINE}?filter[iconDisplay]=${vaccineQuery || ''}`;
-  });
+    return `${ICON_API.VACCINE}?filter[iconDisplay]=${vaccineQuery || ''}`
+  })
 
   const submitImmunizationRecord = (fhirRecordData) => {
     return xhr('POST')
               (headersWithSessionTransactionJson)
               (() => fhirRecordData)
               (() => ICON_API.SUBMIT_IMMUNIZATIONS)
-              (/* Omit query */);
+              (/* Omit query */)
   }
 
   const headersWithSessionOiidPin = (oiid, pin) => {
     return headersWithSession()
            .then((headers) => {
-             const sha256 = text => Crypto.SHA256(text).toString();
+             const sha256 = text => Crypto.SHA256(text).toString()
              const base64 = text => Crypto
                                     .enc.Utf8.parse(text)
-                                    .toString(Crypto.enc.Base64);
+                                    .toString(Crypto.enc.Base64)
 
-             let obfuscatedPin = base64(JSON.stringify({ pin: sha256(pin) }));
+             let obfuscatedPin = base64(JSON.stringify({ pin: sha256(pin) }))
 
-             headers['OIID'] = oiid;
-             headers['immunizations-context'] = obfuscatedPin;
-             headers['lang'] = $translate.use().toLowerCase();
-             return headers;
-           });
+             headers['OIID'] = oiid
+             headers['immunizations-context'] = obfuscatedPin
+             headers['lang'] = $translate.use().toLowerCase()
+             return headers
+           })
   }
 
   const retrieveImmunizationRecord = (oiid, pin) => {
-    const relationshipCodeDictionary = {
-      'ONESELF':  'Self',
-      'GUARD':    'Parent\/Guardian',
-    };
-    let relationshipCode = ImmunizationRecordService.getSubmitter().relationshipToPatient;
-    let relationshipToPatient = relationshipCodeDictionary[relationshipCode];
-    let formattedOiid = oiid.toUpperCase();
+    let formattedOiid = oiid.toUpperCase()
 
     return xhr('GET')
               (() => headersWithSessionOiidPin(formattedOiid, pin))
               (/* Omit data */)
-              (() => `${ICON_API.RETRIEVE_IMMUNIZATION_RECORD}?relationshipToClient=${relationshipToPatient}`)
+              (() => `${ICON_API.RETRIEVE_IMMUNIZATION_RECORD}`)
               (/* Omit query */)
   }
 
@@ -221,31 +216,30 @@ function Endpoint (
               (headersWithSessionTransactionJson)
               (() => analyticsData)
               (() => ICON_API.TRACKING)
-              (/* Omit query */);
-  };
+              (/* Omit query */)
+  }
 
   const generatePdf = (pdfData) => {
     let request = {
-      method:       'POST',
-      url:          ICON_API.GENERATE_PDF,
+      method: 'POST',
+      url: ICON_API.GENERATE_PDF,
       responseType: 'arraybuffer',
-      data:         JSON.stringify(pdfData),
-    };
+      data: JSON.stringify(pdfData)
+    }
 
     return headersWithSessionTransactionJson()
            .then(headers => request.headers = headers)
            .then(SessionHandler.extendTransactionTime)
            .then(() => $http(request))
            .then(response => response.data)
-  };
-
+  }
 
 /* DHIR PIN Administration APIs ***********************************************/
 
   const getHeadersWithOiid = (oiid) => {
     return headersWithSession()
       .then((headers) => {
-        headers['oiid'] = oiid;
+        headers['oiid'] = oiid
         return headers
       })
   }
@@ -258,10 +252,10 @@ function Endpoint (
     const sha256 = pin => Crypto.SHA256(pin).toString()
     const base64 = pin => Crypto
           .enc.Utf8.parse(pin)
-          .toString(Crypto.enc.Base64);
+          .toString(Crypto.enc.Base64)
 
-    let obfuscatedPin = base64(JSON.stringify({ pin: sha256(pin) }));
-    return obfuscatedPin;
+    let obfuscatedPin = base64(JSON.stringify({ pin: sha256(pin) }))
+    return obfuscatedPin
   }
 
   /* First time PIN set */
@@ -278,21 +272,22 @@ function Endpoint (
   const ValidateHCN = (oiid, hcn) => {
     return xhr('POST')
               (headersWithSessionTransactionJson)
-              (() => {return {"oiid": oiid, "hcn": hcn}})
+              (() => { return {'oiid': oiid, 'hcn': hcn} })
               (() => `${ICON_API.PIN_URL}/validate-hcn`)
               ()
               .catch(response => $q.reject(DHIR.identifyValidateHCNError(response)))
   }
 
   /* Set PIN */
-  const SetPIN = (oiid, pin, email, hcn) => {
+  const SetPIN = (oiid, pin, email, hcn, role) => {
     let obFuscatedPin = obfuscatePin(pin)
 
     let setPinInfo = {
-      "oiid": oiid,
-      "immunizations-context": obFuscatedPin,
-      "email": email,
-      "hcn": hcn
+      'oiid': oiid,
+      'immunizations-context': obFuscatedPin,
+      'email': email,
+      'hcn': hcn,
+      'role': role
     }
 
     return xhr('POST')
@@ -306,11 +301,11 @@ function Endpoint (
   /* Reset Access */
   const ResetAccess = (oiid, email, phuId) => {
     let resetAccessObj = {
-      "oiid": oiid,
-      "email": email,
-      "phuId": phuId,
-      "lang": $translate.use().toLowerCase(),
-      "callbackUrl": `${ICON_API.BASE_URL}/reset?token=`
+      'oiid': oiid,
+      'email': email,
+      'phuId': phuId,
+      'lang': $translate.use().toLowerCase(),
+      'callbackUrl': `${ICON_API.BASE_URL}/reset?token=`
     }
 
     return xhr('POST')
@@ -321,7 +316,7 @@ function Endpoint (
               .catch(response => $q.reject(DHIR.identifyResetAccessError(response)))
   }
 
-  /* Validate token for email generation*/
+  /* Validate token for email generation */
   const ValidateToken = (token) => {
     return xhr('POST')
               (headersWithSessionTransactionJson)
@@ -333,14 +328,14 @@ function Endpoint (
 
   /* Reset PIN */
   const ResetPIN = (token, oiid, role, pin) => {
-    let obfuscatedPin = obfuscatePin(pin);
+    let obfuscatedPin = obfuscatePin(pin)
 
     let resetPinInfo = {
-      "oiid": oiid,
-      "token": token,
-      "immunizations-context": obfuscatedPin,
-      "role": role
-    };
+      'oiid': oiid,
+      'token': token,
+      'immunizations-context': obfuscatedPin,
+      'role': role
+    }
 
     return xhr('POST')
               (headersWithSessionTransactionJson)
@@ -354,35 +349,35 @@ function Endpoint (
 
   return {
     // Old PostgREST lookup APIs
-    getAddress:         getAddress,
-    getCity:            getCity,
-    getDisease:         getDisease,
+    getAddress: getAddress,
+    getCity: getCity,
+    getDisease: getDisease,
     getSchoolOrDaycare: getSchoolOrDaycare,
-    getVaccine:         getVaccine,
+    getVaccine: getVaccine,
 
     // New v2 PostgREST lookup APIs
-    batchLookupDiseases:      batchLookupDiseases,
-    batchLookupAgentTrade:    batchLookupAgentTrade,
-    lookupImmunizations:      lookupImmunizations,
-    lookupLots:               lookupLots,
+    batchLookupDiseases: batchLookupDiseases,
+    batchLookupAgentTrade: batchLookupAgentTrade,
+    lookupImmunizations: lookupImmunizations,
+    lookupLots: lookupLots,
 
-    generatePdf:  generatePdf,
+    generatePdf: generatePdf,
 
-    retrieveImmunizationRecord:  retrieveImmunizationRecord,
-    submitImmunizationRecord:    submitImmunizationRecord,
+    retrieveImmunizationRecord: retrieveImmunizationRecord,
+    submitImmunizationRecord: submitImmunizationRecord,
 
     postAnalyticsLog: postAnalyticsLog,
 
-    ClientStatus:   ClientStatus,
-    ValidateHCN:    ValidateHCN,
-    SetPIN:         SetPIN,
-    ResetAccess:    ResetAccess,
-    ValidateToken:  ValidateToken,
-    ResetPIN:       ResetPIN,
-  };
+    ClientStatus: ClientStatus,
+    ValidateHCN: ValidateHCN,
+    SetPIN: SetPIN,
+    ResetAccess: ResetAccess,
+    ValidateToken: ValidateToken,
+    ResetPIN: ResetPIN
+  }
 }
 
 export default {
-  name:   'Endpoint',
-  service: Endpoint,
+  name: 'Endpoint',
+  service: Endpoint
 }

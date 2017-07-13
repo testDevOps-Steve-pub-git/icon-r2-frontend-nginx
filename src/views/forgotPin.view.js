@@ -1,8 +1,9 @@
 /* @ngInject */
-function forgotPinController (
+function forgotPin$ctrl (
   ImmunizationRecordService,
   Multitenancy,
   Endpoint,
+  Utility,
   $state,
   Notify,
   ICON_NOTIFICATION,
@@ -63,44 +64,46 @@ function forgotPinController (
 
 
   function validateFormAndSubmit(form) {
-    if(form.$valid) {
-      this.forgotEmail();
-    }
-    else {
-      form.email.$setTouched();
-    }
+    if(form.$valid) this.forgotEmail()
+    else Utility.focusFirstInvalidField(form)
   }
 }
 
-module.exports = {
-  controller: forgotPinController,
-  template: `
-    <div>
-      <div class="row">
-        <div class="col-xs-12">
-          <h1 translate="pinForgot.TITLE"></h1>
-          <p translate="pinForgot.PARA_1"></p>
+export default {
+  name: 'forgotPin',
+  view: {
+    controller: forgotPin$ctrl,
+    template: `
+      <div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h1 translate="pinForgot.TITLE"></h1>
+            <p translate="pinForgot.PARA_1"></p>
+          </div>
         </div>
+
+        <form class="form form-container" name="forgotPinForm" id="forgotPinForm" autocomplete="off" novalidate>
+
+          <div class = "form-group">
+            <oiid-display
+              oiid="$ctrl.patientInfo.oiid">
+            </oiid-display>
+          </div>
+          <div class = "form-group">
+            <email-capture
+              email="$ctrl.submitterInfo.email"
+              form="forgotPinForm"
+              is-optional="false">
+            </email-capture>
+          </div>
+          <button class="btn btn-primary"
+            id="forgotPinButton"
+            type="submit"
+            translate="pinForgot.BUTTON"
+            ng-click="$ctrl.validateFormAndSubmit(forgotPinForm)">
+          </button>
+        </form>
       </div>
-
-      <form class="form form-container" name="forgotPinForm" id="forgotPinForm" autocomplete="off">
-        <oiid-display
-          oiid="$ctrl.patientInfo.oiid">
-        </oiid-display>
-
-        <email-capture
-          email="$ctrl.submitterInfo.email"
-          form="forgotPinForm"
-          is-optional="false">
-        </email-capture>
-        
-        <button class="btn btn-primary"
-          id="forgotPinButton"
-          type="button"
-          translate="pinForgot.BUTTON"
-          ng-click="$ctrl.validateFormAndSubmit(forgotPinForm)">
-        </button>
-      </form>
-    </div>
-  `
-};
+    `
+  }
+}

@@ -1,51 +1,48 @@
 /* @ngInject */
-function setPinController ($state,
-                           DhirErrorHandler,
-                           Endpoint,
-                           ImmunizationRecordService,
-                           FhirRecordConverter,
-                           Notify,
-                           ICON_NOTIFICATION,
-                           DHIR) {
+function setPinController (
+  $q,
+  $state,
+  DhirErrorHandler,
+  Endpoint,
+  ImmunizationRecordService,
+  FhirRecordConverter,
+  Notify,
+  Utility,
+  ICON_NOTIFICATION,
+  DHIR
+) {
   this.$onInit = () => {
-    this.pin="";
-    this.pinConfirm = "";
+    this.pin=""
+    this.pinConfirm = ""
 
-    this.patientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
+    this.patientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
 
-    this.submit = submit;
-    this.setTouched = setTouched;
-    this.retreiveRecord = retreiveRecord;
-    this.pinSetter = pinSetter;
-  };
+    this.submit = submit
+    this.setTouched = setTouched
+    this.retreiveRecord = retreiveRecord
+    this.setPin = setPin
+  }
 
   /*
     Set the pin for specific OIID and handle routing, errors after submit button is clicked
   */
-  function submit(form)
-  {
-      if(form.$valid)
-      {
-        this.pinSetter();
-      }
-      else
-      {
-        setTouched(form);
-      }
+  function submit(form) {
+      if (form.$valid) this.setPin()
+      else Utility.focusFirstInvalidField(form)
   }
   /*
     Setting the pin and calling retreive immunization
   */
-  function pinSetter()
-  {
-    Endpoint.SetPIN(this.patientInfo.oiid, this.pin, this.submitterInfo.email, this.patientInfo.healthCardNumber)
-      .then(()=> this.retreiveRecord())
-      .catch( (errorId)=>{
+  function setPin () {
+    Endpoint.SetPIN(this.patientInfo.oiid, this.pin, this.submitterInfo.email, this.patientInfo.healthCardNumber, this.submitterInfo.relationshipToPatient)
+      .then(() => this.retreiveRecord(this.patientInfo.oiid, this.pin))
+      .catch((errorId) => {
         switch(errorId) {
           case DHIR.error.SetPIN.LOCKED_OUT:
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_SECURITY_LOCK_OUT)
             break
+
           case DHIR.error.SetPIN.RATE_LIMIT:
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_TOO_MANY_FAILED_ATTEMPTS)
             break
@@ -68,43 +65,60 @@ function setPinController ($state,
       })
   }
 
-  /*
-    Retreive record based on OIID and PIN
-  */
-  function retreiveRecord()
-  {
-    Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS);
-    Endpoint.retrieveImmunizationRecord(this.patientInfo.oiid, this.pin)
+  /**
+   * Retreives a patient IHR based on OIID and PIN,
+   * NOTE: caller must catch errors.
+   * @param {string} oiid - patient OIID (Ontario Immunization ID)
+   * @param {string} pin - PIN for patient OIID
+   */
+  function retreiveRecord (oiid, pin) {
+    Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS)
+    Endpoint.retrieveImmunizationRecord(oiid.toUpperCase(), pin)
       .then(FhirRecordConverter.convert)
       .then(FhirRecordConverter.populateConvertedData)
       .then((retrievedRecord) => {
-          ImmunizationRecordService.setPatient(retrievedRecord.patient);
-          ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations);
-          ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations);
-
+          ImmunizationRecordService.setPatient(retrievedRecord.patient)
+          ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations)
+          ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations)
       })
-      .then(() => $state.go('verification.dispatch-after-verification', {relationship: this.submitterInfo.relationshipToPatient}))
-      .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
-      .then(() => Notify.publish(ICON_NOTIFICATION.INFO_PIN_SET_SUCCESS))
-      .catch(() => {
+      .then(() => {
         Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
-        DhirErrorHandler.notifyRetrievalError
-      });
+        Notify.publish(ICON_NOTIFICATION.INFO_PIN_SET_SUCCESS)
+        $state.go(
+          'verification.dispatch-after-verification',
+          { relationship: this.submitterInfo.relationshipToPatient }
+        )
+      })
+      .catch((fhirErrorResponse) => {
+        // TODO: Add retrieval DHIR response condition identifiers to DHIR service.
+        switch (DHIR.identifySetPINError(fhirErrorResponse)) {
+          case DHIR.error.SetPIN.CONSENT_BLOCK_INOFORMATIONAL:
+          case DHIR.error.SetPIN.CONSENT_BLOCK_INFORMATIONAL_IN_BUNDLE:
+          case DHIR.error.SetPIN.CONSENT_BLOCK_ERROR:
+          case DHIR.error.SetPIN.CONSENT_BLOCK_ERROR_IN_BUNDLE:
+            Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
+            Notify.publish(ICON_NOTIFICATION.WARN_RETRIEVAL_CONSENT_BLOCK)
+            break
+
+          default:
+            Notify.publish(ICON_NOTIFICATION.WARN_GENERAL_SERVER_ERROR)
+            break
+        }
+      })
   }
 
   /*
     Called if form is not valid.
   */
-  function setTouched(form)
-  {
-    form.pin.$setTouched();
-    form.email.$setTouched();
-    form.pinConfirm.$setTouched();
-    form.emailConfirm.$setTouched();
+  function setTouched (form) {
+    form.pin.$setTouched()
+    form.email.$setTouched()
+    form.pinConfirm.$setTouched()
+    form.emailConfirm.$setTouched()
   }
 }
 
-module.exports = {
+export default {
   name: "setPin",
   view: {
     controller: setPinController,
@@ -124,9 +138,16 @@ module.exports = {
                          form="setPinForm">
             <hint>{{ 'emailCapture.EMAIL_HINT' | translate }}</hint>
           </email-capture>
-          <button class="col-xs-4 btn btn-primary" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.submit(setPinForm)">{{ 'setPin.SET_PIN' | translate }}</button>
+          <button class="col-xs-4 btn btn-primary"
+                  ng-disabled="$ctrl.form.$invalid"
+                  ng-click="$ctrl.submit(setPinForm)"
+                  id="set-pin-button">
+
+            {{ 'setPin.SET_PIN' | translate }}
+
+          </button>
         </form>
       </div>
       `
   }
-};
+}

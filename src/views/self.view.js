@@ -1,10 +1,13 @@
-selfController.$inject = [];
-function selfController () {}
+/* @ngInject */
+function self$ctrl () {}
 
-module.exports = {
-  bindings: { data: '@' },
-  controller: selfController,
-  template: `
-    <main ui-view></main>
-  `
-};
+export default {
+  name: 'self',
+  view: {
+    bindings: { data: '@' },
+    controller: self$ctrl,
+    template: `
+      <main ui-view></main>
+    `
+  }
+}

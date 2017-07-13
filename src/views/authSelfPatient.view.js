@@ -1,5 +1,5 @@
-authSelfPatientController.$inject = ['ImmunizationRecordService', 'Multitenancy'];
-function authSelfPatientController (ImmunizationRecordService, Multitenancy) {
+/* @ngInject */
+function authSelfPatient$ctrl (ImmunizationRecordService, Multitenancy, $document, Utility) {
 
   this.$onInit = ()=> {
     this.localPatient = ImmunizationRecordService.getPatient();
@@ -8,8 +8,8 @@ function authSelfPatientController (ImmunizationRecordService, Multitenancy) {
 
     /** Validation for next Prev buttons */
     this.validateForm = (form) => {
-      if (!form.$valid && form.$error.required) {
-        form.$error.required.forEach((field) => { field.$setTouched(); });
+      if (!form.$valid) {
+        Utility.focusFirstInvalidField(form)
       } else {
         ImmunizationRecordService.setPatient(this.localPatient);
 
@@ -20,29 +20,30 @@ function authSelfPatientController (ImmunizationRecordService, Multitenancy) {
       }
       return form.$valid;
     }
-  };
-
-
+  }
 }
 
-module.exports = {
-  bindings: { data: '<' },
-  controller: authSelfPatientController,
-  template: `
-    <h1>{{ 'authSelfPatient.INFO_TITLE' | translate }}</h1>
-    <form class="form form-container" name="authSelfPatientForm" novalidate autocomplete="off">
+export default {
+  name: 'authSelfPatient',
+  view: {
+    bindings: { data: '<' },
+    controller: authSelfPatient$ctrl,
+    template: `
+      <h1>{{ 'authSelfPatient.INFO_TITLE' | translate }}</h1>
+      <form class="form form-container" name="authSelfPatientForm" novalidate autocomplete="off">
 
-      <auth-self-patient-container
-        form="authSelfPatientForm"
-        local-patient="$ctrl.localPatient"
-        local-submitter="$ctrl.localSubmitter">
-      </auth-self-patient-container>
+        <auth-self-patient-container
+          form="authSelfPatientForm"
+          local-patient="$ctrl.localPatient"
+          local-submitter="$ctrl.localSubmitter">
+        </auth-self-patient-container>
 
-      <hr />
+        <hr />
 
-      <next-prev-buttons
-        on-next="$ctrl.validateForm(authSelfPatientForm)">
-      </next-prev-buttons>
-    </form>
-  `
-};
+        <next-prev-buttons
+          on-next="$ctrl.validateForm(authSelfPatientForm)">
+        </next-prev-buttons>
+      </form>
+    `
+  }
+}

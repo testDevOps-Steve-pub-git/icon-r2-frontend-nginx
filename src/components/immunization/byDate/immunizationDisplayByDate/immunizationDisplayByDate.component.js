@@ -1,28 +1,27 @@
-(function () {
-'use strict';
+/* @ngInject */
+function immunizationDisplayByDateController (ImmunizationRecordService) {
+  this.$onInit = () => {
+    this.removeImmunization = () => {
+      this.onRemoveImmunization({ immunization: this.immunization })
+    }
+    this.patient = ImmunizationRecordService.getPatient()
 
-  module.exports = {
+    this.openEditImmunization = () => {
+      this.onOpenEditImmunization({ immunization: this.immunization })
+    }
+  }
+}
+
+export default {
+  name: 'immunizationDisplayByDate',
+  component: {
     bindings: {
-      immunization:  '<',
+      immunization: '<',
       onRemoveImmunization: '&',
-      onOpenEditImmunization: '&',
+      onOpenEditImmunization: '&'
     },
     controller: immunizationDisplayByDateController,
     templateUrl: './components/immunization/byDate/immunizationDisplayByDate/immunizationDisplayByDate.template.html',
-    transclude: true,
-  };
-
-  immunizationDisplayByDateController.$inject = ['ImmunizationRecordService', 'Immunization'];
-  function immunizationDisplayByDateController (ImmunizationRecordService, Immunization) {
-    this.$onInit = () => {
-      this.removeImmunization = () => {
-        this.onRemoveImmunization({ immunization: this.immunization });
-      }
-      this.patient = ImmunizationRecordService.getPatient();
-
-      this.openEditImmunization = () => {
-        this.onOpenEditImmunization({ immunization: this.immunization });
-      }
-    };
+    transclude: true
   }
-}());
+}

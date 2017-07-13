@@ -1,5 +1,5 @@
 /* @ngInject */
-function anonSelfSubmissionController ($state, TokenHandler, ImmunizationRecordService, Submitter) {
+function anonSelfSubmission$ctrl ($state, TokenHandler, ImmunizationRecordService, Submitter) {
   this.navStates = $state.$current.data.navStates;
   TokenHandler.getTransactionToken();
 
@@ -10,23 +10,26 @@ function anonSelfSubmissionController ($state, TokenHandler, ImmunizationRecordS
   }
 }
 
-module.exports = {
-  bindings: { data: '@' },
-  controller: anonSelfSubmissionController,
-  template: `
-    <main>
-      <progress-bar
-        base-state="anon.self.submission"
-        progress-states="$ctrl.navStates">
-      </progress-bar>
+export default {
+  name: 'anonSelfSubmission',
+  view : {
+    bindings: { data: '@' },
+    controller: anonSelfSubmission$ctrl,
+    template: `
+      <main>
+        <progress-bar
+          base-state="anon.self.submission"
+          progress-states="$ctrl.navStates">
+        </progress-bar>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-10 col-lg-8 col-sm-offset-1 col-lg-offset-2">
-            <ui-view></ui-view>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-lg-8 col-sm-offset-1 col-lg-offset-2">
+              <ui-view></ui-view>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-  `
-};
+      </main>
+    `
+  }
+}

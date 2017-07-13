@@ -277,7 +277,7 @@
   },
   "enterPin": {
     "TITLE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-    "FORGOT_PIN": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "FORGOT_PIN": "NIP oublié",
     "VERIFY_BUTTON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
     "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>BOUTON</button>__PLACEHOLDER__PLEASE__REPLACE__ME__"
   },
@@ -285,6 +285,7 @@
     "HEALTHCARD": "Carte Santé de l’Ontario",
     "HEALTH_CARD_NUMBER": "N<sup>o</sup> de carte Santé",
     "OPTIONAL": "(facultatif)",
+    "HINT": "Ne pas inscrire les deux lettres du code de la version.",
     "ERRORS": {
 	     "HCN_FORMAT_ERROR": "Vous avez inscrit un n<sup>o</sup> de carte Santé invalide.",
        "HCN_REQUIRED": "Needs translation",
@@ -406,7 +407,7 @@
     "PARA_1.1": "Si vous n'avez pas de numéro de carte santé, vous pouvez utiliser un NIP que vous pouvez obtenir en communiquant avec",
     "PARA_1.2": "en composant le",
     "PARA_2": "Une fois que vous avez  reçu le NIP, vous pouvez retourner à l'écran d'accueil et continuer le processus.",
-    "RETURN_HOME": "Needs translation",
+    "RETURN_HOME": "Retour à la page d'accueil",
     "CLOSE": "Fermer"
   },
   "notification": {
@@ -461,7 +462,7 @@
     },
     "$infoOiidResourceNotFound": {
       "TITLE": "Needs Translation",
-      "BODY": "<section><p>Needs Translation.</p></section>"
+      "BODY": "<section><p>Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué.</p></section>"
     },
     "$infoPatientDataCleared": {
       "TITLE": "Renseignements médicaux personnels",
@@ -494,11 +495,11 @@
     },
     "$warnHCNOIIDMismatch": {
       "TITLE": "Needs translation",
-      "BODY": "Needs translation"
+      "BODY": "Ce n<sup>o<sup> d’identification d’immunisation de l’Ontario est  temporairement bloqué. Veuillez réessayer plus tard. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
     },
     "$warnNoEmailOnFile": {
       "TITLE": "Needs translation",
-      "BODY": "Needs translation"
+      "BODY": "Ce n<sup>o<sup> d’identification d’immunisation de l’Ontario est  temporairement bloqué. Veuillez réessayer plus tard. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
     },
     "$warnRetrievalConsentBlock": {
       "TITLE": "Réponse 176 - Nous ne pouvons pas afficher le dossier d’immunisation.",
@@ -720,8 +721,8 @@
     }
   },
   "pinForgot": {
-    "TITLE": "Needs translation",
-    "PARA_1": "Needs translation",
+    "TITLE": "rétablir le NIP",
+    "PARA_1": "Entrez votre adresse de courriel ci-dessous, et nous vous enverrons des instructions pour rétablir le NIP.",
     "BUTTON": "Envoyez un courriel pour rétablissez le NIP.",
     "ERRORS": {
       "EMAIL_MISMATCH": "Needs translation"
@@ -784,7 +785,7 @@
     "EVERY_10_YEARS": "Chaque 10 Années",
     "PNEU-P-23_VALUE": "pneumocoque polysaccharidique 23 <br aria-hidden=\"true\"> <strong>(65 Ans +)</strong>",
     "SHINGLES_VALUE": "Zona <br aria-hidden=\"true\"> <strong>(65-70 ans)</strong>",
-    "IMMS_SCHEDULE_MESSAGE": "Pour fréquenter une école, les enfants doivent avoir été vaccinés contre les maladies indiquées en <i>italique</i>, comme l’exige la Loi sur l'immunisation des élèves. Les enfants nés le 1er janvier 2010 ou après cette date doivent également être vaccinés contre la varicelle.",
+    "IMMS_SCHEDULE_MESSAGE": "Pour fréquenter une école, les enfants doivent avoir été vaccinés contre les maladies indiquées en <em>italique</em>, comme l’exige la Loi sur l'immunisation des élèves. Les enfants nés le 1er janvier 2010 ou après cette date doivent également être vaccinés contre la varicelle.",
     "DTAP-IPV-HIB": "DCaT-VPI-Hib",
     "PNEU-C": "Pneu-C",
     "ROTA-1": "Rota-1",
@@ -813,7 +814,7 @@
   },
   "setPin": {
     "TITLE": "Définir un NIP",
-    "BODY": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "BODY": "Une fois que vous avez défini un NIP ci-dessous, vous pouvez l'utiliser avec le n<sup>o<sup> d’identification d’immunisation de l’Ontario pour vos prochaines visites sur ce site.",
     "SET_PIN": "Définir le NIP"
   },
   "submitAnother": {
@@ -920,6 +921,7 @@
     "INTRO_BULLET_2": "Loi de 2014 sur la garde d'enfants et la petite enfance",
     "INTRO_BULLET_2_URL": "https://www.ontario.ca/fr/lois/loi/14c11",
     "INTRO_LI_4": "Les bureaux de santé publique font un suivi des dossiers d'immunisation pour vérifier si les vaccins des écoliers sont à jour.  Les enfants et les adolescents sont ainsi mieux protégés contre les maladies graves qui se propagent facilement dans les écoles et dans les collectivités.",
+    "INTRO_LI_5": "__NEEDS TRANSLATION__",
     "INTRO_3": "Vous pourriez aussi avoir besoin de votre dossier d'immunisation dans les cas suivants:",
     "INTRO_3_LIST_A": "Traitement médical",
     "INTRO_3_LIST_B": "Programme pour enfants",
@@ -1083,10 +1085,10 @@
     },
     "HPECHU": {
       "PHU_NAME": "Bureau de santé des comtés de Hastings et Prince Edward",
-      "PHU_PHONE": "613-966-5500 ou 1-800-267-2803 poste 313",
+      "PHU_PHONE": "613-966-5500 ou 1-800-267-2803",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé des comtés de Hastings et Prince Edward",
       "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de Prince Edward-Hastings<br aria-hidden=\"true\" />179, rue  North Park<br aria-hidden=\"true\" />Belleville, Ontario<br aria-hidden=\"true\" />K8P 4P1",
-      "PHU_RESPONSE_TIME": "5 - 10 jours ouvrables",
+      "PHU_RESPONSE_TIME": "3 jours ouvrables",
       "PHU_TOC_LINK": "http://www.hpepublichealth.ca/terms-use",
       "PHU_WEBSITE": "http://www.hpepublichealth.ca"
     },
@@ -1117,6 +1119,15 @@
       "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
     },
+    "MLHU": {
+      "PHU_NAME": "Bureau de Santé de Middlesex-London Health Unit",
+      "PHU_PHONE": "519-663-5317",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de Santé de Middlesex-London Health Unit",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de Middlesex-London<br aria-hidden=\"true\" />50 rue King, <br aria-hidden=\"true\" />London, ON<br aria-hidden=\"true\" />N6A 5L7",
+      "PHU_RESPONSE_TIME": "3 - 5 jours ouvrables",
+      "PHU_TOC_LINK": "https://www.healthunit.com/terms-and-conditions",
+      "PHU_WEBSITE": "https://www.healthunit.com/immunization-records"
+    },
     "NBPSDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1145,13 +1156,13 @@
       "PHU_WEBSITE": "https://www.nwhu.on.ca/Pages/home.aspx"
     },
     "OCPH": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_NAME": "Bureau de santé publique du comté Oxford",
+      "PHU_PHONE": "519-539-9800 or 1-800-755-0394",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique du comté Oxford",
+      "PHU_ADDRESS": "<strong>Coordonnatrice des services législatifs</strong><br aria-hidden=\"true\" />Bureau de santé publique du comté Oxford<br aria-hidden=\"true\" />C.P. 1614, 21, rue Reeve<br aria-hidden=\"true\" />Woodstock, Ontario<br aria-hidden=\"true\" />N4S 7Y3",
+      "PHU_RESPONSE_TIME": "5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.oxfordcounty.ca/General/Privacy-Terms-of-Use/Privacy/PHIPA/Public-Health",
+      "PHU_WEBSITE": "http://www.oxfordcounty.ca/health"
     },
     "PDHU": {
       "PHU_NAME": "Bureau de santé du district de Perth",
@@ -1169,16 +1180,25 @@
       "PHU_ADDRESS": "<strong>Médecin hygiéniste</strong><br aria-hidden=\"true\" />Bureau de santé de la région de Peel<br aria-hidden=\"true\" />Boîte postale 630, comptoir postal Streetsville<br aria-hidden=\"true\" />Mississauga, Ontario<br aria-hidden=\"true\" />L5M 2C2",
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
       "PHU_TOC_LINK": "http://www.peelregion.ca/privacy/index.htm",
-      "PHU_WEBSITE": "https://www.peelregion.ca/health/"
+      "PHU_WEBSITE": "https://www.peelregion.ca/immunize"
     },
     "PO": {
       "PHU_NAME": "Bureau de santé de Porcupine",
       "PHU_PHONE": "705-267-1181 ou 1-800-461-1818",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de Porcupine",
-      "PHU_ADDRESS": "<strong>__PLACEHOLDER__PLEASE__REPLACE__ME__</strong><br aria-hidden=\"true\" />Porcupine Health Unit<br aria-hidden=\"true\" />169 Pine Street South, PO Bag 2012<br aria-hidden=\"true\" />Timmins, Ontario<br aria-hidden=\"true\" />P4N 8B7",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Porcupine Health Unit<br aria-hidden=\"true\" />169 Pine Street South, PO Bag 2012<br aria-hidden=\"true\" />Timmins, Ontario<br aria-hidden=\"true\" />P4N 8B7",
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
-      "PHU_TOC_LINK": "http://www.porcupinehu.on.ca/en/admin/disclaimer/",
+      "PHU_TOC_LINK": "http://www.porcupinehu.on.ca/fr/administration/exoneration/?",
       "PHU_WEBSITE": "http://www.porcupinehu.on.ca/en/your-health/yellow-cards/"
+    },
+    "ROWPH": {
+      "PHU_NAME": "Services de santé publique et d'urgence de la région de Waterloo",
+      "PHU_PHONE": "519-575-4400",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant des services de santé publique et d'urgence de la région de Waterloo",
+      "PHU_ADDRESS": "<strong>Bureau de la protection de la vie privée</strong><br aria-hidden=\"true\" />Services de santé publique et d'urgence de la région de Waterloo<br aria-hidden=\"true\" />99 rue Regina Sud<br aria-hidden=\"true\" />Waterloo, ON<br aria-hidden=\"true\" />N2J 4V3",
+      "PHU_RESPONSE_TIME": "5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.regionofwaterloo.ca/en/privacy.asp",
+      "PHU_WEBSITE": "http://www.regionofwaterloo.ca/en/servicesForYou/Immunization.asp"
     },
     "SDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1213,7 +1233,7 @@
       "PHU_CONTACT_PERSON": "un membre du personnel soignant des services de santé du Timiskaming",
       "PHU_ADDRESS": "<strong>Agent de sécurité et de protection de la vie privée</strong><br aria-hidden=\"true\" />Services de santé du Timiskaming<br aria-hidden=\"true\" />247, rue Whitewood, bureau 43, C. P. 1090<br aria-hidden=\"true\" />New Liskeard, Ontario<br aria-hidden=\"true\" />P0J 1P0",
       "PHU_RESPONSE_TIME": "Deux semaines",
-      "PHU_TOC_LINK": "http://www.timiskaminghu.com/421/terms-of-use",
+      "PHU_TOC_LINK": "http://www.timiskaminghu.com/default.aspx?content_id=421&website_language_id=4",
       "PHU_WEBSITE": "http://timiskaminghu.com/281/Immunisation"
     },
     "TPH": {
@@ -1224,6 +1244,15 @@
       "PHU_RESPONSE_TIME": "dans 3 à 5 jours ouvrables",
       "PHU_TOC_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607",
       "PHU_WEBSITE": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=33fd5ce6dfb31410VgnVCM10000071d60f89RCRD&vgnextchannel=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD&appInstanceName=default"
+    },
+    "WDGPH": {
+      "PHU_NAME": "Bureau de santé publique de Wellington-Dufferin-Guelph",
+      "PHU_PHONE": "1-800-265-7293",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique de Wellington-Dufferin-Guelph",
+      "PHU_ADDRESS": "<strong>Chef de la protection de la vie privée</strong><br aria-hidden=\"true\" />Unité sanitaire de Wellington-Dufferin-Guelph<br aria-hidden=\"true\" /160 Chancellors Way<br aria-hidden=\"true\" />Guelph, ON<br aria-hidden=\"true\" />N1G 0E1",
+      "PHU_RESPONSE_TIME": "5-10 jours ouvrables",
+      "PHU_TOC_LINK": "https://www.wdgpublichealth.ca/about/terms-use",
+      "PHU_WEBSITE": "https://www.wdgpublichealth.ca/healthcare-providers/vaccines-immunization"
     },
     "WECHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",

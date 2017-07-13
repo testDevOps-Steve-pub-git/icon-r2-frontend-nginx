@@ -1,13 +1,11 @@
-(function(){
-'use strict';
+/* @ngInject */
+function tradeLotDisplay$ctrl () {}
 
-  module.exports = {
+export default {
+  name: 'tradeLotDisplay',
+  component: {
     bindings: { immunization: '<' },
-    controller: tradeLotDisplayController,
+    controller: tradeLotDisplay$ctrl,
     templateUrl: './components/immunization/tradeLotDisplay/tradeLotDisplay.template.html'
-  };
-
-  tradeLotDisplayController.$inject = [];
-  function tradeLotDisplayController () {}
-
-}());
+  }
+}

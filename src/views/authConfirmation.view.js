@@ -1,19 +1,22 @@
-authConfirmationController.$inject = ['GatingQuestionService', 'EditReviewService'];
-function authConfirmationController (GatingQuestionService, EditReviewService) {
+/* @ngInject */
+function authConfirmation$ctrl (GatingQuestionService, EditReviewService) {
   this.$onInit = ()=> {
     GatingQuestionService.reset();
     EditReviewService.setFromReviewPage(false);
   }
 }
 
-module.exports = {
-  bindings: { data: '@' },
-  controller: authConfirmationController,
-  template: `
-    <confirmation-message></confirmation-message>
-    <hr />
-    <survey></survey>
-    <hr />
-    <submit-another></submit-another>
-  `
-};
+export default {
+  name: 'authConfirmation',
+  view: {
+    bindings: { data: '@' },
+    controller: authConfirmation$ctrl,
+    template: `
+      <confirmation-message></confirmation-message>
+      <hr />
+      <survey></survey>
+      <hr />
+      <submit-another></submit-another>
+    `
+  }
+}

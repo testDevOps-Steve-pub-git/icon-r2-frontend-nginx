@@ -1,13 +1,12 @@
 /* @ngInject */
 function pinCaptureController (ICON_RGX) {
-
   /** on component initializiation */
   this.$onInit = () => {
     /** Regex Librariess */
-    this.rgx = ICON_RGX.rgx;
+    this.rgx = ICON_RGX.rgx
 
-    this.showConfirm = (this.pinConfirm === undefined) ? false : true
-  };
+    this.showConfirm = this.pinConfirm !== undefined
+  }
 }
 
 export default {
@@ -17,7 +16,7 @@ export default {
     bindings: {
       pin: '=',
       pinConfirm: '=?',
-      form: '=',
+      form: '='
     },
     transclude: {
       'label': '?label',

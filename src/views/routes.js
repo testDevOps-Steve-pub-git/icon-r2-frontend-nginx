@@ -1,249 +1,285 @@
+// Set this to true to see all routes reflected in URL.
+const DEBUG_URL = true
+
+const progress = {
+  PATIENT: {
+    title:  'progressBar.PATIENT',
+    sref:   '.patient',
+    glyph:  'fa fa-user',
+  },
+  ADDRESS: {
+    title:  'progressBar.ADDRESS',
+    sref:   '.address',
+    glyph:  'fa fa-envelope',
+  },
+  IMMUNIZATIONS: {
+    title:  'progressBar.IMMUNIZATIONS',
+    sref:   '.immunizations',
+    glyph:  'fa fa-imm-vial',
+  },
+  DOCUMENTS: {
+    title:  'progressBar.DOCUMENTS',
+    sref:   '.documents',
+    glyph:  'fa fa-paperclip',
+  },
+  SUBMITTER: {
+    title:  'progressBar.SUBMITTER',
+    sref:   '.submitter',
+    glyph:  'fa fa-user',
+  },
+  REVIEW: {
+    title:  'progressBar.REVIEW',
+    sref:   '.review',
+    glyph:  'fa fa-eye',
+  },
+  CONFIRMATION: {
+    title:  'progressBar.CONFIRMATION',
+    sref:   '.confirmation',
+    glyph:  'fa fa-thumbs-up',
+  },
+}
+
 const WELCOME = {
-  url:         '/welcome',
-  component:   'welcome'
-};
+  component:   `welcome`,
+  url:         (DEBUG_URL) ? `/welcome` : `/`,
+}
 
 const AUP = {
-  url: '/aup?action',
-  component: 'aup',
-  params :{
-    action: null
-  }
-};
+  component:  `aup`,
+  url:        `/aup?action`,
+}
 
 const AUTH = {
-  url:        '/auth',
-  component:  'auth'
-};
+  component:  `auth`,
+  url:        `/auth`,
+}
 
 const ANON = {
-  url:        '/anon',
-  component:  'anon'
-};
+  component:  `anon`,
+  url:        `/anon`,
+}
 
 const SELF = {
-  url:        '/self',
   abstract:   true,
-  component:  'self'
-};
+  component:  `self`,
+  url:        (DEBUG_URL) ? `/self` : ``,
+}
 
 const OTHER = {
-  url:        '/other',
   abstract:   true,
-  component:  'other'
-};
+  component:  `other`,
+  url:        (DEBUG_URL) ? `/other` : ``,
+}
 
 const SUBMISSION = {
-  url:        '/submission?action',
-  component:  'submission'
-};
-
-const progress = require('./progressStates.js');
+  component:  `submission`,
+  url:        `/submission?action`,
+}
 
 const ANON_SELF_SUBMISSION = {
-  url:        '/submission',
-  component:  'anonSelfSubmission',
+  component:  `anonSelfSubmission`,
+  url:        (DEBUG_URL) ? `/submission` : ``,
   data: {
     navStates: [
-      //------------------------PREVIOUS STATE----------------NEXT STATE------------------CURRENT STATE-------------
-      Object.assign({ previous: null,                   next: progress.ADDRESS        },  progress.PATIENT        ),
-      Object.assign({ previous: progress.PATIENT,       next: progress.IMMUNIZATIONS  },  progress.ADDRESS        ),
-      Object.assign({ previous: progress.ADDRESS,       next: progress.DOCUMENTS      },  progress.IMMUNIZATIONS  ),
-      Object.assign({ previous: progress.IMMUNIZATIONS, next: progress.REVIEW         },  progress.DOCUMENTS      ),
-      Object.assign({ previous: progress.DOCUMENTS,     next: progress.CONFIRMATION   },  progress.REVIEW         ),
-      Object.assign({ previous: progress.REVIEW,        next: null                    },  progress.CONFIRMATION   ),
+      /*------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------*/
+      { ...progress.PATIENT,        previous: null,                   next: progress.ADDRESS       },
+      { ...progress.ADDRESS,        previous: progress.PATIENT,       next: progress.IMMUNIZATIONS },
+      { ...progress.IMMUNIZATIONS,  previous: progress.ADDRESS,       next: progress.DOCUMENTS     },
+      { ...progress.DOCUMENTS,      previous: progress.IMMUNIZATIONS, next: progress.REVIEW        },
+      { ...progress.REVIEW,         previous: progress.DOCUMENTS,     next: progress.CONFIRMATION  },
+      { ...progress.CONFIRMATION,   previous: progress.REVIEW,        next: null                   },
     ],
-    baseState: 'anon.self.submission',
+    baseState: `anon.self.submission`,
   }
-};
+}
 
 const ANON_OTHER_SUBMISSION = {
-  url:        '/submission',
-  component:  'anonOtherSubmission',
+  component:  `anonOtherSubmission`,
+  url:        (DEBUG_URL) ? `/submission` : ``,
   data: {
     navStates: [
-      //------------------------PREVIOUS STATE----------------NEXT STATE------------------CURRENT STATE-------------
-      Object.assign({ previous: null,                   next: progress.ADDRESS        },  progress.PATIENT        ),
-      Object.assign({ previous: progress.PATIENT,       next: progress.IMMUNIZATIONS  },  progress.ADDRESS        ),
-      Object.assign({ previous: progress.ADDRESS,       next: progress.DOCUMENTS      },  progress.IMMUNIZATIONS  ),
-      Object.assign({ previous: progress.IMMUNIZATIONS, next: progress.SUBMITTER      },  progress.DOCUMENTS      ),
-      Object.assign({ previous: progress.DOCUMENTS,     next: progress.REVIEW         },  progress.SUBMITTER      ),
-      Object.assign({ previous: progress.SUBMITTER,     next: progress.CONFIRMATION   },  progress.REVIEW         ),
-      Object.assign({ previous: progress.REVIEW,        next: null                    },  progress.CONFIRMATION   ),
+      /*------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------*/
+      { ...progress.PATIENT,        previous: null,                   next: progress.ADDRESS       },
+      { ...progress.ADDRESS,        previous: progress.PATIENT,       next: progress.IMMUNIZATIONS },
+      { ...progress.IMMUNIZATIONS,  previous: progress.ADDRESS,       next: progress.DOCUMENTS     },
+      { ...progress.DOCUMENTS,      previous: progress.IMMUNIZATIONS, next: progress.SUBMITTER     },
+      { ...progress.SUBMITTER,      previous: progress.DOCUMENTS,     next: progress.REVIEW        },
+      { ...progress.REVIEW,         previous: progress.SUBMITTER,     next: progress.CONFIRMATION  },
+      { ...progress.CONFIRMATION,   previous: progress.REVIEW,        next: null                   },
     ],
-    baseState: 'anon.other.submission',
+    baseState: `anon.other.submission`,
   }
-};
+}
 
 const AUTH_SELF_SUBMISSION = {
-  url:        '/submission',
-  component:  'authSelfSubmission',
+  component:  `authSelfSubmission`,
+  url:        (DEBUG_URL) ? `/submission` : ``,
   data: {
     navStates: [
-      //------------------------PREVIOUS STATE----------------NEXT STATE------------------CURRENT STATE-------------
-      Object.assign({ previous: null,                   next: progress.DOCUMENTS      },  progress.IMMUNIZATIONS  ),
-      Object.assign({ previous: progress.IMMUNIZATIONS, next: progress.PATIENT        },  progress.DOCUMENTS      ),
-      Object.assign({ previous: progress.DOCUMENTS,     next: progress.REVIEW         },  progress.PATIENT      ),
-      Object.assign({ previous: progress.PATIENT,       next: progress.CONFIRMATION   },  progress.REVIEW         ),
-      Object.assign({ previous: progress.REVIEW,        next: null                    },  progress.CONFIRMATION   ),
+      /*------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------*/
+      { ...progress.IMMUNIZATIONS,  previous: null,                   next: progress.DOCUMENTS     },
+      { ...progress.DOCUMENTS,      previous: progress.IMMUNIZATIONS, next: progress.PATIENT       },
+      { ...progress.PATIENT,        previous: progress.DOCUMENTS,     next: progress.REVIEW        },
+      { ...progress.REVIEW,         previous: progress.PATIENT,       next: progress.CONFIRMATION  },
+      { ...progress.CONFIRMATION,   previous: progress.REVIEW,        next: null                   },
     ],
-    baseState: 'auth.self.submission'
+    baseState: `auth.self.submission`
   }
-};
+}
 
 const AUTH_OTHER_SUBMISSION = {
-  url:        '/submission',
-  component:  'authOtherSubmission',
+  component:  `authOtherSubmission`,
+  url:        (DEBUG_URL) ? `/submission` : ``,
   data: {
     navStates: [
-      //------------------------PREVIOUS STATE----------------NEXT STATE------------------CURRENT STATE-------------
-      Object.assign({ previous: null,                   next: progress.DOCUMENTS      },  progress.IMMUNIZATIONS  ),
-      Object.assign({ previous: progress.IMMUNIZATIONS, next: progress.PATIENT        },  progress.DOCUMENTS      ),
-      Object.assign({ previous: progress.DOCUMENTS,     next: progress.SUBMITTER      },  progress.PATIENT      ),
-      Object.assign({ previous: progress.PATIENT,       next: progress.REVIEW         },  progress.SUBMITTER      ),
-      Object.assign({ previous: progress.SUBMITTER,     next: progress.CONFIRMATION   },  progress.REVIEW         ),
-      Object.assign({ previous: progress.REVIEW,        next: null                    },  progress.CONFIRMATION   ),
+      /*------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------*/
+      { ...progress.IMMUNIZATIONS,  previous: null,                   next: progress.DOCUMENTS     },
+      { ...progress.DOCUMENTS,      previous: progress.IMMUNIZATIONS, next: progress.PATIENT       },
+      { ...progress.PATIENT,        previous: progress.DOCUMENTS,     next: progress.SUBMITTER     },
+      { ...progress.SUBMITTER,      previous: progress.PATIENT,       next: progress.REVIEW        },
+      { ...progress.REVIEW,         previous: progress.SUBMITTER,     next: progress.CONFIRMATION  },
+      { ...progress.CONFIRMATION,   previous: progress.REVIEW,        next: null                   },
     ],
-    baseState: 'auth.other.submission'
+    baseState: `auth.other.submission`
   }
-};
+}
 
 const AUTH_PATIENT = {
-    url:        '/patient',
-    component:  'authPatient'
-};
+  component:  `authPatient`,
+  url:        (DEBUG_URL) ? `/patient` : ``,
+}
 
 const AUTH_SELF_PATIENT = {
-  url:        '/patient',
-  component:  'authSelfPatient'
-};
+  component:  `authSelfPatient`,
+  url:        (DEBUG_URL) ? `/patient` : ``,
+}
 
 const AUTH_OTHER_PATIENT = {
-  url:        '/patient',
-  component:  'authOtherPatient'
-};
+  component:  `authOtherPatient`,
+  url:        (DEBUG_URL) ? `/patient` : ``,
+}
 
 const ANON_SELF_PATIENT = {
-    url:        '/patient',
-    component:  'anonSelfPatient'
-};
+  component:  `anonSelfPatient`,
+  url:        (DEBUG_URL) ? `/patient` : ``,
+}
 
 const ANON_OTHER_PATIENT = {
-    url:        '/patient',
-    component:  'anonOtherPatient'
-};
+  component:  `anonOtherPatient`,
+  url:        (DEBUG_URL) ? `/patient` : ``,
+}
 
 const ADDRESS = {
-    url:        '/address',
-    component:  'patientAddress'
-};
+  component:  `patientAddress`,
+  url:        (DEBUG_URL) ? `/address` : ``,
+}
 
 const ANON_IMMUNIZATIONS = {
-    url:        '/immunizations',
-    component:  'anonImmunizations'
-};
+  component:  `anonImmunizations`,
+  url:        (DEBUG_URL) ? `/immunizations` : ``,
+}
 
 const AUTH_IMMUNIZATIONS = {
-    url:        '/immunizations',
-    component:  'authImmunizations'
-};
+  component:  `authImmunizations`,
+  url:        (DEBUG_URL) ? `/immunizations` : ``,
+}
 
 const DOCUMENTS = {
-    url:        '/documents',
-    component:  'documents'
-};
+  component:  `documents`,
+  url:        (DEBUG_URL) ? `/documents` : ``,
+}
 
 const SUBMITTER = {
-    url:        '/submitter',
-    component:  'submitter'
-};
+  component:  `submitter`,
+  url:        (DEBUG_URL) ? `/submitter` : ``,
+}
 
 const ANON_SELF_REVIEW = {
-    url:        '/review',
-    component:  'anonSelfReview'
-};
+  component:  `anonSelfReview`,
+  url:        (DEBUG_URL) ? `/review` : ``,
+}
 
 const ANON_OTHER_REVIEW = {
-    url:        '/review',
-    component:  'anonOtherReview'
-};
+  component:  `anonOtherReview`,
+  url:        (DEBUG_URL) ? `/review` : ``,
+}
 
 const AUTH_SELF_REVIEW = {
-    url:        '/review',
-    component:  'authSelfReview'
-};
+  component:  `authSelfReview`,
+  url:        (DEBUG_URL) ? `/review` : ``,
+}
 
 const AUTH_OTHER_REVIEW = {
-    url:        '/review',
-    component:  'authOtherReview'
-};
+  component:  `authOtherReview`,
+  url:        (DEBUG_URL) ? `/review` : ``,
+}
 
 const ANON_CONFIRMATION = {
-  url:        '/confirmation',
-  component:  'anonConfirmation'
-};
+  component:  `anonConfirmation`,
+  url:        (DEBUG_URL) ? `/confirmation` : ``,
+}
 
 const AUTH_CONFIRMATION = {
-    url:        '/confirmation',
-    component:  'authConfirmation'
-};
+  component:  `authConfirmation`,
+  url:        (DEBUG_URL) ? `/confirmation` : ``,
+}
 
 const VERIFICATION = {
-  url:        '/verification?action&relationship&lang',
-  component:  'verification'
-};
+  component:  `verification`,
+  url:        `/verification?action&relationship&lang`,
+}
 
 const NEW_PIN = {
-  url:        '/new-pin',
-  component:  'newPin'
-};
+  component:  `newPin`,
+  url:        (DEBUG_URL) ? `/new-pin` : ``,
+}
 
 const SET_PIN = {
-  url:        '/set-pin',
-  component:  'setPin'
-};
+  component:  `setPin`,
+  url:        (DEBUG_URL) ? `/set-pin` : ``,
+}
 
 const SET_PIN_CONFIRMATION = {
-  url:        '/set-pin-confirmation',
-  component:  'setPinConfirmation'
-};
+  component:  `setPinConfirmation`,
+  url:        (DEBUG_URL) ? `/set-pin-confirmation` : ``,
+}
 
 const ENTER_PIN = {
-  url:        '/enter-pin',
-  component:  'enterPin'
-};
+  component:  `enterPin`,
+  url:        (DEBUG_URL) ? `/enter-pin` : ``,
+}
 
 const FORGOT_PIN = {
-  url:        '/forgot-pin',
-  component:  'forgotPin'
-};
+  component:  `forgotPin`,
+  url:        (DEBUG_URL) ? `/forgot-pin` : ``,
+}
 
 const EMAIL_CONFIRMATION = {
-  url:        '/email-confirmation',
-  component:  'emailConfirmation'
-};
+  component:  `emailConfirmation`,
+  url:        (DEBUG_URL) ? `/email-confirmation` : ``,
+}
 
 const RESET_PIN = {
-  url:        '/reset-pin/{token:[%0-9a-zA-Z]{1,}}',
-  component:  'resetPin'
-};
+  component:  `resetPin`,
+  url:        (DEBUG_URL) ? `/reset-pin/{token:[%0-9a-zA-Z]{1,}}` : ``,
+}
 
 const SEND_ANOTHER_EMAIL = {
-  url:        '/send-another-email',
-  component:  'sendAnotherEmail'
-};
+  component:  `sendAnotherEmail`,
+  url:        (DEBUG_URL) ? `/send-another-email` : ``,
+}
 
 const RESET_PIN_CONFIRMATION = {
-  url:        '/reset-pin-confirmation',
-  component:  'resetPinConfirmation'
-};
+  component:  `resetPinConfirmation`,
+  url:        (DEBUG_URL) ? `/reset-pin-confirmation` : ``,
+}
 
 const DISPATCH_AFTER_VERIFICATION = {
-  url:        '/dispatch-after-verification',
-  component:  'dispatchAfterVerification'
-};
+  component:  `dispatchAfterVerification`,
+  url:        (DEBUG_URL) ? `/dispatch-after-verification` : ``,
+}
 
-module.exports = {
+export default {
   WELCOME:                WELCOME,
   AUP:                    AUP,
   AUTH:                   AUTH,
@@ -291,4 +327,4 @@ module.exports = {
   RESET_PIN_CONFIRMATION:       RESET_PIN_CONFIRMATION,     // Confirmation PIN was successfully reset, call to action
   SEND_ANOTHER_EMAIL:           SEND_ANOTHER_EMAIL,
   DISPATCH_AFTER_VERIFICATION:  DISPATCH_AFTER_VERIFICATION,
-};
+}

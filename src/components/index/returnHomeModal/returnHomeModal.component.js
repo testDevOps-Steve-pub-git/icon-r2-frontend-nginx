@@ -2,25 +2,22 @@
  * Created on 2017-04-03.
  * Modal that informs user they will lose unsaved information if they return to home without submitting
  */
-(function() {
-  'use strict';
+/* @ngInject */
+function returnHomeModal$ctrl ($state) {
+  this.ok = (modalData) => {
+    this.$close({
+      result: modalData
+    })
+  }
+}
 
-  module.exports = {
+export default {
+  name: 'returnHomeModal',
+  component: {
     bindings: {
-      $close: '&',
+      $close: '&'
     },
     templateUrl: './components/index/returnHomeModal/returnHomeModal.template.html',
-    controller: returnHomeModalController,
-  };
-
-  returnHomeModalController.$inject = ['$state'];
-  function returnHomeModalController($state) {
-
-    this.ok = (modalData) => {
-      this.$close({
-        result: modalData
-      });
-    };
-
+    controller: returnHomeModal$ctrl
   }
-})();
+}

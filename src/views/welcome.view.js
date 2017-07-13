@@ -1,5 +1,5 @@
 /* @ngInject */
-function welcomeController (
+function welcome$ctrl (
   EditReviewService,
   FileUploadHandler,
   GatingQuestionService,
@@ -30,24 +30,27 @@ function welcomeController (
   };
 }
 
-module.exports = {
-  controller: welcomeController,
-  template: `
-    <div class="container">
-      <main>
-        <div class="row">
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <h1 translate="welcomeLandingPage.INTRO_2" aria-label="{{'welcomeLandingPage.INTRO_2' | translate}}"></h1>
-            <hr />
+export default {
+  name: 'welcome',
+  view: {
+    controller: welcome$ctrl,
+    template: `
+      <div class="container">
+        <main>
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+              <h1 class = "text-center" translate="welcomeLandingPage.INTRO_2" aria-label="{{'welcomeLandingPage.INTRO_2' | translate}}"></h1>
+              <hr />
+            </div>
           </div>
-        </div>
 
-        <welcome-login-choice></welcome-login-choice>
+          <welcome-login-choice></welcome-login-choice>
 
-        <welcome-instructions></welcome-instructions>
+          <welcome-instructions></welcome-instructions>
 
-        <ontario-immunization-schedule></ontario-immunization-schedule>
-      </main>
-    </div>
-  `
-};
+          <ontario-immunization-schedule></ontario-immunization-schedule>
+        </main>
+      </div>
+    `
+  }
+}

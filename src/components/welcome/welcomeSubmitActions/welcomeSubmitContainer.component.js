@@ -9,7 +9,7 @@ export default {
     template: `
       <div class="row">
         <div class="col-xs-12">
-          <h1 translate="welcomeSubmitContainer.TITLE"></h1>
+          <h1 class = "text-center" translate="welcomeSubmitContainer.TITLE"></h1>
           <hr />
         </div>
 
@@ -30,5 +30,5 @@ export default {
         <welcome-anon-action class="col-xs-12 col-sm-5"></welcome-anon-action>
       </div>
     `
-  },
+  }
 }

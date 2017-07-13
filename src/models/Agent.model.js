@@ -20,13 +20,13 @@ function Agent (
   prevalenceIndex,
   orderedDiseases
 ) {
-  this.snomed = snomed || '',
-  this.name = name || '',
-  this.shortName = shortName || '',
+  this.snomed = snomed || ''
+  this.name = name || ''
+  this.shortName = shortName || ''
   this.diseases = diseases || []
-  this.lotNumber = lotNumber || '',
-  this.lotExpiration = lotExpiration || '',
-  this.prevalenceIndex = prevalenceIndex || 9,
+  this.lotNumber = lotNumber || ''
+  this.lotExpiration = lotExpiration || ''
+  this.prevalenceIndex = prevalenceIndex || 9
   this.orderedDiseases = orderedDiseases || ''
 
   this.clone = clone

@@ -1,15 +1,18 @@
-authImmunizationsController.$inject = [];
-function authImmunizationsController () {
+/* @ngInject */
+function authImmunizations$ctrl () {
     this.attribute = '';
 }
 
-module.exports = {
-  bindings: { data: '<' },
-  controller: authImmunizationsController,
-  template: `
-    <h1>{{ 'immunizationInput.IMMUNIZATIONS' | translate }}</h1>
-    <form class="form form-container" name="authImmunizationForm" novalidate autocomplete="off">
-      <immunization-gating></immunization-gating>
-    </form>
-  `
-};
+export default {
+  name: 'authImmunizations',
+  view: {
+    bindings: { data: '<' },
+    controller: authImmunizations$ctrl,
+    template: `
+      <h1>{{ 'immunizationInput.IMMUNIZATIONS' | translate }}</h1>
+      <form class="form form-container" name="authImmunizationForm" novalidate autocomplete="off">
+        <immunization-gating></immunization-gating>
+      </form>
+    `
+  }
+}

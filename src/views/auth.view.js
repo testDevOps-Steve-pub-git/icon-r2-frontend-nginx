@@ -1,8 +1,5 @@
-authController.$inject = [
-  '$window', '$translate',
-  'SessionHandler', 'TokenHandler'
-];
-function authController (
+/* @ngInject */
+function auth$ctrl (
   $window, $translate,
   SessionHandler, TokenHandler
 ) {
@@ -15,18 +12,21 @@ function authController (
       let confirmationMessage = $translate.instant('leave_page.LEAVE_PAGE_CONFIRMATION');
       (event || $window.event).returnValue = confirmationMessage; // IE
       return confirmationMessage;
-    };
+    }
   }
 }
 
-module.exports = {
-  bindings: { record: '<' },
-  controller: authController,
-  template: `
-    <main>
-      <ui-view>
-        <welcome-aup route="auth"></welcome-aup>
-      </ui-view>
-    </main>
-  `
-};
+export default {
+  name: 'auth',
+  view: {
+    bindings: { record: '<' },
+    controller: auth$ctrl,
+    template: `
+      <main>
+        <ui-view>
+          <welcome-aup route="auth"></welcome-aup>
+        </ui-view>
+      </main>
+    `
+  }
+}

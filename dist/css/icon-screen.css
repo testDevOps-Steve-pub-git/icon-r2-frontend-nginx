@@ -311,6 +311,7 @@
   width: 100%;
   padding: 5px 0 5px 0;
   background-color: #eeeeee;
+  overflow: hidden;
 }
 #icon-progress-bar-container.affix {
   z-index: 1000;

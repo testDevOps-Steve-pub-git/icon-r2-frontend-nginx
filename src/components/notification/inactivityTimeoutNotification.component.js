@@ -1,8 +1,49 @@
-(function () {
-'use strict';
+/* @ngInject */
+function inactivityTimeoutNotification$ctrl (
+  $interval, $state,
+  GatingQuestionService, ImmunizationRecordService, Notify, SessionHandler, TokenHandler,
+  ICON_NOTIFICATION
+) {
+  this.$onInit = () => {
+    this.extendTimeoutExtension = () => {
+      // Extend the session / transaction token combo
+      TokenHandler.refreshTransactionToken()
+      .then(SessionHandler.extendTransactionTime)
+      .then(() => {
+        // Then clear the notification.
+        Notify.publish(ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT)
+      })
+      .catch(() => {
+        Notify.publish(ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT)
+        Notify.publish(ICON_NOTIFICATION.WARN_GENERAL_NETWORK_PROBLEM)
+      })
+    }
 
-  module.exports = {
-    controller: inactivityTimeoutNotificationController,
+    this.declineTimeoutExtension = () => {
+      // Clear the transaction token
+      TokenHandler.clearTransactionToken()
+      .then(SessionHandler.expireSessionNotification)
+      .then(() => {
+        // Go to the welcome screen
+        $state.go(`welcome`)
+
+        // Clear patient data.
+        ImmunizationRecordService.clear()
+        GatingQuestionService.reset()
+
+        // Then clear the notification.
+        Notify.publish(ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT)
+        // Notify that session expired due to timeout, patient data was cleared.
+        Notify.publish(ICON_NOTIFICATION.INFO_SESSION_EXPIRED)
+      })
+    }
+  }
+}
+
+export default {
+  name: 'inactivityTimeoutNotification',
+  component: {
+    controller: inactivityTimeoutNotification$ctrl,
     bindings: { resolve: '=' },
     template: `
       <div class="modal-header text-info">
@@ -22,52 +63,5 @@
         </div>
       </div>
     `
-  };
-
-  inactivityTimeoutNotificationController.$inject = [
-    '$interval', '$state',
-    'GatingQuestionService', 'ImmunizationRecordService', 'Notify', 'SessionHandler', 'TokenHandler',
-    'ICON_NOTIFICATION'
-  ];
-  function inactivityTimeoutNotificationController (
-    $interval, $state,
-    GatingQuestionService, ImmunizationRecordService, Notify, SessionHandler, TokenHandler,
-    ICON_NOTIFICATION
-  ) {
-    this.$onInit = () => {
-      this.extendTimeoutExtension = () => {
-        // Extend the session / transaction token combo
-        TokenHandler.refreshTransactionToken()
-        .then(SessionHandler.extendTransactionTime)
-        .then(() => {
-          // Then clear the notification.
-          Notify.publish(ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT);
-        })
-        .catch(() => {
-          Notify.publish(ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT);
-          Notify.publish(ICON_NOTIFICATION.WARN_GENERAL_NETWORK_PROBLEM);
-        });
-      };
-
-      this.declineTimeoutExtension = () => {
-        // Clear the transaction token
-        TokenHandler.clearTransactionToken()
-        .then(SessionHandler.expireSessionNotification)
-        .then(() => {
-          // Go to the welcome screen
-          $state.go(`welcome`);
-
-          // Clear patient data.
-          ImmunizationRecordService.clear();
-          GatingQuestionService.reset();
-
-          // Then clear the notification.
-          Notify.publish(ICON_NOTIFICATION.POP_TRANSACTION_TOKEN_TIMEOUT);
-          // Notify that session expired due to timeout, patient data was cleared.
-          Notify.publish(ICON_NOTIFICATION.INFO_SESSION_EXPIRED);
-        });
-      };
-    }
   }
-
-}());
+}

@@ -8,13 +8,16 @@ function oiidStatus$ctrl (
   Notify,
   DHIR,
   DHIR_ERROR,
-  ICON_NOTIFICATION
+  ICON_NOTIFICATION,
+  Utility
 ) {
   this.$onInit = () => {
     this.patient = ImmunizationRecordService.getPatient()
     this.showOiidError = false
 
     this.resetShowOiidError = () => {
+      if (this.patient.oiid) { this.patient.oiid = this.patient.oiid.toUpperCase() }
+
       this.showOiidError = false
     }
 
@@ -28,8 +31,17 @@ function oiidStatus$ctrl (
       })
       .catch((dhirErrorId) => {
         switch (dhirErrorId) {
+          case DHIR.error.ClientStatus.OIID_PIN_SET_NO_EMAIL_AVAILABLE:
+            ImmunizationRecordService.setPatient(this.patient)
+            $state.go('verification.enter-pin', { action: $stateParams.action })
+            break
+
           case DHIR.error.ClientStatus.OIID_PIN_OUTDATED:
             Notify.publish(ICON_NOTIFICATION.INFO_OIID_PIN_OUTDATED)
+            ImmunizationRecordService.setPatient(this.patient)
+            $state.go('verification.new-pin', { action: $stateParams.action })
+            break
+
           case DHIR.error.ClientStatus.OIID_PIN_NOT_SET:
             ImmunizationRecordService.setPatient(this.patient)
             $state.go('verification.new-pin', { action: $stateParams.action })
@@ -52,7 +64,6 @@ function oiidStatus$ctrl (
           case DHIR.error.ClientStatus.OIID_PIN_REVOKED_PHU:
           case DHIR.error.ClientStatus.OIID_PIN_NOT_SET_NO_HCN:
           case DHIR.error.ClientStatus.OIID_PIN_OUTDATED_NO_HCN:
-          case DHIR.error.ClientStatus.OIID_PIN_SET_NO_EMAIL_AVAILABLE:
           case DHIR.error.ClientStatus.OIID_PIN_SET_NO_HCN_AVAILABLE:
             Notify.publish(ICON_NOTIFICATION.INFO_CALL_PHU_GENERIC)
             break
@@ -70,7 +81,7 @@ function oiidStatus$ctrl (
 
     this.verifyOiid = (form) => {
       if (form.$valid) this.getStatus(this.patient.oiid)
-      else form.OIID.$setTouched()
+      else Utility.focusFirstInvalidField(form)
     }
   }
 }
@@ -79,6 +90,6 @@ export default {
   name: 'oiidStatus',
   component: {
     controller: oiidStatus$ctrl,
-    templateUrl: './components/oiidStatus/oiidStatus.template.html',
-  },
+    templateUrl: './components/oiidStatus/oiidStatus.template.html'
+  }
 }

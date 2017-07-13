@@ -1,6 +1,5 @@
 /* @ngInject */
-function welcomeInstructions$ctrl() { }
-
+function welcomeInstructions$ctrl () { }
 
 export default {
   name: 'welcomeInstructions',
@@ -8,5 +7,5 @@ export default {
     templateUrl: './components/welcome/welcomeInstructions/welcomeInstructions.template.html',
     bindings: {},
     controller: welcomeInstructions$ctrl
-  },
+  }
 }

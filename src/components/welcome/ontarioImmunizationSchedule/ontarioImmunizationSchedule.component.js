@@ -40,17 +40,17 @@ function ontarioImmunizationSchedule$ctrl () {
     ScheduleItem(
       'schedule.65_Years_+'
     )
-  ];
+  ]
   this.scheduledImmsDiseaseList = [
     [
       DiseaseList('schedule.DTAP-IPV-HIB', 'schedule.DTAP-IPV-HIB_VALUE'),
-      DiseaseList ('schedule.PNEU-C', 'schedule.PNEU-C_VALUE'),
-      DiseaseList ('schedule.ROTA-1', 'schedule.ROTA-1_VALUE')
+      DiseaseList('schedule.PNEU-C', 'schedule.PNEU-C_VALUE'),
+      DiseaseList('schedule.ROTA-1', 'schedule.ROTA-1_VALUE')
     ],
     [
       DiseaseList('schedule.DTAP-IPV-HIB', 'schedule.DTAP-IPV-HIB_VALUE'),
-      DiseaseList ( 'schedule.PNEU-C', 'schedule.PNEU-C_VALUE'),
-      DiseaseList ('schedule.ROTA-1', 'schedule.ROTA-1_VALUE')
+      DiseaseList('schedule.PNEU-C', 'schedule.PNEU-C_VALUE'),
+      DiseaseList('schedule.ROTA-1', 'schedule.ROTA-1_VALUE')
     ],
     [
       DiseaseList('schedule.DTAP-IPV-HIB', 'schedule.DTAP-IPV-HIB_VALUE')
@@ -76,8 +76,8 @@ function ontarioImmunizationSchedule$ctrl () {
     ],
     [
       DiseaseList('schedule.MEN-C-ACYW-135', 'schedule.MEN-C-ACYW-135_VALUE'),
-      DiseaseList( 'schedule.HB', 'schedule.HB_VALUE'),
-      DiseaseList( 'schedule.HPV', 'schedule.HPV_VALUE')
+      DiseaseList('schedule.HB', 'schedule.HB_VALUE'),
+      DiseaseList('schedule.HPV', 'schedule.HPV_VALUE')
     ],
     [
       DiseaseList('schedule.TDAP', 'schedule.TDAP_VALUE_ITALICS')
@@ -93,19 +93,18 @@ function ontarioImmunizationSchedule$ctrl () {
       DiseaseList('schedule.PNEU-P-23', 'schedule.PNEU-P-23_VALUE'),
       DiseaseList('schedule.SHINGLES', 'schedule.SHINGLES_VALUE')
     ]
-  ];
-
+  ]
 
   function ScheduleItem (labelKey) {
     return {
-      labelKey: labelKey,
-    };
+      labelKey: labelKey
+    }
   }
-  function DiseaseList ( agentName, diseaseList){
+  function DiseaseList (agentName, diseaseList) {
     return {
       agentName: agentName,
-      diseaseList: angular.copy(diseaseList),
-    };
+      diseaseList: angular.copy(diseaseList)
+    }
   }
 
   /**
@@ -113,27 +112,26 @@ function ontarioImmunizationSchedule$ctrl () {
    * 219 is the current width of the ontario schedule cells
    * See https://github.com/oblador/angular-scroll for API
    */
-  let container = angular.element(document.getElementById('ontario-schedule-container'));
-  let currentPos = 0;
-  this.scrollLeft = ()=> {
-    currentPos = container.scrollLeft();
+  let container = angular.element(document.getElementById('ontario-schedule-container'))
+  let currentPos = 0
+  this.scrollLeft = () => {
+    currentPos = container.scrollLeft()
     return container.duScrollTo(currentPos - 219, 0, [500])
-      .catch((error)=>{});
-  };
+      .catch(angular.noop)
+  }
 
-  this.scrollRight = ()=> {
-    currentPos = container.scrollLeft();
+  this.scrollRight = () => {
+    currentPos = container.scrollLeft()
     return container.duScrollTo(currentPos + 219, 0, [500])
-      .catch((error)=>{});
+      .catch(angular.noop)
   }
 }
 
-
 export default {
   name: 'ontarioImmunizationSchedule',
-  component : {
+  component: {
     templateUrl: './components/welcome/ontarioImmunizationSchedule/ontarioImmunizationSchedule.template.html',
-    bndings :{},
+    bndings: {},
     controller: ontarioImmunizationSchedule$ctrl
   }
 }

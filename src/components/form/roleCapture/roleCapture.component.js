@@ -1,5 +1,5 @@
 /* @ngInject */
-function patientSelfCaptureController (){
+function patientSelfCaptureController () {
   // for future purposes
 }
 export default {
@@ -8,11 +8,11 @@ export default {
     templateUrl: './components/form/roleCapture/roleCapture.template.html',
     bindings: {
       role: '=',
-      form: '=',
+      form: '='
     },
     transclude: {
       'label': '?label'
     },
-    controller: patientSelfCaptureController,
+    controller: patientSelfCaptureController
   }
-};
+}

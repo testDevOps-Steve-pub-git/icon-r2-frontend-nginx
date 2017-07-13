@@ -1,5 +1,5 @@
 /* @ngInject */
-function emailConfirmationController (Multitenancy,
+function emailConfirmation$ctrl (Multitenancy,
                                       ImmunizationRecordService,
                                       $state) {
   this.$onInit = () => {
@@ -10,24 +10,27 @@ function emailConfirmationController (Multitenancy,
   }
 }
 
-module.exports = {
-  controller: emailConfirmationController,
-  template: `
-    <h2 translate="emailConfirmation.TITLE"></h2>
+export default {
+  name: 'emailConfirmation',
+  view: {
+    controller: emailConfirmation$ctrl,
+    template: `
+      <h2 translate="emailConfirmation.TITLE"></h2>
 
-    <span translate="emailConfirmation.CONFIRMATION_MESSAGE"
-     translate-compile
-     translate-values="{
-       patient_oiid: $ctrl.patientInfo.oiid,
-       phuName: '{{$ctrl.multitenancy.NAME_KEY | translate}}',
-       phuPhone: '{{$ctrl.multitenancy.PHONE_KEY | translate}}'
-     }">
-    </span>
+      <span translate="emailConfirmation.CONFIRMATION_MESSAGE"
+       translate-compile
+       translate-values="{
+         patient_oiid: $ctrl.patientInfo.oiid,
+         phuName: '{{$ctrl.multitenancy.NAME_KEY | translate}}',
+         phuPhone: '{{$ctrl.multitenancy.PHONE_KEY | translate}}'
+       }">
+      </span>
 
-    <a class="icon-btn-link text-left"
-    id="returnHomeButton"
-    ui-sref="welcome"
-    translate="emailConfirmation.RETURN_HOME">
-    </a>
-  `
-};
+      <a class="icon-btn-link text-left"
+      id="returnHomeButton"
+      ui-sref="welcome"
+      translate="emailConfirmation.RETURN_HOME">
+      </a>
+    `
+  }
+}

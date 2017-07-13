@@ -2,15 +2,13 @@
  * Created on 2017-01-23.
  * Component for survey link and verbiage to canada health infoway survey
  */
-(function(){
-'use strict';
+/* @ngInject */
+function survey$ctrl () {}
 
-  module.exports = {
+export default {
+  name: 'survey',
+  component: {
     templateUrl: './components/confirmation/confirmationSurvey/survey.template.html',
-    controller: surveyController,
-  };
-
-  surveyController.$inject = [];
-  function surveyController () {}
-
-}());
+    controller: survey$ctrl
+  }
+}

@@ -56,4 +56,4 @@ const ICON_NOTIFICATION = {
   WARN_GENERAL_SERVER_ERROR:        '$warnGeneralServerError',
 };
 
-module.exports = ICON_NOTIFICATION;
+export default ICON_NOTIFICATION

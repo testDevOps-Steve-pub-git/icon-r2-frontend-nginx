@@ -2,17 +2,16 @@
  * Created on 2017-01-19.
  * Address display component
  */
-(function(){
-  'use strict';
+/* @ngInject */
+function addressDisplay$ctrl () {}
 
-  module.exports = {
+export default {
+  name: 'addressDisplay',
+  component: {
     bindings: {
-      addressInfo: '<',
+      addressInfo: '<'
     },
     templateUrl: './components/address/addressDisplay/addressDisplay.template.html',
-    controller: addressDisplayController,
-  };
-
-  addressDisplayController.$inject = [];
-  function addressDisplayController () {}
-})();
+    controller: addressDisplay$ctrl
+  }
+}

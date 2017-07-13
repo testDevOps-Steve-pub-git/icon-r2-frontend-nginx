@@ -1,20 +1,22 @@
-anonConfirmationController.$inject = ['GatingQuestionService', 'EditReviewService'];
-function anonConfirmationController (GatingQuestionService, EditReviewService) {
+/* @ngInject */
+function anonConfirmation$ctrl (GatingQuestionService, EditReviewService) {
   this.$onInit = ()=> {
     GatingQuestionService.reset();
     EditReviewService.setFromReviewPage(false);
   }
 }
 
-module.exports = {
-  bindings: { data: '@' },
-  controller: anonConfirmationController,
-  template: `
-
-    <confirmation-message></confirmation-message>
-    <hr />
-    <survey></survey>
-    <hr />
-    <submit-another></submit-another>
-  `
-};
+export default {
+  name: 'anonConfirmation',
+  view : {
+    bindings: { data: '@' },
+    controller: anonConfirmation$ctrl,
+    template: `
+      <confirmation-message></confirmation-message>
+      <hr />
+      <survey></survey>
+      <hr />
+      <submit-another></submit-another>
+    `
+  }
+}

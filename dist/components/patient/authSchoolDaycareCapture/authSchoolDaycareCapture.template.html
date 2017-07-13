@@ -22,9 +22,9 @@
     </div>
 
     <!--Error Messages-->
-    <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched" role="alert">
-      <div class="alert alert-danger" ng-message="pattern" translate='authSelfPatientContainer.ERRORS.BAD_FORMAT' aria-label='authSelfPatientContainer.ERRORS.BAD_FORMAT'></div>
-      <div class="alert alert-danger" ng-message="maxlength" translate='authSelfPatientContainer.ERRORS.EXCEEDS_MAXLENGTH' aria-label='authSelfPatientContainer.ERRORS.EXCEEDS_MAXLENGTH'></div>
+    <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$touched">
+      <div class="alert alert-danger" ng-message="pattern" translate='authSelfPatientContainer.ERRORS.BAD_FORMAT' aria-label='authSelfPatientContainer.ERRORS.BAD_FORMAT' role="alert"></div>
+      <div class="alert alert-danger" ng-message="maxlength" translate='authSelfPatientContainer.ERRORS.EXCEEDS_MAXLENGTH' aria-label='authSelfPatientContainer.ERRORS.EXCEEDS_MAXLENGTH' role="alert"></div>
     </div>
     <!--End Error Messages-->
   </div>

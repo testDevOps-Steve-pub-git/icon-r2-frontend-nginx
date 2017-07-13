@@ -1,6 +1,5 @@
 import Address from './Address.model'
 import Patient from './Patient.model'
-import SessionData from './SessionData.model'
 import Submitter from './Submitter.model'
 
 /**
@@ -9,7 +8,6 @@ import Submitter from './Submitter.model'
 * @param {Address} [address=Address] - patient address information
 * @param {Array<Immunization>} [retrievedImmunizations=Array] - array of immunizations retrieved from Panorama (Yellow Card)
 * @param {Array<Immunization>} [newImmunizations=Array] - array of new immunizations being submitted to ICON by user
-* @param {SessionData} [sessionData=SessionData] - session data
 * @param {Array<Disease>} [recommendations=Array] - array of diseases it is recommended for the user to be immunized against
 * @constructor
 * @returns {ImmunizationRecordSubmission}
@@ -20,7 +18,6 @@ function ImmunizationRecordSubmission (
   address,
   retrievedImmunizations,
   newImmunizations,
-  sessionData,
   recommendations
 ) {
   this.submitter = submitter || new Submitter.model()
@@ -28,7 +25,6 @@ function ImmunizationRecordSubmission (
   this.address = address || new Address.model()
   this.retrievedImmunizations = retrievedImmunizations || []
   this.newImmunizations = newImmunizations || []
-  this.sessionData = sessionData || new SessionData.model()
   this.recommendations = recommendations || []
 
   /**
@@ -43,7 +39,6 @@ function ImmunizationRecordSubmission (
       this.address.clone(),
       this.retrievedImmunizations.map(c => c.clone()),
       this.newImmunizations.map(c => c.clone()),
-      this.sessionData.clone(),
       this.recommendations.map(c => c.clone())
     )
   }

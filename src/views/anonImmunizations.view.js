@@ -1,13 +1,15 @@
-anonImmunizationsController.$inject = [];
-function anonImmunizationsController () {}
+/* @ngInject */
+function anonImmunizations$ctrl () {}
 
-module.exports = {
-  controller: anonImmunizationsController,
-  template: `
-  <h1>{{ 'immunizationInput.IMMUNIZATIONS' | translate }}</h1>
-  <form class="form form-container" name="anonImmunizationForm" novalidate autocomplete="off">
-    <immunization-gating></immunization-gating>
-  </form>
-
-  `
-};
+export default {
+  name: 'anonImmunizations',
+  view : {
+    controller: anonImmunizations$ctrl,
+    template: `
+    <h1>{{ 'immunizationInput.IMMUNIZATIONS' | translate }}</h1>
+    <form class="form form-container" name="anonImmunizationForm" novalidate autocomplete="off">
+      <immunization-gating></immunization-gating>
+    </form>
+    `
+  }
+}

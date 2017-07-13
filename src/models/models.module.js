@@ -6,7 +6,6 @@ import Lot from './Lot.model'
 import ImmunizationRecordSubmission from './ImmunizationRecordSubmission.model'
 import Patient from './Patient.model'
 import Recommendation from './Recommendation.model'
-import SessionData from './SessionData.model'
 import Submitter from './Submitter.model'
 import Token from './Token.model'
 import Trade from './Trade.model'
@@ -20,7 +19,6 @@ angular.module('icon.models', [])
   .service(ImmunizationRecordSubmission.name, [() => ImmunizationRecordSubmission.model])
   .service(Patient.name, [() => Patient.model])
   .service(Recommendation.name, [() => Recommendation.model])
-  .service(SessionData.name, [() => SessionData.model])
   .service(Submitter.name, [() => Submitter.model])
   .service(Token.name, [() => Token.model])
   .service(Trade.name, [() => Trade.model])
