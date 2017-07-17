@@ -22,6 +22,10 @@ import OIID_PIN_REVOKED_AGE                 from '../../fixtures/DHIR/OIID_PIN_R
 import OIID_PIN_REVOKED_PHU                 from '../../fixtures/DHIR/OIID_PIN_REVOKED_PHU.response'
 import OIID_PIN_SET_NO_EMAIL_AVAILABLE      from '../../fixtures/DHIR/OIID_PIN_SET_NO_EMAIL_AVAILABLE.response'
 import OIID_PIN_SET_NO_HCN_AVAILABLE        from '../../fixtures/DHIR/OIID_PIN_SET_NO_HCN_AVAILABLE.response'
+import OIID_PIN_OUTDATED_REVOKED_AGE        from '../../fixtures/DHIR/OIID_PIN_OUTDATED_REVOKED_AGE.response'
+import OIID_PIN_OUTDATED_REVOKED_PHU        from '../../fixtures/DHIR/OIID_PIN_OUTDATED_REVOKED_PHU.response'
+import OIID_PIN_OUTDATED_NO_HCN_REVOKED_AGE from '../../fixtures/DHIR/OIID_PIN_OUTDATED_NO_HCN_REVOKED_AGE.response'
+import OIID_NO_HCN_REVOKED_AGE              from '../../fixtures/DHIR/OIID_NO_HCN_REVOKED_AGE.response'
 /* .../Admin/$ValidateHCN DHIR responses */
 import HCN_AND_OIID_DONT_MATCH              from '../../fixtures/DHIR/HCN_AND_OIID_DONT_MATCH.response'
 import HCN_NOT_AVAILABLE                    from '../../fixtures/DHIR/HCN_NOT_AVAILABLE.response'
@@ -129,6 +133,27 @@ describe('DHIR', () => {
         expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_NO_HCN))
           .to.equal(DHIR.error.ClientStatus.OIID_PIN_OUTDATED_NO_HCN)
       })
+
+      it('should NOT detect OIID_PIN_OUTDATED_REVOKED_AGE as OIID_PIN_OUTDATED because of collision', () => {
+        expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_REVOKED_AGE))
+        .to.not.equal(DHIR.error.ClientStatus.OIID_PIN_OUTDATED)
+        expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_REVOKED_AGE))
+        .to.not.equal(DHIR.error.NO_MATCHING_DHIR_ERROR_FOUND)
+      })
+
+      it('should NOT detect OIID_PIN_OUTDATED_REVOKED_PHU as OIID_PIN_OUTDATED because of collision', () => {
+        expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_REVOKED_PHU))
+        .to.not.equal(DHIR.error.ClientStatus.OIID_PIN_OUTDATED)
+        expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_REVOKED_PHU))
+        .to.not.equal(DHIR.error.NO_MATCHING_DHIR_ERROR_FOUND)
+      })
+
+      it('should NOT detect OIID_PIN_OUTDATED_NO_HCN_REVOKED_AGE as OIID_PIN_OUTDATED because of collision', () => {
+        expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_NO_HCN_REVOKED_AGE))
+        .to.not.equal(DHIR.error.ClientStatus.OIID_PIN_OUTDATED)
+        expect(DHIR.identifyClientStatusError(OIID_PIN_OUTDATED_NO_HCN_REVOKED_AGE))
+        .to.not.equal(DHIR.error.NO_MATCHING_DHIR_ERROR_FOUND)
+      })
     })
 
     describe('OIID_PIN_REVOKED_AGE', () => {
@@ -158,6 +183,13 @@ describe('DHIR', () => {
           .to.equal(DHIR.error.ClientStatus.OIID_PIN_SET_NO_HCN_AVAILABLE)
         expect(DHIR.identifyClientStatusError(OIID_PIN_SET_NO_HCN_AVAILABLE))
           .to.not.equal(DHIR.error.ClientStatus.OIID_PIN_OUTDATED_NO_HCN)
+      })
+
+      it('should NOT detect OIID_NO_HCN_REVOKED_AGE as OIID_PIN_SET_NO_HCN_AVAILABLE because of collision', () => {
+        expect(DHIR.identifyClientStatusError(OIID_NO_HCN_REVOKED_AGE))
+        .to.not.equal(DHIR.error.ClientStatus.OIID_PIN_SET_NO_HCN_AVAILABLE)
+        expect(DHIR.identifyClientStatusError(OIID_NO_HCN_REVOKED_AGE))
+        .to.not.equal(DHIR.error.NO_MATCHING_DHIR_ERROR_FOUND)
       })
     })
   })

@@ -1,24 +1,24 @@
-require('angular');
-require('angulartics');
-require('angular-animate');
-require('angular-bootstrap-affix');
-require('angular-ui-router');
-require('angular-ui-bootstrap');
-require('angular-translate');
-require('angular-dynamic-locale');
-require('angular-file-upload');
-require('angular-jwt');
-require('angular-translate-interpolation-messageformat');
-require('angular-messages');
-require('angular-moment');
-require('angular-ui-mask');
-require('Base64');
-require('blob-util');
-require('crypto-js');
-require('custom-event-polyfill');
-require('lodash');
-require('moment');
-require('ng-device-detector');
-require('object-assign-polyfill');
-require('angular-scroll');
-require('angular-css');
+import 'angular'
+import 'angulartics'
+import 'angular-animate'
+import 'angular-bootstrap-affix'
+import 'angular-ui-router'
+import 'angular-ui-bootstrap'
+import 'angular-translate'
+import 'angular-dynamic-locale'
+import 'angular-file-upload'
+import 'angular-jwt'
+import 'angular-translate-interpolation-messageformat'
+import 'angular-messages'
+import 'angular-moment'
+import 'angular-ui-mask'
+import 'Base64'
+import 'blob-util'
+import 'crypto-js'
+import 'custom-event-polyfill'
+import 'lodash'
+import 'moment'
+import 'ng-device-detector'
+import 'object-assign-polyfill'
+import 'angular-scroll'
+import 'angular-css'

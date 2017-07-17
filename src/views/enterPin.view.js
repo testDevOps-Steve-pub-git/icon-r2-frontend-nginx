@@ -17,22 +17,9 @@ function enterPin$ctrl (
     this.pin = '';
 
     /*Func dec*/
-    this.openHelpModal = openHelpModal;
+    this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
     this.verify = verify;
     this.goToForgotPin = goToForgotPin;
-  }
-
-  /**
-   *  Opens modal window for information on OIID and PIN
-   */
-  function openHelpModal () {
-    let modalInstance = $uibModal.open({
-      animation: true,
-      template: '<welcome-help-modal $close="$close(result)"></welcome-help-modal>',
-      controller: () => {},
-      size: 'md',
-    }).result
-      .catch((error)=>{console.log(error)});
   }
 
   /**

@@ -4,18 +4,18 @@
  * @module widget.slice
  * @namespace slice
  */
-(function () {
-    'use strict';
-    angular.module('icon.filters')
-        .filter('slice', slice);
 
-        slice.$inject = [];
-        function slice () {
-            return function (arr, start, end) {
-                if (!arr) {
-                    return;
-                }
-                return arr.slice(start, end);
-            };
+/* @ngInject */
+function slice () {
+    return function (arr, start, end) {
+        if (!arr) {
+            return;
         }
-})();
+        return arr.slice(start, end);
+    };
+}
+
+export default {
+  name: 'slice',
+  filter: slice
+}

@@ -1,5 +1,5 @@
 /* @ngInject */
-function aup$ctrl($state) {}
+function aup$ctrl ($state) {}
 
 export default {
   name: 'aup',
@@ -9,4 +9,4 @@ export default {
        <welcome-aup></welcome-aup>
     `
   }
-};
+}

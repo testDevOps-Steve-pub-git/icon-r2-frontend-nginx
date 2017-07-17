@@ -30,17 +30,23 @@ function Endpoint (
     // If there is a getHeaders, then append output to the request before returning.
     if (getHeaders) {
       return getHeaders()
-                          //  .then(SessionHandler.extendTransactionTime)
-                           .then(headers => request.headers = headers)
-                           .then(() => $http(request))
-                           .then(response => response.data)
-    }
+              .then(headers => {
+                request.headers = headers
+              })
+              .then(() => $http(request))
+              .then(response => response.data)
     // Otherwise return without headers (example: PostgREST lookups).
-    else {
+    } else {
       return $http(request)
                 .then(response => response.data)
     }
   }
+
+  const sha256 = pin => Crypto.SHA256(pin).toString()
+
+  const base64 = pin => Crypto.enc.Utf8.parse(pin).toString(Crypto.enc.Base64)
+
+  const obfuscatePin = pin => base64(JSON.stringify({ pin: sha256(pin) }))
 
   /**
    * Creates a header including session token.
@@ -72,19 +78,16 @@ function Endpoint (
            .then(() => { return headers })
   }
 
-  const getWithHeaders = xhr('GET')
-                            (headersWithSessionTransactionJson)
-                            (/* Omit data */)
+  const getWithHeaders = xhr('GET')(headersWithSessionTransactionJson)(/* Omit data */)
 
 /* Public *********************************************************************/
 
   const batchLookupDiseases = (snomeds) => {
     return getWithHeaders(() => `${ICON_API.LOOKUP_DISEASES}?filter[snomed]=${snomeds || ``}`)()
-           .then((diseases) => {
-             let lang = $translate.use()
-             return diseases
-                    .map(d => { return new Disease(d.longName[lang], `${d.snomed}`) })
-           })
+            .then((diseases) => {
+              let lang = $translate.use()
+              return diseases.map(d => new Disease(d.longName[lang], `${d.snomed}`))
+            })
   }
 
   const batchLookupAgentTrade = (snomeds) => {
@@ -95,7 +98,9 @@ function Endpoint (
   const lookupLots = (snomed) => {
     return getWithHeaders(lotSnomed => `${ICON_API.LOOKUP_LOTS}?filter[snomed]=${lotSnomed || ``}`)(snomed)
           .then(lots => {
-            if (!!lots[0].lots && lots.length == 1) { return lots[0].lots.map(lot => new Lot(lot.lotNumber, lot.expiry)) } else { return [] }
+            return (!!lots[0].lots && lots.length === 1)
+                      ? lots[0].lots.map(lot => new Lot(lot.lotNumber, lot.expiry))
+                      : []
           })
           .catch((error) => { console.warn(error) })
   }
@@ -187,16 +192,10 @@ function Endpoint (
   const headersWithSessionOiidPin = (oiid, pin) => {
     return headersWithSession()
            .then((headers) => {
-             const sha256 = text => Crypto.SHA256(text).toString()
-             const base64 = text => Crypto
-                                    .enc.Utf8.parse(text)
-                                    .toString(Crypto.enc.Base64)
-
-             let obfuscatedPin = base64(JSON.stringify({ pin: sha256(pin) }))
-
              headers['OIID'] = oiid
-             headers['immunizations-context'] = obfuscatedPin
+             headers['immunizations-context'] = obfuscatePin(pin)
              headers['lang'] = $translate.use().toLowerCase()
+
              return headers
            })
   }
@@ -228,35 +227,23 @@ function Endpoint (
     }
 
     return headersWithSessionTransactionJson()
-           .then(headers => request.headers = headers)
-           .then(SessionHandler.extendTransactionTime)
-           .then(() => $http(request))
-           .then(response => response.data)
+            .then(headers => {
+              request.headers = headers
+            })
+            .then(SessionHandler.extendTransactionTime)
+            .then(() => $http(request))
+            .then(response => response.data)
   }
-
-/* DHIR PIN Administration APIs ***********************************************/
 
   const getHeadersWithOiid = (oiid) => {
     return headersWithSession()
-      .then((headers) => {
-        headers['oiid'] = oiid
-        return headers
-      })
+            .then((headers) => {
+              headers['oiid'] = oiid
+              return headers
+            })
   }
 
-  /**
-   * Obfuscate PIN before sending it.
-   * @param pin
-   */
-  const obfuscatePin = (pin) => {
-    const sha256 = pin => Crypto.SHA256(pin).toString()
-    const base64 = pin => Crypto
-          .enc.Utf8.parse(pin)
-          .toString(Crypto.enc.Base64)
-
-    let obfuscatedPin = base64(JSON.stringify({ pin: sha256(pin) }))
-    return obfuscatedPin
-  }
+/* DHIR PIN Administration APIs ***********************************************/
 
   /* First time PIN set */
   const ClientStatus = (oiid) => {
@@ -272,7 +259,7 @@ function Endpoint (
   const ValidateHCN = (oiid, hcn) => {
     return xhr('POST')
               (headersWithSessionTransactionJson)
-              (() => { return {'oiid': oiid, 'hcn': hcn} })
+              (() => ({'oiid': oiid, 'hcn': hcn}))
               (() => `${ICON_API.PIN_URL}/validate-hcn`)
               ()
               .catch(response => $q.reject(DHIR.identifyValidateHCNError(response)))
@@ -280,19 +267,15 @@ function Endpoint (
 
   /* Set PIN */
   const SetPIN = (oiid, pin, email, hcn, role) => {
-    let obFuscatedPin = obfuscatePin(pin)
-
-    let setPinInfo = {
-      'oiid': oiid,
-      'immunizations-context': obFuscatedPin,
-      'email': email,
-      'hcn': hcn,
-      'role': role
-    }
-
     return xhr('POST')
               (headersWithSessionTransactionJson)
-              (() => setPinInfo)
+              (() => ({
+                'oiid': oiid,
+                'immunizations-context': sha256(pin),
+                'email': email,
+                'hcn': hcn,
+                'role': role
+              }))
               (() => `${ICON_API.PIN_URL}/set-pin`)
               ()
               .catch(response => $q.reject(DHIR.identifySetPINError(response)))
@@ -300,17 +283,16 @@ function Endpoint (
 
   /* Reset Access */
   const ResetAccess = (oiid, email, phuId) => {
-    let resetAccessObj = {
-      'oiid': oiid,
-      'email': email,
-      'phuId': phuId,
-      'lang': $translate.use().toLowerCase(),
-      'callbackUrl': `${ICON_API.BASE_URL}/reset?token=`
-    }
-
+    // TODO: add action and relationship to generated URL to fastrack return visitors
     return xhr('POST')
               (headersWithSessionTransactionJson)
-              (() => resetAccessObj)
+              (() => ({
+                'oiid': oiid,
+                'email': email,
+                'phuId': phuId,
+                'lang': $translate.use().toLowerCase(),
+                'callbackUrl': `verification/reset-pin?token=`
+              }))
               (() => `${ICON_API.PIN_URL}/reset`)
               ()
               .catch(response => $q.reject(DHIR.identifyResetAccessError(response)))
@@ -328,18 +310,14 @@ function Endpoint (
 
   /* Reset PIN */
   const ResetPIN = (token, oiid, role, pin) => {
-    let obfuscatedPin = obfuscatePin(pin)
-
-    let resetPinInfo = {
-      'oiid': oiid,
-      'token': token,
-      'immunizations-context': obfuscatedPin,
-      'role': role
-    }
-
     return xhr('POST')
               (headersWithSessionTransactionJson)
-              (() => resetPinInfo)
+              (() => ({
+                'oiid': oiid,
+                'token': token,
+                'immunizations-context': sha256(pin),
+                'role': role
+              }))
               (() => `${ICON_API.PIN_URL}/reset-pin`)
               ()
               .catch(response => $q.reject(DHIR.identifyResetPINError(response)))
@@ -349,31 +327,31 @@ function Endpoint (
 
   return {
     // Old PostgREST lookup APIs
-    getAddress: getAddress,
-    getCity: getCity,
-    getDisease: getDisease,
-    getSchoolOrDaycare: getSchoolOrDaycare,
-    getVaccine: getVaccine,
+    getAddress,
+    getCity,
+    getDisease,
+    getSchoolOrDaycare,
+    getVaccine,
 
     // New v2 PostgREST lookup APIs
-    batchLookupDiseases: batchLookupDiseases,
-    batchLookupAgentTrade: batchLookupAgentTrade,
-    lookupImmunizations: lookupImmunizations,
-    lookupLots: lookupLots,
+    batchLookupDiseases,
+    batchLookupAgentTrade,
+    lookupImmunizations,
+    lookupLots,
 
-    generatePdf: generatePdf,
+    generatePdf,
 
-    retrieveImmunizationRecord: retrieveImmunizationRecord,
-    submitImmunizationRecord: submitImmunizationRecord,
+    retrieveImmunizationRecord,
+    submitImmunizationRecord,
 
-    postAnalyticsLog: postAnalyticsLog,
+    postAnalyticsLog,
 
-    ClientStatus: ClientStatus,
-    ValidateHCN: ValidateHCN,
-    SetPIN: SetPIN,
-    ResetAccess: ResetAccess,
-    ValidateToken: ValidateToken,
-    ResetPIN: ResetPIN
+    ClientStatus,
+    ValidateHCN,
+    SetPIN,
+    ResetAccess,
+    ValidateToken,
+    ResetPIN
   }
 }
 

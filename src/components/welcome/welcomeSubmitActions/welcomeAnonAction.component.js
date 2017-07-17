@@ -1,27 +1,14 @@
 /* @ngInject */
-function welcomeAnonChoice$ctrl ($state, $uibModal) {
+function welcomeAnonChoice$ctrl ($state, $uibModal, Notify, ICON_NOTIFICATION) {
   this.$onInit = () => {
     /* Func declaration */
     this.goToAnonSubmission = goToAnonSubmission
-    this.openHelpModal = openHelpModal
+    this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
   }
 
   function goToAnonSubmission () {
     console.log('ANON SUBMISSION')
     // TODO: Go to anon submission with routing params
-  }
-
-  /**
-   *  Opens modal window for information on OIID and PIN
-   */
-  function openHelpModal () {
-    $uibModal.open({
-      animation: true,
-      template: '<welcome-help-modal $close="$close(result)"></welcome-help-modal>',
-      controller: () => {},
-      size: 'md'
-    }).result
-      .catch(angular.noop)
   }
 }
 

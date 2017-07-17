@@ -129,7 +129,6 @@
     "DAYCARE_TOOLTIP": "Si le patient est inscrit à une école ou à une garderie, veuillez indiquer le nom ici.",
     "DAYCARE_IF_APPLICABLE": "(le cas échéant)",
     "NO_RESULTS_FOUND": "Aucun résultat",
-    "HEALTH_CARD_NO_VC": "Ne pas inscrire les deux lettres du code de la version.",
     "ERROR": {
       "BAD_FORMAT": "Vous avez inscrit un caractère invalide.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères."
@@ -166,7 +165,6 @@
     "OPTIONAL": "(facultatif)",
     "DAYCARE_TOOLTIP": "Si le patient est inscrit à une école ou à une garderie, veuillez indiquer le nom ici.",
     "NO_RESULTS_FOUND": "Aucun résultat",
-    "HEALTH_CARD_NO_VC": "Ne pas inscrire les deux lettres du  code de la version.",
     "ERRORS": {
       "BAD_FORMAT": "Vous avez inscrit un caractère invalide.",
       "HCN_FORMAT_ERROR": "Vous avez inscrit un n<sup>o</sup> de carte Santé invalide.",
@@ -573,7 +571,6 @@
   },
   "OPTIONAL": "(facultatif)",
   "patientAuthDisplay": {
-    "INFORMATION_FROM_REPOSITORY": "Les renseignements suivants sont extraits du Registre d'immunisation de l'Ontario. ",
     "NAME": "Nom",
     "SEX": "Sexe",
     "SEX_MALE": "Homme ",
@@ -895,18 +892,6 @@
     "IMMUNIZATION_AUTH_SUBMISSION_LABEL": "Pour qui entrez-vous un n<sup>o</sup> d'identification d'immunisation de l'Ontario et un NIP?",
     "MYSELF": "Moi-même",
     "DEPENDENT": "Une personne à charge"
-  },
-  "welcomeHelpModal": {
-    "OIID_PIN_LABEL": "Qu’est-ce que le n<sup>o</sup> d’identification d'immunisation de l’Ontario et le NIP?",
-    "LOGIN_OIID": "Le n<sup>o</sup> d'identification d'immunisation de l'Ontario est un numéro à dix chiffres qui identifie chaque personne inscrite au Registre d'immunisation provincial.",
-    "LOGIN_PIN": "Le NIP est un numéro à six chiffres qui protège la confidentialité des renseignements sur les vaccins du patient.",
-    "OIID_PIN_MESSAGE": "Où peut-on les trouver?",
-    "OIID_TOOLTIP_1": "Vous trouverez votre numéro d’identification d'immunisation de l’Ontario sur une lettre envoyée par le",
-    "OIID_TOOLTIP_2": ". Si vous n'en avez pas reçu, veuillez communiquer avec le",
-    "OIID_TOOLTIP_3": " à ",
-    "PIN_TOOLTIP_1": "pour obtenir votre NIP, Communiquez avec le",
-    "PIN_TOOLTIP_2": "au",
-    "CLOSE": "Fermer"
   },
   "welcomeLandingPage": {
     "INTRO_2": "Les vaccins protègent la santé des Ontariennes et Ontariens!",

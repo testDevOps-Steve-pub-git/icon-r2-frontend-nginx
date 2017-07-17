@@ -1,7 +1,7 @@
 {
   "name": "icon-fronted-v2",
   "private": true,
-  "version": "2.38.1",
+  "version": "2.38.2",
   "description": "User facing front-end web application for ICON (Immunization Connect ONtario)",
   "dependencies": {
     "Base64": "1.0.0",
@@ -42,6 +42,7 @@
     "copy-webpack-plugin": "4.0.1",
     "forever": "0.15.2",
     "http-server": "0.9.0",
+    "husky": "^0.14.3",
     "jasmine": "2.5.2",
     "jasmine-bamboo-reporter": "0.0.2",
     "jasmine-core": "2.4.1",
@@ -53,7 +54,9 @@
     "webpack-dev-server": "^2.4.5"
   },
   "standard": {
-    "globals": [ "angular" ]
+    "globals": [
+      "angular"
+    ]
   },
   "scripts": {
     "install-exact": "echo \"Installing ICON front-end application dependencies (exact versions) ...\" && npm install -E",
@@ -70,7 +73,9 @@
     "test": "npm run test-unit && npm run test-e2e",
     "test-e2e": "protractor test/icon-e2e.protractor.conf.js",
     "test-unit": "mocha --compilers js:babel-core/register test/unit/**/*.test.js --reporter mocha-jenkins-reporter --reporter-options junit_report_path=./test/icon-unit-test-report.xml",
+    "test-unit-silent": "mocha --compilers js:babel-core/register test/unit/**/*.test.js",
     "test-unit-watch": "mocha --compilers js:babel-core/register test/unit/**/*.test.js --watch",
+    "prepush": "npm run test-unit-silent",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",

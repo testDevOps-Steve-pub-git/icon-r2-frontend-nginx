@@ -1,4 +1,3 @@
-import angular from 'angular'
 import dependencies from './dependencies.module.js'
 
 import index from './index.controller.js'
@@ -16,12 +15,12 @@ import DHIR_ERROR from './DHIR_ERROR.js'
 import Routes from './views/routes.js'
 
 // Polyfill for window location origin
-if (!window.location.origin) { window.location.origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : ''); }
-let BASE_URL = window.location.origin;
+if (!window.location.origin) window.location.origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '')
+let BASE_URL = window.location.origin
 
 // NOTE: New setup -- use when running both front-end, and back-end server locally.
 //       In browser, use http://xxsupportphu1.vcap.me:3001/
-// BASE_URL = 'http://xxsupportphu1.vcap.me:6001';
+// BASE_URL = 'http://xxsupportphu1.vcap.me:6001'
 
 angular.module('icon', [
   'app',
@@ -297,9 +296,14 @@ NOTE: Causes DHIR responses with an operation outcome to be thrown to the
 // NOTE: This runs whenever the application bootstraps on page load.
 //       By forcing a state transition, the user is prevented from loading the
 //       application in a mid-completion state.
-.run(['$state', function ($state) {
-  const INITIAL_STATE_WHITELIST = [ 'welcome', 'verification.reset-pin' ]
-  const isInitialStateAllowed = INITIAL_STATE_WHITELIST.includes($state.current.name)
-  if (!isInitialStateAllowed) $state.go('welcome')
+.run(['$state', '$timeout', function ($state, $timeout) {
+
+  // TODO: Factor out $timeout, find a way to use $state async when it's ready.
+  // $timeout(() => {
+  //   const INITIAL_STATE_WHITELIST = [ 'welcome', 'reset-pin' ]
+  //   const isInitialStateAllowed = INITIAL_STATE_WHITELIST.some($state.is)
+  //   if (!isInitialStateAllowed) $state.go('welcome')
+  // })
+
 }])
 // Comment the above function ^^^ if you want to be able to hot-reload on any screen for development.

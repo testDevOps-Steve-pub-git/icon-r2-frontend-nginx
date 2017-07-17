@@ -3,15 +3,15 @@ function auth$ctrl (
   $window, $translate,
   SessionHandler, TokenHandler
 ) {
-  this.$onInit= () => {
+  this.$onInit = () => {
     TokenHandler.refreshTransactionToken()
-    .then(SessionHandler.extendTransactionTime);
+    .then(SessionHandler.extendTransactionTime)
 
     /** Tab Close */
     $window.onbeforeunload = function (event) {
       let confirmationMessage = $translate.instant('leave_page.LEAVE_PAGE_CONFIRMATION');
-      (event || $window.event).returnValue = confirmationMessage; // IE
-      return confirmationMessage;
+      (event || $window.event).returnValue = confirmationMessage // IE
+      return confirmationMessage
     }
   }
 }

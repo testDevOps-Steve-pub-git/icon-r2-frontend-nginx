@@ -5,19 +5,19 @@ function anon$ctrl (
 ) {
   this.$onInit = () => {
     TokenHandler.refreshTransactionToken()
-    .then(SessionHandler.extendTransactionTime);
+    .then(SessionHandler.extendTransactionTime)
 
     $window.onbeforeunload = function (event) {
       let confirmationMessage = $translate.instant('leave_page.LEAVE_PAGE_CONFIRMATION');
-      (event || $window.event).returnValue = confirmationMessage; // IE
-      return confirmationMessage;
-    };
-  };
+      (event || $window.event).returnValue = confirmationMessage // IE
+      return confirmationMessage
+    }
+  }
 }
 
 export default {
-  name: "anon",
-  view : {
+  name: 'anon',
+  view: {
     controller: anon$ctrl,
     template: `
       <main>

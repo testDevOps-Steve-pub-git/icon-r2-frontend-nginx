@@ -1,24 +1,22 @@
 /* @ngInject */
 function authOtherPatient$ctrl (ImmunizationRecordService, Multitenancy, $document, Utility) {
+  this.$onInit = () => {
+    this.localPatient = ImmunizationRecordService.getPatient()
+    this.localSubmitter = ImmunizationRecordService.getSubmitter()
 
-  this.$onInit = ()=> {
-    this.localPatient = ImmunizationRecordService.getPatient();
-    this.localSubmitter = ImmunizationRecordService.getSubmitter();
-
-    this.patientName = this.localPatient.firstName;
-
+    this.patientName = this.localPatient.firstName
 
     /** Validation for next Prev buttons */
     this.validateForm = (form) => {
       if (!form.$valid) {
         Utility.focusFirstInvalidField(form)
       } else {
-        ImmunizationRecordService.setPatient(this.localPatient);
+        ImmunizationRecordService.setPatient(this.localPatient)
 
-        this.localSubmitter.relationshipToPatient = 'GUARD';
-        ImmunizationRecordService.setSubmitter(this.localSubmitter);
+        this.localSubmitter.relationshipToPatient = 'GUARD'
+        ImmunizationRecordService.setSubmitter(this.localSubmitter)
       }
-      return form.$valid;
+      return form.$valid
     }
   }
 }

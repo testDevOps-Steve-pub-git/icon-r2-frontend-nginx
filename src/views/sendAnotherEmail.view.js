@@ -1,13 +1,14 @@
 /* @ngInject */
 function sendAnotherEmail$ctrl (
+  $state,
+  $stateParams,
+  DHIR,
+  Endpoint,
   ImmunizationRecordService,
   Multitenancy,
-  Endpoint,
-  $state,
   Notify,
   Utility,
-  ICON_NOTIFICATION,
-  DHIR
+  ICON_NOTIFICATION
 ) {
 
   this.$onInit = ()=> {
@@ -34,12 +35,11 @@ function sendAnotherEmail$ctrl (
   function forgotEmail() {
     Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS)
     Endpoint.ResetAccess(this.patientInfo.oiid, this.submitterInfo.email, this.phuId)
-      .then( ()=> { $state.go('^.email-confirmation'); })
+      .then(()=> { $state.go('^.email-confirmation'); })
       .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
-      .catch( (errorId)=> {
+      .catch((errorId) => {
         Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
-        switch(errorId) {
-
+        switch (errorId) {
           case DHIR.error.ResetAccess.WRONG_EMAIL_PROVIDED:
             Notify.publish(ICON_NOTIFICATION.INFO_MISMATCH)
             break

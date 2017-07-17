@@ -9,9 +9,6 @@ function SessionHandler (
   const POLL_TOKEN_EXPIRY_INTERVAL_SECONDS = 1
   const TOKEN_RENEWAL_NETWORK_LATENCY_SECONDS = 5
 
-  let inactivityTimeoutSeconds = -1
-  let inactivityTimeoutExpiredSeconds = -1
-
   let inactivitySeconds = {
     notificationStart: -1,
     notificationEnd: -1
@@ -40,13 +37,6 @@ function SessionHandler (
 
   // Start polling checks for inactivity window expiration.
   $interval(checkInactivityExpiration, POLL_TOKEN_EXPIRY_INTERVAL_SECONDS * 1000)
-
-  /**
-   * @returns true once the session notification is due, false beforehand
-   */
-  function isSessionNotificationDue () {
-    return (currentTimeInSeconds() >= inactivityTimeoutSeconds)
-  }
 
   function setTransactionTimeout (transactionToken) {
     if (
@@ -95,7 +85,7 @@ function SessionHandler (
   function extendTransactionTime () {
     return TokenHandler.getTransactionToken()
            .then(setTransactionTimeout)
-           .catch((error) => {
+           .catch(() => {
               // Go to the welcome screen
              $state.go(`welcome`)
               // Then clear the notification.

@@ -1,11 +1,11 @@
 /* @ngInject */
-function welcomeAuthChoice$ctrl (ImmunizationRecordService, $state, $uibModal) {
+function welcomeAuthChoice$ctrl (ImmunizationRecordService, $state, $uibModal, Notify, ICON_NOTIFICATION) {
   this.$onInit = () => {
     this.patientInfo = ImmunizationRecordService.getPatient()
 
     /* func declaration */
     this.goToPINInput = goToPINInput
-    this.openHelpModal = openHelpModal
+    this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
   }
 
   /**
@@ -20,19 +20,6 @@ function welcomeAuthChoice$ctrl (ImmunizationRecordService, $state, $uibModal) {
     } else {
       form.OIID.$setTouched()
     }
-  }
-
-  /**
-   *  Opens modal window for information on OIID and PIN
-   */
-  function openHelpModal () {
-    $uibModal.open({
-      animation: true,
-      template: '<welcome-help-modal $close="$close(result)"></welcome-help-modal>',
-      controller: () => {},
-      size: 'md'
-    }).result
-      .catch((error) => { console.log(error) })
   }
 }
 

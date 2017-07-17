@@ -1,8 +1,8 @@
 /* @ngInject */
 function authConfirmation$ctrl (GatingQuestionService, EditReviewService) {
-  this.$onInit = ()=> {
-    GatingQuestionService.reset();
-    EditReviewService.setFromReviewPage(false);
+  this.$onInit = () => {
+    GatingQuestionService.reset()
+    EditReviewService.setFromReviewPage(false)
   }
 }
 

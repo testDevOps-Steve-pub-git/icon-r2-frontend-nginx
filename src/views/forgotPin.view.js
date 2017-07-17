@@ -1,39 +1,38 @@
 /* @ngInject */
 function forgotPin$ctrl (
+  $state,
+  Endpoint,
   ImmunizationRecordService,
   Multitenancy,
-  Endpoint,
-  Utility,
-  $state,
   Notify,
-  ICON_NOTIFICATION,
-  DHIR) {
-
-  this.$onInit = ()=> {
-    this.patientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
+  Utility,
+  DHIR,
+  ICON_NOTIFICATION
+) {
+  this.$onInit = () => {
+    this.patientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
 
     Multitenancy.getPhuKeys()
-      .then((phuAssets) => {
-      this.multitenancy = phuAssets;
-      this.phuId = this.multitenancy.PHIX_PHU_CODE;
-    });
+    .then((phuAssets) => {
+      this.multitenancy = phuAssets
+      this.phuId = this.multitenancy.PHIX_PHU_CODE
+    })
 
     /*Function Declaration*/
-    this.forgotEmail = forgotEmail;
-    this.validateFormAndSubmit = validateFormAndSubmit;
+    this.forgotEmail = forgotEmail
+    this.validateFormAndSubmit = validateFormAndSubmit
   }
 
 
   function forgotEmail() {
     Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS)
     Endpoint.ResetAccess(this.patientInfo.oiid, this.submitterInfo.email, this.phuId)
-      .then( ()=> { $state.go('^.email-confirmation'); })
+      .then(() => { $state.go('^.email-confirmation') })
       .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
       .catch( (errorId)=> {
         Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
-        switch(errorId) {
-
+        switch (errorId) {
           case DHIR.error.ResetAccess.WRONG_EMAIL_PROVIDED:
               Notify.publish(ICON_NOTIFICATION.EMAIL_NOT_ON_FILE)
             break
@@ -42,19 +41,19 @@ function forgotPin$ctrl (
               Notify.publish(ICON_NOTIFICATION.NO_EMAIL_ON_FILE)
             break
 
-          case DHIR.error.ResetAccess.LOCKED_OUT :
+          case DHIR.error.ResetAccess.LOCKED_OUT:
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_SECURITY_LOCK_OUT)
             break
 
-          case DHIR.error.ResetAccess.RATE_LIMIT :
+          case DHIR.error.ResetAccess.RATE_LIMIT:
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_TOO_MANY_FAILED_ATTEMPTS)
             break
 
-          case DHIR.error.ResetAccess.RESOURCE_NOT_FOUND :
-          case DHIR.error.ResetAccess.MALFORMED_REQUEST :
-          case DHIR.error.ResetAccess.SERVER_INTERNAL_ERROR :
-          case DHIR.error.ResetAccess.MALFORMED_MISSING_REQUIRED_DATA :
-          case DHIR.error.ResetAccess.MALFORMED_INVALID_VALUE :
+          case DHIR.error.ResetAccess.RESOURCE_NOT_FOUND:
+          case DHIR.error.ResetAccess.MALFORMED_REQUEST:
+          case DHIR.error.ResetAccess.SERVER_INTERNAL_ERROR:
+          case DHIR.error.ResetAccess.MALFORMED_MISSING_REQUIRED_DATA:
+          case DHIR.error.ResetAccess.MALFORMED_INVALID_VALUE:
           default:
             Notify.publish(ICON_NOTIFICATION.WARN_GENERAL_SERVER_ERROR)
             break
@@ -64,7 +63,7 @@ function forgotPin$ctrl (
 
 
   function validateFormAndSubmit(form) {
-    if(form.$valid) this.forgotEmail()
+    if (form.$valid) this.forgotEmail()
     else Utility.focusFirstInvalidField(form)
   }
 }
@@ -89,6 +88,7 @@ export default {
               oiid="$ctrl.patientInfo.oiid">
             </oiid-display>
           </div>
+
           <div class = "form-group">
             <email-capture
               email="$ctrl.submitterInfo.email"
@@ -96,6 +96,7 @@ export default {
               is-optional="false">
             </email-capture>
           </div>
+
           <button class="btn btn-primary"
             id="forgotPinButton"
             type="submit"

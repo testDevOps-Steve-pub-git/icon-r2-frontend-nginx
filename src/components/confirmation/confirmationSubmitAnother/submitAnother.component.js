@@ -18,7 +18,7 @@ function submitAnother$ctrl (
 
     /* Func Init */
     this.returnHome = returnHome
-    this.openHelpModal = openHelpModal
+    this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
   }
 
   this.$onDestroy = () => {
@@ -31,19 +31,6 @@ function submitAnother$ctrl (
     ImmunizationRecordService.setAddress(address)
 
     TokenHandler.clearTransactionToken()
-  }
-
-  /**
-   *  Opens modal window for information on OIID and PIN
-   */
-  function openHelpModal () {
-    $uibModal.open({
-      animation: true,
-      template: '<welcome-help-modal $close="$close(result)"></welcome-help-modal>',
-      controller: () => {},
-      size: 'md'
-    }).result
-      .catch(angular.noop)
   }
 
   /**

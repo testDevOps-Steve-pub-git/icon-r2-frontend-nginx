@@ -186,22 +186,6 @@ function PdfMaker (
     ]
   }
 
-  function patientNameHeading ({text, data}) {
-    return {
-      text: [
-        {
-          text: text.patientNameHeading_p1s1f1,
-          fontSize: fontSize.H3
-        },
-        {
-          text: data.patientName,
-          fontSize: fontSize.H3,
-          bold: true
-        }
-      ]
-    }
-  }
-
   function patientDemographics ({text, data}) {
     let demographicsList = {
       ul: [
@@ -282,7 +266,7 @@ function PdfMaker (
 
     if (data.contactExt) {
       phone.text.push({ text: text.contact_ul1_li1_f3 })
-      phone.text.push({ text: data.contactExt, bold: true})
+      phone.text.push({ text: data.contactExt, bold: true })
     }
 
     if (data.contactPhone) contact.push(phone)
@@ -590,7 +574,7 @@ function PdfMaker (
       // Instructions object to send to PdfMake on back-end.
     return {
       info: {
-        	title: 'Confirmation PDF'
+        title: 'Confirmation PDF'
       },
 
       pageSize: 'LETTER',
@@ -630,7 +614,7 @@ function PdfMaker (
       // Instructions object to send to PdfMake on back-end.
     return {
       info: {
-        	title: 'Yellow Card PDF'
+        title: 'Yellow Card PDF'
       },
 
       pageSize: 'LETTER',

@@ -1,12 +1,12 @@
 /* @ngInject */
 function authOtherReview$ctrl ($state, ImmunizationRecordService) {
-    this.progressBar = $state.$current.data.progressBar;
+  this.progressBar = $state.$current.data.progressBar
 
   this.$onInit = () => {
-    this.clientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
-    this.addressInfo = ImmunizationRecordService.getAddress();
-    this.immunizations = ImmunizationRecordService.getNewImmunizations();
+    this.clientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
+    this.addressInfo = ImmunizationRecordService.getAddress()
+    this.immunizations = ImmunizationRecordService.getNewImmunizations()
   }
 }
 

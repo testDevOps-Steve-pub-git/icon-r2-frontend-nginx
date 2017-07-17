@@ -16,7 +16,7 @@ function Notify (ICON_NOTIFICATION) {
   /** Publishes a notification to all registered subscribers. */
   function publish (notification) {
     if (!doesNotificationExist(notification)) {
-      throw new Error(`Notification \"ICON_NOTIFICATION.${notification}\" does not exist!`)
+      throw new Error(`Notification "ICON_NOTIFICATION.${notification}" does not exist!`)
     }
 
     notificationBus[notification]
@@ -26,7 +26,7 @@ function Notify (ICON_NOTIFICATION) {
   /** Adds a subscriber function to the list of callbacks callod when a notification is published. */
   function subscribe (notification, subscriber) {
     if (!doesNotificationExist(notification)) {
-      throw new Error(`Notification \"ICON_NOTIFICATION.${notification}\" does not exist!`)
+      throw new Error(`Notification "ICON_NOTIFICATION.${notification}" does not exist!`)
     }
 
     if (!notificationBus[notification]) notificationBus[notification] = []
@@ -36,7 +36,7 @@ function Notify (ICON_NOTIFICATION) {
   /** Removes a subscriber function to the list of callbacks callod when a notification is published. */
   function unsubscribe (notification, subscriber) {
     if (!doesNotificationExist(notification)) {
-      throw new Error(`Notification \"ICON_NOTIFICATION.${notification}\" does not exist!`)
+      throw new Error(`Notification "ICON_NOTIFICATION.${notification}" does not exist!`)
     }
 
     if (notificationBus[notification]) {

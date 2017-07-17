@@ -1,5 +1,5 @@
 /** Contains the profiles of DHIR error responses. */
-const ICON_NOTIFICATION = require('./ICON_NOTIFICATION.js')
+import ICON_NOTIFICATION from './ICON_NOTIFICATION.js'
 
 /* Private ********************************************************************/
 

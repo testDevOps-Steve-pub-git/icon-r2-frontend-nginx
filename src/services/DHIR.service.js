@@ -120,8 +120,14 @@ function DHIR (Is) {
       isMatch: Is.Dhir.response.match({
         status: 400,
         issueConditions: {
-          all: [ Is.Fhir.issue.details.id('DHIR_ADM_005') ],
-          none: [ Is.Fhir.issue.details.id('DHIR_ADM_071') ]
+          all: [
+            Is.Fhir.issue.details.id('DHIR_ADM_005')
+          ],
+          none: [
+            Is.Fhir.issue.details.id('DHIR_ADM_071'),
+            Is.Fhir.issue.details.id('DHIR_ADM_006'),
+            Is.Fhir.issue.details.id('DHIR_ADM_008')
+          ]
         }
       })
     },
@@ -150,7 +156,9 @@ function DHIR (Is) {
     OIID_PIN_REVOKED_AGE: {
       isMatch: Is.Dhir.response.match({
         status: 400,
-        issueConditions: { all: [ Is.Fhir.issue.details.id('DHIR_ADM_006') ] }
+        issueConditions: {
+          all: [ Is.Fhir.issue.details.id('DHIR_ADM_006') ]
+        }
       })
     },
     OIID_PIN_REVOKED_PHU: {
@@ -168,8 +176,7 @@ function DHIR (Is) {
           ],
           none: [
             Is.Fhir.issue.details.id('DHIR_ADM_006'),
-            Is.Fhir.issue.details.id('DHIR_ADM_008'),
-            Is.Fhir.issue.details.id('DHIR_ADM_071')
+            Is.Fhir.issue.details.id('DHIR_ADM_008')
           ]
         }
       })
@@ -183,6 +190,7 @@ function DHIR (Is) {
           ],
           none: [
             Is.Fhir.issue.details.id('DHIR_ADM_005'),
+            Is.Fhir.issue.details.id('DHIR_ADM_006'),
             Is.Fhir.issue.details.id('DHIR_ADM_007')
           ]
         }

@@ -135,6 +135,6 @@ function TokenHandler (
 }
 
 export default {
-  name:     `TokenHandler`,
+  name: `TokenHandler`,
   service: TokenHandler
 }

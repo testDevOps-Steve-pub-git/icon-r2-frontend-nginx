@@ -1,18 +1,18 @@
 /* @ngInject */
 function anonOtherSubmission$ctrl ($state, TokenHandler, ImmunizationRecordService, Submitter) {
-  this.navStates = $state.$current.data.navStates;
-  TokenHandler.getTransactionToken();
+  this.navStates = $state.$current.data.navStates
+  TokenHandler.getTransactionToken()
 
-  this.$onInit= ()=> {
-    let submitter = ImmunizationRecordService.getSubmitter();
-    submitter.relationshipToPatient = Submitter.relationships.GUARD;
-    ImmunizationRecordService.setSubmitter(submitter);
+  this.$onInit = () => {
+    let submitter = ImmunizationRecordService.getSubmitter()
+    submitter.relationshipToPatient = Submitter.relationships.GUARD
+    ImmunizationRecordService.setSubmitter(submitter)
   }
 }
 
 export default {
   name: 'anonOtherSubmission',
-  view : {
+  view: {
     bindings: { data: '@' },
     controller: anonOtherSubmission$ctrl,
     template: `

@@ -10,12 +10,11 @@ function ImmunizationRecordConverter (
 ) {
 /* Private ********************************************************************/
   // NOTE: these all get set asynchronously during execution of .convert(...)
-  let sessionToken = null;
-  let transactionToken = null;
-  let multitenancy = null;
+  let transactionToken = null
+  let multitenancy = null
   /* Gating questions */
-  let didReceivePHULetter = null;
-  let allImmunizationsFromOntario = null;
+  let didReceivePHULetter = null
+  let allImmunizationsFromOntario = null
 
   /**
    * Creates a patient FHIR object.
@@ -25,44 +24,46 @@ function ImmunizationRecordConverter (
    * @returns {Object}
    */
   function createPatient (record, patientId, schoolId) {
-    let patient = record.getPatient();
-    let address = record.getAddress();
+    let patient = record.getPatient()
+    let address = record.getAddress()
 
     const ADDRESS_EXTENSION_URLS = {
-      streetNumber:     'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber',
-      streetName:       'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName',
-      streetType:       'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType',
-      streetDirection:  'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-direction',
-      unitNumber:       'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID',
-      postBox:          'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox',
-      ruralRoute:       'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-rural-route',
-      station:          'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-station',
-      retailPostOffice: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-retail-postal-office',
-    };
+      streetNumber: 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber',
+      streetName: 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName',
+      streetType: 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType',
+      streetDirection: 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-direction',
+      unitNumber: 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID',
+      postBox: 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox',
+      ruralRoute: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-rural-route',
+      station: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-station',
+      retailPostOffice: 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-address-retail-postal-office'
+    }
 
     // Create an object for each FHIR address extension which is non-empty.
     let addressExtension = Object.keys(address)
         .filter(key => { return address[key] !== '' && ADDRESS_EXTENSION_URLS[key] })
-        .map(key => { return {
-                      'url': ADDRESS_EXTENSION_URLS[key],
-                      'valueString': address[key]
-                    }});
+        .map(key => {
+          return {
+            'url': ADDRESS_EXTENSION_URLS[key],
+            'valueString': address[key]
+          }
+        })
 
     let patientResource = {
       'resourceType': 'Patient',
       'id': patientId,
       'name': [
         {
-          'use':    'official',
+          'use': 'official',
           'family': [ patient.lastName ],
-          'given':  (patient.middleName === '') ? [patient.firstName] : [patient.firstName, patient.middleName]
+          'given': (patient.middleName === '') ? [patient.firstName] : [patient.firstName, patient.middleName]
         }
       ],
-      'gender':     patient.gender.toLowerCase(),
-      'birthDate':  moment(patient.dateOfBirth).format('YYYY-MM-DD')
-    };
+      'gender': patient.gender.toLowerCase(),
+      'birthDate': moment(patient.dateOfBirth).format('YYYY-MM-DD')
+    }
 
-    if(schoolId){
+    if (schoolId) {
       patientResource.contact = [
         {
           'organization': {
@@ -72,45 +73,49 @@ function ImmunizationRecordConverter (
       ]
     }
 
-    let patientResourceIdentifier = [];
-    if (patient.healthCardNumber) patientResourceIdentifier.push({
-                                    'use':    'official',
-                                    'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-patient-hcn',
-                                    'value':  patient.healthCardNumber
-                                  });
+    let patientResourceIdentifier = []
+    if (patient.healthCardNumber) {
+      patientResourceIdentifier.push({
+        'use': 'official',
+        'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-patient-hcn',
+        'value': patient.healthCardNumber
+      })
+    }
 
-    if (patient.oiid) patientResourceIdentifier.push({
-                        'use':    'secondary',
-                        'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id',
-                        'value':  patient.oiid
-                      });
+    if (patient.oiid) {
+      patientResourceIdentifier.push({
+        'use': 'secondary',
+        'system': 'https://ehealthontario.ca/API/FHIR/NamingSystem/ca-on-panorama-immunization-id',
+        'value': patient.oiid
+      })
+    }
 
     if (patientResourceIdentifier.length) {
-      patientResource.identifier = patientResourceIdentifier;
+      patientResource.identifier = patientResourceIdentifier
     }
 
     let isAddressPopulated = (
-         address.city
-      && address.province
-      && address.postalCode
-      && addressExtension.length
-    );
+      address.city &&
+      address.province &&
+      address.postalCode &&
+      addressExtension.length
+    )
 
     // NOTE: FHIR spec in v2 makes address an optional part of the Patient resource.
     if (isAddressPopulated) {
       patientResource.address = [
         {
-          'extension':  addressExtension,
-          'use':        'home',
-          'line':       [ address.line2 ],
-          'city':       address.city,
-          'state':      address.province,
+          'extension': addressExtension,
+          'use': 'home',
+          'line': [ address.line2 ],
+          'city': address.city,
+          'state': address.province,
           'postalCode': address.postalCode
         }
-      ];
+      ]
     }
 
-    return patientResource;
+    return patientResource
   }
 
   /**
@@ -121,27 +126,31 @@ function ImmunizationRecordConverter (
    * @returns {Object}
    */
   function createSubmitter (record, patientId, submitterId) {
-    let submitter = record.getSubmitter();
+    let submitter = record.getSubmitter()
 
     // Assemble the telecom object, conditionally include the 2nd phone number when present.
     let telecom = [{
       'system': 'phone',
-      'value':  (submitter.phone1Ext !== '')
-                    ? `${submitter.phone1Number} x${submitter.phone1Ext}`
-                    : submitter.phone1Number,
-      'use':    'home'
-    }];
-    if (submitter.phone2Number !== '') telecom.push({
-          'system': 'phone',
-          'value':  (submitter.phone2Ext !== '')
-                        ? `${submitter.phone2Number} x${submitter.phone2Ext}`
-                        : submitter.phone2Number,
-          'use':    'home'
-        });
-    if (submitter.email !== '') telecom.push({
-          'system': 'email',
-          'value':  submitter.email
-        });
+      'value': (submitter.phone1Ext !== '')
+                ? `${submitter.phone1Number} x${submitter.phone1Ext}`
+                : submitter.phone1Number,
+      'use': 'home'
+    }]
+    if (submitter.phone2Number !== '') {
+      telecom.push({
+        'system': 'phone',
+        'value': (submitter.phone2Ext !== '')
+                    ? `${submitter.phone2Number} x${submitter.phone2Ext}`
+                    : submitter.phone2Number,
+        'use': 'home'
+      })
+    }
+    if (submitter.email !== '') {
+      telecom.push({
+        'system': 'email',
+        'value': submitter.email
+      })
+    }
 
     return {
       'resourceType': 'RelatedPerson',
@@ -170,8 +179,6 @@ function ImmunizationRecordConverter (
    * @returns {Object}
    */
   function createPhu (record, phuId) {
-    let { PHIX_PHU_CODE, PHIX_PHU_NAME } = Multitenancy.getPhuKeys()
-
     return {
       'resourceType': 'Organization',
       'id': phuId,
@@ -265,7 +272,7 @@ function ImmunizationRecordConverter (
       }
 
       return immunization
-    };
+    }
   }
 
   /**
@@ -297,14 +304,14 @@ function ImmunizationRecordConverter (
       !!patient.schoolOrDayCareIdentifier
     )
 
-    const PHU_ID = 'Organization/2';
-    const PATIENT_ID = 'Patient/1';
+    const PHU_ID = 'Organization/2'
+    const PATIENT_ID = 'Patient/1'
     const SCHOOL_ID = isSchoolInfoPopulated ? 'Organization/1' : null
-    const SUBMITTER_ID = 'RelatedPerson/1';
+    const SUBMITTER_ID = 'RelatedPerson/1'
 
     let numberOfImmunizations = record.getNewImmunizations()
         .map((_, index) => ({
-          'contentReference': { 'reference':  `#Immunization/${index + 1}` }
+          'contentReference': { 'reference': `#Immunization/${index + 1}` }
         }))
 
     let communication = {
@@ -341,10 +348,7 @@ function ImmunizationRecordConverter (
   }
 
   function convert (record) {
-    return TokenHandler
-           .getSessionToken()
-           .then(token => { sessionToken = token })
-           .then(TokenHandler.getTransactionToken)
+    return TokenHandler.getTransactionToken()
            .then(token => { transactionToken = token })
            .then(Multitenancy.getPhuKeys)
            .then(phuKeys => { multitenancy = phuKeys })
@@ -353,7 +357,7 @@ function ImmunizationRecordConverter (
              didReceivePHULetter = gatingQuestions.question1Choice
              allImmunizationsFromOntario = gatingQuestions.question2Choice
            })
-           .then(() => { return convertToFhir(record) });
+           .then(() => { return convertToFhir(record) })
   }
 
   /**

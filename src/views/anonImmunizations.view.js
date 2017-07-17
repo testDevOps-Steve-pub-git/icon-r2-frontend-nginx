@@ -3,7 +3,7 @@ function anonImmunizations$ctrl () {}
 
 export default {
   name: 'anonImmunizations',
-  view : {
+  view: {
     controller: anonImmunizations$ctrl,
     template: `
     <h1>{{ 'immunizationInput.IMMUNIZATIONS' | translate }}</h1>

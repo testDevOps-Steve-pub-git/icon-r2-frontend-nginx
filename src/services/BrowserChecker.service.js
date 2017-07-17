@@ -65,9 +65,7 @@ function BrowserChecker (deviceDetector) {
    * @return {browser} - An object containing the detected browser and it's relevant attributes
   */
   function getBrowser () {
-    let browser = allBrowsers[
-                    Object.keys(allBrowsers)
-                          .filter((a) => deviceDetector.browser === allBrowsers[a].browser)]
+    let browser = allBrowsers[Object.keys(allBrowsers).filter((a) => deviceDetector.browser === allBrowsers[a].browser)]
     browser.version = deviceDetector.browser_version.split('.')[0]
     return browser
   }

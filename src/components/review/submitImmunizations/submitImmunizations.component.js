@@ -27,12 +27,12 @@ function submitImmunizations$ctrl (
       const uploadStatus = {
         PAYLOAD_TOO_LARGE: 413,
         UNSUPPORTED_MEDIA_TYPE: 415,
-        UNPROCESSABLE_ENTITY: 422,
+        UNPROCESSABLE_ENTITY: 422
       }
 
       return FileUploadHandler.getUploader()
       .then(FileUploadHandler.uploadAll)
-      .catch(({ status=0 }) => {
+      .catch(({ status = 0 }) => {
         switch (status) {
           case uploadStatus.PAYLOAD_TOO_LARGE:
             Notify.publish(ICON_NOTIFICATION.WARN_DOCUMENT_FILE_TOO_LARGE)

@@ -1,6 +1,6 @@
 /* @ngInject */
 function authImmunizations$ctrl () {
-    this.attribute = '';
+  this.attribute = ''
 }
 
 export default {

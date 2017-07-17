@@ -1,27 +1,27 @@
 /* @ngInject */
 function anonSelfPatient$ctrl (ImmunizationRecordService, Utility) {
   this.$onInit = () => {
-    this.localPatient = ImmunizationRecordService.getPatient();
-    this.localSubmitter = ImmunizationRecordService.getSubmitter();
+    this.localPatient = ImmunizationRecordService.getPatient()
+    this.localSubmitter = ImmunizationRecordService.getSubmitter()
 
     this.validateForm = (form) => {
       if (!form.$valid) {
         Utility.focusFirstInvalidField(form)
       } else {
-        ImmunizationRecordService.setPatient(this.localPatient);
-        this.localSubmitter.firstName = this.localPatient.firstName;
-        this.localSubmitter.lastName = this.localPatient.lastName;
-        this.localSubmitter.relationshipToPatient = 'ONESELF';
-        ImmunizationRecordService.setSubmitter(this.localSubmitter);
+        ImmunizationRecordService.setPatient(this.localPatient)
+        this.localSubmitter.firstName = this.localPatient.firstName
+        this.localSubmitter.lastName = this.localPatient.lastName
+        this.localSubmitter.relationshipToPatient = 'ONESELF'
+        ImmunizationRecordService.setSubmitter(this.localSubmitter)
       }
-      return form.$valid;
+      return form.$valid
     }
   }
 }
 
 export default {
   name: 'anonSelfPatient',
-  view : {
+  view: {
     controller: anonSelfPatient$ctrl,
     template: `
       <div>

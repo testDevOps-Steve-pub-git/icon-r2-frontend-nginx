@@ -305,6 +305,10 @@
 .progress-bar { height: 5px; }
 .progress { height: 5px; }
 
+.icon-progress-bar-cursor{
+  cursor: initial;
+}
+
 #icon-progress-bar-container {
   margin: 0;
   min-width: 400px;

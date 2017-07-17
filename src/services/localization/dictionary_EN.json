@@ -129,7 +129,6 @@
     "DAYCARE_IF_APPLICABLE": "(if applicable)",
     "DAYCARE_TOOLTIP": "If the patient is enrolled in a school or daycare, please provide the name here.",
     "NO_RESULTS_FOUND": "No Results Found",
-    "HEALTH_CARD_NO_VC": "Do not include the two letter version code.",
     "ERROR": {
       "BAD_FORMAT": "You have entered an invalid character.",
       "EXCEEDS_MAXLENGTH": "You have entered too many characters."
@@ -166,7 +165,6 @@
     "OPTIONAL": "(optional)",
     "DAYCARE_TOOLTIP": "If the patient is enrolled in a school or daycare, please provide the name here.",
     "NO_RESULTS_FOUND": "No Results Found",
-    "HEALTH_CARD_NO_VC": "Do not include the two letter version code.",
     "ERRORS": {
       "BAD_FORMAT": "You have entered an invalid character.",
       "HCN_FORMAT_ERROR": "You have entered an invalid health card number.",
@@ -203,7 +201,7 @@
   },
   "confirmationMessage": {
     "COMPLETION_TITLE": "Submission Complete",
-    "COMPLETION_MESSAGE": "We have received your submission for <strong>{{ clientName }}</strong> and a staff member from {{ phuName }} will review this submission {{ time_to_process }}. We will be in touch if there are any questions.",
+    "COMPLETION_MESSAGE": "We have received your submission for <strong>{{ clientName }}</strong> and a staff member from {{ phuName }} will review this submission within {{ time_to_process }}. We will be in touch if there are any questions.",
     "REFERENCE_NUMBER_LABEL": "REFERENCE NUMBER",
     "REFERENCE_NUMBER_MESSAGE": "Please keep this number for your records. You can also print or save a PDF copy of the information you have just submitted. If you have provided an email address, you will be notified once your submission has been received by your Public Health Unit and once your submission has been reviewed.",
     "PRINT": "Print",
@@ -221,7 +219,7 @@
     "DATE_ERROR": "You have entered an invalid date. Please use the format YYYY-MM-DD."
   },
   "dismissableInfoNotification": {
-    "CLOSE_BUTTON": "Close"
+    "CLOSE_BUTTON": "OK"
   },
   "documentCapture": {
     "DOCUMENTS_LABEL": "Documents (optional)",
@@ -262,7 +260,7 @@
     "EMAIL": "Email",
     "CONFIRM_EMAIL": "Confirm Email",
     "OPTIONAL": "(optional)",
-    "EMAIL_HINT": "This email will be used to validate you if you need to reset your PIN and for communication purposes. We will not share this Email address with anyone.",
+    "EMAIL_HINT": "This email will be used to validate you if you need to reset your PIN and for communication purposes. We will not share this email address with anyone.",
     "ERRORS": {
       "IS_REQUIRED": "You must enter an email address.",
       "EXCEEDS_MAXLENGTH": "You have entered too many characters.",
@@ -272,7 +270,7 @@
   },
   "emailConfirmation": {
     "TITLE": "Check your email",
-    "CONFIRMATION_MESSAGE": "<p>We have sent you instructions to reset the PIN associated with the Ontario Immunization ID {{ patient_oiid }}. The link in the email will be valid for 24 hours.</p><p>If you do not receive an email you can <button class='icon-btn-link' ui-sref='^.forgot-pin' id='resetPinButton'>try again</button> or contact <strong>{{ phuName }}</strong> at <strong>{{ phuPhone }}</strong></p>",
+    "CONFIRMATION_MESSAGE": "<p>We have sent you instructions to reset the PIN associated with the Ontario Immunization ID {{ patient_oiid }}. The link in the email will be valid for 24 hours.</p><p>If you do not receive an email you can <button class='icon-btn-link' ui-sref='^.forgot-pin' id='resetPinButton'>try again</button> or contact <strong>{{ phuName }}</strong> at <strong>{{ phuPhone }}</strong>.</p>",
     "RETURN_HOME": "Return Home"
   },
   "enterPin": {
@@ -410,19 +408,19 @@
   },
   "notification": {
     "$pushProgressSubmission": {
-      "TITLE": "Please wait.",
+      "TITLE": "Please Wait",
       "BODY": "Submitting immunizations..."
     },
     "$pushProgressRetrieval": {
-      "TITLE": "Please wait.",
-      "BODY": "Your information is being retrieved. "
+      "TITLE": "Please Wait",
+      "BODY": "Your information is being retrieved..."
     },
     "$pushProgressYellowCardPdf": {
-      "TITLE": "Please wait.",
+      "TITLE": "Please Wait",
       "BODY": "Opening printable PDF immunization record..."
     },
     "$pushProgressConfirmationPdf": {
-      "TITLE": "Please wait.",
+      "TITLE": "Please Wait",
       "BODY": "Opening printable PDF confirmation..."
     },
     "$pushTransactionTokenTimeout": {
@@ -448,7 +446,7 @@
     },
     "$infoLearnMoreAboutOiid": {
       "TITLE": "What are the Ontario Immunization ID and PIN?",
-      "BODY": "<section><p>An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization repository.</p> <p>A patient's PIN is a six digit number that protects the confidentiality of immunization information.</p></section> <section><h4>Where can I find them?</h4> <p>Your Ontario Immunization ID may be found on a letter sent from {{phuName}}. If you do not have this code from your Health Unit, please contact {{phuName}} at {{phuPhone}}</p></section><br aria-hidden=\"true\" />"
+      "BODY": "<section><p>An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization repository.</p> <p>A patient's PIN is a six digit number that protects the confidentiality of immunization information.</p></section> <section><h4>Where can I find them?</h4> <p>Your Ontario Immunization ID may be found on a letter sent from {{phuName}}. If you do not have this code from your Health Unit, please contact {{phuName}} at {{phuPhone}}.</p></section><br aria-hidden=\"true\" />"
     },
     "$infoOiidPinOutdated": {
       "TITLE": "System Updated - Additional Info Required",
@@ -497,7 +495,7 @@
     },
     "$warnNoEmailOnFile": {
       "TITLE": "No Email on File",
-      "BODY": "There is no email on file for this Ontario Immunization ID. Please contact <strong>{{phuName}}</strong> at <strong>{{phuPhone}}.</strong>"
+      "BODY": "There is no email on file for this Ontario Immunization ID. Please contact <strong>{{phuName}}</strong> at <strong>{{phuPhone}}</strong>."
     },
     "$warnRetrievalConsentBlock": {
       "TITLE": "Response 176 - Unable to display immunization record.",
@@ -516,7 +514,7 @@
       "BODY": "We are unable to retrieve your record at this time. "
     },
     "$warnRetrievalSecurityLockOut": {
-      "TITLE": "Access Denied",
+      "TITLE": "Access Warning",
       "BODY": "Either the Ontario Immunization ID or PIN you have provided is incorrect. Please confirm this information and try again. After 10 failed attempts, this Ontario Immunization ID will be locked."
     },
     "$warnRetrievalTooManyFailedAttempts": {
@@ -571,7 +569,6 @@
   },
   "OPTIONAL": "(optional)",
   "patientAuthDisplay": {
-    "INFORMATION_FROM_REPOSITORY": "The following information comes from the Ontario Immunization Repository",
     "NAME": "Name",
     "SEX": "Sex",
     "SEX_MALE": "Male",
@@ -672,7 +669,7 @@
     "immunizationsTitle_p1_s1": "Immunization Record Submitted: ",
     "yellowCardTitle_p1_s1_f1": "Immunization Record",
     "yellowCardTitle_p1_s1_f2": "Retrieved on {{reportGeneratedDate}} at {{reportGeneratedTime}}\n\n",
-    "yellowCardFooter_p1_s1": "\nThe information in the record above comes from from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card.\n",
+    "yellowCardFooter_p1_s1": "\nThe information in the record above comes from the Ontario Immunization Repository. Recently submitted immunizations take time to be reviewed and might not be shown on this yellow card.\n",
     "printLogoUrl": "./phu/pdf-logo-en.png",
     "lotNumber": "Lot #",
     "noImmunizations": "No Immunizations",
@@ -892,18 +889,6 @@
     "MYSELF": "Myself",
     "DEPENDENT": "A Dependent"
   },
-  "welcomeHelpModal": {
-    "OIID_PIN_LABEL": "What are the Ontario Immunization ID and PIN? ",
-    "LOGIN_OIID": "An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization repository.",
-    "LOGIN_PIN": "A patient's PIN is a six digit number that protects the confidentiality of immunization information.",
-    "OIID_PIN_MESSAGE": "Where can I find them?",
-    "OIID_TOOLTIP_1": "Your Ontario Immunization ID may be found on a letter sent from ",
-    "OIID_TOOLTIP_2": ". If you do not have this code from your Health Unit, please contact ",
-    "OIID_TOOLTIP_3": " at ",
-    "PIN_TOOLTIP_1": "The PIN can be retrieved by contacting",
-    "PIN_TOOLTIP_2": "at",
-    "CLOSE": "Close"
-  },
   "welcomeLandingPage": {
     "INTRO_2": "Immunizations Keep Ontarians Healthy!",
     "PHU_MESSAGE": "Use this site to view and update your immunization record. ",
@@ -950,7 +935,7 @@
   },
   "welcomeLogin": {
     "VIEW_BUTTON_TITLE": "View Immunizations",
-    "VIEW_BUTTON_PARA": "You can view current, overdue and upcoming Immunizations. It's like your Yellow Card, only better.",
+    "VIEW_BUTTON_PARA": "You can view current, overdue and upcoming immunizations. It's like your Yellow Card, only better.",
     "SUBMIT_BUTTON_TITLE": "Submit Immunizations",
     "SUBMIT_BUTTON_PARA": "Keep track of immunizations by reporting them to your Public Health Unit.",
     "AUTHENTICATION": "Enter an ID and PIN",

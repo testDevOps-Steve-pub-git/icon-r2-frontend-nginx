@@ -1,14 +1,12 @@
 /* @ngInject */
 function Utility ($document) {
-
   /**
    * Focuses the first invalid field of a given form, after triggering touched
    * on all inputs in the form.
    * @param {object} form - angular form object
    */
   function focusFirstInvalidField (form) {
-    if (form.$error.required)
-    {
+    if (form.$error.required) {
       form.$error.required.forEach((field) => { field.$setTouched() })
     }
 
@@ -20,10 +18,10 @@ function Utility ($document) {
 
   return {
     focusFirstInvalidField
-   }
+  }
 }
 
 export default {
-  name:     `Utility`,
+  name: `Utility`,
   service: Utility
 }

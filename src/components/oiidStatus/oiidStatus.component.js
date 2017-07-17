@@ -32,6 +32,7 @@ function oiidStatus$ctrl (
       .catch((dhirErrorId) => {
         switch (dhirErrorId) {
           case DHIR.error.ClientStatus.OIID_PIN_SET_NO_EMAIL_AVAILABLE:
+          case DHIR.error.ClientStatus.OIID_PIN_SET_NO_HCN_AVAILABLE:
             ImmunizationRecordService.setPatient(this.patient)
             $state.go('verification.enter-pin', { action: $stateParams.action })
             break
@@ -64,7 +65,6 @@ function oiidStatus$ctrl (
           case DHIR.error.ClientStatus.OIID_PIN_REVOKED_PHU:
           case DHIR.error.ClientStatus.OIID_PIN_NOT_SET_NO_HCN:
           case DHIR.error.ClientStatus.OIID_PIN_OUTDATED_NO_HCN:
-          case DHIR.error.ClientStatus.OIID_PIN_SET_NO_HCN_AVAILABLE:
             Notify.publish(ICON_NOTIFICATION.INFO_CALL_PHU_GENERIC)
             break
 

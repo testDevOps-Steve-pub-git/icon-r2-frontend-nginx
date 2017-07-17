@@ -1,14 +1,14 @@
 /* @ngInject */
 function anonConfirmation$ctrl (GatingQuestionService, EditReviewService) {
-  this.$onInit = ()=> {
-    GatingQuestionService.reset();
-    EditReviewService.setFromReviewPage(false);
+  this.$onInit = () => {
+    GatingQuestionService.reset()
+    EditReviewService.setFromReviewPage(false)
   }
 }
 
 export default {
   name: 'anonConfirmation',
-  view : {
+  view: {
     bindings: { data: '@' },
     controller: anonConfirmation$ctrl,
     template: `

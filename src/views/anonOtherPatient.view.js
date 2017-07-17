@@ -1,22 +1,22 @@
 /* @ngInject */
 function anonOtherPatient$ctrl (ImmunizationRecordService, $document, Utility) {
-  this.$onInit = ()=> {
-    this.localPatient = ImmunizationRecordService.getPatient();
+  this.$onInit = () => {
+    this.localPatient = ImmunizationRecordService.getPatient()
 
     this.validateForm = (form) => {
       if (!form.$valid) {
         Utility.focusFirstInvalidField(form)
       } else {
-        ImmunizationRecordService.setPatient(this.localPatient);
+        ImmunizationRecordService.setPatient(this.localPatient)
       }
-      return form.$valid;
+      return form.$valid
     }
   }
 }
 
 export default {
   name: 'anonOtherPatient',
-  view : {
+  view: {
     controller: anonOtherPatient$ctrl,
     template: `
       <div>

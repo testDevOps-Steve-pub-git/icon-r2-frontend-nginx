@@ -1,17 +1,16 @@
 /* @ngInject */
 function anonOtherReview$ctrl (ImmunizationRecordService) {
-
   this.$onInit = () => {
-    this.clientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
-    this.addressInfo = ImmunizationRecordService.getAddress();
-    this.immunizations = ImmunizationRecordService.getNewImmunizations();
+    this.clientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
+    this.addressInfo = ImmunizationRecordService.getAddress()
+    this.immunizations = ImmunizationRecordService.getNewImmunizations()
   }
 }
 
 export default {
   name: 'anonOtherReview',
-  view : {
+  view: {
     controller: anonOtherReview$ctrl,
     template: `
       <h1>{{ 'anonOtherReview.REVIEW' | translate }}</h1>
