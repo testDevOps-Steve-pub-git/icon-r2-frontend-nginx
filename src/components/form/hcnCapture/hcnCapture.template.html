@@ -5,8 +5,10 @@
 
     <!--Health Card Number-->
     <label for="patient-hcn"
-           ng-transclude='label'>
-      {{ 'hcnCapture.HEALTH_CARD_NUMBER' | translate }}
+           ng-transclude='label'
+           translate = 'hcnCapture.HEALTH_CARD_NUMBER'
+           translate-compile
+           >
     </label>
     <span ng-if="$ctrl.isOptional">{{'hcnCapture.OPTIONAL' | translate}}</span>
 

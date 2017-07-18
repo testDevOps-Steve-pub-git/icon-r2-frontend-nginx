@@ -12,8 +12,8 @@ function setPinController (
   DHIR
 ) {
   this.$onInit = () => {
-    this.pin=""
-    this.pinConfirm = ""
+    this.pin = ''
+    this.pinConfirm = ''
 
     this.patientInfo = ImmunizationRecordService.getPatient()
     this.submitterInfo = ImmunizationRecordService.getSubmitter()
@@ -27,9 +27,9 @@ function setPinController (
   /*
     Set the pin for specific OIID and handle routing, errors after submit button is clicked
   */
-  function submit(form) {
-      if (form.$valid) this.setPin()
-      else Utility.focusFirstInvalidField(form)
+  function submit (form) {
+    if (form.$valid) this.setPin()
+    else Utility.focusFirstInvalidField(form)
   }
   /*
     Setting the pin and calling retreive immunization
@@ -38,7 +38,7 @@ function setPinController (
     Endpoint.SetPIN(this.patientInfo.oiid, this.pin, this.submitterInfo.email, this.patientInfo.healthCardNumber, this.submitterInfo.relationshipToPatient)
       .then(() => this.retreiveRecord(this.patientInfo.oiid, this.pin))
       .catch((errorId) => {
-        switch(errorId) {
+        switch (errorId) {
           case DHIR.error.SetPIN.LOCKED_OUT:
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_SECURITY_LOCK_OUT)
             break
@@ -77,9 +77,9 @@ function setPinController (
       .then(FhirRecordConverter.convert)
       .then(FhirRecordConverter.populateConvertedData)
       .then((retrievedRecord) => {
-          ImmunizationRecordService.setPatient(retrievedRecord.patient)
-          ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations)
-          ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations)
+        ImmunizationRecordService.setPatient(retrievedRecord.patient)
+        ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations)
+        ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations)
       })
       .then(() => {
         Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
@@ -119,13 +119,15 @@ function setPinController (
 }
 
 export default {
-  name: "setPin",
+  name: 'setPin',
   view: {
     controller: setPinController,
     template: `
       <div class="col-xs-12" style="padding:0">
         <h2>{{ 'setPin.TITLE' | translate }}</h2>
-        <p>{{ 'setPin.BODY' | translate }}</p>
+        <p translate = 'setPin.BODY'
+          translate-compile>
+        </p>
         <form name="setPinForm" class="form form-container" id="setPinForm" autocomplete="off">
           <pin-capture pin="$ctrl.pin"
                        pin-confirm='$ctrl.pinConfirm'

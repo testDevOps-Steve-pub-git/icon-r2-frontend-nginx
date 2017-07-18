@@ -296,14 +296,12 @@ NOTE: Causes DHIR responses with an operation outcome to be thrown to the
 // NOTE: This runs whenever the application bootstraps on page load.
 //       By forcing a state transition, the user is prevented from loading the
 //       application in a mid-completion state.
-.run(['$state', '$timeout', function ($state, $timeout) {
+.run(['$state', '$window', function ($state, $window) {
+  const INITIAL_ROUTE_URL_WHITELIST = [ '/welcome', '/verification/reset-pin' ]
+  const [ , ROUTE='' ] = $window.location.href.split('#!')
+  const isInitialRouteUrlAllowed = INITIAL_ROUTE_URL_WHITELIST
+        .some(allowedRoute => (ROUTE.indexOf(allowedRoute) === 0))
 
-  // TODO: Factor out $timeout, find a way to use $state async when it's ready.
-  // $timeout(() => {
-  //   const INITIAL_STATE_WHITELIST = [ 'welcome', 'reset-pin' ]
-  //   const isInitialStateAllowed = INITIAL_STATE_WHITELIST.some($state.is)
-  //   if (!isInitialStateAllowed) $state.go('welcome')
-  // })
-
+  if (!isInitialRouteUrlAllowed) $state.go('welcome')
 }])
 // Comment the above function ^^^ if you want to be able to hot-reload on any screen for development.

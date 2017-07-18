@@ -1,21 +1,19 @@
 /* @ngInject */
 function patientAddress$ctrl (Endpoint, ImmunizationRecordService, $scope, Utility) {
-
   this.$onInit = () => {
-    this.localAddress = ImmunizationRecordService.getAddress();
+    this.localAddress = ImmunizationRecordService.getAddress()
 
     this.validateForm = ({ form }) => {
-
-      if(this.localAddress.postalCode === '') {
-        form.$valid = false;
+      if (this.localAddress.postalCode === '') {
+        form.$valid = false
       }
 
       if (!form.$valid) Utility.focusFirstInvalidField(form)
       else ImmunizationRecordService.setAddress(this.localAddress)
 
-      return form.$valid;
-    };
-  };
+      return form.$valid
+    }
+  }
 }
 
 export default {
@@ -46,4 +44,4 @@ export default {
       </form>
     `
   }
-};
+}

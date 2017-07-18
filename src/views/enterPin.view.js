@@ -12,21 +12,21 @@ function enterPin$ctrl (
  Utility
 ) {
   this.$onInit = () => {
-    this.patientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
-    this.pin = '';
+    this.patientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
+    this.pin = ''
 
-    /*Func dec*/
+    /* Func dec */
     this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
-    this.verify = verify;
-    this.goToForgotPin = goToForgotPin;
+    this.verify = verify
+    this.goToForgotPin = goToForgotPin
   }
 
   /**
    * Go to forgot PIN page, if user clicks on "Forgot the PIN"
    * @param form
    */
-  function goToForgotPin() {
+  function goToForgotPin () {
     $state.go('^.forgot-pin')
   }
 
@@ -41,15 +41,14 @@ function enterPin$ctrl (
         .then(FhirRecordConverter.convert)
         .then(FhirRecordConverter.populateConvertedData)
         .then((retrievedRecord) => {
-          ImmunizationRecordService.setPatient(retrievedRecord.patient);
-          ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations);
-          ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations);
+          ImmunizationRecordService.setPatient(retrievedRecord.patient)
+          ImmunizationRecordService.setRetrievedImmunizations(retrievedRecord.retrievedImmunizations)
+          ImmunizationRecordService.setRecommendations(retrievedRecord.recommendations)
         })
         .then(() => $state.go('verification.dispatch-after-verification', {relationship: this.submitterInfo.relationshipToPatient}))
         .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
-        .catch(DhirErrorHandler.notifyRetrievalError);
-    }
-    else {
+        .catch(DhirErrorHandler.notifyRetrievalError)
+    } else {
       Utility.focusFirstInvalidField(form)
     }
   }

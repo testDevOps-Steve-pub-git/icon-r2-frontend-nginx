@@ -2,8 +2,10 @@
 
   <div class="col-xs-12">
     <label for="patient-oiid"
-           ng-transclude='label'>
-      {{ 'oiidCapture.OIID' | translate }}
+           ng-transclude='label'
+           translate = 'oiidCapture.OIID'
+           translate-compile
+           >
     </label>
     <span ng-if="$ctrl.isOptional">{{'oiidCapture.OPTIONAL' | translate}}</span>
 

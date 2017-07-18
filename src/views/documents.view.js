@@ -6,7 +6,7 @@ export default {
   view: {
     bindings: { data: '<' },
     controller: documents$ctrl,
-      template: `
+    template: `
         <form class="form form-container icon-bg-white" name="documentForm" novalidate autocomplete="off">
           <document-upload-capture></document-upload-capture>
         </form>

@@ -94,7 +94,7 @@
     "IMMUNIZATIONS_TITLE": "Vaccins",
     "REVIEW": "Vérification",
     "REVIEW_INSTRUCTION_HEADER": "Veuillez vérifier et confirmer.",
-    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « Terminer l'envoi » en bas de la page.",
+    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « {{submitImmunizationsButton}} » en bas de la page.",
     "REVIEW_INSTRUCTION_CAVEAT": "Seuls les vaccins que vous avez inscrits aujourd'hui sont indiqués. Ce n'est pas un dossier officiel.",
     "REVIEW_NO_DOX": "Aucun justificatif n'a été fourni.",
     "REVIEW_EDIT_IMMS": "Modifier les vaccins",
@@ -105,7 +105,7 @@
     "IMMUNIZATIONS_TITLE": "Vaccins",
     "REVIEW": "Vérification",
     "REVIEW_INSTRUCTION_HEADER": "Veuillez vérifier et confirmer.",
-    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « Terminer l'envoi » en bas de la page.",
+    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « {{submitImmunizationsButton}} » en bas de la page.",
     "REVIEW_INSTRUCTION_CAVEAT": "Seuls les vaccins que vous avez inscrits aujourd'hui sont indiqués. Ce n'est pas un dossier officiel.",
     "REVIEW_NO_DOX": "Aucun justificatif n'a été fourni.",
     "REVIEW_EDIT_IMMS": "Modifier les vaccins",
@@ -139,7 +139,7 @@
     "DOCUMENTS_TITLE": "Documents",
     "REVIEW": "Vérification",
     "REVIEW_INSTRUCTION_HEADER": "Veuillez vérifier et confirmer.",
-    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « Terminer l'envoi » en bas de la page.",
+    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « {{submitImmunizationsButton}} » en bas de la page.",
     "REVIEW_INSTRUCTION_CAVEAT": "Seuls les vaccins que vous avez inscrits aujourd'hui sont indiqués. Ce n'est pas un dossier officiel.",
     "REVIEW_NO_DOX": "Aucun justificatif n'a été fourni.",
     "REVIEW_EDIT_IMMS": "Modifier les vaccins",
@@ -176,7 +176,7 @@
     "DOCUMENTS_TITLE": "Documents",
     "REVIEW": "Vérification",
     "REVIEW_INSTRUCTION_HEADER": "Veuillez vérifier et confirmer.",
-    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « Terminer l'envoi » en bas de la page.",
+    "REVIEW_INSTRUCTION_BODY": "Si vous devez corriger des renseignements, cliquez sur le bouton « Modifier ». Quand vous avez fini, cliquez sur le bouton  « {{submitImmunizationsButton}} » en bas de la page.",
     "REVIEW_INSTRUCTION_CAVEAT": "Seuls les vaccins que vous avez inscrits aujourd'hui sont indiqués. Ce n'est pas un dossier officiel.",
     "REVIEW_NO_DOX": "Aucun justificatif n'a été fourni.",
     "REVIEW_EDIT_IMMS": "Modifier les vaccins",
@@ -219,7 +219,7 @@
     "DATE_ERROR": "Vous avez inscrit une date invalide. Veuillez utiliser le format AAAA-MM-JJ."
   },
   "dismissableInfoNotification": {
-    "CLOSE_BUTTON": "Fermer"
+    "CLOSE_BUTTON": "OK"
   },
   "documentCapture": {
     "DOCUMENTS_LABEL": "Documents",
@@ -269,14 +269,14 @@
     }
   },
   "emailConfirmation": {
-    "TITLE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-    "CONFIRMATION_MESSAGE": "<p>__PLACEHOLDER__PLEASE__REPLACE__ME__</p> <button class='icon-btn-link' ui-sref='^.forgot-pin' id='resetPinButton'>try again</button><p>__PLACEHOLDER__PLEASE__REPLACE__ME__</p>",
-    "RETURN_HOME": "__PLACEHOLDER__PLEASE__REPLACE__ME__"
+    "TITLE": "Vérifiez vos courriels.",
+    "CONFIRMATION_MESSAGE": "<p>Nous vous avons envoyé des instructions pour rétablir le NIP associé au n<sup>o<sup> d’identification d’immunisation de l’Ontario ID {{ patient_oiid }}. Le lien envoyé par courriel  est valable pour 24 heures.</p><p> Si vous ne recevez pas de courriel, vous pouvez  <button class='icon-btn-link' ui-sref='^.forgot-pin' id='resetPinButton'>réessayer</button> ou communiquer avec <strong>{{ phuName }}</strong> en composant le <strong>{{ phuPhone }}</strong>.</p>",
+    "RETURN_HOME": "Retour à la page d'accueil"
   },
   "enterPin": {
     "TITLE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
     "FORGOT_PIN": "NIP oublié",
-    "VERIFY_BUTTON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "VERIFY_BUTTON": "Vérifiez le patient",
     "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>BOUTON</button>__PLACEHOLDER__PLEASE__REPLACE__ME__"
   },
   "hcnCapture": {
@@ -396,7 +396,7 @@
   "newPin" : {
     "TITLE": "Needs translation",
     "VERIFY_BUTTON": "Vérifiez le patient",
-    "HC_HINT_PARA": "Ce numéro de carte santé sera employé une fois pour confirmer à qui appartient l'identifiant de vaccination de l’Ontario que vous venez de saisir. Sur l'écran suivant, vous serez  invité à définir un NIP.",
+    "HC_HINT_PARA": "Ce numéro de carte santé sera employé une seule fois pour confirmer le numéro d'identification d'immunisation de l’Ontario.",
     "HC_HINT_LINK": "Est-ce que vous n'avez pas de numéro de carte santé?",
     "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>Renseignements</button> sur ce que sont le no d’identification d’immunisation de l’Ontario et le NIP, et où les trouver."
   },
@@ -439,8 +439,8 @@
     },
     "$infoPinSetSuccess": {
       "TITLE": "NIP défini avec succès",
-      "BODY": "Needs Translation",
-      "CLOSE_BUTTON": "Fermer"
+      "BODY": "Le NIP est maintenant défini.",
+      "CLOSE_BUTTON": "OK"
     },
     "$infoOiidHint": {
       "TITLE": "Où puis-je trouver le n<sup>o</sup> d’identification d’immunisation de l’Ontario?",
@@ -451,15 +451,15 @@
       "BODY": "<section><p>Needs Translation</p> <p>Needs Translation</p></section> <section><h4>Needs Translation</h4> <p>Needs Translation {{phuName}}. Needs Translation {{phuName}} a {{phuPhone}}</p></section>"
     },
     "$infoOiidPinOutdated": {
-      "TITLE": "Needs Translation",
-      "BODY": "<section><p>Needs Translation</p></section>"
+      "TITLE": "Nous améliorons ce site. Nous avons également mis à jour notre système d'authentification. Nous vous demandons de vérifier le patient, modifier le NIP et fournir une adresse de courriel.",
+      "BODY": "<section><p>Nous améliorons ce site. Nous avons également mis à jour notre système d'authentification. Pour cette raison, nous vous demandons de vérifier  le patient, modifier le NIP et fournir une adresse de courriel.</p></section>"
     },
     "$infoCallPhuGeneric": {
-      "TITLE": "Needs Translation {{phuName}}",
+      "TITLE": "Veuillez communiquer avec {{phuName}}",
       "BODY": "<section><p>Veuillez communiquer avec {{phuName}} en composant le {{phuPhone}}.</p></section>"
     },
     "$infoOiidResourceNotFound": {
-      "TITLE": "Needs Translation",
+      "TITLE": "Avertissement d'accès",
       "BODY": "<section><p>Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué.</p></section>"
     },
     "$infoPatientDataCleared": {
@@ -488,27 +488,27 @@
       "BODY": "Vous avez déjà téléversé le nombre maximum de fichiers."
     },
     "$warnEmailNotOnFile": {
-      "TITLE": "Accès refusé",
+      "TITLE": "Avertissement d'accès ",
       "BODY": "L'adresse de courriel {{ $ctrl.submitterInfo.email }} ne correspond pas à une adresse de courriel dans notre système. Veuillez réessayer."
     },
     "$warnHCNOIIDMismatch": {
-      "TITLE": "Needs translation",
-      "BODY": "Ce n<sup>o<sup> d’identification d’immunisation de l’Ontario est  temporairement bloqué. Veuillez réessayer plus tard. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
+      "TITLE": "Avertissement d'accès ",
+      "BODY": "Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
     },
     "$warnNoEmailOnFile": {
-      "TITLE": "Needs translation",
-      "BODY": "Ce n<sup>o<sup> d’identification d’immunisation de l’Ontario est  temporairement bloqué. Veuillez réessayer plus tard. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
+      "TITLE": "Pas d'adresse de courriel au dossier",
+      "BODY": "Il n'y a aucune adresse de courriel liée à ce n<sup>o<sup> d’identification d’immunisation de l’Ontario.  Veuillez communiquer avec <strong>{{phuName}}</strong> en composant le <strong>{{phuPhone}}</strong>."
     },
     "$warnRetrievalConsentBlock": {
       "TITLE": "Réponse 176 - Nous ne pouvons pas afficher le dossier d’immunisation.",
       "BODY": "Désolés, nous ne sommes pas en mesure d’afficher le dossier d’immunisation (Réponse 176). Veuillez communiquer avec <strong>{{phuName}}</strong> au <strong>{{phuPhone}}</strong>."
     },
     "$warnRetrievalBadOiid": {
-      "TITLE": "N<sup>o</sup> d'identification d'immunisation de l'Ontario ou de NIP invalide",
+      "TITLE": "NIP non valide",
       "BODY": "Le NIP saisi ne correspond pas à nos dossiers. Veuillez réessayer."
     },
     "$warnRetrievalBadPin": {
-      "TITLE": "N<sup>o</sup> d'identification d'immunisation de l'Ontario ou de NIP invalide",
+      "TITLE": "NIP non valide",
       "BODY": "Le NIP saisi ne correspond pas à nos dossiers. Veuillez réessayer."
     },
     "$warnRetrievalNetworkProblem": {
@@ -516,8 +516,8 @@
       "BODY": "Nous ne sommes pas en mesure d'extraire votre dossier à cet instant."
     },
     "$warnRetrievalSecurityLockOut": {
-      "TITLE": "Accès refusé",
-      "BODY": "L’identifiant de vaccination de l’Ontario ou le NIP que vous avez saisi n’est pas valide. Veuillez le confirmer et réessayez. Après le 10ème essai infructueux, cet identifiant de vaccination de l’Ontario sera bloqué."
+      "TITLE": "Avertissement d'accès - Réessayez plus tard",
+      "BODY": "Ce n<sup>o<sup> d’identification d’immunisation de l’Ontario est  temporairement bloqué. Veuillez réessayer plus tard. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
     },
     "$warnRetrievalTooManyFailedAttempts": {
       "TITLE": "Accès refusé",
@@ -541,11 +541,11 @@
     },
     "$warnStatusSecurityLockOut": {
       "TITLE": "Accès refusé",
-      "BODY": "L’identifiant de vaccination de l’Ontario ou le NIP que vous avez saisi n’est pas valide. Veuillez le confirmer et réessayez. Après le 10ème essai infructueux, cet identifiant de vaccination de l’Ontario sera bloqué."
+      "BODY": "Cet identifiant de vaccination de l’Ontario a été bloqué en raison de trop nombreuses tentatives infructueuses en se connectant. Veuillez communiquer avec {{phuName}} en composant le {{phuPhone}}."
     },
     "$warnStatusTooManyFailedAttempts": {
-      "TITLE": "Accès refusé",
-      "BODY": "Cet identifiant de vaccination de l’Ontario a été bloqué en raison de trop nombreuses tentatives infructueuses en se connectant. Veuillez communiquer avec {{phuName}} en composant le {{phuPhone}}. "
+      "TITLE": "Avertissement d'accès",
+      "BODY": "L’identifiant de vaccination de l’Ontario ou le NIP que vous avez saisi n’est pas valide. Veuillez le confirmer et réessayez. Après le 10ème essai infructueux, cet identifiant de vaccination de l’Ontario sera bloqué."
     },
     "$warnGeneralServerError": {
       "TITLE": "Erreur du serveur",
@@ -708,21 +708,21 @@
     }
   },
   "pinEmailExpired": {
-    "TITLE": "Needs translation",
-    "PARA": "Needs translation",
-    "SEND_ANOTHER_TITLE": "Needs translation",
-    "SEND_ANOTHER_PARA": "Needs translation",
-    "BUTTON": "Needs translation",
+    "TITLE": "Le lien de réinitialisation n'est plus valide",
+    "PARA": "Le lien envoyé par courriel n'était valide que pour 24 heures et c'est déjà expiré ou il a déjà été utilisé.",
+    "SEND_ANOTHER_TITLE": "Envoyez un courriel pour rétablir le NIP.",
+    "SEND_ANOTHER_PARA": "Entrez les informations ci-dessous, et nous vous enverrons des instructions pour rétablir le NIP.",
+    "BUTTON": "Envoyez un courriel pour rétablissez le NIP.",
     "ERRORS": {
-      "EMAIL_MISMATCH": "Needs translation"
+      "EMAIL_MISMATCH": "L'adresse de courriel <emailaddress>  ne correspond pas à une adresse de courriel dans notre système. Veuillez réessayer."
     }
   },
   "pinForgot": {
-    "TITLE": "rétablir le NIP",
+    "TITLE": "Rétablir le NIP",
     "PARA_1": "Entrez votre adresse de courriel ci-dessous, et nous vous enverrons des instructions pour rétablir le NIP.",
     "BUTTON": "Envoyez un courriel pour rétablissez le NIP.",
     "ERRORS": {
-      "EMAIL_MISMATCH": "Needs translation"
+      "EMAIL_MISMATCH": "L'adresse de courriel <emailaddress>  ne correspond pas à une adresse de courriel dans notre système. Veuillez réessayer."
     }
   },
   "pinReset": {
@@ -811,7 +811,7 @@
   },
   "setPin": {
     "TITLE": "Définir un NIP",
-    "BODY": "Une fois que vous avez défini un NIP ci-dessous, vous pouvez l'utiliser avec le n<sup>o<sup> d’identification d’immunisation de l’Ontario pour vos prochaines visites sur ce site.",
+    "BODY": "Une fois que vous avez défini un NIP ci-dessous, vous pouvez l'utiliser avec le n<sup>o</sup> d’identification d’immunisation de l’Ontario pour vos prochaines visites sur ce site.",
     "SET_PIN": "Définir le NIP"
   },
   "submitAnother": {
@@ -905,8 +905,8 @@
     "INTRO_IMMS_LAW3": "et la",
     "INTRO_BULLET_2": "Loi de 2014 sur la garde d'enfants et la petite enfance",
     "INTRO_BULLET_2_URL": "https://www.ontario.ca/fr/lois/loi/14c11",
-    "INTRO_LI_4": "Les bureaux de santé publique font un suivi des dossiers d'immunisation pour vérifier si les vaccins des écoliers sont à jour.  Les enfants et les adolescents sont ainsi mieux protégés contre les maladies graves qui se propagent facilement dans les écoles et dans les collectivités.",
-    "INTRO_LI_5": "__NEEDS TRANSLATION__",
+    "INTRO_LI_4": "Les bureaux de santé publique font un suivi des dossiers d'immunisation pour vérifier si les vaccins des écoliers sont à jour.",
+    "INTRO_LI_5": "La transmission du dossier d'immunisation  aide à protéger chacun des maladies graves qui peuvent être facilement propagées en milieu scolaire et  dans nos collectivités",
     "INTRO_3": "Vous pourriez aussi avoir besoin de votre dossier d'immunisation dans les cas suivants:",
     "INTRO_3_LIST_A": "Traitement médical",
     "INTRO_3_LIST_B": "Programme pour enfants",
@@ -914,32 +914,32 @@
     "INTRO_3_LIST_D": "Perspectives de bénévolat ou d'emploi",
     "INTRO_3_LIST_E": "Voyage dans certains pays",
     "INTRO_4": "Comment utiliser ce site? ",
-    "INTRO_5": "À chaque fois que vous ou votre enfant recevez un vaccin, inscrivez-le ici pour en garder trace et en informer le bureau de santé publique.",
+    "INTRO_5": "Chaque fois que vous ou votre enfant vous faire vacciner, inscrivez-le ici  pour que vous ayez un dossier complet de vos vaccins et qu'ils soient soumis à votre bureau de santé publique local.",
     "SCHEDULE_LABEL": "Calendrier de vaccination de l'Ontario",
     "SCHEDULE_RATIONALE": "Pour fréquenter une école, les enfants doivent avoir été vaccinés contre les maladies indiquées en italique, comme l'exige la Loi sur l'immunisation des élèves. REMARQUE: Les enfants nés le 1<sup>er</sup> janvier 2010 ou après cette date doivent également être vaccinés contre la varicelle.",
     "PRINT_SCHEDULE_LABEL": "Imprimer le calendrier de l'Ontario.",
     "PRINT_SCHEDULE": "Imprimer le calendrier de l'Ontario."
   },
   "welcomeSubmitContainer": {
-    "TITLE": "2 Options to Submit Immunizations",
+    "TITLE": "Deux options pour envoyer des renseignements sur les vaccins",
     "OR": "OR"
   },
   "welcomeAuthActions": {
     "AUTH_ACTION_TITLE": "Pour consulter les renseignements sur les vaccins, vérifiez l'identifiant du patient",
-    "AUTH_ACTION_PARA": "Needs translation",
+    "AUTH_ACTION_PARA": "",
     "AUTH_ACTION_VERIFY_BUTTON": "Vérifiez l'identifiant",
     "AUTH_ACTION_OIID_HINT": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Renseignements</button> sur ce que sont le no d’identification d’immunisation de l’Ontario et le NIP, et où les trouver."
   },
   "welcomeAnonActions": {
-    "ANON_ACTION_TITLE": "Needs translation",
-    "ANON_ACTION_PARA": "Needs translation",
-    "ANON_SELF_ACTION_BUTTON": "Needs translation",
-    "ANON_OTHER_ACTION_BUTTON": "Needs translation",
+    "ANON_ACTION_TITLE": "Vous n'avez pas de n<sup>o</sup> d'identification d'immunisation de l'Ontario ni de NIP?",
+    "ANON_ACTION_PARA": "Si vous n'avez pas de n<sup>o</sup> d’identification d’immunisation de l’Ontario, vous pouvez quand même envoyer les renseignements sur les vaccins, mais vous devrez fournir des renseignements supplémentaires ainsi que les dates et les noms des vaccins administrés.",
+    "ANON_SELF_ACTION_BUTTON": "Fournir des renseignements pour moi",
+    "ANON_OTHER_ACTION_BUTTON": "Fournir des renseignements pour une personne à charge",
     "ANON_ACTION_OIID_HINT": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Renseignements</button> sur ce que sont le no d’identification d’immunisation de l’Ontario et le NIP, et où les trouver."
   },
   "welcomeLogin": {
     "VIEW_BUTTON_TITLE": "Needs Translation",
-    "VIEW_BUTTON_PARA": "Comparable à un dossier d'immunisation  (p. ex. la carte jaune) mais c'est mieux! Vous pouvez consulter des informations sur les vaccins qui doivent être administrés, qui auraient dû l'être et qui sont à venir.",
+    "VIEW_BUTTON_PARA": "Vous pouvez consulter des informations sur les vaccins qui doivent être administrés, qui auraient dû l'être et qui sont à venir. Par exemple, c'est comparable à votre  carte jaune, mais c'est mieux",
     "SUBMIT_BUTTON_TITLE": "Needs Translation",
     "SUBMIT_BUTTON_PARA": "Faire le suivi des vaccinations en les inscrivant à votre bureau de santé publique local.",
     "AUTHENTICATION": "Entrer un numéro d'identification et un NIP",
@@ -966,12 +966,15 @@
     "NOTE": "Si vous envoyez d'autres renseignements sur l'immunisation, les vaccins à administrer peuvent changer.",
     "FOR_MORE_INFO": "Pour obtenir de plus amples renseignements, consultez la page de <a href='https://www.ontario.ca/fr/page/vaccins' target='_blank'>l'immunisation du ministère de la Santé et des Soins de longue durée de l'Ontario</a>.",
     "PRINT_BUTTON": "Télécharger un fichier imprimable",
-    "YC_CAVEAT": "Les renseignements du dossier ci-dessus sont extraits du Registre d’immunisation de l’Ontario. Il se peut que les renseignements sur les vaccins envoyés récemment ne figurent pas sur cette carte jaune, car il faut un certain temps pour les vérifier."
+    "YC_CAVEAT": "Les renseignements du dossier ci-dessus provient du Registre d'immunisation de l'Ontario."
   },
   "MULTITENANCY": {
     "DEFAULT": {
       "PHU_NAME": "Nom USP vide",
       "PHU_PHONE": "123-456-7890",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant USP vide",
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Nom USP vide<br aria-hidden=\"true\" />123 Broadway Rue Est<br aria-hidden=\"true\" />Nowheresville, Ontarion<br aria-hidden=\"true\" />L8L 8L8",
       "PHU_RESPONSE_TIME": "dans XYZ semaines",
@@ -981,6 +984,9 @@
     "APH": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -990,6 +996,9 @@
     "BCHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -999,6 +1008,9 @@
     "CKPHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1008,6 +1020,9 @@
     "DRHD": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1016,7 +1031,10 @@
     },
     "EOHU": {
       "PHU_NAME": "Bureau de santé de l’est de l’Ontario",
-      "PHU_PHONE": "613-933-1375 et 1-800-267-7120",
+      "PHU_PHONE": "613-933-1375",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-267-7120",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de l’est de l’Ontario",
       "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de l’est de l’Ontario<br aria-hidden=\"true\" />1000, rue Pitt<br aria-hidden=\"true\" />Cornwall, Ontario<br aria-hidden=\"true\" />K6J 5T1",
       "PHU_RESPONSE_TIME": "5 à 10 jours ouvrables",
@@ -1026,6 +1044,9 @@
     "ESTHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1034,7 +1055,10 @@
     },
     "GBHU": {
       "PHU_NAME": "Bureau de santé de Grey Bruce",
-      "PHU_PHONE": "519-376-9420 ou 1-800-263-3456",
+      "PHU_PHONE": "519-376-9420",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-263-3456",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant de l’unité sanitaire publique Grey Bruce",
       "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de Grey Bruce<br aria-hidden=\"true\" />101 17e Rue Est<br aria-hidden=\"true\" />Owen Sound, ON<br aria-hidden=\"true\" />N4K 0A5",
       "PHU_RESPONSE_TIME": "Une semaine",
@@ -1044,6 +1068,9 @@
     "HCHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1053,6 +1080,9 @@
     "HKPR": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1062,6 +1092,9 @@
     "HNHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1070,7 +1103,10 @@
     },
     "HPECHU": {
       "PHU_NAME": "Bureau de santé des comtés de Hastings et Prince Edward",
-      "PHU_PHONE": "613-966-5500 ou 1-800-267-2803",
+      "PHU_PHONE": "613-966-5500",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-267-2803",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé des comtés de Hastings et Prince Edward",
       "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de Prince Edward-Hastings<br aria-hidden=\"true\" />179, rue  North Park<br aria-hidden=\"true\" />Belleville, Ontario<br aria-hidden=\"true\" />K8P 4P1",
       "PHU_RESPONSE_TIME": "3 jours ouvrables",
@@ -1080,6 +1116,9 @@
     "HPH": {
       "PHU_NAME": "Services de santé publique de Hamilton",
       "PHU_PHONE": "905-540-5250",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant des services de santé publique de Hamilton",
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Hamilton Public Health Services<br aria-hidden=\"true\" />110 King St. West, 2nd Floor<br aria-hidden=\"true\" />Hamilton, Ontario<br aria-hidden=\"true\" />L8P 4S6",
       "PHU_RESPONSE_TIME": "dans 5 à 7 jours ouvrables",
@@ -1088,7 +1127,10 @@
     },
     "KFLA": {
       "PHU_NAME": "Kingston, Frontenac et Lennox & Addington Santé publique",
-      "PHU_PHONE": "613-549-1232 ou 1-800-267-7875",
+      "PHU_PHONE": "613-549-1232",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-267-7875",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "Une infirmière de la santé publique de Kingston, Frontenac et Lennox & Addington",
       "PHU_ADDRESS": "<strong>Manager, CQI and Central Resources</strong><br aria-hidden=\"true\" />Kingston, Frontenac and Lennox & Addington Public Health<br aria-hidden=\"true\" />221 Portsmouth Avenue<br aria-hidden=\"true\" />Kingston, ON<br aria-hidden=\"true\" />K7M 1V5",
       "PHU_RESPONSE_TIME": "Dans les 3 jours ouvrables",
@@ -1098,6 +1140,9 @@
     "LPH": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1107,6 +1152,9 @@
     "MLHU": {
       "PHU_NAME": "Bureau de Santé de Middlesex-London Health Unit",
       "PHU_PHONE": "519-663-5317",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de Santé de Middlesex-London Health Unit",
       "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de Middlesex-London<br aria-hidden=\"true\" />50 rue King, <br aria-hidden=\"true\" />London, ON<br aria-hidden=\"true\" />N6A 5L7",
       "PHU_RESPONSE_TIME": "3 - 5 jours ouvrables",
@@ -1116,6 +1164,9 @@
     "NBPSDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1124,7 +1175,10 @@
     },
     "NRPH": {
       "PHU_NAME": "Bureau de santé de la région du Niagara",
-      "PHU_PHONE": "905-688-3762 ou 1-800-263-7248 Ext. 7324",
+      "PHU_PHONE": "905-688-3762",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-263-7248",
+      "PHU_PHONE_2_EXT": "Ext. 7324",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant de la bureau de santé de la région du Niagara",
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Niagara Region Public Health Department<br aria-hidden=\"true\" />",
       "PHU_RESPONSE_TIME": "dans 3 jours ouvrables",
@@ -1133,7 +1187,10 @@
     },
     "NWHU": {
       "PHU_NAME": "l’Unité sanitaire Northwestern",
-      "PHU_PHONE": "1-807-468-3147 ou 1-800-830-5978",
+      "PHU_PHONE": "1-807-468-3147",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-830-5978",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant de l’unité sanitaire Northwestern",
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Northwestern Health Unit<br aria-hidden=\"true\" />210 First Street North<br aria-hidden=\"true\" />Kenora, Ontario<br aria-hidden=\"true\" />P9N 2K4",
       "PHU_RESPONSE_TIME": "dans 5 jours ouvrables",
@@ -1142,7 +1199,10 @@
     },
     "OCPH": {
       "PHU_NAME": "Bureau de santé publique du comté Oxford",
-      "PHU_PHONE": "519-539-9800 or 1-800-755-0394",
+      "PHU_PHONE": "519-539-9800",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-755-0394",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique du comté Oxford",
       "PHU_ADDRESS": "<strong>Coordonnatrice des services législatifs</strong><br aria-hidden=\"true\" />Bureau de santé publique du comté Oxford<br aria-hidden=\"true\" />C.P. 1614, 21, rue Reeve<br aria-hidden=\"true\" />Woodstock, Ontario<br aria-hidden=\"true\" />N4S 7Y3",
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
@@ -1151,7 +1211,10 @@
     },
     "PDHU": {
       "PHU_NAME": "Bureau de santé du district de Perth",
-      "PHU_PHONE": "519-271-7600 ou 1-877-271-7348",
+      "PHU_PHONE": "519-271-7600",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-877-271-7348",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du district de Perth",
       "PHU_ADDRESS":  "<strong>Administrateur des services opérationnels </strong><br aria-hidden=\"true\" />Bureau de santé du district de Perth <br aria-hidden=\"true\" />653, rue Gore Ouest<br aria-hidden=\"true\" />Stratford, ON<br aria-hidden=\"true\" /> N5A 1L4",
       "PHU_RESPONSE_TIME": "1 semaine ou 5 jours ouvrables",
@@ -1160,7 +1223,10 @@
     },
     "PEEL": {
       "PHU_NAME": "Bureau de santé de la région de Peel",
-      "PHU_PHONE": "905 799-7700 (résidents de Caledon: 905 584-2216)",
+      "PHU_PHONE": "905 799-7700",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "(résidents de Caledon: 905 584-2216)",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de la région de Peel",
       "PHU_ADDRESS": "<strong>Médecin hygiéniste</strong><br aria-hidden=\"true\" />Bureau de santé de la région de Peel<br aria-hidden=\"true\" />Boîte postale 630, comptoir postal Streetsville<br aria-hidden=\"true\" />Mississauga, Ontario<br aria-hidden=\"true\" />L5M 2C2",
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
@@ -1169,7 +1235,10 @@
     },
     "PO": {
       "PHU_NAME": "Bureau de santé de Porcupine",
-      "PHU_PHONE": "705-267-1181 ou 1-800-461-1818",
+      "PHU_PHONE": "705-267-1181",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-461-1818",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de Porcupine",
       "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Porcupine Health Unit<br aria-hidden=\"true\" />169 Pine Street South, PO Bag 2012<br aria-hidden=\"true\" />Timmins, Ontario<br aria-hidden=\"true\" />P4N 8B7",
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
@@ -1179,6 +1248,9 @@
     "ROWPH": {
       "PHU_NAME": "Services de santé publique et d'urgence de la région de Waterloo",
       "PHU_PHONE": "519-575-4400",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant des services de santé publique et d'urgence de la région de Waterloo",
       "PHU_ADDRESS": "<strong>Bureau de la protection de la vie privée</strong><br aria-hidden=\"true\" />Services de santé publique et d'urgence de la région de Waterloo<br aria-hidden=\"true\" />99 rue Regina Sud<br aria-hidden=\"true\" />Waterloo, ON<br aria-hidden=\"true\" />N2J 4V3",
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
@@ -1188,6 +1260,9 @@
     "SDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1196,7 +1271,10 @@
     },
     "SMDHU": {
       "PHU_NAME": "Bureau de santé du district de Simcoe Muskoka",
-      "PHU_PHONE": "705-721-7520 et 1-877-721-7520",
+      "PHU_PHONE": "705-721-7520",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-877-721-7520",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du district de Simcoe Muskoka",
       "PHU_ADDRESS": "<strong>Bureau de l'agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé du district de Simcoe Muskoka<br aria-hidden=\"true\" />15 Sperling Drive<br aria-hidden=\"true\" />Barrie, ON<br aria-hidden=\"true\" />L4M 6K9",
       "PHU_RESPONSE_TIME": "5-10 jours ouvrables",
@@ -1206,6 +1284,9 @@
     "TBDHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
@@ -1214,7 +1295,10 @@
     },
     "TIMHU": {
       "PHU_NAME": "Services de santé du Timiskaming",
-      "PHU_PHONE": "1 705 647-4305 ou 1 866 747-4305",
+      "PHU_PHONE": "1 705 647-4305",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1 866 747-4305",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant des services de santé du Timiskaming",
       "PHU_ADDRESS": "<strong>Agent de sécurité et de protection de la vie privée</strong><br aria-hidden=\"true\" />Services de santé du Timiskaming<br aria-hidden=\"true\" />247, rue Whitewood, bureau 43, C. P. 1090<br aria-hidden=\"true\" />New Liskeard, Ontario<br aria-hidden=\"true\" />P0J 1P0",
       "PHU_RESPONSE_TIME": "Deux semaines",
@@ -1224,6 +1308,9 @@
     "TPH": {
       "PHU_NAME": "Direction de la santé publique de Toronto",
       "PHU_PHONE": "416-392-1250",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant de la direction de la santé publique de Toronto",
       "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br aria-hidden=\"true\" />Toronto Public Health<br aria-hidden=\"true\" />277 Victoria Street, 4th Floor<br aria-hidden=\"true\" />Toronto, Ontario<br aria-hidden=\"true\" />M5B 1W2",
       "PHU_RESPONSE_TIME": "dans 3 à 5 jours ouvrables",
@@ -1233,6 +1320,9 @@
     "WDGPH": {
       "PHU_NAME": "Bureau de santé publique de Wellington-Dufferin-Guelph",
       "PHU_PHONE": "1-800-265-7293",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique de Wellington-Dufferin-Guelph",
       "PHU_ADDRESS": "<strong>Chef de la protection de la vie privée</strong><br aria-hidden=\"true\" />Unité sanitaire de Wellington-Dufferin-Guelph<br aria-hidden=\"true\" /160 Chancellors Way<br aria-hidden=\"true\" />Guelph, ON<br aria-hidden=\"true\" />N1G 0E1",
       "PHU_RESPONSE_TIME": "5-10 jours ouvrables",
@@ -1242,6 +1332,9 @@
     "WECHU": {
       "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
       "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",

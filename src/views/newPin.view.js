@@ -8,32 +8,30 @@ function newPin$ctrl (
   Utility,
   ICON_NOTIFICATION,
   DHIR) {
-
   this.$onInit = () => {
-    this.patientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
+    this.patientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
 
-    /*Func dec*/
+    /* Func dec */
     this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
-    this.openHCNHelpModal = openHCNHelpModal;
-    this.goToSetPin = goToSetPin;
-    this.validateForm = validateForm;
-  };
-
+    this.openHCNHelpModal = openHCNHelpModal
+    this.goToSetPin = goToSetPin
+    this.validateForm = validateForm
+  }
 
   /**
    * Go to set PIN page, if user completes form correctly
    * @param form
    */
-  function goToSetPin() {
+  function goToSetPin () {
     Endpoint.ValidateHCN(this.patientInfo.oiid, this.patientInfo.healthCardNumber)
-      .then( ()=> {
-        ImmunizationRecordService.setPatient(this.patientInfo);
-        ImmunizationRecordService.setSubmitter(this.submitterInfo);
+      .then(() => {
+        ImmunizationRecordService.setPatient(this.patientInfo)
+        ImmunizationRecordService.setSubmitter(this.submitterInfo)
         $state.go('^.set-pin', { relationship: this.submitterInfo.relationshipToPatient })
       })
-      .catch( (errorId)=> {
-        switch(errorId) {
+      .catch((errorId) => {
+        switch (errorId) {
           case DHIR.error.ValidateHCN.LOCKED_OUT:
             Notify.publish(ICON_NOTIFICATION.WARN_STATUS_SECURITY_LOCK_OUT)
             break
@@ -60,9 +58,8 @@ function newPin$ctrl (
       })
   }
 
-
-  function validateForm(form) {
-    if(form.$valid) this.goToSetPin()
+  function validateForm (form) {
+    if (form.$valid) this.goToSetPin()
     else Utility.focusFirstInvalidField(form)
   }
 
@@ -70,13 +67,13 @@ function newPin$ctrl (
    * Opens odal windoe for information on HCN
    */
   function openHCNHelpModal () {
-    let modalInstance = $uibModal.open({
+    $uibModal.open({
       animation: true,
       template: '<no-health-card-modal $close="$close(result)"></no-health-card-modal>',
       controller: () => {},
-      size: 'sm',
+      size: 'sm'
     }).result
-      .catch((error)=>{console.log(error)});
+      .catch(angular.noop)
   }
 }
 

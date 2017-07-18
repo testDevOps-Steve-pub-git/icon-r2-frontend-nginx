@@ -1,12 +1,12 @@
 /* @ngInject */
 function authSelfReview$ctrl ($state, ImmunizationRecordService) {
-    this.progressBar = $state.$current.data.progressBar;
+  this.progressBar = $state.$current.data.progressBar
 
   this.$onInit = () => {
-    this.clientInfo = ImmunizationRecordService.getPatient();
-    this.submitterInfo = ImmunizationRecordService.getSubmitter();
-    this.addressInfo = ImmunizationRecordService.getAddress();
-    this.immunizations = ImmunizationRecordService.getNewImmunizations();
+    this.clientInfo = ImmunizationRecordService.getPatient()
+    this.submitterInfo = ImmunizationRecordService.getSubmitter()
+    this.addressInfo = ImmunizationRecordService.getAddress()
+    this.immunizations = ImmunizationRecordService.getNewImmunizations()
   }
 }
 
@@ -17,8 +17,8 @@ export default {
     controller: authSelfReview$ctrl,
     template: `
       <h1>{{ 'authSelfReview.REVIEW' | translate}}</h1>
-      <h3>{{ 'anonOtherReview.REVIEW_INSTRUCTION_HEADER' | translate }}</h3>
-      <p>{{ 'anonOtherReview.REVIEW_INSTRUCTION_BODY' | translate }}</p>
+      <h3>{{ 'authSelfReview.REVIEW_INSTRUCTION_HEADER' | translate }}</h3>
+      <p translate = 'authSelfReview.REVIEW_INSTRUCTION_BODY' translate-compile translate-values="{ submitImmunizationsButton : '{{ 'submitImmunizations.SUBMIT_IMMUNIZATIONS' | translate }}' }"></p>
       <form id="reviewForm" name="reviewForm" novalidate>
         <hr />
         <h4>{{ 'authSelfReview.IMMUNIZATIONS_TITLE' | translate }}</h4>

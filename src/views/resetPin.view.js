@@ -20,11 +20,11 @@ function resetPin$ctrl (
     this.isTokenValid = true
 
     if (!!$stateParams.lang && $stateParams.lang === 'FR') $translate.use('fr')
-    if (!!$stateParams.relationship) submitter.relationshipToPatient = $stateParams.relationship
+    if ($stateParams.relationship) this.submitterInfo.relationshipToPatient = $stateParams.relationship
 
     Endpoint.ValidateToken(this.token)
       .catch((error) => {
-        switch(error) {
+        switch (error) {
           case DHIR.error.ValidateToken.TOKEN_EXPIRED :
             $state.go('verification.send-another-email')
             break
@@ -78,7 +78,6 @@ function resetPin$ctrl (
         }
       })
   }
-
 
   function validateForm (form) {
     if (form.$valid) this.resetPin()
@@ -135,5 +134,5 @@ export default {
   </div>
 </div>
     `
-  },
+  }
 }

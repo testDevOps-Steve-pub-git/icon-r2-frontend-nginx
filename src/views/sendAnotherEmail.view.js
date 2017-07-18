@@ -10,14 +10,13 @@ function sendAnotherEmail$ctrl (
   Utility,
   ICON_NOTIFICATION
 ) {
-
-  this.$onInit = ()=> {
+  this.$onInit = () => {
     this.patientInfo = ImmunizationRecordService.getPatient()
     this.submitterInfo = ImmunizationRecordService.getSubmitter()
 
     Multitenancy.getPhuKeys()
       .then((phuAssets) => {
-        this.multitenancy = phuAssets;
+        this.multitenancy = phuAssets
         this.phuId = this.multitenancy.PHIX_PHU_CODE
       })
 
@@ -26,16 +25,15 @@ function sendAnotherEmail$ctrl (
       this.showOiidError = false
     }
 
-    /*Function Declaration*/
-    this.forgotEmail = forgotEmail;
-    this.validateFormAndSubmit = validateFormAndSubmit;
+    /* Function Declaration */
+    this.forgotEmail = forgotEmail
+    this.validateFormAndSubmit = validateFormAndSubmit
   }
 
-
-  function forgotEmail() {
+  function forgotEmail () {
     Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS)
     Endpoint.ResetAccess(this.patientInfo.oiid, this.submitterInfo.email, this.phuId)
-      .then(()=> { $state.go('^.email-confirmation'); })
+      .then(() => { $state.go('^.email-confirmation') })
       .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
       .catch((errorId) => {
         Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
@@ -68,9 +66,8 @@ function sendAnotherEmail$ctrl (
       })
   }
 
-
-  function validateFormAndSubmit(form) {
-    if(form.$valid) this.forgotEmail()
+  function validateFormAndSubmit (form) {
+    if (form.$valid) this.forgotEmail()
     else Utility.focusFirstInvalidField(form)
   }
 }
@@ -122,5 +119,5 @@ export default {
         </button>
       </form>
     `
-  },
+  }
 }

@@ -15,7 +15,7 @@ export default {
     template: `
       <h1>{{ 'anonOtherReview.REVIEW' | translate }}</h1>
       <h3>{{ 'anonOtherReview.REVIEW_INSTRUCTION_HEADER' | translate }}</h3>
-      <p>{{ 'anonOtherReview.REVIEW_INSTRUCTION_BODY' | translate }} </p>
+      <p translate = 'anonOtherReview.REVIEW_INSTRUCTION_BODY' translate-compile translate-values="{ submitImmunizationsButton : '{{ 'submitImmunizations.SUBMIT_IMMUNIZATIONS' | translate }}' }"></p>
       <form id="reviewForm" name="reviewForm" novalidate>
         <hr/>
         <h4>{{ 'anonOtherReview.IMMUNIZATIONS_TITLE' | translate }}</h4>
