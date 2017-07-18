@@ -10,17 +10,16 @@
  * @memberof pinFormatFilter
  * @returns {Function} pinFilter - limits input to 6 characters
  */
-function pinFormat() {
+function pinFormat () {
+  function pinFilter (input, uppercase) {
+    input = input || ''
 
-  function pinFilter(input, uppercase) {
-    input = input || '';
-
-    var pinFormat = '';
-    if (input.length <= 4){
+    var pinFormat = ''
+    if (input.length <= 4) {
       return input
     }
-    pinFormat = input.substring(0, 6);
-    return pinFormat;
+    pinFormat = input.substring(0, 6)
+    return pinFormat
   };
 
   return pinFilter

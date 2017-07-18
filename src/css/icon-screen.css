@@ -7,6 +7,8 @@
 /* END testing */
 
 /* General utility classes */
+.btn { white-space: normal; }
+
 .icon-btn-link-danger { color: red !important; }
 .icon-background-danger { background-color: red !important; }
 .icon-background-white { background-color: #ffffff !important; }

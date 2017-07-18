@@ -12,22 +12,22 @@ function welcome$ctrl (
 ) {
   this.$onInit = () => {
     /* Reset */
-    ImmunizationRecordService.clear();
-    GatingQuestionService.reset();
-    TokenHandler.clearTransactionToken();
-    EditReviewService.setFromReviewPage(false);
-    MiscData.setSkipAUP(false);
+    ImmunizationRecordService.clear()
+    GatingQuestionService.reset()
+    TokenHandler.clearTransactionToken()
+    EditReviewService.setFromReviewPage(false)
+    MiscData.setSkipAUP(false)
 
-    /* There was a bug where session expiration did not clear the queue after, so manually clear a queue*/
+    /* There was a bug where session expiration did not clear the queue after, so manually clear a queue */
     FileUploadHandler.getUploader()
       .then((uploader) => {
-        this.uploader = uploader;
-        this.uploader.clearQueue();
-      });
+        this.uploader = uploader
+        this.uploader.clearQueue()
+      })
 
-    let firstPageLoad = MiscData.getFirstPageLoad();
-    if (firstPageLoad) MiscData.setFirstPageLoad(false);
-  };
+    let firstPageLoad = MiscData.getFirstPageLoad()
+    if (firstPageLoad) MiscData.setFirstPageLoad(false)
+  }
 }
 
 export default {

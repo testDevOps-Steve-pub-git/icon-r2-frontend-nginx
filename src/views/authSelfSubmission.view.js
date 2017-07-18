@@ -1,7 +1,7 @@
 /* @ngInject */
 function authSelfSubmission$ctrl ($state, TokenHandler) {
-  this.navStates = $state.$current.data.navStates;
-  TokenHandler.getTransactionToken();
+  this.navStates = $state.$current.data.navStates
+  TokenHandler.getTransactionToken()
 }
 
 export default {

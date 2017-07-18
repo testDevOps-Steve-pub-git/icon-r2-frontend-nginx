@@ -19,26 +19,25 @@ function forgotPin$ctrl (
       this.phuId = this.multitenancy.PHIX_PHU_CODE
     })
 
-    /*Function Declaration*/
+    /* Function Declaration */
     this.forgotEmail = forgotEmail
     this.validateFormAndSubmit = validateFormAndSubmit
   }
 
-
-  function forgotEmail() {
+  function forgotEmail () {
     Notify.publish(ICON_NOTIFICATION.PUSH_RETRIEVAL_PROGRESS)
     Endpoint.ResetAccess(this.patientInfo.oiid, this.submitterInfo.email, this.phuId)
       .then(() => { $state.go('^.email-confirmation') })
       .then(() => Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS))
-      .catch( (errorId)=> {
+      .catch((errorId) => {
         Notify.publish(ICON_NOTIFICATION.POP_RETRIEVAL_PROGRESS)
         switch (errorId) {
           case DHIR.error.ResetAccess.WRONG_EMAIL_PROVIDED:
-              Notify.publish(ICON_NOTIFICATION.EMAIL_NOT_ON_FILE)
+            Notify.publish(ICON_NOTIFICATION.EMAIL_NOT_ON_FILE)
             break
 
           case DHIR.error.ResetAccess.NO_EMAIL_ON_FILE:
-              Notify.publish(ICON_NOTIFICATION.NO_EMAIL_ON_FILE)
+            Notify.publish(ICON_NOTIFICATION.NO_EMAIL_ON_FILE)
             break
 
           case DHIR.error.ResetAccess.LOCKED_OUT:
@@ -61,8 +60,7 @@ function forgotPin$ctrl (
       })
   }
 
-
-  function validateFormAndSubmit(form) {
+  function validateFormAndSubmit (form) {
     if (form.$valid) this.forgotEmail()
     else Utility.focusFirstInvalidField(form)
   }

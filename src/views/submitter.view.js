@@ -1,15 +1,14 @@
 /* @ngInject */
 function submitter$ctrl (ImmunizationRecordService, Utility) {
-
-  this.$onInit = ()=> {
-    this.localSubmitter = ImmunizationRecordService.getSubmitter();
+  this.$onInit = () => {
+    this.localSubmitter = ImmunizationRecordService.getSubmitter()
 
     this.validateForm = (form) => {
       if (!form.$valid) Utility.focusFirstInvalidField(form)
       else ImmunizationRecordService.setSubmitter(this.localSubmitter)
 
-      return form.$valid;
-    };
+      return form.$valid
+    }
   }
 }
 
@@ -45,7 +44,7 @@ export default {
             </div>
           </div>
 
-          <hr \>
+          <hr />
           <next-prev-buttons
           on-next="$ctrl.validateForm(anonOtherSubmitterForm)">
           </next-prev-buttons>

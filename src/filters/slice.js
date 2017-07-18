@@ -7,12 +7,12 @@
 
 /* @ngInject */
 function slice () {
-    return function (arr, start, end) {
-        if (!arr) {
-            return;
-        }
-        return arr.slice(start, end);
-    };
+  return function (arr, start, end) {
+    if (!arr) {
+      return
+    }
+    return arr.slice(start, end)
+  }
 }
 
 export default {

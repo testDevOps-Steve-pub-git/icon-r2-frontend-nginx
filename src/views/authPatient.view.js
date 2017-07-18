@@ -1,14 +1,13 @@
 /* @ngInject */
 function authPatient$ctrl ($uibModal) {
-
-  this.$onInit = ()=> {
+  this.$onInit = () => {
     this.openSurveyModal = () => {
-      var modalInstance = $uibModal.open({
+      $uibModal.open({
         template: `<auth-survey $close="$close(result)"></auth-survey>`,
         controller: () => {},
-        size: 'sm',
+        size: 'sm'
       }).result
-        .catch((error)=>{})
+        .catch(angular.noop)
     }
   }
 }
@@ -48,7 +47,7 @@ export default {
 
               <h2>{{ 'authPatient.INFORMATION_MISSING' | translate }}</h2>
 
-              <button class="btn btn-primary" ui-sref="^.submission.immunizations">{{ 'authPatient.SUBMIT_IMMUNIZATIONS' | translate }}</button>
+              <button class="btn btn-primary"  id="submitImmunizations" ui-sref="^.submission.immunizations">{{ 'authPatient.SUBMIT_IMMUNIZATIONS' | translate }}</button>
             </div>
           </div>
         </div>
