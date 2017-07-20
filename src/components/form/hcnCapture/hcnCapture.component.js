@@ -26,7 +26,8 @@ export default {
       isOptional: '<'
     },
     transclude: {
-      'label': '?label'
+      'label': '?label',
+      'hint' : '?hint'
     },
     templateUrl: './components/form/hcnCapture/hcnCapture.template.html',
     controller: hcnCaptureController

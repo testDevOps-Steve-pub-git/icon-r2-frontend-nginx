@@ -193,7 +193,7 @@ Reference of PHU Codes and Official Names
 | ocph    | 11    | Oxford County Public Health |
 | peel    | 14    | Peel Public Health |
 | pdhu    | 36    | Perth District Health Unit |
-| pcchu   | 30    | Peterborough County-City Health Unit |
+| pcchu   | 30    | Peterborough Public Health |
 | po      | 54    | Porcupine Health Unit |
 | rowph   | 56    | Region of Waterloo, Public Health |
 | re      | 29    | Renfrew County and District Health Unit |

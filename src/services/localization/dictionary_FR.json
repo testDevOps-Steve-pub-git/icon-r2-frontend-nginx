@@ -262,7 +262,7 @@
     "EMAIL_HINT": "Cette adresse de courriel sera utilisée pour vous confirmer au cas où vous avez besoin de réinitialiser votre NIP et pour communiquer. Nous ne divulguerons cette adresse de courriel à personne.",
     "OPTIONAL": "(facultatif)",
     "ERRORS": {
-      "IS_REQUIRED": "Needs translation.",
+      "IS_REQUIRED": "Vous devez entrer une adresse de courriel.",
       "EXCEEDS_MAXLENGTH": "Vous avez inscrit trop de caractères.",
       "MUST_BE_EQUAL_TO": "L'adresse de courriel ne correspond pas. Veuillez réessayer.",
       "EMAIL_ERROR": "Cette adresse de courriel n'est pas valide."
@@ -270,14 +270,14 @@
   },
   "emailConfirmation": {
     "TITLE": "Vérifiez vos courriels.",
-    "CONFIRMATION_MESSAGE": "<p>Nous vous avons envoyé des instructions pour rétablir le NIP associé au n<sup>o<sup> d’identification d’immunisation de l’Ontario ID {{ patient_oiid }}. Le lien envoyé par courriel  est valable pour 24 heures.</p><p> Si vous ne recevez pas de courriel, vous pouvez  <button class='icon-btn-link' ui-sref='^.forgot-pin' id='resetPinButton'>réessayer</button> ou communiquer avec <strong>{{ phuName }}</strong> en composant le <strong>{{ phuPhone }}</strong>.</p>",
+    "CONFIRMATION_MESSAGE": "<p>Nous vous avons envoyé des instructions pour rétablir le NIP associé au n<sup>o</sup> d’identification d’immunisation de l’Ontario ID {{ patient_oiid }}. Le lien envoyé par courriel  est valable pour 24 heures.</p><p> Si vous ne recevez pas de courriel, vous pouvez  <button class='icon-btn-link' ui-sref='^.forgot-pin' id='resetPinButton'>réessayer</button> ou communiquer avec <strong>{{ phuName }}</strong> en composant le <strong>{{ phuPhone }}</strong>.</p>",
     "RETURN_HOME": "Retour à la page d'accueil"
   },
   "enterPin": {
-    "TITLE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "TITLE": "Pour consulter les renseignements sur les vaccins, vérifiez le NIP",
     "FORGOT_PIN": "NIP oublié",
     "VERIFY_BUTTON": "Vérifiez le patient",
-    "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>BOUTON</button>__PLACEHOLDER__PLEASE__REPLACE__ME__"
+    "HINT": "<button class='icon-btn-link' id='oiid-hint-link' ng-click='$ctrl.openHelpModal()'>En savoir plus</button> sur le numéro d’identification d’immunisation de l’Ontario et le NIP et où on les retrouve."
   },
   "hcnCapture": {
     "HEALTHCARD": "Carte Santé de l’Ontario",
@@ -286,9 +286,9 @@
     "HINT": "Ne pas inscrire les deux lettres du code de la version.",
     "ERRORS": {
 	     "HCN_FORMAT_ERROR": "Vous avez inscrit un n<sup>o</sup> de carte Santé invalide.",
-       "HCN_REQUIRED": "Needs translation",
-       "HCN_MODAL_TITLE": "Needs translation",
-       "HCN_LOCK": "Needs translation"
+       "HCN_REQUIRED": "Ce champ doit être rempli",
+       "HCN_MODAL_TITLE": "Nous ne pouvons achever votre demande",
+       "HCN_LOCK": "Ce numéro d'identification d'immunisation de l’Ontario a été bloqué en raison de trop nombreuses tentatives de connexion infructueuses. Veuillez communiquer avec le {{phuName}} en composant le {{phuPhone}}."
     }
   },
   "immunizationByAgent": {
@@ -346,8 +346,8 @@
   },
   "immunizationReviewDisplay": {
     "DATE_ESTIMATED": "(Date estimée)",
-    "INVALID_DATE": "Needs translation",
-    "DATE_ERROR_MESSAGE": "Needs translation"
+    "INVALID_DATE": "Âge : invalide",
+    "DATE_ERROR_MESSAGE": "Les dates d'immunisation ne peuvent être antérieures à la date de naissance du patient."
   },
   "immunizationTypeahead": {
     "IMMUNIZATION_LABEL": "Nom du vaccin/de la marque",
@@ -394,7 +394,7 @@
     "RETURN_TO_REVIEW": "Enregistrer et revenir à révision"
   },
   "newPin" : {
-    "TITLE": "Needs translation",
+    "TITLE": "Pour consulter les renseignements sur les vaccins, vérifiez le patient",
     "VERIFY_BUTTON": "Vérifiez le patient",
     "HC_HINT_PARA": "Ce numéro de carte santé sera employé une seule fois pour confirmer le numéro d'identification d'immunisation de l’Ontario.",
     "HC_HINT_LINK": "Est-ce que vous n'avez pas de numéro de carte santé?",
@@ -433,8 +433,8 @@
       "BUTTON_AFTERTHOUGHT": "Si vous annulez, toutes les données seront supprimées."
     },
     "$invalidDateError": {
-      "TITLE": "Needs Translation",
-      "BODY": "Needs Translation",
+      "TITLE": "Dates d'immunisation invalides",
+      "BODY": "Les dates d'immunisation ne peuvent être antérieures à la date de naissance du patient. Veuillez examiner les dates d'immunisation et la date de naissance du patient.",
       "CLOSE_BUTTON": "Fermer"
     },
     "$infoPinSetSuccess": {
@@ -447,8 +447,8 @@
       "BODY": "Vous trouverez le n<sup>o</sup> d’identification d’immunisation de l’Ontario dans la lettre que vous a envoyée le {{phuName}}. Si vous n’avez pas ce code, veuillez contacter le {{phuName}}au {{phuPhone}}."
     },
     "$infoLearnMoreAboutOiid": {
-      "TITLE": "Needs Translation",
-      "BODY": "<section><p>Needs Translation</p> <p>Needs Translation</p></section> <section><h4>Needs Translation</h4> <p>Needs Translation {{phuName}}. Needs Translation {{phuName}} a {{phuPhone}}</p></section>"
+      "TITLE": "Qu'est-ce que le numéro d’identification d’immunisation de l’Ontario et le NIP?",
+      "BODY": "<section><p>Le numéro d’identification d’immunisation de l’Ontario est un numéro à dix chiffres qui identifie chaque personne inscrite au Registre d'immunisation provincial.</p> <p>Le NIP est un numéro à six chiffres qui protège la confidentialité des renseignements sur les vaccins du patient.</p></section> <section><h4> Où peut-on les trouver?</h4> <p>Vous trouverez votre numéro d'identification d'immunisation de l'Ontario sur une lettre envoyée par le {{phuName}}. Si vous n'en avez pas reçu,  veuillez communiquer avec le {{phuName}} en composant le {{phuPhone}}.</p></section>"
     },
     "$infoOiidPinOutdated": {
       "TITLE": "Nous améliorons ce site. Nous avons également mis à jour notre système d'authentification. Nous vous demandons de vérifier le patient, modifier le NIP et fournir une adresse de courriel.",
@@ -460,7 +460,7 @@
     },
     "$infoOiidResourceNotFound": {
       "TITLE": "Avertissement d'accès",
-      "BODY": "<section><p>Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué.</p></section>"
+      "BODY": "<section><p>Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o</sup> d’identification d’immunisation de l’Ontario sera  bloqué.</p></section>"
     },
     "$infoPatientDataCleared": {
       "TITLE": "Renseignements médicaux personnels",
@@ -493,11 +493,11 @@
     },
     "$warnHCNOIIDMismatch": {
       "TITLE": "Avertissement d'accès ",
-      "BODY": "Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
+      "BODY": "Les  informations que vous nous avez fournies ne correspondent pas à nos dossiers. Veuillez les confirmer et essayer de nouveau. Après trop nombreuses tentatives infructueuses, ce n<sup>o</sup> d’identification d’immunisation de l’Ontario sera  bloqué."
     },
     "$warnNoEmailOnFile": {
       "TITLE": "Pas d'adresse de courriel au dossier",
-      "BODY": "Il n'y a aucune adresse de courriel liée à ce n<sup>o<sup> d’identification d’immunisation de l’Ontario.  Veuillez communiquer avec <strong>{{phuName}}</strong> en composant le <strong>{{phuPhone}}</strong>."
+      "BODY": "Il n'y a aucune adresse de courriel liée à ce n<sup>o</sup> d’identification d’immunisation de l’Ontario.  Veuillez communiquer avec <strong>{{phuName}}</strong> en composant le <strong>{{phuPhone}}</strong>."
     },
     "$warnRetrievalConsentBlock": {
       "TITLE": "Réponse 176 - Nous ne pouvons pas afficher le dossier d’immunisation.",
@@ -516,12 +516,12 @@
       "BODY": "Nous ne sommes pas en mesure d'extraire votre dossier à cet instant."
     },
     "$warnRetrievalSecurityLockOut": {
-      "TITLE": "Avertissement d'accès - Réessayez plus tard",
-      "BODY": "Ce n<sup>o<sup> d’identification d’immunisation de l’Ontario est  temporairement bloqué. Veuillez réessayer plus tard. Après trop nombreuses tentatives infructueuses, ce n<sup>o<sup> d’identification d’immunisation de l’Ontario sera  bloqué."
+      "TITLE": "Accès refusé",
+      "BODY": "Cet identifiant de vaccination de l’Ontario a été bloqué en raison de trop nombreuses tentatives infructueuses en se connectant. Veuillez communiquer avec {{phuName}} en composant le {{phuPhone}}."
     },
     "$warnRetrievalTooManyFailedAttempts": {
       "TITLE": "Accès refusé",
-      "BODY": "Cet identifiant de vaccination de l’Ontario a été bloqué en raison de trop nombreuses tentatives infructueuses en se connectant. Veuillez communiquer avec {{phuName}} en composant le {{phuPhone}}."
+      "BODY": "L’identifiant de vaccination de l’Ontario ou le NIP que vous avez saisi n’est pas valide. Veuillez le confirmer et réessayez. Après le 10ème essai infructueux, cet identifiant de vaccination de l’Ontario sera bloqué."
     },
     "$warnRetrievalUnknown": {
       "TITLE": "Erreur",
@@ -562,7 +562,7 @@
     "OPTIONAL": "(facultatif)",
     "ERRORS": {
       "OIID_ERROR": "Entrée invalide. Votre n<sup>o</sup> d'identification d'immunisation de l'Ontario doit être composé de 10 caractères avec des chiffres entre 2 et 9, sans voyelles.",
-      "OIID_REQUIRED": "Needs translation",
+      "OIID_REQUIRED": "Ce champ doit être rempli",
       "OIID_INVALID": "Vous avez saisi un identifiant de vaccination non valide. Veuillez-vous assurer que vous l'avez entré correctement."
      }
   },
@@ -726,9 +726,9 @@
     }
   },
   "pinReset": {
-    "TITLE": "Needs translation",
-    "BUTTON": "Needs translation",
-    "HINT": "needs translation"
+    "TITLE": "Rétablir le NIP",
+    "BUTTON": "Rétablir le NIP",
+    "HINT": "Doit être un numéro à six chiffres."
   },
   "progressBar": {
     "PATIENT": "Patient",
@@ -742,9 +742,9 @@
   "roleCapture": {
     "ROLE":"Cet identifiant de vaccination de l’Ontario appartient à:" ,
     "ROLE_ONESELF":"Moi           ",
-    "ROLE_GUARD":"__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "ROLE_GUARD":"Une personne à charge",
     "ERRORS": {
-      "ROLE_ERROR": "__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "ROLE_ERROR": "Pour qui envoyez-vous les renseignements?"
     }
   },
 
@@ -938,9 +938,9 @@
     "ANON_ACTION_OIID_HINT": "<button class='icon-btn-link' id='home-oiid-link-one' ng-click='$ctrl.openHelpModal()'>Renseignements</button> sur ce que sont le no d’identification d’immunisation de l’Ontario et le NIP, et où les trouver."
   },
   "welcomeLogin": {
-    "VIEW_BUTTON_TITLE": "Needs Translation",
+    "VIEW_BUTTON_TITLE": "Consulter les renseignements sur les vaccins",
     "VIEW_BUTTON_PARA": "Vous pouvez consulter des informations sur les vaccins qui doivent être administrés, qui auraient dû l'être et qui sont à venir. Par exemple, c'est comparable à votre  carte jaune, mais c'est mieux",
-    "SUBMIT_BUTTON_TITLE": "Needs Translation",
+    "SUBMIT_BUTTON_TITLE": "Envoyer les renseignements sur les vaccins",
     "SUBMIT_BUTTON_PARA": "Faire le suivi des vaccinations en les inscrivant à votre bureau de santé publique local.",
     "AUTHENTICATION": "Entrer un numéro d'identification et un NIP",
     "ANON_LABEL": "Vous n'avez pas de n<sup>o</sup> d'identification d'immunisation de l'Ontario ni de NIP?",
@@ -982,52 +982,52 @@
       "PHU_WEBSITE": "#"
     },
     "APH": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Santé publique Algoma",
+      "PHU_PHONE": "705-942-4646",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-866-892-0172",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant de la Santé publique Algoma",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Santé publique Algoma<br aria-hidden=\"true\" />294, av. Willow<br aria-hidden=\"true\" />Sault Ste. Marie, Ontarion<br aria-hidden=\"true\" />P6B 0A9",
+      "PHU_RESPONSE_TIME": "5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.algomapublichealth.com/disclaimer",
+      "PHU_WEBSITE": "http://www.algomapublichealth.com/disease-and-illness/immunization/"
     },
     "BCHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé du comté de Brant",
+      "PHU_PHONE": "1.519.753.4937",
       "PHU_PHONE_EXT": "",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du Bureau de santé du comté de Brant",
+      "PHU_ADDRESS": "<strong>Directrice, Ressources humaines</strong><br aria-hidden=\"true\" />Bureau de santé du comté de Brant<br aria-hidden=\"true\" /> 194, rue Terrace Hill<br aria-hidden=\"true\" />Brantford, Ontario<br aria-hidden=\"true\" />N3R 1G7",
+      "PHU_RESPONSE_TIME": "5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.bchu.org/QuickLinks/Pages/Termsofuse.aspx",
+      "PHU_WEBSITE": "http://www.bchu.org"
     },
     "CKPHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE_EXT": "",
+      "PHU_NAME": "Bureau de santé de Chatham-Kent",
+      "PHU_PHONE": "519.355.1071",
+      "PHU_PHONE_EXT": "poste. 5900",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de Chatham-Kent",
+      "PHU_ADDRESS": "<strong>l’agent ou l’agente de protection de la vie privée au Bureau de santé de Chatham‑Kent</strong><br aria-hidden=\"true\" />Bureau de santé de Chatham-Kent<br aria-hidden=\"true\" /> 435 avenue Grand Ouest<br aria-hidden=\"true\" /> Chatham ON<br aria-hidden=\"true\" />N7L 3Z4",
+      "PHU_RESPONSE_TIME": "Une semaine",
+      "PHU_TOC_LINK": "http://www.chatham-kent.ca/globals/Pages/TermsofUse.aspx",
+      "PHU_WEBSITE": "https://www.chatham-kent.ca/vaccinations"
     },
     "DRHD": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Département de santé de la région Durham",
+      "PHU_PHONE": "905-668-7711",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-800-372-1102",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant de la département de santé de la région Durham",
+      "PHU_ADDRESS": "<strong>Gestionnaire de la protection des renseignements personnels sur la santé</strong><br aria-hidden=\"true\" />Département de santé de la région Durham<br aria-hidden=\"true\" />605 Rossland Road East<br aria-hidden=\"true\" />Whitby, Ontario<br aria-hidden=\"true\" />L1N 6A3",
+      "PHU_RESPONSE_TIME": "5 à 10 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.durham.ca/default.asp?nr=/corporate/privacy.htm",
+      "PHU_WEBSITE": "http://www.durham.ca/health.asp?nr=/departments/health/cdcp/immunization_index.htm"
     },
     "EOHU": {
       "PHU_NAME": "Bureau de santé de l’est de l’Ontario",
@@ -1042,16 +1042,16 @@
       "PHU_WEBSITE": "http://www.eohu.ca/home/index_f.php"
     },
     "ESTHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé Elgin-St.Thomas",
+      "PHU_PHONE": "519-631-9900",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-800-922-0096",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé Elgin-St.Thomas",
+      "PHU_ADDRESS": "<strong>Directeur de la protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé Elgin-St.Thomas<br aria-hidden=\"true\" />1230, rue Talbot<br aria-hidden=\"true\" />St. Thomas, Ontario<br aria-hidden=\"true\" />N5P 1G9",
+      "PHU_RESPONSE_TIME": "Une semaine",
+      "PHU_TOC_LINK": "https://www.elginhealth.on.ca/disclaimer/notice-and-terms-use",
+      "PHU_WEBSITE": "https://www.elginhealth.on.ca/content/immunization-records"
     },
     "GBHU": {
       "PHU_NAME": "Bureau de santé de Grey Bruce",
@@ -1066,40 +1066,40 @@
       "PHU_WEBSITE": "https://www.publichealthgreybruce.on.ca/Your-Health/Immunization"
     },
     "HCHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé du comté de Huron",
+      "PHU_PHONE": "1-519-482-3416",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-877-837-6143",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du Bureau de santé du comté de Huron",
+      "PHU_ADDRESS": "<strong>Directeur de la protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé du comté de Huron<br aria-hidden=\"true\" />Health and Library Complex, 77722B London Road<br aria-hidden=\"true\" />Clinton, ON<br aria-hidden=\"true\" />N0M 1L0<br aria-hidden=\"true\" /><a href=\"mailto:healthprivacy@huroncounty.ca\">healthprivacy@huroncounty.ca</a>",
+      "PHU_RESPONSE_TIME": "1 semaine",
+      "PHU_TOC_LINK": "https://www.huronhealthunit.ca/terms-and-conditions/",
+      "PHU_WEBSITE": "https://www.huronhealthunit.ca/ICON"
     },
     "HKPR": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé du district d'Haliburton, de Kawarthae et de Pine Ridge",
+      "PHU_PHONE": "905-885-9100",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-866-888-4577",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du district d'Haliburton, de Kawarthae et de Pine Ridge",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé du district d'Haliburton, de Kawarthae et de Pine Ridge<br aria-hidden=\"true\" />200 Rose Glen Road<br aria-hidden=\"true\" />Port Hope, ON<br aria-hidden=\"true\" />L1A 3V6",
+      "PHU_RESPONSE_TIME": "1 semaine",
+      "PHU_TOC_LINK": "http://www.hkpr.on.ca/About/PersonalHealthPrivacy.aspx",
+      "PHU_WEBSITE": "http://www.hkpr.on.ca/"
     },
     "HNHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé de Haldimand-Norfolk",
+      "PHU_PHONE": "519.426.6170",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "905.318.6623",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de Haldimand-Norfolk",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de Haldimand-Norfolk<br aria-hidden=\"true\" />50 Colborne rue Sud<br aria-hidden=\"true\" />Simcoe, ON<br aria-hidden=\"true\" />N3Y 4H3<br aria-hidden=\"true\" />Tel: 519-426-5870 poste. 1261 <br aria-hidden=\"true\" />Fax: 519-426-8573",
+      "PHU_RESPONSE_TIME": "2 à 3 jours ouvrables",
+      "PHU_TOC_LINK": "https://hnhu.org/privacy-policy/",
+      "PHU_WEBSITE": "https://hnhu.org/"
     },
     "HPECHU": {
       "PHU_NAME": "Bureau de santé des comtés de Hastings et Prince Edward",
@@ -1120,10 +1120,22 @@
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant des services de santé publique de Hamilton",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Hamilton Public Health Services<br aria-hidden=\"true\" />110 King St. West, 2nd Floor<br aria-hidden=\"true\" />Hamilton, Ontario<br aria-hidden=\"true\" />L8P 4S6",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Services de santé publique de Hamilton<br aria-hidden=\"true\" />110 King St. West, 2nd Floor<br aria-hidden=\"true\" />Hamilton, Ontario<br aria-hidden=\"true\" />L8P 4S6",
       "PHU_RESPONSE_TIME": "dans 5 à 7 jours ouvrables",
       "PHU_TOC_LINK": "https://www.hamilton.ca/government-information/site-policies/terms-use",
-      "PHU_WEBSITE": "https://www.hamilton.ca/public-health"
+      "PHU_WEBSITE": "https://www.hamilton.ca/public-health/health-topics/vaccines-and-immunization"
+    },
+    "HRHD": {
+      "PHU_NAME": "Département de santé de de la région Halton",
+      "PHU_PHONE": "905-825-6000",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-866-442-5866",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant de la Département de santé de de la région Halton",
+      "PHU_ADDRESS": "<strong>Coordonnateur de l'accès à l'information et de la protection de la vie privée</strong><br aria-hidden=\"true\" />Département de santé de de la région Halton<br aria-hidden=\"true\" />1151, ch. Bronte<br aria-hidden=\"true\" />Oakville, Ontario<br aria-hidden=\"true\" />L6M 3L1",
+      "PHU_RESPONSE_TIME": "5-10 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.halton.ca/cms/one.aspx?portalId=8310&pageId=24028",
+      "PHU_WEBSITE": "http://www.halton.ca/cms/one.aspx?portalId=8310&pageId=24028"
     },
     "KFLA": {
       "PHU_NAME": "Kingston, Frontenac et Lennox & Addington Santé publique",
@@ -1137,17 +1149,29 @@
       "PHU_TOC_LINK": "https://www.kflaph.ca/en/about-us/Disclaimer.aspx",
       "PHU_WEBSITE": "https://www.kflaph.ca/en/index.aspx"
     },
-    "LPH": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "LGL": {
+      "PHU_NAME": "Bureau de santé du district de Leeds Grenville et Lanark",
+      "PHU_PHONE": "613-345-5685",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-800-660-5853",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du district de Leeds Grenville et Lanark",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Bureau de santé du district de Leeds Grenville et Lanark<br aria-hidden=\"true\" />458, boul. Laurier<br aria-hidden=\"true\" />Brockville, ON<br aria-hidden=\"true\" />K6V 7A3",
+      "PHU_RESPONSE_TIME": "1 semaine",
+      "PHU_TOC_LINK": "http://www.healthunit.org/privacy.htm",
+      "PHU_WEBSITE": "http://www.healthunit.org"
+    },
+    "LPH": {
+      "PHU_NAME": "Bureau de santé publique de Lambton ",
+      "PHU_PHONE": "519-383-8331",
+      "PHU_PHONE_EXT": "3589/3554",
+      "PHU_PHONE_2": "1-800-667-1839",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique de Lambton ",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé publique de Lambton<br aria-hidden=\"true\" />160, rue Exmouth<br aria-hidden=\"true\" />Point Edward, Ontario<br aria-hidden=\"true\" />N7T 7Z6",
+      "PHU_RESPONSE_TIME": "2 jours ouvrables",
+      "PHU_TOC_LINK": "https://lambtonhealth.on.ca/terms",
+      "PHU_WEBSITE": "https://lambtonhealth.on.ca/"
     },
     "MLHU": {
       "PHU_NAME": "Bureau de Santé de Middlesex-London Health Unit",
@@ -1162,28 +1186,28 @@
       "PHU_WEBSITE": "https://www.healthunit.com/immunization-records"
     },
     "NBPSDHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé du district de North Bay Parry Sound",
+      "PHU_PHONE": "705-474-1400",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
-      "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_PHONE_2": "1-800-563-2808",
+      "PHU_PHONE_2_EXT": "Ext. 2252",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du district de North Bay Parry Sound",
+      "PHU_ADDRESS": "<strong>Directeur général, Services internes</strong><br aria-hidden=\"true\" />Bureau de santé du district de North Bay Parry Sound<br aria-hidden=\"true\" />681, rue Commercial<br aria-hidden=\"true\" />North Bay, ON<br aria-hidden=\"true\" />P1B 4E7",
+      "PHU_RESPONSE_TIME": "3-5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.myhealthunit.ca/en/personalhealthprivacy.asp",
+      "PHU_WEBSITE": "http://www.myhealthunit.ca"
     },
     "NRPH": {
-      "PHU_NAME": "Bureau de santé de la région du Niagara",
-      "PHU_PHONE": "905-688-3762",
+      "PHU_NAME": "Service de santé publique de la région de Niagara",
+      "PHU_PHONE": "905-980-6000",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "1-800-263-7248",
-      "PHU_PHONE_2_EXT": "Ext. 7324",
-      "PHU_CONTACT_PERSON": "un membre du personnel soignant de la bureau de santé de la région du Niagara",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Niagara Region Public Health Department<br aria-hidden=\"true\" />",
-      "PHU_RESPONSE_TIME": "dans 3 jours ouvrables",
-      "PHU_TOC_LINK": "http://www.regional.niagara.on.ca/more/disclaimer/default.aspx?footer=1#Privacy",
-      "PHU_WEBSITE": "http://www.niagararegion.ca/health/default.aspx"
+      "PHU_PHONE_2": "1-800-263-7215",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de la région du Niagara",
+      "PHU_ADDRESS": "<strong>Coordonnateur de l'accès à l'information et de la protection de la vie privée</strong><br aria-hidden=\"true\" />Service de santé publique de la région de Niagara<br aria-hidden=\"true\" />905 980-6000, poste 3741",
+      "PHU_RESPONSE_TIME": "5-10 jours ouvrables",
+      "PHU_TOC_LINK": "https://www.niagararegion.ca/more/disclaimer/default.aspx?footer=1",
+      "PHU_WEBSITE": "http://www.niagararegion.ca/health/vaccinations/default.aspx"
     },
     "NWHU": {
       "PHU_NAME": "l’Unité sanitaire Northwestern",
@@ -1192,10 +1216,10 @@
       "PHU_PHONE_2": "1-800-830-5978",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant de l’unité sanitaire Northwestern",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Northwestern Health Unit<br aria-hidden=\"true\" />210 First Street North<br aria-hidden=\"true\" />Kenora, Ontario<br aria-hidden=\"true\" />P9N 2K4",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />l’Unité sanitaire Northwestern<br aria-hidden=\"true\" />210 First Street North<br aria-hidden=\"true\" />Kenora, Ontario<br aria-hidden=\"true\" />P9N 2K4",
       "PHU_RESPONSE_TIME": "dans 5 jours ouvrables",
       "PHU_TOC_LINK": "https://www.nwhu.on.ca/Pages/TermsandConditionsofUse.aspx",
-      "PHU_WEBSITE": "https://www.nwhu.on.ca/Pages/home.aspx"
+      "PHU_WEBSITE": "https://www.nwhu.on.ca"
     },
     "OCPH": {
       "PHU_NAME": "Bureau de santé publique du comté Oxford",
@@ -1208,6 +1232,30 @@
       "PHU_RESPONSE_TIME": "5 jours ouvrables",
       "PHU_TOC_LINK": "http://www.oxfordcounty.ca/General/Privacy-Terms-of-Use/Privacy/PHIPA/Public-Health",
       "PHU_WEBSITE": "http://www.oxfordcounty.ca/health"
+    },
+    "OPH": {
+      "PHU_NAME": "Santé publique Ottawa",
+      "PHU_PHONE": "613-580-6744",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant de la Santé publique Ottawa",
+      "PHU_ADDRESS": "<strong>Bureau de l'accès à l'information et de la protection de la vie privée (AIPVP) de la Ville d'Ottawa</strong><br aria-hidden=\"true\" />Santé publique Ottawa<br aria-hidden=\"true\" />613-580-2400, ext 21898",
+      "PHU_RESPONSE_TIME": "5 à 10 jours ouvrables",
+      "PHU_TOC_LINK": "http://ottawa.ca/en/city-hall/accountability-and-transparency/privacy-statement",
+      "PHU_WEBSITE": "http://ottawa.ca/en/residents/public-health/disease-and-medical-conditions/immunization"
+    },
+    "PCCHU": {
+      "PHU_NAME": "Bureau de santé publique de Peterborough",
+      "PHU_PHONE": "705-743-1000",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-877-743-0101",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique de Peterborough",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé publique de Peterborough<br aria-hidden=\"true\" />185 King Street<br aria-hidden=\"true\" />Peterborough,, ON<br aria-hidden=\"true\" />K9J 2R8",
+      "PHU_RESPONSE_TIME": "3 à 5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.peterboroughpublichealth.ca/disclaimer/",
+      "PHU_WEBSITE": "http://www.peterboroughpublichealth.ca/my-life-health/parents-caregivers/immunizations/how-to-update-your-childs-record/"
     },
     "PDHU": {
       "PHU_NAME": "Bureau de santé du district de Perth",
@@ -1245,6 +1293,18 @@
       "PHU_TOC_LINK": "http://www.porcupinehu.on.ca/fr/administration/exoneration/?",
       "PHU_WEBSITE": "http://www.porcupinehu.on.ca/en/your-health/yellow-cards/"
     },
+    "RE": {
+      "PHU_NAME": "Bureau de santé du comté de Renfrew et du district",
+      "PHU_PHONE": "613-735-8653",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-267-1067",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du comté de Renfrew et du district",
+      "PHU_ADDRESS": "<strong>Présidente-directrice générale (intérimaire) et directrice</strong><br aria-hidden=\"true\" />Bureau de santé du comté de Renfrew et du district<br aria-hidden=\"true\" />7 International Drive<br aria-hidden=\"true\" />Pembroke, Ontario<br aria-hidden=\"true\" />K8A 6W5",
+      "PHU_RESPONSE_TIME": "3 jours ouvrables",
+      "PHU_TOC_LINK": "http://rcdhu.com/disclaimer/",
+      "PHU_WEBSITE": "http://rcdhu.com/"
+    },
     "ROWPH": {
       "PHU_NAME": "Services de santé publique et d'urgence de la région de Waterloo",
       "PHU_PHONE": "519-575-4400",
@@ -1258,16 +1318,16 @@
       "PHU_WEBSITE": "http://www.regionofwaterloo.ca/en/servicesForYou/Immunization.asp"
     },
     "SDHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Service de santé publique de Sudbury et du district",
+      "PHU_PHONE": "705-522-9200",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "sans frais: 1-866-522-9200",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du service de santé publique de Sudbury et du district",
+      "PHU_ADDRESS": "<strong>BLigne pour les immunisations</strong><br aria-hidden=\"true\" />Service de santé publique de Sudbury et du district<br aria-hidden=\"true\" />1300, rue Paris<br aria-hidden=\"true\" />Sudbury, ON<br aria-hidden=\"true\" />P3E 3A3",
+      "PHU_RESPONSE_TIME": "5 jours ouvrables",
+      "PHU_TOC_LINK": "https://www.sdhu.com/health-topics-programs/vaccines-immunizations/immunization-records-reporting-vaccinations",
+      "PHU_WEBSITE": "https://www.sdhu.com/fr/sujets-et-des-programmes-de-sante/vaccins-immunisations/declarez-vos-immunisations-ou-obtenez-votre-dossier "
     },
     "SMDHU": {
       "PHU_NAME": "Bureau de santé du district de Simcoe Muskoka",
@@ -1282,16 +1342,16 @@
       "PHU_WEBSITE": "http://www.smdhu.org/immsonline"
     },
     "TBDHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé publique du district de Thunder Bay",
+      "PHU_PHONE": "1-807-625-5900",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-888-294-6630",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé publique du district de Thunder Bay",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé publique du district de Thunder Bay<br aria-hidden=\"true\" />999 rue Balmoral,<br aria-hidden=\"true\" /> Thunder Bay ON<br aria-hidden=\"true\" />P7B 6E7",
+      "PHU_RESPONSE_TIME": "1 semaine",
+      "PHU_TOC_LINK": "https://www.tbdhu/icon",
+      "PHU_WEBSITE": "https://www.tbdhu.com/sites/default/files/files/resource/2016-03/Privacy%20Statement.pdf"
     },
     "TIMHU": {
       "PHU_NAME": "Services de santé du Timiskaming",
@@ -1312,9 +1372,9 @@
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "un membre du personnel soignant de la direction de la santé publique de Toronto",
-      "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br aria-hidden=\"true\" />Toronto Public Health<br aria-hidden=\"true\" />277 Victoria Street, 4th Floor<br aria-hidden=\"true\" />Toronto, Ontario<br aria-hidden=\"true\" />M5B 1W2",
-      "PHU_RESPONSE_TIME": "dans 3 à 5 jours ouvrables",
-      "PHU_TOC_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607",
+      "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br aria-hidden=\"true\" />Direction de la santé publique de Toronto<br aria-hidden=\"true\" />235 Danforth Avenue, <br aria-hidden=\"true\" />Toronto, Ontario<br aria-hidden=\"true\" />M4K 1N2",
+      "PHU_RESPONSE_TIME": "3 à 5 jours ouvrables",
+      "PHU_TOC_LINK": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=33fd5ce6dfb31410VgnVCM10000071d60f89RCRD&vgnextchannel=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD&appInstanceName=default",
       "PHU_WEBSITE": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=33fd5ce6dfb31410VgnVCM10000071d60f89RCRD&vgnextchannel=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD&appInstanceName=default"
     },
     "WDGPH": {
@@ -1330,16 +1390,28 @@
       "PHU_WEBSITE": "https://www.wdgpublichealth.ca/healthcare-providers/vaccines-immunization"
     },
     "WECHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Bureau de santé du comté de Windsor Essex",
+      "PHU_PHONE": "519-258-2146",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-265-5822",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé du comté de Windsor Essex",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé du comté de Windsor Essex<br aria-hidden=\"true\" /> 1005 av. Ouellette<br aria-hidden=\"true\" />Windsor, ON<br aria-hidden=\"true\" />N9A 4J8",
+      "PHU_RESPONSE_TIME": "3 jours en période d'activités normales mais jusqu'à 1 semaine en pleine période d'évaluation",
+      "PHU_TOC_LINK": "https://www.wechu.org/key-policies/terms-use ",
+      "PHU_WEBSITE": "https://www.wechu.org/your-health/immunization "
+    },
+    "YRPHU": {
+      "PHU_NAME": "Bureau de santé de la région York",
+      "PHU_PHONE": "1-877-794-1880",
       "PHU_PHONE_EXT": "",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "un membre du personnel soignant du bureau de santé de la région York",
+      "PHU_ADDRESS": "<strong>Agent de protection de la vie privée</strong><br aria-hidden=\"true\" />Bureau de santé de la région York<br aria-hidden=\"true\" /> 520 Cane Parkway<br aria-hidden=\"true\" />Newmarket,, ON<br aria-hidden=\"true\" />L3Y 8T5, 1-877-464-9675, poste 74056",
+      "PHU_RESPONSE_TIME": "5-10 jours ouvrables",
+      "PHU_TOC_LINK": "http://www.york.ca/wps/portal/yorkhome/yorkregion/yr/privacyanddisclaimer/disclaimers/disclaimerstermsofuseandcopyrights/!ut/p/a1/rVFdb4JAEPw1PpJbOIHj8aStfERsahuFF3OeCBflI3Ca0l_fszZpTWqtDfd0s5mdnd1BCVqgpGQHkTEpqpLtjjixlj4d-54XQjAdEhcoTGlg2ARIaCtCrAhw4VG41j9HCUp4KWuZo7hrlrwqZVrKAXRVs1WglULuPwp5VaSncpNmyt0A6kYcGO9YuV6Llu-YKNJmAF__9gzItCnaarNvU9XAq7prRJbL9ji_5mKNYsxsrjvc1oiFsTa0dKwxYjuag1NmrVJurRyOgj8cxGgm7iRTskzmmig3FVr8ZBUtvrk7A5eszkcoCeVrHGWnuyknhjG0PN2FALwpAf_BfjTviKeDa14hhMYn4ZfsYhWufX",
+      "PHU_WEBSITE": "https://eimmunization.york.ca/ "
     }
   }
 }
