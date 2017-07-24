@@ -1,0 +1,41 @@
+/******************************************************************************
+ *                                                                            *
+ *    Ottawa custom PHU rules ONLY in this stylesheet.                        *
+ *    ~~~~~~                                                                  *
+ ******************************************************************************/
+
+#icon-phu-header {
+  background-color: #222222 !important;
+  border-color: #0D9C83 !important;
+}
+
+#icon-phu-header * {
+    color: #ffffff !important;
+}
+
+#icon-phu-header-brand {
+  border-color: #ffffff !important;
+}
+
+@media (min-width: 1px) {
+  /* Scale the logo/brand image down by a factor of 2.6 */
+  #icon-phu-header-brand img {
+    width: 35px; /* Width will vary for each PHU. */
+    height: 40px; /* Height should NOT be changed. */
+  }
+}
+
+@media (min-width: 767px) {
+  /* Scale the logo/brand image down by a factor of 2.0 */
+  #icon-phu-header-brand img {
+    width: 42px; /* Width will vary for each PHU. */
+    height: 52px; /* Height should NOT be changed. */
+  }
+}
+
+#icon-phu-footer {
+  background-color: #EEEEEE !important;
+}
+#icon-progress-bar-container {
+  background-color: #EEEEEE !important;
+}

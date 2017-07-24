@@ -107,14 +107,6 @@ export default {
 
           <hint>
             <span translate="newPin.HC_HINT_PARA"></span>
-            <p>
-            <button translate="newPin.HC_HINT_LINK"
-              type="button"
-              class="icon-btn-link text-left"
-              ng-click='$ctrl.openHCNHelpModal()'
-              id="noHealthCardNumberButton">
-            </button>
-            </p>
           </hint>
 
         </hcn-capture>

@@ -830,3 +830,15 @@ padding-left: 0px;
     margin-bottom: 1em;
 }
 /* End imms display table error */
+
+/* Role capture buttons */
+@media(max-width: 462px) {
+    .roleCaptureSelf {
+        width: 40%;
+    }
+
+    .roleCaptureGuard {
+        width: 60%;
+    }
+}
+/* End Role capture buttons */

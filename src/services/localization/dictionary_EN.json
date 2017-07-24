@@ -514,12 +514,12 @@
       "BODY": "We are unable to retrieve your record at this time. "
     },
     "$warnRetrievalSecurityLockOut": {
-      "TITLE": "Access Warning - Try Again Later",
-      "BODY": "This Ontario Immunization ID has been temporarily locked. Please try again later. After too many failed attempts, this Ontario Immunization ID will be locked."
-    },
-    "$warnRetrievalTooManyFailedAttempts": {
       "TITLE": "Access Denied",
       "BODY": "This Ontario Immunization ID has been locked because of too many failed attempts. Please contact {{phuName}} at {{phuPhone}}."
+    },
+    "$warnRetrievalTooManyFailedAttempts": {
+      "TITLE": "Access Warning",
+      "BODY": "Either the Ontario Immunization ID or PIN you have provided is incorrect. Please confirm this information and try again. After 10 failed attempts, this Ontario Immunization ID will be locked."
     },
     "$warnRetrievalUnknown": {
       "TITLE": "Error.",
@@ -978,52 +978,52 @@
       "PHU_WEBSITE": "#"
     },
     "APH": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Algoma Public Health",
+      "PHU_PHONE": "705-942-4646",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-866-892-0172",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "an Algoma Public Health nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Algoma Public Health<br aria-hidden=\"true\" />294 Willow Ave.<br aria-hidden=\"true\" />Sault Ste. Marie, Ontario<br aria-hidden=\"true\" />P6B 0A9",
+      "PHU_RESPONSE_TIME": "5 business days",
+      "PHU_TOC_LINK": "http://www.algomapublichealth.com/disclaimer",
+      "PHU_WEBSITE": "http://www.algomapublichealth.com/disease-and-illness/immunization/"
     },
     "BCHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Brant County Health Unit",
+      "PHU_PHONE": "1.519.753.4937",
       "PHU_PHONE_EXT": "",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Brant County Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Manager, Human Resources</strong><br aria-hidden=\"true\" />Brant County Health Unit<br aria-hidden=\"true\" />194 Terrace Hill St.<br aria-hidden=\"true\" />Brantford, Ontario<br aria-hidden=\"true\" />N3R 1G7",
+      "PHU_RESPONSE_TIME": "5 business days",
+      "PHU_TOC_LINK": "http://www.bchu.org/QuickLinks/Pages/Termsofuse.aspx",
+      "PHU_WEBSITE": "http://www.bchu.org"
     },
     "CKPHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE_EXT": "",
+      "PHU_NAME": "Chatham-Kent Public Health Unit",
+      "PHU_PHONE": "519.355.1071",
+      "PHU_PHONE_EXT": "ext. 5900",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Chatham-Kent Public Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer at Chatham-Kent Public Health</strong><br aria-hidden=\"true\" />Chatham-Kent Public Health Unit<br aria-hidden=\"true\" /> 435 Grand Ave. W<br aria-hidden=\"true\" /> Chatham ON<br aria-hidden=\"true\" />N7L 3Z4",
+      "PHU_RESPONSE_TIME": "1 week",
+      "PHU_TOC_LINK": "http://www.chatham-kent.ca/globals/Pages/TermsofUse.aspx",
+      "PHU_WEBSITE": "https://www.chatham-kent.ca/vaccinations"
     },
     "DRHD": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Durham Region Health Department",
+      "PHU_PHONE": "905-668-7711",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-800-372-1102",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Durham Region Health Department nurse",
+      "PHU_ADDRESS": "<strong>Manager, Health Information, Privacy & Security</strong><br aria-hidden=\"true\" />Durham Region Health Department<br aria-hidden=\"true\" />605 Rossland Road East<br aria-hidden=\"true\" />Whitby, Ontario<br aria-hidden=\"true\" />L1N 6A3",
+      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_TOC_LINK": "http://www.durham.ca/default.asp?nr=/corporate/privacy.htm",
+      "PHU_WEBSITE": "http://www.durham.ca/health.asp?nr=/departments/health/cdcp/immunization_index.htm"
     },
     "EOHU": {
       "PHU_NAME": "Eastern Ontario Health Unit",
@@ -1038,16 +1038,16 @@
       "PHU_WEBSITE": "http://www.eohu.ca/home/index_e.php"
     },
     "ESTHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Elgin-St. Thomas Health Unit",
+      "PHU_PHONE": "519-631-9900",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-800-922-0096",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "an Elgin-St. Thomas Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Elgin-St. Thomas Health Unit<br aria-hidden=\"true\" />1230 Talbot Street<br aria-hidden=\"true\" />St. Thomas, Ontario<br aria-hidden=\"true\" />N5P 1G9",
+      "PHU_RESPONSE_TIME": "1 week",
+      "PHU_TOC_LINK": "https://www.elginhealth.on.ca/disclaimer/notice-and-terms-use",
+      "PHU_WEBSITE": "https://www.elginhealth.on.ca/content/immunization-records"
     },
     "GBHU": {
       "PHU_NAME": "Grey Bruce Health Unit",
@@ -1062,40 +1062,40 @@
       "PHU_WEBSITE": "https://www.publichealthgreybruce.on.ca/Your-Health/Immunization"
     },
     "HCHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Huron County Health Unit",
+      "PHU_PHONE": "1-519-482-3416",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-877-837-6143",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Huron County Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Huron County Health Unit<br aria-hidden=\"true\" />Health and Library Complex, 77722B London Road<br aria-hidden=\"true\" />Clinton, ON<br aria-hidden=\"true\" />N0M 1L0<br aria-hidden=\"true\" /><a href=\"mailto:healthprivacy@huroncounty.ca\">healthprivacy@huroncounty.ca</a>",
+      "PHU_RESPONSE_TIME": "1 week",
+      "PHU_TOC_LINK": "https://www.huronhealthunit.ca/terms-and-conditions/",
+      "PHU_WEBSITE": "https://www.huronhealthunit.ca/ICON"
     },
     "HKPR": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Haliburton, Kawartha, Pine Ridge District Health Unit",
+      "PHU_PHONE": "905-885-9100",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-866-888-4577",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Haliburton, Kawartha, Pine Ridge District Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Haliburton, Kawartha, Pine Ridge District Health Unit<br aria-hidden=\"true\" />200 Rose Glen Road<br aria-hidden=\"true\" />Port Hope, Ontario<br aria-hidden=\"true\" />L1A 3V6",
+      "PHU_RESPONSE_TIME": "1 week",
+      "PHU_TOC_LINK": "http://www.hkpr.on.ca/About/PersonalHealthPrivacy.aspx",
+      "PHU_WEBSITE": "http://www.hkpr.on.ca/"
     },
     "HNHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Haldimand-Norfolk Health Unit",
+      "PHU_PHONE": "519-426-6170",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "905-318-6623",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Haldimand-Norfolk Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Haldimand-Norfolk Health Unit<br aria-hidden=\"true\" />50 Colborne Street South<br aria-hidden=\"true\" />Simcoe, Ontario<br aria-hidden=\"true\" />N3Y 4H3<br aria-hidden=\"true\" />Tel: 519-426-5870 ext. 1261 <br aria-hidden=\"true\" />Fax: 519-426-8573",
+      "PHU_RESPONSE_TIME": "2-3 Business Days",
+      "PHU_TOC_LINK": "https://hnhu.org/privacy-policy/",
+      "PHU_WEBSITE": "https://hnhu.org/"
     },
     "HPECHU": {
       "PHU_NAME": "Hastings and Prince Edward Counties Health Unit",
@@ -1119,7 +1119,19 @@
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Hamilton Public Health Services<br aria-hidden=\"true\" />110 King St. West, 2nd Floor<br aria-hidden=\"true\" />Hamilton, Ontario<br aria-hidden=\"true\" />L8P 4S6",
       "PHU_RESPONSE_TIME": "5-7 business days",
       "PHU_TOC_LINK": "https://www.hamilton.ca/government-information/site-policies/terms-use",
-      "PHU_WEBSITE": "https://www.hamilton.ca/public-health"
+      "PHU_WEBSITE": "https://www.hamilton.ca/public-health/health-topics/vaccines-and-immunization"
+    },
+    "HRHD": {
+      "PHU_NAME": "Halton Region Health Department",
+      "PHU_PHONE": "905-825-6000",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-866-442-5866",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "a Halton Region Health Department nurse",
+      "PHU_ADDRESS": "<strong>Freedom of Information and Privacy Coordinator</strong><br aria-hidden=\"true\" />Halton Region Health Department<br aria-hidden=\"true\" />1151 Bronte Rd<br aria-hidden=\"true\" />Oakville, Ontario<br aria-hidden=\"true\" />L6M 3L1",
+      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_TOC_LINK": "http://www.halton.ca/cms/one.aspx?portalId=8310&pageId=24028",
+      "PHU_WEBSITE": "http://www.halton.ca/cms/one.aspx?portalId=8310&pageId=24028"
     },
     "KFLA": {
       "PHU_NAME": "Kingston, Frontenac and Lennox & Addington Public Health",
@@ -1128,22 +1140,34 @@
       "PHU_PHONE_2": "1-800-267-7875",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "a Kingston, Frontenac and Lennox & Addington Public Health nurse",
-      "PHU_ADDRESS": "<strong>Manager, CQI and Central Resources</strong><br aria-hidden=\"true\" />Kingston, Frontenac and Lennox & Addington Public Health<br aria-hidden=\"true\" />221 Portsmouth Avenue<br aria-hidden=\"true\" />Kingston, ON< aria-hidden=\"true\" />K7M 1V5",
+      "PHU_ADDRESS": "<strong>Manager, CQI and Central Resources</strong><br aria-hidden=\"true\" />Kingston, Frontenac and Lennox & Addington Public Health<br aria-hidden=\"true\" />221 Portsmouth Avenue<br aria-hidden=\"true\" />Kingston, ON<br aria-hidden=\"true\" />K7M 1V5",
       "PHU_RESPONSE_TIME": "3 business days",
       "PHU_TOC_LINK": "https://www.kflaph.ca/en/about-us/Disclaimer.aspx",
       "PHU_WEBSITE": "https://www.kflaph.ca/en/index.aspx"
     },
-    "LPH": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+    "LGL": {
+      "PHU_NAME": "Leeds Grenville and Lanark District Health Unit",
+      "PHU_PHONE": "613-345-5685",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-800-660-5853",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Leeds Grenville and Lanark District Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Leeds Grenville and Lanark District Health Unit<br aria-hidden=\"true\" />458 Laurier Blvd<br aria-hidden=\"true\" />Brockville, Ontario<br aria-hidden=\"true\" />K6V 7A3",
+      "PHU_RESPONSE_TIME": "1 week",
+      "PHU_TOC_LINK": "http://www.healthunit.org/privacy.htm",
+      "PHU_WEBSITE": "http://www.healthunit.org"
+    },
+    "LPH": {
+      "PHU_NAME": "Lambton Public Health",
+      "PHU_PHONE": "519-383-8331",
+      "PHU_PHONE_EXT": "3589/3554",
+      "PHU_PHONE_2": "1-800-667-1839",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "a Lambton Public Health nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Lambton Public Health<br aria-hidden=\"true\" />160 Exmouth St.<br aria-hidden=\"true\" />Point Edward, ON<br aria-hidden=\"true\" />N7T 7Z6",
+      "PHU_RESPONSE_TIME": "2 business days",
+      "PHU_TOC_LINK": "https://lambtonhealth.on.ca/terms",
+      "PHU_WEBSITE": "https://lambtonhealth.on.ca/"
     },
     "MLHU": {
       "PHU_NAME": "Middlesex-London Health Unit",
@@ -1158,28 +1182,28 @@
       "PHU_WEBSITE": "https://www.healthunit.com/immunization-records"
     },
     "NBPSDHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "North Bay Parry Sound District Health Unit",
+      "PHU_PHONE": "705-474-1400",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
-      "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_PHONE_2": "1-800-563-2808",
+      "PHU_PHONE_2_EXT": "Ext. 2252",
+      "PHU_CONTACT_PERSON": "a North Bay Parry Sound District Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Executive Director, Corporate Services</strong><br aria-hidden=\"true\" />North Bay Parry Sound District Health Unit<br aria-hidden=\"true\" />681 Commercial Street<br aria-hidden=\"true\" />North Bay, ON<br aria-hidden=\"true\" />P1B 4E7",
+      "PHU_RESPONSE_TIME": "3-5 Business Days",
+      "PHU_TOC_LINK": "http://www.myhealthunit.ca/en/personalhealthprivacy.asp",
+      "PHU_WEBSITE": "http://www.myhealthunit.ca"
     },
     "NRPH": {
       "PHU_NAME": "Niagara Region Public Health Department",
-      "PHU_PHONE": "905-688-3762",
+      "PHU_PHONE": "905-980-6000",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "1-800-263-7248",
-      "PHU_PHONE_2_EXT": "Ext. 7324",
+      "PHU_PHONE_2": "1-800-263-7215",
+      "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "a Niagara Region Public Health Department nurse",
-      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Niagara Region Public Health Department<br aria-hidden=\"true\" />",
-      "PHU_RESPONSE_TIME": "3 business days",
-      "PHU_TOC_LINK": "http://www.regional.niagara.on.ca/more/disclaimer/default.aspx?footer=1#Privacy",
-      "PHU_WEBSITE": "http://www.niagararegion.ca/health/default.aspx"
+      "PHU_ADDRESS": "<strong>Freedom of Information and Privacy Coordinator</strong><br aria-hidden=\"true\" />Niagara Region Public Health Department<br aria-hidden=\"true\" />905-980-6000, ext. 3741",
+      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_TOC_LINK": "https://www.niagararegion.ca/more/disclaimer/default.aspx?footer=1",
+      "PHU_WEBSITE": "http://www.niagararegion.ca/health/vaccinations/default.aspx"
     },
     "NWHU": {
       "PHU_NAME": "Northwestern Health Unit",
@@ -1191,7 +1215,7 @@
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Northwestern Health Unit<br aria-hidden=\"true\" />210 First Street North<br aria-hidden=\"true\" />Kenora, Ontario<br aria-hidden=\"true\" />P9N 2K4",
       "PHU_RESPONSE_TIME": "5 business days",
       "PHU_TOC_LINK": "https://www.nwhu.on.ca/Pages/TermsandConditionsofUse.aspx",
-      "PHU_WEBSITE": "https://www.nwhu.on.ca/Pages/home.aspx"
+      "PHU_WEBSITE": "https://www.nwhu.on.ca"
     },
     "OCPH": {
       "PHU_NAME": "Oxford County Public Health",
@@ -1204,6 +1228,30 @@
       "PHU_RESPONSE_TIME": "5 business days",
       "PHU_TOC_LINK": "http://www.oxfordcounty.ca/General/Privacy-Terms-of-Use/Privacy/PHIPA/Public-Health",
       "PHU_WEBSITE": "http://www.oxfordcounty.ca/health"
+    },
+    "OPH": {
+      "PHU_NAME": "Ottawa Public Health",
+      "PHU_PHONE": "613-580-6744",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "an Ottawa Public Health nurse",
+      "PHU_ADDRESS": "<strong>Access to Information and Privacy Office (ATIP)</strong><br aria-hidden=\"true\" />Ottawa Public Health<br aria-hidden=\"true\" />613-580-2400, ext 21898",
+      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_TOC_LINK": "http://ottawa.ca/en/city-hall/accountability-and-transparency/privacy-statement",
+      "PHU_WEBSITE": "http://ottawa.ca/en/residents/public-health/disease-and-medical-conditions/immunization"
+    },
+    "PCCHU": {
+      "PHU_NAME": "Peterborough Public Health",
+      "PHU_PHONE": "705-743-1000",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-877-743-0101",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "a Peterborough Public Health  nurse",
+      "PHU_ADDRESS":  "<strong>Assistant Director & Chief  Nursing Officer</strong><br aria-hidden=\"true\" />Peterborough Public Health<br aria-hidden=\"true\" />185 King Street<br aria-hidden=\"true\" />Peterborough, ON<br aria-hidden=\"true\" />K9J 2R8",
+      "PHU_RESPONSE_TIME": "3 – 5 business days ",
+      "PHU_TOC_LINK": "http://www.peterboroughpublichealth.ca/disclaimer/",
+      "PHU_WEBSITE": "http://www.peterboroughpublichealth.ca/my-life-health/parents-caregivers/immunizations/how-to-update-your-childs-record/"
     },
     "PDHU": {
       "PHU_NAME": "Perth District Health Unit",
@@ -1241,6 +1289,18 @@
       "PHU_TOC_LINK": "http://www.porcupinehu.on.ca/en/admin/disclaimer/",
       "PHU_WEBSITE": "http://www.porcupinehu.on.ca/en/your-health/yellow-cards/"
     },
+    "RE": {
+      "PHU_NAME": "Renfrew County and District Health Unit",
+      "PHU_PHONE": "613-735-8653",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-267-1067",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "a Renfrew County and District Health Unit nurse",
+      "PHU_ADDRESS": "<strong>CEO(A)/Director, Corporate Services</strong><br aria-hidden=\"true\" />Renfrew County and District Health Unit<br aria-hidden=\"true\" />7 International Drive<br aria-hidden=\"true\" />Pembroke, Ontario<br aria-hidden=\"true\" />K8A 6W5",
+      "PHU_RESPONSE_TIME": "3 business days",
+      "PHU_TOC_LINK": "http://rcdhu.com/disclaimer/",
+      "PHU_WEBSITE": "http://rcdhu.com/"
+    },
     "ROWPH": {
       "PHU_NAME": "Region of Waterloo Public Health and Emergency Services",
       "PHU_PHONE": "519-575-4400",
@@ -1254,16 +1314,16 @@
       "PHU_WEBSITE": "http://www.regionofwaterloo.ca/en/servicesForYou/Immunization.asp"
     },
     "SDHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Sudbury & District Health Unit",
+      "PHU_PHONE": "705-522-9200",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "Toll-free: 1-866-522-9200",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Sudbury & District Health Unit nurse",
+      "PHU_ADDRESS": "<strong>1300 Paris Street</strong><br aria-hidden=\"true\" />Sudbury & District Health Unit<br aria-hidden=\"true\" />1300 Paris Street<br aria-hidden=\"true\" />Sudbury, ON<br aria-hidden=\"true\" />P3E 3A3",
+      "PHU_RESPONSE_TIME": "5 business days",
+      "PHU_TOC_LINK": "https://www.sdhu.com/health-topics-programs/vaccines-immunizations/immunization-records-reporting-vaccinations",
+      "PHU_WEBSITE": "https://www.sdhu.com/health-topics-programs/vaccines-immunizations/immunization-records-reporting-vaccinations"
     },
     "SMDHU": {
       "PHU_NAME": "Simcoe Muskoka District Health Unit",
@@ -1278,16 +1338,16 @@
       "PHU_WEBSITE": "http://www.smdhu.org/immsonline"
     },
     "TBDHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Thunder Bay District Health Unit",
+      "PHU_PHONE": "1-807-625-5900",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "",
+      "PHU_PHONE_2": "1-888-294-6630",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a Thunder Bay District Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Thunder Bay District Health Unit<br aria-hidden=\"true\" />999 Balmoral Street,<br aria-hidden=\"true\" /> Thunder Bay ON<br aria-hidden=\"true\" />P7B 6E7",
+      "PHU_RESPONSE_TIME": "One week",
+      "PHU_TOC_LINK": "https://www.tbdhu/icon",
+      "PHU_WEBSITE": "https://www.tbdhu.com/sites/default/files/files/resource/2016-03/Privacy%20Statement.pdf"
     },
     "TIMHU": {
       "PHU_NAME": "Timiskaming Health Unit",
@@ -1308,10 +1368,10 @@
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "a Toronto Public Health nurse",
-      "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br aria-hidden=\"true\" />Toronto Public Health<br aria-hidden=\"true\" />277 Victoria Street, 4th Floor<br aria-hidden=\"true\" />Toronto, Ontario<br aria-hidden=\"true\" />M5B 1W2",
+      "PHU_ADDRESS": "<strong>Manager, Information Management</strong><br aria-hidden=\"true\" />Toronto Public Health<br aria-hidden=\"true\" />235 Danforth Avenue, 2nd floor<br aria-hidden=\"true\" />Toronto, Ontario<br aria-hidden=\"true\" />M4K 1N2",
       "PHU_RESPONSE_TIME": "3-5 business days",
-      "PHU_TOC_LINK": "https://forms.toronto.ca/FormsRouter/Immunization?pwsBounce=pws4764080226371690607",
-      "PHU_WEBSITE": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD"
+      "PHU_TOC_LINK": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=33fd5ce6dfb31410VgnVCM10000071d60f89RCRD&vgnextchannel=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD&appInstanceName=default",
+      "PHU_WEBSITE": "http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=33fd5ce6dfb31410VgnVCM10000071d60f89RCRD&vgnextchannel=a253ba2ae8b1e310VgnVCM10000071d60f89RCRD&appInstanceName=default"
     },
     "WDGPH": {
       "PHU_NAME": "Wellington-Dufferin-Guelph Public Health",
@@ -1320,21 +1380,34 @@
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "a Wellington-Dufferin-Guelph Public Health nurse",
-      "PHU_ADDRESS": "<strong>Chief Privacy Officer</strong><br aria-hidden=\"true\" />Wellington-Dufferin-Guelph Public Health<br aria-hidden=\"true\" /160 Chancellors Way<br aria-hidden=\"true\" />Guelph, ON<br aria-hidden=\"true\" />N1G 0E1",
+      "PHU_ADDRESS": "<strong>Chief Privacy Officer</strong><br aria-hidden=\"true\" />Wellington-Dufferin-Guelph Public Health<br aria-hidden=\"true\" />160 Chancellors Way<br aria-hidden=\"true\" />Guelph, ON<br aria-hidden=\"true\" />N1G 0E1",
       "PHU_RESPONSE_TIME": "5-10 business days",
       "PHU_TOC_LINK": "https://www.wdgpublichealth.ca/about/terms-use",
       "PHU_WEBSITE": "https://www.wdgpublichealth.ca/healthcare-providers/vaccines-immunization"
     },
     "WECHU": {
-      "PHU_NAME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_PHONE": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
+      "PHU_NAME": "Windsor Essex County Health Unit",
+      "PHU_PHONE": "519-258-2146",
+      "PHU_PHONE_EXT": "",
+      "PHU_PHONE_2": "1-800-265-5822",
+      "PHU_PHONE_2_EXT": "",
+      "PHU_CONTACT_PERSON": "a Windsor Essex County Health Unit nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Windsor Essex County Health Unit<br aria-hidden=\"true\" /> 1005 Ouellette Avenue<br aria-hidden=\"true\" />Windsor, ON<br aria-hidden=\"true\" />N9A 4J8",
+      "PHU_RESPONSE_TIME": "3 days during normal operations but up to one week during peak assessment periods",
+      "PHU_TOC_LINK": "https://www.wechu.org/key-policies/terms-use ",
+      "PHU_WEBSITE": "https://www.wechu.org/your-health/immunization "
+    },
+    "YRPHU": {
+      "PHU_NAME": "York Region Public Health",
+      "PHU_PHONE": "1-877-794-1880",
+      "PHU_PHONE_EXT": "",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
-      "PHU_CONTACT_PERSON": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_ADDRESS": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_RESPONSE_TIME": "__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_TOC_LINK": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__",
-      "PHU_WEBSITE": "https://__PLACEHOLDER__PLEASE__REPLACE__ME__"
+      "PHU_CONTACT_PERSON": "a York Region Public Health nurse",
+      "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />York Region Public Health<br aria-hidden=\"true\" /> 520 Cane Parkway<br aria-hidden=\"true\" />Newmarket,, ON<br aria-hidden=\"true\" />L3Y 8T5, 1-877-464-9675 ext 74056",
+      "PHU_RESPONSE_TIME": "5-10 business days",
+      "PHU_TOC_LINK": "http://www.york.ca/wps/portal/yorkhome/yorkregion/yr/privacyanddisclaimer/disclaimers/disclaimerstermsofuseandcopyrights/!ut/p/a1/rVFdb4JAEPw1PpJbOIHj8aStfERsahuFF3OeCBflI3Ca0l_fszZpTWqtDfd0s5mdnd1BCVqgpGQHkTEpqpLtjjixlj4d-54XQjAdEhcoTGlg2ARIaCtCrAhw4VG41j9HCUp4KWuZo7hrlrwqZVrKAXRVs1WglULuPwp5VaSncpNmyt0A6kYcGO9YuV6Llu-YKNJmAF__9gzItCnaarNvU9XAq7prRJbL9ji_5mKNYsxsrjvc1oiFsTa0dKwxYjuag1NmrVJurRyOgj8cxGgm7iRTskzmmig3FVr8ZBUtvrk7A5eszkcoCeVrHGWnuyknhjG0PN2FALwpAf_BfjTviKeDa14hhMYn4ZfsYhWufX",
+      "PHU_WEBSITE": "https://eimmunization.york.ca/ "
     }
   }
 }

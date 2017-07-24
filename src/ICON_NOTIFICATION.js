@@ -39,7 +39,7 @@ const ICON_NOTIFICATION = {
 
   WARN_RETRIEVAL_CONSENT_BLOCK:     '$warnRetrievalConsentBlock',
   WARN_RETRIEVAL_BAD_OIID:          '$warnRetrievalBadOiid',
-  // WARN_RETRIEVAL_BAD_PIN:           '$warnRetrievalBadPin',   /* Redundant, WARN_RETRIEVAL_BAD_OIID covers both cases. */
+  WARN_RETRIEVAL_BAD_PIN:           '$warnRetrievalBadPin',
   WARN_RETRIEVAL_NETWORK_PROBLEM:   '$warnRetrievalNetworkProblem',
   WARN_RETRIEVAL_SECURITY_LOCK_OUT: '$warnRetrievalSecurityLockOut',
   WARN_RETRIEVAL_TOO_MANY_FAILED_ATTEMPTS: '$warnRetrievalTooManyFailedAttempts',
