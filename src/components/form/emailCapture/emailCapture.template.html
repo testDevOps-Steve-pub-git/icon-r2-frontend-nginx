@@ -28,7 +28,7 @@
         <div ng-if="!$ctrl.isOptional" class="alert alert-danger col-xs-12" id="patient-email-error" ng-message="required" translate="emailCapture.ERRORS.REQUIRED" role="alert"></div>
       </div>
       <!-- End error messages -->
-      <span ng-transclude="hint"></span>
+      <span ng-transclude="hint" id='emailMessage'></span>
       <!-- End email address -->
     </div>
     <div class="form-group">

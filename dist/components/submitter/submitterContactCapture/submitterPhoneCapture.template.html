@@ -18,9 +18,8 @@
             ui-options="$ctrl.phoneOptions"
             ui-mask="(999) 999-9999" ui-mask-placeholder-char="_"
             class="form-control"
-            aria-describedby="contactMessage"
+            aria-describedby="phoneAriaLabel contactMessage"
             type="tel" title="Phone Number"
-            aria-label="{{ 'submitterContactCapture.PHONE_LABEL' | translate }}"
             />
       </div>
 
@@ -46,15 +45,21 @@
           <div class="alert alert-danger col-xs-12" ng-message="mask" role="alert">{{'submitterContactCapture.ERRORS.INCORRECT_FORMAT' | translate}}</div>
         </div>
 
-        <div id="submitter-phone-extension-error" ng-messages="$ctrl.form.phone1Ext.$error" ng-if="$ctrl.form.phne1Ext.$touched">
+        <div id="submitter-phone-extension-error" ng-messages="$ctrl.form.phone1Ext.$error" ng-if="$ctrl.form.phone1Ext.$touched">
           <div class="alert alert-danger col-xs-12" ng-message="pattern" role="alert">{{ 'submitterContactCapture.ERRORS.PHONE_EXT_NUMBERS' | translate }}</div>
           <div class="alert alert-danger col-xs-12" ng-message="maxlength" role="alert">{{ 'submitterContactCapture.ERRORS.TOO_MANY_NUMBERS' | translate }}</div>
         </div>
       </div>
   <!-- End error messages -->
 
+      <div id='phoneAriaLabel'
+           class='hidden'
+           translate='submitterContactCapture.PHONE_LABEL'>
+      </div>
       <div class="col-xs-12">
-        <p id="contactMessage" class="icon-remove-margin-bottom">{{ 'submitterContactCapture.CONTACT_MESSAGE' | translate }}</p>
+        <p id="contactMessage" class="icon-remove-margin-bottom">
+          {{ 'submitterContactCapture.CONTACT_MESSAGE' | translate }}
+        </p>
       </div>
 
       </div>

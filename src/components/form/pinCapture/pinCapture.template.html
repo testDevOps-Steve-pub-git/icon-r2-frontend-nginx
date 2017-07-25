@@ -16,6 +16,7 @@
            ng-required="true"
            ng-pattern=rgx.OIID_PIN
            icon-pin-format
+           aria-describedby="pinHint"
            />
 
     <!-- PIN ERROR MESSAGE -->
@@ -24,7 +25,7 @@
       <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='pinCapture.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'pinCapture.ERRORS.BELOW_MINLENGTH' | translate }}" role="alert"></div>
     </div>
     <!-- End PIN ERROR MESSAGE -->
-    <span ng-transclude="hint"></span>
+    <span ng-transclude="hint" id="pinHint"></span>
     <!-- End Retriever Pin -->
 </div>
 <div class="form-group col-xs-12">

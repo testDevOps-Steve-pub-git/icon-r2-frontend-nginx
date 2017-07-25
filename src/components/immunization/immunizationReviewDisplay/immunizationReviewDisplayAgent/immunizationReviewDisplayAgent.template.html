@@ -15,7 +15,7 @@
 
         <span ng-if="$ctrl.immunizations[0].getType() === 'Trade'">
           <span>{{$ctrl.immunizations[0].trade.name}}</span>
-          <br />
+          <br aria-hidden="true" />
           <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
         </span>
       </h4>

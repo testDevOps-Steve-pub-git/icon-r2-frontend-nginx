@@ -1,5 +1,5 @@
 /* @ngInject */
-function languageSelector$ctrl ($state, $translate) {
+function languageSelector$ctrl ($state, $translate, Utility) {
   this.$onInit = () => {
     this.lang = { EN: 'en', FR: 'fr' }
     this.currentLanguage = $translate.use()
@@ -9,6 +9,9 @@ function languageSelector$ctrl ($state, $translate) {
     this.updateLocalization = (lang) => {
       this.currentLanguage = lang
       $translate.use(this.currentLanguage)
+        .then(() => {
+          Utility.updateTitle()
+        })
     }
   }
 }

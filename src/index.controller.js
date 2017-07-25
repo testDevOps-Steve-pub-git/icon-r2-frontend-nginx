@@ -10,12 +10,14 @@
       $scope, $timeout, $transitions, $state, $window,
       $translate, $uibModal,
       BrowserChecker, SessionHandler,
-      AccessControl
+      AccessControl, Utility
     ) {
 
     $scope.isBrowserSupported = BrowserChecker.isBrowserSupported();
 
     $transitions.onSuccess({}, () => {
+      //Set page title to include PHU name
+      Utility.updateTitle()
       // Scroll to the top of the page on page load.
       document.body.scrollTop = document.documentElement.scrollTop = 0;
       // Ensure the "Skip To Content" buttun is the first element to be tabbed to on the page.

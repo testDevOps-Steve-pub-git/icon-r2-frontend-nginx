@@ -84,9 +84,10 @@ const ANON_SELF_SUBMISSION = {
       /* ------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------ */
       { ...progress.PATIENT, previous: null, next: progress.ADDRESS },
       { ...progress.ADDRESS, previous: progress.PATIENT, next: progress.IMMUNIZATIONS },
-      { ...progress.IMMUNIZATIONS, previous: progress.ADDRESS, next: progress.DOCUMENTS },
-      { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.REVIEW },
-      { ...progress.REVIEW, previous: progress.DOCUMENTS, next: progress.CONFIRMATION },
+      { ...progress.IMMUNIZATIONS, previous: progress.ADDRESS, next: progress.REVIEW },
+      /* TODO: Enable document view, and update adjacent previous / next when feature stable. */
+      /* { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.REVIEW }, */
+      { ...progress.REVIEW, previous: progress.IMMUNIZATIONS, next: progress.CONFIRMATION },
       { ...progress.CONFIRMATION, previous: progress.REVIEW, next: null }
     ],
     baseState: `anon.self.submission`
@@ -101,9 +102,10 @@ const ANON_OTHER_SUBMISSION = {
       /* ------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------ */
       { ...progress.PATIENT, previous: null, next: progress.ADDRESS },
       { ...progress.ADDRESS, previous: progress.PATIENT, next: progress.IMMUNIZATIONS },
-      { ...progress.IMMUNIZATIONS, previous: progress.ADDRESS, next: progress.DOCUMENTS },
-      { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.SUBMITTER },
-      { ...progress.SUBMITTER, previous: progress.DOCUMENTS, next: progress.REVIEW },
+      { ...progress.IMMUNIZATIONS, previous: progress.ADDRESS, next: progress.SUBMITTER },
+      /* TODO: Enable document view, and update adjacent previous / next when feature stable. */
+      /* { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.SUBMITTER }, */
+      { ...progress.SUBMITTER, previous: progress.IMMUNIZATIONS, next: progress.REVIEW },
       { ...progress.REVIEW, previous: progress.SUBMITTER, next: progress.CONFIRMATION },
       { ...progress.CONFIRMATION, previous: progress.REVIEW, next: null }
     ],
@@ -117,9 +119,10 @@ const AUTH_SELF_SUBMISSION = {
   data: {
     navStates: [
       /* ------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------ */
-      { ...progress.IMMUNIZATIONS, previous: null, next: progress.DOCUMENTS },
-      { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.PATIENT },
-      { ...progress.PATIENT, previous: progress.DOCUMENTS, next: progress.REVIEW },
+      { ...progress.IMMUNIZATIONS, previous: null, next: progress.PATIENT },
+      /* TODO: Enable document view, and update adjacent previous / next when feature stable. */
+      /* { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.PATIENT }, */
+      { ...progress.PATIENT, previous: progress.IMMUNIZATIONS, next: progress.REVIEW },
       { ...progress.REVIEW, previous: progress.PATIENT, next: progress.CONFIRMATION },
       { ...progress.CONFIRMATION, previous: progress.REVIEW, next: null }
     ],
@@ -133,9 +136,10 @@ const AUTH_OTHER_SUBMISSION = {
   data: {
     navStates: [
       /* ------CURRENT STATE-------------------PREVIOUS STATE----------------NEXT STATE------------ */
-      { ...progress.IMMUNIZATIONS, previous: null, next: progress.DOCUMENTS },
-      { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.PATIENT },
-      { ...progress.PATIENT, previous: progress.DOCUMENTS, next: progress.SUBMITTER },
+      { ...progress.IMMUNIZATIONS, previous: null, next: progress.PATIENT },
+      /* TODO: Enable document view, and update adjacent previous / next when feature stable. */
+      /* { ...progress.DOCUMENTS, previous: progress.IMMUNIZATIONS, next: progress.PATIENT }, */
+      { ...progress.PATIENT, previous: progress.IMMUNIZATIONS, next: progress.SUBMITTER },
       { ...progress.SUBMITTER, previous: progress.PATIENT, next: progress.REVIEW },
       { ...progress.REVIEW, previous: progress.SUBMITTER, next: progress.CONFIRMATION },
       { ...progress.CONFIRMATION, previous: progress.REVIEW, next: null }

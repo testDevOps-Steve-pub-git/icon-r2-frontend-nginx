@@ -8,6 +8,7 @@
 
 /* General utility classes */
 .btn { white-space: normal; }
+.icon-no-wrap{ white-space: nowrap; }
 
 .icon-btn-link-danger { color: red !important; }
 .icon-background-danger { background-color: red !important; }
@@ -240,6 +241,11 @@
 #phu-footer-phone {
   color: #757575;
 }
+
+#phu-footer-phone * {
+  font-weight: normal;
+}
+
 /* ends phuFooter phone */
 
 /* phuFooter link */
@@ -619,6 +625,21 @@
   /*border is optional*/
   cursor: pointer;
 }
+
+.icon-btn-link:focus {
+  margin: -1px;
+  border: 1px solid #4d90fe;
+  border-radius: 2px;
+}
+
+#immunization-retrieval-button, #immunization-submission-button {
+  padding: 2px 0 0 0 !important;
+}
+
+#immunization-retrieval-button:focus, #immunization-submission-button:focus {
+  margin: -1px 0;
+}
+
 /* yellowCardDisplay */
 .icon-yc-table-container {
   max-width: 100%;
@@ -733,10 +754,7 @@ padding-left: 0px;
     width: auto;
     padding: 0px;
   }
-
-  .table-styling {
-    display: block;
-  }
+  
   .rows {
       width: 200px;
       /* white-space: nowrap; */
@@ -842,3 +860,18 @@ padding-left: 0px;
     }
 }
 /* End Role capture buttons */
+
+/* Phu phone display */
+phu-phone-display{
+  font-size: 0;
+}
+.initial-font-size{
+  font-size: initial;
+}
+/* End phu phone display */
+
+/* Role selection buttons on anon submission page */
+#submit-anon-self-button, #submit-anon-other-button {
+  margin-bottom: 1em;
+}
+/* End of Role Selection buttons */

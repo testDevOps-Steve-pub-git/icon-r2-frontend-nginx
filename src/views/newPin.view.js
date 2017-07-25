@@ -92,7 +92,7 @@ export default {
         <oiid-display
           oiid="$ctrl.patientInfo.oiid">
         </oiid-display>
-        <br />
+        <br aria-hidden="true" />
 
         <role-capture
           role="$ctrl.submitterInfo.relationshipToPatient"
@@ -120,7 +120,7 @@ export default {
 
       </form>
 
-      <br />
+      <br aria-hidden="true" />
       <p translate="newPin.HINT" translate-compile></p>
     `
   }

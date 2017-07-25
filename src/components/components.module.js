@@ -32,6 +32,10 @@ import patientSelfDisplay from './patient/patientSelfDisplay/patientSelfDisplay.
 import authSchoolDaycare from './patient/authSchoolDaycareCapture/authSchoolDaycareCapture.component.js'
 /* End Patient imports */
 
+/* Phu imports */
+import phuPhoneDisplay from './phu/phuPhoneDisplay/phuPhoneDisplay.component.js'
+/* End Phu imports */
+
 /* Submitter imports */
 import submitterEmail from './submitter/submitterContactCapture/submitterContactEmail.component.js'
 import submitterPhone from './submitter/submitterContactCapture/submitterPhoneCapture.component.js'
@@ -126,6 +130,10 @@ MODULE.component(oiidStatus.name, oiidStatus.component)
   .component(patientSelfDisplay.name, patientSelfDisplay.component)
   .component(authSchoolDaycare.name, authSchoolDaycare.component)
 /* End Patient components */
+
+/* Phu components */
+  .component(phuPhoneDisplay.name, phuPhoneDisplay.component)
+/* End Phu components */
 
 /* Submitter components */
   .component(submitterEmail.name, submitterEmail.component)

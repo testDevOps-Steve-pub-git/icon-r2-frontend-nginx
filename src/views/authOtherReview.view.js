@@ -44,6 +44,8 @@ export default {
         </div>
         <hr/>
 
+<!-- TODO: Enable document view, when feature stable. -->
+<!--
         <h4>{{ 'authOtherReview.DOCUMENTS_TITLE' | translate }}</h4>
         <div class="row">
           <document-upload-display is-editable="false" doc-review="review"></document-upload-display>
@@ -58,6 +60,7 @@ export default {
           </div>
         </div>
         <hr/>
+-->
 
        <patient-other-display
           client-info="$ctrl.clientInfo">

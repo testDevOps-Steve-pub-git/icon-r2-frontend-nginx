@@ -26,12 +26,9 @@ function resetPin$ctrl (
       .catch((error) => {
         switch (error) {
           case DHIR.error.ValidateToken.TOKEN_EXPIRED :
-            $state.go('verification.send-another-email')
-            break
-
           case DHIR.error.ValidateToken.TOKEN_INVALID :
           default:
-            this.isTokenValid = false // Triggers display of inline error.
+            $state.go('verification.send-another-email')
             break
         }
       })

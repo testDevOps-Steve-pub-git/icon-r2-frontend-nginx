@@ -26,17 +26,18 @@
     <div ng-transclude="errors" class="error-messages"></div>
 
     <div class="error-messages" ng-messages="$ctrl.form.OIID.$error" id="patient-oiid-error" ng-if="$ctrl.form.OIID.$touched">
-      <div class="alert alert-danger col-xs-12"  ng-message="pattern" translate="oiidCapture.ERRORS.OIID_ERROR" role="alert"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="mask" translate="oiidCapture.ERRORS.OIID_ERROR" role="alert"></div>
-      <div ng-if="!$ctrl.isOptional" class="alert alert-danger col-xs-12" ng-message="required" translate="oiidCapture.ERRORS.OIID_REQUIRED" role="alert"></div>
+      <div class="alert alert-danger col-xs-12"  ng-message="pattern" translate="oiidCapture.ERRORS.OIID_ERROR" translate-compile role="alert"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="mask" translate="oiidCapture.ERRORS.OIID_ERROR" translate-compile role="alert"></div>
+      <div ng-if="!$ctrl.isOptional" class="alert alert-danger col-xs-12" ng-message="required" translate="oiidCapture.ERRORS.OIID_REQUIRED" translate-compile role="alert"></div>
     </div>
     <!--End Error Messages-->
 
     <!-- OIID hint modal -->
     <div>
       <p>
-        <a href="" ng-click="$ctrl.openOiidHintModal()">{{'oiidCapture.OIID_HINT_LINK' | translate}}</a>
+        <a href="" ng-click="$ctrl.openOiidHintModal()" aria-labelledby="oiidHintMessage" translate='oiidCapture.OIID_HINT_LINK'></a>
       </p>
+      <span id='oiidHintMessage' class='hidden' translate='oiidCapture.OIID_HINT_LINK_ARIA_LABEL' translate-compile></span>
     </div>
     <!-- End OIID hint modal -->
   </div>

@@ -1,7 +1,7 @@
 {
   "name": "icon-fronted-v2",
   "private": true,
-  "version": "2.38.4",
+  "version": "2.39.1",
   "description": "User facing front-end web application for ICON (Immunization Connect ONtario)",
   "dependencies": {
     "Base64": "1.0.0",

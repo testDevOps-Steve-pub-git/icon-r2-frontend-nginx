@@ -21,7 +21,8 @@
            icon-hcn-checksum
            ui-options="$ctrl.hcnOptions"
            ui-mask="AAAA-AAA-AAA"
-           autocomplete="off" />
+           autocomplete="off"
+           aria-describedby="contactMessage" />
 
     <!--Error Messages-->
     <div class="error-messages"
@@ -41,6 +42,7 @@
            id="patient-oiid-error"
            ng-message="required"
            translate='hcnCapture.ERRORS.HCN_REQUIRED'
+           translate-compile
            role="alert">
       </div>
     </div>

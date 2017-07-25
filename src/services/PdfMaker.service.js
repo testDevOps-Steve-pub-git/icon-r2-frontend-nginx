@@ -72,7 +72,7 @@ function PdfMaker (
 
       case Address.type.POBOX:
         return [
-          `BOX ${address.postBox}${(address.station) ? `, STN ${address.station}` : ``}`,
+          `PO BOX ${address.postBox}${(address.station) ? `, STN ${address.station}` : ``}`,
           `RPO ${address.retailPostOffice}`,
           `${address.city}, ${address.province}`,
           `${address.postalCode.toUpperCase()}`
@@ -703,14 +703,39 @@ function PdfMaker (
   function appendPhuData (data) {
     return Multitenancy.getPhuKeys()
              .then((phuKeys) => {
+               let phuPhone = generatePhuPhone(phuKeys)
                return $q.all({
                  phuContactPerson: $translate(phuKeys.CONTACT_PERSON_KEY),
                  phuResponseTime: $translate(phuKeys.RESPONSE_TIME_KEY),
                  phuName: $translate(phuKeys.NAME_KEY),
-                 phuPhone: $translate(phuKeys.PHONE_KEY)
+                 phuPhone: phuPhone
                })
              })
              .then((phuData) => { return Object.assign(data, phuData) })
+  }
+
+  function generatePhuPhone(phuKeys)
+  {
+    const phoneOne = $translate.instant(phuKeys.PHONE_KEY)
+    const phoneExtOne = $translate.instant(phuKeys.PHONE_EXT_KEY)
+    const phoneTwo = $translate.instant(phuKeys.PHONE_2_KEY)
+    const phoneExtTwo = $translate.instant(phuKeys.PHONE_2_EXT_KEY)
+    const ext = $translate.instant('MULTITENANCY.phuPhoneDisplay.EXT')
+    const conjunction = $translate.instant('MULTITENANCY.phuPhoneDisplay.CONJUNCTION')
+
+    let phuPhoneResult = '';
+    if(phoneOne)
+    {
+      phuPhoneResult += phoneOne
+      if(phoneExtOne) phuPhoneResult += ' ' + ext + ' ' + phoneExtOne
+      if(phoneTwo) phuPhoneResult += ' ' + conjunction + ' '
+    }
+    if(phoneTwo)
+    {
+      phuPhoneResult += phoneTwo
+      if(phoneExtTwo) phuPhoneResult += ' ' + ext + ' ' + phoneExtTwo
+    }
+    return phuPhoneResult
   }
 
   function appendTokenData (data) {

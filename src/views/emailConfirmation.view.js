@@ -21,8 +21,7 @@ export default {
        translate-compile
        translate-values="{
          patient_oiid: $ctrl.patientInfo.oiid,
-         phuName: '{{$ctrl.multitenancy.NAME_KEY | translate}}',
-         phuPhone: '{{$ctrl.multitenancy.PHONE_KEY | translate}}'
+         phuName: '{{$ctrl.multitenancy.NAME_KEY | translate}}'
        }">
       </span>
 
