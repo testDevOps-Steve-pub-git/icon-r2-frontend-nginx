@@ -1,0 +1,25 @@
+<div>
+  <div class="modal-header">
+    <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.ok()">
+      <i class="fa fa-times-circle fa-2x"></i>
+    </span>
+    <h3 class="modal-title" translate="welcomeHelpModal.OIID_PIN_LABEL"></h3>
+  </div>
+  <div class="modal-body">
+    <p translate="welcomeHelpModal.LOGIN_OIID"></p>
+    <p translate="welcomeHelpModal.LOGIN_PIN"></p>
+    <h4 translate="welcomeHelpModal.OIID_PIN_MESSAGE"></h4>
+    <p> {{ 'welcomeHelpModal.OIID_TOOLTIP_1' | translate }}
+      <strong>{{  $ctrl.multitenancy.NAME_KEY | translate }}</strong>{{ 'welcomeHelpModal.OIID_TOOLTIP_2' | translate }}
+      <strong>{{ $ctrl.multitenancy.NAME_KEY | translate }}</strong>
+      {{ 'welcomeHelpModal.OIID_TOOLTIP_3' | translate }}
+      <strong style='color:#1889db'>{{ $ctrl.multitenancy.PHONE_KEY | translate }}</strong>.
+    </p>
+    <p> {{ 'welcomeHelpModal.PIN_TOOLTIP_1' | translate }}
+      <strong>{{ $ctrl.multitenancy.NAME_KEY | translate }}</strong> {{ 'welcomeHelpModal.PIN_TOOLTIP_2' | translate }}
+       <strong style="color:#1889db">{{ $ctrl.multitenancy.PHONE_KEY | translate }}</strong>.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-block" id="home-info-link-close" type="button" ng-click="$ctrl.ok()">{{ 'welcomeHelpModal.CLOSE' | translate }}</button>
+  </div>
+</div>

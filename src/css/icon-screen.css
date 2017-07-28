@@ -8,6 +8,8 @@
 
 /* General utility classes */
 .btn { white-space: normal; }
+main { outline: none; }
+
 .icon-no-wrap{ white-space: nowrap; }
 
 .icon-btn-link-danger { color: red !important; }
@@ -754,7 +756,7 @@ padding-left: 0px;
     width: auto;
     padding: 0px;
   }
-  
+
   .rows {
       width: 200px;
       /* white-space: nowrap; */
@@ -862,11 +864,16 @@ padding-left: 0px;
 /* End Role capture buttons */
 
 /* Phu phone display */
-phu-phone-display{
-  font-size: 0;
+phu-phone-display {
+  font-size: 0.1px;
 }
+
 .initial-font-size{
-  font-size: initial;
+  font-style: normal;
+  font-variant: normal;
+  font-stretch: normal;
+  font-size: medium;
+  line-height: normal;
 }
 /* End phu phone display */
 

@@ -36,24 +36,22 @@ export default {
     controller: welcome$ctrl,
     template: `
       <div class="container">
-        <main>
-          <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-              <h1 class = "text-center" translate="welcomeLandingPage.INTRO_2" aria-label="{{'welcomeLandingPage.INTRO_2' | translate}}"></h1>
-              <hr />
-            </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <h1 class="text-center" translate="welcomeLandingPage.INTRO_2" aria-label="{{'welcomeLandingPage.INTRO_2' | translate}}"></h1>
+            <hr />
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-              <welcome-login-choice></welcome-login-choice>
-            </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <welcome-login-choice></welcome-login-choice>
           </div>
+        </div>
 
-          <welcome-instructions></welcome-instructions>
+        <welcome-instructions></welcome-instructions>
 
-          <ontario-immunization-schedule></ontario-immunization-schedule>
-        </main>
+        <ontario-immunization-schedule></ontario-immunization-schedule>
       </div>
     `
   }

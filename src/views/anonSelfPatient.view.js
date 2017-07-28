@@ -4,6 +4,10 @@ function anonSelfPatient$ctrl (ImmunizationRecordService, Utility) {
     this.localPatient = ImmunizationRecordService.getPatient()
     this.localSubmitter = ImmunizationRecordService.getSubmitter()
 
+    if(this.localSubmitter.firstName) { this.localPatient.firstName = this.localSubmitter.firstName}
+    if(this.localSubmitter.lastName) { this.localPatient.lastName = this.localSubmitter.lastName}
+
+
     this.validateForm = (form) => {
       if (!form.$valid) {
         Utility.focusFirstInvalidField(form)

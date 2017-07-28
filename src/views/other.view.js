@@ -7,7 +7,7 @@ export default {
     bindings: { data: '@' },
     controller: other$ctrl,
     template: `
-      <main ui-view></main>
+      <ui-view></ui-view>
     `
   }
 }

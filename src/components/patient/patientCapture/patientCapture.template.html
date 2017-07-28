@@ -16,10 +16,10 @@
                type="text"/>
 
         <!--Error Messages-->
-        <div class="error-messages" id="patient-first-name-error" ng-messages="$ctrl.form.patientFirstName.$error" ng-if="$ctrl.form.patientFirstName.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.FIRST_NAME_REQUIRED' aria-label="{{'patientCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT' aria-label="{{'patientCapture.ERRORS.BAD_FORMAT' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
+        <div class="error-messages" id="patient-first-name-error" ng-messages="$ctrl.form.patientFirstName.$error" ng-if="$ctrl.form.patientFirstName.$touched">
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="required" translate='patientCapture.ERRORS.FIRST_NAME_REQUIRED' aria-label="{{'patientCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT' aria-label="{{'patientCapture.ERRORS.BAD_FORMAT' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -39,12 +39,14 @@
                type="text" />
 
         <!--Error Messages-->
-        <div class="error-messages" id="patient-middle-name-error" ng-messages="$ctrl.form.patientMiddleName.$error" ng-if="$ctrl.form.patientMiddleName.$touched" role="alert">
+        <div class="error-messages" id="patient-middle-name-error" ng-messages="$ctrl.form.patientMiddleName.$error" ng-if="$ctrl.form.patientMiddleName.$touched">
           <div class="alert alert-danger col-xs-12" ng-message="pattern"
-               translate='patientCapture.ERRORS.BAD_FORMAT' translate-compile></div>
+               translate='patientCapture.ERRORS.BAD_FORMAT' translate-compile
+               role="alert"></div>
           <div class="alert alert-danger col-xs-12"
                ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'
-               aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
+               aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"
+               role="alert"></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -65,10 +67,10 @@
                type="text"/>
 
         <!--Error Messages-->
-        <div class="error-messages" id="patient-last-name-error" ng-messages="$ctrl.form.patientLastName.$error" ng-if="$ctrl.form.patientLastName.$touched" role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.LAST_NAME_REQUIRED' aria-label="{{'patientCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT' aria-label="{{'patientCapture.ERRORS.BAD_FORMAT' | translate}}"></div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
+        <div class="error-messages" id="patient-last-name-error" ng-messages="$ctrl.form.patientLastName.$error" ng-if="$ctrl.form.patientLastName.$touched">
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="required" translate='patientCapture.ERRORS.LAST_NAME_REQUIRED' aria-label="{{'patientCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT' aria-label="{{'patientCapture.ERRORS.BAD_FORMAT' | translate}}"></div>
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH' aria-label="{{'patientCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}"></div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -141,8 +143,8 @@
              id="patient-sex-error"
              ng-messages="$ctrl.form.gender.$error"
              ng-if="$ctrl.form.gender.$touched"
-             role="alert">
-          <div class="alert alert-danger col-xs-12" ng-message="required" translate='patientCapture.ERRORS.SEX_ERROR'></div>
+             >
+          <div class="alert alert-danger col-xs-12" role="alert" ng-message="required" translate='patientCapture.ERRORS.SEX_ERROR'></div>
         </div>
       </div>
     </div>
@@ -207,9 +209,9 @@
         <span ng-show="loadingLocations" class="fa fa-refresh" aria-hidden="true"></span>
 
         <!--Error Messages-->
-        <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$dirty" role="alert">
-          <div class="alert alert-danger" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT'></div>
-          <div class="alert alert-danger" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'></div>
+        <div class="error-messages" id="patient-school-error" ng-messages="$ctrl.form.schoolOrDaycare.$error" ng-if="$ctrl.form.schoolOrDaycare.$dirty">
+          <div class="alert alert-danger" role="alert" ng-message="pattern" translate='patientCapture.ERRORS.BAD_FORMAT'></div>
+          <div class="alert alert-danger" role="alert" ng-message="maxlength" translate='patientCapture.ERRORS.EXCEEDS_MAXLENGTH'></div>
         </div>
         <!--End Error Messages-->
 

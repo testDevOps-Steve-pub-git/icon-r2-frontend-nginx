@@ -23,7 +23,7 @@
               class="text-center"
               ng-style="{'margin-left': ($ctrl.btnSpacing * $index) + '%'}">
             <div class="progress-bar-offset">
-              <span class="btn btn-default skip icon-progress-bar-cursor"
+              <span class="btn btn-default skip"
                     ng-class="{
                       'btn-primary': ($ctrl.currentIndex() >= $ctrl.progressStates.indexOf(state)),
                       'btn-lg': $ctrl.isSrefActive(state.sref)
@@ -38,7 +38,7 @@
                   <span ng-if="!$ctrl.isVisitedState(state)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
                 </span>
               </span>
-              <br aria-hidden="true" />
+              <br />
               <div ng-if="$ctrl.isSrefActive(state.sref)"
                    id="icon-progress-status-label"
                    class="text-center text-primary label-active">

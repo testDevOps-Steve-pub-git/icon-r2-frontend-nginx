@@ -446,7 +446,7 @@
     },
     "$infoLearnMoreAboutOiid": {
       "TITLE": "What are the Ontario Immunization ID and PIN?",
-      "BODY": "<section><p>An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization repository.</p> <p>A patient's PIN is a six digit number that protects the confidentiality of immunization information.</p></section> <section><h4>Where can I find them?</h4> <p>Your Ontario Immunization ID may be found on a letter sent from <strong>{{ phuName }}</strong>. If you do not have this code from your Health Unit, please contact <strong>{{ phuName }}</strong> at <phu-phone-display></phu-phone-display>.</p></section><br aria-hidden=\"true\" />"
+      "BODY": "<section><p>An Ontario Immunization ID is a ten digit number that uniquely identifies each person in the provincial immunization repository.</p> <p>A patient's PIN is a six digit number that protects the confidentiality of immunization information.</p><p>The PIN can be retrieved by contacting <strong>{{ phuName }}</strong> at <phu-phone-display></phu-phone-display></p></section> <section><h4>Where can I find them?</h4> <p>Your Ontario Immunization ID may be found on a letter sent from <strong>{{ phuName }}</strong>. If you do not have this code from your Health Unit, please contact <strong>{{ phuName }}</strong> at <phu-phone-display></phu-phone-display>.</p></section><br aria-hidden=\"true\" />"
     },
     "$infoOiidPinOutdated": {
       "TITLE": "System Updated - Additional Info Required",
@@ -735,7 +735,8 @@
     "DOCUMENTS": "Documents",
     "SUBMITTER": "Submitter",
     "REVIEW": "Review",
-    "CONFIRMATION": "Confirmation"
+    "CONFIRMATION": "Confirmation",
+    "ACTIVE_ARIA": "active page"
   },
   "roleCapture": {
     "ROLE": "This Ontario Immunization ID belongs to:",
@@ -761,26 +762,27 @@
     "AT_24_26_YEARS": "24-26 Years",
     "35_Years_+": "35 Years+",
     "65_Years_+": "65 Years+",
-    "DTAP-IPV-HIB_VALUE": "<em>Diphtheria, Tetanus, Pertussis, Polio</em>, Hib",
+    "DTAP-IPV-HIB_VALUE": "<em>Diphtheria<span class='sr-only'>required</span></em>, <em>Tetanus<span class='sr-only'>required</span></em>, <em>Pertussis<span class='sr-only'>required</span></em>, <em>Polio<span class='sr-only'>required</span></em>, Hib",
     "PNEU-C_VALUE": "Pneumococcal conjugate",
     "ROTA-1_VALUE": "Rotavirus monovalent",
-    "MMR_VALUE": "<em>Measles, Mumps, Rubella</em>",
-    "MEN-C-C_VALUE": "<em>Meningococcal conjugate C</em>",
-    "TDAP-IPV_VALUE": "<em>Tetanus, Diphtheria, Pertussis, Polio</em>",
-    "VAR_VALUE": "<em>Varicella<em>",
-    "MMRV_VALUE": "<em>Measles, Mumps, Rubella, Varicella</em>",
+    "MMR_VALUE": "<em>Measles<span class='sr-only'>required</span></em>, <em>Mumps<span class='sr-only'>required</span></em>, <em>Rubella<span class='sr-only'>required</span></em>",
+    "MEN-C-C_VALUE": "<em>Meningococcal conjugate C<span class='sr-only'>required</span></em>",
+    "TDAP-IPV_VALUE": "<em>Tetanus<span class='sr-only'>required</span></em>, <em>Diphtheria<span class='sr-only'>required</span></em>, <em>Pertussis<span class='sr-only'>required</span></em>, <em>Polio<span class='sr-only'>required</span></em>",
+    "VAR_VALUE": "<em>Varicella<span class='sr-only'>required</span></em>",
+    "MMRV_VALUE": "<em>Measles<span class='sr-only'>required</span></em>, <em>Mumps<span class='sr-only'>required</span></em>, <em>Rubella<span class='sr-only'>required</span></em>, <em>Varicella<span class='sr-only'>required</span></em>",
     "HB_VALUE": "Hepatitis B",
     "HPV_VALUE": "Human Papillomavirus",
     "INF_VALUE": "Influenza",
-    "MEN-C-ACYW-135_VALUE": "<em>Meningococcal conjugate ACYW135</em>",
+    "MEN-C-ACYW-135_VALUE": "<em>Meningococcal conjugate ACYW135<span class='sr-only'>required</span></em>",
     "TDAP_VALUE": "Tetanus, Diphtheria, Pertussis",
-    "TDAP_VALUE_ITALICS": "<em>Tetanus, Diphtheria, Pertussis</em>",
+    "TDAP_VALUE_ITALICS": "<em>Tetanus<span class='sr-only'>required</span></em>, <em>Diphtheria<span class='sr-only'>required</span></em>, <em>Pertussis<span class='sr-only'>required</span></em>",
     "TD_VALUE": "Diphtheria, Tetanus",
     "EVERY_FALL": "Every Fall",
     "EVERY_10_YEARS": "Every 10 Years",
     "PNEU-P-23_VALUE": "Pneumococcal polysaccharide 23 <br aria-hidden=\"true\"> <strong>(65 years+)</strong>",
     "SHINGLES_VALUE": "Zoster <br aria-hidden=\"true\"> <strong>(65-70 years)</strong>",
     "IMMS_SCHEDULE_MESSAGE": "Protection against the diseases in <em>italics</em> is required for school attendance under the immunization of School Pupils Act. Children born on or after January 1, 2010 also need to be immunized against Varicella.",
+    "IMMS_SCHEDULE_MESSAGE_ARIA": ", Protection against certain diseases is required for school attendance under the immunization of School Pupils Act. Children born on or after January 1, 2010 also need to be immunized against Varicella.",
     "DTAP-IPV-HIB": "DTaP-IPV-Hib",
     "PNEU-C": "Pneu-C",
     "ROTA-1": "Rota-1",
@@ -924,7 +926,6 @@
   },
   "welcomeAuthActions": {
     "AUTH_ACTION_TITLE": "Verify Patient's ID to View Immunizations",
-    "AUTH_ACTION_PARA": "",
     "AUTH_ACTION_VERIFY_BUTTON": "Verify ID",
     "AUTH_ACTION_OIID_HINT": "<button class='icon-btn-link' id='home-oiid-link-two' ng-click='$ctrl.openHelpModal()'>Learn more</button> about what the Ontario Immunization ID and PIN are and where they can be found."
   },
@@ -1009,7 +1010,7 @@
     },
     "CKPHU": {
       "PHU_NAME": "Chatham-Kent Public Health Unit",
-      "PHU_PHONE": "519.355.1071",
+      "PHU_PHONE": "519-355-1071",
       "PHU_PHONE_EXT": "5900",
       "PHU_PHONE_2": "",
       "PHU_PHONE_2_EXT": "",
@@ -1017,16 +1018,16 @@
       "PHU_ADDRESS": "<strong>Privacy Officer at Chatham-Kent Public Health</strong><br aria-hidden=\"true\" />Chatham-Kent Public Health Unit<br aria-hidden=\"true\" /> 435 Grand Ave. W<br aria-hidden=\"true\" /> Chatham ON<br aria-hidden=\"true\" />N7L 3Z4",
       "PHU_RESPONSE_TIME": "1 week",
       "PHU_TOC_LINK": "http://www.chatham-kent.ca/globals/Pages/TermsofUse.aspx",
-      "PHU_WEBSITE": "https://www.chatham-kent.ca/vaccinations"
+      "PHU_WEBSITE": "https://www.chatham-kent.ca/PublicHealth/ImmunizationsandVaccines/Pages/Immunizations%20and%20Vaccines.aspx"
     },
     "DRHD": {
       "PHU_NAME": "Durham Region Health Department",
-      "PHU_PHONE": "905-668-7711",
+      "PHU_PHONE": "905-666-6241",
       "PHU_PHONE_EXT": "",
-      "PHU_PHONE_2": "1-800-372-1102",
+      "PHU_PHONE_2": "1-800-841-2729",
       "PHU_PHONE_2_EXT": "",
       "PHU_CONTACT_PERSON": "a Durham Region Health Department nurse",
-      "PHU_ADDRESS": "<strong>Manager, Health Information, Privacy & Security</strong><br aria-hidden=\"true\" />Durham Region Health Department<br aria-hidden=\"true\" />605 Rossland Road East<br aria-hidden=\"true\" />Whitby, Ontario<br aria-hidden=\"true\" />L1N 6A3",
+      "PHU_ADDRESS": "<strong>Manager, Health Information, Privacy & Security</strong><br aria-hidden=\"true\" />Durham Region Health Department<br aria-hidden=\"true\" />605 Rossland Road East<br aria-hidden=\"true\" />Whitby, Ontario<br aria-hidden=\"true\" />L1N 6A3<br aria-hidden=\"true\" />905-668-7711",
       "PHU_RESPONSE_TIME": "5-10 business days",
       "PHU_TOC_LINK": "http://www.durham.ca/default.asp?nr=/corporate/privacy.htm",
       "PHU_WEBSITE": "http://www.durham.ca/health.asp?nr=/departments/health/cdcp/immunization_index.htm"
@@ -1352,8 +1353,8 @@
       "PHU_CONTACT_PERSON": "a Thunder Bay District Health Unit nurse",
       "PHU_ADDRESS": "<strong>Privacy Officer</strong><br aria-hidden=\"true\" />Thunder Bay District Health Unit<br aria-hidden=\"true\" />999 Balmoral Street,<br aria-hidden=\"true\" /> Thunder Bay ON<br aria-hidden=\"true\" />P7B 6E7",
       "PHU_RESPONSE_TIME": "One week",
-      "PHU_TOC_LINK": "https://www.tbdhu/icon",
-      "PHU_WEBSITE": "https://www.tbdhu.com/sites/default/files/files/resource/2016-03/Privacy%20Statement.pdf"
+      "PHU_TOC_LINK": "https://www.tbdhu.com/sites/default/files/files/resource/2016-03/Privacy%20Statement.pdf",
+      "PHU_WEBSITE": "https://www.tbdhu/icon"
     },
     "TIMHU": {
       "PHU_NAME": "Timiskaming Health Unit",

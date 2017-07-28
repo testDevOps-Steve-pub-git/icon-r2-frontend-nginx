@@ -20,10 +20,10 @@
                type="text"/>
 
         <!-- Error messages -->
-        <div id="submitter-first-name-error" ng-messages="$ctrl.form.firstName.$error" ng-if="$ctrl.form.firstName.$touched">
-          <div class="alert alert-danger col-xs-12" ng-message="required" role="alert">{{'submitterDemographicsCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern" role="alert">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength" role="alert">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
+        <div id="submitter-first-name-error" ng-messages="$ctrl.form.firstName.$error" ng-if="$ctrl.form.firstName.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.ERRORS.FIRST_NAME_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
         </div>
         <!-- End error messages -->
       </div>
@@ -46,10 +46,10 @@
                type="text" />
 
         <!-- Error messages -->
-        <div id="submitter-last-name-error" ng-messages="$ctrl.form.lastName.$error" ng-if="$ctrl.form.lastName.$touched">
-          <div class="alert alert-danger col-xs-12" ng-message="required" role="alert">{{'submitterDemographicsCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="pattern" role="alert">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
-          <div class="alert alert-danger col-xs-12" ng-message="maxlength" role="alert">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
+        <div id="submitter-last-name-error" ng-messages="$ctrl.form.lastName.$error" ng-if="$ctrl.form.lastName.$touched" role="alert">
+          <div class="alert alert-danger col-xs-12" ng-message="required">{{'submitterDemographicsCapture.ERRORS.LAST_NAME_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'submitterDemographicsCapture.ERRORS.BAD_FORMAT' | translate}}</div>
+          <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'submitterDemographicsCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
         </div>
         <!-- End error messages -->
       </div>

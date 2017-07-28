@@ -22,11 +22,9 @@ export default {
     bindings: { record: '<' },
     controller: auth$ctrl,
     template: `
-      <main>
-        <ui-view>
-          <welcome-aup route="auth"></welcome-aup>
-        </ui-view>
-      </main>
+      <ui-view>
+        <welcome-aup route="auth"></welcome-aup>
+      </ui-view>
     `
   }
 }

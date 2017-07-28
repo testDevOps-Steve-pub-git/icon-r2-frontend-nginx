@@ -65,14 +65,12 @@
 </div>
 
 <div class="row">
-  <div class="error-messages" id="no-immunization-error"  ng-if="$ctrl.noImmunizations && $ctrl.immunizations.length < 1">
-    <div class="alert alert-danger col-xs-12" role="alert">
+  <div class="error-messages" id="no-immunization-error"  ng-if="$ctrl.noImmunizations && $ctrl.immunizations.length < 1" role="alert">
+    <div class="alert alert-danger col-xs-12">
         {{ 'immunizationInput.IMMUNIZATION_ERROR' | translate }}
     </div>
   </div>
 </div>
-
-<hr />
 
 <next-prev-buttons
 on-next="$ctrl.validateImmunizations()">

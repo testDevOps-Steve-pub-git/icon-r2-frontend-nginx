@@ -29,19 +29,22 @@
                       'btn-lg': $ctrl.isSrefActive(state.sref)
                     }">
                 <!-- If active state, show the special glyph, and apply bigger circle styles. -->
-                <span ng-if="$ctrl.isSrefActive(state.sref)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
+                <span ng-if="$ctrl.isSrefActive(state.sref)" ng-class="state.glyph"></span>
                 <!-- If NOT active state... -->
                 <span ng-if="!$ctrl.isSrefActive(state.sref)">
                   <!-- If it is listed as visited, then show a checkmark glyph. -->
-                  <span ng-if="$ctrl.isVisitedState(state)" class="fa fa-check" aria-label="{{state.title | translate}}"></span>
+                  <span ng-if="$ctrl.isVisitedState(state)" class="fa fa-check"></span>
                   <!-- If NOT listed as visited, then show the step number instead. -->
-                  <span ng-if="!$ctrl.isVisitedState(state)" ng-class="state.glyph" aria-label="{{state.title | translate}}"></span>
+                  <span ng-if="!$ctrl.isVisitedState(state)" ng-class="state.glyph"></span>
                 </span>
               </span>
               <br aria-hidden="true" />
+
+              <span class='sr-only'>,</span><!-- adds pause for screen reader -->
               <div ng-if="$ctrl.isSrefActive(state.sref)"
                    id="icon-progress-status-label"
                    class="text-center text-primary label-active">
+                <span class='sr-only' translate='progressBar.ACTIVE_ARIA' translate-compile></span>
                 <span>{{state.title | translate}}</span>
               </div>
 
@@ -50,6 +53,7 @@
                    class="text-center">
                 <span>{{state.title | translate}}</span>
               </div>
+              <span class='sr-only'>,</span><!-- adds pause for screen reader -->
             </div>
           </li>
         </ul>

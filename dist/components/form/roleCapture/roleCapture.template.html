@@ -10,8 +10,7 @@
       </div>
 
       <div id="role-options" class="btn-group col-xs-12">
-        <button class="btn btn-info col-xs-6 roleCaptureSelf" tabindex="0"
-          type = "button"
+        <button class="btn btn-info col-xs-6" tabindex="0"
           ng-model="$ctrl.role"
           name="role"
           uib-btn-radio="'ONESELF'"
@@ -21,8 +20,7 @@
           {{'roleCapture.ROLE_ONESELF' | translate}}
         </button>
 
-        <button class="btn btn-info col-xs-6 roleCaptureGuard" tabindex="0"
-          type = "button"
+        <button class="btn btn-info col-xs-6" tabindex="0"
           ng-model="$ctrl.role"
           name="role"
           uib-btn-radio="'GUARD'"
@@ -37,10 +35,10 @@
       <div class="error-messages col-xs-12"
            id="role-error"
            ng-messages="$ctrl.form.role.$error"
-           ng-if="$ctrl.form.role.$touched">
-        <div class="alert alert-danger col-xs-12" ng-message="required" translate='roleCapture.ERRORS.ROLE_ERROR' role="alert" aria-describedby='errorAriaMessage'></div>
+           ng-if="$ctrl.form.role.$touched"
+           role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='roleCapture.ERRORS.ROLE_ERROR'></div>
       </div>
-      <span class = "hidden" id='errorAriaMessage' translate='roleCapture.ERRORS.ROLE_ERROR_ARIA_LABEL'></span>
     </div>
   </div>
 </div>

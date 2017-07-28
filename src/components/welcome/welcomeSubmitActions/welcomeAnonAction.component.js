@@ -1,14 +1,8 @@
 /* @ngInject */
-function welcomeAnonChoice$ctrl ($state, $uibModal, Notify, ICON_NOTIFICATION) {
+function welcomeAnonChoice$ctrl (Notify, ICON_NOTIFICATION) {
   this.$onInit = () => {
     /* Func declaration */
-    this.goToAnonSubmission = goToAnonSubmission
     this.openHelpModal = () => Notify.publish(ICON_NOTIFICATION.INFO_LEARN_MORE_ABOUT_OIID)
-  }
-
-  function goToAnonSubmission () {
-    console.log('ANON SUBMISSION')
-    // TODO: Go to anon submission with routing params
   }
 }
 

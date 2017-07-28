@@ -3,7 +3,7 @@ function skipToContent$ctrl ($window, $location, $anchorScroll) {
   this.$onInit = () => {
     this.scrollToContent = (event) => {
       // A list of interactive elements
-      let tags = [ 'input', 'button', 'a' ]
+      let tags = [ 'main', 'input', 'button', 'a' ]
 
       // The first of all elements of the selected tags
       let selectableObjects = tags

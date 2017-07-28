@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <form name="submitWithOiidForm" id="submitWithOiidForm" novalidate>
+    <form name="submitWithOiidForm" id="submitWithOiidForm">
       <h3 translate="welcomeAuthActions.AUTH_ACTION_TITLE"></h3>
       <p translate="welcomeAuthActions.AUTH_ACTION_PARA"></p>
       <div class="form-group">
@@ -18,7 +18,7 @@
       <button
       class="btn btn-primary"
       id="submitWithOiidButton"
-      type="submit"
+      type="button"
       translate="welcomeAuthActions.AUTH_ACTION_VERIFY_BUTTON"
       ng-click="$ctrl.verifyOiid(submitWithOiidForm)">
       </button>
@@ -26,7 +26,32 @@
   </div>
 
   <div class="col-xs-12">
-    <br aria-hidden="true" />
+    <br />
+
     <p translate="welcomeAuthActions.AUTH_ACTION_OIID_HINT" translate-compile></p>
+
+<!-- TODO: remove testing values after QA -->
+    <button class="btn btn-xs btn-info" ng-click="$ctrl.showQaValues = !$ctrl.showQaValues">QA Values</button>
+    <pre ng-if="$ctrl.showQaValues">
+OIID       - Expected Response
+---------------------------------
+GM29BJXKBV - Successful request (L100)
+BT5BLCDXDF - Invalid resource, forcing PIN reset (L105)
+DZKP4QPWK7 - Resource revoked due to age > 16, forcing PIN reset (L106)
+8WMWH3L6BH - Resource does not have PIN (L107)
+J9FLTSDXC5 - Resource disabled (L108)
+G2PZRX7FHV - HCN is not available
+KX22LNRRSP - Email address is not available (L110)
+TG6LLNCDBG - Authorization is required for the interaction that was attempted (L111)
+CRTX6N3BMS - Too many requests (L112)
+X4T2W97MMM - Internal Error
+544JVRSRCN - Resource does not have PIN, HCN is not available (L107 + L109)
+MDMHSNLRTD - Invalid resource, Hcn is not available (L105 + L109)
+Missing    - omit required fields
+Invalid    - submitting a value that does not match the format (L101, L102, L103)
+Not found  - submit a valid OIID not listed above (L104)
+
+    </pre>
+<!-- End TODO -->
   </div>
 </div>

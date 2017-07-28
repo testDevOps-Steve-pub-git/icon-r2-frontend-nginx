@@ -33,32 +33,32 @@
 
   <!--Error Messages date of birth-->
   <div ng-if="$ctrl.inputName == 'dateOfBirth'" id="DOB-errors">
-    <div class="error-messages" id="patient-dob-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched">
+    <div class="error-messages" id="patient-dob-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DOB_ERROR'
-           aria-label="{{'datepicker.DOB_ERROR' | translate}}" role="alert"></div>
+           aria-label="{{'datepicker.DOB_ERROR' | translate}}"></div>
       <div class="alert alert-danger col-xs-12"
            ng-message="date" translate='datepicker.DOB_ERROR'
-           aria-label="{{'datepicker.DOB_ERROR' | translate}}" role="alert"></div>
+           aria-label="{{'datepicker.DOB_ERROR' | translate}}"></div>
       <div class="alert alert-danger col-xs-12"
            ng-message="mask" translate='datepicker.DOB_ERROR'
-           aria-label="{{'datepicker.DOB_ERROR' | translate}}" role="alert"></div>
+           aria-label="{{'datepicker.DOB_ERROR' | translate}}"></div>
     </div>
   </div>
   <!--End Error Messages date of birth-->
 
   <!--Error Messages-->
   <div ng-if="$ctrl.inputName != 'dateOfBirth'" id="date-errors">
-    <div class="error-messages" id="{{$ctrl.inputId}}-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched">
+    <div class="error-messages" id="{{$ctrl.inputId}}-error" ng-messages="$ctrl.formName[$ctrl.inputName].$error" ng-if="$ctrl.formName[$ctrl.inputName].$touched" role="alert">
       <div class="alert alert-danger col-xs-12"
            ng-message="required" translate='datepicker.DATE_ERROR'
-           aria-label="{{'datepicker.DATE_ERROR' | translate}}" role="alert"></div>
+           aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
       <div class="alert alert-danger col-xs-12"
            ng-message="date" translate='datepicker.DATE_ERROR'
-           aria-label="{{'datepicker.DATE_ERROR' | translate}}" role="alert"></div>
+           aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
       <div class="alert alert-danger col-xs-12"
            ng-message="mask" translate='datepicker.DATE_ERROR'
-           aria-label="{{'datepicker.DATE_ERROR' | translate}}" role="alert"></div>
+           aria-label="{{'datepicker.DATE_ERROR' | translate}}"></div>
     </div>
   </div>
   <!--End Error Messages-->

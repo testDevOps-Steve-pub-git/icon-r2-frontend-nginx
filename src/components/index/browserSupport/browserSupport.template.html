@@ -42,20 +42,19 @@
     aria-label="{{'browserSupport.SUPPORTED_BROWSERS_UNSUPPORTED' | translate}}">
     </h3>
 
-    <div class="center-block">
-      <ul id="icon-progress-bar" class="nav-justified">
-        <li class="text-center text-info" ng-repeat="browser in $ctrl.supportedBrowsers">
-          <i class="fa fa-{{$ctrl.getBrowserImage(browser)}} fa-4x" aria-hidden="true"></i>
-          <br aria-hidden="true"/>
-          <h5>
-            <a
-            aria-label="{{browser}}"
-            ng-href="{{$ctrl.getUpdateBrowserLink(browser) | translate}}">
-              {{browser}}
-            </a>
-          </h5>
-        </li>
-      </ul>
+    <div class="row text-center col-md-offset-2">
+      <div class="col-xs-4 col-sm-3 col-md-2 text-info" ng-repeat="browser in $ctrl.supportedBrowsers">
+        <i class="fa fa-{{$ctrl.getBrowserImage(browser)}} fa-4x"  aria-hidden="true"></i>
+        <br aria-hidden="true"/>
+        <h5>
+          <a
+          aria-label="{{browser}}"
+          ng-href="{{$ctrl.getUpdateBrowserLink(browser) | translate}}">
+            {{browser}}
+          </a>
+        </h5>
+      </div>
     </div>
+
   </div>
 </div>

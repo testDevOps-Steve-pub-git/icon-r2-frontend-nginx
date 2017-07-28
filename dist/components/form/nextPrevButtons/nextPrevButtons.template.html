@@ -9,12 +9,12 @@
       <span translate="nextPrevButtons.PREVIOUS"></span>
       <span translate="{{$ctrl.previous.title}}"></span>
     </button>
-    <br aria-hidden="true" />
+    <br />
   </div>
 
   <div class="col-xs-12 hidden-xl hidden-lg hidden-md hidden-sm"><h4/></div>
   <!-- Regular next button -->
-  <div ng-if="$ctrl.next && !$ctrl.fromReviewPage" class="col-xs-12 col-md-6" ng-class="{'col-md-offset-3': !$ctrl.previous}">
+  <div ng-if="$ctrl.next && !$ctrl.fromReviewPage" class="col-xs-12 col-md-6 pull-right">
     <button class="btn btn-block btn-lg btn-primary"
             id="pager-next-button"
             type="submit"
@@ -25,7 +25,7 @@
   </div>
 
   <!-- Back to review button -->
-  <div ng-if="!$ctrl.isReviewPage && $ctrl.fromReviewPage" class="col-xs-12 col-md-6 col-md-offset-3">
+  <div ng-if="!$ctrl.isReviewPage && $ctrl.fromReviewPage" class="col-xs-12 col-md-6 pull-right">
     <button class="btn btn-block btn-lg btn-primary"
             id="pager-next-button"
             type="submit"

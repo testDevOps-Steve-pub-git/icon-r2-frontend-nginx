@@ -1,3 +1,9 @@
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{ 'patientAuthDisplay.INFORMATION_FROM_REPOSITORY' | translate }}</p>
+    </div>
+  </div>
+
 <div class="form-group">
   <div class="row">
     <div class="col-xs-12 text-left">
@@ -48,7 +54,7 @@
     </div>
     <div class="col-xs-12 text-left">
       <strong>
-        <span>{{$ctrl.patient.healthCardNumber | hcnFormat}}</span>
+        <span>{{$ctrl.patient.healthCardNumber | hCNFormat}}</span>
       </strong>
     </div>
   </div>
@@ -61,7 +67,7 @@
     </div>
     <div class="col-xs-12 text-left">
       <strong>
-        <span>{{$ctrl.patient.oiid | hcnFormat}}</span>
+        <span>{{$ctrl.patient.oiid | hCNFormat}}</span>
       </strong>
     </div>
   </div>

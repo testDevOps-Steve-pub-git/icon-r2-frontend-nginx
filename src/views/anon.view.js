@@ -20,11 +20,9 @@ export default {
   view: {
     controller: anon$ctrl,
     template: `
-      <main>
-        <ui-view>
-          <welcome-aup route="anon"></welcome-aup>
-        </ui-view>
-      </main>
+      <ui-view>
+        <welcome-aup route="anon"></welcome-aup>
+      </ui-view>
     `
   }
 }

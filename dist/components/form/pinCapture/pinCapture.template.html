@@ -16,19 +16,17 @@
            ng-required="true"
            ng-pattern=rgx.OIID_PIN
            icon-pin-format
-           aria-describedby="pinHint"
            />
 
     <!-- PIN ERROR MESSAGE -->
-    <div class="error-messages" id="pin-error" ng-messages="$ctrl.form.pin.$error" ng-if="$ctrl.form.pin.$touched">
-      <div class="alert alert-danger col-xs-12" ng-message="required" translate='pinCapture.ERRORS.IS_REQUIRED' aria-label="{{ 'pinCapture.ERRORS.IS_REQUIRED' | translate }}" role="alert"></div>
-      <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='pinCapture.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'pinCapture.ERRORS.BELOW_MINLENGTH' | translate }}" role="alert"></div>
+    <div class="error-messages" id="pin-error" ng-messages="$ctrl.form.pin.$error" ng-if="$ctrl.form.pin.$touched" role="alert">
+      <div class="alert alert-danger col-xs-12" ng-message="required" translate='pinCapture.ERRORS.IS_REQUIRED' aria-label="{{ 'pinCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+      <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='pinCapture.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'pinCapture.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
     </div>
     <!-- End PIN ERROR MESSAGE -->
-    <span ng-transclude="hint" id="pinHint"></span>
+    <span ng-transclude="hint"></span>
     <!-- End Retriever Pin -->
-</div>
-<div class="form-group col-xs-12">
+
     <div ng-if="$ctrl.showConfirm">
     <!-- Pin confirmation -->
       <label for="pin-confirm" class="required" >{{'pinCapture.CONFIRM_PIN' | translate}}</label>
@@ -48,10 +46,10 @@
              icon-pin-format />
 
       <!-- Error messages -->
-      <div id="pin-confirm-error" ng-messages="$ctrl.form.pinConfirm.$error" ng-if="$ctrl.form.pinConfirm.$touched">
-        <div class="alert alert-danger col-xs-12" ng-message="required" translate='pinCapture.ERRORS.IS_REQUIRED' aria-label="{{ 'pinCapture.ERRORS.IS_REQUIRED' | translate }}" role="alert"></div>
-        <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='pinCapture.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'pinCapture.ERRORS.BELOW_MINLENGTH' | translate }}" role="alert"></div>
-        <div class="alert alert-danger col-xs-12" ng-message="compareTo" translate='pinCapture.ERRORS.MUST_BE_EQUAL_TO' aria-label="{{ 'pinCapture.ERRORS.MUST_BE_EQUAL_TO' | translate }}" role="alert"></div>
+      <div id="pin-confirm-error" ng-messages="$ctrl.form.pinConfirm.$error" ng-if="$ctrl.form.pinConfirm.$touched" role="alert">
+        <div class="alert alert-danger col-xs-12" ng-message="required" translate='pinCapture.ERRORS.IS_REQUIRED' aria-label="{{ 'pinCapture.ERRORS.IS_REQUIRED' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="minlength" translate='pinCapture.ERRORS.BELOW_MINLENGTH' aria-label="{{ 'pinCapture.ERRORS.BELOW_MINLENGTH' | translate }}"></div>
+        <div class="alert alert-danger col-xs-12" ng-message="compareTo">{{'pinCapture.ERRORS.MUST_BE_EQUAL_TO' | translate}}</div>
       </div>
       <!-- End error messages -->
 
