@@ -7,9 +7,8 @@
   <div class="row">
     <div class="col-xs-12">
       <p translate="authOtherPatientContainer.PATIENT_INFO_MESSAGE"
-    translate-values="{ name_key : '{{$ctrl.multitenancy.NAME_KEY | translate}}',
-                           phone_key : '{{$ctrl.multitenancy.PHONE_KEY | translate}}'}"
-      translate-compile>
+         translate-values="{ name_key : '{{$ctrl.multitenancy.NAME_KEY | translate}}'}"
+         translate-compile>
       </p>
     </div>
   </div>
@@ -30,7 +29,6 @@
       <hcn-capture health-card-number="$ctrl.localPatient.healthCardNumber"
                    form="$ctrl.form"
                    is-optional="true">
-        <hint>{{ 'authOtherPatientContainer.HEALTH_CARD_NO_VC' | translate }}</hint>
       </hcn-capture>
     </div>
   </div>

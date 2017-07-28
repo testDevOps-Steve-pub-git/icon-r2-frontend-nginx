@@ -1,20 +1,20 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+<div class="col-xs-12 col-sm-6">
+  <button class="icon-btn-link icon-btn-max-width"
+          ng-click="$ctrl.goToAUP('RETRIEVAL')"
+          id="immunization-retrieval-button">
+    <em class="fa fa-yellow-card fa-3x"></em>
+    <h2 class="welcome-button-header h3" translate="welcomeLogin.VIEW_BUTTON_TITLE"></h2>
+    <p class="welcome-button-para" translate="welcomeLogin.VIEW_BUTTON_PARA"></p>
+  </button>
+</div>
 
-    <div class="col-xs-12 col-sm-6">
-      <button class="icon-btn-link icon-btn-max-width" ng-click="$ctrl.goToAUP('RETRIEVAL')">
-        <i class="fa fa-yellow-card fa-3x"></i>
-        <h3 class="welcome-button-header" translate="welcomeLogin.VIEW_BUTTON_TITLE"></h3>
-        <p class="welcome-button-para" translate="welcomeLogin.VIEW_BUTTON_PARA"></p>
-      </button>
-    </div>
-
-    <div class="col-xs-12 col-sm-6">
-      <button class="icon-btn-link icon-btn-max-width" ng-click="$ctrl.goToAUP('SUBMISSION')">
-        <i class="fa fa-imm-vial fa-3x"></i>
-        <h3 class="welcome-button-header" translate="welcomeLogin.SUBMIT_BUTTON_TITLE"></h3>
-        <p class="welcome-button-para" translate="welcomeLogin.SUBMIT_BUTTON_PARA"></p>
-      </button>
-    </div>
-  </div>
+<div class="col-xs-12 col-sm-6">
+  <hr class = "col-sm-12 visible-xs-block">
+  <button class="icon-btn-link icon-btn-max-width"
+          ng-click="$ctrl.goToAUP('SUBMISSION')"
+          id="immunization-submission-button">
+    <em class="fa fa-imm-vial fa-3x"></em>
+    <h2 class="welcome-button-header h3" translate="welcomeLogin.SUBMIT_BUTTON_TITLE"></h2>
+    <p class="welcome-button-para" translate="welcomeLogin.SUBMIT_BUTTON_PARA"></p>
+  </button>
 </div>

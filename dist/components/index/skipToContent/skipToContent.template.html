@@ -1,10 +1,9 @@
 <div class="container">
 
-  <div>
-    <button class="btn-link sr-only" tabindex="2" id="prefocus"></button>
-  </div>
+  <span class="btn-link sr-only" tabindex="2" id="prefocus" aria-hidden='true'>
+  </span>
 
-  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-sm-offset-1 col-lg-offset-2">
+  <div>
     <button aria-label="{{ 'phuHeader.SKIP_TO_CONTENT' | translate }}" tabindex="3" translate='phuHeader.SKIP_TO_CONTENT' class="btn-link sr-only sr-only-focusable" ng-click="$ctrl.scrollToContent($event)" id="content-skip"></button>
   </div>
 

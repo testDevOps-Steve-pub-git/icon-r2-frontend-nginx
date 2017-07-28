@@ -1,6 +1,6 @@
 <div class="modal-header">
   <span class="icon-modal-close-button pull-right" aria-label="Close Button" ng-click="$ctrl.close()">
-      <i class="fa fa-times-circle fa-2x"></i>
+      <em class="fa fa-times-circle fa-2x"></em>
     </span>
   <h4>
     <span
@@ -62,9 +62,9 @@
         </immunization-typeahead>
 
         <!--Error Messages-->
-        <div class="error-messages" id="no-immunizations-selected"  ng-if="addImmunizationForm.selectedVaccine.$touched && $ctrl.immunization.agent.snomed === ''" role="alert">
+        <div class="error-messages" id="no-immunizations-selected"  ng-if="addImmunizationForm.selectedVaccine.$touched && $ctrl.immunization.agent.snomed === ''">
           <div class="alert alert-danger col-xs-12"
-               aria-label="" id="immunization-error">{{ 'editImmunization.IMMS_ERROR' | translate}}</div>
+               aria-label="" id="immunization-error" role="alert">{{ 'editImmunization.IMMS_ERROR' | translate}}</div>
         </div>
         <!--End Error Messages-->
       </div>
@@ -91,6 +91,7 @@
       </div>
 
       <button class="btn btn-primary btn-block"
+              type = "submit"
               id="immunizations-save"
               ng-disabled="$ctrl.isDuplicateImmunization"
               ng-click="$ctrl.save($ctrl.immunization, addImmunizationForm)">
@@ -102,13 +103,13 @@
 
     <div class="col-sm-5" ng-show="$ctrl.gatingQuestion === 2">
       <span class="fa-stack fa-2x icon-scroll-button-up" ng-click="$ctrl.scrollUp()" aria-hidden="true">
-        <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
-        <i class="fa fa-chevron-up fa-stack-1x"></i>
+        <em class="fa fa-circle fa-stack-2x icon-scroll-button-background"></em>
+        <em class="fa fa-chevron-up fa-stack-1x"></em>
       </span>
 
       <span class="fa-stack fa-2x icon-scroll-button-down" ng-click="$ctrl.scrollDown()" aria-hidden="true">
-        <i class="fa fa-circle fa-stack-2x icon-scroll-button-background"></i>
-        <i class="fa fa-chevron-down fa-stack-1x"></i>
+        <em class="fa fa-circle fa-stack-2x icon-scroll-button-background"></em>
+        <em class="fa fa-chevron-down fa-stack-1x"></em>
       </span>
     </div>
 
@@ -116,7 +117,7 @@
     <div id="ontario-vertical-schedule-container" class="col-sm-5 icon-schedule-vertical" ng-show="$ctrl.gatingQuestion === 2" du-scroll-container>
 
       <img id="ontario-vertical-schedule" alt="Ontario Schedule" src="../../../img/schedule-stacked.png" />
-      <br />
+      <br aria-hidden="true" />
     </div>
     <!-- End Ontario Schedule Image -->
 

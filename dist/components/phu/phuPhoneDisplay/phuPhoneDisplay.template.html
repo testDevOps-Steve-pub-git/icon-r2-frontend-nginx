@@ -1,0 +1,15 @@
+<strong>
+  <span ng-if="$ctrl.translate($ctrl.multitenancy.PHONE_KEY)">
+      <a class = "icon-no-wrap initial-font-size" href="tel:{{ ($ctrl.multitenancy.PHONE_KEY | translate) }}">{{ ($ctrl.multitenancy.PHONE_KEY | translate) }}</a>
+      <span class = "icon-no-wrap initial-font-size"  ng-if="$ctrl.translate($ctrl.multitenancy.PHONE_EXT_KEY)">&nbsp{{ 'MULTITENANCY.phuPhoneDisplay.EXT' | translate }} {{ ($ctrl.multitenancy.PHONE_EXT_KEY | translate) }}</span>
+  </span>
+</strong>
+
+<span class = "initial-font-size" ng-if="$ctrl.translate($ctrl.multitenancy.PHONE_KEY) && $ctrl.translate($ctrl.multitenancy.PHONE_2_KEY)">&nbsp{{ 'MULTITENANCY.phuPhoneDisplay.CONJUNCTION' | translate }}&nbsp</span>
+
+<strong>
+  <span ng-if="$ctrl.translate($ctrl.multitenancy.PHONE_2_KEY)">
+    <a class = "icon-no-wrap initial-font-size" href="tel:{{ ($ctrl.multitenancy.PHONE_2_KEY | translate) }}">{{ ($ctrl.multitenancy.PHONE_2_KEY | translate) }}</a>
+    <span class = "icon-no-wrap initial-font-size" ng-if="$ctrl.translate($ctrl.multitenancy.PHONE_2_EXT_KEY)">&nbsp{{ 'MULTITENANCY.phuPhoneDisplay.EXT' | translate }} {{ ($ctrl.multitenancy.PHONE_2_EXT_KEY | translate) }}</span>
+  </span>
+</strong>

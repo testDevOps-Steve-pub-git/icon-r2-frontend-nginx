@@ -8,14 +8,14 @@
 <div ng-class="{'icon-imms-display-table-error': $ctrl.invalidDate}">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4><span class="fa fa-medkit"></span>
+      <h4><span class="fa fa-imm-vial"></span>
         <span ng-if="$ctrl.immunizations[0].getType() === 'Agent'">
           <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
         </span>
 
         <span ng-if="$ctrl.immunizations[0].getType() === 'Trade'">
           <span>{{$ctrl.immunizations[0].trade.name}}</span>
-          <br />
+          <br aria-hidden="true" />
           <span>{{$ctrl.immunizations[0].agent.shortName}}</span>
         </span>
       </h4>

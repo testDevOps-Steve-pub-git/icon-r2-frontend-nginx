@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="icon" ng-controller="indexController" ng-strict-di class="no-js">
 
-<!-- Immunization Connect ONtario (ICON) -->
-<!-- Version 2.34.1 RC3 (final) -->
+<!-- Immunization Connect Ontario (ICON) -->
+<!-- Version 2.39.2 SNAPSHOT (Friday, 2017-07-28) -->
 
 <head>
   <meta charset="utf-8" />
@@ -43,12 +43,10 @@
     </div>
 
     <div ng-if="isBrowserSupported">
-      <main ui-view=""></main>
+      <main ui-view
+            tabindex="0">
+      </main>
     </div>
-  </div>
-
-  <div>
-    <session-container></session-container>
   </div>
 
   <phu-footer></phu-footer>

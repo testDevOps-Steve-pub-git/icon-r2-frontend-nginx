@@ -17,20 +17,21 @@
              id="submitter-email"
              ng-required='!$ctrl.isOptional'
              aria-describedby="emailMessage"
-             type="text" name="email"
+             type="email" name="email"
              />
 
       <!-- Error messages -->
-      <div id="submitter-email-error" ng-messages="$ctrl.form.email.$error" ng-if="$ctrl.form.email.$touched" role="alert">
-        <div class="alert alert-danger col-xs-12" ng-message="required">{{'emailCapture.ERRORS.IS_REQUIRED' | translate}}</div>
-        <div class="alert alert-danger col-xs-12" ng-message="pattern">{{'emailCapture.ERRORS.EMAIL_ERROR' | translate}}</div>
-        <div class="alert alert-danger col-xs-12" ng-message="maxlength">{{'emailCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
-        <div ng-if="!$ctrl.isOptional" class="alert alert-danger col-xs-12" id="patient-email-error" ng-message="required" translate="emailCapture.ERRORS.REQUIRED"></div>
+      <div id="submitter-email-error" ng-messages="$ctrl.form.email.$error" ng-if="$ctrl.form.email.$touched">
+        <div class="alert alert-danger col-xs-12" ng-message="required" role="alert">{{'emailCapture.ERRORS.IS_REQUIRED' | translate}}</div>
+        <div class="alert alert-danger col-xs-12" ng-message="pattern" role="alert">{{'emailCapture.ERRORS.EMAIL_ERROR' | translate}}</div>
+        <div class="alert alert-danger col-xs-12" ng-message="maxlength" role="alert">{{'emailCapture.ERRORS.EXCEEDS_MAXLENGTH' | translate}}</div>
+        <div ng-if="!$ctrl.isOptional" class="alert alert-danger col-xs-12" id="patient-email-error" ng-message="required" translate="emailCapture.ERRORS.REQUIRED" role="alert"></div>
       </div>
       <!-- End error messages -->
-      <span ng-transclude="hint"></span>
+      <span ng-transclude="hint" id='emailMessage'></span>
       <!-- End email address -->
-
+    </div>
+    <div class="form-group">
       <!-- Email address confirmation -->
       <div ng-if="$ctrl.showConfirm">
         <label for="submitter-email-confirm">{{'emailCapture.CONFIRM_EMAIL' | translate}}</label>
@@ -48,7 +49,7 @@
                ng-required="!($ctrl.isOptional)"
                class="form-control"
                id="submitter-email-confirm"
-               type="text"
+               type="email"
                name="emailConfirm"
                value="{{::$ctrl.email}}" />
 
